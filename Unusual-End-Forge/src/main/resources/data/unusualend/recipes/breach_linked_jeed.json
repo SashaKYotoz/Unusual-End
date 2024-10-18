@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:breach_linked",
+  "providers": [
+    {
+      "item": "unusualend:void_mirror"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

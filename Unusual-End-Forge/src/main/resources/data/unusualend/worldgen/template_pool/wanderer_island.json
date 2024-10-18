@@ -1,0 +1,33 @@
+{
+  "name": "unusualend:wanderer_island",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:wanderer_island",
+        "processors": "unusualend:wanderer_island"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:wanderer_island_2",
+        "processors": "unusualend:wanderer_island"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:wanderer_island_3",
+        "processors": "unusualend:wanderer_island"
+      }
+    }
+  ]
+}

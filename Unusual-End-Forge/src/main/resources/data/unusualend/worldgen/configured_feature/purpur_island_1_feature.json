@@ -1,0 +1,52 @@
+{
+  "type": "unusualend:purpur_island_1_feature",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:purpur_island_1",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:purpur_island_2",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:purpur_island_3",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

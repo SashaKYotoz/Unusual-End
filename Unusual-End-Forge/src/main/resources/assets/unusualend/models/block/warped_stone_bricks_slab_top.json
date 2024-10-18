@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "unusualend:block/warped_stone_bricks",
+    "top": "unusualend:block/warped_stone_bricks",
+    "side": "unusualend:block/warped_stone_bricks"
+  },
+  "render_type": "solid"
+}

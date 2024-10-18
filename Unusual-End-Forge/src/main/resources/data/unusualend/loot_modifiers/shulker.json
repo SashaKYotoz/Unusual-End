@@ -1,0 +1,10 @@
+{
+  "type": "unusualend:unusualend_loot_modifier",
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:entities/shulker"
+    }
+  ],
+  "lootTable": "unusualend:entities/shulker_additional_drops"
+}

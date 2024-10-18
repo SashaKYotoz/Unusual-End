@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:gneiss_brick_slab"
+    }
+  },
+  "result": {
+    "item": "unusualend:gneiss_pillar",
+    "count": 1
+  }
+}

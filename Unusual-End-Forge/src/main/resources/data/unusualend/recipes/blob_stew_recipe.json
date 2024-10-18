@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "b "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:end_blob"
+    },
+    "b": {
+      "item": "minecraft:bowl"
+    }
+  },
+  "result": {
+    "item": "unusualend:blob_stew",
+    "count": 1
+  }
+}

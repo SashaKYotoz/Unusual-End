@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "unusualend:raw_purpur_block"
+    }
+  ],
+  "output": {
+    "item": "unusualend:gneiss",
+    "count": 1
+  }
+}

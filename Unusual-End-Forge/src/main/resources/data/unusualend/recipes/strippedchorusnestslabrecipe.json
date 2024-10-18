@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:stripped_chorus_nest_planks"
+    }
+  },
+  "result": {
+    "item": "unusualend:stripped_chorus_nest_slab",
+    "count": 6
+  }
+}

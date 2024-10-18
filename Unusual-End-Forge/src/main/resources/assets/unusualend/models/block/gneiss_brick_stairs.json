@@ -1,0 +1,9 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "unusualend:block/gneiss_bricks",
+    "top": "unusualend:block/gneiss_bricks",
+    "side": "unusualend:block/gneiss_bricks"
+  },
+  "render_type": "solid"
+}

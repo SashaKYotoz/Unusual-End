@@ -1,0 +1,35 @@
+{
+  "feature": "unusualend:warped_patchs",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 7
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "environment_scan",
+      "direction_of_search": "up",
+      "target_condition": {
+        "type": "minecraft:not",
+        "predicate": {
+          "type": "minecraft:solid",
+          "offset": [
+            0,
+            1,
+            0
+          ]
+        }
+      },
+      "max_steps": 5
+    }
+  ]
+}

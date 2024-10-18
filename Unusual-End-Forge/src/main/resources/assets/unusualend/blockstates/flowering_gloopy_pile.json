@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=upper": {
+      "model": "unusualend:block/flowering_gloopy_pile"
+    },
+    "half=lower": {
+      "model": "unusualend:block/flowering_gloopy_pile_bottom"
+    }
+  }
+}

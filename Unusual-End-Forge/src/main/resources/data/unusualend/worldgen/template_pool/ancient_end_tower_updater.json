@@ -1,0 +1,17 @@
+{
+  "name": "unusualend:ancient_end_tower_updater",
+  "fallback": "unusualend:ancient_end_tower_updater",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:updater",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    }
+  ]
+}

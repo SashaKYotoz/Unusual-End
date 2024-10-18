@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_citrine"
+    }
+  },
+  "result": {
+    "item": "unusualend:polished_citrine_tiles",
+    "count": 4
+  }
+}

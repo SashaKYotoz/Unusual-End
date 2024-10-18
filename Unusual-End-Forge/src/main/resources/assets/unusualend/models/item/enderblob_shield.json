@@ -1,0 +1,15 @@
+{
+  "parent": "unusualend:custom/blob_shield",
+  "textures": {
+    "0": "unusualend:block/blob_shield",
+    "particle": "unusualend:item/blob_shield"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "unusualend:item/enderblob_shield_0"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:end_blob_jelly"
+    },
+    {
+      "item": "unusualend:prismalite_gem"
+    }
+  ],
+  "result": {
+    "item": "unusualend:prismatic_gum",
+    "count": 1
+  }
+}

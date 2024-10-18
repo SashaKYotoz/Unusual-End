@@ -1,0 +1,18 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:regeneration",
+  "providers": [
+    {
+      "item": "unusualend:leeching_wand"
+    },
+    {
+      "item": "unusualend:healing_lantern"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

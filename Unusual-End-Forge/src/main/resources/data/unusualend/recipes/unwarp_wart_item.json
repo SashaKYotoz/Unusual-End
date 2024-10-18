@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    }
+  ],
+  "result": {
+    "item": "minecraft:nether_wart",
+    "count": 8
+  }
+}

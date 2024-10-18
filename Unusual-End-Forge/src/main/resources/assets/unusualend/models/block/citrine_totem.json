@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "unusualend:block/citrine_pillar_top",
+    "up": "unusualend:block/citrine_totem_top",
+    "north": "unusualend:block/citrine_totem_serious",
+    "east": "unusualend:block/citrine_totem_happy",
+    "south": "unusualend:block/citrine_totem_serious",
+    "west": "unusualend:block/citrine_totem_happy",
+    "particle": "unusualend:block/citrine_pillar_top"
+  },
+  "render_type": "solid"
+}

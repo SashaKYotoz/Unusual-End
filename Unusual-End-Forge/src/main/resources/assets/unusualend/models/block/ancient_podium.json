@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/ancient_podium",
+  "textures": {
+    "all": "unusualend:block/ancient_podium",
+    "particle": "unusualend:block/teleportation_anchor_bottom",
+    "0": "unusualend:block/ancient_podium"
+  },
+  "render_type": "solid"
+}

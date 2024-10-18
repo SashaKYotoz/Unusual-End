@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chiseled_glass"
+    },
+    "b": {
+      "item": "minecraft:ender_eye"
+    },
+    "c": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "result": {
+    "item": "minecraft:end_crystal",
+    "count": 1
+  }
+}

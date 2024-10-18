@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:crystal_catalyst"
+    },
+    "title": {
+      "translate": "advancements.obtain_catalyst.title"
+    },
+    "description": {
+      "translate": "advancements.obtain_catalyst.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "obtain_catalyst_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:get_citrine"
+}

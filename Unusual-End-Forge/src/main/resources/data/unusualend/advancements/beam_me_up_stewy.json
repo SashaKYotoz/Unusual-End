@@ -1,0 +1,30 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:wandering_stew"
+    },
+    "title": {
+      "translate": "advancements.beam_me_up_stewy.title"
+    },
+    "description": {
+      "translate": "advancements.beam_me_up_stewy.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "beam_me_up_stewy_0": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "unusualend:wandering_stew"
+          ]
+        }
+      }
+    }
+  },
+  "parent": "unusualend:local_food"
+}

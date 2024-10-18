@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/stripped_chorus_nest_planks",
+    "particle": "unusualend:block/stripped_chorus_nest_planks"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,48 @@
+{
+  "feature": "unusualend:warped_rock_1_feature",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "uniform",
+        "value": {
+          "min_inclusive": 5,
+          "max_inclusive": 9
+        }
+      }
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 28
+        },
+        "max_inclusive": {
+          "absolute": 90
+        }
+      }
+    },
+    {
+      "type": "environment_scan",
+      "direction_of_search": "down",
+      "target_condition": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+      },
+      "max_steps": 5
+    },
+    {
+      "type": "environment_scan",
+      "direction_of_search": "up",
+      "target_condition": {
+        "type": "minecraft:matching_blocks",
+        "blocks": "minecraft:air"
+      },
+      "max_steps": 10
+    }
+  ]
+}

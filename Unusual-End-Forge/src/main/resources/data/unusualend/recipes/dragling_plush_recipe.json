@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:enderling_scrap"
+    },
+    "b": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "unusualend:dragling_plush",
+    "count": 1
+  }
+}

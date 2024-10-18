@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "unusualend:warped_reef",
+  "spawners": {
+    "type": "unusualend:spunkler",
+    "weight": 18,
+    "minCount": 3,
+    "maxCount": 4
+  }
+}

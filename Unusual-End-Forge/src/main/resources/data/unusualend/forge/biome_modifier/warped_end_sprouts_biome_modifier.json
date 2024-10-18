@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "unusualend:warped_reef",
+  "features": "unusualend:warped_end_sprouts",
+  "step": "top_layer_modification"
+}

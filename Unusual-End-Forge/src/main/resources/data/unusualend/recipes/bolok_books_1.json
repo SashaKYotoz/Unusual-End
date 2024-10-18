@@ -1,0 +1,13 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:enchanted_book"
+    }
+  ],
+  "output": {
+    "item": "minecraft:enchanted_book",
+    "count": 1,
+    "nbt": "{StoredEnchantments: [{lvl:1s, id:\"unusualend:boloks_head\"}]}"
+  }
+}

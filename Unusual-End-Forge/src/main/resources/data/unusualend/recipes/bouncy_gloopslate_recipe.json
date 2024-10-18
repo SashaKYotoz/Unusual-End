@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:gloopslate"
+    },
+    {
+      "item": "unusualend:end_blob"
+    }
+  ],
+  "result": {
+    "item": "unusualend:bouncy_gloopslate",
+    "count": 1
+  }
+}

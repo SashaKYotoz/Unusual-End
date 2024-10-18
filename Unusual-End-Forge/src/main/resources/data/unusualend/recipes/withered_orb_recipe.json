@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "bc"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:golem_orb"
+    },
+    "b": {
+      "item": "unusualend:citrine_chunk"
+    },
+    "c": {
+      "item": "minecraft:wither_rose"
+    }
+  },
+  "result": {
+    "item": "unusualend:withering_orb",
+    "count": 1
+  }
+}

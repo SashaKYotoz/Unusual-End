@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/moss",
+  "textures": {
+    "all": "unusualend:block/endstone_nylium_top",
+    "particle": "unusualend:block/endstone_nylium_top",
+    "1": "unusualend:block/warped_moss"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "unusualend:block/central_pedestal"
+    },
+    "facing=east": {
+      "model": "unusualend:block/central_pedestal",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "unusualend:block/central_pedestal",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "unusualend:block/central_pedestal",
+      "y": 270
+    }
+  }
+}

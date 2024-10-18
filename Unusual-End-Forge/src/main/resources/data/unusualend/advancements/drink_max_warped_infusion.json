@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:warped_infusion"
+    },
+    "title": {
+      "translate": "advancements.drink_max_warped_infusion.title"
+    },
+    "description": {
+      "translate": "advancements.drink_max_warped_infusion.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "drink_max_warped_infusion_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:use_warped_bubble"
+}

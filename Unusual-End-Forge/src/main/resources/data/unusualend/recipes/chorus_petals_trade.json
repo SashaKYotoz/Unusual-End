@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "tag": "forge:chorus_flower"
+    }
+  ],
+  "output": {
+    "item": "unusualend:chorus_petal",
+    "count": 3
+  }
+}

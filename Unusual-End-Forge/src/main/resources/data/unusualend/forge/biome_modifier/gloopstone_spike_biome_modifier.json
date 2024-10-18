@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "unusualend:gloopstone_lands",
+    "unusualend:gloopstone_midlands"
+  ],
+  "features": "unusualend:gloopstone_spike",
+  "step": "vegetal_decoration"
+}

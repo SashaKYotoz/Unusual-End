@@ -1,0 +1,26 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "unusualend:endstone_tiles"
+    },
+    {
+      "item": "minecraft:dragon_breath"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:infused_end_stone_tiles"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "keepHeldItem": false,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:warped_end_stone",
+    "unusualend:gneiss_bricks",
+    "unusualend:gneiss",
+    "unusualend:warped_stone"
+  ]
+}

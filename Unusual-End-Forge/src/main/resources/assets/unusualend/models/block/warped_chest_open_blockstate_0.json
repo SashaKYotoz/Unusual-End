@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/opened_warped_chest",
+  "textures": {
+    "all": "unusualend:block/warped_chest",
+    "particle": "unusualend:block/endstone_nylium_top",
+    "4": "unusualend:block/warped_chest"
+  },
+  "render_type": "cutout_mipped"
+}

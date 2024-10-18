@@ -1,0 +1,9 @@
+{
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "unusualend:block/polished_warped_stone_tiles",
+    "top": "unusualend:block/polished_warped_stone_tiles",
+    "side": "unusualend:block/polished_warped_stone_tiles"
+  },
+  "render_type": "solid"
+}

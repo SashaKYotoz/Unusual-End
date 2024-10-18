@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:warped_fungus"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_spores",
+    "count": 1
+  }
+}

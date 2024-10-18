@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:citrine_chunk"
+    },
+    "b": {
+      "item": "unusualend:prismalite_gem"
+    }
+  },
+  "result": {
+    "item": "unusualend:crystal_catalyst",
+    "count": 1
+  }
+}

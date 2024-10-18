@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "unusualend:block/ancient_block_bottom",
+    "up": "unusualend:block/purpur_tank_top",
+    "north": "unusualend:block/purpur_tank_side",
+    "east": "unusualend:block/purpur_tank_side",
+    "south": "unusualend:block/purpur_tank_side",
+    "west": "unusualend:block/purpur_tank_side",
+    "particle": "unusualend:block/purpur_block"
+  },
+  "render_type": "solid"
+}

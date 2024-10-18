@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "unusualend:block/sculted_end_stone",
+    "up": "unusualend:block/sculted_end_stone",
+    "north": "unusualend:block/chiseled_endstone__1",
+    "east": "unusualend:block/chiseled_endstone__1",
+    "south": "unusualend:block/chiseled_endstone__1",
+    "west": "unusualend:block/chiseled_endstone__1",
+    "particle": "unusualend:block/sculted_end_stone"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:pumpkin"
+    }
+  ],
+  "output": {
+    "item": "unusualend:small_warped_squash",
+    "count": 1
+  }
+}

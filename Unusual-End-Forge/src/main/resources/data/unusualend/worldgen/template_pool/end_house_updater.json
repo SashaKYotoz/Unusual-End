@@ -1,0 +1,17 @@
+{
+  "name": "unusualend:end_house_updater",
+  "fallback": "unusualend:end_house_updater",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:updater",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    }
+  ]
+}

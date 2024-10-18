@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:citrine_chunk",
+    "unusualend:prismalite_gem",
+    "unusualend:shiny_crystal",
+    "unusualend:pearlescent_ingot"
+  ]
+}

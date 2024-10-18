@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:serenity",
+  "providers": [
+    {
+      "item": "unusualend:pearlescent_infuser"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

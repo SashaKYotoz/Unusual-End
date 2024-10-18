@@ -1,0 +1,68 @@
+{
+  "has_precipitation": false,
+  "temperature": 1.6,
+  "downfall": 0,
+  "effects": {
+    "ambient_sound": "ambient.basalt_deltas.loop",
+    "mood_sound": {
+      "sound": "ambient.crimson_forest.mood",
+      "tick_delay": 4000,
+      "offset": 8,
+      "block_search_extent": 2
+    },
+    "additions_sound": {
+      "sound": "ambient.crimson_forest.additions",
+      "tick_chance": 0.0111
+    },
+    "music": {
+      "sound": "unusualend:peter_hont_astray_archipelago",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "unusualend:pink_flame"
+      },
+      "probability": 0.001
+    },
+    "foliage_color": 10387789,
+    "grass_color": 9470285,
+    "sky_color": -5944923,
+    "fog_color": -5944923,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "endermite",
+        "weight": 1,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ]
+}

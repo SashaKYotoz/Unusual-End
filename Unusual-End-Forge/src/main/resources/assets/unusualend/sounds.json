@@ -1,0 +1,247 @@
+{
+  "music_disc_flying_ships": {
+    "sounds": [
+      {
+        "name": "unusualend:minecraft-ust-flying-ships-_end-music-disc-concept__2",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc_endstone_golem_theme": {
+    "sounds": [
+      {
+        "name": "unusualend:endgolemtheme-_1_",
+        "stream": true
+      }
+    ]
+  },
+  "endstone_golem_theme": {
+    "sounds": [
+      {
+        "name": "unusualend:endgolemtheme-_1_",
+        "stream": true
+      }
+    ]
+  },
+  "endstone_golem_death": {
+    "subtitle": "subtitles.endstone_golem_death",
+    "sounds": [
+      {
+        "name": "unusualend:endstone_golem_death",
+        "stream": false
+      }
+    ]
+  },
+  "peter_hont_astray_archipelago": {
+    "sounds": [
+      {
+        "name": "unusualend:peter_hont_astray_archipelago",
+        "stream": true
+      }
+    ]
+  },
+  "firch_prophet": {
+    "sounds": [
+      {
+        "name": "unusualend:minecraft_ust_-_prophet_warped_forest_biome_ambient_music",
+        "stream": true
+      }
+    ]
+  },
+  "flute_circus": {
+    "subtitle": "subtitles.flute_circus",
+    "sounds": [
+      {
+        "name": "unusualend:circus",
+        "stream": true
+      }
+    ]
+  },
+  "flute_storms": {
+    "subtitle": "subtitles.flute_storms",
+    "sounds": [
+      {
+        "name": "unusualend:storms",
+        "stream": true
+      }
+    ]
+  },
+  "flute_strange": {
+    "subtitle": "subtitles.flute_strange",
+    "sounds": [
+      {
+        "name": "unusualend:strange",
+        "stream": true
+      }
+    ]
+  },
+  "flute_doctor": {
+    "subtitle": "subtitles.flute_doctor",
+    "sounds": [
+      {
+        "name": "unusualend:flute_doctor",
+        "stream": true
+      }
+    ]
+  },
+  "flute_party": {
+    "subtitle": "subtitles.flute_party",
+    "sounds": [
+      {
+        "name": "unusualend:flute_party",
+        "stream": true
+      }
+    ]
+  },
+  "flute_saria": {
+    "subtitle": "subtitles.flute_saria",
+    "sounds": [
+      {
+        "name": "unusualend:saria",
+        "stream": true
+      }
+    ]
+  },
+  "flute_docks": {
+    "subtitle": "subtitles.flute_docks",
+    "sounds": [
+      {
+        "name": "unusualend:docks",
+        "stream": true
+      }
+    ]
+  },
+  "flute_drift": {
+    "subtitle": "subtitles.flute_drift",
+    "sounds": [
+      {
+        "name": "unusualend:drift",
+        "stream": true
+      }
+    ]
+  },
+  "oheight-moog-in-space": {
+    "sounds": [
+      {
+        "name": "unusualend:moog-in-space-2",
+        "stream": true
+      }
+    ]
+  },
+  "flute_tapion": {
+    "subtitle": "subtitles.flute_tapion",
+    "sounds": [
+      {
+        "name": "unusualend:tapion",
+        "stream": true
+      }
+    ]
+  },
+  "flute_moog": {
+    "subtitle": "subtitles.flute_moog",
+    "sounds": [
+      {
+        "name": "unusualend:moog",
+        "stream": true
+      }
+    ]
+  },
+  "flute_aria": {
+    "subtitle": "subtitles.flute_aria",
+    "sounds": [
+      {
+        "name": "unusualend:aria",
+        "stream": true
+      }
+    ]
+  },
+  "endblob_queen_theme": {
+    "sounds": [
+      {
+        "name": "unusualend:endblob_queen_theme",
+        "stream": true
+      }
+    ]
+  },
+  "bolok_ambient": {
+    "subtitle": "subtitles.bolok_ambient",
+    "sounds": [
+      {
+        "name": "unusualend:bolok_ambient_1",
+        "stream": false
+      },
+      {
+        "name": "unusualend:bolok_ambient_2",
+        "stream": false
+      },
+      {
+        "name": "unusualend:bolok_ambient_3",
+        "stream": false
+      },
+      {
+        "name": "unusualend:bolok_ambient_4",
+        "stream": false
+      }
+    ]
+  },
+  "bolok_dies": {
+    "subtitle": "subtitles.bolok_dies",
+    "sounds": [
+      {
+        "name": "unusualend:bolok_dies",
+        "stream": false
+      },
+      {
+        "name": "unusualend:bolok_dies_2",
+        "stream": false
+      }
+    ]
+  },
+  "bolok_hurts": {
+    "subtitle": "subtitles.bolok_hurts",
+    "sounds": [
+      {
+        "name": "unusualend:bolok_hurt",
+        "stream": false
+      },
+      {
+        "name": "unusualend:bolok_hurt_2",
+        "stream": false
+      }
+    ]
+  },
+  "flute_fishe": {
+    "subtitle": "subtitles.flute_fishe",
+    "sounds": [
+      {
+        "name": "unusualend:fishe",
+        "stream": true
+      }
+    ]
+  },
+  "music_disc_queen": {
+    "sounds": [
+      {
+        "name": "unusualend:music_disc_queen",
+        "stream": true
+      }
+    ]
+  },
+  "bluk_eat": {
+    "subtitle": "subtitles.bluk_eat",
+    "sounds": [
+      {
+        "name": "unusualend:augh",
+        "stream": false
+      }
+    ]
+  },
+  "the_great_abyss": {
+    "sounds": [
+      {
+        "name": "unusualend:the_great_abyss",
+        "stream": true
+      }
+    ]
+  }
+}

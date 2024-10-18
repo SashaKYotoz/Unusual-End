@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:weak_end_stone_bricks",
+    "unusualend:endstone_tiles",
+    "minecraft:end_stone_bricks"
+  ]
+}

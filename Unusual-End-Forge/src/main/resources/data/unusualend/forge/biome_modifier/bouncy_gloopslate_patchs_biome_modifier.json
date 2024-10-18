@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "unusualend:gloopstone_lands",
+    "unusualend:gloopstone_midlands"
+  ],
+  "features": "unusualend:bouncy_gloopslate_patchs",
+  "step": "underground_ores"
+}

@@ -1,0 +1,35 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:elytra"
+    },
+    "title": {
+      "translate": "advancements.we_have_a_problem.title"
+    },
+    "description": {
+      "translate": "advancements.we_have_a_problem.descr"
+    },
+    "frame": "challenge",
+    "show_toast": false,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "we_have_a_problem": {
+      "trigger": "minecraft:item_durability_changed",
+      "conditions": {
+        "delta": -1,
+        "durability": 1,
+        "item": {
+          "items": [
+            "minecraft:elytra"
+          ]
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "minecraft:end/elytra"
+}

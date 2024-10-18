@@ -1,0 +1,23 @@
+{
+  "variants": {
+    "face=floor": {
+      "model": "unusualend:block/crystal_torch"
+    },
+    "face=wall,facing=north": {
+      "model": "unusualend:block/crystal_torch_wall",
+      "y": 270
+    },
+    "face=wall,facing=east": {
+      "model": "unusualend:block/crystal_torch_wall",
+      "y": 0
+    },
+    "face=wall,facing=south": {
+      "model": "unusualend:block/crystal_torch_wall",
+      "y": 90
+    },
+    "face=wall,facing=west": {
+      "model": "unusualend:block/crystal_torch_wall",
+      "y": 180
+    }
+  }
+}

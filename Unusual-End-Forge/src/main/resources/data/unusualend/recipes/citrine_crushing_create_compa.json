@@ -1,0 +1,28 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "unusualend:citrine_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:citrine_chunk"
+    },
+    {
+      "item": "unusualend:citrine_chunk",
+      "chance": 0.25
+    },
+    {
+      "item": "create:experience_nugget",
+      "chance": 0.10
+    }
+  ],
+  "processingTime": 250,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "unusualend:pearlescent_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "minecraft:diamond_pickaxe"
+  },
+  "addition": {
+    "item": "unusualend:pearlescent_ingot"
+  },
+  "result": {
+    "item": "unusualend:pearlescent_pickaxe"
+  }
+}

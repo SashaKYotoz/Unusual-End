@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "unusualend:chorus_cane",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 1065491985,
+    "spacing": 7,
+    "separation": 5
+  }
+}

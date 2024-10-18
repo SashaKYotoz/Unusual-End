@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:prismalite_gem"
+    }
+  },
+  "result": {
+    "item": "unusualend:prismalite_shard",
+    "count": 9
+  }
+}

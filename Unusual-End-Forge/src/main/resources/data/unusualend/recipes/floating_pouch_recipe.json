@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    " b "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:string"
+    },
+    "b": {
+      "item": "unusualend:enderling_scrap"
+    },
+    "c": {
+      "item": "unusualend:lurker_sludge"
+    }
+  },
+  "result": {
+    "item": "unusualend:floating_pouch",
+    "count": 1
+  }
+}

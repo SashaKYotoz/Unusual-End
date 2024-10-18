@@ -1,0 +1,7 @@
+{
+  "asset_id": "unusualend:ancient_trim",
+  "description": {
+    "translate": "trim_pattern.unusualend.ancient_trim"
+  },
+  "template_item": "unusualend:ancient_armor_trim_smithing_template"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "bab",
+    "bab"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:bolok_scale"
+    },
+    "b": {
+      "item": "unusualend:lurker_spine"
+    }
+  },
+  "result": {
+    "item": "unusualend:warped_chestplate",
+    "count": 1
+  }
+}

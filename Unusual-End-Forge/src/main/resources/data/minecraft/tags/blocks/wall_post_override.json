@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:healing_lantern",
+    "unusualend:warped_lantern",
+    "unusualend:citrine_candle"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:disc_fragment_flying_ships"
+    }
+  },
+  "result": {
+    "item": "unusualend:music_disc_flying_ships",
+    "count": 1
+  }
+}

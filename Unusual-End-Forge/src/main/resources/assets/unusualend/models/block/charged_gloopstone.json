@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "unusualend:block/charged_gloopstone_bottom",
+    "top": "unusualend:block/charged_gloopstone_top",
+    "side": "unusualend:block/charged_gloopstone",
+    "overlay": "unusualend:block/charged_gloopstone",
+    "particle": "unusualend:block/charged_gloopstone_bottom"
+  },
+  "render_type": "solid"
+}

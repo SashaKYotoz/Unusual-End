@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "unusualend:shiny_crystal"
+    }
+  ],
+  "output": {
+    "item": "unusualend:bolok_fin",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "ba"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:warped_squash_wedge"
+    },
+    "b": {
+      "item": "unusualend:warped_spores"
+    }
+  },
+  "result": {
+    "item": "unusualend:small_warped_squash",
+    "count": 1
+  }
+}

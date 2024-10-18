@@ -1,0 +1,386 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 120,
+            "xz_spread": 8,
+            "y_spread": 4,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:warped_algae"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "minecraft:air",
+                          "unusualend:warped_moss",
+                          "unusualend:small_warped_algae",
+                          "unusualend:grown_warped_bush",
+                          "unusualend:warped_bush"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "unusualend:gneiss",
+                          "unusualend:warped_end_stone",
+                          "unusualend:warped_stone"
+                        ],
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 60,
+            "xz_spread": 14,
+            "y_spread": 5,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:gneiss_pile",
+                      "Properties": {
+                        "waterlogged": "false"
+                      }
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "#unusualend:warped_bypass"
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "unusualend:gneiss",
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 60,
+            "xz_spread": 14,
+            "y_spread": 5,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:warped_squash"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "#unusualend:warped_bypass"
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "unusualend:gneiss",
+                          "unusualend:warped_end_stone",
+                          "unusualend:warped_stone",
+                          "minecraft:warped_wart_block"
+                        ],
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 120,
+            "xz_spread": 10,
+            "y_spread": 5,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:small_warped_algae"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "unusualend:gneiss",
+                          "unusualend:warped_end_stone",
+                          "unusualend:warped_stone"
+                        ],
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 160,
+            "xz_spread": 10,
+            "y_spread": 6,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:warped_algae"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "minecraft:air",
+                          "unusualend:warped_moss",
+                          "unusualend:small_warped_algae",
+                          "unusualend:grown_warped_bush",
+                          "unusualend:warped_bush"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "unusualend:gneiss",
+                          "unusualend:warped_end_stone",
+                          "unusualend:warped_stone"
+                        ],
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 70,
+            "xz_spread": 12,
+            "y_spread": 5,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:small_warped_squash",
+                      "Properties": {
+                        "waterlogged": "false"
+                      }
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "#unusualend:warped_bypass"
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "unusualend:gneiss",
+                          "unusualend:warped_end_stone",
+                          "unusualend:warped_stone",
+                          "minecraft:warped_wart_block",
+                          "unusualend:warped_squash"
+                        ],
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 60,
+            "y_spread": 5,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "minecraft:warped_roots"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "minecraft:air",
+                          "unusualend:warped_moss",
+                          "unusualend:small_warped_algae",
+                          "unusualend:warped_bush",
+                          "unusualend:grown_warped_bush"
+                        ]
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "unusualend:gneiss",
+                          "unusualend:warped_end_stone",
+                          "unusualend:warped_stone"
+                        ],
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

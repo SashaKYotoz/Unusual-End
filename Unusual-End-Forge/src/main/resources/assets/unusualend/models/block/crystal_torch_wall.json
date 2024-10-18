@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/crystal_torch_wall",
+  "textures": {
+    "all": "unusualend:block/crystal_torch",
+    "particle": "unusualend:block/crystal_torch_item",
+    "0": "unusualend:block/crystal_torch"
+  },
+  "render_type": "cutout_mipped"
+}

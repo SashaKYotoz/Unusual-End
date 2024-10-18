@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "unusualend:blocks/chorus_nest_planks_door",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unusualend:chorus_nest_planks_door",
+          "conditions": [
+            {
+              "block": "unusualend:chorus_nest_planks_door",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

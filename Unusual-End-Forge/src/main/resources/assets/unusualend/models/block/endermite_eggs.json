@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/small_endermite_eggs",
+  "textures": {
+    "all": "unusualend:block/small_eggs",
+    "particle": "unusualend:block/egg_particles",
+    "0": "unusualend:block/small_eggs"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "unusualend:warped_reef",
+  "features": "unusualend:warped_bush",
+  "step": "vegetal_decoration"
+}

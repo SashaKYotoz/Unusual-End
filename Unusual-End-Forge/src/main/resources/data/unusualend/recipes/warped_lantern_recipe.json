@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_warped_stone"
+    },
+    "b": {
+      "item": "unusualend:citrine_chunk"
+    },
+    "c": {
+      "item": "unusualend:citrine_block"
+    }
+  },
+  "result": {
+    "item": "unusualend:warped_lantern",
+    "count": 2
+  }
+}

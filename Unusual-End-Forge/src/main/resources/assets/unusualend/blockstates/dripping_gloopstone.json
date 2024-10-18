@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "unusualend:block/dripping_gloopstone",
+        "weight": 2
+      },
+      {
+        "model": "unusualend:block/dripping_gloopstone_2",
+        "weight": 1
+      }
+    ]
+  }
+}

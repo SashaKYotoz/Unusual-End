@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aba",
+    "cbc"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_gloopstone"
+    },
+    "b": {
+      "item": "unusualend:prismalite_shard"
+    },
+    "c": {
+      "item": "unusualend:polished_gloopslate"
+    }
+  },
+  "result": {
+    "item": "unusualend:charged_gloopstone",
+    "count": 6
+  }
+}

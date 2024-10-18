@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:strength",
+  "providers": [
+    {
+      "item": "unusualend:warped_spear"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

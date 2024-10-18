@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:chorus_nest_planks",
+    "unusualend:chorus_nest_stairs",
+    "unusualend:chorus_nest_slab",
+    "unusualend:blooming_chorus_cane",
+    "unusualend:chorus_cane_block"
+  ]
+}

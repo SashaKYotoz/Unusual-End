@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unusualend:gloopilon_slice",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 1,
+                "max": 3
+              }
+            }
+          ],
+          "conditions": [
+            {
+              "condition": "minecraft:block_state_property",
+              "block": "unusualend:gloopilon_bulb",
+              "properties": {
+                "age": "2"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "random_sequence": "unusualend:blocks/gloopilon_bulb"
+}

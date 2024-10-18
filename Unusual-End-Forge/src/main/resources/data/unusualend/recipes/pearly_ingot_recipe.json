@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "unusualend:citrine_chunk"
+    },
+    {
+      "item": "unusualend:prismalite_gem"
+    },
+    {
+      "item": "unusualend:enderling_scrap"
+    }
+  ],
+  "result": {
+    "item": "unusualend:pearlescent_ingot",
+    "count": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "unusualend:warped_reef",
+  "spawners": {
+    "type": "unusualend:bolok",
+    "weight": 20,
+    "minCount": 2,
+    "maxCount": 3
+  }
+}

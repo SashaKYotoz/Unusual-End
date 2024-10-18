@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/moult_block",
+    "particle": "unusualend:block/moult_block"
+  },
+  "render_type": "translucent"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:polished_purpur"
+    },
+    {
+      "item": "unusualend:ancient_shard"
+    }
+  ],
+  "result": {
+    "item": "unusualend:ancient_encased_purpur",
+    "count": 1
+  }
+}

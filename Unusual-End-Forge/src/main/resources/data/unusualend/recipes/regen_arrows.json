@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "L",
+    "S",
+    "C"
+  ],
+  "key": {
+    "L": {
+      "item": "unusualend:shiny_crystal"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "C": {
+      "tag": "forge:chorus_petals"
+    }
+  },
+  "result": {
+    "item": "minecraft:tipped_arrow",
+    "count": 8,
+    "nbt": "{Potion:\"unusualend:regeneration\"}"
+  }
+}

@@ -1,0 +1,110 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="unusualend"
+version="2.1.2"
+displayName="Unusual End"
+displayURL="https://www.curseforge.com/members/sweetygamer/projects"
+logoFile="logo.png"
+credits="Sweetygamer / The Unusual Squad"
+authors="Sweetygamer"
+description="Enhance your End experience !"
+
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
+[[dependencies.unusualend]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1]"
+    ordering="NONE"
+    side="BOTH"
+
+
+[[dependencies.unusualend]]
+    modId="curios_api"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="Farmer's_Delight"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="Endergetic_Expansion"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="jeed"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="appleskin"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="jei"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="Stalwart_Dungeons"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="Create"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="suggestion_provider_fix"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="attribute_fix"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="xaerosmap"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="create"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="CuriosAPI"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.unusualend]]
+    modId="farmers_delight"
+    mandatory=false
+    versionRange="[0,)"
+    ordering="NONE"
+    side="BOTH"
+

@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "small_end_islands",
+  "features": "unusualend:purpur_island_1_feature",
+  "step": "raw_generation"
+}

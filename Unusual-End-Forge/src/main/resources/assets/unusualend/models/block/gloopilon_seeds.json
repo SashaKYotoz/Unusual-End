@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/gloopilon_sprout",
+    "particle": "unusualend:block/egg_particles"
+  },
+  "render_type": "cutout"
+}

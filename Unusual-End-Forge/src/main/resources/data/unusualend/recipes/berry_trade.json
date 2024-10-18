@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:glow_berries"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_berries",
+    "count": 1
+  }
+}

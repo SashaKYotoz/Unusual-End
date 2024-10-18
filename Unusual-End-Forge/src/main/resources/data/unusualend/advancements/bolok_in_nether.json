@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:warped_nylium"
+    },
+    "title": {
+      "translate": "advancements.bolok_in_nether.title"
+    },
+    "description": {
+      "translate": "advancements.bolok_in_nether.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bolok_in_nether_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "minecraft:nether/root"
+}

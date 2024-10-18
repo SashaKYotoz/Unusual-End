@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_purpur_tiles"
+    },
+    "b": {
+      "item": "unusualend:firefly_bulb"
+    }
+  },
+  "result": {
+    "item": "unusualend:polished_purpur_tiles_lantern",
+    "count": 4
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "unusualend:chorus_nest_planks"
+    }
+  ],
+  "tool": {
+    "type": "farmersdelight:tool_action",
+    "action": "axe_strip"
+  },
+  "result": [
+    {
+      "item": "unusualend:stripped_chorus_nest_planks"
+    }
+  ],
+  "sound": "minecraft:item.axe.strip",
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond_horse_armor"
+    }
+  ],
+  "output": {
+    "item": "unusualend:scale_horse_armor",
+    "count": 1
+  }
+}

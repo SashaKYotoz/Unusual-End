@@ -1,0 +1,9 @@
+{
+  "parent": "block/stairs",
+  "textures": {
+    "bottom": "unusualend:block/gloopstone_bricks",
+    "top": "unusualend:block/gloopstone_bricks",
+    "side": "unusualend:block/gloopstone_bricks"
+  },
+  "render_type": "solid"
+}

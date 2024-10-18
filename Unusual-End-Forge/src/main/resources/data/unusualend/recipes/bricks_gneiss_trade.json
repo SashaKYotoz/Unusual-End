@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "unusualend:polished_purpur_bricks"
+    }
+  ],
+  "output": {
+    "item": "unusualend:gneiss_bricks",
+    "count": 1
+  }
+}

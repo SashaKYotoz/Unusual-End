@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:chorus_helmet"
+    },
+    "title": {
+      "translate": "advancements.use_chorus_helmet.title"
+    },
+    "description": {
+      "translate": "advancements.use_chorus_helmet.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_chorus_helmet_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "unusualend:you_but_stronger"
+}

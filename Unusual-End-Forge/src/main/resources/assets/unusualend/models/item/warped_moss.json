@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusualend:item/warped_moss_item"
+  },
+  "render_type": "translucent"
+}

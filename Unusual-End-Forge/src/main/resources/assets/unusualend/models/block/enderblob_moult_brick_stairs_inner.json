@@ -1,0 +1,9 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "unusualend:block/moult_bricks",
+    "top": "unusualend:block/moult_bricks",
+    "side": "unusualend:block/moult_bricks"
+  },
+  "render_type": "translucent"
+}

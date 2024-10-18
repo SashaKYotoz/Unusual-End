@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "unusualend:small_gloopy_ruins",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "other_set": "unusualend:gloopy_nest",
+      "chunk_count": 1
+    },
+    "spacing": 3,
+    "separation": 2,
+    "salt": 398137028
+  }
+}

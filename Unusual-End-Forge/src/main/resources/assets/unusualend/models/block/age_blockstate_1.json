@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/gloopilon_fruit",
+    "particle": "unusualend:block/gloopilon_bulb"
+  },
+  "render_type": "cutout_mipped"
+}

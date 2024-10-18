@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:polished_warped_stone"
+    },
+    {
+      "item": "unusualend:citrine_block"
+    }
+  ],
+  "result": {
+    "item": "unusualend:warped_stone_embedded_citrine",
+    "count": 2
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": [
+    "unusualend:gloopstone_lands",
+    "unusualend:gloopstone_midlands"
+  ],
+  "spawners": {
+    "type": "unusualend:small_enderbulb",
+    "weight": 6,
+    "minCount": 2,
+    "maxCount": 4
+  }
+}

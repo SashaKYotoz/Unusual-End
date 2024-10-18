@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/small_warped_squash",
+  "textures": {
+    "all": "unusualend:block/small_warped_squash",
+    "particle": "unusualend:block/small_warped_squash",
+    "0": "unusualend:block/small_warped_squash"
+  },
+  "render_type": "cutout_mipped"
+}

@@ -1,0 +1,21 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "minecraft:end_stone_bricks"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:weak_end_stone_bricks"
+            "chance": 0.85
+    }
+  ],
+  "processingTime": 250,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

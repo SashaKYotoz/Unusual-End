@@ -1,0 +1,18 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:swift_strikes",
+  "providers": [
+    {
+      "item": "unusualend:pearlescent_infuser"
+    },
+    {
+      "item": "unusualend:warped_spear"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

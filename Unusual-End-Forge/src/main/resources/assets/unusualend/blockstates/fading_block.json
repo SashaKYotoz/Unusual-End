@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "unusualend:block/fading_block"
+    },
+    "blockstate=1": {
+      "model": "unusualend:block/fading_blockstate_0"
+    },
+    "blockstate=2": {
+      "model": "unusualend:block/fading_blockstate_1"
+    }
+  }
+}

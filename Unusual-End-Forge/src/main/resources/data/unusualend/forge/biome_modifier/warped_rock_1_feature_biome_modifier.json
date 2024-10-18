@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "unusualend:warped_reef",
+  "features": "unusualend:warped_rock_1_feature",
+  "step": "raw_generation"
+}

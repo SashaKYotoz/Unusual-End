@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:warped_moss",
+    "unusualend:warped_end_stone",
+    "unusualend:gneiss",
+    "unusualend:gneiss_bricks",
+    "unusualend:polished_gneiss",
+    "unusualend:chiseled_gneiss_brick",
+    "unusualend:warped_squash",
+    "unusualend:gneiss_pillar",
+    "unusualend:bolok_scale_block",
+    "minecraft:warped_wart_block",
+    "minecraft:warped_planks"
+  ]
+}

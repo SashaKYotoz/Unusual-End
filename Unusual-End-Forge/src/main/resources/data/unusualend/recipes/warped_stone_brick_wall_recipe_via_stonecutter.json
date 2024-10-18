@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "unusualend:warped_stone_bricks"
+  },
+  "result": "unusualend:warped_stone_brick_wall"
+}

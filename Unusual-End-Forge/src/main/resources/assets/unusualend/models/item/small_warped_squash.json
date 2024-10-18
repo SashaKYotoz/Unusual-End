@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusualend:item/small_warped_squash"
+  },
+  "render_type": "translucent"
+}

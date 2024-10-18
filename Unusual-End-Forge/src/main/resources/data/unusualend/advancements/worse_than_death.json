@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:void_totem"
+    },
+    "title": {
+      "translate": "advancements.worse_than_death.title"
+    },
+    "description": {
+      "translate": "advancements.worse_than_death.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "worse_than_death_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "minecraft:adventure/totem_of_undying"
+}

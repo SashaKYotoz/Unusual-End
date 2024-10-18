@@ -1,0 +1,22 @@
+{
+  "feature": "unusualend:gloopstone_sprouts",
+  "placement": [
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "OCEAN_FLOOR_WG"
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "uniform",
+        "value": {
+          "min_inclusive": 6,
+          "max_inclusive": 8
+        }
+      }
+    }
+  ]
+}

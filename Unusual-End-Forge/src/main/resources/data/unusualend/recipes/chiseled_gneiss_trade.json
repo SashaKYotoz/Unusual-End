@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "unusualend:chiseled_polished_purpur_tiles"
+    }
+  ],
+  "output": {
+    "item": "unusualend:chiseled_gneiss_brick",
+    "count": 1
+  }
+}

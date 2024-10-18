@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:pearlescent_ingot"
+    },
+    "b": {
+      "item": "unusualend:golem_orb"
+    },
+    "c": {
+      "item": "unusualend:pearlescent_block"
+    }
+  },
+  "result": {
+    "item": "unusualend:pearlescent_infuser",
+    "count": 1
+  }
+}

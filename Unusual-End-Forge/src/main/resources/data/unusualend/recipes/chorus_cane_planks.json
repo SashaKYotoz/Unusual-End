@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chorus_cane_block"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_nest_planks",
+    "count": 4
+  }
+}

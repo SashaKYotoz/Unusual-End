@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:infection_damages",
+    "unusualend:trapper_damages"
+  ]
+}

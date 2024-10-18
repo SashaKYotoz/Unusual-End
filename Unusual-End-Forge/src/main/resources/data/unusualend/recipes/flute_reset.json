@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C"
+  ],
+  "key": {
+    "C": {
+      "item": "unusualend:chorus_flute"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_flute",
+    "count": 1,
+    "nbt": "{track:\"All Tracks\"}"
+  }
+}

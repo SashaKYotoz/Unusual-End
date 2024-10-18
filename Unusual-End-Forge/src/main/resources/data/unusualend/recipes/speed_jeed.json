@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:speed",
+  "providers": [
+    {
+      "item": "unusualend:warped_chestplate"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

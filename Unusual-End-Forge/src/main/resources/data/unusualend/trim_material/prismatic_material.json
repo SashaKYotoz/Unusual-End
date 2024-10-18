@@ -1,0 +1,9 @@
+{
+  "asset_name": "prismatic_material",
+  "description": {
+    "color": "#895FCA",
+    "translate": "trim_material.unusualend.prismatic_material"
+  },
+  "ingredient": "unusualend:prismalite_gem",
+  "item_model_index": 1.0
+}

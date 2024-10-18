@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:end_stone"
+    },
+    "title": {
+      "translate": "advancements.gotta_catch_em_all.title"
+    },
+    "description": {
+      "translate": "advancements.gotta_catch_em_all.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "gotta_catch_em_all_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:its_a_trap"
+}

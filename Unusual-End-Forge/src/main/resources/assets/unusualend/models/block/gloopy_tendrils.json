@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/gloopy_tendrils",
+    "particle": "unusualend:block/gloopy_tendrils"
+  },
+  "render_type": "cutout"
+}

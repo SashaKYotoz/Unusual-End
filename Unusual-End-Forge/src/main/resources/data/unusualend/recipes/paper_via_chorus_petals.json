@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "a "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chorus_petal"
+    }
+  },
+  "result": {
+    "item": "minecraft:paper",
+    "count": 1
+  }
+}

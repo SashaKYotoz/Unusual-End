@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:end_blob"
+    },
+    "title": {
+      "translate": "advancements.forced_social_distancing.title"
+    },
+    "description": {
+      "translate": "advancements.forced_social_distancing.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "forced_social_distancing_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:break_gloopy_urn"
+}

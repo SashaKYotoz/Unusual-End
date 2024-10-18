@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:shiny_gloopstone",
+    "unusualend:gloopstone",
+    "unusualend:gloopslate",
+    "unusualend:bouncy_gloopslate"
+  ]
+}

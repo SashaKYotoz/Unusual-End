@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "unusualend:blocks/bouncy_gloopstone",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unusualend:bouncy_gloopstone"
+        }
+      ]
+    }
+  ]
+}

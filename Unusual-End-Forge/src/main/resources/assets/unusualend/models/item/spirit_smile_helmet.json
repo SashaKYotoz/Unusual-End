@@ -1,0 +1,7 @@
+{
+  "parent": "unusualend:custom/spirit_mask_base",
+  "textures": {
+    "1": "unusualend:block/spirit_mask_smile",
+    "particle": "unusualend:item/spirit_mask_smile"
+  }
+}

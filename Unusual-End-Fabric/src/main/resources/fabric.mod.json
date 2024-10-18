@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "unusual-end-fabric",
+  "version": "${version}",
+  "name": "Unusual-End-Fabric",
+  "description": "Enhance your End experience !",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/unusual-end-fabric/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.mcreator.unusualend.client.UnusualEndClient"
+    ],
+    "main": [
+      "net.mcreator.unusualend.UnusualEnd"
+    ]
+  },
+  "mixins": [
+    "unusual-end-fabric.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_1",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_2",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_3",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_4",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_5",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_6",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_7",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_8",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_rock_9",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

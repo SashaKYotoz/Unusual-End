@@ -1,0 +1,8 @@
+{
+  "parent": "block/fence_side",
+  "textures": {
+    "texture": "unusualend:block/chorus_nest_fence",
+    "particle": "unusualend:block/chorus_nest_fence"
+  },
+  "render_type": "solid"
+}

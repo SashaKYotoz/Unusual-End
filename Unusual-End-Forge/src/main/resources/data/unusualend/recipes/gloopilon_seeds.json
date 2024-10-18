@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "ba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:beetroot_seeds"
+    },
+    "b": {
+      "item": "unusualend:gloopilon_slice"
+    }
+  },
+  "result": {
+    "item": "unusualend:gloopilon_seeds",
+    "count": 1
+  }
+}

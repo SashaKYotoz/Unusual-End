@@ -1,0 +1,9 @@
+{
+  "parent": "block/inner_stairs",
+  "textures": {
+    "bottom": "unusualend:block/chorus_nest_mosaic",
+    "top": "unusualend:block/chorus_nest_mosaic",
+    "side": "unusualend:block/chorus_nest_mosaic"
+  },
+  "render_type": "solid"
+}

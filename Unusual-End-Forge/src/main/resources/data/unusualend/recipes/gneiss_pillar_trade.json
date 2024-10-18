@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:purpur_pillar"
+    }
+  ],
+  "output": {
+    "item": "unusualend:gneiss_pillar",
+    "count": 1
+  }
+}

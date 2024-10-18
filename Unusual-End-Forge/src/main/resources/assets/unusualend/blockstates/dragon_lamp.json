@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "blockstate=0": {
+      "model": "unusualend:block/dragon_lamp"
+    },
+    "blockstate=1": {
+      "model": "unusualend:block/dragon_lamp_powered_blockstate_0"
+    }
+  }
+}

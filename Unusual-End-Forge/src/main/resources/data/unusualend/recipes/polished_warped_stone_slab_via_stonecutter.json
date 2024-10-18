@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 2,
+  "ingredient": {
+    "item": "unusualend:polished_warped_stone"
+  },
+  "result": "unusualend:polished_warped_stone_slab"
+}

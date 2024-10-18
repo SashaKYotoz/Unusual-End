@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/pedestral_eye",
+  "textures": {
+    "all": "unusualend:block/pedestral_filled",
+    "particle": "unusualend:block/charged_gloopstone_top",
+    "0": "unusualend:block/pedestral_filled"
+  },
+  "render_type": "solid"
+}

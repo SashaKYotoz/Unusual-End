@@ -1,0 +1,9 @@
+{
+  "parent": "block/outer_stairs",
+  "textures": {
+    "bottom": "unusualend:block/shiny_crystal_tiles",
+    "top": "unusualend:block/shiny_crystal_tiles",
+    "side": "unusualend:block/shiny_crystal_tiles"
+  },
+  "render_type": "solid"
+}

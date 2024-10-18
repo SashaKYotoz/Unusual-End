@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "unusualend:blocks/gloopslate_bricks",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unusualend:gloopslate_bricks"
+        }
+      ]
+    }
+  ]
+}

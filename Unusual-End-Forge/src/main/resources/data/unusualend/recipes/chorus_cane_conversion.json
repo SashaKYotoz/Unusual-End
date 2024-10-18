@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:blooming_chorus_cane"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_cane",
+    "count": 1
+  }
+}

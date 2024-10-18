@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:dragon_lamp",
+    "unusualend:teleportation_anchor",
+    "unusualend:purpur_tank",
+    "unusualend:warping_waystone",
+    "unusualend:building_inhibitor",
+    "unusualend:ancient_podium"
+  ]
+}

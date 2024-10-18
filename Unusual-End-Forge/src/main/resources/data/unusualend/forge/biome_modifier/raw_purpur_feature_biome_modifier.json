@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "end_highlands",
+  "features": "unusualend:raw_purpur_feature",
+  "step": "fluid_springs"
+}

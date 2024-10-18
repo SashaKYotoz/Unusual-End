@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/purpur_endstone",
+    "particle": "unusualend:block/purpur_endstone"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "unusualend:block/gloopy_tendrils",
+        "weight": 3
+      },
+      {
+        "model": "unusualend:block/gloopy_tendrils_2",
+        "weight": 1
+      }
+    ]
+  }
+}

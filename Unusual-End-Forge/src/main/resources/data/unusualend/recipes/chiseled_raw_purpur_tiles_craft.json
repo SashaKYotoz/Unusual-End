@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_purpur_tiles_slab"
+    }
+  },
+  "result": {
+    "item": "unusualend:chiseled_polished_purpur_tiles",
+    "count": 1
+  }
+}

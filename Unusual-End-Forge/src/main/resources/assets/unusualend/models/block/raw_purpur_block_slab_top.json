@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "unusualend:block/purpur_stone",
+    "top": "unusualend:block/purpur_stone",
+    "side": "unusualend:block/purpur_stone"
+  },
+  "render_type": "solid"
+}

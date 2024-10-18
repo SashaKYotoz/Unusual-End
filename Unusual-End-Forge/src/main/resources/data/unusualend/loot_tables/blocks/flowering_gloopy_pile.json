@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "unusualend:blocks/flowering_gloopy_pile",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unusualend:flowering_gloopy_pile",
+          "conditions": [
+            {
+              "block": "unusualend:flowering_gloopy_pile",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "half": "lower"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

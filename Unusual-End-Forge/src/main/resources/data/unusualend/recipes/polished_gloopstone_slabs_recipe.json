@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_gloopstone"
+    }
+  },
+  "result": {
+    "item": "unusualend:polished_gloopstone_slab",
+    "count": 6
+  }
+}

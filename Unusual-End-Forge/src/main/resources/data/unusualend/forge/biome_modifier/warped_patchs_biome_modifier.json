@@ -1,0 +1,9 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "the_end",
+    "end_midlands"
+  ],
+  "features": "unusualend:warped_patchs",
+  "step": "vegetal_decoration"
+}

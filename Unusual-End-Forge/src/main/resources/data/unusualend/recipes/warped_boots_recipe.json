@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    "b b"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:bolok_fin"
+    },
+    "b": {
+      "item": "unusualend:bolok_scale"
+    }
+  },
+  "result": {
+    "item": "unusualend:warped_boots",
+    "count": 1
+  }
+}

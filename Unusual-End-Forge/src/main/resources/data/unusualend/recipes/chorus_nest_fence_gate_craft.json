@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:stick"
+    },
+    "b": {
+      "tag": "unusualend:chorus_planks"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_nest_fence_gate",
+    "count": 1
+  }
+}

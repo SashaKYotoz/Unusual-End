@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:bond_leeching_charge_projectile",
+    "unusualend:leeching_charge_projectile"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "eee"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:prismalite_gem"
+    },
+    "b": {
+      "item": "unusualend:prismalite_shard"
+    },
+    "c": {
+      "item": "unusualend:ancient_shard"
+    },
+    "d": {
+      "item": "minecraft:lodestone"
+    },
+    "e": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "result": {
+    "item": "unusualend:teleportation_anchor",
+    "count": 1
+  }
+}

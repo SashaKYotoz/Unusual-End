@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "ba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:end_stone"
+    },
+    "b": {
+      "tag": "unusualend:blob_loot"
+    }
+  },
+  "result": {
+    "item": "unusualend:gloopslate",
+    "count": 4
+  }
+}

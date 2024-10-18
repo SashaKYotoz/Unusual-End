@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "unusualend:cooked_warped_meat"
+    },
+    {
+      "item": "unusualend:warped_berries"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "tag": "unusualend:warped_item"
+    }
+  ],
+  "result": {
+    "item": "unusualend:warped_stew",
+    "count": 1
+  }
+}

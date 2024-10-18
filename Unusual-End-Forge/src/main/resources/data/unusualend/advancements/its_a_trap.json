@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:infested_end_stone"
+    },
+    "title": {
+      "translate": "advancements.its_a_trap.title"
+    },
+    "description": {
+      "translate": "advancements.its_a_trap.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "its_a_trap_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:local_food"
+}

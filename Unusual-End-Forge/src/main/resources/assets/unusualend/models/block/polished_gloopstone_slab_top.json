@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab_top",
+  "textures": {
+    "bottom": "unusualend:block/polished_gloopstone",
+    "top": "unusualend:block/polished_gloopstone",
+    "side": "unusualend:block/polished_gloopstone"
+  },
+  "render_type": "solid"
+}

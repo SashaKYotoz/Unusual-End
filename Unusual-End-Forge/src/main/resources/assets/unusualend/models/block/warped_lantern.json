@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/warped_lantern",
+  "textures": {
+    "all": "unusualend:block/warped_lantern",
+    "particle": "unusualend:block/polished_warped_stone",
+    "0": "unusualend:block/warped_lantern"
+  },
+  "render_type": "solid"
+}

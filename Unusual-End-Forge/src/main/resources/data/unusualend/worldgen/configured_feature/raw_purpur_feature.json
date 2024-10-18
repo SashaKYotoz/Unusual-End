@@ -1,0 +1,27 @@
+{
+  "type": "unusualend:raw_purpur_feature",
+  "config": {
+    "size": 33,
+    "discard_chance_on_air_exposure": 0,
+    "targets": [
+      {
+        "target": {
+          "predicate_type": "block_match",
+          "block": "unusualend:infested_end_stone"
+        },
+        "state": {
+          "Name": "unusualend:rooted_raw_purpur"
+        }
+      },
+      {
+        "target": {
+          "predicate_type": "block_match",
+          "block": "minecraft:end_stone"
+        },
+        "state": {
+          "Name": "unusualend:raw_purpur_block"
+        }
+      }
+    ]
+  }
+}

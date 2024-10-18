@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusualend:item/flowering_gloopy_pile"
+  }
+}

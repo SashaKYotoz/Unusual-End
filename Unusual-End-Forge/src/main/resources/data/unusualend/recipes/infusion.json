@@ -1,0 +1,27 @@
+{
+  "type": "unusualend:infuser",
+  "ingredients": [
+    {
+      "item": "unusualend:citrine_chunk"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "unusualend:prismalite_gem"
+    },
+    {
+      "tag": "forge:citrine_base"
+    },
+    {
+      "tag": "forge:shiny_base"
+    },
+    {
+      "tag": "forge:prismatic_base"
+    }
+  ],
+  "output": {
+    "item": "unusualend:pearlescent_ingot",
+    "count": 1
+  }
+}

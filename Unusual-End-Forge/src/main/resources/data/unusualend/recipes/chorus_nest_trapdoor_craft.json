@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chorus_nest_planks"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_nest_trapdoor",
+    "count": 2
+  }
+}

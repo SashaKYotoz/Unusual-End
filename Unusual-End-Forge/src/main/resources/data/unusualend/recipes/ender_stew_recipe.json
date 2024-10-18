@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "item": "unusualend:chorus_fungus"
+    },
+    {
+      "item": "unusualend:chorus_roots"
+    },
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "unusualend:end_blob"
+    }
+  ],
+  "result": {
+    "item": "unusualend:ender_stew",
+    "count": 1
+  }
+}

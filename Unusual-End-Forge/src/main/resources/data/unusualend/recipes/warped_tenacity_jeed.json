@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:warped_tenacity",
+  "providers": [
+    {
+      "item": "unusualend:warped_infusion"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

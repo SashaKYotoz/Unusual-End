@@ -1,0 +1,19 @@
+{
+  "type": "create:haunting",
+  "ingredients": [
+    {
+      "item": "unusualend:carved_warped_squash"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:squash_o_lantern"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

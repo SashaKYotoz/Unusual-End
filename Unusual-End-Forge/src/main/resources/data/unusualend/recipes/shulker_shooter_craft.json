@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:endstone_bricks"
+    },
+    "b": {
+      "item": "unusualend:lurker_sludge"
+    },
+    "c": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "result": {
+    "item": "unusualend:shulker_shooter",
+    "count": 1
+  }
+}

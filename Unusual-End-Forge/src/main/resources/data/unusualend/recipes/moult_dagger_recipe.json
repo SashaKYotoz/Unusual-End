@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:end_blob"
+    },
+    "b": {
+      "item": "unusualend:enderblob_block"
+    },
+    "c": {
+      "item": "minecraft:wooden_sword"
+    }
+  },
+  "result": {
+    "item": "unusualend:bouncy_dagger",
+    "count": 1
+  }
+}

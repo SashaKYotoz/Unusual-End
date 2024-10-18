@@ -1,0 +1,21 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:disruption",
+  "providers": [
+    {
+      "item": "unusualend:building_inhibitor"
+    },
+    {
+      "item": "unusualend:dragling_spawn_egg"
+    },
+    {
+      "item": "unusualend:endstone_golem_spawn_egg"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

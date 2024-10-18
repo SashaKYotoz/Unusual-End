@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aba",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:tinted_glass"
+    },
+    "b": {
+      "item": "unusualend:enderbulb_lens"
+    }
+  },
+  "result": {
+    "item": "unusualend:lens_hardglass",
+    "count": 8
+  }
+}

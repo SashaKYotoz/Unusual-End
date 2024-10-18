@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "unusualend:block/chorus_roots",
+        "weight": 5
+      },
+      {
+        "model": "unusualend:block/chorus_roots_2",
+        "weight": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:bouncy_dagger"
+    },
+    "title": {
+      "translate": "advancements.use_knockback_dagger.title"
+    },
+    "description": {
+      "translate": "advancements.use_knockback_dagger.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_knockback_dagger": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": [
+                "unusualend:bouncy_dagger"
+              ],
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:knockback"
+                }
+              ]
+            }
+          }
+        },
+        "damage": {}
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "unusualend:forced_social_distancing"
+}

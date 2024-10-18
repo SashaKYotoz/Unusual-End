@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "unusualend:block/squash_o_lantern"
+    },
+    "facing=east": {
+      "model": "unusualend:block/squash_o_lantern",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "unusualend:block/squash_o_lantern",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "unusualend:block/squash_o_lantern",
+      "y": 270
+    }
+  }
+}

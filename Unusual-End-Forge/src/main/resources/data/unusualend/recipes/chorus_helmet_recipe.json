@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:chorus_fruit"
+    },
+    "b": {
+      "tag": "forge:chorus_flower"
+    },
+    "c": {
+      "item": "unusualend:end_blob"
+    },
+    "d": {
+      "item": "minecraft:leather_helmet"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_helmet",
+    "count": 1
+  }
+}

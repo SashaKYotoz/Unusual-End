@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "misc",
+  "experience": 0.35,
+  "cookingtime": 300,
+  "ingredient": {
+    "item": "unusualend:raw_bluk"
+  },
+  "result": "unusualend:cooked_bluk"
+}
