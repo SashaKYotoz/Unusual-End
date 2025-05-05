@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:polished_purpur"
+    },
+    {
+      "item": "minecraft:end_stone"
+    }
+  ],
+  "result": {
+    "item": "unusualend:purpur_embedded_end_stone",
+    "count": 2
+  }
+}

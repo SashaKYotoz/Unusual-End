@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "unusualend:block/raw_purpur_block_slab"
+    },
+    "type=double": {
+      "model": "unusualend:block/raw_purpur_block"
+    },
+    "type=top": {
+      "model": "unusualend:block/raw_purpur_block_slab_top"
+    }
+  }
+}

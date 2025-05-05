@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "cd"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:shiny_crystal"
+    },
+    "b": {
+      "item": "minecraft:string"
+    },
+    "c": {
+      "item": "minecraft:gunpowder"
+    },
+    "d": {
+      "item": "unusualend:enderbulb_lens"
+    }
+  },
+  "result": {
+    "item": "unusualend:shiny_charge",
+    "count": 3
+  }
+}

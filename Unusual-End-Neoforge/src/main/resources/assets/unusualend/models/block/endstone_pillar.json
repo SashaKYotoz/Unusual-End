@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "unusualend:block/endstone_pillar_top",
+    "top": "unusualend:block/endstone_pillar_top",
+    "side": "unusualend:block/endstone_pillar_side",
+    "overlay": "unusualend:block/endstone_pillar_side",
+    "particle": "unusualend:block/endstone_pillar_top"
+  },
+  "render_type": "solid"
+}

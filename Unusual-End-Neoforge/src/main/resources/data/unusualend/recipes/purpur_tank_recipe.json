@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "bcb",
+    "ddd"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:ender_eye"
+    },
+    "b": {
+      "item": "unusualend:ancient_shard"
+    },
+    "c": {
+      "tag": "neoforge:chests"
+    },
+    "d": {
+      "item": "minecraft:purpur_block"
+    }
+  },
+  "result": {
+    "item": "unusualend:purpur_tank",
+    "count": 2
+  }
+}

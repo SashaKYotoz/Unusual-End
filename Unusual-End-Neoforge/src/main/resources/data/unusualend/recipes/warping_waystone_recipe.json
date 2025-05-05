@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "ddd"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:prismalite_shard"
+    },
+    "b": {
+      "item": "unusualend:ancient_shard"
+    },
+    "c": {
+      "item": "minecraft:ender_eye"
+    },
+    "d": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "result": {
+    "item": "unusualend:warping_waystone",
+    "count": 2
+  }
+}

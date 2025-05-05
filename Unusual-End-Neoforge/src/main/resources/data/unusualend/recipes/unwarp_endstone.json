@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:warped_end_stone"
+    },
+    {
+      "item": "unusualend:warped_end_stone"
+    },
+    {
+      "item": "unusualend:warped_end_stone"
+    },
+    {
+      "item": "unusualend:warped_end_stone"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "unusualend:warped_end_stone"
+    },
+    {
+      "item": "unusualend:warped_end_stone"
+    },
+    {
+      "item": "unusualend:warped_end_stone"
+    },
+    {
+      "item": "unusualend:warped_end_stone"
+    }
+  ],
+  "result": {
+    "item": "minecraft:end_stone",
+    "count": 8
+  }
+}

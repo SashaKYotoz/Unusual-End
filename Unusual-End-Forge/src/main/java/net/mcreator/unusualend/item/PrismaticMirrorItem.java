@@ -55,10 +55,10 @@ public class PrismaticMirrorItem extends Item {
 		TpY = (Double) ((itemstack).getOrCreateTag().getDouble("TpY"));
 		TpZ = (Double) ((itemstack).getOrCreateTag().getDouble("TpZ"));
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A77When Right-Clicking:"));
-		list.add(Component.literal("\u00A79Warp to your Spawn point"));
-		list.add(Component.literal("\u00A77When Linked:"));
-		list.add(Component.literal("\u00A79Warp to its Anchor"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.warp_spawn").getString()));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_linked").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.warp_anchor").getString()));
 		list.add(Component.literal("\u00A78● " + ((TpX)) + " " + ((TpY)) + " " + ((TpZ))));
 	}
 

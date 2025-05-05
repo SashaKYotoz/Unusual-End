@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:warped_chest"
+    },
+    "title": {
+      "translate": "advancements.open_warped_chest.title"
+    },
+    "description": {
+      "translate": "advancements.open_warped_chest.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "open_warped_chest_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 20
+  },
+  "parent": "unusualend:find_warped_reef"
+}

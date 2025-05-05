@@ -1,0 +1,23 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "minecraft:end_stone"
+    },
+    {
+      "item": "unusualend:polished_purpur"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:purpur_embedded_end_stone"
+    }
+  ],
+  "keepHeldItem": false,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

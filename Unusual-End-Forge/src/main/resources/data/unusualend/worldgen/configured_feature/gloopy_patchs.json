@@ -21,6 +21,15 @@
         "state": {
           "Name": "unusualend:gloopslate"
         }
+      },
+      {
+        "target": {
+          "predicate_type": "block_match",
+          "block": "unusualend:gloopy_endstone"
+        },
+        "state": {
+          "Name": "unusualend:gloopslate"
+        }
       }
     ]
   }

@@ -1,5 +1,5 @@
 Java Launcher: C:\Users\oleksandr\.jdks\corretto-17.0.12\bin\java.exe
-Arguments: '--clean, C:\Users\oleksandr\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\joined\1.20.1-20230612.114412\joined-1.20.1-20230612.114412-srg.jar, --output, C:\Users\oleksandr\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatched.jar, --apply, C:\Users\oleksandr\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatches.lzma'
+Arguments: '--clean, C:\Users\oleksandr\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\joined\1.20.1-20230612.114412\joined-1.20.1-20230612.114412-srg.jar, --output, F:\modsmaking\Unusual-End\Unusual-End-Forge\build\fg_cache\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatched.jar, --apply, F:\modsmaking\Unusual-End\Unusual-End-Forge\build\fg_cache\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatches.lzma'
 Classpath:
  - C:\Users\oleksandr\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\binarypatcher\1.1.1\binarypatcher-1.1.1-fatjar.jar
 Working directory: F:\modsmaking\Unusual-End\Unusual-End-Forge\build\_applyBinpatches_2
@@ -7,12 +7,12 @@ Main class: net.minecraftforge.binarypatcher.ConsoleTool
 ====================================
 Applying: 
   Clean:     C:\Users\oleksandr\.gradle\caches\forge_gradle\mcp_repo\net\minecraft\joined\1.20.1-20230612.114412\joined-1.20.1-20230612.114412-srg.jar
-  Output:    C:\Users\oleksandr\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatched.jar
+  Output:    F:\modsmaking\Unusual-End\Unusual-End-Forge\build\fg_cache\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatched.jar
   KeepData:  false
   Unpatched: false
   Pack200:   false
   Legacy:    false
-Loading patches file: C:\Users\oleksandr\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatches.lzma
+Loading patches file: F:\modsmaking\Unusual-End\Unusual-End-Forge\build\fg_cache\net\minecraftforge\forge\1.20.1-47.3.0\forge-1.20.1-47.3.0-binpatches.lzma
   Reading patch com.mojang.blaze3d.pipeline.RenderTarget.binpatch
     Checksum: 151eb55a Exists: true
   Reading patch com.mojang.blaze3d.platform.GlStateManager$BlendState.binpatch

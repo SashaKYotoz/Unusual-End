@@ -3,7 +3,9 @@
   "values": [
     "unusualend:shiny_gloopstone",
     "unusualend:gloopstone",
+    "unusualend:bouncy_gloopslate",
     "unusualend:gloopslate",
-    "unusualend:bouncy_gloopslate"
+    "unusualend:bouncy_gloopstone",
+    "unusualend:gloopy_endstone"
   ]
 }

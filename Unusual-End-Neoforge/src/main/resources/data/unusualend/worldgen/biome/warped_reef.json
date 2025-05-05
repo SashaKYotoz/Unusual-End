@@ -1,0 +1,61 @@
+{
+  "has_precipitation": true,
+  "temperature": 0.5,
+  "downfall": 1,
+  "effects": {
+    "ambient_sound": "ambient.warped_forest.loop",
+    "mood_sound": {
+      "sound": "ambient.warped_forest.mood",
+      "tick_delay": 4000,
+      "offset": 8,
+      "block_search_extent": 2
+    },
+    "additions_sound": {
+      "sound": "ambient.warped_forest.additions",
+      "tick_chance": 0.0111
+    },
+    "music": {
+      "sound": "unusualend:firch_prophet",
+      "min_delay": 12000,
+      "max_delay": 24000,
+      "replace_current_music": true
+    },
+    "particle": {
+      "options": {
+        "type": "unusualend:warped_bubbles"
+      },
+      "probability": 0.001
+    },
+    "foliage_color": 10387789,
+    "grass_color": 9470285,
+    "sky_color": -16751002,
+    "fog_color": -16751002,
+    "water_color": 4159204,
+    "water_fog_color": 329011
+  },
+  "spawners": {
+    "monster": [],
+    "creature": [],
+    "ambient": [],
+    "axolotls": [],
+    "underground_water_creature": [],
+    "water_creature": [],
+    "water_ambient": [],
+    "misc": []
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    []
+  ]
+}

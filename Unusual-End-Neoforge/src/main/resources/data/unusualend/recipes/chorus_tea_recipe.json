@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:chorus_juice"
+    },
+    {
+      "tag": "forge:chorus_petals"
+    },
+    {
+      "tag": "forge:chorus_petals"
+    }
+  ],
+  "result": {
+    "item": "unusualend:chorus_tea",
+    "count": 1
+  }
+}

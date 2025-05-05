@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "unusualend:block/ancient_block_bottom",
+    "up": "unusualend:block/teleportation_anchor_top",
+    "north": "unusualend:block/teleportation_anchor_side",
+    "east": "unusualend:block/teleportation_anchor_side",
+    "south": "unusualend:block/teleportation_anchor_side",
+    "west": "unusualend:block/teleportation_anchor_side",
+    "particle": "unusualend:block/ancient_block_bottom"
+  },
+  "render_type": "solid"
+}

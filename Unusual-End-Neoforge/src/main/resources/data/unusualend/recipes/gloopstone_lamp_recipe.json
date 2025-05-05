@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_gloopstone"
+    },
+    "b": {
+      "item": "minecraft:redstone"
+    },
+    "c": {
+      "item": "unusualend:shiny_crystal_block"
+    }
+  },
+  "result": {
+    "item": "unusualend:gloopstone_lamp",
+    "count": 1
+  }
+}

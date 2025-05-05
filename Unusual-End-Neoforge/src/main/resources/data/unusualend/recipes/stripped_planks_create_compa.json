@@ -1,0 +1,21 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "unusualend:stripped_chorus_cane_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:stripped_chorus_nest_planks",
+      "count": 6
+    }
+  ],
+  "processingTime": 50,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

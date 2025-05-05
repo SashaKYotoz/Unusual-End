@@ -1,0 +1,83 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:warped_balloon"
+    },
+    "title": {
+      "translate": "advancements.use_warped_bubble_transportation.title"
+    },
+    "description": {
+      "translate": "advancements.use_warped_bubble_transportation.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bouncy": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "items": [
+                "unusualend:bouncy_dagger"
+              ]
+            }
+          },
+          "vehicle": {
+            "type": "unusualend:warped_balloon"
+          }
+        },
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "unusualend:warped_balloon"
+            }
+          }
+        ]
+      }
+    },
+    "kb": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "player": {
+          "equipment": {
+            "mainhand": {
+              "enchantments": [
+                {
+                  "enchantment": "minecraft:knockback"
+                }
+              ]
+            }
+          },
+          "vehicle": {
+            "type": "unusualend:warped_balloon"
+          }
+        },
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "type": "unusualend:warped_balloon"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "kb",
+      "bouncy"
+    ]
+  ],
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "unusualend:use_warped_bubble"
+}

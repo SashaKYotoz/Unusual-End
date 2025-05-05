@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cac"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:ancient_shard"
+    },
+    "b": {
+      "item": "unusualend:prismalite_gem"
+    },
+    "c": {
+      "tag": "neoforge:endstone_bricks"
+    }
+  },
+  "result": {
+    "item": "unusualend:ancient_podium",
+    "count": 2
+  }
+}

@@ -41,16 +41,17 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 					: 0) >= (double) ConfigurationFileConfiguration.MAX_WARPED_INFUSION.get() - 1) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(),
-							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getDuration() : 0) + 1200),
+							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getDuration() : 0)
+									+ (double) ConfigurationFileConfiguration.TENACITY_TIME.get() * 20),
 							entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0));
 			} else {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), 1200,
+					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) ConfigurationFileConfiguration.TENACITY_TIME.get() * 20),
 							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0) + 1)));
 			}
 		} else {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), 1200, 0));
+				_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) ConfigurationFileConfiguration.TENACITY_TIME.get() * 20), 0));
 		}
 		if (world.isClientSide()) {
 			if (world instanceof Level _level) {

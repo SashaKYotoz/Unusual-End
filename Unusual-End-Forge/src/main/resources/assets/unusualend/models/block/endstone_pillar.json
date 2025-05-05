@@ -1,10 +1,12 @@
 {
-  "parent": "block/grass_block",
+  "parent": "block/cube",
   "textures": {
-    "bottom": "unusualend:block/endstone_pillar_top",
-    "top": "unusualend:block/endstone_pillar_top",
-    "side": "unusualend:block/endstone_pillar_side",
-    "overlay": "unusualend:block/endstone_pillar_side",
+    "down": "unusualend:block/endstone_pillar_top",
+    "up": "unusualend:block/endstone_pillar_top",
+    "north": "unusualend:block/endstone_pillar_side",
+    "east": "unusualend:block/endstone_pillar_side",
+    "south": "unusualend:block/endstone_pillar_side",
+    "west": "unusualend:block/endstone_pillar_side",
     "particle": "unusualend:block/endstone_pillar_top"
   },
   "render_type": "solid"

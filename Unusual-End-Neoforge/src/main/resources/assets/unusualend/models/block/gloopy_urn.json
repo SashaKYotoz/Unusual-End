@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/gloopy_urn",
+  "textures": {
+    "all": "unusualend:block/gloopy_vase",
+    "particle": "unusualend:block/gloopslate",
+    "0": "unusualend:block/gloopy_vase"
+  },
+  "render_type": "solid"
+}

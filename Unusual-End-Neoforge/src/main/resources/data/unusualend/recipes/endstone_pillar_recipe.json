@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:endstone_tiles"
+    }
+  },
+  "result": {
+    "item": "unusualend:endstone_pillar",
+    "count": 2
+  }
+}

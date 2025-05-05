@@ -1,0 +1,29 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "meals",
+  "ingredients": [
+    {
+      "tag": "unusualend:cooked_warped_meat"
+    },
+    {
+      "item": "unusualend:warped_berries"
+    },
+    {
+      "tag": "unusualend:warped_item"
+    }
+  ],
+  "result": {
+    "item": "unusualend:warped_stew"
+  },
+  "container": {
+    "item": "minecraft:bowl"
+  },
+  "experience": 1.0,
+  "cookingtime": 200,
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

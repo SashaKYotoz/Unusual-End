@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 1,
+  "ingredient": {
+    "item": "unusualend:gneiss_bricks"
+  },
+  "result": "unusualend:gneiss_brick_wall"
+}

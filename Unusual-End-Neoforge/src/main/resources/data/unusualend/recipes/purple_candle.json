@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "c"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chorus_roots"
+    },
+    "b": {
+      "item": "unusualend:end_blob"
+    },
+    "c": {
+      "item": "unusualend:gloopstone"
+    }
+  },
+  "result": {
+    "item": "minecraft:purple_candle",
+    "count": 1
+  }
+}

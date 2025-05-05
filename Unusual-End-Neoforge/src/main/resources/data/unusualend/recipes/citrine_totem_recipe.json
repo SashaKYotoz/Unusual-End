@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:citrine_chunk"
+    },
+    "b": {
+      "item": "unusualend:shiny_crystal"
+    },
+    "c": {
+      "item": "unusualend:shiny_crystal_block"
+    }
+  },
+  "result": {
+    "item": "unusualend:citrine_totem",
+    "count": 1
+  }
+}

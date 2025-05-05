@@ -1,0 +1,24 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:heaviness",
+  "providers": [
+    {
+      "item": "unusualend:warped_anchor"
+    },
+    {
+      "item": "unusualend:warped_chestplate"
+    },
+    {
+      "item": "unusualend:bolok_spawn_egg"
+    },
+    {
+      "item": "unusualend:spunkler_spawn_egg"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:golem_altar"
+    },
+    "title": {
+      "translate": "advancements.use_golem_altar.title"
+    },
+    "description": {
+      "translate": "advancements.use_golem_altar.descr"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_golem_altar_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "minecraft:end/enter_end_gateway"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:warped_spores"
+    }
+  },
+  "result": {
+    "item": "unusualend:warped_moss",
+    "count": 1
+  }
+}

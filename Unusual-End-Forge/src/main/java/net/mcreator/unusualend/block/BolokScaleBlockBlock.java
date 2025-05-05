@@ -25,7 +25,7 @@ public class BolokScaleBlockBlock extends Block {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Highly Blast Resistant"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.blast_resistant").getString()));
 	}
 
 	@Override

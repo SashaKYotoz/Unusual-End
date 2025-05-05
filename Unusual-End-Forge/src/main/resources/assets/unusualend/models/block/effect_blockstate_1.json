@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/citrine_candle",
+  "textures": {
+    "all": "unusualend:block/citrine_candle",
+    "particle": "unusualend:block/warped_stone",
+    "0": "unusualend:block/citrine_candle"
+  },
+  "render_type": "solid"
+}

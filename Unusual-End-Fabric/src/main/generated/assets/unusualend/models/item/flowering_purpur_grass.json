@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "unusualend:block/flowering_purpur_grass"
+  }
+}

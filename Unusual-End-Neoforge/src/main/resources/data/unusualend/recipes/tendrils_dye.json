@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:gloopy_tendrils"
+    }
+  ],
+  "result": {
+    "item": "minecraft:magenta_dye",
+    "count": 1
+  }
+}

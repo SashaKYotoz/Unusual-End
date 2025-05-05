@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "b b",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chorus_nest_slab"
+    },
+    "b": {
+      "item": "unusualend:chorus_nest_trapdoor"
+    }
+  },
+  "result": {
+    "item": "everycomp:fd/unusualend/chorus_cane_cabinet",
+    "count": 1
+  },
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    },
+    {
+      "modid": "everycomp",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

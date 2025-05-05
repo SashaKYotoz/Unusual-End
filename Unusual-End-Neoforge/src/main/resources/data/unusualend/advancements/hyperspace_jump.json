@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:prismatic_mirror"
+    },
+    "title": {
+      "translate": "advancements.hyperspace_jump.title"
+    },
+    "description": {
+      "translate": "advancements.hyperspace_jump.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "hyperspace_jump_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:ancient_wisdom"
+}

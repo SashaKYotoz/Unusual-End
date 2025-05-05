@@ -1,0 +1,8 @@
+{
+  "parent": "block/template_glass_pane_post",
+  "textures": {
+    "edge": "unusualend:block/chiseled_glass_pane_top",
+    "pane": "unusualend:block/chiseled_glass"
+  },
+  "render_type": "cutout"
+}

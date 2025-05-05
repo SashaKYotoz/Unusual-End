@@ -26,7 +26,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.procedures.AncientEndCityStructureOnStructureInstanceGeneratedProcedure;
@@ -42,8 +41,6 @@ public class BlockUpdaterEntity extends PathfinderMob {
 		setMaxUpStep(0.6f);
 		xpReward = 0;
 		setNoAi(true);
-		setCustomName(Component.literal("Structure Updater"));
-		setCustomNameVisible(true);
 		setPersistenceRequired();
 		this.moveControl = new FlyingMoveControl(this, 10, true);
 	}

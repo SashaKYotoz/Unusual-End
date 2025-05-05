@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[2,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="unusualend"
+version="2.2.0"
+displayName="Unusual End"
+displayURL="https://www.curseforge.com/members/sweetygamer/projects"
+logoFile="logo.png"
+credits="Sweetygamer / The Unusual Squad"
+authors="Sweetygamer"
+description="Enhance your End experience !"
+
+[[mixins]]
+config="mixins.unusualend.json"
+
+[[accessTransformers]]
+file = "META-INF/accesstransformer.cfg"
+
+[[dependencies."unusualend"]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.20.4]"
+    ordering="NONE"
+    side="BOTH"

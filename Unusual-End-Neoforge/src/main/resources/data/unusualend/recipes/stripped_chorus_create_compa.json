@@ -1,0 +1,20 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "unusualend:chorus_nest_planks"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:stripped_chorus_nest_planks"
+    }
+  ],
+  "processingTime": 50,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "exhaustion": 0.25,
+  "message_id": "infection_damages",
+  "scaling": "always"
+}

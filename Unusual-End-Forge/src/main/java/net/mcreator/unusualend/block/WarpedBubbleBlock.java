@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.core.Direction;
@@ -33,6 +34,11 @@ public class WarpedBubbleBlock extends Block implements SimpleWaterloggedBlock {
 	public WarpedBubbleBlock() {
 		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).sound(SoundType.CORAL_BLOCK).instabreak().lightLevel(s -> 8).friction(0.7f).speedFactor(1.2f).jumpFactor(1.2f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
+	}
+
+	@Override
+	public boolean shouldDisplayFluidOverlay(BlockState state, BlockAndTintGetter world, BlockPos pos, FluidState fluidstate) {
+		return true;
 	}
 
 	@Override

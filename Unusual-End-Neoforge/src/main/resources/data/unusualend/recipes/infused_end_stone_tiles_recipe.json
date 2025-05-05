@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "ba"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:endstone_tiles"
+    },
+    "b": {
+      "item": "minecraft:dragon_breath"
+    }
+  },
+  "result": {
+    "item": "unusualend:infused_end_stone_tiles",
+    "count": 2
+  }
+}

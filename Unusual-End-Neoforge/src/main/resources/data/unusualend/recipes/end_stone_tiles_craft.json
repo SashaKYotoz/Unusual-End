@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:end_stone_bricks"
+    }
+  },
+  "result": {
+    "item": "unusualend:endstone_tiles",
+    "count": 4
+  }
+}

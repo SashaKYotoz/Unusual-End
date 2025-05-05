@@ -87,7 +87,8 @@
                         "type": "minecraft:matching_blocks",
                         "blocks": [
                           "unusualend:infested_end_stone",
-                          "minecraft:end_stone"
+                          "minecraft:end_stone",
+                          "unusualend:warped_stone"
                         ],
                         "offset": [
                           0,

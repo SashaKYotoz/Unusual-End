@@ -12,15 +12,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.world.inventory.InfuserGUIMenu;
-import net.mcreator.unusualend.procedures.Consume8ShinyProcedure;
-import net.mcreator.unusualend.procedures.Consume8PrismaticProcedure;
-import net.mcreator.unusualend.procedures.Consume8CitrineProcedure;
-import net.mcreator.unusualend.procedures.Consume4ShinyProcedure;
-import net.mcreator.unusualend.procedures.Consume4PrismaticProcedure;
-import net.mcreator.unusualend.procedures.Consume4CitrineProcedure;
-import net.mcreator.unusualend.procedures.Consume1ShinyProcedure;
-import net.mcreator.unusualend.procedures.Consume1PrismaticProcedure;
-import net.mcreator.unusualend.procedures.Consume1CitrineProcedure;
+import net.mcreator.unusualend.procedures.ConsumeShinyProcedure;
+import net.mcreator.unusualend.procedures.ConsumePrismaticProcedure;
+import net.mcreator.unusualend.procedures.ConsumeCitrineProcedure;
 import net.mcreator.unusualend.UnusualendMod;
 
 import java.util.function.Supplier;
@@ -71,40 +65,31 @@ public class InfuserGUIButtonMessage {
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;
 		if (buttonID == 0) {
-
-			Consume1CitrineProcedure.execute(world, x, y, z, entity);
+			ConsumeCitrineProcedure.execute(world, x, y, z, entity, 1);
 		}
 		if (buttonID == 1) {
-
-			Consume1ShinyProcedure.execute(world, x, y, z, entity);
+			ConsumeShinyProcedure.execute(world, x, y, z, entity, 1);
 		}
 		if (buttonID == 2) {
-
-			Consume1PrismaticProcedure.execute(world, x, y, z, entity);
+			ConsumePrismaticProcedure.execute(world, x, y, z, entity, 1);
 		}
 		if (buttonID == 3) {
-
-			Consume4CitrineProcedure.execute(world, x, y, z, entity);
+			ConsumeCitrineProcedure.execute(world, x, y, z, entity, 4);
 		}
 		if (buttonID == 4) {
-
-			Consume4ShinyProcedure.execute(world, x, y, z, entity);
+			ConsumeShinyProcedure.execute(world, x, y, z, entity, 4);
 		}
 		if (buttonID == 5) {
-
-			Consume4PrismaticProcedure.execute(world, x, y, z, entity);
+			ConsumePrismaticProcedure.execute(world, x, y, z, entity, 4);
 		}
 		if (buttonID == 6) {
-
-			Consume8CitrineProcedure.execute(world, x, y, z, entity);
+			ConsumeCitrineProcedure.execute(world, x, y, z, entity, 8);
 		}
 		if (buttonID == 7) {
-
-			Consume8ShinyProcedure.execute(world, x, y, z, entity);
+			ConsumeShinyProcedure.execute(world, x, y, z, entity, 8);
 		}
 		if (buttonID == 8) {
-
-			Consume8PrismaticProcedure.execute(world, x, y, z, entity);
+			ConsumePrismaticProcedure.execute(world, x, y, z, entity, 8);
 		}
 	}
 

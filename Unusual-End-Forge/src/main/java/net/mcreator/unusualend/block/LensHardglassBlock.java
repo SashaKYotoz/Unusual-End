@@ -16,14 +16,25 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.procedures.LensHardglassBlockDestroyedByExplosionProcedure;
 
+import java.util.List;
+
 public class LensHardglassBlock extends Block {
 	public LensHardglassBlock() {
 		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.HAT).mapColor(MapColor.COLOR_RED).sound(SoundType.GLASS).strength(0.5f, 15f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
+	}
+
+	@Override
+	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
+		super.appendHoverText(itemstack, level, list, flag);
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.blast_resistant").getString()));
 	}
 
 	@Override

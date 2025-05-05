@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:raw_purpur_block"
+    },
+    "b": {
+      "item": "unusualend:chorus_roots"
+    }
+  },
+  "result": {
+    "item": "unusualend:rooted_raw_purpur",
+    "count": 1
+  }
+}

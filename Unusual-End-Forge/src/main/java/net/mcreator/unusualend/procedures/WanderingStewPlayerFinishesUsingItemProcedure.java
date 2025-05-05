@@ -21,6 +21,8 @@ import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
+import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+
 public class WanderingStewPlayerFinishesUsingItemProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
@@ -61,7 +63,7 @@ public class WanderingStewPlayerFinishesUsingItemProcedure {
 		}
 		if ((world instanceof Level _lvl ? _lvl.dimension() : (world instanceof WorldGenLevel _wgl ? _wgl.getLevel().dimension() : Level.OVERWORLD)) == Level.OVERWORLD) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, true));
+				_entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, (int) ((double) ConfigurationFileConfiguration.STEW_TIME.get() * 20), 0, false, true));
 		}
 	}
 }

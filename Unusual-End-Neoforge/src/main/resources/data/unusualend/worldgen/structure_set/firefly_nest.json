@@ -1,0 +1,14 @@
+{
+  "structures": [
+    {
+      "structure": "unusualend:firefly_nest",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 441920537,
+    "spacing": 15,
+    "separation": 5
+  }
+}

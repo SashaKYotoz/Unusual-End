@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/small_warped_algae_2",
+    "particle": "unusualend:block/small_warped_algae_2"
+  },
+  "render_type": "cutout"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chorus_nest_mosaic"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_nest_mosaic_slab",
+    "count": 6
+  }
+}

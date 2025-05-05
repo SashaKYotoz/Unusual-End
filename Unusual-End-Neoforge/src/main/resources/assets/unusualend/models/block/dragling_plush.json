@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/dragling_plush",
+  "textures": {
+    "all": "unusualend:block/dragling_plush",
+    "particle": "unusualend:block/phantom_block",
+    "0": "unusualend:block/dragling_plush"
+  },
+  "render_type": "cutout"
+}

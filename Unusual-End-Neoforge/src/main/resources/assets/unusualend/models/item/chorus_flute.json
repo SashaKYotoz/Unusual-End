@@ -1,0 +1,7 @@
+{
+  "parent": "unusualend:custom/flute",
+  "textures": {
+    "1": "unusualend:block/chorus_flute",
+    "particle": "unusualend:item/chorus_flute"
+  }
+}

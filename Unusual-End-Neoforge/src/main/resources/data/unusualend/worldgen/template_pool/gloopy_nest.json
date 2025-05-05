@@ -1,0 +1,75 @@
+{
+  "name": "unusualend:gloopy_nest",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:gloopy_nest_surface",
+        "projection": "rigid",
+        "processors": {
+          "processors": [
+            {
+              "processor_type": "minecraft:block_ignore",
+              "blocks": [
+                {
+                  "Name": "minecraft:structure_block"
+                },
+                {
+                  "Name": "minecraft:air"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:gloopy_nest_surface_2",
+        "projection": "rigid",
+        "processors": {
+          "processors": [
+            {
+              "processor_type": "minecraft:block_ignore",
+              "blocks": [
+                {
+                  "Name": "minecraft:structure_block"
+                },
+                {
+                  "Name": "minecraft:air"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:gloopy_nest_surface_3",
+        "projection": "rigid",
+        "processors": {
+          "processors": [
+            {
+              "processor_type": "minecraft:block_ignore",
+              "blocks": [
+                {
+                  "Name": "minecraft:structure_block"
+                },
+                {
+                  "Name": "minecraft:air"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

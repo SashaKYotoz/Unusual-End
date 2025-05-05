@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:weakness",
+  "providers": [
+    {
+      "item": "unusualend:crystal_flower"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

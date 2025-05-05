@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusualend:item/large_citrine_bud"
+  },
+  "render_type": "translucent"
+}

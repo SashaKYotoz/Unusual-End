@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:bolok_scale"
+    }
+  },
+  "result": {
+    "item": "unusualend:bolok_scale_block",
+    "count": 1
+  }
+}

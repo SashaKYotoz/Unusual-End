@@ -1,0 +1,15 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": [
+    "end_midlands",
+    "end_barrens",
+    "small_end_islands",
+    "the_end"
+  ],
+  "spawners": {
+    "type": "unusualend:undead_enderling",
+    "weight": 2,
+    "minCount": 1,
+    "maxCount": 2
+  }
+}

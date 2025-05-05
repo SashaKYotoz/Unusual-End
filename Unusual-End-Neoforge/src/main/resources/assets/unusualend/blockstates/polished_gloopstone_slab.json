@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "unusualend:block/polished_gloopstone_slab"
+    },
+    "type=top": {
+      "model": "unusualend:block/polished_gloopstone_slab_top"
+    },
+    "type=double": {
+      "model": "unusualend:block/polished_gloopstone_slab_full"
+    }
+  }
+}

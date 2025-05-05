@@ -1,0 +1,32 @@
+{
+  "type": "farmersdelight:cooking",
+  "recipe_book_tab": "drinks",
+  "ingredients": [
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "item": "minecraft:chorus_fruit"
+    },
+    {
+      "item": "unusualend:chorus_petal"
+    }
+  ],
+  "result": {
+    "item": "unusualend:chorus_tea"
+  },
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "experience": 1.0,
+  "cookingtime": 200,
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

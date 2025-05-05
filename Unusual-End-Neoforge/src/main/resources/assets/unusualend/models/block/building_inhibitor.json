@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "unusualend:block/ancient_block_bottom",
+    "top": "unusualend:block/building_inhibiter_top",
+    "side": "unusualend:block/building_inhibiter_side",
+    "overlay": "unusualend:block/building_inhibiter_side",
+    "particle": "unusualend:block/ancient_block_bottom"
+  },
+  "render_type": "solid"
+}

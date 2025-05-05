@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:phantom_membrane"
+    }
+  },
+  "result": {
+    "item": "unusualend:phantom_membrane_block",
+    "count": 2
+  }
+}

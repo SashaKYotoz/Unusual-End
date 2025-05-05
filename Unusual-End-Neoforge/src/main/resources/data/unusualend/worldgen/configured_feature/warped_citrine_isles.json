@@ -1,0 +1,97 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:citrine_island_1",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:citrine_island_2",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:citrine_island_3",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:citrine_island_4",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:citrine_island_6",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:citrine_island_5",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

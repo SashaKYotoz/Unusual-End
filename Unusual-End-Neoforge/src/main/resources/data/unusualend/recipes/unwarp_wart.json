@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    },
+    {
+      "item": "minecraft:warped_wart_block"
+    }
+  ],
+  "result": {
+    "item": "minecraft:nether_wart_block",
+    "count": 8
+  }
+}

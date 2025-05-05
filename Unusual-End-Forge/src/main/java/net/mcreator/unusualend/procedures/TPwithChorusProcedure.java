@@ -146,53 +146,53 @@ public class TPwithChorusProcedure {
 		} else {
 			if ((new Object() {
 				public String getValue() {
-					CompoundTag dataIndex56 = new CompoundTag();
-					entity.saveWithoutId(dataIndex56);
-					return dataIndex56.getString("Dimension");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("Dimension");
 				}
 			}.getValue()).equals(new Object() {
 				public String getValue() {
-					CompoundTag dataIndex57 = new CompoundTag();
-					entity.saveWithoutId(dataIndex57);
-					return dataIndex57.getString("SpawnDimension");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("SpawnDimension");
 				}
 			}.getValue()) || (new Object() {
 				public String getValue() {
-					CompoundTag dataIndex58 = new CompoundTag();
-					entity.saveWithoutId(dataIndex58);
-					return dataIndex58.getString("SpawnDimension");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("SpawnDimension");
 				}
 			}.getValue()).equals("minecraft:the_end") || (new Object() {
 				public String getValue() {
-					CompoundTag dataIndex59 = new CompoundTag();
-					entity.saveWithoutId(dataIndex59);
-					return dataIndex59.getString("SpawnDimension");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("SpawnDimension");
 				}
 			}.getValue()).equals("minecraft:the_nether") || (new Object() {
 				public String getValue() {
-					CompoundTag dataIndex60 = new CompoundTag();
-					entity.saveWithoutId(dataIndex60);
-					return dataIndex60.getString("SpawnDimension");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("SpawnDimension");
 				}
 			}.getValue()).equals("minecraft:overworld")) {
 				if (!(new Object() {
 					public String getValue() {
-						CompoundTag dataIndex61 = new CompoundTag();
-						entity.saveWithoutId(dataIndex61);
-						return dataIndex61.getString("Dimension");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getString("Dimension");
 					}
 				}.getValue()).equals(new Object() {
 					public String getValue() {
-						CompoundTag dataIndex62 = new CompoundTag();
-						entity.saveWithoutId(dataIndex62);
-						return dataIndex62.getString("SpawnDimension");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getString("SpawnDimension");
 					}
 				}.getValue())) {
 					if ((new Object() {
 						public String getValue() {
-							CompoundTag dataIndex63 = new CompoundTag();
-							entity.saveWithoutId(dataIndex63);
-							return dataIndex63.getString("SpawnDimension");
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getString("SpawnDimension");
 						}
 					}.getValue()).equals("minecraft:the_end")) {
 						if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
@@ -212,9 +212,9 @@ public class TPwithChorusProcedure {
 					}
 					if ((new Object() {
 						public String getValue() {
-							CompoundTag dataIndex65 = new CompoundTag();
-							entity.saveWithoutId(dataIndex65);
-							return dataIndex65.getString("SpawnDimension");
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getString("SpawnDimension");
 						}
 					}.getValue()).equals("minecraft:the_nether")) {
 						if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
@@ -234,9 +234,9 @@ public class TPwithChorusProcedure {
 					}
 					if ((new Object() {
 						public String getValue() {
-							CompoundTag dataIndex67 = new CompoundTag();
-							entity.saveWithoutId(dataIndex67);
-							return dataIndex67.getString("SpawnDimension");
+							CompoundTag dataIndex = new CompoundTag();
+							entity.saveWithoutId(dataIndex);
+							return dataIndex.getString("SpawnDimension");
 						}
 					}.getValue()).equals("minecraft:overworld")) {
 						if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {

@@ -27,8 +27,7 @@ public class PlayerRightClickProcedure {
 	private static void execute(@Nullable Event event, Entity entity) {
 		if (entity == null)
 			return;
-		double number = 0;
-		if (entity.isVehicle()) {
+        if (entity.isVehicle()) {
 			if ((entity.getFirstPassenger()) instanceof WarpedJellyfishEntity) {
 				if (entity.isShiftKeyDown()) {
 					(entity.getFirstPassenger()).stopRiding();

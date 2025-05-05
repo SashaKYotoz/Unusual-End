@@ -1,0 +1,107 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:gloopy_spine_1",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ],
+            "offset": [
+              0,
+              -4,
+              0
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:gloopy_spine_2",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ],
+            "offset": [
+              0,
+              -4,
+              0
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:gloopy_spine_3",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ],
+            "offset": [
+              0,
+              -4,
+              0
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:gloopy_spine_4",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ],
+            "offset": [
+              0,
+              -4,
+              0
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:gloopy_spine_5",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ],
+            "offset": [
+              0,
+              -4,
+              0
+            ]
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

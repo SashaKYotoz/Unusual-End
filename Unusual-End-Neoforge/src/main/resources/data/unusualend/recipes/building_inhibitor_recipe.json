@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:ancient_shard"
+    },
+    "b": {
+      "item": "unusualend:endstone_tiles"
+    },
+    "c": {
+      "item": "unusualend:golem_orb"
+    }
+  },
+  "result": {
+    "item": "unusualend:building_inhibitor",
+    "count": 1
+  }
+}

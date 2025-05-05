@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "unusualend:block/polished_gloopstone",
+    "up": "unusualend:block/polished_gloopstone",
+    "north": "unusualend:block/gloopstone_lamp_on",
+    "east": "unusualend:block/gloopstone_lamp_on",
+    "south": "unusualend:block/gloopstone_lamp_on",
+    "west": "unusualend:block/gloopstone_lamp_on",
+    "particle": "unusualend:block/gloopstone_lamp_on"
+  },
+  "render_type": "solid"
+}

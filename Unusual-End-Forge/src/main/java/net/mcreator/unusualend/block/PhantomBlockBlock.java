@@ -35,13 +35,13 @@ public class PhantomBlockBlock extends AbstractGlassBlock {
 
 	@Override
 	public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return ((EntityCollisionContext) context).getEntity() instanceof Player == false ? state.getShape(world, pos) : Shapes.empty();
+		return !(((EntityCollisionContext) context).getEntity() instanceof Player) ? state.getShape(world, pos) : Shapes.empty();
 	}
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Not solid to players"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.player_non_solid").getString()));
 	}
 
 	@Override

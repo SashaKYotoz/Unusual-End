@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_wart"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_spores",
+    "count": 1
+  }
+}

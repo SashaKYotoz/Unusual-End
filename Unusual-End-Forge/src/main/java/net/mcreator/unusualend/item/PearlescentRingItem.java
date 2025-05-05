@@ -1,8 +1,8 @@
 
-//render 3d model
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
@@ -11,8 +11,12 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.network.chat.Component;
 
 import net.mcreator.unusualend.procedures.PearlescentRingInventoryTickProcedure;
+import net.mcreator.unusualend.init.UnusualendModEnchantments;
 
+import java.util.Set;
 import java.util.List;
+
+import com.google.common.collect.ImmutableSet;
 
 public class PearlescentRingItem extends Item {
 	public PearlescentRingItem() {
@@ -20,8 +24,24 @@ public class PearlescentRingItem extends Item {
 	}
 
 	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		Set e = ImmutableSet.of(UnusualendModEnchantments.ARCANE_RECOVERY.get());
+		return e.contains(enchantment);
+	}
+
+	@Override
+	public int getEnchantmentValue() {
+		return 8;
+	}
+
+	@Override
+	public boolean isEnchantable(ItemStack stack) {
+		return true;
+	}
+
+	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getOrCreateTag().getDouble("ringCooldown") < 400) {
+		if (stack.getOrCreateTag().getDouble("ringCooldown") < 400 && stack.getOrCreateTag().getDouble("ringCooldown") > 0) {
 			return true;
 		}
 		return false;
@@ -45,11 +65,10 @@ public class PearlescentRingItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When equiped or held"));
-		list.add(Component.literal("\u00A77in Off Hand on Hit:"));
-		list.add(Component.literal("\u00A79Summon a Dragling minion"));
-		list.add(Component.literal("\u00A77While wearing a Spirit Mask:"));
-		list.add(Component.literal("\u00A79Summons a second Dragling"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_offhand").getString()));
+		list.add(Component.literal("\u00A77 " + Component.translatable("lore.unusualend.on_hit").getString()));
+		list.add(Component.literal("\u00A79 " + Component.translatable("lore.unusualend.spirit_ring_1").getString()));
+		list.add(Component.literal("\u00A79 " + Component.translatable("lore.unusualend.spirit_ring_2").getString()));
 	}
 
 	@Override

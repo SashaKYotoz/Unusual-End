@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "unusualend:end_blob"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_bubble",
+    "count": 2
+  }
+}

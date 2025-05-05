@@ -1,4 +1,4 @@
-
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
@@ -34,10 +34,10 @@ public class WarpedBalloonItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77On Hit on a valid Target:"));
-		list.add(Component.literal("\u00A79Capture the target "));
-		list.add(Component.literal("\u00A79in a Warped Balloon"));
-		list.add(Component.literal("\u00A78Can be Leashed"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_valid_target").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.ballon_capture_1").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.ballon_capture_2").getString()));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.can_leash").getString()));
 	}
 
 	@Override

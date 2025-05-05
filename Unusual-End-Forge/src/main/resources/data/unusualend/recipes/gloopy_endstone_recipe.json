@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:gloopslate"
+    },
+    "b": {
+      "item": "minecraft:end_stone"
+    }
+  },
+  "result": {
+    "item": "unusualend:gloopy_endstone",
+    "count": 2
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "unusualend:block/gloopy_urn"
+    },
+    "facing=east": {
+      "model": "unusualend:block/gloopy_urn",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "unusualend:block/gloopy_urn",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "unusualend:block/gloopy_urn",
+      "y": 270
+    }
+  }
+}

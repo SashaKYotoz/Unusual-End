@@ -1,0 +1,26 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusualend:item/crystal_catalyst"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "unusualend:crystal_catalyst_is_renamed": 1
+      },
+      "model": "unusualend:item/crystal_catalyst_0"
+    },
+    {
+      "predicate": {
+        "unusualend:crystal_catalyst_is_renamed": 2
+      },
+      "model": "unusualend:item/crystal_catalyst_1"
+    },
+    {
+      "predicate": {
+        "unusualend:crystal_catalyst_is_renamed": 3
+      },
+      "model": "unusualend:item/crystal_catalyst_2"
+    }
+  ]
+}

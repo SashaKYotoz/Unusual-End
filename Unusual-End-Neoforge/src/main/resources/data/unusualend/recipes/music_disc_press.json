@@ -1,0 +1,19 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "unusualend:golem_orb"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:music_disc_endstone_golem_theme"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

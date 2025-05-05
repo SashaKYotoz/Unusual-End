@@ -57,9 +57,9 @@ public class HealingLanternBlock extends Block implements SimpleWaterloggedBlock
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When a player is nearby:"));
-		list.add(Component.literal("\u00A79Regeneration (0:05)"));
-		list.add(Component.literal("\u00A78Can be placed on side"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_nearby").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.regeneration").getString() + " (0:05)"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.place_side").getString()));
 	}
 
 	@Override

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "unusualend:block/gloopslate_bricks",
+    "side": "unusualend:block/gloopslate_bricks",
+    "top": "unusualend:block/gloopslate_bricks"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "unusualend:block/stripped_chorus_cane_block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "unusualend:block/stripped_chorus_cane_block"
+    },
+    "axis=z": {
+      "model": "unusualend:block/stripped_chorus_cane_block",
+      "x": 90
+    }
+  }
+}

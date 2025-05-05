@@ -1,0 +1,39 @@
+{
+  "name": "unusualend:end_house_middle",
+  "fallback": "unusualend:end_house_middle",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:middle_1",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:middle_2",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:middle_3",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    }
+  ]
+}

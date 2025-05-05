@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:redstone_lamp"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "minecraft:dragon_breath"
+    }
+  ],
+  "result": {
+    "item": "unusualend:dragon_lamp",
+    "count": 1
+  }
+}

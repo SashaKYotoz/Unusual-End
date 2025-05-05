@@ -2,6 +2,8 @@
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
@@ -15,8 +17,12 @@ import net.minecraft.network.chat.Component;
 
 import net.mcreator.unusualend.procedures.CrystalCatalystRightclickedProcedure;
 import net.mcreator.unusualend.procedures.CrystalCatalystItemInInventoryTickProcedure;
+import net.mcreator.unusualend.init.UnusualendModEnchantments;
 
+import java.util.Set;
 import java.util.List;
+
+import com.google.common.collect.ImmutableSet;
 
 public class CrystalCatalystItem extends Item {
 	public CrystalCatalystItem() {
@@ -24,8 +30,24 @@ public class CrystalCatalystItem extends Item {
 	}
 
 	@Override
+	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+		Set e = ImmutableSet.of(Enchantments.UNBREAKING, UnusualendModEnchantments.ARCANE_RECOVERY.get());
+		return e.contains(enchantment);
+	}
+
+	@Override
+	public int getEnchantmentValue() {
+		return 8;
+	}
+
+	@Override
+	public boolean isEnchantable(ItemStack stack) {
+		return true;
+	}
+
+	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("cataCooldown") < 400 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("cataCooldown") < 400) {
+		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("cataCooldown") < 400 && stack.getOrCreateTag().getDouble("cataCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("cataCooldown") < 400) {
 			return true;
 		}
 		return false;
@@ -58,13 +80,13 @@ public class CrystalCatalystItem extends Item {
 		super.appendHoverText(itemstack, world, list, flag);
 		buff = (String) ((itemstack).getOrCreateTag().getString("buff"));
 		if ((itemstack.getOrCreateTag().getString("buff")).equals("")) {
-			itemstack.getOrCreateTag().putString("track", "No Current Buff");
+			itemstack.getOrCreateTag().putString("buff", Component.translatable("text.unusualend.no_buff_defined").getString());
 		}
-		list.add(Component.literal("\u00A78Used on Beacon, Conduit, Infuser"));
-		list.add(Component.literal("\u00A77When Right-Clicking:"));
-		list.add(Component.literal("\u00A79Consume extracted effects"));
-		list.add(Component.literal("\u00A79Current Buff:"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.consume_effects").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.current_buff").getString()));
 		list.add(Component.literal("\u00A79 - " + ((buff))));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.valid_blocs").getString()));
 	}
 
 	@Override

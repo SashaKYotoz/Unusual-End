@@ -23,7 +23,7 @@ public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
 	private final IDrawable icon;
 
 	public InfuserRecipeCategory(IGuiHelper helper) {
-		this.background = helper.createDrawable(TEXTURE, 0, 0, 170, 87);
+		this.background = helper.createDrawable(TEXTURE, 0, 0, 94, 43);
 		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(UnusualendModBlocks.PEARLESCENT_INFUSER.get().asItem()));
 	}
 
@@ -49,11 +49,8 @@ public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
 
 	@Override
 	public void setRecipe(IRecipeLayoutBuilder builder, InfuserRecipe recipe, IFocusGroup focuses) {
-		builder.addSlot(RecipeIngredientRole.INPUT, 32, 46).addIngredients(recipe.getIngredients().get(0));
-		builder.addSlot(RecipeIngredientRole.INPUT, 86, 46).addIngredients(recipe.getIngredients().get(1));
-		builder.addSlot(RecipeIngredientRole.INPUT, 140, 46).addIngredients(recipe.getIngredients().get(2));
-		builder.addSlot(RecipeIngredientRole.INPUT, 32, 66).addIngredients(recipe.getIngredients().get(3));
-		builder.addSlot(RecipeIngredientRole.INPUT, 86, 66).addIngredients(recipe.getIngredients().get(4));
-		builder.addSlot(RecipeIngredientRole.INPUT, 140, 66).addIngredients(recipe.getIngredients().get(5));
+		builder.addSlot(RecipeIngredientRole.INPUT, 4, 4).addIngredients(recipe.getIngredients().get(0));
+		builder.addSlot(RecipeIngredientRole.INPUT, 49, 24).addIngredients(recipe.getIngredients().get(1));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 4).addItemStack(recipe.getResultItem(null));
 	}
 }

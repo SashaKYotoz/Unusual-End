@@ -115,15 +115,6 @@
                 "state": {
                   "Name": "unusualend:shiny_gloopstone"
                 }
-              },
-              {
-                "target": {
-                  "predicate_type": "tag_match",
-                  "tag": "unusualend:gloopstone_ground_replace"
-                },
-                "state": {
-                  "Name": "unusualend:gloopslate"
-                }
               }
             ]
           }

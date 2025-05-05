@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:dead_fire_coral"
+    },
+    {
+      "item": "minecraft:dead_fire_coral"
+    },
+    {
+      "item": "minecraft:dead_fire_coral"
+    },
+    {
+      "item": "minecraft:dead_fire_coral"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "minecraft:dead_fire_coral"
+    },
+    {
+      "item": "minecraft:dead_fire_coral"
+    },
+    {
+      "item": "minecraft:dead_fire_coral"
+    },
+    {
+      "item": "minecraft:dead_fire_coral"
+    }
+  ],
+  "result": {
+    "item": "minecraft:fire_coral",
+    "count": 8
+  }
+}

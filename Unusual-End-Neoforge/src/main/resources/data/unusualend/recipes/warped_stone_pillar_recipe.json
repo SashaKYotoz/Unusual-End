@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:warped_stone_bricks_slab"
+    }
+  },
+  "result": {
+    "item": "unusualend:warped_stone_pillar",
+    "count": 1
+  }
+}

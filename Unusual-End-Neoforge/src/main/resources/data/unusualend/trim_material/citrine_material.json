@@ -1,0 +1,9 @@
+{
+  "asset_name": "citrine_material",
+  "description": {
+    "color": "#CA6A41",
+    "translate": "trim_material.unusualend.citrine_material"
+  },
+  "ingredient": "unusualend:citrine_chunk",
+  "item_model_index": 0.5
+}

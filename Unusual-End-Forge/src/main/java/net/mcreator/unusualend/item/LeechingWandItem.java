@@ -1,7 +1,9 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Rarity;
@@ -26,13 +28,13 @@ public class LeechingWandItem extends Item {
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		Set e = ImmutableSet.of(UnusualendModEnchantments.BONDING.get(), UnusualendModEnchantments.BENEVOLENCE.get(), UnusualendModEnchantments.ARCANE_RECOVERY.get());
+		Set e = ImmutableSet.of(Enchantments.UNBREAKING, UnusualendModEnchantments.BONDING.get(), UnusualendModEnchantments.BENEVOLENCE.get(), UnusualendModEnchantments.ARCANE_RECOVERY.get());
 		return e.contains(enchantment);
 	}
 
 	@Override
 	public int getEnchantmentValue() {
-		return 16;
+		return 8;
 	}
 
 	@Override
@@ -42,7 +44,7 @@ public class LeechingWandItem extends Item {
 
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("rayCooldown") < 400 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
+		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("rayCooldown") < 400 && stack.getOrCreateTag().getDouble("rayCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
 			return true;
 		}
 		return false;
@@ -72,9 +74,9 @@ public class LeechingWandItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A78Hold when shooting"));
-		list.add(Component.literal("\u00A77On Hit:"));
-		list.add(Component.literal("\u00A79Regeneration III (00:03)"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.hold_shooting").getString()));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.on_hit").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.regeneration").getString() + " III (00:03)"));
 	}
 
 	@Override

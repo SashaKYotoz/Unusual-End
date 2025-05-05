@@ -51,7 +51,7 @@ public class GloopyTendrilsBlock extends FlowerBlock {
 		return groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL)
 				|| groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.SHINY_GLOOPSTONE.get())
 				|| groundState.is(UnusualendModBlocks.BOUNCY_GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get()) || groundState.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(Blocks.END_STONE)
-				|| groundState.is(UnusualendModBlocks.GLOOPSTONE_BRICKS.get()) || groundState.is(UnusualendModBlocks.POLISHED_GLOOPSTONE.get());
+				|| groundState.is(UnusualendModBlocks.GLOOPSTONE_BRICKS.get()) || groundState.is(UnusualendModBlocks.POLISHED_GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPY_ENDSTONE.get());
 	}
 
 	@Override

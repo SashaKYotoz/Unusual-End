@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/chiseled_gneiss_brick",
+    "particle": "unusualend:block/chiseled_gneiss_brick"
+  },
+  "render_type": "solid"
+}

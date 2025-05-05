@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "end_highlands",
+  "features": "unusualend:highland_plants",
+  "step": "vegetal_decoration"
+}

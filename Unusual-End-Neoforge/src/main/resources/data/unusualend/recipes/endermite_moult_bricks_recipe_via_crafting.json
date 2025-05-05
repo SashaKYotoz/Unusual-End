@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:enderblob_moult_block"
+    }
+  },
+  "result": {
+    "item": "unusualend:enderblob_moult_bricks",
+    "count": 8
+  }
+}

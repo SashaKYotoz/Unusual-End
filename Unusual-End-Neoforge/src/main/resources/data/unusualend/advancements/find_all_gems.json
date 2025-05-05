@@ -1,0 +1,59 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:prismalite_gem"
+    },
+    "title": {
+      "translate": "advancements.find_all_gems.title"
+    },
+    "description": {
+      "translate": "advancements.find_all_gems.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "citrine": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:citrine_chunk"
+            ]
+          }
+        ]
+      }
+    },
+    "shiny_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:shiny_crystal"
+            ]
+          }
+        ]
+      }
+    },
+    "prismalite": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:prismalite_gem"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "unusualend:find_gloopstone_plains"
+}

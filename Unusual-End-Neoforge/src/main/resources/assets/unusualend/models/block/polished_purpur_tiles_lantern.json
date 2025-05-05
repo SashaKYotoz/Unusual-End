@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/purpur_lantern",
+    "particle": "unusualend:block/purpur_lantern"
+  },
+  "render_type": "solid"
+}

@@ -7,7 +7,6 @@ import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
@@ -28,20 +27,11 @@ import net.mcreator.unusualend.item.inventory.BolokResearchNotesInventoryCapabil
 
 import javax.annotation.Nullable;
 
-import java.util.List;
-
 import io.netty.buffer.Unpooled;
 
 public class BolokResearchNotesItem extends Item {
 	public BolokResearchNotesItem() {
 		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
-	}
-
-	@Override
-	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Detailled explanations of the"));
-		list.add(Component.literal("\u00A78Bolok's related mechanics"));
 	}
 
 	@Override

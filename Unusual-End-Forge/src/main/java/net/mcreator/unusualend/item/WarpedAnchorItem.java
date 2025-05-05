@@ -1,5 +1,5 @@
 
-//clear lev
+//clear lev desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.block.Blocks;
@@ -58,10 +58,10 @@ public class WarpedAnchorItem extends PickaxeItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("\u00A77On Hit:"));
-		list.add(Component.literal("\u00A79Heaviness II (0:05)"));
-		list.add(Component.literal("\u00A77When in Off Hand:"));
-		list.add(Component.literal("\u00A79Clear Levitation"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.on_hit").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("effect.unusualend.heaviness").getString() + " II (0:05)"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_offhand").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.clear_levitation").getString()));
 	}
 
 	@Override

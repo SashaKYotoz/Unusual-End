@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "unusualend:endstone_sprouts"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_sprouts",
+    "count": 1
+  }
+}

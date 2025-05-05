@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/side_healing_lantern",
+  "textures": {
+    "all": "unusualend:block/healing_lantern",
+    "particle": "unusualend:block/shiny_crystal_block",
+    "0": "unusualend:block/healing_lantern"
+  },
+  "render_type": "cutout"
+}

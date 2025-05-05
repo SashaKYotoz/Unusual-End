@@ -1,0 +1,138 @@
+{
+  "name": "unusualend:end_house_area3",
+  "fallback": "unusualend:end_house_area3",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_01",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_02",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_03",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_04",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_05",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_3x",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_31",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_32",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_33",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_34",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 3,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_35",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    },
+    {
+      "weight": 2,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:end_house_36",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    }
+  ]
+}

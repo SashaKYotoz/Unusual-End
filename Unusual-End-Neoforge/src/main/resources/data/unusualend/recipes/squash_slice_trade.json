@@ -1,0 +1,18 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "farmersdelight:pumpkin_slice"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_squash_wedge",
+    "count": 1
+  },
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

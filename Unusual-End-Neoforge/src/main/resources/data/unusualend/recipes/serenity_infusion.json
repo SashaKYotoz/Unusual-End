@@ -1,0 +1,15 @@
+{
+  "type": "unusualend:infuser",
+  "ingredients": [
+    {
+      "item": "unusualend:citrine_chunk"
+    },
+    {
+      "tag": "forge:citrine_base"
+    }
+  ],
+  "output": {
+    "item": "unusualend:creative_serenity",
+    "count": 1
+  }
+}

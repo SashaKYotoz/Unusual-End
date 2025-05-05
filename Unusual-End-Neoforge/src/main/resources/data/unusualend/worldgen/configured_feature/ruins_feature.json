@@ -1,0 +1,17 @@
+{
+  "type": "unusualend:structure_feature",
+  "config": {
+    "structure": "unusualend:ruins",
+    "random_rotation": true,
+    "random_mirror": true,
+    "ignored_blocks": [
+      "minecraft:structure_block",
+      "minecraft:air"
+    ],
+    "offset": [
+      0,
+      -1,
+      0
+    ]
+  }
+}

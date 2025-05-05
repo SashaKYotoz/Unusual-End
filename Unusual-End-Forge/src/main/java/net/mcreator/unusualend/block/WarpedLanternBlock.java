@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.block;
 
 import org.checkerframework.checker.units.qual.s;
@@ -60,8 +61,8 @@ public class WarpedLanternBlock extends Block implements SimpleWaterloggedBlock 
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Powered by Redstone:"));
-		list.add(Component.literal("\u00A79Produce Citrine particles"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_redstone").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.produce_particles").getString()));
 	}
 
 	@Override

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CA"
+  ],
+  "key": {
+    "C": {
+      "item": "unusualend:chorus_flute"
+    },
+    "A": {
+      "item": "unusualend:end_blob"
+    }
+  },
+  "result": {
+    "item": "unusualend:chorus_flute",
+    "count": 1,
+    "nbt": "{track:\"Drift\"}"
+  }
+}

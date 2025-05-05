@@ -1,0 +1,44 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "unusualend:block/gloopy_endstone",
+        "weight": 3
+      },
+      {
+        "model": "unusualend:block/gloopy_endstone",
+        "weight": 3,
+        "y": 90
+      },
+      {
+        "model": "unusualend:block/gloopy_endstone",
+        "weight": 3,
+        "y": 180
+      },
+      {
+        "model": "unusualend:block/gloopy_endstone",
+        "weight": 3,
+        "y": 270
+      },
+      {
+        "model": "unusualend:block/gloopy_endstone_2",
+        "weight": 1
+      },
+      {
+        "model": "unusualend:block/gloopy_endstone_2",
+        "weight": 1,
+        "y": 90
+      },
+      {
+        "model": "unusualend:block/gloopy_endstone_2",
+        "weight": 1,
+        "y": 180
+      },
+      {
+        "model": "unusualend:block/gloopy_endstone_2",
+        "weight": 1,
+        "y": 270
+      }
+    ]
+  }
+}

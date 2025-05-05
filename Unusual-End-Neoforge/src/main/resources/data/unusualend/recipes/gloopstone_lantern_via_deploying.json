@@ -1,0 +1,23 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "unusualend:polished_gloopstone"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:gloopstone_lantern"
+    }
+  ],
+  "keepHeldItem": false,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

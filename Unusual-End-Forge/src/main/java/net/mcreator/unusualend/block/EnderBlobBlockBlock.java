@@ -33,7 +33,7 @@ public class EnderBlobBlockBlock extends Block {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Extremely bouncy"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.bouncy").getString()));
 	}
 
 	@Override

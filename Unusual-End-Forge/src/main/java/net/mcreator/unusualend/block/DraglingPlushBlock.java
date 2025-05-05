@@ -1,4 +1,4 @@
-
+//desc
 package net.mcreator.unusualend.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -43,7 +43,7 @@ public class DraglingPlushBlock extends Block implements SimpleWaterloggedBlock 
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Can be placed in Off Hand"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.plush").getString()));
 	}
 
 	@Override

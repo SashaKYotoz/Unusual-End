@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    " ca",
+    "a  "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:bolok_scale"
+    },
+    "b": {
+      "item": "unusualend:lurker_spine"
+    },
+    "c": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "unusualend:warped_spear",
+    "count": 1
+  }
+}

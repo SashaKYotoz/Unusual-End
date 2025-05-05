@@ -1,0 +1,25 @@
+{
+  "feature": "unusualend:endstone_spread",
+  "placement": [
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:count",
+      "count": {
+        "type": "uniform",
+        "value": {
+          "min_inclusive": 2,
+          "max_inclusive": 3
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

@@ -72,7 +72,7 @@ public class ShinyCrystalTorchBlock extends Block implements SimpleWaterloggedBl
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Can be placed underwater"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.place_underwater").getString()));
 	}
 
 	@Override

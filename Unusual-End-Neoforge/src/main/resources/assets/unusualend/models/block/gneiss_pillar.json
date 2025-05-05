@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "unusualend:block/gneiss_pillar_top",
+    "top": "unusualend:block/gneiss_pillar_top",
+    "side": "unusualend:block/gneiss_pillar",
+    "overlay": "unusualend:block/gneiss_pillar",
+    "particle": "unusualend:block/gneiss_pillar_top"
+  },
+  "render_type": "solid"
+}

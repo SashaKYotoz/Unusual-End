@@ -1,0 +1,179 @@
+{
+  "feature": "unusualend:warped_citrine_isles",
+  "placement": [
+    {
+      "type": "minecraft:rarity_filter",
+      "chance": 5
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "environment_scan",
+      "direction_of_search": "down",
+      "target_condition": {
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                3,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                3
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                -3,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                -3
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                3,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                -3,
+                0
+              ]
+            }
+          }
+        ]
+      },
+      "max_steps": 3
+    },
+    {
+      "type": "environment_scan",
+      "direction_of_search": "up",
+      "target_condition": {
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                3,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                3
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                -3,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                -3
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                3,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                -3,
+                0
+              ]
+            }
+          }
+        ]
+      },
+      "max_steps": 3
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:height_range",
+      "height": {
+        "type": "minecraft:uniform",
+        "min_inclusive": {
+          "absolute": 24
+        },
+        "max_inclusive": {
+          "absolute": 40
+        }
+      }
+    }
+  ]
+}

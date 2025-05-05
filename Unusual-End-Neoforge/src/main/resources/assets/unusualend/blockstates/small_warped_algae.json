@@ -1,0 +1,14 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "unusualend:block/small_warped_algae",
+        "weight": 2
+      },
+      {
+        "model": "unusualend:block/small_warped_algae_2",
+        "weight": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "unusualend:block/chorus_nest_slab"
+    },
+    "type=top": {
+      "model": "unusualend:block/chorus_nest_slab_top"
+    },
+    "type=double": {
+      "model": "unusualend:block/chorus_nest_slab_full"
+    }
+  }
+}

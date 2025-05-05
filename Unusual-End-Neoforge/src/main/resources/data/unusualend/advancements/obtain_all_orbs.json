@@ -1,0 +1,71 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:golem_orb"
+    },
+    "title": {
+      "translate": "advancements.obtain_all_orbs.title"
+    },
+    "description": {
+      "translate": "advancements.obtain_all_orbs.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "blazing_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:blazing_orb"
+            ]
+          }
+        ]
+      }
+    },
+    "golem_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:golem_orb"
+            ]
+          }
+        ]
+      }
+    },
+    "shulker_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:shulker_orb"
+            ]
+          }
+        ]
+      }
+    },
+    "withering_orb": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:withering_orb"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 200
+  },
+  "parent": "unusualend:use_golem_altar"
+}

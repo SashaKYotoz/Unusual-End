@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/blooming_chorus_cane",
+  "textures": {
+    "all": "unusualend:block/chorus_cane",
+    "particle": "unusualend:block/chorus_nest_planks",
+    "0": "unusualend:block/chorus_cane"
+  },
+  "render_type": "cutout_mipped"
+}

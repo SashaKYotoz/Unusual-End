@@ -1,0 +1,102 @@
+{
+  "type": "minecraft:simple_random_selector",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 10,
+            "xz_spread": 6,
+            "feature": {
+              "feature": {
+                "type": "minecraft:random_patch",
+                "config": {
+                  "tries": 50,
+                  "xz_spread": 8,
+                  "y_spread": 2,
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:simple_block",
+                      "config": {
+                        "to_place": {
+                          "type": "minecraft:simple_state_provider",
+                          "state": {
+                            "Name": "unusualend:gloopslate"
+                          }
+                        }
+                      }
+                    },
+                    "placement": [
+                      {
+                        "type": "minecraft:block_predicate_filter",
+                        "predicate": {
+                          "type": "minecraft:matching_blocks",
+                          "blocks": "#unusualend:gloopstone_ground_replace"
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "placement": []
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 10,
+            "xz_spread": 6,
+            "feature": {
+              "feature": {
+                "type": "minecraft:random_patch",
+                "config": {
+                  "tries": 40,
+                  "xz_spread": 6,
+                  "y_spread": 2,
+                  "feature": {
+                    "feature": {
+                      "type": "minecraft:simple_block",
+                      "config": {
+                        "to_place": {
+                          "type": "minecraft:simple_state_provider",
+                          "state": {
+                            "Name": "unusualend:gloopstone"
+                          }
+                        }
+                      }
+                    },
+                    "placement": [
+                      {
+                        "type": "minecraft:block_predicate_filter",
+                        "predicate": {
+                          "type": "minecraft:any_of",
+                          "predicates": [
+                            {
+                              "type": "minecraft:matching_blocks",
+                              "blocks": "#unusualend:gloopstone_ground_replace"
+                            },
+                            {
+                              "type": "minecraft:matching_blocks",
+                              "blocks": "unusualend:gloopslate"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "placement": []
+            }
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

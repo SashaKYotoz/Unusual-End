@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:warped_algae",
+    "unusualend:small_warped_algae",
+    "unusualend:warped_sprouts",
+    "unusualend:warped_bush",
+    "unusualend:grown_warped_bush",
+    "unusualend:small_warped_squash",
+    "minecraft:warped_wart_block",
+    "minecraft:air",
+    "minecraft:void_air",
+    "minecraft:cave_air"
+  ]
+}

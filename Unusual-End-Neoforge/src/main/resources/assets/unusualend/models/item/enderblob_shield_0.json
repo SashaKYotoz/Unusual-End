@@ -1,0 +1,7 @@
+{
+  "parent": "unusualend:custom/blob_shield_blocking",
+  "textures": {
+    "1": "unusualend:block/blob_shield",
+    "particle": "unusualend:item/blob_shield"
+  }
+}

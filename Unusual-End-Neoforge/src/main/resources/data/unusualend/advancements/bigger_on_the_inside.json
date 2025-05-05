@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:purpur_tank"
+    },
+    "title": {
+      "translate": "advancements.bigger_on_the_inside.title"
+    },
+    "description": {
+      "translate": "advancements.bigger_on_the_inside.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "bigger_on_the_inside_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:purpur_tank"
+            ],
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "unusualend:ancient_wisdom"
+}

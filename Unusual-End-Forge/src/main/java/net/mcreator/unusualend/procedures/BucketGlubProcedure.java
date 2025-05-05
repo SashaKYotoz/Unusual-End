@@ -30,9 +30,9 @@ public class BucketGlubProcedure {
 			entity_bucket = new ItemStack(UnusualendModItems.GLUB_BUCKET.get());
 			if (!(new Object() {
 				public String getValue() {
-					CompoundTag dataIndex4 = new CompoundTag();
-					entity.saveWithoutId(dataIndex4);
-					return dataIndex4.getString("CustomName");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("CustomName");
 				}
 			}.getValue()).isEmpty()) {
 				entity_bucket.setHoverName(Component.literal((entity.getDisplayName().getString())));
@@ -103,11 +103,10 @@ public class BucketGlubProcedure {
 					}
 				}
 			}
-		} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()
-				&& !((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.WARPED_BERRIES.get())) {
+		} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
 			entity.startRiding(sourceentity);
-			if (!(sourceentity instanceof ServerPlayer _plr42 && _plr42.level() instanceof ServerLevel
-					&& _plr42.getAdvancements().getOrStartProgress(_plr42.server.getAdvancements().getAdvancement(new ResourceLocation("unusualend:wear_glub"))).isDone())) {
+			if (!(sourceentity instanceof ServerPlayer _plr40 && _plr40.level() instanceof ServerLevel
+					&& _plr40.getAdvancements().getOrStartProgress(_plr40.server.getAdvancements().getAdvancement(new ResourceLocation("unusualend:wear_glub"))).isDone())) {
 				if (sourceentity instanceof ServerPlayer _player) {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("unusualend:wear_glub"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);

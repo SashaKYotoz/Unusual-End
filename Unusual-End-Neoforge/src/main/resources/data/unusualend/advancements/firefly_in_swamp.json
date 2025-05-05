@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:ender_firefly_egg"
+    },
+    "title": {
+      "translate": "advancements.firefly_in_swamp.title"
+    },
+    "description": {
+      "translate": "advancements.firefly_in_swamp.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "firefly_in_swamp_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "unusualend:beam_me_up_stewy"
+}

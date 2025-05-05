@@ -4,17 +4,23 @@
   "version": "${version}",
   "name": "Unusual-End-Fabric",
   "description": "Enhance your End experience !",
-  "authors": [],
+  "authors": [
+    "SashaKYotoz",
+    "Sweetygamer"
+  ],
   "contact": {},
   "license": "All-Rights-Reserved",
-  "icon": "assets/unusual-end-fabric/icon.png",
+  "icon": "logo.png",
   "environment": "*",
   "entrypoints": {
     "client": [
-      "net.mcreator.unusualend.client.UnusualEndClient"
+      "net.sashakyotoz.unusualend.client.UnusualEndClient"
     ],
     "main": [
-      "net.mcreator.unusualend.UnusualEnd"
+      "net.sashakyotoz.unusualend.UnusualEnd"
+    ],
+    "fabric-datagen": [
+      "net.sashakyotoz.unusualend.common.UnusualEndDataGenerator"
     ]
   },
   "mixins": [

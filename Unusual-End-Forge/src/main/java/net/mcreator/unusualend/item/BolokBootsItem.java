@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -77,10 +78,10 @@ public abstract class BolokBootsItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
-			list.add(Component.literal("\u00A77When Hurt:"));
-			list.add(Component.literal("\u00A79Speed (0:03)"));
-			list.add(Component.literal("\u00A79Inflict Heaviness II (0:03)"));
-			list.add(Component.literal("\u00A79to the Attacker"));
+			list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString()));
+			list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.speed").getString() + " (0:03)"));
+			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.inflict_heavy").getString() + " II (0:03)"));
+			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.to_attacker").getString()));
 		}
 
 		@Override
@@ -97,8 +98,8 @@ public abstract class BolokBootsItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
-			list.add(Component.literal("\u00A79Allows to walk on"));
-			list.add(Component.literal("\u00A79Warped Bubbles"));
+			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.warped_boot_1").getString()));
+			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.warped_boot_2").getString()));
 		}
 
 		@Override

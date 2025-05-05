@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:end_blob_jelly"
+    },
+    {
+      "item": "unusualend:citrine_chunk"
+    }
+  ],
+  "result": {
+    "item": "unusualend:citrine_gum",
+    "count": 1
+  }
+}

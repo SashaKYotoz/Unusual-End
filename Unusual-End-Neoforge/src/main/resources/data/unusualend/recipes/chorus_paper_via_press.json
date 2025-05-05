@@ -1,0 +1,19 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "unusualend:chorus_petal"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:paper"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ]
+}

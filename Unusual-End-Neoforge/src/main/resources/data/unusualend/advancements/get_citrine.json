@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:citrine_chunk"
+    },
+    "title": {
+      "translate": "advancements.get_citrine.title"
+    },
+    "description": {
+      "translate": "advancements.get_citrine.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_citrine_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:citrine_chunk"
+            ],
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "unusualend:find_warped_reef"
+}

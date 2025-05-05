@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:warped_roots"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    },
+    {
+      "item": "minecraft:warped_roots"
+    }
+  ],
+  "result": {
+    "item": "unusualend:chorus_roots",
+    "count": 8
+  }
+}

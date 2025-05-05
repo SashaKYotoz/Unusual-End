@@ -17,6 +17,7 @@ import net.mcreator.unusualend.block.entity.PurpurTankBlockEntity;
 import net.mcreator.unusualend.block.entity.PearlescentInfuserBlockEntity;
 import net.mcreator.unusualend.block.entity.GloopslatePedestralBlockEntity;
 import net.mcreator.unusualend.block.entity.FadingBlockBlockEntity;
+import net.mcreator.unusualend.block.entity.CelestialFluidBlockEntity;
 import net.mcreator.unusualend.block.entity.BuildingInhibitorBlockEntity;
 import net.mcreator.unusualend.block.entity.AncientPodiumBlockEntity;
 import net.mcreator.unusualend.UnusualendMod;
@@ -31,6 +32,7 @@ public class UnusualendModBlockEntities {
 	public static final RegistryObject<BlockEntityType<?>> BUILDING_INHIBITOR = register("building_inhibitor", UnusualendModBlocks.BUILDING_INHIBITOR, BuildingInhibitorBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> ANCIENT_PODIUM = register("ancient_podium", UnusualendModBlocks.ANCIENT_PODIUM, AncientPodiumBlockEntity::new);
 	public static final RegistryObject<BlockEntityType<?>> WARPED_CHEST = register("warped_chest", UnusualendModBlocks.WARPED_CHEST, WarpedChestBlockEntity::new);
+	public static final RegistryObject<BlockEntityType<?>> CELESTIAL_FLUID = register("celestial_fluid", UnusualendModBlocks.CELESTIAL_FLUID, CelestialFluidBlockEntity::new);
 
 	private static RegistryObject<BlockEntityType<?>> register(String registryname, RegistryObject<Block> block, BlockEntityType.BlockEntitySupplier<?> supplier) {
 		return REGISTRY.register(registryname, () -> BlockEntityType.Builder.of(supplier, block.get()).build(null));

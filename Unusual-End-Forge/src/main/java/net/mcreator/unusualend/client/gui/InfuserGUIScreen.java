@@ -10,33 +10,9 @@ import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.GuiGraphics;
 
 import net.mcreator.unusualend.world.inventory.InfuserGUIMenu;
-import net.mcreator.unusualend.procedures.ReturnShiny8Procedure;
-import net.mcreator.unusualend.procedures.ReturnShiny7Procedure;
-import net.mcreator.unusualend.procedures.ReturnShiny6Procedure;
-import net.mcreator.unusualend.procedures.ReturnShiny5Procedure;
-import net.mcreator.unusualend.procedures.ReturnShiny4Procedure;
-import net.mcreator.unusualend.procedures.ReturnShiny3Procedure;
-import net.mcreator.unusualend.procedures.ReturnShiny2Procedure;
-import net.mcreator.unusualend.procedures.ReturnShiny1Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic8Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic7Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic6Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic5Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic4Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic3Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic2Procedure;
-import net.mcreator.unusualend.procedures.ReturnPrismatic1Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine8Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine7Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine6Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine5Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine4Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine3Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine2Procedure;
-import net.mcreator.unusualend.procedures.ReturnCitrine1Procedure;
-import net.mcreator.unusualend.procedures.PearlescentInfuserShinyProcedure;
-import net.mcreator.unusualend.procedures.PearlescentInfuserPrismaticProcedure;
-import net.mcreator.unusualend.procedures.PearlescentInfuserGUIValueProcedure;
+import net.mcreator.unusualend.procedures.ReturnShinyProcedure;
+import net.mcreator.unusualend.procedures.ReturnPrismaticProcedure;
+import net.mcreator.unusualend.procedures.ReturnCitrineProcedure;
 import net.mcreator.unusualend.network.InfuserGUIButtonMessage;
 import net.mcreator.unusualend.UnusualendMod;
 
@@ -77,18 +53,12 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.renderBackground(guiGraphics);
 		super.render(guiGraphics, mouseX, mouseY, partialTicks);
 		this.renderTooltip(guiGraphics, mouseX, mouseY);
-		if (mouseX > leftPos + 30 && mouseX < leftPos + 54 && mouseY > topPos + 27 && mouseY < topPos + 51)
-			guiGraphics.renderTooltip(font, Component.literal(PearlescentInfuserGUIValueProcedure.execute()), mouseX, mouseY);
-		if (mouseX > leftPos + 30 && mouseX < leftPos + 54 && mouseY > topPos + 11 && mouseY < topPos + 35)
-			guiGraphics.renderTooltip(font, Component.literal(PearlescentInfuserGUIValueProcedure.execute()), mouseX, mouseY);
-		if (mouseX > leftPos + 84 && mouseX < leftPos + 108 && mouseY > topPos + 11 && mouseY < topPos + 35)
-			guiGraphics.renderTooltip(font, Component.literal(PearlescentInfuserShinyProcedure.execute()), mouseX, mouseY);
-		if (mouseX > leftPos + 84 && mouseX < leftPos + 108 && mouseY > topPos + 27 && mouseY < topPos + 51)
-			guiGraphics.renderTooltip(font, Component.literal(PearlescentInfuserShinyProcedure.execute()), mouseX, mouseY);
-		if (mouseX > leftPos + 138 && mouseX < leftPos + 162 && mouseY > topPos + 11 && mouseY < topPos + 35)
-			guiGraphics.renderTooltip(font, Component.literal(PearlescentInfuserPrismaticProcedure.execute()), mouseX, mouseY);
-		if (mouseX > leftPos + 138 && mouseX < leftPos + 162 && mouseY > topPos + 27 && mouseY < topPos + 51)
-			guiGraphics.renderTooltip(font, Component.literal(PearlescentInfuserPrismaticProcedure.execute()), mouseX, mouseY);
+		if (mouseX > leftPos + 31 && mouseX < leftPos + 51 && mouseY > topPos + 12 && mouseY < topPos + 51)
+			guiGraphics.renderTooltip(font, Component.translatable("text.infuser.citrine"), mouseX, mouseY);
+		if (mouseX > leftPos + 85 && mouseX < leftPos + 105 && mouseY > topPos + 12 && mouseY < topPos + 51)
+			guiGraphics.renderTooltip(font, Component.translatable("text.infuser.shiny"), mouseX, mouseY);
+		if (mouseX > leftPos + 139 && mouseX < leftPos + 159 && mouseY > topPos + 12 && mouseY < topPos + 51)
+			guiGraphics.renderTooltip(font, Component.translatable("text.infuser.prismatic"), mouseX, mouseY);
 	}
 
 	@Override
@@ -97,76 +67,76 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		if (ReturnCitrine1Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 1)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 62, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnCitrine2Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 2)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 55, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnCitrine3Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 3)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 48, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnCitrine4Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 4)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 41, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnCitrine5Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 5)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 34, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnCitrine6Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 6)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 27, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnCitrine7Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 7)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 20, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnCitrine8Procedure.execute(world, x, y, z)) {
+		if (ReturnCitrineProcedure.execute(world, x, y, z, 8)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 13, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny1Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 1)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 62, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny2Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 2)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 55, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny3Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 3)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 48, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny4Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 4)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 41, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny5Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 5)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 34, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny6Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 6)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 27, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny7Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 7)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 20, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnShiny8Procedure.execute(world, x, y, z)) {
+		if (ReturnShinyProcedure.execute(world, x, y, z, 8)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 13, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic1Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 1)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 62, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic2Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 2)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 55, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic3Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 3)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 48, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic4Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 4)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 41, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic5Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 5)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 34, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic6Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 6)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 27, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic7Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 7)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 20, 0, 0, 16, 7, 16, 7);
 		}
-		if (ReturnPrismatic8Procedure.execute(world, x, y, z)) {
+		if (ReturnPrismaticProcedure.execute(world, x, y, z, 8)) {
 			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 13, 0, 0, 16, 7, 16, 7);
 		}
 		RenderSystem.disableBlend();

@@ -1,0 +1,36 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:ancient_shard"
+    },
+    "title": {
+      "translate": "advancements.ancient_wisdom.title"
+    },
+    "description": {
+      "translate": "advancements.ancient_wisdom.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "ancient_wisdom_0": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:ancient_shard"
+            ],
+            "count": {
+              "min": 1,
+              "max": 64
+            }
+          }
+        ]
+      }
+    }
+  },
+  "parent": "unusualend:use_golem_altar"
+}

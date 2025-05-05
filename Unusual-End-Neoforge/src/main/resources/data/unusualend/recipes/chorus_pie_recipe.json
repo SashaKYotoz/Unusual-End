@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:ender_firefly_egg"
+    },
+    {
+      "tag": "forge:chorus_petals"
+    },
+    {
+      "item": "minecraft:chorus_fruit"
+    }
+  ],
+  "result": {
+    "item": "unusualend:chorus_pie",
+    "count": 1
+  }
+}

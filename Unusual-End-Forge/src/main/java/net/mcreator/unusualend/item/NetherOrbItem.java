@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
@@ -24,7 +25,7 @@ public class NetherOrbItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Hurt: \u00A78(Chance of 5%)"));
-		list.add(Component.literal("\u00A79Create a flaming shockwave"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString() + " \u00A78(5%)"));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.nether_orb").getString()));
 	}
 }

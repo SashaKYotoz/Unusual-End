@@ -1,0 +1,11 @@
+{
+  "parent": "unusualend:custom/flower_pot_cane",
+  "textures": {
+    "all": "minecraft:block/flower_pot",
+    "particle": "minecraft:block/flower_pot",
+    "3": "unusualend:block/chorus_cane",
+    "flowerpot": "minecraft:block/flower_pot",
+    "dirt": "unusualend:block/rooted_raw_purpur"
+  },
+  "render_type": "cutout"
+}

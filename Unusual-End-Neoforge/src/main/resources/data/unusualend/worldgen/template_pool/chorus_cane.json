@@ -1,0 +1,96 @@
+{
+  "name": "unusualend:chorus_cane",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_1",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_2",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_3",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_4",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_5",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_6",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_7",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_8",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_9",
+        "processors": "unusualend:chorus_cane"
+      }
+    },
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:legacy_single_pool_element",
+        "projection": "rigid",
+        "location": "unusualend:chorus_cane_10",
+        "processors": "unusualend:chorus_cane"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "bottom": "unusualend:block/polished_warped_stone",
+    "top": "unusualend:block/polished_warped_stone",
+    "side": "unusualend:block/polished_warped_stone"
+  },
+  "render_type": "solid"
+}

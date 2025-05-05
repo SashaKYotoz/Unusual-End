@@ -106,6 +106,7 @@ import net.mcreator.unusualend.block.GneissBrickSlabBlock;
 import net.mcreator.unusualend.block.GneissBlock;
 import net.mcreator.unusualend.block.GloopyVaseBlock;
 import net.mcreator.unusualend.block.GloopyTendrilsBlock;
+import net.mcreator.unusualend.block.GloopyEndstoneBlock;
 import net.mcreator.unusualend.block.GloopyBushBlock;
 import net.mcreator.unusualend.block.GloopstoneTilesBlock;
 import net.mcreator.unusualend.block.GloopstoneTileBlock;
@@ -127,6 +128,10 @@ import net.mcreator.unusualend.block.FloweringGloopyPileBlock;
 import net.mcreator.unusualend.block.FloweringChorusGrassBlock;
 import net.mcreator.unusualend.block.FlowerPotWarpedBushBlock;
 import net.mcreator.unusualend.block.FlowerPotShinySpireaBlock;
+import net.mcreator.unusualend.block.FlowerPotPurpurGrassBlock;
+import net.mcreator.unusualend.block.FlowerPotGloopyTendrilsBlock;
+import net.mcreator.unusualend.block.FlowerPotGloopyBushBlock;
+import net.mcreator.unusualend.block.FlowerPotCrystalFlowerBlock;
 import net.mcreator.unusualend.block.FlowerPotChorusRootsBlock;
 import net.mcreator.unusualend.block.FlowerPotChorusFungusBlock;
 import net.mcreator.unusualend.block.FlowerPotCaneBlock;
@@ -187,6 +192,7 @@ import net.mcreator.unusualend.block.ChiseledEndstone2Block;
 import net.mcreator.unusualend.block.ChiseledEndstone1Block;
 import net.mcreator.unusualend.block.ChargedGloopstoneBlock;
 import net.mcreator.unusualend.block.CentralPedestralBlock;
+import net.mcreator.unusualend.block.CelestialFluidBlock;
 import net.mcreator.unusualend.block.CarvedWarpedSquashBlock;
 import net.mcreator.unusualend.block.BuildingInhibitorBlock;
 import net.mcreator.unusualend.block.BuddingCitrineBlock;
@@ -295,8 +301,8 @@ public class UnusualendModBlocks {
 	public static final RegistryObject<Block> SHINY_SPIREA = REGISTRY.register("shiny_spirea", () -> new ShinySpireaBlock());
 	public static final RegistryObject<Block> BOUNCY_GLOOPSLATE = REGISTRY.register("bouncy_gloopslate", () -> new BouncyGloopslateBlock());
 	public static final RegistryObject<Block> GLOOPSTONE_LANTERN = REGISTRY.register("gloopstone_lantern", () -> new GloopstoneLanternBlock());
-	public static final RegistryObject<Block> FLOWER_POT_CHORUS_ROOTS = REGISTRY.register("flower_pot_chorus_roots", () -> new FlowerPotChorusRootsBlock());
-	public static final RegistryObject<Block> FLOWER_POT_SHINY_SPIREA = REGISTRY.register("flower_pot_shiny_spirea", () -> new FlowerPotShinySpireaBlock());
+	public static final RegistryObject<Block> POTTED_CHORUS_ROOTS = REGISTRY.register("potted_chorus_roots", () -> new FlowerPotChorusRootsBlock());
+	public static final RegistryObject<Block> POTTED_SHINY_SPIREA = REGISTRY.register("potted_shiny_spirea", () -> new FlowerPotShinySpireaBlock());
 	public static final RegistryObject<Block> HEALING_LANTERN = REGISTRY.register("healing_lantern", () -> new HealingLanternBlock());
 	public static final RegistryObject<Block> POLISHED_GLOOPSLATE = REGISTRY.register("polished_gloopslate", () -> new PolishedGloopslateBlock());
 	public static final RegistryObject<Block> GLOOPSLATE_BRICKS = REGISTRY.register("gloopslate_bricks", () -> new GloopslateBricksBlock());
@@ -377,8 +383,8 @@ public class UnusualendModBlocks {
 	public static final RegistryObject<Block> GLOOPSTONE_TILES = REGISTRY.register("gloopstone_tiles", () -> new GloopstoneTileBlock());
 	public static final RegistryObject<Block> ENDERBLOB_MOULT_WALL = REGISTRY.register("enderblob_moult_wall", () -> new EnderblobMoultWallBlock());
 	public static final RegistryObject<Block> GLOOPY_URN = REGISTRY.register("gloopy_urn", () -> new GloopyVaseBlock());
-	public static final RegistryObject<Block> FLOWER_POT_WARPED_BUSH = REGISTRY.register("flower_pot_warped_bush", () -> new FlowerPotWarpedBushBlock());
-	public static final RegistryObject<Block> FLOWER_POT_CANE = REGISTRY.register("flower_pot_cane", () -> new FlowerPotCaneBlock());
+	public static final RegistryObject<Block> POTTED_WARPED_BUSH = REGISTRY.register("potted_warped_bush", () -> new FlowerPotWarpedBushBlock());
+	public static final RegistryObject<Block> POTTED_CHORUS_CANE = REGISTRY.register("potted_chorus_cane", () -> new FlowerPotCaneBlock());
 	public static final RegistryObject<Block> CITRINE_CANDLE = REGISTRY.register("citrine_candle", () -> new CitrineCandleBlock());
 	public static final RegistryObject<Block> ANCIENT_PODIUM = REGISTRY.register("ancient_podium", () -> new AncientPodiumBlock());
 	public static final RegistryObject<Block> ANCIENT_ENCASED_PURPUR = REGISTRY.register("ancient_encased_purpur", () -> new AncientEncasedPurpurBlock());
@@ -388,6 +394,12 @@ public class UnusualendModBlocks {
 	public static final RegistryObject<Block> WARPED_CHEST = REGISTRY.register("warped_chest", () -> new WarpedChestBlock());
 	public static final RegistryObject<Block> GLOOPILON_BULB = REGISTRY.register("gloopilon_bulb", () -> new GloopilonBulbBlock());
 	public static final RegistryObject<Block> CRYSTAL_TORCH = REGISTRY.register("crystal_torch", () -> new ShinyCrystalTorchBlock());
+	public static final RegistryObject<Block> POTTED_CRYSTAL_FLOWER = REGISTRY.register("potted_crystal_flower", () -> new FlowerPotCrystalFlowerBlock());
+	public static final RegistryObject<Block> POTTED_GLOOPY_TENDRILS = REGISTRY.register("potted_gloopy_tendrils", () -> new FlowerPotGloopyTendrilsBlock());
+	public static final RegistryObject<Block> POTTED_GLOOPY_BUSH = REGISTRY.register("potted_gloopy_bush", () -> new FlowerPotGloopyBushBlock());
+	public static final RegistryObject<Block> POTTED_CHORUS_GRASS = REGISTRY.register("potted_chorus_grass", () -> new FlowerPotPurpurGrassBlock());
+	public static final RegistryObject<Block> CELESTIAL_FLUID = REGISTRY.register("celestial_fluid", () -> new CelestialFluidBlock());
+	public static final RegistryObject<Block> GLOOPY_ENDSTONE = REGISTRY.register("gloopy_endstone", () -> new GloopyEndstoneBlock());
 	// Start of user code block custom blocks
 	// End of user code block custom blocks
 }

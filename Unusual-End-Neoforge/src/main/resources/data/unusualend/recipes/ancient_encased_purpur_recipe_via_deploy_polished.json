@@ -1,0 +1,23 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "unusualend:polished_purpur"
+    },
+    {
+      "item": "unusualend:ancient_shard"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:ancient_encased_purpur"
+    }
+  ],
+  "keepHeldItem": false,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ]
+}

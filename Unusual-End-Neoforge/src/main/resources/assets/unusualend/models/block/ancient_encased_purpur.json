@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/ancient_encased_purpur",
+    "particle": "unusualend:block/ancient_encased_purpur"
+  },
+  "render_type": "solid"
+}

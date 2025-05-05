@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:bolok_bucket"
+    },
+    "title": {
+      "translate": "advancements.trade_with_bolok.title"
+    },
+    "description": {
+      "translate": "advancements.trade_with_bolok.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "trade_with_bolok_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:fish_in_warped_reef"
+}

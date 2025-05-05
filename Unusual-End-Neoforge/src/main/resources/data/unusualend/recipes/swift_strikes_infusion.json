@@ -1,0 +1,15 @@
+{
+  "type": "unusualend:infuser",
+  "ingredients": [
+    {
+      "item": "unusualend:prismalite_gem"
+    },
+    {
+      "tag": "forge:prismatic_base"
+    }
+  ],
+  "output": {
+    "item": "unusualend:creative_swift_strikes",
+    "count": 1
+  }
+}

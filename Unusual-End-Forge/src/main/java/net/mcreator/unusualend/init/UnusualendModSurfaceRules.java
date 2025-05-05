@@ -28,7 +28,7 @@ public class UnusualendModSurfaceRules {
 			if (chunkGenerator instanceof NoiseBasedChunkGenerator generator) {
 				NoiseGeneratorSettings noiseGeneratorSettings = generator.settings.value();
 				registerSurfaceRules(new ResourceLocation("unusualend:gloopstone_lands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPSTONE.get().defaultBlockState(), UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState());
-				registerSurfaceRules(new ResourceLocation("unusualend:gloopstone_midlands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState(), UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState());
+				registerSurfaceRules(new ResourceLocation("unusualend:gloopstone_midlands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPY_ENDSTONE.get().defaultBlockState(), Blocks.END_STONE.defaultBlockState());
 				registerSurfaceRules(new ResourceLocation("unusualend:warped_reef"), noiseGeneratorSettings, Blocks.END_STONE.defaultBlockState(), Blocks.END_STONE.defaultBlockState());
 			}
 		}

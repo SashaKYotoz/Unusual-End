@@ -1,0 +1,45 @@
+{
+  "type": "unusualend:warped_patchs",
+  "config": {
+    "tries": 30,
+    "y_spread": 1,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "unusualend:infested_end_stone"
+            }
+          }
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:end_stone"
+              },
+              {
+                "type": "minecraft:not",
+                "predicate": {
+                  "type": "minecraft:solid",
+                  "offset": [
+                    0,
+                    1,
+                    0
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

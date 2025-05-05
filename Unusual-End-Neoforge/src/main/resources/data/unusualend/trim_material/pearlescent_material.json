@@ -1,0 +1,9 @@
+{
+  "asset_name": "pearlescent_material",
+  "description": {
+    "color": "#AC43B9",
+    "translate": "trim_material.unusualend.pearlescent_material"
+  },
+  "ingredient": "unusualend:pearlescent_ingot",
+  "item_model_index": 0.5
+}

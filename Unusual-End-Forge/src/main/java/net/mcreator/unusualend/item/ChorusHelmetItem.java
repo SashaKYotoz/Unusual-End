@@ -99,9 +99,9 @@ public abstract class ChorusHelmetItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
-			list.add(Component.literal("\u00A77When Hurt:"));
-			list.add(Component.literal("\u00A79Chance of being teleported"));
-			list.add(Component.literal("\u00A78Sneak to not teleport"));
+			list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString()));
+			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.chorus_helmet_1").getString()));
+			list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.chorus_helmet_2").getString()));
 		}
 
 		@Override

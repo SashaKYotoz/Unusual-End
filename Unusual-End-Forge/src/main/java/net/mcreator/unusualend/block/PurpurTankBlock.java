@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.block;
 
 import org.checkerframework.checker.units.qual.s;
@@ -50,7 +51,7 @@ public class PurpurTankBlock extends Block implements EntityBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Extra-size Barrel"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.purpur_tank").getString()));
 	}
 
 	@Override

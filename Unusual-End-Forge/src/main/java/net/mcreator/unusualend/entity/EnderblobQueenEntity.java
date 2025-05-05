@@ -33,7 +33,6 @@ import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.procedures.EnderblobQueenOnEntityTickUpdateProcedure;
@@ -52,8 +51,6 @@ public class EnderblobQueenEntity extends Monster {
 		setMaxUpStep(1f);
 		xpReward = 5000;
 		setNoAi(false);
-		setCustomName(Component.literal("WIP"));
-		setCustomNameVisible(true);
 		setPersistenceRequired();
 	}
 

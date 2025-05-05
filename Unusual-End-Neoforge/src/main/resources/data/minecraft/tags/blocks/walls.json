@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:polished_raw_purpur_brick_wall",
+    "unusualend:raw_purpur_wall",
+    "unusualend:gneiss_brick_wall",
+    "unusualend:gloopstone_brick_wall",
+    "unusualend:warped_stone_brick_wall",
+    "unusualend:enderblob_moult_wall"
+  ]
+}

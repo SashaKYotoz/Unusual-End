@@ -1,0 +1,34 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:bluk_au_chocolat"
+    },
+    "title": {
+      "translate": "advancements.eat_chocolate_bluk.title"
+    },
+    "description": {
+      "translate": "advancements.eat_chocolate_bluk.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "criteria": {
+    "eat_chocolate_bluk_0": {
+      "trigger": "minecraft:consume_item",
+      "conditions": {
+        "item": {
+          "items": [
+            "unusualend:bluk_au_chocolat"
+          ]
+        }
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50,
+    "function": "unusualend:bluk_au_chocolat_function"
+  },
+  "parent": "unusualend:fish_in_warped_reef"
+}

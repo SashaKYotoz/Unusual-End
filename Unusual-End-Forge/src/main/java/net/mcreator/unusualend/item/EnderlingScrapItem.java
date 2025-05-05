@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraftforge.registries.ForgeRegistries;
@@ -77,8 +78,8 @@ public abstract class EnderlingScrapItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
-			list.add(Component.literal("\u00A77When Sprinting:"));
-			list.add(Component.literal("\u00A79Spectral Stride (0:01)"));
+			list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_sprint").getString()));
+			list.add(Component.literal("\u00A79" + Component.translatable("effect.unusualend.spectral_stride").getString() + " (0:01)"));
 		}
 
 		@Override

@@ -1,0 +1,243 @@
+{
+  "type": "unusualend:highland_plants",
+  "config": {
+    "features": [
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 6,
+            "xz_spread": 16,
+            "y_spread": 4,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:chorus_fungus"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      },
+                      {
+                        "type": "minecraft:solid",
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 80,
+            "xz_spread": 12,
+            "y_spread": 2,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:endstone_sprouts"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": [
+                          "unusualend:infested_end_stone",
+                          "minecraft:end_stone"
+                        ],
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 25,
+            "xz_spread": 9,
+            "y_spread": 2,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:chorus_roots"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      },
+                      {
+                        "type": "minecraft:solid",
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 20,
+            "xz_spread": 16,
+            "y_spread": 2,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:purpur_grass"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:end_stone",
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "minecraft:random_patch",
+          "config": {
+            "tries": 10,
+            "xz_spread": 16,
+            "y_spread": 2,
+            "feature": {
+              "feature": {
+                "type": "minecraft:simple_block",
+                "config": {
+                  "to_place": {
+                    "type": "minecraft:simple_state_provider",
+                    "state": {
+                      "Name": "unusualend:flowering_purpur_grass"
+                    }
+                  }
+                }
+              },
+              "placement": [
+                {
+                  "type": "minecraft:block_predicate_filter",
+                  "predicate": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      },
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:end_stone",
+                        "offset": [
+                          0,
+                          -1,
+                          0
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "placement": []
+      }
+    ]
+  }
+}

@@ -13,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.network.chat.Component;
 
 import net.mcreator.unusualend.procedures.WanderingStewPlayerFinishesUsingItemProcedure;
+import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
 
 import java.util.List;
 
@@ -24,10 +25,13 @@ public class WanderingStewItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When in another dimension:"));
-		list.add(Component.literal("\u00A79Teleports to the Overworld"));
-		list.add(Component.literal("\u00A77When in the Overworld:"));
-		list.add(Component.literal("\u00A79Invisibility (10:00)"));
+		double minute = (ConfigurationFileConfiguration.STEW_TIME.get() / 60);
+		double seconds = (ConfigurationFileConfiguration.STEW_TIME.get() - (Math.floor(minute) * 60));
+		String time = new java.text.DecimalFormat("00").format(minute) + ":" + new java.text.DecimalFormat("00").format(seconds);
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.another_dim").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.tp_overworld").getString()));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.in_overworld").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.invisibility").getString() + " (" + time + ")"));
 	}
 
 	@Override

@@ -1,0 +1,10 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "small_end_islands",
+    "end_barrens",
+    "end_highlands"
+  ],
+  "features": "unusualend:chorus_fungus",
+  "step": "vegetal_decoration"
+}

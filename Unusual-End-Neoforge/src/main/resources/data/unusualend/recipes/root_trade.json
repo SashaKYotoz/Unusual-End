@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "tag": "unusualend:warpable_root"
+    }
+  ],
+  "output": {
+    "item": "minecraft:warped_roots",
+    "count": 1
+  }
+}

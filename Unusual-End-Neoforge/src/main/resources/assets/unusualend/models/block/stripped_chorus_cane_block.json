@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "unusualend:block/stripped_chorus_cane_block_top",
+    "top": "unusualend:block/stripped_chorus_cane_block_top",
+    "side": "unusualend:block/stripped_chorus_cane_block_side",
+    "overlay": "unusualend:block/stripped_chorus_cane_block_side",
+    "particle": "unusualend:block/chorus_nest_fence"
+  },
+  "render_type": "solid"
+}

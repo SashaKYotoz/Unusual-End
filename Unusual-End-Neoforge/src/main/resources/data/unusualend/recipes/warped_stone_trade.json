@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "unusualend:warped_end_stone"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_stone",
+    "count": 1
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "unusualend:block/citrine_pillar_top",
+    "top": "unusualend:block/citrine_pillar_top",
+    "side": "unusualend:block/citrine_pillar",
+    "overlay": "unusualend:block/citrine_pillar",
+    "particle": "unusualend:block/citrine_pillar_top"
+  },
+  "render_type": "solid"
+}

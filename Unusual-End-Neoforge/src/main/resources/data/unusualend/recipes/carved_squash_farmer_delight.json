@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "unusualend:carved_warped_squash"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "unusualend:warped_squash_wedge"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  },
+  "conditions": [
+    {
+      "modid": "farmersdelight",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

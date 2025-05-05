@@ -9,15 +9,17 @@ public class FireflyIsHurtProcedure {
 			return;
 		if ((new Object() {
 			public boolean getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getBoolean("Sitting");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getBoolean("Sitting");
 			}
 		}.getValue()) == true) {
-			CompoundTag dataIndex1 = new CompoundTag();
-			entity.saveWithoutId(dataIndex1);
-			dataIndex1.putBoolean("Sitting", false);
-			entity.load(dataIndex1);
+			{
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				dataIndex.putBoolean("Sitting", false);
+				entity.load(dataIndex);
+			}
 		}
 	}
 }

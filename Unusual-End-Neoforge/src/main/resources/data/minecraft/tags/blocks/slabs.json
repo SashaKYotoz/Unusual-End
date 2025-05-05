@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:enderblob_moult_brick_slab",
+    "unusualend:shiny_crystal_tiles_slab",
+    "unusualend:warped_stone_tiles_slab",
+    "unusualend:warped_stone_bricks_slab",
+    "unusualend:polished_warped_stone_slab",
+    "unusualend:gloopslate_bricks_slab",
+    "unusualend:polished_gloopslate_slab",
+    "unusualend:gloopstone_brick_slab",
+    "unusualend:polished_gloopstone_slab",
+    "unusualend:gneiss_brick_slab",
+    "unusualend:polished_gneiss_slab",
+    "unusualend:chorus_nest_mosaic_slab",
+    "unusualend:polished_purpur_brick_slab",
+    "unusualend:raw_purpur_block_slab",
+    "unusualend:polished_purpur_tiles_slab",
+    "unusualend:stripped_chorus_nest_slab",
+    "unusualend:chorus_nest_slab",
+    "unusualend:polished_purpur_slab"
+  ]
+}

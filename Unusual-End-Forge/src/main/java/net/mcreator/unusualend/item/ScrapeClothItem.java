@@ -23,8 +23,8 @@ public class ScrapeClothItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A79Invisibility II (1:00)"));
-		list.add(Component.literal("\u00A79Spectral Stride (1:00)"));
+		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.invisibility").getString() + " II (1:00)"));
+		list.add(Component.literal("\u00A79" + Component.translatable("effect.unusualend.spectral_stride").getString() + " (1:00)"));
 	}
 
 	@Override

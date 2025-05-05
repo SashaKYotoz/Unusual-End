@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "unusualend:block/warped_squash_bottom",
+    "top": "unusualend:block/warped_squash_top",
+    "side": "unusualend:block/warped_squash_side",
+    "overlay": "unusualend:block/warped_squash_side",
+    "particle": "unusualend:block/warped_squash_bottom"
+  },
+  "render_type": "solid"
+}

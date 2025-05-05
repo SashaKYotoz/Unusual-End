@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "tag": "unusualend:chorus_juice_material"
+    },
+    {
+      "tag": "unusualend:chorus_juice_material"
+    },
+    {
+      "tag": "unusualend:chorus_juice_material"
+    }
+  ],
+  "result": {
+    "item": "unusualend:chorus_juice",
+    "count": 1
+  }
+}

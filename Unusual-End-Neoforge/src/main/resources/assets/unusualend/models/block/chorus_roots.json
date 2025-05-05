@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/chorus_roots",
+    "particle": "unusualend:block/chorus_roots"
+  },
+  "render_type": "cutout"
+}

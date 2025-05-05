@@ -1,0 +1,33 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:pearlescent_infuser"
+    },
+    "title": {
+      "translate": "advancements.use_pearlescent_buff.title"
+    },
+    "description": {
+      "translate": "advancements.use_pearlescent_buff.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "use_pearlescent_buff": {
+      "conditions": {
+        "effects": {
+          "minecraft:health_boost": {},
+          "unusualend:serenity": {},
+          "unusualend:swift_strikes": {}
+        }
+      },
+      "trigger": "minecraft:effects_changed"
+    }
+  },
+  "rewards": {
+    "experience": 100
+  },
+  "parent": "unusualend:find_all_gems"
+}

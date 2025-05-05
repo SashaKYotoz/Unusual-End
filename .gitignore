@@ -18,7 +18,36 @@
 *.zip
 *.tar.gz
 *.rar
+*.iml
+*.ipr
+*.iws
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Project exclude paths
+Unusual-End-Forge/.gradle/
+Unusual-End-Forge/build/
+Unusual-End-Forge/.idea/
+Unusual-End-Forge/out/
+Unusual-End-Forge/classes/
+Unusual-End-Forge/run/
+Unusual-End-Forge/run-data/
+Unusual-End-Forge/src/generated/resources/.cache/
+Unusual-End-Fabric/.gradle/
+Unusual-End-Fabric/build/
+Unusual-End-Fabric/.idea/
+Unusual-End-Fabric/out/
+Unusual-End-Fabric/classes/
+Unusual-End-Fabric/run/
+Unusual-End-Fabric/run-data/
+Unusual-End-Fabric/src/generated/resources/.cache/
+Unusual-End-Neoforge/.gradle/
+Unusual-End-Neoforge/build/
+Unusual-End-Neoforge/.idea/
+Unusual-End-Neoforge/out/
+Unusual-End-Neoforge/classes/
+Unusual-End-Neoforge/run/
+Unusual-End-Neoforge/run-data/
+Unusual-End-Neoforge/src/generated/resources/.cache/

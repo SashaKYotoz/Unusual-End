@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  a",
+    "aba",
+    "a a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:bolok_scale"
+    },
+    "b": {
+      "item": "unusualend:warped_moss"
+    }
+  },
+  "result": {
+    "item": "unusualend:scale_horse_armor",
+    "count": 1
+  }
+}

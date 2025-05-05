@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "tag": "neoforge:chiseled_end_stone"
+    }
+  ],
+  "output": {
+    "item": "unusualend:chiseled_polished_warped_stone",
+    "count": 1
+  }
+}

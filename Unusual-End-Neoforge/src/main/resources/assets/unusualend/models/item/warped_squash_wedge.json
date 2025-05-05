@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusualend:item/warped_squash_wedge"
+  }
+}

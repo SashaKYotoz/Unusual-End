@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:crystallization",
+  "providers": [
+    {
+      "item": "unusualend:leeching_wand"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

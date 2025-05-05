@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "unusualend:blocks/gneiss_brick_wall",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unusualend:gneiss_brick_wall"
+        }
+      ]
+    }
+  ]
+}

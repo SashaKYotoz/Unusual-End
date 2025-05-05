@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.block;
 
 import net.minecraftforge.network.NetworkHooks;
@@ -47,9 +48,9 @@ public class BuildingInhibitorBlock extends Block implements EntityBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78Requires Dragon's Breath"));
-		list.add(Component.literal("\u00A77When a player is nearby :"));
-		list.add(Component.literal("\u00A7cDisruption (0:05)"));
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.need_breath").getString()));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_nearby").getString()));
+		list.add(Component.literal("\u00A7c" + Component.translatable("effect.unusualend.disruption").getString() + " (0:05)"));
 	}
 
 	@Override

@@ -1,0 +1,31 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:pearlescent_block",
+    "unusualend:spectral_block",
+    "unusualend:phantom_membrane_block",
+    "unusualend:fading_block",
+    "unusualend:raw_purpur_block",
+    "unusualend:raw_purpur_block_stairs",
+    "unusualend:raw_purpur_block_slab",
+    "unusualend:raw_purpur_wall",
+    "unusualend:polished_purpur",
+    "unusualend:polished_purpur_stairs",
+    "unusualend:polished_purpur_slab",
+    "unusualend:polished_purpur_tiles",
+    "unusualend:polished_purpur_tiles_stairs",
+    "unusualend:polished_purpur_tiles_slab",
+    "unusualend:gloopslate",
+    "unusualend:gloopslate_bricks",
+    "unusualend:gloopslate_bricks_slab",
+    "unusualend:gloopslate_bricks_stairs",
+    "unusualend:polished_gloopslate",
+    "unusualend:polished_gloopslate_slab",
+    "unusualend:polished_gloopslate_stairs",
+    "unusualend:warped_end_stone",
+    "unusualend:chorus_fungus",
+    "unusualend:endstone_sprouts",
+    "unusualend:purpur_grass",
+    "unusualend:flowering_purpur_grass"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "block/slab",
+  "textures": {
+    "bottom": "unusualend:block/chorus_nest_planks",
+    "top": "unusualend:block/chorus_nest_planks",
+    "side": "unusualend:block/chorus_nest_planks"
+  },
+  "render_type": "solid"
+}

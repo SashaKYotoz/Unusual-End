@@ -1,0 +1,63 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:leeching_wand"
+    },
+    "title": {
+      "translate": "advancements.use_enchanted_leeching_wand.title"
+    },
+    "description": {
+      "translate": "advancements.use_enchanted_leeching_wand.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "benevolence": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:leeching_wand"
+            ],
+            "enchantments": [
+              {
+                "enchantment": "unusualend:benevolence"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "bonding": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:leeching_wand"
+            ],
+            "enchantments": [
+              {
+                "enchantment": "unusualend:bonding"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "benevolence",
+      "bonding"
+    ]
+  ],
+  "rewards": {
+    "experience": 20
+  },
+  "parent": "unusualend:shoot_enderbulb"
+}

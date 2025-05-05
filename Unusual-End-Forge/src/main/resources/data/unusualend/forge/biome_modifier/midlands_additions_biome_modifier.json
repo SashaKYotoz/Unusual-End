@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "unusualend:gloopstone_midlands",
+  "features": "unusualend:midlands_additions",
+  "step": "vegetal_decoration"
+}

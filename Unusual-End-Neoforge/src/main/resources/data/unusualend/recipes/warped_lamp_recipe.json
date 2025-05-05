@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "bbb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_warped_stone"
+    },
+    "b": {
+      "item": "unusualend:warped_berries"
+    }
+  },
+  "result": {
+    "item": "unusualend:warped_lamp",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 4,
+  "ingredient": {
+    "item": "unusualend:enderblob_moult_block"
+  },
+  "result": "unusualend:enderblob_moult_bricks"
+}

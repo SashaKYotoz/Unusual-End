@@ -103,8 +103,8 @@ public abstract class SpiritMaliceItem extends ArmorItem {
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
 			list.add(Component.literal("\u00A77Malice"));
-			list.add(Component.literal("\u00A79Pacifies Endermen"));
-			list.add(Component.literal("\u00A79and Undead Enderlings"));
+			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.mask_1").getString()));
+			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.mask_2").getString()));
 		}
 
 		@Override

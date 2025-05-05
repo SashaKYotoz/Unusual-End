@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "ba"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:endstone_tiles"
+    },
+    "b": {
+      "item": "unusualend:enderling_scrap"
+    }
+  },
+  "result": {
+    "item": "unusualend:fading_block",
+    "count": 2
+  }
+}

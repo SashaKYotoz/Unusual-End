@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "unusualend:gloopstone_lands",
+    "unusualend:gloopstone_midlands"
+  ],
+  "features": "unusualend:gloopstone_isles",
+  "step": "fluid_springs"
+}

@@ -1,10 +1,12 @@
 {
-  "parent": "block/grass_block",
+  "parent": "block/cube",
   "textures": {
-    "bottom": "unusualend:block/citrine_pillar_top",
-    "top": "unusualend:block/citrine_pillar_top",
-    "side": "unusualend:block/citrine_pillar",
-    "overlay": "unusualend:block/citrine_pillar",
+    "down": "unusualend:block/citrine_pillar_top",
+    "up": "unusualend:block/citrine_pillar_top",
+    "north": "unusualend:block/citrine_pillar",
+    "east": "unusualend:block/citrine_pillar",
+    "south": "unusualend:block/citrine_pillar",
+    "west": "unusualend:block/citrine_pillar",
     "particle": "unusualend:block/citrine_pillar_top"
   },
   "render_type": "solid"

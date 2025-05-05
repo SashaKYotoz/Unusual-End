@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ab",
+    "bc"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:golem_orb"
+    },
+    "b": {
+      "item": "unusualend:citrine_chunk"
+    },
+    "c": {
+      "item": "minecraft:shulker_shell"
+    }
+  },
+  "result": {
+    "item": "unusualend:shulker_orb",
+    "count": 1
+  }
+}

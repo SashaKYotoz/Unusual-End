@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:polished_gneiss"
+    }
+  },
+  "result": {
+    "item": "unusualend:polished_gneiss_slab",
+    "count": 6
+  }
+}

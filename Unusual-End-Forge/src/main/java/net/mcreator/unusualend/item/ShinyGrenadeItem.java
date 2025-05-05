@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.block.state.BlockState;
@@ -45,9 +46,8 @@ public class ShinyGrenadeItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Used:"));
-		list.add(Component.literal("\u00A79Mostly efficient against monsters"));
-		list.add(Component.literal("\u00A79+10 Arthropod and Undead Damage"));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.monster_efficient").getString()));
+		list.add(Component.literal("\u00A79+10 " + Component.translatable("lore.unusualend.charge_damages").getString()));
 	}
 
 	@Override

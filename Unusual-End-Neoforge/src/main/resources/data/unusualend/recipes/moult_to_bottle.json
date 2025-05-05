@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a a",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:enderblob_moult"
+    }
+  },
+  "result": {
+    "item": "minecraft:glass_bottle",
+    "count": 1
+  }
+}

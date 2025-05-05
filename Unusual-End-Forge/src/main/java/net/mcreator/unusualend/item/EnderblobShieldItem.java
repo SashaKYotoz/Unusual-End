@@ -26,8 +26,8 @@ public class EnderblobShieldItem extends ShieldItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Blocking:"));
-		list.add(Component.literal("\u00A79Push away opponents"));
-		list.add(Component.literal("\u00A79trying to hurt you"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_block").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.blob_shield_1").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.blob_shield_2").getString()));
 	}
 }

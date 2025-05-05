@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "a a",
+    "b b"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:enderling_scrap"
+    },
+    "b": {
+      "item": "minecraft:phantom_membrane"
+    }
+  },
+  "result": {
+    "item": "unusualend:spectral_leggings",
+    "count": 1
+  }
+}

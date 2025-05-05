@@ -1,0 +1,21 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "unusualend:gloopstone"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:end_blob",
+      "chance": 0.2
+    }
+  ],
+  "processingTime": 250,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

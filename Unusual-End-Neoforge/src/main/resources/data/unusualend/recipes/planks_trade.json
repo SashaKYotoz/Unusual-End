@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "tag": "minecraft:planks"
+    }
+  ],
+  "output": {
+    "item": "minecraft:warped_planks",
+    "count": 1
+  }
+}

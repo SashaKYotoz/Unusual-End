@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:spectral_block",
+    "unusualend:phantom_membrane_block",
+    "unusualend:enderling_scrap",
+    "unusualend:spectral_leggings",
+    "unusualend:floating_pouch"
+  ]
+}

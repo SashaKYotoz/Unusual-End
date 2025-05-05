@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/dragon_lamp_on",
+    "particle": "unusualend:block/dragon_lamp_on"
+  },
+  "render_type": "solid"
+}

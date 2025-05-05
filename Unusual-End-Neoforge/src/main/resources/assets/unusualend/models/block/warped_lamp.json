@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/warped_lamp",
+    "particle": "unusualend:block/warped_lamp"
+  },
+  "render_type": "solid"
+}

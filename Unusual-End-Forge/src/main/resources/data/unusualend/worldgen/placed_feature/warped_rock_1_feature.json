@@ -30,8 +30,68 @@
       "type": "environment_scan",
       "direction_of_search": "down",
       "target_condition": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                2,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                -2,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                -2
+              ]
+            }
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                -3,
+                0
+              ]
+            }
+          }
+        ]
       },
       "max_steps": 5
     },
@@ -39,10 +99,73 @@
       "type": "environment_scan",
       "direction_of_search": "up",
       "target_condition": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                2,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                2
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                -2,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                0,
+                -2
+              ]
+            }
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                -3,
+                0
+              ]
+            }
+          }
+        ]
       },
       "max_steps": 10
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

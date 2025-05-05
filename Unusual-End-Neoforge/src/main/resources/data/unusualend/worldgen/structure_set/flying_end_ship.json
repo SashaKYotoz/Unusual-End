@@ -1,0 +1,18 @@
+{
+  "structures": [
+    {
+      "structure": "unusualend:flying_end_ship",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "exclusion_zone": {
+      "other_set": " unusualend:wanderer_island",
+      "chunk_count": 9
+    },
+    "spacing": 40,
+    "separation": 35,
+    "salt": 794052436
+  }
+}

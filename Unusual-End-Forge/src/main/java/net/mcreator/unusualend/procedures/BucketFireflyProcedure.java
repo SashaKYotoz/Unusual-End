@@ -28,9 +28,9 @@ public class BucketFireflyProcedure {
 			entity_bucket = new ItemStack(UnusualendModItems.ENDERFIREFLY_BUCKET.get());
 			if (!(new Object() {
 				public String getValue() {
-					CompoundTag dataIndex4 = new CompoundTag();
-					entity.saveWithoutId(dataIndex4);
-					return dataIndex4.getString("CustomName");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("CustomName");
 				}
 			}.getValue()).isEmpty()) {
 				entity_bucket.setHoverName(Component.literal((entity.getDisplayName().getString())));
@@ -113,24 +113,28 @@ public class BucketFireflyProcedure {
 				entity.setDeltaMovement(new Vec3(0, 0, 0));
 				if ((new Object() {
 					public boolean getValue() {
-						CompoundTag dataIndex47 = new CompoundTag();
-						entity.saveWithoutId(dataIndex47);
-						return dataIndex47.getBoolean("Sitting");
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						return dataIndex.getBoolean("Sitting");
 					}
 				}.getValue()) == true) {
 					if (sourceentity instanceof Player _player && !_player.level().isClientSide())
 						_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + Component.translatable("text.unusualend.follow").getString())), true);
-					CompoundTag dataIndex51 = new CompoundTag();
-					entity.saveWithoutId(dataIndex51);
-					dataIndex51.putBoolean("Sitting", false);
-					entity.load(dataIndex51);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.putBoolean("Sitting", false);
+						entity.load(dataIndex);
+					}
 				} else {
 					if (sourceentity instanceof Player _player && !_player.level().isClientSide())
 						_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + Component.translatable("text.unusualend.sit").getString())), true);
-					CompoundTag dataIndex55 = new CompoundTag();
-					entity.saveWithoutId(dataIndex55);
-					dataIndex55.putBoolean("Sitting", true);
-					entity.load(dataIndex55);
+					{
+						CompoundTag dataIndex = new CompoundTag();
+						entity.saveWithoutId(dataIndex);
+						dataIndex.putBoolean("Sitting", true);
+						entity.load(dataIndex);
+					}
 				}
 			}
 		}

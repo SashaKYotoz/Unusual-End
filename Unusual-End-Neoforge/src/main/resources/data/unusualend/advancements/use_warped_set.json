@@ -1,0 +1,59 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:warped_chestplate"
+    },
+    "title": {
+      "translate": "advancements.use_warped_set.title"
+    },
+    "description": {
+      "translate": "advancements.use_warped_set.descr"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "boots": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:warped_boots"
+            ]
+          }
+        ]
+      }
+    },
+    "chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:warped_chestplate"
+            ]
+          }
+        ]
+      }
+    },
+    "spear": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "unusualend:warped_spear"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "experience": 50
+  },
+  "parent": "unusualend:trade_with_bolok"
+}

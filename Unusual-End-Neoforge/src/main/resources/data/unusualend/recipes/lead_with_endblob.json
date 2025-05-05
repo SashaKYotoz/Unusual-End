@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa ",
+    "ab ",
+    "  a"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:string"
+    },
+    "b": {
+      "item": "unusualend:end_blob"
+    }
+  },
+  "result": {
+    "item": "minecraft:lead",
+    "count": 2
+  }
+}

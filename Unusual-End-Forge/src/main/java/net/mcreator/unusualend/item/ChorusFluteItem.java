@@ -38,7 +38,7 @@ public class ChorusFluteItem extends Item {
 		super.appendHoverText(itemstack, world, list, flag);
 		track = (String) ((itemstack).getOrCreateTag().getString("track"));
 		if ((itemstack.getOrCreateTag().getString("track")).equals("")) {
-			itemstack.getOrCreateTag().putString("track", "All Tracks");
+			itemstack.getOrCreateTag().putString("track", Component.translatable("text.unusualend.all_tracks").getString());
 		}
 		list.add(Component.literal("\u00A77" + ((track))));
 	}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_nugget"
+    },
+    "b": {
+      "item": "minecraft:iron_ingot"
+    },
+    "c": {
+      "item": "unusualend:enderbulb_lens"
+    },
+    "d": {
+      "item": "unusualend:shiny_crystal"
+    }
+  },
+  "result": {
+    "item": "unusualend:healing_lantern",
+    "count": 1
+  }
+}

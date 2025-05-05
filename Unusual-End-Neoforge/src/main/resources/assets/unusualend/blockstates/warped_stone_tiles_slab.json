@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "unusualend:block/warped_stone_tiles_slab"
+    },
+    "type=top": {
+      "model": "unusualend:block/warped_stone_tiles_slab_top"
+    },
+    "type=double": {
+      "model": "unusualend:block/warped_stone_tiles_slab_full"
+    }
+  }
+}

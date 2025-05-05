@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "unusualend:blocks/polished_purpur_tiles_lantern",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "unusualend:polished_purpur_tiles_lantern"
+        }
+      ]
+    }
+  ]
+}

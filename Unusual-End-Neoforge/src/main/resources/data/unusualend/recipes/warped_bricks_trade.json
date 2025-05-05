@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:end_stone_bricks"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_stone_bricks",
+    "count": 1
+  }
+}

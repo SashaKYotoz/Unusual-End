@@ -1,0 +1,9 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": [
+    "the_end",
+    "end_midlands"
+  ],
+  "features": "unusualend:infested_endstone",
+  "step": "vegetal_decoration"
+}

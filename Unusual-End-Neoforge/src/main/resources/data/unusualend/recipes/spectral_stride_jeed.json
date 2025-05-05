@@ -1,0 +1,18 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:spectral_stride",
+  "providers": [
+    {
+      "item": "unusualend:spectral_leggings"
+    },
+    {
+      "item": "unusualend:spectral_cloth"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

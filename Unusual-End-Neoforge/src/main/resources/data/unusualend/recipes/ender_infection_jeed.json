@@ -1,0 +1,18 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "unusualend:ender_infection",
+  "providers": [
+    {
+      "item": "minecraft:endermite_spawn_egg"
+    },
+    {
+      "item": "unusualend:ender_blob_spawn_egg"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

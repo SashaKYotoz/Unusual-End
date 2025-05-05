@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/pedestral_central",
+  "textures": {
+    "all": "unusualend:block/pedestral_filled",
+    "particle": "unusualend:block/gloopslate",
+    "2": "unusualend:block/pedestral_central"
+  },
+  "render_type": "solid"
+}

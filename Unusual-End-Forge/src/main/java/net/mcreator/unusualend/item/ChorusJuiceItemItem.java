@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
@@ -30,7 +31,7 @@ public class ChorusJuiceItemItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A79Clear Ender Infection"));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.clear_infection").getString()));
 	}
 
 	@Override

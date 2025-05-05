@@ -1,0 +1,19 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "unusualend:custom/warped_anchor",
+    "textures": {
+      "2": "unusualend:block/warped_anchor"
+    }
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "item/generated",
+      "textures": {
+        "layer0": "unusualend:item/warped_anchor"
+      },
+      "gui_light": "front"
+    }
+  }
+}

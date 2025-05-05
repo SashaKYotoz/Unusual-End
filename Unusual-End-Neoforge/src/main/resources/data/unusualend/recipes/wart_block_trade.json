@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:nether_wart_block"
+    }
+  ],
+  "output": {
+    "item": "minecraft:warped_wart_block",
+    "count": 1
+  }
+}

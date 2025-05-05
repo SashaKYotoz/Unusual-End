@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "unusualend:block/polished_purpur_slab"
+    },
+    "type=double": {
+      "model": "unusualend:block/polished_purpur"
+    },
+    "type=top": {
+      "model": "unusualend:block/polished_purpur_slab_top"
+    }
+  }
+}

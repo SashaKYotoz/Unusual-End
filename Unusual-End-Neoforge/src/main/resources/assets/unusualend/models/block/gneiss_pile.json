@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/gneiss_pile",
+    "particle": "unusualend:block/gneiss_pile"
+  },
+  "render_type": "cutout_mipped"
+}

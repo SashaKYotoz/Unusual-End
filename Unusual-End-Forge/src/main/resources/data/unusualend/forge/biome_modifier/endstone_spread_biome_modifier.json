@@ -2,5 +2,5 @@
   "type": "forge:add_features",
   "biomes": "unusualend:gloopstone_midlands",
   "features": "unusualend:endstone_spread",
-  "step": "underground_ores"
+  "step": "fluid_springs"
 }

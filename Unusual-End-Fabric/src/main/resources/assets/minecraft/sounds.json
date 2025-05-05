@@ -1,0 +1,15 @@
+{  
+"music.end": {
+    "replace": false,
+    "sounds": [
+      {
+        "name": "unusualend:moog-in-space-2",
+        "stream": true
+      },
+      {
+        "name": "unusualend:the_great_abyss",
+        "stream": true
+      }
+    ]
+  }
+}

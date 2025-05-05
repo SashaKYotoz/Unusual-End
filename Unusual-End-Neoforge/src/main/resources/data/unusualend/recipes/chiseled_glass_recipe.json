@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa",
+    "aa"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:glass/colorless"
+    }
+  },
+  "result": {
+    "item": "unusualend:chiseled_glass",
+    "count": 4
+  }
+}

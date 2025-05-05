@@ -1,0 +1,68 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "unusualend:item/void_tracker_1"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 1
+      },
+      "model": "unusualend:item/void_tracker_0"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 2
+      },
+      "model": "unusualend:item/void_tracker_1"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 3
+      },
+      "model": "unusualend:item/void_tracker_2"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 4
+      },
+      "model": "unusualend:item/void_tracker_3"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 5
+      },
+      "model": "unusualend:item/void_tracker_4"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 6
+      },
+      "model": "unusualend:item/void_tracker_5"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 7
+      },
+      "model": "unusualend:item/void_tracker_6"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 8
+      },
+      "model": "unusualend:item/void_tracker_7"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 9
+      },
+      "model": "unusualend:item/void_tracker_8"
+    },
+    {
+      "predicate": {
+        "unusualend:void_tracker_void_state": 10
+      },
+      "model": "unusualend:item/void_tracker_9"
+    }
+  ]
+}

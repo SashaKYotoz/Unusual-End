@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:moss_carpet"
+    }
+  ],
+  "output": {
+    "item": "unusualend:warped_moss",
+    "count": 1
+  }
+}

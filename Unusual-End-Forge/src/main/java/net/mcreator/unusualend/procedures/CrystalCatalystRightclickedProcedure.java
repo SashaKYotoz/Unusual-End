@@ -98,6 +98,8 @@ public class CrystalCatalystRightclickedProcedure {
 						if (Math.random() < 0.3) {
 							if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 								_entity.addEffect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 400, 0, true, false));
+							if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
+								_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 0, false, false));
 						} else if (Math.random() < 0.3) {
 							if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 								_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.SWIFT_STRIKES.get(), 400, 0, true, false));

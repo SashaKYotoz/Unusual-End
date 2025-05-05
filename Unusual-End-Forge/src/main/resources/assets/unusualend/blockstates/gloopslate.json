@@ -1,7 +1,21 @@
 {
   "variants": {
-    "": {
-      "model": "unusualend:block/gloopslate"
-    }
+    "": [
+      {
+        "model": "unusualend:block/gloopslate"
+      },
+      {
+        "model": "unusualend:block/gloopslate",
+        "y": 90
+      },
+      {
+        "model": "unusualend:block/gloopslate",
+        "y": 180
+      },
+      {
+        "model": "unusualend:block/gloopslate",
+        "y": 270
+      }
+    ]
   }
 }

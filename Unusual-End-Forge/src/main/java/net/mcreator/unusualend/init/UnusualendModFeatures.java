@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.Mod;
 
 import net.minecraft.world.level.levelgen.feature.Feature;
 
-import net.mcreator.unusualend.world.features.WarpedPatchsFeature;
 import net.mcreator.unusualend.world.features.RawPurpurFeatureFeature;
 import net.mcreator.unusualend.world.features.PurpurIsland1FeatureFeature;
 import net.mcreator.unusualend.world.features.InfestedEndstoneFeature;
@@ -25,5 +24,4 @@ public class UnusualendModFeatures {
 	public static final RegistryObject<Feature<?>> HIGHLAND_PLANTS = REGISTRY.register("highland_plants", HighlandPlantsFeature::new);
 	public static final RegistryObject<Feature<?>> INFESTED_ENDSTONE = REGISTRY.register("infested_endstone", InfestedEndstoneFeature::new);
 	public static final RegistryObject<Feature<?>> RAW_PURPUR_FEATURE = REGISTRY.register("raw_purpur_feature", RawPurpurFeatureFeature::new);
-	public static final RegistryObject<Feature<?>> WARPED_PATCHS = REGISTRY.register("warped_patchs", WarpedPatchsFeature::new);
 }

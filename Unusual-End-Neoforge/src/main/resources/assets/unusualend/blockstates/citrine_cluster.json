@@ -1,0 +1,57 @@
+{
+  "variants": {
+    "face=floor,facing=north": {
+      "model": "unusualend:block/citrine_cluster"
+    },
+    "face=floor,facing=east": {
+      "model": "unusualend:block/citrine_cluster",
+      "y": 90
+    },
+    "face=floor,facing=south": {
+      "model": "unusualend:block/citrine_cluster",
+      "y": 180
+    },
+    "face=floor,facing=west": {
+      "model": "unusualend:block/citrine_cluster",
+      "y": 270
+    },
+    "face=wall,facing=north": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 90
+    },
+    "face=wall,facing=east": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 90,
+      "y": 270
+    },
+    "face=ceiling,facing=north": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=east": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 180,
+      "y": 270
+    },
+    "face=ceiling,facing=south": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "unusualend:block/citrine_cluster",
+      "x": 180,
+      "y": 90
+    }
+  }
+}

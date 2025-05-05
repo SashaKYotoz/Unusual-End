@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
@@ -12,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.network.chat.Component;
 
 import net.mcreator.unusualend.procedures.WarpedInfusionPlayerFinishesUsingItemProcedure;
+import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
 
 import java.util.List;
 
@@ -27,8 +29,11 @@ public class WarpedInfusionItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
+		double minute = (ConfigurationFileConfiguration.TENACITY_TIME.get() / 60);
+		double seconds = (ConfigurationFileConfiguration.TENACITY_TIME.get() - (Math.floor(minute) * 60));
+		String time = new java.text.DecimalFormat("00").format(minute) + ":" + new java.text.DecimalFormat("00").format(seconds);
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A79Warped Tenacity +1 (1:00)"));
+		list.add(Component.literal("\u00A79" + Component.translatable("effect.unusualend.warped_tenacity").getString() + " +1 (" + time + ")"));
 	}
 
 	@Override

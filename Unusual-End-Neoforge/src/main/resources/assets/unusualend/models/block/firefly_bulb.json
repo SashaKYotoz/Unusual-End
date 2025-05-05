@@ -1,0 +1,9 @@
+{
+  "parent": "unusualend:custom/firefly_bulb",
+  "textures": {
+    "all": "unusualend:block/firefly_bulb",
+    "particle": "unusualend:block/firefly_bulb_particles",
+    "0": "unusualend:block/firefly_bulb"
+  },
+  "render_type": "translucent"
+}

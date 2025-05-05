@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:firefly_bulb"
+    },
+    "b": {
+      "item": "minecraft:purpur_block"
+    }
+  },
+  "result": {
+    "item": "minecraft:end_rod",
+    "count": 8
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/budding_citrine",
+    "particle": "unusualend:block/budding_citrine"
+  },
+  "render_type": "solid"
+}

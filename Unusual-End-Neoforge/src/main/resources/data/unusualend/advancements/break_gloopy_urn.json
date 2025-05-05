@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:gloopy_urn"
+    },
+    "title": {
+      "translate": "advancements.break_gloopy_urn.title"
+    },
+    "description": {
+      "translate": "advancements.break_gloopy_urn.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "break_gloopy_urn_0": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "parent": "unusualend:find_gloopstone_plains"
+}

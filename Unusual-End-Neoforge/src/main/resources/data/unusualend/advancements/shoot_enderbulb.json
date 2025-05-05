@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "item": "unusualend:enderbulb_lens"
+    },
+    "title": {
+      "translate": "advancements.shoot_enderbulb.title"
+    },
+    "description": {
+      "translate": "advancements.shoot_enderbulb.descr"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "shoot_enderbulb": {
+      "trigger": "minecraft:player_hurt_entity",
+      "conditions": {
+        "damage": {
+          "type": {
+            "tags": [
+              {
+                "id": "minecraft:is_projectile",
+                "expected": true
+              }
+            ],
+            "direct_entity": {
+              "type": "#unusualend:damaging_leeching_charge"
+            }
+          }
+        },
+        "entity": {
+          "type": "unusualend:enderbulb"
+        }
+      }
+    }
+  },
+  "parent": "unusualend:break_gloopy_urn"
+}

@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:gneiss",
+    "unusualend:gneiss_bricks",
+    "unusualend:polished_gneiss",
+    "unusualend:chiseled_gneiss_brick",
+    "unusualend:bolok_scale_block",
+    "unusualend:gneiss_pillar"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:ender_pearl",
+    "unusualend:wandering_pearl",
+    "#forge:ender_pearls"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "block/grass_block",
+  "textures": {
+    "bottom": "minecraft:block/end_stone",
+    "top": "unusualend:block/endstone_nylium_top",
+    "side": "unusualend:block/overgrown_warped_endstone_side",
+    "overlay": "unusualend:block/overgrown_warped_endstone_side",
+    "particle": "minecraft:block/end_stone"
+  },
+  "render_type": "solid"
+}

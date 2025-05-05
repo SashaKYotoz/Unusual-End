@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/dripping_gloopstone",
+    "particle": "unusualend:block/dripping_gloopstone"
+  },
+  "render_type": "cutout"
+}

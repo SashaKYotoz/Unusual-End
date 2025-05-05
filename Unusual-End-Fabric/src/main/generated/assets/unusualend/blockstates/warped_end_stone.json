@@ -1,0 +1,24 @@
+{
+  "variants": {
+    "snowy=false": [
+      {
+        "model": "unusualend:block/warped_end_stone"
+      },
+      {
+        "model": "unusualend:block/warped_end_stone",
+        "y": 90
+      },
+      {
+        "model": "unusualend:block/warped_end_stone",
+        "y": 180
+      },
+      {
+        "model": "unusualend:block/warped_end_stone",
+        "y": 270
+      }
+    ],
+    "snowy=true": {
+      "model": "unusualend:block/warped_end_stone_snow"
+    }
+  }
+}

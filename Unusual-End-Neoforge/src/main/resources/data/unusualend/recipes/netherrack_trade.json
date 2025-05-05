@@ -1,0 +1,12 @@
+{
+  "type": "unusualend:bolok_trading",
+  "ingredients": [
+    {
+      "item": "minecraft:netherrack"
+    }
+  ],
+  "output": {
+    "item": "minecraft:warped_nylium",
+    "count": 1
+  }
+}

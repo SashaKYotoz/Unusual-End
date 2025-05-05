@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/pearlescent_alloy_block",
+    "particle": "unusualend:block/pearlescent_alloy_block"
+  },
+  "render_type": "solid"
+}

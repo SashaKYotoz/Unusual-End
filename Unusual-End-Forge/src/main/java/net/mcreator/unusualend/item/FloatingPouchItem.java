@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
@@ -29,8 +30,8 @@ public class FloatingPouchItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Right-Clicking:"));
-		list.add(Component.literal("\u00A79Propels you upwards"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.floating_pouch_1").getString()));
 	}
 
 	@Override

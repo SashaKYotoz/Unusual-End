@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aaa",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:chiseled_glass"
+    }
+  },
+  "result": {
+    "item": "unusualend:chiseled_glass_pane",
+    "count": 16
+  }
+}

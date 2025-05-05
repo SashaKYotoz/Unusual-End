@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " ab",
+    " aa",
+    "c  "
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:enderbulb_lens"
+    },
+    "b": {
+      "item": "unusualend:citrine_chunk"
+    },
+    "c": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "unusualend:leeching_wand",
+    "count": 1
+  }
+}

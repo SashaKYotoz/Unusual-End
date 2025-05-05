@@ -7,7 +7,7 @@
   ],
   "key": {
     "a": {
-      "item": "minecraft:end_stone"
+      "item": "unusualend:raw_purpur_block"
     },
     "b": {
       "tag": "unusualend:blob_loot"

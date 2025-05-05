@@ -141,7 +141,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	@Override
 	public boolean isValidBonemealTarget(LevelReader worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
 		if (worldIn instanceof LevelAccessor world) {
-			return GloopilonSproutCanBoneMealBeUsedOnThisBlockProcedure.execute(pos.getY());
+			return GloopilonSproutCanBoneMealBeUsedOnThisBlockProcedure.execute(pos.getY(), blockstate);
 		}
 		return false;
 	}

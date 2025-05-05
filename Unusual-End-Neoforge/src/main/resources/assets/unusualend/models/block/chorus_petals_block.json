@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "unusualend:block/chorus_petal_block",
+    "particle": "unusualend:block/chorus_petal_block"
+  },
+  "render_type": "solid"
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:shiny_crystal_block",
+    "unusualend:pearlescent_block",
+    "unusualend:prismalite_block",
+    "unusualend:condensed_citrine_block"
+  ]
+}

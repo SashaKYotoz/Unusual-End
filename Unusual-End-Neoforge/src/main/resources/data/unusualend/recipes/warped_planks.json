@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "planks"
+    },
+    {
+      "tag": "planks"
+    },
+    {
+      "tag": "planks"
+    },
+    {
+      "tag": "planks"
+    },
+    {
+      "item": "unusualend:warped_spores"
+    },
+    {
+      "tag": "planks"
+    },
+    {
+      "tag": "planks"
+    },
+    {
+      "tag": "planks"
+    },
+    {
+      "tag": "planks"
+    }
+  ],
+  "result": {
+    "item": "minecraft:warped_planks",
+    "count": 8
+  }
+}

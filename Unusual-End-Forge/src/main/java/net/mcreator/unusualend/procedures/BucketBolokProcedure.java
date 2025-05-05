@@ -23,9 +23,9 @@ public class BucketBolokProcedure {
 		entity_bucket = new ItemStack(UnusualendModItems.BOLOK_BUCKET.get());
 		if (!(new Object() {
 			public String getValue() {
-				CompoundTag dataIndex0 = new CompoundTag();
-				entity.saveWithoutId(dataIndex0);
-				return dataIndex0.getString("CustomName");
+				CompoundTag dataIndex = new CompoundTag();
+				entity.saveWithoutId(dataIndex);
+				return dataIndex.getString("CustomName");
 			}
 		}.getValue()).isEmpty()) {
 			entity_bucket.setHoverName(Component.literal((entity.getDisplayName().getString())));

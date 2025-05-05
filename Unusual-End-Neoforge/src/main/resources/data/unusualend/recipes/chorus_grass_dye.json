@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "unusualend:purpur_grass"
+    }
+  ],
+  "result": {
+    "item": "minecraft:pink_dye",
+    "count": 1
+  }
+}

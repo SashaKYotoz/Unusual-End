@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "a"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:gloopstone_brick_slab"
+    }
+  },
+  "result": {
+    "item": "unusualend:chiseled_gloopstone_bricks",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "unusualend:chorus_cane_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:stripped_chorus_cane_block"
+    }
+  ],
+  "processingTime": 50,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

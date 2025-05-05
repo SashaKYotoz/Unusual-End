@@ -27,7 +27,8 @@ import net.mcreator.unusualend.init.UnusualendModBlocks;
 
 public class ChorusRootsBlock extends FlowerBlock implements BonemealableBlock {
 	public ChorusRootsBlock() {
-		super(() -> MobEffects.LEVITATION, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.ROOTS).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+		super(() -> MobEffects.LEVITATION, 100,
+				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.ROOTS).instabreak().noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
 	@Override

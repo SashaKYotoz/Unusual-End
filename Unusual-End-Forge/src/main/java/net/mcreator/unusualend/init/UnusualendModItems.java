@@ -91,6 +91,9 @@ import net.mcreator.unusualend.item.EndblobBallItem;
 import net.mcreator.unusualend.item.EndBlobJellyItem;
 import net.mcreator.unusualend.item.DiscFragmentFlyingShipsItem;
 import net.mcreator.unusualend.item.CrystalCatalystItem;
+import net.mcreator.unusualend.item.CreativeSwiftStrikesItem;
+import net.mcreator.unusualend.item.CreativeSerenityItem;
+import net.mcreator.unusualend.item.CreativeHealthBoostItem;
 import net.mcreator.unusualend.item.CookedBolokFinItem;
 import net.mcreator.unusualend.item.CookedBlukItem;
 import net.mcreator.unusualend.item.CitrineItem;
@@ -255,8 +258,8 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> SHINY_SPIREA = block(UnusualendModBlocks.SHINY_SPIREA);
 	public static final RegistryObject<Item> BOUNCY_GLOOPSLATE = block(UnusualendModBlocks.BOUNCY_GLOOPSLATE);
 	public static final RegistryObject<Item> GLOOPSTONE_LANTERN = block(UnusualendModBlocks.GLOOPSTONE_LANTERN);
-	public static final RegistryObject<Item> FLOWER_POT_CHORUS_ROOTS = block(UnusualendModBlocks.FLOWER_POT_CHORUS_ROOTS);
-	public static final RegistryObject<Item> FLOWER_POT_SHINY_SPIREA = block(UnusualendModBlocks.FLOWER_POT_SHINY_SPIREA);
+	public static final RegistryObject<Item> POTTED_CHORUS_ROOTS = block(UnusualendModBlocks.POTTED_CHORUS_ROOTS);
+	public static final RegistryObject<Item> POTTED_SHINY_SPIREA = block(UnusualendModBlocks.POTTED_SHINY_SPIREA);
 	public static final RegistryObject<Item> HEALING_LANTERN = block(UnusualendModBlocks.HEALING_LANTERN);
 	public static final RegistryObject<Item> POLISHED_GLOOPSLATE = block(UnusualendModBlocks.POLISHED_GLOOPSLATE);
 	public static final RegistryObject<Item> GLOOPSLATE_BRICKS = block(UnusualendModBlocks.GLOOPSLATE_BRICKS);
@@ -394,8 +397,8 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> ENDERBLOB_SHIELD = REGISTRY.register("enderblob_shield", () -> new EnderblobShieldItem());
 	public static final RegistryObject<Item> PEARLESCENT_UPGRADE_SMITHING_TEMPLATE = REGISTRY.register("pearlescent_upgrade_smithing_template", () -> new PearlescentUpgradeSmithingTemplateItem());
 	public static final RegistryObject<Item> ANCIENT_SHORTBOW = REGISTRY.register("ancient_shortbow", () -> new AncientShortbowItem());
-	public static final RegistryObject<Item> FLOWER_POT_WARPED_BUSH = block(UnusualendModBlocks.FLOWER_POT_WARPED_BUSH);
-	public static final RegistryObject<Item> FLOWER_POT_CANE = block(UnusualendModBlocks.FLOWER_POT_CANE);
+	public static final RegistryObject<Item> POTTED_WARPED_BUSH = block(UnusualendModBlocks.POTTED_WARPED_BUSH);
+	public static final RegistryObject<Item> POTTED_CHORUS_CANE = block(UnusualendModBlocks.POTTED_CHORUS_CANE);
 	public static final RegistryObject<Item> SPIRIT_SMILE_HELMET = REGISTRY.register("spirit_smile_helmet", () -> new SpiritSmileItem.Helmet());
 	public static final RegistryObject<Item> SPIRIT_MALICE_HELMET = REGISTRY.register("spirit_malice_helmet", () -> new SpiritMaliceItem.Helmet());
 	public static final RegistryObject<Item> SPIRIT_GRIM_HELMET = REGISTRY.register("spirit_grim_helmet", () -> new SpiritGrimItem.Helmet());
@@ -414,6 +417,15 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> GLOOPILON_BULB = block(UnusualendModBlocks.GLOOPILON_BULB);
 	public static final RegistryObject<Item> WARPED_BALLOON = REGISTRY.register("warped_balloon", () -> new WarpedBalloonItem());
 	public static final RegistryObject<Item> CRYSTAL_TORCH = block(UnusualendModBlocks.CRYSTAL_TORCH);
+	public static final RegistryObject<Item> CREATIVE_HEALTH_BOOST = REGISTRY.register("creative_health_boost", () -> new CreativeHealthBoostItem());
+	public static final RegistryObject<Item> CREATIVE_SWIFT_STRIKES = REGISTRY.register("creative_swift_strikes", () -> new CreativeSwiftStrikesItem());
+	public static final RegistryObject<Item> CREATIVE_SERENITY = REGISTRY.register("creative_serenity", () -> new CreativeSerenityItem());
+	public static final RegistryObject<Item> POTTED_CRYSTAL_FLOWER = block(UnusualendModBlocks.POTTED_CRYSTAL_FLOWER);
+	public static final RegistryObject<Item> POTTED_GLOOPY_TENDRILS = block(UnusualendModBlocks.POTTED_GLOOPY_TENDRILS);
+	public static final RegistryObject<Item> POTTED_GLOOPY_BUSH = block(UnusualendModBlocks.POTTED_GLOOPY_BUSH);
+	public static final RegistryObject<Item> POTTED_CHORUS_GRASS = block(UnusualendModBlocks.POTTED_CHORUS_GRASS);
+	public static final RegistryObject<Item> CELESTIAL_FLUID = block(UnusualendModBlocks.CELESTIAL_FLUID);
+	public static final RegistryObject<Item> GLOOPY_ENDSTONE = block(UnusualendModBlocks.GLOOPY_ENDSTONE);
 
 	// Start of user code block custom items
 	// End of user code block custom items

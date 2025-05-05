@@ -34,9 +34,9 @@ public class VoidTotemItemInInventoryTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		if (entity.getY() < -1) {
+		if (entity.getY() < (double) ConfigurationFileConfiguration.VOID_TOTEM_Y.get()) {
 			if ((entity.level().dimension()) == Level.END) {
-				if (!((entity instanceof Player _plrCldRem5 ? _plrCldRem5.getCooldowns().getCooldownPercent(itemstack.getItem(), 0f) * 100 : 0) > 0)) {
+				if (!((entity instanceof Player _plrCldRem6 ? _plrCldRem6.getCooldowns().getCooldownPercent(itemstack.getItem(), 0f) * 100 : 0) > 0)) {
 					if (world.isClientSide()) {
 						if (world.isClientSide())
 							Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualendModItems.VOID_TOTEM.get()));
@@ -47,8 +47,8 @@ public class VoidTotemItemInInventoryTickProcedure {
 						ItemStack _stktoremove = new ItemStack(UnusualendModItems.VOID_TOTEM.get());
 						_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
 					}
-					if (!(entity instanceof ServerPlayer _plr12 && _plr12.level() instanceof ServerLevel
-							&& _plr12.getAdvancements().getOrStartProgress(_plr12.server.getAdvancements().getAdvancement(new ResourceLocation("unusualend:worse_than_death"))).isDone())) {
+					if (!(entity instanceof ServerPlayer _plr13 && _plr13.level() instanceof ServerLevel
+							&& _plr13.getAdvancements().getOrStartProgress(_plr13.server.getAdvancements().getAdvancement(new ResourceLocation("unusualend:worse_than_death"))).isDone())) {
 						if (entity instanceof ServerPlayer _player) {
 							Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("unusualend:worse_than_death"));
 							AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);

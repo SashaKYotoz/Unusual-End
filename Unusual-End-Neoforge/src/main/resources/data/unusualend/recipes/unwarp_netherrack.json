@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:warped_nylium"
+    },
+    {
+      "item": "minecraft:warped_nylium"
+    },
+    {
+      "item": "minecraft:warped_nylium"
+    },
+    {
+      "item": "minecraft:warped_nylium"
+    },
+    {
+      "item": "unusualend:shiny_crystal"
+    },
+    {
+      "item": "minecraft:warped_nylium"
+    },
+    {
+      "item": "minecraft:warped_nylium"
+    },
+    {
+      "item": "minecraft:warped_nylium"
+    },
+    {
+      "item": "minecraft:warped_nylium"
+    }
+  ],
+  "result": {
+    "item": "minecraft:crimson_nylium",
+    "count": 8
+  }
+}

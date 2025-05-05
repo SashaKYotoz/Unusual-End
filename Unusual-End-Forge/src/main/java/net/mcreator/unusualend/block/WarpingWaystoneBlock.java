@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -41,9 +42,9 @@ public class WarpingWaystoneBlock extends Block implements EntityBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Right-Clicking with a Pearl"));
-		list.add(Component.literal("\u00A77while looking at this block :"));
-		list.add(Component.literal("\u00A79Teleports you at this block instead"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.waystone_1").getString()));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.waystone_2").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.waystone_3").getString()));
 	}
 
 	@Override

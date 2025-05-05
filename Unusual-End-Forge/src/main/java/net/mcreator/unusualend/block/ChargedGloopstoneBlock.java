@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.block;
 
 import org.checkerframework.checker.units.qual.s;
@@ -34,8 +35,8 @@ public class ChargedGloopstoneBlock extends Block {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Walking on it:"));
-		list.add(Component.literal("\u00A79+50% Speed"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_walk").getString()));
+		list.add(Component.literal("\u00A79+50% " + Component.translatable("effect.minecraft.speed").getString()));
 	}
 
 	@Override

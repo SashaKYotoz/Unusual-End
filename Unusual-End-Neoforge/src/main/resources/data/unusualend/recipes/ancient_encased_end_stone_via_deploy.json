@@ -1,0 +1,23 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "minecraft:end_stone"
+    },
+    {
+      "item": "unusualend:ancient_shard"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:ancient_encased_end_stone"
+    }
+  ],
+  "keepHeldItem": false,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "neoforge:mod_loaded"
+    }
+  ]
+}

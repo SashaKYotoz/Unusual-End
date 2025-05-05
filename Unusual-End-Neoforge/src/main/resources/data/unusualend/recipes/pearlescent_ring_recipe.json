@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "abc",
+    "b b",
+    "cbc"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:shiny_crystal"
+    },
+    "b": {
+      "item": "unusualend:pearlescent_ingot"
+    },
+    "c": {
+      "item": "unusualend:prismalite_shard"
+    }
+  },
+  "result": {
+    "item": "unusualend:pearlescent_ring",
+    "count": 1
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "a",
+    "b",
+    "c"
+  ],
+  "key": {
+    "a": {
+      "item": "unusualend:warped_berries"
+    },
+    "b": {
+      "item": "unusualend:cooked_bluk"
+    },
+    "c": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "unusualend:bluk_skewer",
+    "count": 1
+  }
+}

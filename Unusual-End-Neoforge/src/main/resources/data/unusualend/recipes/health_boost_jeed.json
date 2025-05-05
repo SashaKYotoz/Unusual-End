@@ -1,0 +1,15 @@
+{
+  "type": "jeed:effect_provider",
+  "effect": "minecraft:health_boost",
+  "providers": [
+    {
+      "item": "unusualend:pearlescent_infuser"
+    }
+  ],
+  "conditions": [
+    {
+      "modid": "jeed",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

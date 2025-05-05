@@ -48,8 +48,8 @@ public class GloopstoneLampBlock extends Block {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A77When Powered by Redstone:"));
-		list.add(Component.literal("\u00A79Produce Pink Flames particles"));
+		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_redstone").getString()));
+		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.produce_particles").getString()));
 	}
 
 	@Override

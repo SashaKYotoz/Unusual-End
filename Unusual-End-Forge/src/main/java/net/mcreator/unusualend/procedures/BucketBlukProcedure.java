@@ -30,9 +30,9 @@ public class BucketBlukProcedure {
 			entity_bucket = new ItemStack(UnusualendModItems.BLUK_BUCKET.get());
 			if (!(new Object() {
 				public String getValue() {
-					CompoundTag dataIndex4 = new CompoundTag();
-					entity.saveWithoutId(dataIndex4);
-					return dataIndex4.getString("CustomName");
+					CompoundTag dataIndex = new CompoundTag();
+					entity.saveWithoutId(dataIndex);
+					return dataIndex.getString("CustomName");
 				}
 			}.getValue()).isEmpty()) {
 				entity_bucket.setHoverName(Component.literal((entity.getDisplayName().getString())));

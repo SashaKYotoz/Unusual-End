@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/citrine_bud",
+    "particle": "unusualend:block/citrine_block"
+  },
+  "render_type": "cutout_mipped"
+}

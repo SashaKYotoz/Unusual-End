@@ -36,7 +36,8 @@
                         "blocks": [
                           "unusualend:gloopstone",
                           "unusualend:gloopslate",
-                          "unusualend:bouncy_gloopslate"
+                          "unusualend:bouncy_gloopslate",
+                          "unusualend:gloopy_endstone"
                         ],
                         "offset": [
                           0,

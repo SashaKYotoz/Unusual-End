@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " a ",
+    "aba",
+    " a "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "b": {
+      "item": "minecraft:arrow"
+    }
+  },
+  "result": {
+    "item": "unusualend:phantom_arrow",
+    "count": 4
+  }
+}

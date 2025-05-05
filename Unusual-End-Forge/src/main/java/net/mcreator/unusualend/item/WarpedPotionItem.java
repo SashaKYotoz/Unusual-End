@@ -1,4 +1,5 @@
 
+//desc
 package net.mcreator.unusualend.item;
 
 import net.minecraft.world.level.Level;
@@ -33,7 +34,7 @@ public class WarpedPotionItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A7cNausea (0:10)"));
+		list.add(Component.literal("\u00A7c" + Component.translatable("effect.minecraft.nausea").getString() + " (0:10)"));
 	}
 
 	@Override

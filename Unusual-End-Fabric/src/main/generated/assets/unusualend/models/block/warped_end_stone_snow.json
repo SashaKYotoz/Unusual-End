@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "unusualend:block/warped_end_stone",
+    "particle": "unusualend:block/warped_end_stone",
+    "side": "unusualend:block/warped_end_stone_side",
+    "top": "unusualend:block/warped_end_stone_top"
+  }
+}

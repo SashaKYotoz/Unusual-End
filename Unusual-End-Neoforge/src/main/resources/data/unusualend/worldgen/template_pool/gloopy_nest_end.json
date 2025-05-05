@@ -1,0 +1,17 @@
+{
+  "name": "unusualend:gloopy_nest_end",
+  "fallback": "unusualend:gloopy_nest_end",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "unusualend:gloopy_nest_end",
+        "projection": "rigid",
+        "processors": {
+          "processors": []
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "variants": {
+    "face=floor": {
+      "model": "unusualend:block/healing_lantern"
+    },
+    "face=wall,facing=north": {
+      "model": "unusualend:block/healing_lantern_side",
+      "y": 0
+    },
+    "face=wall,facing=east": {
+      "model": "unusualend:block/healing_lantern_side",
+      "y": 90
+    },
+    "face=wall,facing=south": {
+      "model": "unusualend:block/healing_lantern_side",
+      "y": 180
+    },
+    "face=wall,facing=west": {
+      "model": "unusualend:block/healing_lantern_side",
+      "y": 270
+    },
+    "face=ceiling": {
+      "model": "unusualend:block/healing_lantern_hanging"
+    }
+  }
+}
