@@ -1,6 +1,7 @@
 {
   "parent": "block/inner_stairs",
   "textures": {
+    "particle": "unusualend:block/chorus_nest_mosaic",
     "bottom": "unusualend:block/chorus_nest_mosaic",
     "top": "unusualend:block/chorus_nest_mosaic",
     "side": "unusualend:block/chorus_nest_mosaic"

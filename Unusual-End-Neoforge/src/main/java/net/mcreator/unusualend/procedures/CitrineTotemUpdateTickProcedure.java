@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
@@ -16,7 +17,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.BlockPos;
@@ -24,7 +24,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 import net.mcreator.unusualend.init.UnusualendModParticleTypes;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 public class CitrineTotemUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
@@ -32,11 +32,11 @@ public class CitrineTotemUpdateTickProcedure {
 		double Y;
 		double Z;
 		double dividedby;
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:citrine_totem_base")))
+		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(UnusualEnd.makeUEID("citrine_totem_base")))
 				&& (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep3 ? blockstate.getValue(_getep3).toString() : "").equals("FLOOR")
-				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:citrine_totem_base")))
+				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(UnusualEnd.makeUEID("citrine_totem_base")))
 						&& (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep7 ? blockstate.getValue(_getep7).toString() : "").equals("CEILING")) {
-			for (int index0 = 0; index0 < (int) (double) ConfigurationFileConfiguration.CITRINE_TOTEM_ACCURACY.get(); index0++) {
+			for (int index0 = 0; index0 < (int) (double) UEConfig.CITRINE_TOTEM_ACCURACY.get(); index0++) {
 				X = x + Mth.nextInt(RandomSource.create(), -8, 8);
 				Y = y + Mth.nextInt(RandomSource.create(), -3, 1);
 				Z = z + Mth.nextInt(RandomSource.create(), -8, 8);

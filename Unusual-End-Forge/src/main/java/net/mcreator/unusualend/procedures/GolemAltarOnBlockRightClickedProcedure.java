@@ -92,7 +92,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 							entityToSpawn.setVisualOnly(true);
 							_level.addFreshEntity(entityToSpawn);
 						}
-						EndstoneGolemBreakSurroundingsProcedure.execute(world, x, (y - 1), z);
+						EndstoneGolemBreakSurroundingsProcedure.execute(world, x, y - 1, z);
 						UnusualendMod.queueServerWork(10, () -> {
 							if (world instanceof ServerLevel _level) {
 								LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
@@ -176,10 +176,6 @@ public class GolemAltarOnBlockRightClickedProcedure {
 									_level.sendParticles(ParticleTypes.DRAGON_BREATH, (x + 0.5), y, (z + 0.5), 40, 0.8, 0.8, 0.8, 0.3);
 								if (world instanceof ServerLevel _level)
 									_level.sendParticles(ParticleTypes.END_ROD, (x + 0.5), y, (z + 0.5), 40, 0.8, 0.8, 0.8, 0.3);
-								if (world instanceof ServerLevel _level)
-									_level.getServer().getCommands().performPrefixedCommand(
-											new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-											"execute as @e[type=!minecraft:player,type=unusualend:endstone_golem] at @s run tp @s ~ ~ ~ facing entity @p[distance=..16]");
 							});
 						});
 					});

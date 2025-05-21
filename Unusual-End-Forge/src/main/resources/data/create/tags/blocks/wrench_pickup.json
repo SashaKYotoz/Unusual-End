@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:teleportation_anchor",
+    "unusualend:fading_block",
+    "unusualend:warping_waystone"
+  ]
+}

@@ -29,8 +29,6 @@ import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
 
 import javax.annotation.Nullable;
 
-import java.io.File;
-
 @Mod.EventBusSubscriber
 public class UltraInstinctChorusProcedure {
 	@SubscribeEvent
@@ -50,8 +48,6 @@ public class UltraInstinctChorusProcedure {
 		double X = 0;
 		double Y = 0;
 		double Z = 0;
-		File file = new File("");
-		com.google.gson.JsonObject files = new com.google.gson.JsonObject();
 		if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem() == UnusualendModItems.CHORUS_HELMET.get()) {
 			if (!entity.isShiftKeyDown()) {
 				if (Math.random() < (double) ConfigurationFileConfiguration.CHORUS_HELMET_PROBABILITY_TO_TELEPORT.get() / 100) {

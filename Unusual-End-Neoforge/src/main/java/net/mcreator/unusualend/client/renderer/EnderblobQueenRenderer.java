@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,6 +16,6 @@ public class EnderblobQueenRenderer extends MobRenderer<EnderblobQueenEntity, Mo
 
 	@Override
 	public ResourceLocation getTextureLocation(EnderblobQueenEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/enderblob_queen.png");
+		return UnusualEnd.makeUEID("textures/entities/enderblob_queen.png");
 	}
 }

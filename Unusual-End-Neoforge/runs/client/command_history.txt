@@ -1,0 +1,2 @@
+/locate biome unusualend:gloopstone_lands
+/tp @s -517 61 1150

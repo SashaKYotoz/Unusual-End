@@ -15,7 +15,7 @@ import net.mcreator.unusualend.procedures.ReturnShinyProcedure;
 import net.mcreator.unusualend.procedures.ReturnPrismaticProcedure;
 import net.mcreator.unusualend.procedures.ReturnCitrineProcedure;
 import net.mcreator.unusualend.network.InfuserGUIButtonMessage;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 
 import java.util.HashMap;
 
@@ -48,7 +48,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		this.imageHeight = 166;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/screens/infuser_gui.png");
+	private static final ResourceLocation texture = UnusualEnd.makeUEID("textures/screens/infuser_gui.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -70,76 +70,76 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		RenderSystem.defaultBlendFunc();
 		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 1)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 62, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 62, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 2)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 55, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 55, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 3)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 48, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 48, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 4)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 41, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 41, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 5)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 34, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 34, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 6)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 27, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 27, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 7)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 20, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 20, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnCitrineProcedure.execute(world, x, y, z, 8)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 13, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 13, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 1)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 62, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 62, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 2)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 55, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 55, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 3)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 48, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 48, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 4)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 41, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 41, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 5)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 34, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 34, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 6)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 27, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 27, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 7)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 20, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 20, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnShinyProcedure.execute(world, x, y, z, 8)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 13, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 13, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 1)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 62, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 62, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 2)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 55, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 55, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 3)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 48, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 48, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 4)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 41, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 41, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 5)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 34, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 34, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 6)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 27, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 27, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 7)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 20, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 20, 0, 0, 16, 7, 16, 7);
 		}
 		if (ReturnPrismaticProcedure.execute(world, x, y, z, 8)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 13, 0, 0, 16, 7, 16, 7);
+			guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 13, 0, 0, 16, 7, 16, 7);
 		}
 		RenderSystem.disableBlend();
 	}
@@ -166,7 +166,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 	public void init() {
 		super.init();
 		imagebutton_1_base = new ImageButton(this.leftPos - 2, this.topPos + 51, 18, 12,
-				new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base.png")), e -> {
+				new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(0, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 0, x, y, z);
 		}) {
@@ -177,7 +177,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_1_base", imagebutton_1_base);
 		this.addRenderableWidget(imagebutton_1_base);
-		imagebutton_1_base1 = new ImageButton(this.leftPos + 87, this.topPos + 38, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base1.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base1.png")), e -> {
+		imagebutton_1_base1 = new ImageButton(this.leftPos + 87, this.topPos + 38, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base1.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base1.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(1, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 1, x, y, z);
 		}) {
@@ -188,7 +188,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_1_base1", imagebutton_1_base1);
 		this.addRenderableWidget(imagebutton_1_base1);
-		imagebutton_1_base2 = new ImageButton(this.leftPos + 141, this.topPos + 38, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base2.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_1_base2.png")), e -> {
+		imagebutton_1_base2 = new ImageButton(this.leftPos + 141, this.topPos + 38, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base2.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_1_base2.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(2, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 2, x, y, z);
 		}) {
@@ -199,7 +199,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_1_base2", imagebutton_1_base2);
 		this.addRenderableWidget(imagebutton_1_base2);
-		imagebutton_4_base = new ImageButton(this.leftPos + 33, this.topPos + 25, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base.png")), e -> {
+		imagebutton_4_base = new ImageButton(this.leftPos + 33, this.topPos + 25, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(3, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 3, x, y, z);
 		}) {
@@ -210,7 +210,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_4_base", imagebutton_4_base);
 		this.addRenderableWidget(imagebutton_4_base);
-		imagebutton_4_base1 = new ImageButton(this.leftPos + 87, this.topPos + 25, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base1.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base1.png")), e -> {
+		imagebutton_4_base1 = new ImageButton(this.leftPos + 87, this.topPos + 25, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base1.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base1.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(4, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 4, x, y, z);
 		}) {
@@ -221,7 +221,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_4_base1", imagebutton_4_base1);
 		this.addRenderableWidget(imagebutton_4_base1);
-		imagebutton_4_base2 = new ImageButton(this.leftPos + 141, this.topPos + 25, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base2.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_4_base2.png")), e -> {
+		imagebutton_4_base2 = new ImageButton(this.leftPos + 141, this.topPos + 25, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base2.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_4_base2.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(5, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 5, x, y, z);
 		}) {
@@ -232,7 +232,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_4_base2", imagebutton_4_base2);
 		this.addRenderableWidget(imagebutton_4_base2);
-		imagebutton_8_base = new ImageButton(this.leftPos + 33, this.topPos + 12, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base.png")), e -> {
+		imagebutton_8_base = new ImageButton(this.leftPos + 33, this.topPos + 12, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(6, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 6, x, y, z);
 		}) {
@@ -243,7 +243,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_8_base", imagebutton_8_base);
 		this.addRenderableWidget(imagebutton_8_base);
-		imagebutton_8_base1 = new ImageButton(this.leftPos + 87, this.topPos + 12, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base1.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base1.png")), e -> {
+		imagebutton_8_base1 = new ImageButton(this.leftPos + 87, this.topPos + 12, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base1.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base1.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(7, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 7, x, y, z);
 		}) {
@@ -254,7 +254,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		};
 		guistate.put("button:imagebutton_8_base1", imagebutton_8_base1);
 		this.addRenderableWidget(imagebutton_8_base1);
-		imagebutton_8_base2 = new ImageButton(this.leftPos + 141, this.topPos + 12, 18, 12, new WidgetSprites(new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base2.png"), new ResourceLocation("unusualend:textures/screens/atlas/imagebutton_8_base2.png")), e -> {
+		imagebutton_8_base2 = new ImageButton(this.leftPos + 141, this.topPos + 12, 18, 12, new WidgetSprites(UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base2.png"), UnusualEnd.makeUEID("textures/screens/atlas/imagebutton_8_base2.png")), e -> {
 			PacketDistributor.SERVER.noArg().send(new InfuserGUIButtonMessage(8, x, y, z));
 			InfuserGUIButtonMessage.handleButtonAction(entity, 8, x, y, z);
 		}) {

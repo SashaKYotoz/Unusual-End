@@ -1,15 +1,15 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.client.renderer.FogRenderer;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.Minecraft;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 import javax.annotation.Nullable;
 
@@ -57,14 +57,14 @@ public class GloopyFogProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_midlands")) || world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_lands"))) {
-			if (ConfigurationFileConfiguration.GLOOPY_FOG.get()) {
+		if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_midlands")) || world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_lands"))) {
+			if (UEConfig.GLOOPY_FOG.get()) {
 				setDistance(0, 200);
 				setShape(FogShape.CYLINDER);
 			}
 		}
-		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:warped_reef"))) {
-			if (ConfigurationFileConfiguration.WARPED_FOG.get()) {
+		if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("warped_reef"))) {
+			if (UEConfig.WARPED_FOG.get()) {
 				setDistance(10, 200);
 				setShape(FogShape.SPHERE);
 			}

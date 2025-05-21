@@ -47,7 +47,7 @@ public class PlayerTickProcedure {
         if (world.isClientSide()) {
             UnusualendModVariables.PlayerVariables variables = entity.getData(UnusualendModVariables.PLAYER_VARIABLES.get());
             MusicID = variables.PlayerMusic;
-            BiomeMusicLibrary.PlayTrack((int) MusicID);
+            BiomeMusicLibrary.playTrack((int) MusicID);
         }
     }
 

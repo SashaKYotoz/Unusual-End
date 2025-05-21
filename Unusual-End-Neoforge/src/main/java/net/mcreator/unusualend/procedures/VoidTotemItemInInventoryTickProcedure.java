@@ -13,7 +13,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerAbilitiesPacket;
@@ -23,18 +22,17 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.client.Minecraft;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
 
 import net.mcreator.unusualend.network.UnusualendModVariables;
 import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.configuration.UEConfig;
+import net.mcreator.unusualend.UnusualEnd;
 
 public class VoidTotemItemInInventoryTickProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
         if (entity == null)
             return;
-        if (entity.getY() < ConfigurationFileConfiguration.VOID_TOTEM_Y.get()) {
+        if (entity.getY() < UEConfig.VOID_TOTEM_Y.get()) {
             if ((entity.level().dimension()) == Level.END) {
                 if (!((entity instanceof Player _plrCldRem6 ? _plrCldRem6.getCooldowns().getCooldownPercent(itemstack.getItem(), 0f) * 100 : 0) > 0)) {
                     if (world.isClientSide()) {
@@ -42,15 +40,15 @@ public class VoidTotemItemInInventoryTickProcedure {
                             Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualendModItems.VOID_TOTEM.get()));
                     }
                     if (entity instanceof Player _player)
-                        _player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.VOID_TOTEM.get());
+                        _player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) UEConfig.VOID_TOTEM.get());
                     if (entity instanceof Player _player) {
                         ItemStack _stktoremove = new ItemStack(UnusualendModItems.VOID_TOTEM.get());
                         _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
                     }
                     if (!(entity instanceof ServerPlayer _plr13 && _plr13.level() instanceof ServerLevel
-                            && _plr13.getAdvancements().getOrStartProgress(_plr13.server.getAdvancements().get(new ResourceLocation("unusualend:worse_than_death"))).isDone())) {
+                            && _plr13.getAdvancements().getOrStartProgress(_plr13.server.getAdvancements().get(UnusualEnd.makeUEID("worse_than_death"))).isDone())) {
                         if (entity instanceof ServerPlayer _player) {
-                            AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:worse_than_death"));
+                            AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("worse_than_death"));
                             AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
                             if (!_ap.isDone()) {
                                 for (String criteria : _ap.getRemainingCriteria())
@@ -125,7 +123,7 @@ public class VoidTotemItemInInventoryTickProcedure {
                                 _level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.NEUTRAL, 1, 1, false);
                             }
                         }
-                        if (ConfigurationFileConfiguration.NEED_ANCHOR.get()) {
+                        if (UEConfig.NEED_ANCHOR.get()) {
                             entity.getPersistentData().putString("TargetDimension", (itemstack.getOrCreateTag().getString("TpW")));
                             entity.getPersistentData().putDouble("TargetX", (itemstack.getOrCreateTag().getDouble("TpX") - 0.5));
                             entity.getPersistentData().putDouble("TargetY", (itemstack.getOrCreateTag().getDouble("TpY")));
@@ -154,7 +152,7 @@ public class VoidTotemItemInInventoryTickProcedure {
                             if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
                                 _entity.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 100, 0));
                         }
-                        UnusualendMod.queueServerWork(5, () -> {
+                        UnusualEnd.queueServerWork(5, () -> {
                             if (world instanceof ServerLevel _level)
                                 _level.sendParticles(ParticleTypes.REVERSE_PORTAL, x, y, z, 25, 0.5, 0.5, 0.5, 0);
                         });

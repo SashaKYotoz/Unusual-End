@@ -20,14 +20,13 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
 
 import net.mcreator.unusualend.init.UnusualendModParticleTypes;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 
 public class WarpedChestOnBlockRightClickedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Direction direction, Entity entity) {
@@ -82,7 +81,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
                     _level.sendParticles(ParticleTypes.FISHING, (x + 0.5), (y + 0.8), (z + 0.5), 15, 0.4, 0.1, 0.4, 0);
                 for (int index0 = 0; index0 < (int) Mth.nextDouble(RandomSource.create(), 4, 5); index0++) {
                     if (!world.isClientSide() && world.getServer() != null) {
-                        for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(new ResourceLocation("unusualend:chests/warped_ship"))
+                        for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(UnusualEnd.makeUEID("chests/warped_ship"))
                                 .getRandomItems(new LootParams.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
                             if (world instanceof ServerLevel _level) {
                                 ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5 + direction.getStepX() * Mth.nextDouble(RandomSource.create(), 0.6, 0.6)), (y + 0.5 + direction.getStepY() * Mth.nextDouble(RandomSource.create(), 0.6, 0.6)),
@@ -93,7 +92,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
                         }
                     }
                 }
-                UnusualendMod.queueServerWork(5, () -> {
+                UnusualEnd.queueServerWork(5, () -> {
                     BlockPos _pos = BlockPos.containing(x, y, z);
                     BlockState _bs = world.getBlockState(_pos);
                     if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(0))
@@ -109,9 +108,9 @@ public class WarpedChestOnBlockRightClickedProcedure {
                     }
                 });
                 if (!(entity instanceof ServerPlayer _plr30 && _plr30.level() instanceof ServerLevel
-                        && _plr30.getAdvancements().getOrStartProgress(_plr30.server.getAdvancements().get(new ResourceLocation("unusualend:open_warped_chest"))).isDone())) {
+                        && _plr30.getAdvancements().getOrStartProgress(_plr30.server.getAdvancements().get(UnusualEnd.makeUEID("open_warped_chest"))).isDone())) {
                     if (entity instanceof ServerPlayer _player) {
-                        AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:open_warped_chest"));
+                        AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("open_warped_chest"));
                         AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
                         if (!_ap.isDone()) {
                             for (String criteria : _ap.getRemainingCriteria())

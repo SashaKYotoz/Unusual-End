@@ -10,20 +10,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.network.chat.Component;
-import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.unusualend.init.UnusualendModParticleTypes;
-import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.entity.VoidCrackEntity;
-import net.mcreator.unusualend.UnusualendMod;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
 
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.List;
-import java.util.Comparator;
 
 public class CentralPedestralOnBlockRightClickedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {

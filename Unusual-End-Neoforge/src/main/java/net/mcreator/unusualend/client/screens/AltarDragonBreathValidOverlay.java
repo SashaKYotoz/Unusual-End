@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.screens;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
@@ -35,7 +36,7 @@ public class AltarDragonBreathValidOverlay {
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		if (GetLookingValidAltarProcedure.execute(world, entity)) {
-			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/dragon_breath_valid_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
+			event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/dragon_breath_valid_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
 		}
 		RenderSystem.depthMask(true);
 		RenderSystem.defaultBlendFunc();

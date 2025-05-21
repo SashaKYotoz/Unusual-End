@@ -1,22 +1,20 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.level.BlockEvent;
-
-import javax.annotation.Nullable;
 
 import java.io.File;
 
@@ -34,8 +32,8 @@ public class OnBreakChorusProcedure {
 	private static void execute(Event event, LevelAccessor world, double x, double y, double z) {
 		File file = new File("");
 		com.google.gson.JsonObject files = new com.google.gson.JsonObject();
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(new ResourceLocation("unusualend:endermites_infested")))) {
-			if (Math.random() < ConfigurationFileConfiguration.BREAKING_CHORUS_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
+		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(UnusualEnd.makeUEID("endermites_infested")))) {
+			if (Math.random() < UEConfig.BREAKING_CHORUS_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -45,8 +43,8 @@ public class OnBreakChorusProcedure {
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(ParticleTypes.POOF, x, y, z, 5, 0.1, 0.1, 0.1, 0);
 			}
-		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(new ResourceLocation("unusualend:more_endermites_infested")))) {
-			if (Math.random() < ConfigurationFileConfiguration.BREAKING_POT_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
+		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(UnusualEnd.makeUEID("more_endermites_infested")))) {
+			if (Math.random() < UEConfig.BREAKING_POT_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {

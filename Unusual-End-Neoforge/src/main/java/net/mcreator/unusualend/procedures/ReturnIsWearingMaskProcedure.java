@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,6 +14,6 @@ public class ReturnIsWearingMaskProcedure {
 		if (entity == null)
 			return false;
 		return !(((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY)
-				.is(ItemTags.create(new ResourceLocation("unusualend:enderling_mask"))));
+				.is(ItemTags.create(UnusualEnd.makeUEID("enderling_mask"))));
 	}
 }

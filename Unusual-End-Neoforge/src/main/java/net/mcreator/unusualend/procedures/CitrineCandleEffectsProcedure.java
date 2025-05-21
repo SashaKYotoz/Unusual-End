@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
@@ -39,10 +40,10 @@ public class CitrineCandleEffectsProcedure {
 		}.checkGamemode(entity))) {
 			(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 		}
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:candle_soul_flames")))) {
+		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(UnusualEnd.makeUEID("candle_soul_flames")))) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 10, 0.2, 0.1, 0.2, 0);
-		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:candle_shiny_flames")))) {
+		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(UnusualEnd.makeUEID("candle_shiny_flames")))) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(UnusualendModParticleTypes.PINK_FLAME.get(), (x + 0.5), (y + 0.92), (z + 0.5), 10, 0.2, 0.1, 0.2, 0);
 		} else {

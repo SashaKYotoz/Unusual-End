@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,10 +16,10 @@ public class EnderbulbRenderer extends MobRenderer<EnderbulbEntity, Modelenderbu
 
 	@Override
 	public ResourceLocation getTextureLocation(EnderbulbEntity entity) {
-		if (entity.getPersistentData().getBoolean("BulbClose") == true) {
-			return new ResourceLocation("unusualend:textures/entities/enderbulb_close.png");
+		if (entity.getPersistentData().getBoolean("BulbClose")) {
+			return UnusualEnd.makeUEID("textures/entities/enderbulb_close.png");
 		} else {
-			return new ResourceLocation("unusualend:textures/entities/enderbulb_open.png");
+			return UnusualEnd.makeUEID("textures/entities/enderbulb_open.png");
 		}
 	}
 }

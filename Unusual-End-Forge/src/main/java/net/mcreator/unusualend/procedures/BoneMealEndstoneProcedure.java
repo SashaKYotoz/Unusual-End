@@ -85,15 +85,15 @@ public class BoneMealEndstoneProcedure {
 										|| (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == UnusualendModBlocks.INFESTED_END_STONE.get()) {
 									if (world.isEmptyBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz))) {
 										if (!world.isClientSide()) {
-											if (Math.random() < 0.08) {
+											if (Math.random() < 0.15) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.ENDSTONE_SPROUTS.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
-											} else if (Math.random() < 0.04) {
+											} else if (Math.random() < 0.02) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.CHORUS_ROOTS.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
-											} else if (Math.random() < 0.04) {
+											} else if (Math.random() < 0.02) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.PURPUR_GRASS.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
@@ -150,11 +150,11 @@ public class BoneMealEndstoneProcedure {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.GLOOPY_BUSH.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
-											} else if (Math.random() < 0.06) {
+											} else if (Math.random() < 0.05) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.SHINY_SPIREA.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
-											} else if (Math.random() < 0.08) {
+											} else if (Math.random() < 0.12) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.GLOOPY_TENDRILS.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
@@ -210,16 +210,20 @@ public class BoneMealEndstoneProcedure {
 										|| (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == UnusualendModBlocks.RAW_PURPUR_BLOCK.get()) {
 									if (world.isEmptyBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz))) {
 										if (!world.isClientSide()) {
-											if (Math.random() < 0.08) {
+											if (Math.random() < 0.07) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.CHORUS_ROOTS.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
-											} else if (Math.random() < 0.04) {
+											} else if (Math.random() < 0.03) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.CHORUS_FUNGUS.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
-											} else if (Math.random() < 0.04) {
+											} else if (Math.random() < 0.02) {
 												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.PURPUR_GRASS.get().defaultBlockState(), 3);
+												if (world instanceof ServerLevel _level)
+													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
+											} else if (Math.random() < 0.03) {
+												world.setBlock(BlockPos.containing(x + sx, y + sy + 1, z + sz), UnusualendModBlocks.ENDSTONE_SPROUTS.get().defaultBlockState(), 3);
 												if (world instanceof ServerLevel _level)
 													_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + sx + 0.5), (y + sy + 1.5 + 0.5), (z + sz + 0.5), 4, 1, 0.6, 1, 0);
 											}

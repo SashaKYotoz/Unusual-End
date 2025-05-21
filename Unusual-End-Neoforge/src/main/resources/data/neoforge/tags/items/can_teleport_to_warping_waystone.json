@@ -3,6 +3,6 @@
   "values": [
     "minecraft:ender_pearl",
     "unusualend:wandering_pearl",
-    "#forge:ender_pearls"
+    "#neoforge:ender_pearls"
   ]
 }

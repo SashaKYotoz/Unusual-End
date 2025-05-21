@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,6 +16,6 @@ public class SmallEnderbulbRenderer extends MobRenderer<SmallEnderbulbEntity, Mo
 
 	@Override
 	public ResourceLocation getTextureLocation(SmallEnderbulbEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/enderbulb_open.png");
+		return UnusualEnd.makeUEID("textures/entities/enderbulb_open.png");
 	}
 }

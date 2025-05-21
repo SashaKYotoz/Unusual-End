@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.init;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +19,7 @@ import java.util.List;
 public class UnusualendModJeiInformation implements IModPlugin {
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation("unusualend:information");
+		return UnusualEnd.makeUEID("information");
 	}
 
 	@Override

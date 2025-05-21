@@ -2,33 +2,26 @@
   "feature": "unusualend:warped_vegetation",
   "placement": [
     {
-      "type": "minecraft:biome"
-    },
-    {
-      "type": "minecraft:surface_water_depth_filter",
-      "max_water_depth": 0
-    },
-    {
-      "type": "minecraft:count",
-      "count": {
-        "type": "uniform",
-        "value": {
-          "min_inclusive": 16,
-          "max_inclusive": 28
-        }
-      }
-    },
-    {
       "type": "minecraft:height_range",
       "height": {
         "type": "minecraft:uniform",
         "min_inclusive": {
-          "absolute": 30
+          "absolute": 45
         },
         "max_inclusive": {
-          "absolute": 120
+          "absolute": 115
         }
       }
+    },
+    {
+      "type": "minecraft:count",
+      "count": 5
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

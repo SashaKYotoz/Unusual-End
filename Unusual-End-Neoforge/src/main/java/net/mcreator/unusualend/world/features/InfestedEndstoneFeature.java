@@ -1,12 +1,10 @@
 
 package net.mcreator.unusualend.world.features;
 
+import net.mcreator.unusualend.configuration.UEConfig;
 import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConfiguration;
 import net.minecraft.world.level.levelgen.feature.RandomPatchFeature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
-import net.minecraft.world.level.WorldGenLevel;
-
-import net.mcreator.unusualend.procedures.InfestedEndstoneAdditionalGenerationConditionProcedure;
 
 public class InfestedEndstoneFeature extends RandomPatchFeature {
 	public InfestedEndstoneFeature() {
@@ -14,7 +12,7 @@ public class InfestedEndstoneFeature extends RandomPatchFeature {
 	}
 
 	public boolean place(FeaturePlaceContext<RandomPatchConfiguration> context) {
-		if (!InfestedEndstoneAdditionalGenerationConditionProcedure.execute())
+		if (!UEConfig.INFESTED_ENDSTONE.get())
 			return false;
 		return super.place(context);
 	}

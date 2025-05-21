@@ -21,13 +21,10 @@ import net.mcreator.unusualend.init.UnusualendModMobEffects;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
 import net.mcreator.unusualend.entity.EndstoneGolemEntity;
 import net.mcreator.unusualend.entity.DraglingEntity;
-import net.mcreator.unusualend.UnusualendMod;
-import net.neoforged.bus.api.Event;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
-
-import javax.annotation.Nullable;
 
 import java.util.List;
 import java.util.Comparator;
@@ -52,7 +49,7 @@ public class CooldownEndstoneGolemProcedure {
 					}
 					if (sourceentity instanceof EndstoneGolemEntity _datEntSetI)
 						_datEntSetI.getEntityData().set(EndstoneGolemEntity.DATA_push, 1);
-					UnusualendMod.queueServerWork(4, () -> {
+					UnusualEnd.queueServerWork(4, () -> {
 						entity.invulnerableTime = 0;
 						entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.EXPLOSION)), (float) amount);
 						if (world instanceof ServerLevel _level)

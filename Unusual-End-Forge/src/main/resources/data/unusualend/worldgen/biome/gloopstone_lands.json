@@ -22,9 +22,9 @@
     },
     "particle": {
       "options": {
-        "type": "unusualend:pink_flame"
+        "type": "white_ash"
       },
-      "probability": 0.002
+      "probability": 0.008
     },
     "foliage_color": 10387789,
     "grass_color": 9470285,

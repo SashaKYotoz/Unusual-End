@@ -19,8 +19,6 @@ import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
 
 import javax.annotation.Nullable;
 
-import java.io.File;
-
 @Mod.EventBusSubscriber
 public class OnBreakChorusProcedure {
 	@SubscribeEvent
@@ -33,8 +31,6 @@ public class OnBreakChorusProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		File file = new File("");
-		com.google.gson.JsonObject files = new com.google.gson.JsonObject();
 		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(new ResourceLocation("unusualend:endermites_infested")))) {
 			if (Math.random() < (double) ConfigurationFileConfiguration.BREAKING_CHORUS_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
 				if (world instanceof ServerLevel _level) {

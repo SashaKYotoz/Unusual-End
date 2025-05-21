@@ -1,7 +1,18 @@
 {
   "variants": {
-    "": {
-      "model": "unusualend:block/endstone_sprouts"
-    }
+    "": [
+      {
+        "model": "unusualend:block/endstone_sprouts",
+        "weight": 2
+      },
+      {
+        "model": "unusualend:block/endstone_sprouts_2",
+        "weight": 1
+      },
+      {
+        "model": "unusualend:block/endstone_sprouts_3",
+        "weight": 1
+      }
+    ]
   }
 }

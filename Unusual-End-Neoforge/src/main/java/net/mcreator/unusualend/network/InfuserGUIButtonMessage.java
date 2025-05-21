@@ -10,22 +10,19 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.unusualend.world.inventory.InfuserGUIMenu;
 import net.mcreator.unusualend.procedures.ConsumeShinyProcedure;
 import net.mcreator.unusualend.procedures.ConsumePrismaticProcedure;
 import net.mcreator.unusualend.procedures.ConsumeCitrineProcedure;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.network.handling.PlayPayloadContext;
 
-import java.util.HashMap;
-
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class InfuserGUIButtonMessage implements CustomPacketPayload {
     private final int buttonID, x, y, z;
-    public static final ResourceLocation ID = new ResourceLocation(UnusualendMod.MODID,"infuser_gui_button_message_id");
+    public static final ResourceLocation ID = UnusualEnd.makeUEID("infuser_gui_button_message_id");
 
     public InfuserGUIButtonMessage(FriendlyByteBuf buffer) {
         this.buttonID = buffer.readInt();
@@ -59,8 +56,6 @@ public class InfuserGUIButtonMessage implements CustomPacketPayload {
 
     public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
         Level world = entity.level();
-        HashMap guistate = InfuserGUIMenu.guistate;
-        // security measure to prevent arbitrary chunk generation
         if (!world.hasChunkAt(new BlockPos(x, y, z)))
             return;
         if (buttonID == 0) {
@@ -94,7 +89,7 @@ public class InfuserGUIButtonMessage implements CustomPacketPayload {
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        UnusualendMod.addNetworkMessage(ID, InfuserGUIButtonMessage::new, InfuserGUIButtonMessage::handler);
+        UnusualEnd.addNetworkMessage(ID, InfuserGUIButtonMessage::new, InfuserGUIButtonMessage::handler);
     }
 
     @Override

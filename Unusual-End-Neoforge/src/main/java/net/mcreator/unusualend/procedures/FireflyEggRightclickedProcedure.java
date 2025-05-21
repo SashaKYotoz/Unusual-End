@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.Vec3;
@@ -64,9 +65,9 @@ public class FireflyEggRightclickedProcedure {
 			if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("mangrove_swamp")) || world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("plains"))
 					|| world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("swamp"))) {
 				if (!(entity instanceof ServerPlayer _plr16 && _plr16.level() instanceof ServerLevel
-						&& _plr16.getAdvancements().getOrStartProgress(_plr16.server.getAdvancements().get(new ResourceLocation("unusualend:firefly_in_swamp"))).isDone())) {
+						&& _plr16.getAdvancements().getOrStartProgress(_plr16.server.getAdvancements().get(UnusualEnd.makeUEID("firefly_in_swamp"))).isDone())) {
 					if (entity instanceof ServerPlayer _player) {
-						AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:firefly_in_swamp"));
+						AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("firefly_in_swamp"));
 						AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 						if (!_ap.isDone()) {
 							for (String criteria : _ap.getRemainingCriteria())

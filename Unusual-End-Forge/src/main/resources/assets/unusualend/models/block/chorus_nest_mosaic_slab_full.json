@@ -1,6 +1,7 @@
 {
   "parent": "block/cube_bottom_top",
   "textures": {
+    "particle": "unusualend:block/chorus_nest_mosaic",
     "bottom": "unusualend:block/chorus_nest_mosaic",
     "top": "unusualend:block/chorus_nest_mosaic",
     "side": "unusualend:block/chorus_nest_mosaic"

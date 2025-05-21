@@ -35,7 +35,7 @@ public class PhantomBlockBlock extends AbstractGlassBlock {
 
 	@Override
 	public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return !(((EntityCollisionContext) context).getEntity() instanceof Player) ? state.getShape(world, pos) : Shapes.empty();
+		return ((EntityCollisionContext) context).getEntity() instanceof Player == false ? state.getShape(world, pos) : Shapes.empty();
 	}
 
 	@Override

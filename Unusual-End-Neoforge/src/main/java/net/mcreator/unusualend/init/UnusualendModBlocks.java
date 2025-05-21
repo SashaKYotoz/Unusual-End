@@ -197,7 +197,7 @@ import net.mcreator.unusualend.block.BloomingChorusCaneBlock;
 import net.mcreator.unusualend.block.AncientPodiumBlock;
 import net.mcreator.unusualend.block.AncientEncasedPurpurBlock;
 import net.mcreator.unusualend.block.AncientEncasedEndStoneBlock;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -206,7 +206,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnusualendModBlocks {
-	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(UnusualendMod.MODID);
+	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(UnusualEnd.MODID);
 	public static final DeferredBlock<Block> RAW_PURPUR_BLOCK = REGISTRY.register("raw_purpur_block", () -> new PurpurStoneBlock());
 	public static final DeferredBlock<InfectedEndstoneBlock> INFESTED_END_STONE = REGISTRY.register("infested_end_stone", () -> new InfectedEndstoneBlock());
 	public static final DeferredBlock<PolishedPurpurBlock> POLISHED_PURPUR = REGISTRY.register("polished_purpur", () -> new PolishedPurpurBlock());

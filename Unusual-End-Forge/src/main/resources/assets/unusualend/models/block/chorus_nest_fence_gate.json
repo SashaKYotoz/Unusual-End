@@ -1,6 +1,7 @@
 {
   "parent": "block/template_fence_gate",
   "textures": {
+    "particle": "unusualend:block/chorus_nest_fence_gate",
     "texture": "unusualend:block/chorus_nest_fence_gate"
   },
   "render_type": "solid"

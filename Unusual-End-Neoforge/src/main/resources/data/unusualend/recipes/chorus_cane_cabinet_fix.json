@@ -21,11 +21,11 @@
   "conditions": [
     {
       "modid": "farmersdelight",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
     },
     {
       "modid": "everycomp",
-      "type": "forge:mod_loaded"
+      "type": "neoforge:mod_loaded"
     }
   ]
 }

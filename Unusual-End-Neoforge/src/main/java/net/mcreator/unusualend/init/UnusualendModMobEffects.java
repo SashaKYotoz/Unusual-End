@@ -12,12 +12,12 @@ import net.mcreator.unusualend.potion.EnderInfectionMobEffect;
 import net.mcreator.unusualend.potion.CrystallizationMobEffect;
 import net.mcreator.unusualend.potion.BuildingFatigueMobEffect;
 import net.mcreator.unusualend.potion.BreachLinkedMobEffect;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnusualendModMobEffects {
-	public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, UnusualendMod.MODID);
+	public static final DeferredRegister<MobEffect> REGISTRY = DeferredRegister.create(BuiltInRegistries.MOB_EFFECT, UnusualEnd.MODID);
 	public static final DeferredHolder<MobEffect, EnderInfectionMobEffect> ENDER_INFECTION = REGISTRY.register("ender_infection", () -> new EnderInfectionMobEffect());
 	public static final DeferredHolder<MobEffect, BuildingFatigueMobEffect> DISRUPTION = REGISTRY.register("disruption", () -> new BuildingFatigueMobEffect());
 	public static final DeferredHolder<MobEffect, HeavinessMobEffect> HEAVINESS = REGISTRY.register("heaviness", () -> new HeavinessMobEffect());

@@ -26,6 +26,7 @@ public class ConfigurationFileConfiguration {
 	public static final ForgeConfigSpec.ConfigValue<Double> PODIUM_ITEM;
 	public static final ForgeConfigSpec.ConfigValue<Double> PODIUM_BLOCK;
 	public static final ForgeConfigSpec.ConfigValue<Boolean> EVERLASTING;
+	public static final ForgeConfigSpec.ConfigValue<Double> ORB_TRIGGER;
 	public static final ForgeConfigSpec.ConfigValue<Double> PRISMATIC_MIRROR;
 	public static final ForgeConfigSpec.ConfigValue<Double> VOID_TOTEM;
 	public static final ForgeConfigSpec.ConfigValue<Double> POUCH;
@@ -38,7 +39,6 @@ public class ConfigurationFileConfiguration {
 	public static final ForgeConfigSpec.ConfigValue<Boolean> NEED_ANCHOR_FOR_TOTEMS;
 	public static final ForgeConfigSpec.ConfigValue<Boolean> GLOOPY_FOG;
 	public static final ForgeConfigSpec.ConfigValue<Boolean> WARPED_FOG;
-	public static final ForgeConfigSpec.ConfigValue<Double> BIOME_SIZE;
 	public static final ForgeConfigSpec.ConfigValue<Boolean> HIGHLAND_PLANTS;
 	public static final ForgeConfigSpec.ConfigValue<Boolean> RAW_PURPUR;
 	public static final ForgeConfigSpec.ConfigValue<Boolean> INFESTED_ENDSTONE;
@@ -73,6 +73,7 @@ public class ConfigurationFileConfiguration {
 		PODIUM_ITEM = BUILDER.comment("The scale the Ancient Podium will display items as").define("Podium Item Size", (double) 0.55);
 		PODIUM_BLOCK = BUILDER.comment("The scale the Ancient Podium will display blocks at").define("Podium Block Size", (double) 0.4);
 		EVERLASTING = BUILDER.comment("Whether the player will be able to obtain Everlasting (makes items never despawn)").define("Can Everlasting be obtained", true);
+		ORB_TRIGGER = BUILDER.comment("Probability in % for Orbs to trigger").define("Orb Activation", (double) 5);
 		BUILDER.pop();
 		BUILDER.push("Cooldowns (in tick)");
 		PRISMATIC_MIRROR = BUILDER.define("Prismatic Mirror", (double) 6000);
@@ -95,7 +96,6 @@ public class ConfigurationFileConfiguration {
 		BUILDER.push("Biomes");
 		GLOOPY_FOG = BUILDER.define("Fog inside of the Gloopstone Biomes", false);
 		WARPED_FOG = BUILDER.define("Fog inside of the Warped Reef", false);
-		BIOME_SIZE = BUILDER.define("Biomes size factor", (double) 1);
 		BUILDER.pop();
 		BUILDER.push("Generation");
 		HIGHLAND_PLANTS = BUILDER.define("End Highlands Vegetation", true);

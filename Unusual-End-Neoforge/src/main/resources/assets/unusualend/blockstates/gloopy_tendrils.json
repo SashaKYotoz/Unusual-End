@@ -1,6 +1,6 @@
 {
   "variants": {
-    "": [
+    "gloopy=true": [
       {
         "model": "unusualend:block/gloopy_tendrils",
         "weight": 3
@@ -8,6 +8,20 @@
       {
         "model": "unusualend:block/gloopy_tendrils_2",
         "weight": 1
+      }
+    ],
+    "gloopy=false": [
+      {
+        "model": "unusualend:block/gloopy_tendrils",
+        "weight": 1
+      },
+      {
+        "model": "unusualend:block/gloopy_tendrils_2",
+        "weight": 1
+      },
+      {
+        "model": "unusualend:block/endstone_tendrils",
+        "weight": 6
       }
     ]
   }

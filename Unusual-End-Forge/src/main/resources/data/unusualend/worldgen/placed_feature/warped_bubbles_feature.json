@@ -4,128 +4,138 @@
     {
       "type": "minecraft:count",
       "count": {
-        "type": "uniform",
-        "value": {
-          "min_inclusive": 5,
-          "max_inclusive": 9
-        }
-      }
-    },
-    {
-      "type": "minecraft:in_square"
-    },
-    {
-      "type": "environment_scan",
-      "direction_of_search": "up",
-      "target_condition": {
-        "type": "minecraft:all_of",
-        "predicates": [
+        "type": "weighted_list",
+        "distribution": [
           {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
+            "data": {
+              "type": "uniform",
+              "value": {
+                "min_inclusive": 5,
+                "max_inclusive": 8
+              }
+            },
+            "weight": 3
           },
           {
-            "type": "minecraft:all_of",
-            "predicates": [
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": "unusualend:warped_bubble",
-                  "offset": [
-                    1,
-                    0,
-                    0
-                  ]
-                }
-              },
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": "unusualend:warped_bubble",
-                  "offset": [
-                    0,
-                    0,
-                    1
-                  ]
-                }
-              },
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": "unusualend:warped_bubble",
-                  "offset": [
-                    -1,
-                    0,
-                    0
-                  ]
-                }
-              },
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": "unusualend:warped_bubble",
-                  "offset": [
-                    0,
-                    0,
-                    -1
-                  ]
-                }
-              },
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": "unusualend:warped_bubble",
-                  "offset": [
-                    0,
-                    1,
-                    0
-                  ]
-                }
-              },
-              {
-                "type": "minecraft:not",
-                "predicate": {
-                  "type": "minecraft:matching_blocks",
-                  "blocks": "unusualend:warped_bubble",
-                  "offset": [
-                    0,
-                    -1,
-                    0
-                  ]
-                }
+            "data": {
+              "type": "uniform",
+              "value": {
+                "min_inclusive": 8,
+                "max_inclusive": 12
               }
-            ]
+            },
+            "weight": 1
           }
         ]
-      },
-      "max_steps": 10
-    },
-    {
-      "type": "minecraft:biome"
+      }
     },
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "type": "minecraft:trapezoid",
         "min_inclusive": {
-          "absolute": 30
+          "absolute": 20
         },
         "max_inclusive": {
-          "absolute": 110
+          "absolute": 120
         }
       }
     },
     {
       "type": "minecraft:block_predicate_filter",
       "predicate": {
-        "type": "minecraft:matching_blocks",
-        "blocks": "minecraft:air"
+        "type": "minecraft:all_of",
+        "predicates": [
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid"
+            }
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "minecraft:air"
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "unusualend:warped_bubble",
+              "offset": [
+                1,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "unusualend:warped_bubble",
+              "offset": [
+                0,
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "unusualend:warped_bubble",
+              "offset": [
+                -1,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "unusualend:warped_bubble",
+              "offset": [
+                0,
+                0,
+                -1
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "unusualend:warped_bubble",
+              "offset": [
+                0,
+                1,
+                0
+              ]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:matching_blocks",
+              "blocks": "unusualend:warped_bubble",
+              "offset": [
+                0,
+                -1,
+                0
+              ]
+            }
+          }
+        ]
       }
+    },
+    {
+      "type": "minecraft:biome"
+    },
+    {
+      "type": "minecraft:in_square"
     }
   ]
 }

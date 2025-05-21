@@ -1,9 +1,10 @@
 {
   "parent": "block/cube_bottom_top",
   "textures": {
+    "particle": "unusualend:block/polished_gloopslate",
     "bottom": "unusualend:block/polished_gloopslate",
     "top": "unusualend:block/polished_gloopslate",
-    "side": "unusualend:block/polished_gloopslate"
+    "side": "unusualend:block/polished_gloopslate_slab"
   },
   "render_type": "solid"
 }

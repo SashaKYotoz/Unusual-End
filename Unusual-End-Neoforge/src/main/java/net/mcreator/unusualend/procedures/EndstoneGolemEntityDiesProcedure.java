@@ -12,14 +12,13 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 
 public class EndstoneGolemEntityDiesProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -39,7 +38,7 @@ public class EndstoneGolemEntityDiesProcedure {
             _level.addFreshEntity(entityToSpawn);
         }
         for (int index0 = 0; index0 < 5; index0++) {
-            UnusualendMod.queueServerWork((int) Mth.nextDouble(RandomSource.create(), 5, 10), () -> {
+            UnusualEnd.queueServerWork((int) Mth.nextDouble(RandomSource.create(), 5, 10), () -> {
                 if (world instanceof ServerLevel _level) {
                     LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
                     entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
@@ -56,7 +55,7 @@ public class EndstoneGolemEntityDiesProcedure {
             });
         }
         for (int index1 = 0; index1 < 3; index1++) {
-            UnusualendMod.queueServerWork(15, () -> {
+            UnusualEnd.queueServerWork(15, () -> {
                 if (world instanceof Level _level) {
                     if (!_level.isClientSide()) {
                         _level.playSound(null, BlockPos.containing(x, y, z), UnusualendModSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1);

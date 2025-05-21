@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "unusualend:warped_reef",
+  "features": "unusualend:warped_rocks",
+  "step": "fluid_springs"
+}

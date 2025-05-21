@@ -1,10 +1,12 @@
 {
-  "parent": "block/grass_block",
+  "parent": "block/cube",
   "textures": {
-    "bottom": "unusualend:block/ancient_block_bottom",
-    "top": "unusualend:block/warping_waystone_top",
-    "side": "unusualend:block/warping_waystone_side",
-    "overlay": "unusualend:block/warping_waystone_side",
+    "down": "unusualend:block/ancient_block_bottom",
+    "up": "unusualend:block/warping_waystone_top",
+    "north": "unusualend:block/warping_waystone_side",
+    "east": "unusualend:block/warping_waystone_side",
+    "south": "unusualend:block/warping_waystone_side",
+    "west": "unusualend:block/warping_waystone_side",
     "particle": "unusualend:block/ancient_block_bottom"
   },
   "render_type": "solid"

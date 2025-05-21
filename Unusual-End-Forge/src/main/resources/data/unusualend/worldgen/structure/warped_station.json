@@ -4,7 +4,7 @@
   "size": 1,
   "max_distance_from_center": 64,
   "spawn_overrides": {},
-  "step": "surface_structures",
+  "step": "fluid_springs",
   "terrain_adaptation": "none",
   "start_height": {
     "type": "minecraft:uniform",

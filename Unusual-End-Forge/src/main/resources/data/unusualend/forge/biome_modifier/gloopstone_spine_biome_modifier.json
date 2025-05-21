@@ -1,9 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": [
-    "unusualend:gloopstone_lands",
-    "unusualend:gloopstone_midlands"
-  ],
+  "biomes": "unusualend:gloopstone_lands",
   "features": "unusualend:gloopstone_spine",
-  "step": "local_modifications"
+  "step": "underground_structures"
 }

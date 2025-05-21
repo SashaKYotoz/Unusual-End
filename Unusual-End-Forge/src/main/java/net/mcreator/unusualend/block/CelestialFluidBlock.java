@@ -1,6 +1,8 @@
 
 package net.mcreator.unusualend.block;
 
+import org.checkerframework.checker.units.qual.s;
+
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -22,7 +24,7 @@ import java.util.List;
 
 public class CelestialFluidBlock extends Block implements EntityBlock {
 	public CelestialFluidBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.SCULK).strength(1f, 10f).noCollission());
+		super(BlockBehaviour.Properties.of().sound(SoundType.SCULK).strength(1f, 10f).lightLevel(s -> 15).noCollission().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true));
 	}
 
 	@Override

@@ -7,7 +7,7 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 import net.mcreator.unusualend.entity.EnderblobQueenEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -72,7 +72,7 @@ public class BlobQueenAttackAnimProcedure {
 				swing_offset = swing_offset - 0.1;
 				swing_curve = swing_curve - original_curve / 10;
 			}
-			UnusualendMod.queueServerWork(11, () -> {
+			UnusualEnd.queueServerWork(11, () -> {
 				sourceentity.setSprinting(false);
 			});
 		}

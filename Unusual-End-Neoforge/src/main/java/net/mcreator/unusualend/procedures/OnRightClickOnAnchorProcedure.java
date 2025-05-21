@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.WorldGenLevel;
@@ -14,16 +15,14 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 import java.io.File;
 
@@ -35,7 +34,7 @@ public class OnRightClickOnAnchorProcedure {
 		com.google.gson.JsonObject files = new com.google.gson.JsonObject();
 		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.TELEPORTATION_ANCHOR.get()) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PRISMATIC_MIRROR.get()) {
-				if (ConfigurationFileConfiguration.CAN_USE_TELEPORTATION_ANCHOR.get()) {
+				if (UEConfig.CAN_USE_TELEPORTATION_ANCHOR.get()) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("LinkedMirror")) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("LinkedMirror", false);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);
@@ -70,7 +69,7 @@ public class OnRightClickOnAnchorProcedure {
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 							if (entity instanceof ServerPlayer _player) {
-								AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:hyperspace_jump"));
+								AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("hyperspace_jump"));
 								AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 								if (!_ap.isDone()) {
 									for (String criteria : _ap.getRemainingCriteria())
@@ -87,7 +86,7 @@ public class OnRightClickOnAnchorProcedure {
 						_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.no_anchor").getString())), true);
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.VOID_TOTEM.get()) {
-				if (ConfigurationFileConfiguration.CAN_LINK_VOID_TOTEM.get()) {
+				if (UEConfig.CAN_LINK_VOID_TOTEM.get()) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("LinkedTotem") == true) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("LinkedTotem", false);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);
@@ -122,7 +121,7 @@ public class OnRightClickOnAnchorProcedure {
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 							if (entity instanceof ServerPlayer _player) {
-								AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:hyperspace_jump"));
+								AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("hyperspace_jump"));
 								AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 								if (!_ap.isDone()) {
 									for (String criteria : _ap.getRemainingCriteria())
@@ -139,7 +138,7 @@ public class OnRightClickOnAnchorProcedure {
 						_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.no_anchor").getString())), true);
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.TOTEM_OF_UNDYING) {
-				if (ConfigurationFileConfiguration.CAN_LINK_TOTEM.get()) {
+				if (UEConfig.CAN_LINK_TOTEM.get()) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("LinkedTotem") == true) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("LinkedTotem", false);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);

@@ -92,6 +92,10 @@ public class VoidArrowProjectileEntity extends AbstractArrow implements ItemSupp
 		return shoot(world, entity, source, 1.2f, 3.5, 0);
 	}
 
+	public static VoidArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
+		return shoot(world, entity, source, pullingPower * 1.2f, 3.5, 0);
+	}
+
 	public static VoidArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
 		VoidArrowProjectileEntity entityarrow = new VoidArrowProjectileEntity(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);

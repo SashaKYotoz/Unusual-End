@@ -2,22 +2,12 @@
   "replace": false,
   "values": [
     "unusualend:enderblob_moult_brick_stairs",
-    "unusualend:shiny_crystal_tile_stairs",
-    "unusualend:warped_stone_tiles_stairs",
-    "unusualend:warped_stone_bricks_stairs",
-    "unusualend:polished_warped_stone_stairs",
     "unusualend:gloopslate_bricks_stairs",
     "unusualend:polished_gloopslate_stairs",
     "unusualend:gloopstone_brick_stairs",
     "unusualend:polished_gloopstone_stairs",
-    "unusualend:gneiss_brick_stairs",
-    "unusualend:polished_gneiss_stairs",
     "unusualend:chorus_nest_mosaic_stairs",
-    "unusualend:polished_purpur_brick_stairs",
-    "unusualend:raw_purpur_block_stairs",
-    "unusualend:polished_purpur_tiles_stairs",
     "unusualend:stripped_chorus_nest_stairs",
-    "unusualend:chorus_nest_stairs",
-    "unusualend:polished_purpur_stairs"
+    "unusualend:chorus_nest_stairs"
   ]
 }

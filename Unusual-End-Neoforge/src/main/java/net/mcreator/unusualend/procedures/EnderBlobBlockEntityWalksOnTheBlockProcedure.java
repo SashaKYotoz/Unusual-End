@@ -10,7 +10,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 public class EnderBlobBlockEntityWalksOnTheBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -22,7 +22,7 @@ public class EnderBlobBlockEntityWalksOnTheBlockProcedure {
 				entity.setDeltaMovement(new Vec3(0, 0.9, 0));
 			}
 		} else {
-			if (ConfigurationFileConfiguration.BLOB_BLOCK_BOUNCE.get()) {
+			if (UEConfig.BLOB_BLOCK_BOUNCE.get()) {
 				if (!world.isClientSide()) {
 					entity.setDeltaMovement(new Vec3(0, 0.9, 0));
 					if (world instanceof Level _level) {

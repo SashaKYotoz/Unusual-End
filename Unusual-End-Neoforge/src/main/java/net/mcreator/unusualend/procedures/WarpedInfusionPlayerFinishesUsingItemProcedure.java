@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.LevelAccessor;
@@ -10,13 +11,11 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
 
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -25,9 +24,9 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get())) {
 			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0) == 1) {
 				if (!(entity instanceof ServerPlayer _plr2 && _plr2.level() instanceof ServerLevel
-						&& _plr2.getAdvancements().getOrStartProgress(_plr2.server.getAdvancements().get(new ResourceLocation("unusualend:drink_max_warped_infusion"))).isDone())) {
+						&& _plr2.getAdvancements().getOrStartProgress(_plr2.server.getAdvancements().get(UnusualEnd.makeUEID("drink_max_warped_infusion"))).isDone())) {
 					if (entity instanceof ServerPlayer _player) {
-						AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:drink_max_warped_infusion"));
+						AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("drink_max_warped_infusion"));
 						AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 						if (!_ap.isDone()) {
 							for (String criteria : _ap.getRemainingCriteria())
@@ -38,7 +37,7 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 			}
 			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get())
 					? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier()
-					: 0) >= (double) ConfigurationFileConfiguration.MAX_WARPED_INFUSION.get() - 1) {
+					: 0) >= (double) UEConfig.MAX_WARPED_INFUSION.get() - 1) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(),
 							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getDuration() : 0) + 1200),

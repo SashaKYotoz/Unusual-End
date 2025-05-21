@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.client.gui;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.resources.ResourceLocation;
@@ -24,7 +25,7 @@ public class PurpurTankGUIScreen extends AbstractContainerScreen<PurpurTankGUIMe
 		this.imageHeight = 220;
 	}
 
-	private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/screens/purpur_tank_gui.png");
+	private static final ResourceLocation texture = UnusualEnd.makeUEID("textures/screens/purpur_tank_gui.png");
 
 	@Override
 	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {

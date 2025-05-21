@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.init;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.Items;
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 public class UnusualendModBrewingRecipes implements IModPlugin {
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation("unusualend:brewing_recipes");
+		return UnusualEnd.makeUEID("brewing_recipes");
 	}
 
 	@Override

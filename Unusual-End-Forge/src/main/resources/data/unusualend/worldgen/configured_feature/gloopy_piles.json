@@ -1,0 +1,280 @@
+{
+  "type": "minecraft:random_patch",
+  "config": {
+    "tries": 16,
+    "xz_spread": 7,
+    "y_spread": 2,
+    "feature": {
+      "feature": {
+        "type": "minecraft:simple_random_selector",
+        "config": {
+          "features": [
+            {
+              "feature": {
+                "type": "minecraft:block_column",
+                "config": {
+                  "allowed_placement": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      }
+                    ]
+                  },
+                  "direction": "up",
+                  "prioritize_tip": true,
+                  "layers": [
+                    {
+                      "height": {
+                        "type": "biased_to_bottom",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 3
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:simple_state_provider",
+                        "state": {
+                          "Name": "unusualend:gloopstone"
+                        }
+                      }
+                    },
+                    {
+                      "height": {
+                        "type": "uniform",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 2
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:simple_state_provider",
+                        "state": {
+                          "Name": "unusualend:gloopslate"
+                        }
+                      }
+                    },
+                    {
+                      "height": {
+                        "type": "uniform",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 1
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:weighted_state_provider",
+                        "entries": [
+                          {
+                            "data": {
+                              "Name": "unusualend:gloopslate"
+                            },
+                            "weight": 2
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:bouncy_gloopslate"
+                            },
+                            "weight": 1
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "height": {
+                        "type": "uniform",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 1
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:weighted_state_provider",
+                        "entries": [
+                          {
+                            "data": {
+                              "Name": "unusualend:gloopy_tendrils"
+                            },
+                            "weight": 4
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:shiny_spirea"
+                            },
+                            "weight": 1
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:crystal_flower"
+                            },
+                            "weight": 1
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:endermite_eggs",
+                              "Properties": {
+                                "waterlogged": "false",
+                                "facing": "east",
+                                "face": "floor"
+                              }
+                            },
+                            "weight": 1
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "placement": []
+            },
+            {
+              "feature": {
+                "type": "minecraft:block_column",
+                "config": {
+                  "allowed_placement": {
+                    "type": "minecraft:all_of",
+                    "predicates": [
+                      {
+                        "type": "minecraft:matching_blocks",
+                        "blocks": "minecraft:air"
+                      }
+                    ]
+                  },
+                  "direction": "up",
+                  "prioritize_tip": true,
+                  "layers": [
+                    {
+                      "height": {
+                        "type": "biased_to_bottom",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 3
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:simple_state_provider",
+                        "state": {
+                          "Name": "unusualend:gloopstone"
+                        }
+                      }
+                    },
+                    {
+                      "height": {
+                        "type": "uniform",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 2
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:simple_state_provider",
+                        "state": {
+                          "Name": "unusualend:gloopslate"
+                        }
+                      }
+                    },
+                    {
+                      "height": {
+                        "type": "uniform",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 1
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:weighted_state_provider",
+                        "entries": [
+                          {
+                            "data": {
+                              "Name": "unusualend:gloopslate"
+                            },
+                            "weight": 2
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:bouncy_gloopslate"
+                            },
+                            "weight": 1
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "height": {
+                        "type": "uniform",
+                        "value": {
+                          "min_inclusive": 0,
+                          "max_inclusive": 1
+                        }
+                      },
+                      "provider": {
+                        "type": "minecraft:weighted_state_provider",
+                        "entries": [
+                          {
+                            "data": {
+                              "Name": "unusualend:gloopy_tendrils"
+                            },
+                            "weight": 4
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:shiny_spirea"
+                            },
+                            "weight": 1
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:crystal_flower"
+                            },
+                            "weight": 1
+                          },
+                          {
+                            "data": {
+                              "Name": "unusualend:endermite_eggs",
+                              "Properties": {
+                                "waterlogged": "false",
+                                "facing": "south",
+                                "face": "floor"
+                              }
+                            },
+                            "weight": 1
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              "placement": []
+            }
+          ]
+        }
+      },
+      "placement": [
+        {
+          "type": "minecraft:block_predicate_filter",
+          "predicate": {
+            "type": "minecraft:all_of",
+            "predicates": [
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "minecraft:air"
+              },
+              {
+                "type": "minecraft:matching_blocks",
+                "blocks": "#unusualend:gloopstone_valid_placement",
+                "offset": [
+                  0,
+                  -1,
+                  0
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -17,13 +17,10 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.UnusualendMod;
-import net.neoforged.bus.api.Event;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-
-import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class FeedBolokFinProcedure {
@@ -66,7 +63,7 @@ public class FeedBolokFinProcedure {
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.HEART, (entity.getX()), (entity.getY()), (entity.getZ()), 10, 0.3, 0.5, 0.3, 0);
 						entity.getPersistentData().putBoolean("CooldownBolok", true);
-						UnusualendMod.queueServerWork(200, () -> {
+						UnusualEnd.queueServerWork(200, () -> {
 							entity.getPersistentData().putBoolean("CooldownBolok", false);
 						});
 					}
@@ -97,7 +94,7 @@ public class FeedBolokFinProcedure {
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.HEART, (entity.getX()), (entity.getY()), (entity.getZ()), 10, 0.3, 0.5, 0.3, 0);
 						entity.getPersistentData().putBoolean("CooldownBolok", true);
-						UnusualendMod.queueServerWork(200, () -> {
+						UnusualEnd.queueServerWork(200, () -> {
 							entity.getPersistentData().putBoolean("CooldownBolok", false);
 						});
 					}

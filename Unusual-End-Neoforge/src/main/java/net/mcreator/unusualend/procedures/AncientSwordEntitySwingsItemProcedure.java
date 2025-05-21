@@ -103,7 +103,7 @@ public class AncientSwordEntitySwingsItemProcedure {
 				}
 			}
 			dis = Math.sqrt(Math.pow(entity.getX() - sourceentity.getX(), 2) + Math.pow(entity.getY() - sourceentity.getY(), 2) + Math.pow(entity.getZ() - sourceentity.getZ(), 2));
-			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:bosses")))) {
+			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("neoforge:bosses")))) {
 				entity.setDeltaMovement(new Vec3((((sourceentity.getX() - entity.getX()) / dis) * 1), (((sourceentity.getY() - entity.getY()) / dis) * 1), (((sourceentity.getZ() - entity.getZ()) / dis) * 1)));
 			}
 		}

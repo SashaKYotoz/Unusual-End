@@ -2,5 +2,5 @@
   "type": "forge:add_features",
   "biomes": "unusualend:gloopstone_lands",
   "features": "unusualend:gloopy_patchs",
-  "step": "underground_ores"
+  "step": "local_modifications"
 }

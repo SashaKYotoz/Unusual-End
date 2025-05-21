@@ -1,7 +1,9 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.AABB;
@@ -39,11 +41,11 @@ public class UnbucketFireflyProcedure {
 			return;
 		String name = "";
 		if (!entity.isShiftKeyDown()) {
-			if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("mangrove_swamp")) || world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("swamp"))) {
+			if (world.getBiome(BlockPos.containing(x, y, z)).is(Biomes.MANGROVE_SWAMP) || world.getBiome(BlockPos.containing(x, y, z)).is(Biomes.SWAMP)) {
 				if (!(entity instanceof ServerPlayer _plr3 && _plr3.level() instanceof ServerLevel
-						&& _plr3.getAdvancements().getOrStartProgress(_plr3.server.getAdvancements().get(new ResourceLocation("unusualend:firefly_in_swamp"))).isDone())) {
+						&& _plr3.getAdvancements().getOrStartProgress(_plr3.server.getAdvancements().get(UnusualEnd.makeUEID("firefly_in_swamp"))).isDone())) {
 					if (entity instanceof ServerPlayer _player) {
-						AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:firefly_in_swamp"));
+						AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("firefly_in_swamp"));
 						AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 						if (!_ap.isDone()) {
 							for (String criteria : _ap.getRemainingCriteria())

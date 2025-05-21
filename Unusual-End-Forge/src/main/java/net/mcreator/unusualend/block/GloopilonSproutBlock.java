@@ -83,7 +83,7 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 
 	@Override
 	public void randomTick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
-		GloopilonSproutUpdateTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
+		GloopilonSproutUpdateTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@Override
@@ -101,6 +101,6 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 
 	@Override
 	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		GrowGloopilonProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
+		GrowGloopilonProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 }

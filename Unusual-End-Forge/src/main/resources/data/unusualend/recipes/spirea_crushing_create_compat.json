@@ -1,0 +1,21 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "item": "unusualend:shiny_spirea"
+    }
+  ],
+  "results": [
+    {
+      "item": "unusualend:shiny_crystal",
+      "chance": 0.15
+    }
+  ],
+  "processingTime": 100,
+  "conditions": [
+    {
+      "modid": "create",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

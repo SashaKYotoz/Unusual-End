@@ -25,14 +25,10 @@ import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
 import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
 
-import java.io.File;
-
 public class OnRightClickOnAnchorProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		File file = new File("");
-		com.google.gson.JsonObject files = new com.google.gson.JsonObject();
 		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.TELEPORTATION_ANCHOR.get()) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PRISMATIC_MIRROR.get()) {
 				if (ConfigurationFileConfiguration.CAN_USE_TELEPORTATION_ANCHOR.get() == true) {

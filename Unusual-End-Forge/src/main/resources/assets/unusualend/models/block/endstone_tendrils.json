@@ -1,0 +1,8 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "unusualend:block/endstone_tendrils",
+    "particle": "unusualend:block/endstone_tendrils"
+  },
+  "render_type": "cutout"
+}

@@ -7,7 +7,7 @@
         "type": "uniform",
         "value": {
           "min_inclusive": 1,
-          "max_inclusive": 3
+          "max_inclusive": 2
         }
       }
     },
@@ -75,6 +75,15 @@
               0,
               -4,
               -2
+            ]
+          },
+          {
+            "type": "minecraft:matching_blocks",
+            "blocks": "#unusualend:gloopstone_valid_placement",
+            "offset": [
+              0,
+              -1,
+              0
             ]
           }
         ]

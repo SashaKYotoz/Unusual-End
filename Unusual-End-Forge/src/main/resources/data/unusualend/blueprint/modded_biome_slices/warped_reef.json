@@ -1,0 +1,20 @@
+{
+  "levels": [
+    "minecraft:the_end"
+  ],
+  "provider": {
+    "type": "blueprint:overlay",
+    "overlays": [
+      {
+        "biome_source": {
+          "type": "minecraft:fixed",
+          "biome": "unusualend:warped_reef"
+        },
+        "matches_biomes": [
+          "minecraft:small_end_islands"
+        ]
+      }
+    ]
+  },
+  "weight": 6
+}

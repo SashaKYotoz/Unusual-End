@@ -55,18 +55,15 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	public GloopilonBulbBlock() {
 		super(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(1f, 10f).lightLevel(s -> (new Object() {
 			public int getLightLevel() {
-				if (s.getValue(AGE) == 0)
-					return 1;
 				if (s.getValue(AGE) == 1)
 					return 2;
 				if (s.getValue(AGE) == 2)
 					return 5;
-				return 0;
+				return 1;
 			}
 		}.getLightLevel())).noCollission().noOcclusion().randomTicks().isRedstoneConductor((bs, br, bp) -> false));
 	}
 
-	@Override
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
 		return new ItemStack(UnusualendModBlocks.GLOOPILON_SEEDS.get());
 	}
@@ -88,11 +85,8 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		if (state.getValue(AGE) == 1) {
-			return box(4, 4, 4, 12, 16, 12);
-		}
 		if (state.getValue(AGE) == 2) {
-			return box(2, 1, 2, 14, 16, 14);
+			return box(4, 4, 4, 12, 16, 12);
 		}
 		return box(3, 10, 3, 13, 16, 13);
 	}
@@ -119,12 +113,12 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
+	public void randomTick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		GloopilonSproutUpdateTickProcedure.execute(world, x, y, z, blockstate);
+		GloopilonSproutUpdateTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
 	@OnlyIn(Dist.CLIENT)
@@ -153,6 +147,6 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 
 	@Override
 	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		GrowGloopilonProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), blockstate);
+		GrowGloopilonProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 }

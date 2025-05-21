@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.Blocks;
@@ -51,9 +52,9 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 			if (entity.isShiftKeyDown()) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.BEACON) {
 					if (!(entity instanceof ServerPlayer _plr5 && _plr5.level() instanceof ServerLevel
-							&& _plr5.getAdvancements().getOrStartProgress(_plr5.server.getAdvancements().get(new ResourceLocation("unusualend:obtain_catalyst"))).isDone())) {
+							&& _plr5.getAdvancements().getOrStartProgress(_plr5.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"))).isDone())) {
 						if (entity instanceof ServerPlayer _player) {
-							AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:obtain_catalyst"));
+							AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"));
 							AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 							if (!_ap.isDone()) {
 								Iterator _iterator = _ap.getRemainingCriteria().iterator();
@@ -86,9 +87,9 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 						_level.sendParticles(ParticleTypes.END_ROD, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 0);
 				} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.CONDUIT) {
 					if (!(entity instanceof ServerPlayer _plr24 && _plr24.level() instanceof ServerLevel
-							&& _plr24.getAdvancements().getOrStartProgress(_plr24.server.getAdvancements().get(new ResourceLocation("unusualend:obtain_catalyst"))).isDone())) {
+							&& _plr24.getAdvancements().getOrStartProgress(_plr24.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"))).isDone())) {
 						if (entity instanceof ServerPlayer _player) {
-							AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:obtain_catalyst"));
+							AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"));
 							AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 							if (!_ap.isDone()) {
 								Iterator _iterator = _ap.getRemainingCriteria().iterator();
@@ -125,9 +126,9 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 							_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 10);
 					}
 					if (!(entity instanceof ServerPlayer _plr47 && _plr47.level() instanceof ServerLevel
-							&& _plr47.getAdvancements().getOrStartProgress(_plr47.server.getAdvancements().get(new ResourceLocation("unusualend:obtain_catalyst"))).isDone())) {
+							&& _plr47.getAdvancements().getOrStartProgress(_plr47.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"))).isDone())) {
 						if (entity instanceof ServerPlayer _player) {
-							AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:obtain_catalyst"));
+							AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"));
 							AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 							if (!_ap.isDone()) {
 								Iterator _iterator = _ap.getRemainingCriteria().iterator();

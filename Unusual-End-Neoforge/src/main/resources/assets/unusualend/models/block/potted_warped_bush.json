@@ -1,0 +1,11 @@
+{
+  "parent": "unusualend:custom/flower_pot_cross",
+  "textures": {
+    "all": "minecraft:block/flower_pot",
+    "particle": "minecraft:block/flower_pot",
+    "flowerpot": "minecraft:block/flower_pot",
+    "plant": "unusualend:block/warped_bush_pot",
+    "dirt": "unusualend:block/endstone_nylium_top"
+  },
+  "render_type": "cutout"
+}

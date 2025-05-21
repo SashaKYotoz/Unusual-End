@@ -10,7 +10,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.world.inventory.BolokNotesMenu;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -21,7 +21,7 @@ import java.util.HashMap;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BolokNotesButtonMessage implements CustomPacketPayload {
     private final int buttonID, x, y, z;
-    public static final ResourceLocation ID = new ResourceLocation(UnusualendMod.MODID, "bolok_notes_button_message_id");
+    public static final ResourceLocation ID = UnusualEnd.makeUEID("bolok_notes_button_message_id");
 
     public BolokNotesButtonMessage(FriendlyByteBuf buffer) {
         this.buttonID = buffer.readInt();
@@ -77,6 +77,6 @@ public class BolokNotesButtonMessage implements CustomPacketPayload {
 
     @SubscribeEvent
     public static void registerMessage(FMLCommonSetupEvent event) {
-        UnusualendMod.addNetworkMessage(ID, BolokNotesButtonMessage::new, BolokNotesButtonMessage::handler);
+        UnusualEnd.addNetworkMessage(ID, BolokNotesButtonMessage::new, BolokNotesButtonMessage::handler);
     }
 }

@@ -8,12 +8,11 @@ import net.mcreator.unusualend.world.features.RawPurpurFeatureFeature;
 import net.mcreator.unusualend.world.features.PurpurIsland1FeatureFeature;
 import net.mcreator.unusualend.world.features.InfestedEndstoneFeature;
 import net.mcreator.unusualend.world.features.HighlandPlantsFeature;
-import net.mcreator.unusualend.UnusualendMod;
-import net.neoforged.fml.common.Mod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 public class UnusualendModFeatures {
-	public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.FEATURE, UnusualendMod.MODID);
+	public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.FEATURE, UnusualEnd.MODID);
 	public static final DeferredHolder<Feature<?>, PurpurIsland1FeatureFeature> PURPUR_ISLAND_1_FEATURE = REGISTRY.register("purpur_island_1_feature", PurpurIsland1FeatureFeature::new);
 	public static final DeferredHolder<Feature<?>, HighlandPlantsFeature> HIGHLAND_PLANTS = REGISTRY.register("highland_plants", HighlandPlantsFeature::new);
 	public static final DeferredHolder<Feature<?>, InfestedEndstoneFeature> INFESTED_ENDSTONE = REGISTRY.register("infested_endstone", InfestedEndstoneFeature::new);

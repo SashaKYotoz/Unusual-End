@@ -5,5 +5,5 @@
     "particle": "unusualend:block/endstone_nylium_top",
     "0": "unusualend:block/warped_bubble"
   },
-  "render_type": "translucent"
+  "render_type": "cutout_mipped"
 }

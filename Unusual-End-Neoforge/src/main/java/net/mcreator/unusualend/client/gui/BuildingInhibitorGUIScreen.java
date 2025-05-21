@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.client.gui;
 
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.block.entity.BuildingInhibitorBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -17,7 +17,6 @@ import net.mcreator.unusualend.procedures.ReturnBuildingInhibIsActiveProcedure;
 import java.util.HashMap;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<BuildingInhibitorGUIMenu> {
     private final static HashMap<String, Object> guistate = BuildingInhibitorGUIMenu.guistate;
@@ -38,7 +37,7 @@ public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<Building
         this.imageHeight = 126;
     }
 
-    private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/screens/building_inhibitor_gui.png");
+    private static final ResourceLocation texture = UnusualEnd.makeUEID("textures/screens/building_inhibitor_gui.png");
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -60,7 +59,7 @@ public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<Building
         RenderSystem.defaultBlendFunc();
         guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
         if (toShow()) {
-            guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/inhibiter_active_arrow.png"), this.leftPos + 100, this.topPos + 11, 0, 0, 19, 6, 19, 6);
+            guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/inhibiter_active_arrow.png"), this.leftPos + 100, this.topPos + 11, 0, 0, 19, 6, 19, 6);
         }
         RenderSystem.disableBlend();
     }
@@ -81,7 +80,7 @@ public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<Building
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        UnusualendMod.LOGGER.info(pos != null && level.getBlockEntity(pos) instanceof BuildingInhibitorBlockEntity entity);
+        UnusualEnd.LOGGER.info(pos != null && level.getBlockEntity(pos) instanceof BuildingInhibitorBlockEntity entity);
         guiGraphics.drawString(this.font,
                 (getBlockEntity() != null
                         ? getBlockEntity().getPersistentData().getDouble("Fuel") + "/32"

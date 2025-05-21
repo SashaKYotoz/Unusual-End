@@ -1,6 +1,9 @@
 {
   "type": "forge:add_features",
-  "biomes": "the_end",
+  "biomes": [
+    "the_end",
+    "unusualend:gloopstone_lands"
+  ],
   "features": "unusualend:end_sprouts",
   "step": "vegetal_decoration"
 }

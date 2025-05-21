@@ -17,7 +17,7 @@ import net.minecraft.core.BlockPos;
 
 public class ShinyGloopstoneBlock extends DropExperienceBlock {
 	public ShinyGloopstoneBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.CORAL_BLOCK).strength(0.85f, 5f).lightLevel(s -> 4).requiresCorrectToolForDrops(), UniformInt.of(1, 2));
+		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.CORAL_BLOCK).strength(0.85f, 5f).lightLevel(s -> 7).requiresCorrectToolForDrops(), UniformInt.of(1, 2));
 	}
 
 	@Override

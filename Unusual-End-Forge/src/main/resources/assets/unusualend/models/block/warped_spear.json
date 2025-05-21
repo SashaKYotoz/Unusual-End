@@ -2,5 +2,5 @@
   "parent": "unusualend:custom/warped_spear",
   "textures": {
       "0": "unusualend:blocks/warped_spear_3d"
-  },
+  }
 }

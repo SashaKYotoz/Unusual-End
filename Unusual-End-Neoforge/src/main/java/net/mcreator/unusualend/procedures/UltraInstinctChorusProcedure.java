@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.Blocks;
@@ -14,14 +15,12 @@ import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingHurtEvent;
@@ -43,7 +42,7 @@ public class UltraInstinctChorusProcedure {
 		double Z;
         if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem() == UnusualendModItems.CHORUS_HELMET.get()) {
 			if (!entity.isShiftKeyDown()) {
-				if (Math.random() < ConfigurationFileConfiguration.CHORUS_HELMET_PROBABILITY_TO_TELEPORT.get() / 100) {
+				if (Math.random() < UEConfig.CHORUS_HELMET_PROBABILITY_TO_TELEPORT.get() / 100) {
 					for (int index0 = 0; index0 < 1000; index0++) {
 						X = x + Mth.nextInt(RandomSource.create(), -5, 5);
 						Y = y + Mth.nextInt(RandomSource.create(), -2, 2);
@@ -66,14 +65,14 @@ public class UltraInstinctChorusProcedure {
 										_level.playLocalSound(x, y, z, SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1, 1, false);
 									}
 								}
-								if (amount <= ConfigurationFileConfiguration.MAX_DAMAGE_CHORUS_HELMET_CAN_DODGE_WITH_TP_.get()) {
+								if (amount <= UEConfig.MAX_DAMAGE_CHORUS_HELMET_CAN_DODGE_WITH_TP_.get()) {
 									if (event != null) {
 										event.setCanceled(true);
 									}
 									if (!(entity instanceof ServerPlayer _plr18 && _plr18.level() instanceof ServerLevel
-											&& _plr18.getAdvancements().getOrStartProgress(_plr18.server.getAdvancements().get(new ResourceLocation("unusualend:use_chorus_helmet"))).isDone())) {
+											&& _plr18.getAdvancements().getOrStartProgress(_plr18.server.getAdvancements().get(UnusualEnd.makeUEID("use_chorus_helmet"))).isDone())) {
 										if (entity instanceof ServerPlayer _player) {
-											AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:use_chorus_helmet"));
+											AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("use_chorus_helmet"));
 											AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 											if (!_ap.isDone()) {
 												for (String criteria : _ap.getRemainingCriteria())

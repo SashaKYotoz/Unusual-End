@@ -17,12 +17,12 @@ import net.minecraft.core.BlockPos;
 
 public class PrismaliticGloopslateBlock extends DropExperienceBlock {
 	public PrismaliticGloopslateBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.CORAL_BLOCK).strength(2f, 6f).lightLevel(s -> 2).requiresCorrectToolForDrops(), UniformInt.of(4, 8));
+		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.CORAL_BLOCK).strength(2f, 6f).lightLevel(s -> 5).requiresCorrectToolForDrops(), UniformInt.of(4, 8));
 	}
 
 	@Override
 	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 13;
+		return 15;
 	}
 
 	@Override

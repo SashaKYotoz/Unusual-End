@@ -108,7 +108,7 @@ import net.mcreator.unusualend.item.AncientSwordItem;
 import net.mcreator.unusualend.item.AncientShortbowItem;
 import net.mcreator.unusualend.item.AncientShardItem;
 import net.mcreator.unusualend.item.AncientArmorTrimSmithingTemplateItem;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -120,7 +120,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class UnusualendModItems {
-    public static final DeferredRegister<Item> REGISTRY = DeferredRegister.createItems(UnusualendMod.MODID);
+    public static final DeferredRegister<Item> REGISTRY = DeferredRegister.createItems(UnusualEnd.MODID);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDER_BLOB_SPAWN_EGG = REGISTRY.register("ender_blob_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.ENDER_BLOB, -13295268, -16777216, new Item.Properties()));
     public static final DeferredHolder<Item, EndblobBallItem> END_BLOB = REGISTRY.register("end_blob", () -> new EndblobBallItem());
     public static final DeferredHolder<Item, DeferredSpawnEggItem> UNDEAD_ENDERLING_SPAWN_EGG = REGISTRY.register("undead_enderling_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.UNDEAD_ENDERLING, -16777216, -6750055, new Item.Properties()));
@@ -434,7 +434,7 @@ public class UnusualendModItems {
     @SubscribeEvent
     public static void clientLoad(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ItemProperties.register(CRYSTAL_CATALYST.get(), new ResourceLocation("unusualend:crystal_catalyst_is_renamed"),
+            ItemProperties.register(CRYSTAL_CATALYST.get(), UnusualEnd.makeUEID("crystal_catalyst_is_renamed"),
                     (itemStackToRender, clientWorld, entity, itemEntityId) -> (float) CrystalCatalystPropertyValueProviderProcedure.execute(itemStackToRender));
             ItemProperties.register(ENDERBLOB_SHIELD.get(), new ResourceLocation("blocking"), ItemProperties.getProperty(Items.SHIELD, new ResourceLocation("blocking")));
         });

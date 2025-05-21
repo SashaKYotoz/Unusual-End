@@ -1,6 +1,7 @@
 {
   "parent": "block/template_glass_pane_noside_alt",
   "textures": {
+    "particle": "unusualend:block/chiseled_glass",
     "pane": "unusualend:block/chiseled_glass"
   },
   "render_type": "cutout"

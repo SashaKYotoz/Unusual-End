@@ -1,6 +1,7 @@
 {
   "parent": "block/slab_top",
   "textures": {
+    "particle": "unusualend:block/chorus_nest_planks",
     "bottom": "unusualend:block/chorus_nest_planks",
     "top": "unusualend:block/chorus_nest_planks",
     "side": "unusualend:block/chorus_nest_planks"

@@ -155,8 +155,18 @@ public class ChorusFluteRightclickedProcedure {
 					}
 				}
 			}
+		} else if ((itemstack.getOrCreateTag().getString("track")).equals("Wilds")) {
+			if (!world.isClientSide()) {
+				if (world instanceof Level _level) {
+					if (!_level.isClientSide()) {
+						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_wilds")), SoundSource.RECORDS, 6, 1);
+					} else {
+						_level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_wilds")), SoundSource.RECORDS, 6, 1, false);
+					}
+				}
+			}
 		} else {
-			random = Mth.nextInt(RandomSource.create(), 1, 12);
+			random = Mth.nextInt(RandomSource.create(), 1, 13);
 			if (!world.isClientSide()) {
 				if (random == 1) {
 					if (world instanceof Level _level) {
@@ -252,6 +262,14 @@ public class ChorusFluteRightclickedProcedure {
 							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_fishe")), SoundSource.RECORDS, 6, 1);
 						} else {
 							_level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_fishe")), SoundSource.RECORDS, 6, 1, false);
+						}
+					}
+				} else if (random == 13) {
+					if (world instanceof Level _level) {
+						if (!_level.isClientSide()) {
+							_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_wilds")), SoundSource.RECORDS, 6, 1);
+						} else {
+							_level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_wilds")), SoundSource.RECORDS, 6, 1, false);
 						}
 					}
 				}

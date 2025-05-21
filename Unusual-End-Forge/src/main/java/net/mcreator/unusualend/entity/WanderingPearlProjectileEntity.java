@@ -91,6 +91,10 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 		return shoot(world, entity, source, 1.2f, 0, 0);
 	}
 
+	public static WanderingPearlProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
+		return shoot(world, entity, source, pullingPower * 1.2f, 0, 0);
+	}
+
 	public static WanderingPearlProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
 		WanderingPearlProjectileEntity entityarrow = new WanderingPearlProjectileEntity(UnusualendModEntities.WANDERING_PEARL_PROJECTILE.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);

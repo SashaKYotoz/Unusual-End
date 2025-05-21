@@ -1,36 +1,59 @@
 {
-  "type": "minecraft:ore",
+  "type": "minecraft:disk",
   "config": {
-    "size": 25,
-    "discard_chance_on_air_exposure": 0.3,
-    "targets": [
-      {
-        "target": {
-          "predicate_type": "block_match",
-          "block": "unusualend:gloopstone"
-        },
-        "state": {
-          "Name": "unusualend:gloopslate"
-        }
-      },
-      {
-        "target": {
-          "predicate_type": "tag_match",
-          "tag": "unusualend:gloopstone_ground_replace"
-        },
-        "state": {
-          "Name": "unusualend:gloopslate"
-        }
-      },
-      {
-        "target": {
-          "predicate_type": "block_match",
-          "block": "unusualend:gloopy_endstone"
-        },
-        "state": {
-          "Name": "unusualend:gloopslate"
-        }
+    "radius": {
+      "type": "uniform",
+      "value": {
+        "min_inclusive": 3,
+        "max_inclusive": 8
       }
-    ]
+    },
+    "half_height": 4,
+    "target": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "minecraft:end_stone"
+      ]
+    },
+    "state_provider": {
+      "fallback": {
+        "type": "minecraft:simple_state_provider",
+        "state": {
+          "Name": "unusualend:gloopstone"
+        }
+      },
+      "rules": [
+        {
+          "if_true": {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid",
+              "offset": [
+                0,
+                1,
+                0
+              ]
+            }
+          },
+          "then": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "unusualend:gloopy_endstone"
+            }
+          }
+        },
+        {
+          "if_true": {
+            "type": "minecraft:solid"
+          },
+          "then": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "minecraft:end_stone"
+            }
+          }
+        }
+      ]
+    }
   }
 }

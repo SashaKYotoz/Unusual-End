@@ -9,11 +9,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
-import net.mcreator.unusualend.client.particle.WarpedBubblesParticle;
-import net.mcreator.unusualend.client.particle.PinkFlameParticle;
-import net.mcreator.unusualend.client.particle.CitrineShineParticle;
-import net.mcreator.unusualend.client.particle.BolokParticleParticle;
-
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class UnusualendModParticles {
 	@SubscribeEvent

@@ -13,6 +13,8 @@ import net.mcreator.unusualend.UnusualendMod;
 public class UnusualendModConfigs {
 	@SubscribeEvent
 	public static void register(FMLConstructModEvent event) {
-		event.enqueueWork(() -> ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigurationFileConfiguration.SPEC, "unusualend-common.toml"));
+		event.enqueueWork(() -> {
+			ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigurationFileConfiguration.SPEC, "unusualend-common.toml");
+		});
 	}
 }

@@ -6,12 +6,12 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnusualendModPotions {
-	public static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(BuiltInRegistries.POTION, UnusualendMod.MODID);
+	public static final DeferredRegister<Potion> REGISTRY = DeferredRegister.create(BuiltInRegistries.POTION, UnusualEnd.MODID);
 	public static final DeferredHolder<Potion, Potion> END_INFECTION = REGISTRY.register("end_infection", () -> new Potion(new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 3600, 0, false, true)));
 	public static final DeferredHolder<Potion, Potion> LEVITATION = REGISTRY.register("levitation", () -> new Potion(new MobEffectInstance(MobEffects.LEVITATION, 400, 0, false, true)));
 	public static final DeferredHolder<Potion, Potion> BUILDING_POTION = REGISTRY.register("building_potion", () -> new Potion(new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 9600, 0, false, true)));

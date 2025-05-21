@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.client.gui;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,7 +12,6 @@ import net.minecraft.client.gui.GuiGraphics;
 
 import net.mcreator.unusualend.world.inventory.BolokNotesMenu;
 import net.mcreator.unusualend.network.BolokNotesButtonMessage;
-import net.mcreator.unusualend.UnusualendMod;
 
 import java.util.HashMap;
 
@@ -36,7 +36,7 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
         this.imageHeight = 0;
     }
 
-    private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/screens/bolok_notes.png");
+    private static final ResourceLocation texture = UnusualEnd.makeUEID("textures/screens/bolok_notes.png");
 
     @Override
     public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
@@ -52,7 +52,7 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
         RenderSystem.defaultBlendFunc();
         guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 
-        guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/bolok_note.png"), this.leftPos + -74, this.topPos + -116, 0, 0, 146, 180, 146, 180);
+        guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/bolok_note.png"), this.leftPos + -74, this.topPos + -116, 0, 0, 146, 180, 146, 180);
 
         RenderSystem.disableBlend();
     }

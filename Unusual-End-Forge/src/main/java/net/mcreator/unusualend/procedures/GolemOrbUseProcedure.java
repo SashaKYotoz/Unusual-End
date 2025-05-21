@@ -29,6 +29,7 @@ import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
 import net.mcreator.unusualend.init.UnusualendModItems;
+import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
 
 import javax.annotation.Nullable;
 
@@ -63,7 +64,7 @@ public class GolemOrbUseProcedure {
 				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.SHULKER_ORB.get())) : false)
 				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.WITHERING_ORB.get())) : false)) {
 			if (entity instanceof Player) {
-				if (Math.random() < 0.05) {
+				if (Math.random() < (double) ConfigurationFileConfiguration.ORB_TRIGGER.get() / 100) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
 							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie.attack_wooden_door")), SoundSource.PLAYERS, 1, (float) 0.1);

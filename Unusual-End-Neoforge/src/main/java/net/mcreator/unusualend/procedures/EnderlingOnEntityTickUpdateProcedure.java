@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.Mob;
@@ -21,7 +22,7 @@ public class EnderlingOnEntityTickUpdateProcedure {
 			if (((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.LEGS) : ItemStack.EMPTY).getItem() == UnusualendModItems.SPECTRAL_LEGGINGS.get()
 					&& (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).isShiftKeyDown()
 					|| ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY)
-							.is(ItemTags.create(new ResourceLocation("unusualend:enderling_mask")))) {
+							.is(ItemTags.create(UnusualEnd.makeUEID("enderling_mask")))) {
 				if (entity instanceof Mob _entity) {
 					_entity.setTarget(null);
 				}

@@ -8,13 +8,13 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.Registries;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 public class CrystalFlowerMobplayerCollidesWithPlantProcedure {
 	public static void execute(Entity entity) {
 		if (entity == null)
 			return;
-		if (ConfigurationFileConfiguration.CRYSTAL_NAUSEA.get()) {
+		if (UEConfig.CRYSTAL_NAUSEA.get()) {
 			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("neoforge:blobqueen_immune")))) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 120, 0));

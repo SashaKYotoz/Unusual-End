@@ -31,7 +31,7 @@ public class UnusualendModCompostableItems {
 		ComposterBlock.COMPOSTABLES.put(UnusualendModItems.WARPED_SPORES.get(), 0.65f);
 		ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_ALGAE.get().asItem(), 0.5f);
 		ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.SMALL_WARPED_ALGAE.get().asItem(), 0.3f);
-		ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_SPROUTS.get().asItem(), 0.3f);
+		ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.WARPED_ENDSTONE_SPROUTS.get().asItem(), 0.3f);
 		ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.CRYSTAL_FLOWER.get().asItem(), 1f);
 		ComposterBlock.COMPOSTABLES.put(UnusualendModItems.WARPED_BERRIES.get(), 0.85f);
 		ComposterBlock.COMPOSTABLES.put(UnusualendModBlocks.GLOOPY_TENDRILS.get().asItem(), 0.3f);

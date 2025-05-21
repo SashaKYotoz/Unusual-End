@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.init;
 
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.block.entity.*;
 import net.mcreator.unusualend.item.inventory.BolokResearchNotesInventoryCapability;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -14,7 +14,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UnusualendCapabilities {
-    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPE = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, UnusualendMod.MODID);
+    public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPE = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, UnusualEnd.MODID);
     public static final DeferredHolder<AttachmentType<?>, AttachmentType<BolokResearchNotesInventoryCapability>> BOLOK_NOTE_INVENTORY = ATTACHMENT_TYPE.register("bolok_note_inventory", () -> AttachmentType.serializable(BolokResearchNotesInventoryCapability::new).build());
 
     @SubscribeEvent

@@ -9,14 +9,13 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.util.Mth;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 
 import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 
 public class ChorusCaneUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -42,7 +41,7 @@ public class ChorusCaneUpdateTickProcedure {
 						_level.playLocalSound(x, y, z, SoundEvents.NOTE_BLOCK_FLUTE.value(), SoundSource.BLOCKS, (float) 0.3, (float) (Mth.nextDouble(RandomSource.create(), 50, 70) * 0.01), false);
 					}
 				}
-				UnusualendMod.queueServerWork(4, () -> {
+				UnusualEnd.queueServerWork(4, () -> {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
 							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.NOTE_BLOCK_FLUTE.value(), SoundSource.BLOCKS, (float) 0.3,
@@ -51,7 +50,7 @@ public class ChorusCaneUpdateTickProcedure {
 							_level.playLocalSound(x, y, z, SoundEvents.NOTE_BLOCK_FLUTE.value(), SoundSource.BLOCKS, (float) 0.3, (float) (Mth.nextDouble(RandomSource.create(), 50, 70) * 0.01), false);
 						}
 					}
-					UnusualendMod.queueServerWork(4, () -> {
+					UnusualEnd.queueServerWork(4, () -> {
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
 								_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.NOTE_BLOCK_FLUTE.value(), SoundSource.BLOCKS, (float) 0.3,

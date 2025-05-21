@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.level.block.Blocks;
@@ -55,7 +56,7 @@ public class TurnToShulkerProcedure {
 					ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 				}
 				if (sourceentity instanceof ServerPlayer _player) {
-					AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:gotta_catch_em_all"));
+					AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("gotta_catch_em_all"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
 						for (String criteria : _ap.getRemainingCriteria())

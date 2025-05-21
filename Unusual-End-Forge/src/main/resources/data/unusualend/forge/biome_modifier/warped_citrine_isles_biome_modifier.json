@@ -2,5 +2,5 @@
   "type": "forge:add_features",
   "biomes": "unusualend:warped_reef",
   "features": "unusualend:warped_citrine_isles",
-  "step": "raw_generation"
+  "step": "strongholds"
 }

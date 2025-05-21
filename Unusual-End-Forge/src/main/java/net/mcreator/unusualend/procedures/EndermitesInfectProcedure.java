@@ -17,8 +17,6 @@ import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
 
 import javax.annotation.Nullable;
 
-import java.io.File;
-
 @Mod.EventBusSubscriber
 public class EndermitesInfectProcedure {
 	@SubscribeEvent
@@ -35,8 +33,6 @@ public class EndermitesInfectProcedure {
 	private static void execute(@Nullable Event event, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		File file = new File("");
-		com.google.gson.JsonObject files = new com.google.gson.JsonObject();
 		if (sourceentity instanceof Endermite || sourceentity instanceof EnderblobEntity) {
 			if (entity instanceof EnderMan) {
 				if (Math.random() < 0.5) {

@@ -1,6 +1,7 @@
 {
   "parent": "block/door_bottom_right_open",
   "textures": {
+    "particle": "unusualend:block/chorus_nest_door_back",
     "bottom": "unusualend:block/chorus_nest_door_back",
     "top": "unusualend:block/chorus_nest_door_top"
   },

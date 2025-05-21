@@ -22,9 +22,6 @@ public class EnderlingOnEntityTickUpdateProcedure {
 					&& (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).isShiftKeyDown()
 					|| ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY)
 							.is(ItemTags.create(new ResourceLocation("unusualend:enderling_mask")))) {
-				if (entity instanceof Mob _entity) {
-					_entity.setTarget(null);
-				}
 			}
 		}
 		if (world instanceof ServerLevel _level)

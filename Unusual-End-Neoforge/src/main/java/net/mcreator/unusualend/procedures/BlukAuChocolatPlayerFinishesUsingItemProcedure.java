@@ -8,14 +8,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.core.BlockPos;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 public class BlukAuChocolatPlayerFinishesUsingItemProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
 		double random = 0;
-		if (ConfigurationFileConfiguration.CHOCOLAT_BLUK.get() == true) {
+		if (UEConfig.CHOCOLAT_BLUK.get() == true) {
 			if (world.isClientSide()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {

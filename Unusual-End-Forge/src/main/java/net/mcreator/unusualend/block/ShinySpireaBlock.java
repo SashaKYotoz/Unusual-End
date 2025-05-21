@@ -52,7 +52,7 @@ public class ShinySpireaBlock extends FlowerBlock {
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
 		return groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL)
 				|| groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.SHINY_GLOOPSTONE.get())
-				|| groundState.is(Blocks.ROOTED_DIRT) || groundState.is(UnusualendModBlocks.GLOOPY_ENDSTONE.get());
+				|| groundState.is(Blocks.ROOTED_DIRT) || groundState.is(UnusualendModBlocks.GLOOPY_ENDSTONE.get()) || groundState.is(UnusualendModBlocks.BOUNCY_GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.BOUNCY_GLOOPSTONE.get());
 	}
 
 	@Override

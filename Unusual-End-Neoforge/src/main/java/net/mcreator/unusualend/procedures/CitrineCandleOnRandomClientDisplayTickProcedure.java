@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.LevelAccessor;
@@ -15,9 +16,9 @@ import net.mcreator.unusualend.init.UnusualendModParticleTypes;
 
 public class CitrineCandleOnRandomClientDisplayTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:candle_soul_flames")))) {
+		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(UnusualEnd.makeUEID("candle_soul_flames")))) {
 			world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
-		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:candle_shiny_flames")))) {
+		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(UnusualEnd.makeUEID("candle_shiny_flames")))) {
 			world.addParticle((SimpleParticleType) (UnusualendModParticleTypes.PINK_FLAME.get()), (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
 		} else {
 			world.addParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);

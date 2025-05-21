@@ -7,7 +7,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.monster.Endermite;
 import net.minecraft.world.entity.monster.EnderMan;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.damagesource.DamageSource;
@@ -141,13 +140,6 @@ public class EnderInfectionOnEffectActiveTickProcedure {
 			}
 		}
 		if (entity instanceof EnderMan) {
-			if (entity instanceof Mob) {
-				try {
-					((Mob) entity).setTarget(null);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
 		}
 	}
 }

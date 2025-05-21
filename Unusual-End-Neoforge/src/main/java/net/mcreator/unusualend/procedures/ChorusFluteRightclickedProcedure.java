@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.init.UnusualendModSounds;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.world.level.LevelAccessor;
@@ -25,9 +26,9 @@ public class ChorusFluteRightclickedProcedure {
         if (entity instanceof Player _player)
             _player.getCooldowns().addCooldown(itemstack.getItem(), 100);
         if (!(entity instanceof ServerPlayer _plr2 && _plr2.level() instanceof ServerLevel
-                && _plr2.getAdvancements().getOrStartProgress(_plr2.server.getAdvancements().get(new ResourceLocation("unusualend:using_chorus_flute"))).isDone())) {
+                && _plr2.getAdvancements().getOrStartProgress(_plr2.server.getAdvancements().get(UnusualEnd.makeUEID("using_chorus_flute"))).isDone())) {
             if (entity instanceof ServerPlayer _player) {
-                AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:using_chorus_flute"));
+                AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("using_chorus_flute"));
                 AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
                 if (!_ap.isDone()) {
                     for (String criteria : _ap.getRemainingCriteria())

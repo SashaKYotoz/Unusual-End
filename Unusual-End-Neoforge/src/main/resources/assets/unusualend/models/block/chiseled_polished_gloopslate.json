@@ -1,10 +1,12 @@
 {
-  "parent": "block/grass_block",
+  "parent": "block/cube",
   "textures": {
-    "bottom": "unusualend:block/polished_gloopslate",
-    "top": "unusualend:block/polished_gloopslate",
-    "side": "unusualend:block/chiseled_polished_gloopslate",
-    "overlay": "unusualend:block/chiseled_polished_gloopslate",
+    "down": "unusualend:block/polished_gloopslate",
+    "up": "unusualend:block/polished_gloopslate",
+    "north": "unusualend:block/chiseled_polished_gloopslate",
+    "east": "unusualend:block/chiseled_polished_gloopslate",
+    "south": "unusualend:block/chiseled_polished_gloopslate",
+    "west": "unusualend:block/chiseled_polished_gloopslate",
     "particle": "unusualend:block/polished_gloopslate"
   },
   "render_type": "solid"

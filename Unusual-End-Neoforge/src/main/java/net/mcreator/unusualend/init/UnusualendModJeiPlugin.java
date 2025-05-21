@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.init;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeManager;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +30,7 @@ public class UnusualendModJeiPlugin implements IModPlugin {
 
 	@Override
 	public ResourceLocation getPluginUid() {
-		return new ResourceLocation("unusualend:jei_plugin");
+		return UnusualEnd.makeUEID("jei_plugin");
 	}
 
 	@Override

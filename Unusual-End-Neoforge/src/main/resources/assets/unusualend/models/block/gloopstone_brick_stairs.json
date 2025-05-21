@@ -1,6 +1,7 @@
 {
   "parent": "block/stairs",
   "textures": {
+    "particle": "unusualend:block/gloopstone_bricks",
     "bottom": "unusualend:block/gloopstone_bricks",
     "top": "unusualend:block/gloopstone_bricks",
     "side": "unusualend:block/gloopstone_bricks"

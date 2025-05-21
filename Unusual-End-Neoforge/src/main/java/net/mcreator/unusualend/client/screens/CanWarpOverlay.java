@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.screens;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.resources.ResourceLocation;
@@ -38,7 +39,7 @@ public class CanWarpOverlay {
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		if (GetLookingWaystoneProcedure.execute(level, entity)) {
-			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/bubble_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
+			event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/bubble_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
 
 		}
 		RenderSystem.depthMask(true);

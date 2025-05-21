@@ -1,0 +1,22 @@
+{
+  "levels": [
+    "minecraft:the_end"
+  ],
+  "provider": {
+    "type": "blueprint:overlay",
+    "overlays": [
+      {
+        "biome_source": {
+          "type": "minecraft:fixed",
+          "biome": "unusualend:gloopstone_lands"
+        },
+        "matches_biomes": [
+          "minecraft:end_highlands",
+          "minecraft:end_midlands",
+          "minecraft:end_barrens"
+        ]
+      }
+    ]
+  },
+  "weight": 12
+}

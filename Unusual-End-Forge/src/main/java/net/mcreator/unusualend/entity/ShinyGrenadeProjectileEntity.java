@@ -90,6 +90,10 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 		return shoot(world, entity, source, 0.5f, 0.1, 0);
 	}
 
+	public static ShinyGrenadeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
+		return shoot(world, entity, source, pullingPower * 0.5f, 0.1, 0);
+	}
+
 	public static ShinyGrenadeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
 		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualendModEntities.SHINY_GRENADE_PROJECTILE.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);

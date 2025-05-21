@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,6 +16,6 @@ public class SpunklerRenderer extends MobRenderer<SpunklerEntity, Modelspunkler<
 
 	@Override
 	public ResourceLocation getTextureLocation(SpunklerEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/spunkler.png");
+		return UnusualEnd.makeUEID("textures/entities/spunkler.png");
 	}
 }

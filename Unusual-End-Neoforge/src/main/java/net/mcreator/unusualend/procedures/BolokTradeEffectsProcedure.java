@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.phys.Vec3;
@@ -44,9 +45,9 @@ public class BolokTradeEffectsProcedure {
 		if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 			_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 2, false, false));
 		if (!(sourceentity instanceof ServerPlayer _plr10 && _plr10.level() instanceof ServerLevel
-				&& _plr10.getAdvancements().getOrStartProgress(_plr10.server.getAdvancements().get(new ResourceLocation("unusualend:trade_with_bolok"))).isDone())) {
+				&& _plr10.getAdvancements().getOrStartProgress(_plr10.server.getAdvancements().get(UnusualEnd.makeUEID("trade_with_bolok"))).isDone())) {
 			if (sourceentity instanceof ServerPlayer _player) {
-				AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:trade_with_bolok"));
+				AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("trade_with_bolok"));
 				AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 				if (!_ap.isDone()) {
                     for (String s : _ap.getRemainingCriteria()) _player.getAdvancements().award(_adv, s);

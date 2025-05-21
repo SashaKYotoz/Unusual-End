@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -15,6 +16,6 @@ public class BlukRenderer extends MobRenderer<BlukEntity, Modelbluk<BlukEntity>>
 
 	@Override
 	public ResourceLocation getTextureLocation(BlukEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/bluk.png");
+		return UnusualEnd.makeUEID("textures/entities/bluk.png");
 	}
 }

@@ -20,9 +20,9 @@ import custom.mcreator.unusualend.block.entity.renderer.AncientPodiumEntityRende
 public class ModEventBusClientEvents {
 	@SubscribeEvent
 	public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerBlockEntityRenderer((BlockEntityType<GloopslatePedestralBlockEntity>) UnusualendModBlockEntities.GLOOPSLATE_PEDESTRAL.get(),
-                GloopslatePedestralEntityRenderer::new);
-		event.registerBlockEntityRenderer((BlockEntityType<AncientPodiumBlockEntity>) UnusualendModBlockEntities.ANCIENT_PODIUM.get(),
-                AncientPodiumEntityRenderer::new);
+		event.<GloopslatePedestralBlockEntity>registerBlockEntityRenderer((BlockEntityType<GloopslatePedestralBlockEntity>) UnusualendModBlockEntities.GLOOPSLATE_PEDESTRAL.get(),
+				(BlockEntityRendererProvider<GloopslatePedestralBlockEntity>) GloopslatePedestralEntityRenderer::new);
+		event.<AncientPodiumBlockEntity>registerBlockEntityRenderer((BlockEntityType<AncientPodiumBlockEntity>) UnusualendModBlockEntities.ANCIENT_PODIUM.get(),
+				(BlockEntityRendererProvider<AncientPodiumBlockEntity>) AncientPodiumEntityRenderer::new);
 	}
 }

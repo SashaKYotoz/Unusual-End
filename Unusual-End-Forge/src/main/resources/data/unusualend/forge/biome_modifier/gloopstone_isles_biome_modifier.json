@@ -1,9 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": [
-    "unusualend:gloopstone_lands",
-    "unusualend:gloopstone_midlands"
-  ],
+  "biomes": "unusualend:gloopstone_lands",
   "features": "unusualend:gloopstone_isles",
   "step": "fluid_springs"
 }

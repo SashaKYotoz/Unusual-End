@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.world.level.Level;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -17,15 +18,11 @@ public class VoidCrackRenderer extends MobRenderer<VoidCrackEntity, Modelstructu
 
 	@Override
 	public ResourceLocation getTextureLocation(VoidCrackEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/structure_spawn.png");
+		return UnusualEnd.makeUEID("textures/entities/structure_spawn.png");
 	}
 
 	@Override
 	protected boolean isBodyVisible(VoidCrackEntity entity) {
-		Level world = entity.level();
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
 		return !ReturnTrueProcedure.execute();
 	}
 }

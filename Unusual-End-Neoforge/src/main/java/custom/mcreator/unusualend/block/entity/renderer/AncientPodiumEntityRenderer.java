@@ -15,7 +15,7 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 import net.mcreator.unusualend.block.entity.AncientPodiumBlockEntity;
 
 import com.mojang.math.Axis;
@@ -35,8 +35,8 @@ public class AncientPodiumEntityRenderer implements BlockEntityRenderer<AncientP
 		double relativeGameTime = level.getGameTime() + pPartialTick;
 		double offset = Math.sin(relativeGameTime / 10.0) / 30.0;
 		double rotation = Math.sin(relativeGameTime / 10000) * 20000;
-		float scaleblock = ConfigurationFileConfiguration.PODIUM_BLOCK.get().floatValue();
-		float scaleitem = ConfigurationFileConfiguration.PODIUM_ITEM.get().floatValue();
+		float scaleblock = UEConfig.PODIUM_BLOCK.get().floatValue();
+		float scaleitem = UEConfig.PODIUM_ITEM.get().floatValue();
 		pPoseStack.pushPose();
 		pPoseStack.translate(0.5f, 1.2f + offset, 0.5f);
 		if (itemStack.getItem() instanceof BlockItem) {

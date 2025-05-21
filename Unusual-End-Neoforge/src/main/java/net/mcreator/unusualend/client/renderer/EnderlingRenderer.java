@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -28,7 +29,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 	public EnderlingRenderer(EntityRendererProvider.Context context) {
 		super(context, new Modelenderling(context.bakeLayer(Modelenderling.LAYER_LOCATION)), 0.4f);
 		this.addLayer(new RenderLayer<>(this) {
-            final ResourceLocation LAYER_TEXTURE = new ResourceLocation("unusualend:textures/entities/spirit_mask_grim.png");
+            final ResourceLocation LAYER_TEXTURE = UnusualEnd.makeUEID("textures/entities/spirit_mask_grim.png");
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -43,7 +44,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
             }
         });
 		this.addLayer(new RenderLayer<>(this) {
-            final ResourceLocation LAYER_TEXTURE = new ResourceLocation("unusualend:textures/entities/spirit_mask_malice.png");
+            final ResourceLocation LAYER_TEXTURE = UnusualEnd.makeUEID("textures/entities/spirit_mask_malice.png");
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -58,7 +59,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
             }
         });
 		this.addLayer(new RenderLayer<>(this) {
-            final ResourceLocation LAYER_TEXTURE = new ResourceLocation("unusualend:textures/entities/spirit_mask_mania.png");
+            final ResourceLocation LAYER_TEXTURE = UnusualEnd.makeUEID("textures/entities/spirit_mask_mania.png");
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -73,7 +74,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
             }
         });
 		this.addLayer(new RenderLayer<>(this) {
-            final ResourceLocation LAYER_TEXTURE = new ResourceLocation("unusualend:textures/entities/spirit_mask_smile.png");
+            final ResourceLocation LAYER_TEXTURE = UnusualEnd.makeUEID("textures/entities/spirit_mask_smile.png");
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -88,7 +89,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
             }
         });
 		this.addLayer(new RenderLayer<>(this) {
-            final ResourceLocation LAYER_TEXTURE = new ResourceLocation("unusualend:textures/entities/spirit_mask_twist.png");
+            final ResourceLocation LAYER_TEXTURE = UnusualEnd.makeUEID("textures/entities/spirit_mask_twist.png");
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -103,7 +104,7 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
             }
         });
 		this.addLayer(new RenderLayer<>(this) {
-            final ResourceLocation LAYER_TEXTURE = new ResourceLocation("unusualend:textures/entities/spirit_mask_vice.png");
+            final ResourceLocation LAYER_TEXTURE = UnusualEnd.makeUEID("textures/entities/spirit_mask_vice.png");
 
             @Override
             public void render(PoseStack poseStack, MultiBufferSource bufferSource, int light, EnderlingEntity entity, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
@@ -121,6 +122,6 @@ public class EnderlingRenderer extends MobRenderer<EnderlingEntity, Modelenderli
 
 	@Override
 	public ResourceLocation getTextureLocation(EnderlingEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/undead_enderling.png");
+		return UnusualEnd.makeUEID("textures/entities/undead_enderling.png");
 	}
 }

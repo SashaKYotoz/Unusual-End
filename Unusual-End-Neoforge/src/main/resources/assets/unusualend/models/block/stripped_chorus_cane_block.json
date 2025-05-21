@@ -1,10 +1,12 @@
 {
-  "parent": "block/grass_block",
+  "parent": "block/cube",
   "textures": {
-    "bottom": "unusualend:block/stripped_chorus_cane_block_top",
-    "top": "unusualend:block/stripped_chorus_cane_block_top",
-    "side": "unusualend:block/stripped_chorus_cane_block_side",
-    "overlay": "unusualend:block/stripped_chorus_cane_block_side",
+    "down": "unusualend:block/stripped_chorus_cane_block_top",
+    "up": "unusualend:block/stripped_chorus_cane_block_top",
+    "north": "unusualend:block/stripped_chorus_cane_block_side",
+    "east": "unusualend:block/stripped_chorus_cane_block_side",
+    "south": "unusualend:block/stripped_chorus_cane_block_side",
+    "west": "unusualend:block/stripped_chorus_cane_block_side",
     "particle": "unusualend:block/chorus_nest_fence"
   },
   "render_type": "solid"

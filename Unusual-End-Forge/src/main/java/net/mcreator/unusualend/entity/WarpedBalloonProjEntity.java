@@ -93,6 +93,10 @@ public class WarpedBalloonProjEntity extends AbstractArrow implements ItemSuppli
 		return shoot(world, entity, source, 1f, 0, 5);
 	}
 
+	public static WarpedBalloonProjEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
+		return shoot(world, entity, source, pullingPower * 1f, 0, 5);
+	}
+
 	public static WarpedBalloonProjEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {
 		WarpedBalloonProjEntity entityarrow = new WarpedBalloonProjEntity(UnusualendModEntities.WARPED_BALLOON_PROJ.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);

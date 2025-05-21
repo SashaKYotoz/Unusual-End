@@ -3,7 +3,6 @@
   "values": [
     "unusualend:infested_end_stone",
     "unusualend:raw_purpur_block",
-    "minecraft:end_stone",
-    "unusualend:gloopy_endstone"
+    "minecraft:end_stone"
   ]
 }

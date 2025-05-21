@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -22,6 +23,6 @@ public class WarpedJellyfishRenderer extends MobRenderer<WarpedJellyfishEntity, 
 
 	@Override
 	public ResourceLocation getTextureLocation(WarpedJellyfishEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/glub.png");
+		return UnusualEnd.makeUEID("textures/entities/glub.png");
 	}
 }

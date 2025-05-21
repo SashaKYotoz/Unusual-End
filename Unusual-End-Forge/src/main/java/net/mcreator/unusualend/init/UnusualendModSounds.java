@@ -42,4 +42,5 @@ public class UnusualendModSounds {
 	public static final RegistryObject<SoundEvent> MUSIC_DISC_QUEEN = REGISTRY.register("music_disc_queen", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("unusualend", "music_disc_queen")));
 	public static final RegistryObject<SoundEvent> BLUK_EAT = REGISTRY.register("bluk_eat", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("unusualend", "bluk_eat")));
 	public static final RegistryObject<SoundEvent> THE_GREAT_ABYSS = REGISTRY.register("the_great_abyss", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("unusualend", "the_great_abyss")));
+	public static final RegistryObject<SoundEvent> FLUTE_WILDS = REGISTRY.register("flute_wilds", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("unusualend", "flute_wilds")));
 }

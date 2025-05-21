@@ -32,17 +32,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
 
 import net.mcreator.unusualend.jei_recipes.BolokTradingRecipe;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.entity.BolokEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
-
-import javax.annotation.Nullable;
 
 import java.util.List;
 import java.util.Iterator;
@@ -66,7 +63,7 @@ public class RideBolokProcedure {
 					BolokTradeEffectsProcedure.execute(world, x, y, z, entity, sourceentity);
 					if (sourceentity instanceof Player _player)
 						_player.giveExperiencePoints(-(315));
-					UnusualendMod.queueServerWork(60, () -> {
+					UnusualEnd.queueServerWork(60, () -> {
 						if (world instanceof Level _level && !_level.isClientSide()) {
 							ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY()), (entity.getZ()), new ItemStack(Items.ENCHANTED_BOOK));
 							entityToSpawn.setPickUpDelay(10);
@@ -126,9 +123,9 @@ public class RideBolokProcedure {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 300, 1));
 				if (!(sourceentity instanceof ServerPlayer _plr31 && _plr31.level() instanceof ServerLevel
-						&& _plr31.getAdvancements().getOrStartProgress(_plr31.server.getAdvancements().get(new ResourceLocation("unusualend:give_bolok_crystal"))).isDone())) {
+						&& _plr31.getAdvancements().getOrStartProgress(_plr31.server.getAdvancements().get(UnusualEnd.makeUEID("give_bolok_crystal"))).isDone())) {
 					if (sourceentity instanceof ServerPlayer _player) {
-						AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:give_bolok_crystal"));
+						AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("give_bolok_crystal"));
 						AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 						if (!_ap.isDone()) {
 							Iterator _iterator = _ap.getRemainingCriteria().iterator();

@@ -1,4 +1,5 @@
 
+//warped_endstone support
 package net.mcreator.unusualend.block;
 
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -50,7 +51,7 @@ public class WarpedSproutsBlock extends FlowerBlock {
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
 		return groundState.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
 				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get())
-				|| groundState.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get());
+				|| groundState.is(UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) || groundState.is(UnusualendModBlocks.WARPED_END_STONE.get());
 	}
 
 	@Override

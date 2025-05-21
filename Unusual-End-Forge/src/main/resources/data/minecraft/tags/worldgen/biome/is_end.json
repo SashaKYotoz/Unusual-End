@@ -2,7 +2,6 @@
   "replace": false,
   "values": [
     "unusualend:warped_reef",
-    "unusualend:gloopstone_lands",
-    "unusualend:gloopstone_midlands"
+    "unusualend:gloopstone_lands"
   ]
 }

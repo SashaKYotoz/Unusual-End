@@ -31,7 +31,7 @@ import net.mcreator.unusualend.entity.BolokEntity;
 import net.mcreator.unusualend.entity.BlukEntity;
 import net.mcreator.unusualend.entity.BlockUpdaterEntity;
 import net.mcreator.unusualend.entity.BenevolentLeechingChargeProjectileEntity;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -41,7 +41,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UnusualendModEntities {
-    public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, UnusualendMod.MODID);
+    public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, UnusualEnd.MODID);
     public static final DeferredHolder<EntityType<?>, EntityType<EnderblobEntity>> ENDER_BLOB = register("ender_blob",
             EntityType.Builder.<EnderblobEntity>of(EnderblobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 

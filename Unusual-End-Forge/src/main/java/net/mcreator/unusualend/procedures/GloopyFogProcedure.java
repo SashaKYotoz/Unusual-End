@@ -58,7 +58,7 @@ public class GloopyFogProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
-		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_midlands")) || world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_lands"))) {
+		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_lands"))) {
 			if (ConfigurationFileConfiguration.GLOOPY_FOG.get() == true) {
 				setDistance(0, 200);
 				setShape(FogShape.CYLINDER);

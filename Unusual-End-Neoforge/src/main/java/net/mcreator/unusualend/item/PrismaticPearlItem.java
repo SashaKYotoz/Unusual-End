@@ -28,7 +28,7 @@ public class PrismaticPearlItem extends Item {
 	//	player.startUsingItem(hand);
 	//	if (level instanceof ServerLevel) {
 	//		ServerLevel serverLevel = (ServerLevel) level;
-	//		BlockPos nearestStructure = serverLevel.findNearestMapStructure((TagKey.create(Registries.STRUCTURE, new ResourceLocation("unusualend:prismatic_eye_located"))), player.blockPosition(), 100, false);
+	//		BlockPos nearestStructure = serverLevel.findNearestMapStructure((TagKey.create(Registries.STRUCTURE, UnusualEnd.makeUEID("prismatic_eye_located"))), player.blockPosition(), 100, false);
 	//		if (nearestStructure != null) {
 	//			EyeOfEnder eyeOfEnder = new EyeOfEnder(level, player.getX(), player.getY(0.5D), player.getZ());
 	//			eyeOfEnder.setItem(itemStack);

@@ -11,7 +11,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 
 public class LeechingWandItemInInventoryTickProcedure {
 	public static void execute(LevelAccessor world, Entity entity, ItemStack itemstack) {
@@ -30,7 +30,7 @@ public class LeechingWandItemInInventoryTickProcedure {
 			itemstack.getOrCreateTag().putDouble("rayCooldown", 400);
 		}
 		if (itemstack.getOrCreateTag().getBoolean("rayEnd") == true) {
-			UnusualendMod.queueServerWork(20, () -> {
+			UnusualEnd.queueServerWork(20, () -> {
 				if (itemstack.getOrCreateTag().getBoolean("rayEnd") == true) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {

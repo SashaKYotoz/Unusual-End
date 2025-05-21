@@ -1,0 +1,11 @@
+{
+  "type": "ars_nouveau:budding_conversion",
+  "input": "unusualend:citrine_block",
+  "result": "unusualend:budding_citrine",
+  "conditions": [
+    {
+      "modid": "ars_nouveau",
+      "type": "forge:mod_loaded"
+    }
+  ]
+}

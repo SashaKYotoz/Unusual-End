@@ -321,7 +321,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> VOID_MIRROR = REGISTRY.register("void_mirror", () -> new VoidMirrorItem());
 	public static final RegistryObject<Item> CRYSTAL_FLOWER = block(UnusualendModBlocks.CRYSTAL_FLOWER);
 	public static final RegistryObject<Item> SMALL_WARPED_ALGAE = block(UnusualendModBlocks.SMALL_WARPED_ALGAE);
-	public static final RegistryObject<Item> WARPED_SPROUTS = block(UnusualendModBlocks.WARPED_SPROUTS);
+	public static final RegistryObject<Item> WARPED_ENDSTONE_SPROUTS = block(UnusualendModBlocks.WARPED_ENDSTONE_SPROUTS);
 	public static final RegistryObject<Item> WARPED_STONE = block(UnusualendModBlocks.WARPED_STONE);
 	public static final RegistryObject<Item> WARPED_BERRIES = REGISTRY.register("warped_berries", () -> new WarpedBerryItem());
 	public static final RegistryObject<Item> GLOOPY_TENDRILS = block(UnusualendModBlocks.GLOOPY_TENDRILS);

@@ -14,13 +14,12 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.client.Minecraft;
 
 import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -48,7 +47,7 @@ public class BoneMealEndstoneProcedure {
 		double sy = 0;
 		double sz = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BONE_MEAL) {
-			if (ConfigurationFileConfiguration.REGULAR_BONEMEAL.get() == true) {
+			if (UEConfig.REGULAR_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.INFESTED_END_STONE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.END_STONE) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
@@ -108,7 +107,7 @@ public class BoneMealEndstoneProcedure {
 					}
 				}
 			}
-			if (ConfigurationFileConfiguration.GLOOPY_BONEMEAL.get() == true) {
+			if (UEConfig.GLOOPY_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.GLOOPSLATE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE.get()) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
@@ -173,7 +172,7 @@ public class BoneMealEndstoneProcedure {
 					}
 				}
 			}
-			if (ConfigurationFileConfiguration.PURPUR_BONEMEAL.get() == true) {
+			if (UEConfig.PURPUR_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.RAW_PURPUR_BLOCK.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {

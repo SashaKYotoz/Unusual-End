@@ -14,13 +14,12 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.util.RandomSource;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.configuration.UEConfig;
+import net.mcreator.unusualend.UnusualEnd;
 
 public class FloatingPouchRightclickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
@@ -50,7 +49,7 @@ public class FloatingPouchRightclickedProcedure {
 			}
 		}
 		if (entity instanceof Player _player)
-			_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.POUCH.get());
+			_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) UEConfig.POUCH.get());
 		entity.fallDistance = 0;
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.POOF, x, y, z, 20, 0.3, 0.3, 0.3, 0.1);
@@ -62,9 +61,9 @@ public class FloatingPouchRightclickedProcedure {
 			entity.setDeltaMovement(new Vec3((entity.getDeltaMovement().x()), 1, (entity.getDeltaMovement().z())));
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 40, 0));
-			UnusualendMod.queueServerWork(60, () -> {
+			UnusualEnd.queueServerWork(60, () -> {
 				entity.fallDistance = 0;
-				UnusualendMod.queueServerWork(20, () -> {
+				UnusualEnd.queueServerWork(20, () -> {
 					entity.fallDistance = 0;
 				});
 			});

@@ -5,12 +5,12 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.network.chat.Component;
 import net.minecraft.core.registries.Registries;
 
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class UnusualendModTabs {
-	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UnusualendMod.MODID);
+	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UnusualEnd.MODID);
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> UNUSUAL_END_WARPED_REEF = REGISTRY.register("unusual_end_warped_reef",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.unusualend.unusual_end_warped_reef")).icon(() -> new ItemStack(UnusualendModBlocks.WARPED_ALGAE.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(UnusualendModBlocks.WARPED_SPROUTS.get().asItem());

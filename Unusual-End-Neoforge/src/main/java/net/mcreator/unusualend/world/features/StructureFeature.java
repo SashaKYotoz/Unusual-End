@@ -15,14 +15,13 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.BlockPos;
 
 import net.mcreator.unusualend.world.features.configurations.StructureFeatureConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.UnusualEnd;
 
 import com.mojang.serialization.Codec;
-import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 public class StructureFeature extends Feature<StructureFeatureConfiguration> {
-    public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.FEATURE, UnusualendMod.MODID);
+    public static final DeferredRegister<Feature<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.FEATURE, UnusualEnd.MODID);
     public static final DeferredHolder<Feature<?>, StructureFeature> STRUCTURE_FEATURE = REGISTRY.register("structure_feature", () -> new StructureFeature(StructureFeatureConfiguration.CODEC));
 
     public StructureFeature(Codec<StructureFeatureConfiguration> codec) {

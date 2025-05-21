@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "minecraft:block/end_stone",
+    "up": "unusualend:block/gloopslate",
+    "north": "unusualend:block/gloopy_endstone",
+    "east": "unusualend:block/gloopy_endstone",
+    "south": "unusualend:block/gloopy_endstone",
+    "west": "unusualend:block/gloopy_endstone",
+    "particle": "minecraft:block/end_stone"
+  },
+  "render_type": "solid"
+}

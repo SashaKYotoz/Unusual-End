@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -29,14 +30,14 @@ public class WarpedReefFishProcedure {
     private static void execute(ItemFishedEvent event, LevelAccessor world, double x, double y, double z, Entity entity) {
         if (entity == null)
             return;
-        if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:warped_reef"))) {
+        if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("warped_reef"))) {
             if (event != null) {
                 event.setCanceled(true);
             }
             if (!(entity instanceof ServerPlayer _plr1 && _plr1.level() instanceof ServerLevel
-                    && _plr1.getAdvancements().getOrStartProgress(_plr1.server.getAdvancements().get(new ResourceLocation("unusualend:fish_in_warped_reef"))).isDone())) {
+                    && _plr1.getAdvancements().getOrStartProgress(_plr1.server.getAdvancements().get(UnusualEnd.makeUEID("fish_in_warped_reef"))).isDone())) {
                 if (entity instanceof ServerPlayer _player) {
-                    AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:fish_in_warped_reef"));
+                    AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("fish_in_warped_reef"));
                     AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
                     if (!_ap.isDone()) {
                         for (String criteria : _ap.getRemainingCriteria())

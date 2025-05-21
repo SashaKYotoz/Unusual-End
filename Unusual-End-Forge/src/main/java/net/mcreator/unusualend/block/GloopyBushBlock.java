@@ -22,7 +22,7 @@ import net.mcreator.unusualend.init.UnusualendModBlocks;
 public class GloopyBushBlock extends FlowerBlock {
 	public GloopyBushBlock() {
 		super(() -> MobEffects.LEVITATION, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.NETHER_SPROUTS).instabreak().speedFactor(0.9f).noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.NETHER_SPROUTS).instabreak().speedFactor(0.95f).noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
 	}
 
 	@Override
@@ -50,7 +50,8 @@ public class GloopyBushBlock extends FlowerBlock {
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
 		return groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL)
 				|| groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPSLATE.get()) || groundState.is(UnusualendModBlocks.SHINY_GLOOPSTONE.get())
-				|| groundState.is(Blocks.BARREL);
+				|| groundState.is(Blocks.BARREL) || groundState.is(UnusualendModBlocks.BOUNCY_GLOOPSTONE.get()) || groundState.is(UnusualendModBlocks.GLOOPY_ENDSTONE.get()) || groundState.is(UnusualendModBlocks.BOUNCY_GLOOPSLATE.get())
+				|| groundState.is(UnusualendModBlocks.PRISMALITIC_GLOOPSLATE.get());
 	}
 
 	@Override

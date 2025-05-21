@@ -14,11 +14,11 @@ import net.minecraft.core.BlockPos;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.mcreator.unusualend.entity.WarpedBalloonProjEntity;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 
 public class WarpedBalloonRangedItemShootsProjectileProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Player player, ItemStack itemstack) {
-        player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.WARPED_BALLOON.get());
+        player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) UEConfig.WARPED_BALLOON.get());
         if (!player.isCreative()) {
             itemstack.shrink(1);
         }

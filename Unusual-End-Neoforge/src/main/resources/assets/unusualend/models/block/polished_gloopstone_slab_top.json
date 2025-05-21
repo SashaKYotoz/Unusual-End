@@ -1,9 +1,10 @@
 {
   "parent": "block/slab_top",
   "textures": {
+    "particle": "unusualend:block/polished_gloopstone",
     "bottom": "unusualend:block/polished_gloopstone",
     "top": "unusualend:block/polished_gloopstone",
-    "side": "unusualend:block/polished_gloopstone"
+    "side": "unusualend:block/polished_gloopstone_slab"
   },
   "render_type": "solid"
 }

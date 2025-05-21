@@ -20,6 +20,10 @@ public class SpectralStrideMobEffect extends MobEffect {
 		this.addAttributeModifier(ForgeMod.ENTITY_GRAVITY.get(), "82fce226-4b50-11ee-be56-0242ac120002", -0.35F, AttributeModifier.Operation.MULTIPLY_TOTAL);
 	}
 
+	public int getDamageProtection(int level, DamageSource source) {
+		return !source.isCreativePlayer() && source.is(DamageTypes.FALL) ? level * 40 : 0;
+	}
+
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
 		SpectralStrideOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);

@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.LevelAccessor;
@@ -106,9 +107,9 @@ public class BucketGlubProcedure {
 		} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
 			entity.startRiding(sourceentity);
 			if (!(sourceentity instanceof ServerPlayer _plr40 && _plr40.level() instanceof ServerLevel
-					&& _plr40.getAdvancements().getOrStartProgress(_plr40.server.getAdvancements().get(new ResourceLocation("unusualend:wear_glub"))).isDone())) {
+					&& _plr40.getAdvancements().getOrStartProgress(_plr40.server.getAdvancements().get(UnusualEnd.makeUEID("wear_glub"))).isDone())) {
 				if (sourceentity instanceof ServerPlayer _player) {
-					AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:wear_glub"));
+					AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("wear_glub"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
 						for (String criteria : _ap.getRemainingCriteria())

@@ -11,7 +11,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.commands.CommandSourceStack;
@@ -24,13 +23,11 @@ import net.mcreator.unusualend.entity.VoidBombEntity;
 import net.mcreator.unusualend.entity.SummonedDraglingEntity;
 import net.mcreator.unusualend.entity.EnderbulbEntity;
 import net.mcreator.unusualend.entity.DraglingEntity;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.configuration.UEConfig;
+import net.mcreator.unusualend.UnusualEnd;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.event.entity.living.LivingAttackEvent;
-
-import javax.annotation.Nullable;
 
 @Mod.EventBusSubscriber
 public class WhenPlayerHurtProcedure {
@@ -44,9 +41,7 @@ public class WhenPlayerHurtProcedure {
 	private static void execute(LivingAttackEvent event, LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		double dis = 0;
 		double dividedby = 0;
-		boolean wasRingUsed = false;
 		if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == UnusualendModItems.WARPED_CHESTPLATE.get()) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 40, 0, false, true));
@@ -61,7 +56,7 @@ public class WhenPlayerHurtProcedure {
 			}
 		}
 		if (sourceentity instanceof DraglingEntity) {
-			if (Math.random() < ConfigurationFileConfiguration.DRAGLING_DISRUPTION.get() / 100) {
+			if (Math.random() < UEConfig.DRAGLING_DISRUPTION.get() / 100) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 60, 0));
 			}
@@ -95,7 +90,7 @@ public class WhenPlayerHurtProcedure {
 			if ((sourceentity instanceof DraglingEntity _datEntL28 && _datEntL28.getEntityData().get(DraglingEntity.DATA_atk))) {
 				if (sourceentity instanceof DraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, false);
-				UnusualendMod.queueServerWork(1, () -> {
+				UnusualEnd.queueServerWork(1, () -> {
 					if (sourceentity instanceof DraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, true);
 				});
@@ -103,7 +98,7 @@ public class WhenPlayerHurtProcedure {
 				if (sourceentity instanceof DraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, true);
 			}
-			UnusualendMod.queueServerWork(20, () -> {
+			UnusualEnd.queueServerWork(20, () -> {
 				if ((sourceentity instanceof DraglingEntity _datEntL33 && _datEntL33.getEntityData().get(DraglingEntity.DATA_atk))) {
 					if (sourceentity instanceof DraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, false);
@@ -114,7 +109,7 @@ public class WhenPlayerHurtProcedure {
 			if ((sourceentity instanceof SummonedDraglingEntity _datEntL37 && _datEntL37.getEntityData().get(SummonedDraglingEntity.DATA_atk))) {
 				if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, false);
-				UnusualendMod.queueServerWork(1, () -> {
+				UnusualEnd.queueServerWork(1, () -> {
 					if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, true);
 				});
@@ -122,7 +117,7 @@ public class WhenPlayerHurtProcedure {
 				if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, true);
 			}
-			UnusualendMod.queueServerWork(20, () -> {
+			UnusualEnd.queueServerWork(20, () -> {
 				if ((sourceentity instanceof SummonedDraglingEntity _datEntL42 && _datEntL42.getEntityData().get(SummonedDraglingEntity.DATA_atk))) {
 					if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, false);

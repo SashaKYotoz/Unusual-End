@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "egg",
+  "parent": "unusualend:block/cracked_small_eggs",
   "texture_size": [
     32,
     32

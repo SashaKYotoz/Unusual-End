@@ -8,24 +8,21 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.animal.WaterAnimal;
-import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.tags.TagKey;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.advancements.Advancement;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.mcreator.unusualend.entity.LargeBubbleEntity;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
-import net.mcreator.unusualend.UnusualendMod;
+import net.mcreator.unusualend.configuration.UEConfig;
+import net.mcreator.unusualend.UnusualEnd;
 
 import java.util.Comparator;
 
@@ -35,7 +32,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 			return;
 		if (entity.getBbHeight() + entity.getBbWidth() <= 3) {
 			if ((entity instanceof Player || entity instanceof AgeableMob || entity instanceof WaterAnimal) && !(entity instanceof LargeBubbleEntity)
-					&& !entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("unusualend:ballon_immune")))) {
+					&& !entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, UnusualEnd.makeUEID("ballon_immune")))) {
 				if (!entity.isPassenger()) {
 					if (world instanceof ServerLevel _level) {
 						Entity entityToSpawn = UnusualendModEntities.WARPED_BALLOON.get().spawn(_level, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), MobSpawnType.MOB_SUMMONED);
@@ -43,7 +40,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 							entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 						}
 					}
-					UnusualendMod.queueServerWork(1, () -> entity.startRiding(world.getEntitiesOfClass(LargeBubbleEntity.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).stream().min(new Object() {
+					UnusualEnd.queueServerWork(1, () -> entity.startRiding(world.getEntitiesOfClass(LargeBubbleEntity.class, AABB.ofSize(new Vec3(x, y, z), 4, 4, 4), e -> true).stream().min(new Object() {
                         Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
                             return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
                         }
@@ -52,9 +49,9 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 						immediatesourceentity.discard();
 					if (entity instanceof Player) {
 						if (!(entity instanceof ServerPlayer _plr18 && _plr18.level() instanceof ServerLevel
-								&& _plr18.getAdvancements().getOrStartProgress(_plr18.server.getAdvancements().get(new ResourceLocation("unusualend:use_warped_bubble"))).isDone())) {
+								&& _plr18.getAdvancements().getOrStartProgress(_plr18.server.getAdvancements().get(UnusualEnd.makeUEID("use_warped_bubble"))).isDone())) {
 							if (entity instanceof ServerPlayer _player) {
-								AdvancementHolder _adv = _player.server.getAdvancements().get(new ResourceLocation("unusualend:use_warped_bubble"));
+								AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("use_warped_bubble"));
 								AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 								if (!_ap.isDone()) {
 									for (String criteria : _ap.getRemainingCriteria())
@@ -64,7 +61,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 						}
 					}
 				} else {
-					if (ConfigurationFileConfiguration.SAVE_BALLOON.get()) {
+					if (UEConfig.SAVE_BALLOON.get()) {
 						if (!immediatesourceentity.level().isClientSide())
 							immediatesourceentity.discard();
 						if (world instanceof ServerLevel _level) {
@@ -75,7 +72,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 					}
 				}
 			} else {
-				if (ConfigurationFileConfiguration.SAVE_BALLOON.get()) {
+				if (UEConfig.SAVE_BALLOON.get()) {
 					if (!immediatesourceentity.level().isClientSide())
 						immediatesourceentity.discard();
 					if (world instanceof ServerLevel _level) {
@@ -86,7 +83,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 				}
 			}
 		} else {
-			if (ConfigurationFileConfiguration.SAVE_BALLOON.get()) {
+			if (UEConfig.SAVE_BALLOON.get()) {
 				if (!immediatesourceentity.level().isClientSide())
 					immediatesourceentity.discard();
 				if (world instanceof ServerLevel _level) {

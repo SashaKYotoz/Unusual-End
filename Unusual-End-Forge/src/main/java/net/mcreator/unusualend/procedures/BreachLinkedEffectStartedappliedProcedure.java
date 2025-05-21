@@ -10,13 +10,10 @@ import net.minecraft.network.chat.Component;
 
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
 
-import java.io.File;
-
 public class BreachLinkedEffectStartedappliedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		File file = new File("");
 		if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
 			entity.getPersistentData().putDouble("BreachX", x);
 			entity.getPersistentData().putDouble("BreachY", y);

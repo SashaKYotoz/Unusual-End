@@ -56,7 +56,7 @@ public class WarpedBushBlock extends FlowerBlock implements BonemealableBlock {
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
 		return groundState.is(UnusualendModBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualendModBlocks.WARPED_STONE.get()) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(UnusualendModBlocks.GNEISS.get())
-				|| groundState.is(Blocks.END_STONE);
+				|| groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_WART_BLOCK);
 	}
 
 	@Override

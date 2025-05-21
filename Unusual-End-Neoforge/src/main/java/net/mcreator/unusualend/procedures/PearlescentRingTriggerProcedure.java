@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.sounds.SoundEvents;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -86,7 +87,7 @@ public class PearlescentRingTriggerProcedure {
 										}
 									}
 								}
-								if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("unusualend:enderling_mask")))) {
+								if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(ItemTags.create(UnusualEnd.makeUEID("enderling_mask")))) {
 									if (world instanceof ServerLevel _serverLevel) {
 										Entity entitytospawn = UnusualendModEntities.SUMMONED_DRAGLING.get().spawn(_serverLevel,
 												BlockPos.containing(
@@ -154,7 +155,7 @@ public class PearlescentRingTriggerProcedure {
 							}
 						}
 					}
-					if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("unusualend:enderling_mask")))) {
+					if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(ItemTags.create(UnusualEnd.makeUEID("enderling_mask")))) {
 						if (world instanceof ServerLevel _serverLevel) {
 							Entity entitytospawn = UnusualendModEntities.SUMMONED_DRAGLING.get()
 									.spawn(_serverLevel,

@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.client.renderer;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.client.renderer.entity.MobRenderer;
@@ -15,12 +16,12 @@ import com.mojang.blaze3d.vertex.PoseStack;
 public class EnderBugRenderer extends MobRenderer<EnderBugEntity, Modelender_firefly<EnderBugEntity>> {
 	public EnderBugRenderer(EntityRendererProvider.Context context) {
 		super(context, new Modelender_firefly(context.bakeLayer(Modelender_firefly.LAYER_LOCATION)), 0.4f);
-		this.addLayer(new EyesLayer<EnderBugEntity, Modelender_firefly<EnderBugEntity>>(this) {
-			@Override
-			public RenderType renderType() {
-				return RenderType.eyes(new ResourceLocation("unusualend:textures/entities/ender_firefly_glow_layer.png"));
-			}
-		});
+		this.addLayer(new EyesLayer<>(this) {
+            @Override
+            public RenderType renderType() {
+                return RenderType.eyes(UnusualEnd.makeUEID("textures/entities/ender_firefly_glow_layer.png"));
+            }
+        });
 	}
 
 	protected void scale(EnderBugEntity entity, PoseStack posestack, float partialTicks) {
@@ -29,6 +30,6 @@ public class EnderBugRenderer extends MobRenderer<EnderBugEntity, Modelender_fir
 
 	@Override
 	public ResourceLocation getTextureLocation(EnderBugEntity entity) {
-		return new ResourceLocation("unusualend:textures/entities/ender_firefly.png");
+		return UnusualEnd.makeUEID("textures/entities/ender_firefly.png");
 	}
 }

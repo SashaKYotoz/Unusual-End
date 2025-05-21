@@ -8,7 +8,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
 import net.mcreator.unusualend.entity.EnderblobEntity;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.UEConfig;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
@@ -39,7 +39,7 @@ public class EndermitesInfectProcedure {
 						_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 36000, 0));
 				}
 			} else {
-				if (Math.random() < ConfigurationFileConfiguration.ENDERMITES_PROBABILITY_TO_INFECT.get() / 100) {
+				if (Math.random() < UEConfig.ENDERMITES_PROBABILITY_TO_INFECT.get() / 100) {
 					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 600, 0));
 				}

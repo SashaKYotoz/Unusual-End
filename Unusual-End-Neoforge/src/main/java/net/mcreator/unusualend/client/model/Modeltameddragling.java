@@ -1,5 +1,6 @@
 package net.mcreator.unusualend.client.model;
 
+import net.mcreator.unusualend.UnusualEnd;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
@@ -24,7 +25,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 public class Modeltameddragling<T extends SummonedDraglingEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("unusualend", "modeltameddragling"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modeltameddragling"), "main");
 	public final ModelPart all;
 	public final ModelPart head;
 	public final ModelPart main_body;
