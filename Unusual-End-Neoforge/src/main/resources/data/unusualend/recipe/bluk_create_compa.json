@@ -5,14 +5,14 @@
       "item": "unusualend:cooked_bluk"
     },
     {
-      "fluid": "create:chocolate",
-      "nbt": {},
-      "amount": 50
+      "type": "neoforge:single",
+      "amount": 50,
+      "fluid": "create:chocolate"
     }
   ],
   "results": [
     {
-      "item": "unusualend:bluk_au_chocolat"
+      "id": "unusualend:bluk_au_chocolat"
     }
   ],
   "neoforge:conditions": [

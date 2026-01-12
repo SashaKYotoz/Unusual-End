@@ -10,10 +10,10 @@
   ],
   "results": [
     {
-      "item": "unusualend:infused_end_stone_tiles"
+      "id": "unusualend:infused_end_stone_tiles"
     },
     {
-      "item": "minecraft:glass_bottle"
+      "id": "minecraft:glass_bottle"
     }
   ],
   "keepHeldItem": false,

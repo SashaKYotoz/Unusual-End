@@ -1,8 +1,6 @@
 {
   "replace": false,
   "values": [
-    "unusualend:music_disc_queen",
-    "unusualend:music_disc_flying_ships",
-    "unusualend:music_disc_endstone_golem_theme"
+    "#c:music_discs"
   ]
 }

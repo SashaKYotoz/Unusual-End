@@ -2,7 +2,7 @@
   "type": "minecraft:smithing_transform",
   "template": [],
   "base": {
-    "tag": "minecraft:music_discs"
+    "tag": "c:music_discs"
   },
   "addition": {
     "item": "unusualend:golem_orb"
