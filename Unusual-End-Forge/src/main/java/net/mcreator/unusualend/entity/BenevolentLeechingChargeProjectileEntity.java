@@ -3,13 +3,14 @@ package net.mcreator.unusualend.entity;
 
 import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.mcreator.unusualend.procedures.BenevolentLeechingChargeProjectileProjectileHitsBlockProcedure;
-import net.mcreator.unusualend.procedures.BenevolentLeechingChargeProjectileProjectileHitsLivingEntityProcedure;
 import net.mcreator.unusualend.procedures.LeechingChargeWhileProjectileFlyingTickProcedure;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -70,7 +71,8 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
 	@Override
 	public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
-		BenevolentLeechingChargeProjectileProjectileHitsLivingEntityProcedure.execute(entityHitResult.getEntity());
+        if (entityHitResult.getEntity() instanceof LivingEntity living && !living.level().isClientSide())
+            living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 2));
 	}
 
 	@Override

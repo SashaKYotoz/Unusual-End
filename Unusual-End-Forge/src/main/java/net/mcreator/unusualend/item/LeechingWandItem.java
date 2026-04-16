@@ -5,6 +5,7 @@ package net.mcreator.unusualend.item;
 import com.google.common.collect.ImmutableSet;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
 import net.mcreator.unusualend.procedures.LeechingWandItemInInventoryTickProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -42,11 +43,8 @@ public class LeechingWandItem extends Item {
 
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("rayCooldown") < 400 && stack.getOrCreateTag().getDouble("rayCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
-			return true;
-		}
-		return false;
-	}
+        return stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("rayCooldown") < 400 && stack.getOrCreateTag().getDouble("rayCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("rayCooldown") < 400;
+    }
 
 	@Override
 	public int getBarColor(ItemStack stack) {
@@ -61,7 +59,7 @@ public class LeechingWandItem extends Item {
 		if (stack.getOrCreateTag().getDouble("rayCooldown") < 400) {
 			return (int) (stack.getOrCreateTag().getDouble("rayCooldown") * 0.0025f * 14f);
 		}
-		return (int) Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
+		return Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
 	}
 
 	@Override
@@ -72,9 +70,12 @@ public class LeechingWandItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.hold_shooting").getString()));
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.on_hit").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.regeneration").getString() + " III (00:03)"));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

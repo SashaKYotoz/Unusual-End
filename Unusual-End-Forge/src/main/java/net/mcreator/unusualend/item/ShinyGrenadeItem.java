@@ -4,6 +4,7 @@ package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.entity.ShinyGrenadeProjectileEntity;
 import net.mcreator.unusualend.procedures.ShinyGrenadeRangedItemUsedProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -40,8 +41,11 @@ public class ShinyGrenadeItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.monster_efficient").getString()));
 		list.add(Component.literal("\u00A79+10 " + Component.translatable("lore.unusualend.charge_damages").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

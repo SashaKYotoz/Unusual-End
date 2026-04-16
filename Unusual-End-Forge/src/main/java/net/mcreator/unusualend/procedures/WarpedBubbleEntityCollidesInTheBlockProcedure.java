@@ -3,7 +3,7 @@ package net.mcreator.unusualend.procedures;
 import net.mcreator.unusualend.UnusualEnd;
 import net.mcreator.unusualend.entity.BlukEntity;
 import net.mcreator.unusualend.entity.BolokEntity;
-import net.mcreator.unusualend.entity.WarpedJellyfishEntity;
+import net.mcreator.unusualend.entity.GlubEntity;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.init.UnusualendModParticleTypes;
 import net.minecraft.core.BlockPos;
@@ -25,7 +25,7 @@ public class WarpedBubbleEntityCollidesInTheBlockProcedure {
 		if (entity == null)
 			return;
 		double dis = 0;
-		if (!(entity instanceof BolokEntity || entity instanceof WarpedJellyfishEntity || entity instanceof BlukEntity)) {
+		if (!(entity instanceof BolokEntity || entity instanceof GlubEntity || entity instanceof BlukEntity)) {
 			entity.fallDistance = 0;
 			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == UnusualendModItems.WARPED_BOOTS.get())) {
 				world.destroyBlock(BlockPos.containing(x, y, z), false);

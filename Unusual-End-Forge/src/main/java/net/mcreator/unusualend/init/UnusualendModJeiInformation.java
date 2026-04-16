@@ -1,4 +1,3 @@
-
 package net.mcreator.unusualend.init;
 
 import mezz.jei.api.IModPlugin;
@@ -59,6 +58,5 @@ public class UnusualendModJeiInformation implements IModPlugin {
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModItems.WARPED_BALLOON.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_24"));
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModItems.MUSIC_DISC_QUEEN.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_25"));
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModBlocks.CITRINE_CANDLE.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_26"));
-		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModBlocks.GLOOPSLATE.get()), new ItemStack(Blocks.END_STONE)), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_27"));
 	}
 }

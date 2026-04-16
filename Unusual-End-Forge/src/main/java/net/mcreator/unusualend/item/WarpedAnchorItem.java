@@ -4,6 +4,7 @@ package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.procedures.WarpedAnchorLivingEntityIsHitWithToolProcedure;
 import net.mcreator.unusualend.procedures.WarpedAnchorToolInHandTickProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -53,10 +54,13 @@ public class WarpedAnchorItem extends PickaxeItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.on_hit").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("effect.unusualend.heaviness").getString() + " II (0:05)"));
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_offhand").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.clear_levitation").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

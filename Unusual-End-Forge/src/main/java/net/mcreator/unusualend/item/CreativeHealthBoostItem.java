@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,8 +19,11 @@ public class CreativeHealthBoostItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A771 Shiny Crystal : \u00A79Health Boost II (5:00)"));
 		list.add(Component.literal("\u00A774 Shiny Crystals : \u00A79Health Boost II (20:00)"));
 		list.add(Component.literal("\u00A778 Shiny Crystals : \u00A79Health Boost II (40:00)"));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 }

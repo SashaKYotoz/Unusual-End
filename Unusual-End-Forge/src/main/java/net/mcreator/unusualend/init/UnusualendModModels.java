@@ -1,7 +1,3 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.unusualend.init;
 
 import net.mcreator.unusualend.client.model.*;
@@ -14,28 +10,30 @@ import net.minecraftforge.fml.common.Mod;
 public class UnusualendModModels {
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		event.registerLayerDefinition(Modelspunkler.LAYER_LOCATION, Modelspunkler::createBodyLayer);
-		event.registerLayerDefinition(Modeldragling.LAYER_LOCATION, Modeldragling::createBodyLayer);
-		event.registerLayerDefinition(Modelvoid_explosive.LAYER_LOCATION, Modelvoid_explosive::createBodyLayer);
-		event.registerLayerDefinition(Modelbolok.LAYER_LOCATION, Modelbolok::createBodyLayer);
-		event.registerLayerDefinition(Modelenderling.LAYER_LOCATION, Modelenderling::createBodyLayer);
-		event.registerLayerDefinition(Modelbluk.LAYER_LOCATION, Modelbluk::createBodyLayer);
-		event.registerLayerDefinition(Modelenderblob.LAYER_LOCATION, Modelenderblob::createBodyLayer);
-		event.registerLayerDefinition(Modelender_firefly.LAYER_LOCATION, Modelender_firefly::createBodyLayer);
-		event.registerLayerDefinition(Modelwarped_jellyfish.LAYER_LOCATION, Modelwarped_jellyfish::createBodyLayer);
-		event.registerLayerDefinition(Modelenderbulb.LAYER_LOCATION, Modelenderbulb::createBodyLayer);
-		event.registerLayerDefinition(Modelsmall_enderbulb.LAYER_LOCATION, Modelsmall_enderbulb::createBodyLayer);
-		event.registerLayerDefinition(Modelendstonegolem.LAYER_LOCATION, Modelendstonegolem::createBodyLayer);
-		event.registerLayerDefinition(Modeltameddragling.LAYER_LOCATION, Modeltameddragling::createBodyLayer);
-		event.registerLayerDefinition(Modelenderling_mask.LAYER_LOCATION, Modelenderling_mask::createBodyLayer);
-		event.registerLayerDefinition(ModelCustomModel.LAYER_LOCATION, ModelCustomModel::createBodyLayer);
-		event.registerLayerDefinition(Modelspirit_mask_base.LAYER_LOCATION, Modelspirit_mask_base::createBodyLayer);
-		event.registerLayerDefinition(Modelendertrapper118.LAYER_LOCATION, Modelendertrapper118::createBodyLayer);
-		event.registerLayerDefinition(Modelbubble.LAYER_LOCATION, Modelbubble::createBodyLayer);
-		event.registerLayerDefinition(Modelglub.LAYER_LOCATION, Modelglub::createBodyLayer);
-		event.registerLayerDefinition(Modelstructure_spawn.LAYER_LOCATION, Modelstructure_spawn::createBodyLayer);
-		event.registerLayerDefinition(Modelchorus_helmet.LAYER_LOCATION, Modelchorus_helmet::createBodyLayer);
+		event.registerLayerDefinition(ModelSpunkler.LAYER_LOCATION, ModelSpunkler::createBodyLayer);
+		event.registerLayerDefinition(ModelDragling.LAYER_LOCATION, ModelDragling::createBodyLayer);
+		event.registerLayerDefinition(ModelVoidExplosive.LAYER_LOCATION, ModelVoidExplosive::createBodyLayer);
+		event.registerLayerDefinition(ModelBolok.LAYER_LOCATION, ModelBolok::createBodyLayer);
+		event.registerLayerDefinition(ModelBabyBolok.LAYER_LOCATION, ModelBabyBolok::createBodyLayer);
+		event.registerLayerDefinition(ModelEnderling.LAYER_LOCATION, ModelEnderling::createBodyLayer);
+		event.registerLayerDefinition(ModelBluk.LAYER_LOCATION, ModelBluk::createBodyLayer);
+		event.registerLayerDefinition(ModelEnderBlob.LAYER_LOCATION, ModelEnderBlob::createBodyLayer);
+		event.registerLayerDefinition(ModelFlampyr.LAYER_LOCATION, ModelFlampyr::createBodyLayer);
+		event.registerLayerDefinition(ModelBabyFlampyr.LAYER_LOCATION, ModelBabyFlampyr::createBodyLayer);
+		event.registerLayerDefinition(ModelWarpedJellyfish.LAYER_LOCATION, ModelWarpedJellyfish::createBodyLayer);
+		event.registerLayerDefinition(ModelEnderBulb.LAYER_LOCATION, ModelEnderBulb::createBodyLayer);
+		event.registerLayerDefinition(ModelSmallEnderBulb.LAYER_LOCATION, ModelSmallEnderBulb::createBodyLayer);
+		event.registerLayerDefinition(ModelEndstoneGolem.LAYER_LOCATION, ModelEndstoneGolem::createBodyLayer);
+		event.registerLayerDefinition(ModelTamedDragling.LAYER_LOCATION, ModelTamedDragling::createBodyLayer);
+		event.registerLayerDefinition(ModelEnderlingMask.LAYER_LOCATION, ModelEnderlingMask::createBodyLayer);
+		event.registerLayerDefinition(ModelSpiritMaskBase.LAYER_LOCATION, ModelSpiritMaskBase::createBodyLayer);
+		event.registerLayerDefinition(ModelEnderTrapper118.LAYER_LOCATION, ModelEnderTrapper118::createBodyLayer);
+		event.registerLayerDefinition(ModelBubble.LAYER_LOCATION, ModelBubble::createBodyLayer);
+		event.registerLayerDefinition(ModelGlub.LAYER_LOCATION, ModelGlub::createBodyLayer);
+		event.registerLayerDefinition(ModelBabyGlub.LAYER_LOCATION, ModelBabyGlub::createBodyLayer);
+		event.registerLayerDefinition(ModelStructureSpawn.LAYER_LOCATION, ModelStructureSpawn::createBodyLayer);
+		event.registerLayerDefinition(ModelChorusHelmet.LAYER_LOCATION, ModelChorusHelmet::createBodyLayer);
 		event.registerLayerDefinition(ModelArrowModelEntity.LAYER_LOCATION, ModelArrowModelEntity::createBodyLayer);
-		event.registerLayerDefinition(Modelqueen.LAYER_LOCATION, Modelqueen::createBodyLayer);
+		event.registerLayerDefinition(ModelQueen.LAYER_LOCATION, ModelQueen::createBodyLayer);
 	}
 }

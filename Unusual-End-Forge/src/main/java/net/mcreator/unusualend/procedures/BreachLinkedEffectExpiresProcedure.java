@@ -26,7 +26,7 @@ public class BreachLinkedEffectExpiresProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity.getPersistentData().getBoolean("isBreached") == true) {
+		if (entity.getPersistentData().getBoolean("isBreached")) {
 			if (!(entity.getPersistentData().getString("BreachW")).equals("" + entity.level().dimension())) {
 				if ((entity.getPersistentData().getString("BreachW")).equals("" + Level.OVERWORLD)) {
 					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {

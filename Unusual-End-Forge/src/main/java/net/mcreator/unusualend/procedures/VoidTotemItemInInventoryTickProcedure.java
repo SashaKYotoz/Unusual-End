@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
 import net.mcreator.unusualend.UnusualEnd;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.network.UnusualendModVariables;
 import net.minecraft.advancements.Advancement;
@@ -32,7 +32,7 @@ public class VoidTotemItemInInventoryTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		if (entity.getY() < (double) ConfigurationFileConfiguration.VOID_TOTEM_Y.get()) {
+		if (entity.getY() < (double) Config.VOID_TOTEM_Y.get()) {
 			if ((entity.level().dimension()) == Level.END) {
 				if (!((entity instanceof Player _plrCldRem6 ? _plrCldRem6.getCooldowns().getCooldownPercent(itemstack.getItem(), 0f) * 100 : 0) > 0)) {
 					if (world.isClientSide()) {
@@ -40,7 +40,7 @@ public class VoidTotemItemInInventoryTickProcedure {
 							Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualendModItems.VOID_TOTEM.get()));
 					}
 					if (entity instanceof Player _player)
-						_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.VOID_TOTEM.get());
+						_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) Config.VOID_TOTEM.get());
 					if (entity instanceof Player _player) {
 						ItemStack _stktoremove = new ItemStack(UnusualendModItems.VOID_TOTEM.get());
 						_player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
@@ -123,7 +123,7 @@ public class VoidTotemItemInInventoryTickProcedure {
 								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.chorus_fruit.teleport")), SoundSource.NEUTRAL, 1, 1, false);
 							}
 						}
-						if (ConfigurationFileConfiguration.NEED_ANCHOR.get() == true) {
+						if (Config.NEED_ANCHOR.get() == true) {
 							entity.getPersistentData().putString("TargetDimension", (itemstack.getOrCreateTag().getString("TpW")));
 							entity.getPersistentData().putDouble("TargetX", (itemstack.getOrCreateTag().getDouble("TpX") - 0.5));
 							entity.getPersistentData().putDouble("TargetY", (itemstack.getOrCreateTag().getDouble("TpY")));

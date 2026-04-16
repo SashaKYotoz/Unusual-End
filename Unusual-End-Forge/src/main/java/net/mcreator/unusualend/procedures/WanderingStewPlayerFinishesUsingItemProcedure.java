@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundGameEventPacket;
@@ -61,7 +61,7 @@ public class WanderingStewPlayerFinishesUsingItemProcedure {
 		}
 		if ((world instanceof Level _lvl ? _lvl.dimension() : (world instanceof WorldGenLevel _wgl ? _wgl.getLevel().dimension() : Level.OVERWORLD)) == Level.OVERWORLD) {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, (int) ((double) ConfigurationFileConfiguration.STEW_TIME.get() * 20), 0, false, true));
+				_entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, (int) ((double) Config.STEW_TIME.get() * 20), 0, false, true));
 		}
 	}
 }

@@ -112,7 +112,12 @@ public class EnderbulbEntity extends Monster {
 		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.death"));
 	}
 
-	@Override
+    @Override
+    public float getVoicePitch() {
+        return 0.5f;
+    }
+
+    @Override
 	public boolean causeFallDamage(float l, float d, DamageSource source) {
 		return false;
 	}

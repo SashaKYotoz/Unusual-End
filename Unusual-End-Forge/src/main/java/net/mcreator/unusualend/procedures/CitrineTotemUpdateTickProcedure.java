@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModParticleTypes;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
@@ -35,7 +35,7 @@ public class CitrineTotemUpdateTickProcedure {
 				&& (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep3 ? blockstate.getValue(_getep3).toString() : "").equals("FLOOR")
 				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:citrine_totem_base")))
 						&& (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep7 ? blockstate.getValue(_getep7).toString() : "").equals("CEILING")) {
-			for (int index0 = 0; index0 < (int) (double) ConfigurationFileConfiguration.CITRINE_TOTEM_ACCURACY.get(); index0++) {
+			for (int index0 = 0; index0 < (int) (double) Config.CITRINE_TOTEM_ACCURACY.get(); index0++) {
 				X = x + Mth.nextInt(RandomSource.create(), -8, 8);
 				Y = y + Mth.nextInt(RandomSource.create(), -3, 1);
 				Z = z + Mth.nextInt(RandomSource.create(), -8, 8);

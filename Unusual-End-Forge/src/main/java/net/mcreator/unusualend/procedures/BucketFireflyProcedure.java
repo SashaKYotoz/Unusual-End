@@ -19,7 +19,6 @@ public class BucketFireflyProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		String name = "";
 		ItemStack entity_bucket = ItemStack.EMPTY;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET
 				|| (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
@@ -34,18 +33,14 @@ public class BucketFireflyProcedure {
 				entity_bucket.setHoverName(Component.literal((entity.getDisplayName().getString())));
 				entity_bucket.getOrCreateTag().putBoolean("isNamed", true);
 			}
-			if (entity instanceof TamableAnimal _tamEnt ? _tamEnt.isTame() : false) {
-				entity_bucket.getOrCreateTag().putString("Owner", ("" + ((entity instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null).getDisplayName().getString())));
+			if (entity instanceof TamableAnimal _tamEnt && _tamEnt.isTame()) {
+				entity_bucket.getOrCreateTag().putString("Owner", _tamEnt.getDisplayName().getString());
 				entity_bucket.getOrCreateTag().putBoolean("isTamed", true);
 			} else {
 				entity_bucket.getOrCreateTag().putBoolean("isTamed", false);
 			}
 			entity_bucket.getOrCreateTag().putDouble("tagHealth", (entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1));
-			if (entity instanceof LivingEntity _livEnt16 && _livEnt16.isBaby()) {
-				entity_bucket.getOrCreateTag().putBoolean("isBaby", true);
-			} else {
-				entity_bucket.getOrCreateTag().putBoolean("isBaby", false);
-			}
+            entity_bucket.getOrCreateTag().putBoolean("isBaby", entity instanceof LivingEntity _livEnt16 && _livEnt16.isBaby());
 			if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
 				if (!entity.level().isClientSide())
 					entity.discard();
@@ -63,7 +58,7 @@ public class BucketFireflyProcedure {
 					if (!world.isClientSide()) {
 						if (sourceentity instanceof LivingEntity _entity) {
 							ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-							_setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1));
+							_setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1);
 							_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
 							if (_entity instanceof Player _player)
 								_player.getInventory().setChanged();
@@ -92,7 +87,7 @@ public class BucketFireflyProcedure {
 					if (!world.isClientSide()) {
 						if (sourceentity instanceof LivingEntity _entity) {
 							ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-							_setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1));
+							_setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1);
 							_entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
 							if (_entity instanceof Player _player)
 								_player.getInventory().setChanged();
@@ -107,17 +102,17 @@ public class BucketFireflyProcedure {
 			}
 		}
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
-			if (entity instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt ? _tamIsTamedBy.isOwnedBy(_livEnt) : false) {
+			if (entity instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt && _tamIsTamedBy.isOwnedBy(_livEnt)) {
 				entity.setDeltaMovement(new Vec3(0, 0, 0));
 				if ((new Object() {
-					public boolean getValue() {
-						CompoundTag dataIndex = new CompoundTag();
-						entity.saveWithoutId(dataIndex);
-						return dataIndex.getBoolean("Sitting");
-					}
-				}.getValue()) == true) {
+                    public boolean getValue() {
+                        CompoundTag dataIndex = new CompoundTag();
+                        entity.saveWithoutId(dataIndex);
+                        return dataIndex.getBoolean("Sitting");
+                    }
+                }.getValue())) {
 					if (sourceentity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + Component.translatable("text.unusualend.follow").getString())), true);
+						_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + Component.translatable("text.unusualend.follow").getString())), true);
 					{
 						CompoundTag dataIndex = new CompoundTag();
 						entity.saveWithoutId(dataIndex);
@@ -126,7 +121,7 @@ public class BucketFireflyProcedure {
 					}
 				} else {
 					if (sourceentity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + Component.translatable("text.unusualend.sit").getString())), true);
+						_player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + Component.translatable("text.unusualend.sit").getString())), true);
 					{
 						CompoundTag dataIndex = new CompoundTag();
 						entity.saveWithoutId(dataIndex);

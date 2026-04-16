@@ -1,7 +1,3 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.unusualend.init;
 
 import net.mcreator.unusualend.UnusualEnd;
@@ -30,8 +26,8 @@ public class UnusualendModEntities {
 					.sized(0.6f, 1.45f));
 	public static final RegistryObject<EntityType<EnderTrapperEntity>> ENDSTONE_TRAPPER = register("endstone_trapper", EntityType.Builder.<EnderTrapperEntity>of(EnderTrapperEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
 			.setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(EnderTrapperEntity::new).fireImmune().sized(0.6f, 1.05f));
-	public static final RegistryObject<EntityType<EnderBugEntity>> ENDER_FIREFLY = register("ender_firefly",
-			EntityType.Builder.<EnderBugEntity>of(EnderBugEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(EnderBugEntity::new)
+	public static final RegistryObject<EntityType<FlampyrEntity>> ENDER_FIREFLY = register("ender_firefly",
+			EntityType.Builder.<FlampyrEntity>of(FlampyrEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(FlampyrEntity::new)
 
 					.sized(0.7f, 0.5f));
 	public static final RegistryObject<EntityType<EndstoneGolemEntity>> ENDSTONE_GOLEM = register("endstone_golem", EntityType.Builder.<EndstoneGolemEntity>of(EndstoneGolemEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
@@ -56,8 +52,8 @@ public class UnusualendModEntities {
 			EntityType.Builder.<LargeBubbleEntity>of(LargeBubbleEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(16).setUpdateInterval(3).setCustomClientFactory(LargeBubbleEntity::new)
 
 					.sized(1.4f, 1.6f));
-	public static final RegistryObject<EntityType<WarpedJellyfishEntity>> GLUB = register("glub",
-			EntityType.Builder.<WarpedJellyfishEntity>of(WarpedJellyfishEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(WarpedJellyfishEntity::new)
+	public static final RegistryObject<EntityType<GlubEntity>> GLUB = register("glub",
+			EntityType.Builder.<GlubEntity>of(GlubEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(GlubEntity::new)
 
 					.sized(0.75f, 1f));
 	public static final RegistryObject<EntityType<VoidBombEntity>> VOID_BOMB = register("void_bomb",
@@ -98,7 +94,7 @@ public class UnusualendModEntities {
 			.setCustomClientFactory(WarpedBalloonProjEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 
 	private static <T extends Entity> RegistryObject<EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
-		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
+		return REGISTRY.register(registryname, () -> entityTypeBuilder.build(registryname));
 	}
 
 	@SubscribeEvent
@@ -107,7 +103,7 @@ public class UnusualendModEntities {
 			EnderblobEntity.init();
 			EnderlingEntity.init();
 			EnderTrapperEntity.init();
-			EnderBugEntity.init();
+			FlampyrEntity.init();
 			EndstoneGolemEntity.init();
 			DraglingEntity.init();
 			BolokEntity.init();
@@ -116,7 +112,7 @@ public class UnusualendModEntities {
 			SpunklerEntity.init();
 			VoidCrackEntity.init();
 			LargeBubbleEntity.init();
-			WarpedJellyfishEntity.init();
+			GlubEntity.init();
 			VoidBombEntity.init();
 			EnderbulbEntity.init();
 			SmallEnderbulbEntity.init();
@@ -130,7 +126,7 @@ public class UnusualendModEntities {
 		event.put(ENDER_BLOB.get(), EnderblobEntity.createAttributes().build());
 		event.put(UNDEAD_ENDERLING.get(), EnderlingEntity.createAttributes().build());
 		event.put(ENDSTONE_TRAPPER.get(), EnderTrapperEntity.createAttributes().build());
-		event.put(ENDER_FIREFLY.get(), EnderBugEntity.createAttributes().build());
+		event.put(ENDER_FIREFLY.get(), FlampyrEntity.createAttributes().build());
 		event.put(ENDSTONE_GOLEM.get(), EndstoneGolemEntity.createAttributes().build());
 		event.put(DRAGLING.get(), DraglingEntity.createAttributes().build());
 		event.put(BOLOK.get(), BolokEntity.createAttributes().build());
@@ -139,7 +135,7 @@ public class UnusualendModEntities {
 		event.put(SPUNKLER.get(), SpunklerEntity.createAttributes().build());
 		event.put(VOID_CRACK.get(), VoidCrackEntity.createAttributes().build());
 		event.put(WARPED_BALLOON.get(), LargeBubbleEntity.createAttributes().build());
-		event.put(GLUB.get(), WarpedJellyfishEntity.createAttributes().build());
+		event.put(GLUB.get(), GlubEntity.createAttributes().build());
 		event.put(VOID_BOMB.get(), VoidBombEntity.createAttributes().build());
 		event.put(ENDERBULB.get(), EnderbulbEntity.createAttributes().build());
 		event.put(SMALL_ENDERBULB.get(), SmallEnderbulbEntity.createAttributes().build());

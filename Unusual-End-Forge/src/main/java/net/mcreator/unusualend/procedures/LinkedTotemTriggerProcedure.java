@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.network.UnusualendModVariables;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -111,7 +111,7 @@ public class LinkedTotemTriggerProcedure {
 					_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.chorus_fruit.teleport")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			if (ConfigurationFileConfiguration.NEED_ANCHOR.get() == true) {
+			if (Config.NEED_ANCHOR.get() == true) {
 				entity.getPersistentData().putString("TargetDimension", (itemstack.getOrCreateTag().getString("TpW")));
 				entity.getPersistentData().putDouble("TargetX", (itemstack.getOrCreateTag().getDouble("TpX") - 0.5));
 				entity.getPersistentData().putDouble("TargetY", (itemstack.getOrCreateTag().getDouble("TpY")));

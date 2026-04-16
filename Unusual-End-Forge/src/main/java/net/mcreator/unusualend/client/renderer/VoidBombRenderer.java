@@ -1,15 +1,15 @@
 
 package net.mcreator.unusualend.client.renderer;
 
-import net.mcreator.unusualend.client.model.Modelvoid_explosive;
+import net.mcreator.unusualend.client.model.ModelVoidExplosive;
 import net.mcreator.unusualend.entity.VoidBombEntity;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-public class VoidBombRenderer extends MobRenderer<VoidBombEntity, Modelvoid_explosive<VoidBombEntity>> {
+public class VoidBombRenderer extends MobRenderer<VoidBombEntity, ModelVoidExplosive<VoidBombEntity>> {
 	public VoidBombRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelvoid_explosive(context.bakeLayer(Modelvoid_explosive.LAYER_LOCATION)), 0.4f);
+		super(context, new ModelVoidExplosive(context.bakeLayer(ModelVoidExplosive.LAYER_LOCATION)), 0.4f);
 	}
 
 	@Override

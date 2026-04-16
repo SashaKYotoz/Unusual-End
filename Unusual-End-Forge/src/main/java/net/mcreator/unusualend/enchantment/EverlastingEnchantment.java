@@ -1,7 +1,7 @@
 
 package net.mcreator.unusualend.enchantment;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -21,21 +21,21 @@ public class EverlastingEnchantment extends Enchantment {
 
 	@Override
 	public boolean isTreasureOnly() {
-		return !ConfigurationFileConfiguration.EVERLASTING.get();
+		return !Config.EVERLASTING.get();
 	}
 
 	@Override
 	public boolean isAllowedOnBooks() {
-		return ConfigurationFileConfiguration.EVERLASTING.get();
+		return Config.EVERLASTING.get();
 	}
 
 	@Override
 	public boolean isDiscoverable() {
-		return ConfigurationFileConfiguration.EVERLASTING.get();
+		return Config.EVERLASTING.get();
 	}
 
 	@Override
 	public boolean isTradeable() {
-		return ConfigurationFileConfiguration.EVERLASTING.get();
+		return Config.EVERLASTING.get();
 	}
 }

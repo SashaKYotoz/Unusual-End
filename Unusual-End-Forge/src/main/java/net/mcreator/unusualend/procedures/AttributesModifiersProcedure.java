@@ -2,7 +2,6 @@ package net.mcreator.unusualend.procedures;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -24,7 +23,7 @@ public class AttributesModifiersProcedure {
 	}
 
 	public static void execute(ItemStack itemstack) {
-		execute((Event) null, itemstack);
+		execute(null, itemstack);
 	}
 
 	private static void execute(@Nullable Event event, ItemStack itemstack) {
@@ -35,14 +34,14 @@ public class AttributesModifiersProcedure {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.FEET && itemstack.getItem() == UnusualendModItems.WARPED_BOOTS.get()) {
 					modifier = new AttributeModifier(UUID.fromString("f654bc63-b67e-40ee-b11c-2d8abaab9f3e"), "unusualend.BolokBootsBoost", 0.5D, Operation.MULTIPLY_BASE);
-					_event.addModifier((Attribute) ForgeMod.SWIM_SPEED.get(), modifier);
+					_event.addModifier(ForgeMod.SWIM_SPEED.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.BOUNCY_DAGGER.get()) {
 					modifier = new AttributeModifier(UUID.fromString("94fe2560-d356-4499-110c-94c8bb6c1bb2"), "unusualend.ReachDaggerDebuff", -0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 					modifier = new AttributeModifier(UUID.fromString("94fe2560-d376-4499-110c-64c8bb6c1bb3"), "unusualend.BouncyDagger", 2.0D, Operation.ADDITION);
 					_event.addModifier(Attributes.ATTACK_KNOCKBACK, modifier);
 				}
@@ -51,7 +50,7 @@ public class AttributesModifiersProcedure {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.WARPED_SPEAR.get()) {
 					modifier = new AttributeModifier(UUID.fromString("33fe2130-d356-4749-110c-94c8bb6c1bb8"), "unusualend.ReachSpearBuff", 2.0D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
@@ -65,52 +64,52 @@ public class AttributesModifiersProcedure {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.PEARLESCENT_SWORD.get()) {
 					modifier = new AttributeModifier(UUID.fromString("574188c2-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 					modifier = new AttributeModifier(UUID.fromString("e5c352ec-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 1.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.BLOCK_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.BLOCK_REACH.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.PEARLESCENT_AXE.get()) {
 					modifier = new AttributeModifier(UUID.fromString("674188c2-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 					modifier = new AttributeModifier(UUID.fromString("65c352ec-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 1.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.BLOCK_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.BLOCK_REACH.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.PEARLESCENT_PICKAXE.get()) {
 					modifier = new AttributeModifier(UUID.fromString("584188c2-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 					modifier = new AttributeModifier(UUID.fromString("e5c952ec-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 1.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.BLOCK_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.BLOCK_REACH.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.PEARLESCENT_HOE.get()) {
 					modifier = new AttributeModifier(UUID.fromString("574108c2-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 					modifier = new AttributeModifier(UUID.fromString("e5c352fc-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 1.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.BLOCK_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.BLOCK_REACH.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.PEARLESCENT_SHOVEL.get()) {
 					modifier = new AttributeModifier(UUID.fromString("573188c2-554a-11ee-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 					modifier = new AttributeModifier(UUID.fromString("e5c352ec-554a-11fe-8c99-0242ac120002"), "unusualend.ReachSpectralBuff", 1.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.BLOCK_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.BLOCK_REACH.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.ANCIENT_SWORD.get()) {
 					modifier = new AttributeModifier(UUID.fromString("573188c2-554a-11ee-8c99-0242ac128802"), "unusualend.ReachAncientBuff", 0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
@@ -124,16 +123,16 @@ public class AttributesModifiersProcedure {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.CHEST && itemstack.getItem() == UnusualendModItems.SCALE_HORSE_ARMOR.get()) {
 					modifier = new AttributeModifier(UUID.fromString("784142c5-312a-12ee-8c49-0242ac128802"), "unusualend.HorseWaterBuff", 2.0D, Operation.MULTIPLY_BASE);
-					_event.addModifier((Attribute) ForgeMod.SWIM_SPEED.get(), modifier);
+					_event.addModifier(ForgeMod.SWIM_SPEED.get(), modifier);
 					modifier = new AttributeModifier(UUID.fromString("704142c5-312a-12ee-8c49-0242ac125502"), "unusualend.HorseBuff", 1.0D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.STEP_HEIGHT_ADDITION.get(), modifier);
+					_event.addModifier(ForgeMod.STEP_HEIGHT_ADDITION.get(), modifier);
 				}
 			}
 			if (event instanceof ItemAttributeModifierEvent) {
 				_event = (ItemAttributeModifierEvent) event;
 				if (_event.getSlotType() == EquipmentSlot.MAINHAND && itemstack.getItem() == UnusualendModItems.WARPED_ANCHOR.get()) {
 					modifier = new AttributeModifier(UUID.fromString("0c948739-fac0-431d-854c-9ed62408760d"), "unusualend.AnchorDebuff", -0.5D, Operation.ADDITION);
-					_event.addModifier((Attribute) ForgeMod.ENTITY_REACH.get(), modifier);
+					_event.addModifier(ForgeMod.ENTITY_REACH.get(), modifier);
 				}
 			}
 		}

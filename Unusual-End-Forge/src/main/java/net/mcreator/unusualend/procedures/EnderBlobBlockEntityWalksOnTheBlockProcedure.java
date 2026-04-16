@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
@@ -21,7 +21,7 @@ public class EnderBlobBlockEntityWalksOnTheBlockProcedure {
 				entity.setDeltaMovement(new Vec3(0, 0.9, 0));
 			}
 		} else {
-			if (ConfigurationFileConfiguration.BLOB_BLOCK_BOUNCE.get() == true) {
+			if (Config.BLOB_BLOCK_BOUNCE.get() == true) {
 				if (!world.isClientSide()) {
 					entity.setDeltaMovement(new Vec3(0, 0.9, 0));
 					if (world instanceof Level _level) {

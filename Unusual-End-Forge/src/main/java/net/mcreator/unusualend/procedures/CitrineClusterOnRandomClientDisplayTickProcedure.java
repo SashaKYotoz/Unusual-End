@@ -3,7 +3,6 @@ package net.mcreator.unusualend.procedures;
 import net.mcreator.unusualend.init.UnusualendModParticleTypes;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
@@ -20,7 +19,7 @@ public class CitrineClusterOnRandomClientDisplayTickProcedure {
 							_level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
 					"particle dust 1 0.7 0.3 0.8 ~ ~0.5 ~ 0.2 0.2 0.2 0 8");
 		if (Math.random() < 0.2) {
-			world.addParticle((SimpleParticleType) (UnusualendModParticleTypes.CITRINE_SHINE.get()), (x + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)), (y + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)),
+			world.addParticle(UnusualendModParticleTypes.CITRINE_SHINE.get(), (x + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)), (y + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)),
 					(z + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)), 0, 0, 0);
 		}
 	}

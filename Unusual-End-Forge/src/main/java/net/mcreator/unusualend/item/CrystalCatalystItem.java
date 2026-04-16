@@ -5,6 +5,7 @@ import com.google.common.collect.ImmutableSet;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
 import net.mcreator.unusualend.procedures.CrystalCatalystItemInInventoryTickProcedure;
 import net.mcreator.unusualend.procedures.CrystalCatalystRightclickedProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -45,11 +46,8 @@ public class CrystalCatalystItem extends Item {
 
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("cataCooldown") < 400 && stack.getOrCreateTag().getDouble("cataCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("cataCooldown") < 400) {
-			return true;
-		}
-		return false;
-	}
+        return stack.getDamageValue() > 0 || stack.getOrCreateTag().getDouble("cataCooldown") < 400 && stack.getOrCreateTag().getDouble("cataCooldown") > 0 || stack.getDamageValue() > 0 && stack.getOrCreateTag().getDouble("cataCooldown") < 400;
+    }
 
 	@Override
 	public int getBarColor(ItemStack stack) {
@@ -64,7 +62,7 @@ public class CrystalCatalystItem extends Item {
 		if (stack.getOrCreateTag().getDouble("cataCooldown") < 400) {
 			return (int) (stack.getOrCreateTag().getDouble("cataCooldown") * 0.0025f * 14f);
 		}
-		return (int) Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
+		return Math.round(13.0F - (float) stack.getDamageValue() / stack.getMaxDamage() * 13.0F);
 	}
 
 	@Override
@@ -76,15 +74,18 @@ public class CrystalCatalystItem extends Item {
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		String buff = "none";
 		super.appendHoverText(itemstack, world, list, flag);
-		buff = (String) ((itemstack).getOrCreateTag().getString("buff"));
+		buff = (itemstack).getOrCreateTag().getString("buff");
 		if ((itemstack.getOrCreateTag().getString("buff")).equals("")) {
 			itemstack.getOrCreateTag().putString("buff", Component.translatable("text.unusualend.no_buff_defined").getString());
 		}
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.consume_effects").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.current_buff").getString()));
 		list.add(Component.literal("\u00A79 - " + ((buff))));
 		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.valid_blocs").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

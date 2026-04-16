@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -48,7 +48,7 @@ public class UltraInstinctChorusProcedure {
 		double Z = 0;
 		if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).getItem() == UnusualendModItems.CHORUS_HELMET.get()) {
 			if (!entity.isShiftKeyDown()) {
-				if (Math.random() < (double) ConfigurationFileConfiguration.CHORUS_HELMET_PROBABILITY_TO_TELEPORT.get() / 100) {
+				if (Math.random() < (double) Config.CHORUS_HELMET_PROBABILITY_TO_TELEPORT.get() / 100) {
 					for (int index0 = 0; index0 < 1000; index0++) {
 						X = x + Mth.nextInt(RandomSource.create(), -5, 5);
 						Y = y + Mth.nextInt(RandomSource.create(), -2, 2);
@@ -71,7 +71,7 @@ public class UltraInstinctChorusProcedure {
 										_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.chorus_fruit.teleport")), SoundSource.PLAYERS, 1, 1, false);
 									}
 								}
-								if (amount <= (double) ConfigurationFileConfiguration.MAX_DAMAGE_CHORUS_HELMET_CAN_DODGE_WITH_TP_.get()) {
+								if (amount <= (double) Config.MAX_DAMAGE_CHORUS_HELMET_CAN_DODGE_WITH_TP_.get()) {
 									if (event != null && event.isCancelable()) {
 										event.setCanceled(true);
 									}

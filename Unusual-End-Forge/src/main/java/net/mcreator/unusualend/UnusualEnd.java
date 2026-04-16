@@ -2,20 +2,31 @@ package net.mcreator.unusualend;
 
 import net.mcreator.unusualend.init.*;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.server.packs.PathPackResources;
+import net.minecraft.server.packs.repository.Pack;
+import net.minecraft.server.packs.repository.PackSource;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AddPackFindersEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.util.thread.SidedThreadGroups;
+import net.minecraftforge.forgespi.locating.IModFile;
 import net.minecraftforge.network.NetworkEvent;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.simple.SimpleChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.Nullable;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -47,6 +58,7 @@ public class UnusualEnd {
 		UnusualendModParticleTypes.REGISTRY.register(bus);
 
 		UnusualendModMenus.REGISTRY.register(bus);
+        bus.addListener(this::registerPacks);
 	}
 
 	private static final String PROTOCOL_VERSION = "1";
@@ -60,6 +72,31 @@ public class UnusualEnd {
 
 	private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
 
+    private void registerPacks(AddPackFindersEvent event) {
+         if (event.getPackType() == PackType.CLIENT_RESOURCES)
+            registerBuiltinPack(event, "unusual_end_eggs", "Unusual End Fancy Spawn Eggs");
+    }
+    private void registerBuiltinPack(AddPackFindersEvent event, String folderName, String displayName) {
+        IModFile modFile = ModList.get().getModFileById("unusualend").getFile();
+        Path resourcePath = modFile.findResource("resourcepacks/" + folderName);
+
+        if (Files.exists(resourcePath)) {
+            event.addRepositorySource((packConsumer) -> {
+                Pack pack = Pack.readMetaAndCreate(
+                        "unusualend:" + folderName,
+                        Component.literal(displayName),
+                        false,
+                        (id) -> new PathPackResources(id, resourcePath, true),
+                        event.getPackType(),
+                        Pack.Position.TOP,
+                        PackSource.BUILT_IN
+                );
+                if (pack != null) {
+                    packConsumer.accept(pack);
+                }
+            });
+        }
+    }
 	public static void queueServerWork(int tick, Runnable action) {
 		if (Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER)
 			workQueue.add(new AbstractMap.SimpleEntry<>(action, tick));

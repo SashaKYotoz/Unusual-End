@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -36,20 +36,20 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 			}
 			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get())
 					? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier()
-					: 0) >= (double) ConfigurationFileConfiguration.MAX_WARPED_INFUSION.get() - 1) {
+					: 0) >= (double) Config.MAX_WARPED_INFUSION.get() - 1) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(),
 							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getDuration() : 0)
-									+ (double) ConfigurationFileConfiguration.TENACITY_TIME.get() * 20),
+									+ (double) Config.TENACITY_TIME.get() * 20),
 							entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0));
 			} else {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) ConfigurationFileConfiguration.TENACITY_TIME.get() * 20),
+					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) Config.TENACITY_TIME.get() * 20),
 							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0) + 1)));
 			}
 		} else {
 			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) ConfigurationFileConfiguration.TENACITY_TIME.get() * 20), 0));
+				_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) Config.TENACITY_TIME.get() * 20), 0));
 		}
 		if (world.isClientSide()) {
 			if (world instanceof Level _level) {

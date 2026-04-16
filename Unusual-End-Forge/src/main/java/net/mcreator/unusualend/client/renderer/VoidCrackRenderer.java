@@ -1,17 +1,15 @@
 
 package net.mcreator.unusualend.client.renderer;
 
-import net.mcreator.unusualend.client.model.Modelstructure_spawn;
+import net.mcreator.unusualend.client.model.ModelStructureSpawn;
 import net.mcreator.unusualend.entity.VoidCrackEntity;
-import net.mcreator.unusualend.procedures.ReturnTrueProcedure;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.Level;
 
-public class VoidCrackRenderer extends MobRenderer<VoidCrackEntity, Modelstructure_spawn<VoidCrackEntity>> {
+public class VoidCrackRenderer extends MobRenderer<VoidCrackEntity, ModelStructureSpawn<VoidCrackEntity>> {
 	public VoidCrackRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelstructure_spawn(context.bakeLayer(Modelstructure_spawn.LAYER_LOCATION)), 0.2f);
+		super(context, new ModelStructureSpawn(context.bakeLayer(ModelStructureSpawn.LAYER_LOCATION)), 0.2f);
 	}
 
 	@Override
@@ -21,10 +19,6 @@ public class VoidCrackRenderer extends MobRenderer<VoidCrackEntity, Modelstructu
 
 	@Override
 	protected boolean isBodyVisible(VoidCrackEntity entity) {
-		Level world = entity.level();
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
-		return !ReturnTrueProcedure.execute();
+		return false;
 	}
 }

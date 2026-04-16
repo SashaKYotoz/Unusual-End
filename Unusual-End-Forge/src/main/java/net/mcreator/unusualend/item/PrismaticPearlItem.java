@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,9 +19,12 @@ public class PrismaticPearlItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77When Used on"));
 		list.add(Component.literal("\u00A77Gloopslate Pedestral:"));
 		list.add(Component.literal("\u00A79Fill the Pedestral"));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 	//public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
 	//	ItemStack itemStack = player.getItemInHand(hand);

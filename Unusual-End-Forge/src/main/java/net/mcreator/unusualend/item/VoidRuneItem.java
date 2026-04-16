@@ -4,6 +4,7 @@ package net.mcreator.unusualend.item;
 import net.mcreator.unusualend.procedures.VoidRuneItemInHandTickProcedure;
 import net.mcreator.unusualend.procedures.VoidRuneMakeItemGlowProcedure;
 import net.mcreator.unusualend.procedures.VoidRuneRightclickedProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -46,21 +47,21 @@ public class VoidRuneItem extends Item {
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		double xp = 0;
 		super.appendHoverText(itemstack, world, list, flag);
-		xp = (Double) ((itemstack).getOrCreateTag().getDouble("XP"));
+		xp = (itemstack).getOrCreateTag().getDouble("XP");
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77When Sneaking:"));
 		list.add(Component.literal("\u00A79Slowly store Experience"));
 		list.add(Component.literal("\u00A77When Right-Clicking:"));
 		list.add(Component.literal("\u00A79Collect stored Experience"));
 		list.add(Component.literal("\u00A79 - " + ((xp)) + " XP"));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player entity, InteractionHand hand) {
 		InteractionResultHolder<ItemStack> ar = super.use(world, entity, hand);
 		ItemStack itemstack = ar.getObject();
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
 		VoidRuneRightclickedProcedure.execute(world, entity, itemstack);
 		return ar;
 	}

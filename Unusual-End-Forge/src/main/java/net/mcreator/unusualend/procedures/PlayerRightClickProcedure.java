@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.entity.WarpedJellyfishEntity;
+import net.mcreator.unusualend.entity.GlubEntity;
 import net.minecraft.world.entity.Entity;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -27,7 +27,7 @@ public class PlayerRightClickProcedure {
 			return;
 		double number = 0;
 		if (entity.isVehicle()) {
-			if ((entity.getFirstPassenger()) instanceof WarpedJellyfishEntity) {
+			if ((entity.getFirstPassenger()) instanceof GlubEntity) {
 				if (entity.isShiftKeyDown()) {
 					(entity.getFirstPassenger()).stopRiding();
 				}

@@ -30,11 +30,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		double sx = 0;
-		double sy = 0;
 		double altars = 0;
-		double sz = 0;
-		double altar_to_remove = 0;
 		altars = 0;
 		if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {

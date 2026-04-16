@@ -1,7 +1,3 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.unusualend.init;
 
 import net.mcreator.unusualend.client.renderer.*;
@@ -18,7 +14,7 @@ public class UnusualendModEntityRenderers {
 		event.registerEntityRenderer(UnusualendModEntities.ENDER_BLOB.get(), EnderblobRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.UNDEAD_ENDERLING.get(), EnderlingRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.ENDSTONE_TRAPPER.get(), EnderTrapperRenderer::new);
-		event.registerEntityRenderer(UnusualendModEntities.ENDER_FIREFLY.get(), EnderBugRenderer::new);
+		event.registerEntityRenderer(UnusualendModEntities.ENDER_FIREFLY.get(), FlampyrRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.ENDSTONE_GOLEM.get(), EndstoneGolemRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.DRAGLING.get(), DraglingRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.BOLOK.get(), BolokRenderer::new);
@@ -27,7 +23,7 @@ public class UnusualendModEntityRenderers {
 		event.registerEntityRenderer(UnusualendModEntities.SPUNKLER.get(), SpunklerRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.VOID_CRACK.get(), VoidCrackRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.WARPED_BALLOON.get(), LargeBubbleRenderer::new);
-		event.registerEntityRenderer(UnusualendModEntities.GLUB.get(), WarpedJellyfishRenderer::new);
+		event.registerEntityRenderer(UnusualendModEntities.GLUB.get(), GlubRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.VOID_BOMB.get(), VoidBombRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.ENDERBULB.get(), EnderbulbRenderer::new);
 		event.registerEntityRenderer(UnusualendModEntities.SMALL_ENDERBULB.get(), SmallEnderbulbRenderer::new);

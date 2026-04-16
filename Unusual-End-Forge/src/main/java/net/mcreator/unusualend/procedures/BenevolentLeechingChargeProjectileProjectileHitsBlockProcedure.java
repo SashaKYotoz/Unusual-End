@@ -14,8 +14,6 @@ public class BenevolentLeechingChargeProjectileProjectileHitsBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity immediatesourceentity) {
 		if (immediatesourceentity == null)
 			return;
-		double duration_buff = 0;
-		double level_buff = 0;
 		if (!immediatesourceentity.level().isClientSide())
 			immediatesourceentity.discard();
 		if (world instanceof ServerLevel _level)

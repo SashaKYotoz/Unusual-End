@@ -5,6 +5,7 @@ package net.mcreator.unusualend.item;
 import com.google.common.collect.Iterables;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.procedures.EnderlingScrapLeggingsTickEventProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -71,8 +72,11 @@ public abstract class EnderlingScrapItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
+            if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 			list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_sprint").getString()));
 			list.add(Component.literal("\u00A79" + Component.translatable("effect.unusualend.spectral_stride").getString() + " (0:01)"));
+            } else
+                list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 		}
 
 		@Override

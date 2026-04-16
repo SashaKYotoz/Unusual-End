@@ -1,7 +1,3 @@
-
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.mcreator.unusualend.init;
 
 import net.mcreator.unusualend.client.particle.BolokParticleParticle;

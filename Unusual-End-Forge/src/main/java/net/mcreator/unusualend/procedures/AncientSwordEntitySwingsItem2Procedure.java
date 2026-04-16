@@ -35,11 +35,6 @@ public class AncientSwordEntitySwingsItem2Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		boolean swing = false;
-		double swing_curve = 0;
-		double original_curve = 0;
-		double swing_offset = 0;
-		double dis = 0;
 		double xRadius = 0;
 		double loop = 0;
 		double zRadius = 0;

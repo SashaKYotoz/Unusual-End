@@ -19,8 +19,8 @@
                 "if_true": {
                   "type": "minecraft:noise_threshold",
                   "max_threshold": 9999,
-                  "min_threshold": 0.2,
-                  "noise": "minecraft:surface"
+                  "min_threshold": 0.05,
+                  "noise": "minecraft:nether_state_selector"
                 },
                 "then_run": {
                   "type": "minecraft:sequence",
@@ -45,8 +45,8 @@
                       "type": "minecraft:condition",
                       "if_true": {
                         "type": "minecraft:stone_depth",
-                        "add_surface_depth": true,
-                        "offset": 0,
+                        "add_surface_depth": false,
+                        "offset": 1,
                         "secondary_depth_range": 0,
                         "surface_type": "floor"
                       },
@@ -54,6 +54,22 @@
                         "type": "minecraft:block",
                         "result_state": {
                           "Name": "unusualend:gloopslate"
+                        }
+                      }
+                    },
+                    {
+                      "type": "minecraft:condition",
+                      "if_true": {
+                        "type": "minecraft:stone_depth",
+                        "add_surface_depth": false,
+                        "offset": 2,
+                        "secondary_depth_range": 0,
+                        "surface_type": "floor"
+                      },
+                      "then_run": {
+                        "type": "minecraft:block",
+                        "result_state": {
+                          "Name": "unusualend:gloopy_endstone"
                         }
                       }
                     }
@@ -64,9 +80,9 @@
                 "type": "minecraft:condition",
                 "if_true": {
                   "type": "minecraft:noise_threshold",
-                  "max_threshold": 0.2,
-                  "min_threshold": 0.03,
-                  "noise": "minecraft:surface"
+                  "max_threshold": 0.05,
+                  "min_threshold": -0.38,
+                  "noise": "minecraft:nether_state_selector"
                 },
                 "then_run": {
                   "type": "minecraft:sequence",
@@ -110,9 +126,9 @@
                 "type": "minecraft:condition",
                 "if_true": {
                   "type": "minecraft:noise_threshold",
-                  "max_threshold": 0.03,
-                  "min_threshold": -0.7,
-                  "noise": "minecraft:surface"
+                  "max_threshold": -0.38,
+                  "min_threshold": -0.4,
+                  "noise": "minecraft:nether_state_selector"
                 },
                 "then_run": {
                   "type": "minecraft:sequence",

@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
@@ -13,8 +13,7 @@ public class BlukAuChocolatPlayerFinishesUsingItemProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
 		if (entity == null)
 			return;
-		double random = 0;
-		if (ConfigurationFileConfiguration.CHOCOLAT_BLUK.get() == true) {
+		if (Config.CHOCOLAT_BLUK.get() == true) {
 			if (world.isClientSide()) {
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {

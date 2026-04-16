@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.entity.EnderblobEntity;
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -38,7 +38,7 @@ public class EndermitesInfectProcedure {
 						_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 36000, 0));
 				}
 			} else {
-				if (Math.random() < (double) ConfigurationFileConfiguration.ENDERMITES_PROBABILITY_TO_INFECT.get() / 100) {
+				if (Math.random() < (double) Config.ENDERMITES_PROBABILITY_TO_INFECT.get() / 100) {
 					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 600, 0));
 				}

@@ -1,9 +1,9 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 
 public class InfestedEndstoneAdditionalGenerationConditionProcedure {
 	public static boolean execute() {
-		return ConfigurationFileConfiguration.INFESTED_ENDSTONE.get() == true;
+		return Config.INFESTED_ENDSTONE.get() == true;
 	}
 }

@@ -13,6 +13,6 @@ public class ReturnNotSneakingProcedure {
 				entity.saveWithoutId(dataIndex);
 				return dataIndex.getBoolean("Sitting");
 			}
-		}.getValue()) == true);
+		}.getValue()));
 	}
 }

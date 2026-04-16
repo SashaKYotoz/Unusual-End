@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
 import net.mcreator.unusualend.UnusualEnd;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.entity.LargeBubbleEntity;
 import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.mcreator.unusualend.init.UnusualendModItems;
@@ -64,7 +64,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 						}
 					}
 				} else {
-					if (ConfigurationFileConfiguration.SAVE_BALLOON.get() == true) {
+					if (Config.SAVE_BALLOON.get() == true) {
 						if (!immediatesourceentity.level().isClientSide())
 							immediatesourceentity.discard();
 						if (world instanceof ServerLevel _level) {
@@ -75,7 +75,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 					}
 				}
 			} else {
-				if (ConfigurationFileConfiguration.SAVE_BALLOON.get() == true) {
+				if (Config.SAVE_BALLOON.get() == true) {
 					if (!immediatesourceentity.level().isClientSide())
 						immediatesourceentity.discard();
 					if (world instanceof ServerLevel _level) {
@@ -86,7 +86,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 				}
 			}
 		} else {
-			if (ConfigurationFileConfiguration.SAVE_BALLOON.get() == true) {
+			if (Config.SAVE_BALLOON.get() == true) {
 				if (!immediatesourceentity.level().isClientSide())
 					immediatesourceentity.discard();
 				if (world instanceof ServerLevel _level) {

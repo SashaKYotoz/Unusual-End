@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.network.UnusualendModVariables;
 import net.minecraft.client.Minecraft;
@@ -99,7 +99,7 @@ public class TPwithChorusProcedure {
 					_serverPlayer.connection.teleport((itemstack.getOrCreateTag().getDouble("TpX")), (itemstack.getOrCreateTag().getDouble("TpY")), (itemstack.getOrCreateTag().getDouble("TpZ")), _ent.getYRot(), _ent.getXRot());
 			}
 			if (entity instanceof Player _player)
-				_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.PRISMATIC_MIRROR.get());
+				_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) Config.PRISMATIC_MIRROR.get());
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);
 			if (world instanceof Level _level) {
@@ -128,7 +128,7 @@ public class TPwithChorusProcedure {
 					}
 				}
 			}
-			if (ConfigurationFileConfiguration.NEED_ANCHOR.get() == true) {
+			if (Config.NEED_ANCHOR.get() == true) {
 				entity.getPersistentData().putString("TargetDimension", (itemstack.getOrCreateTag().getString("TpW")));
 				entity.getPersistentData().putDouble("TargetX", (itemstack.getOrCreateTag().getDouble("TpX") - 0.5));
 				entity.getPersistentData().putDouble("TargetY", (itemstack.getOrCreateTag().getDouble("TpY")));
@@ -280,7 +280,7 @@ public class TPwithChorusProcedure {
 				}
 				entity.fallDistance = 0;
 				if (entity instanceof Player _player)
-					_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.PRISMATIC_MIRROR.get());
+					_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) Config.PRISMATIC_MIRROR.get());
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);
 				if (world instanceof Level _level) {

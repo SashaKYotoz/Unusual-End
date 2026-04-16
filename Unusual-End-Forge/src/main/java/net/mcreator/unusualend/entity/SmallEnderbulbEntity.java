@@ -26,88 +26,93 @@ import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class SmallEnderbulbEntity extends Monster {
-	public SmallEnderbulbEntity(PlayMessages.SpawnEntity packet, Level world) {
-		this(UnusualendModEntities.SMALL_ENDERBULB.get(), world);
-	}
+    public SmallEnderbulbEntity(PlayMessages.SpawnEntity packet, Level world) {
+        this(UnusualendModEntities.SMALL_ENDERBULB.get(), world);
+    }
 
-	public SmallEnderbulbEntity(EntityType<SmallEnderbulbEntity> type, Level world) {
-		super(type, world);
-		setMaxUpStep(0.7f);
-		xpReward = 1;
-		setNoAi(false);
-	}
+    public SmallEnderbulbEntity(EntityType<SmallEnderbulbEntity> type, Level world) {
+        super(type, world);
+        setMaxUpStep(0.7f);
+        xpReward = 1;
+        setNoAi(false);
+    }
 
-	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
-		return NetworkHooks.getEntitySpawningPacket(this);
-	}
+    @Override
+    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+        return NetworkHooks.getEntitySpawningPacket(this);
+    }
 
-	@Override
-	protected void registerGoals() {
-		super.registerGoals();
-		this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, (float) 12));
-		this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2, false) {
-			@Override
-			protected double getAttackReachSqr(LivingEntity entity) {
-				return 2.8;
-			}
-		});
-		this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, (float) 0.6));
-		this.targetSelector.addGoal(4, new HurtByTargetGoal(this));
-		this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, Player.class, false, false));
-		this.goalSelector.addGoal(6, new RandomStrollGoal(this, 0.8));
-		this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
-		this.goalSelector.addGoal(8, new FloatGoal(this));
-	}
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(1, new LookAtPlayerGoal(this, Player.class, (float) 12));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2, false) {
+            @Override
+            protected double getAttackReachSqr(LivingEntity entity) {
+                return 2.8;
+            }
+        });
+        this.goalSelector.addGoal(3, new LeapAtTargetGoal(this, (float) 0.6));
+        this.targetSelector.addGoal(4, new HurtByTargetGoal(this));
+        this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, Player.class, false, false));
+        this.goalSelector.addGoal(6, new RandomStrollGoal(this, 0.8));
+        this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(8, new FloatGoal(this));
+    }
 
-	@Override
-	public MobType getMobType() {
-		return MobType.ARTHROPOD;
-	}
+    @Override
+    public MobType getMobType() {
+        return MobType.ARTHROPOD;
+    }
 
-	@Override
-	public SoundEvent getAmbientSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.ambient"));
-	}
+    @Override
+    public SoundEvent getAmbientSound() {
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.ambient"));
+    }
 
-	@Override
-	public void playStepSound(BlockPos pos, BlockState blockIn) {
-		this.playSound(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.step")), 0.15f, 1);
-	}
+    @Override
+    public void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.step")), 0.15f, 1);
+    }
 
-	@Override
-	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.hurt"));
-	}
+    @Override
+    public SoundEvent getHurtSound(DamageSource ds) {
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.hurt"));
+    }
 
-	@Override
-	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.death"));
-	}
+    @Override
+    public SoundEvent getDeathSound() {
+        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.death"));
+    }
 
-	@Override
-	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.FALL))
-			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
-			return false;
-		return super.hurt(damagesource, amount);
-	}
+    @Override
+    public float getVoicePitch() {
+        return super.getVoicePitch() + 0.6f;
+    }
 
-	public static void init() {
-		SpawnPlacements.register(UnusualendModEntities.SMALL_ENDERBULB.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
-				(entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
-	}
+    @Override
+    public boolean hurt(DamageSource damagesource, float amount) {
+        if (damagesource.is(DamageTypes.FALL))
+            return false;
+        if (damagesource.is(DamageTypes.DRAGON_BREATH))
+            return false;
+        return super.hurt(damagesource, amount);
+    }
 
-	public static AttributeSupplier.Builder createAttributes() {
-		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
-		builder = builder.add(Attributes.MAX_HEALTH, 12);
-		builder = builder.add(Attributes.ARMOR, 0);
-		builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.2);
-		builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.1);
-		return builder;
-	}
+    public static void init() {
+        SpawnPlacements.register(UnusualendModEntities.SMALL_ENDERBULB.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                (entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        AttributeSupplier.Builder builder = Mob.createMobAttributes();
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
+        builder = builder.add(Attributes.MAX_HEALTH, 12);
+        builder = builder.add(Attributes.ARMOR, 0);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 3);
+        builder = builder.add(Attributes.FOLLOW_RANGE, 16);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.2);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.1);
+        return builder;
+    }
 }

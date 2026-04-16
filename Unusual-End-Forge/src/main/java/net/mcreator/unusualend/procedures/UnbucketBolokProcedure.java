@@ -27,86 +27,86 @@ import net.minecraftforge.registries.ForgeRegistries;
 import java.util.Comparator;
 
 public class UnbucketBolokProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack itemstack) {
-		if (direction == null || entity == null)
-			return;
-		String name = "";
-		if (!entity.isShiftKeyDown()) {
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
-				if (!(new Object() {
-					public boolean checkGamemode(Entity _ent) {
-						if (_ent instanceof ServerPlayer _serverPlayer) {
-							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
-							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
-						}
-						return false;
-					}
-				}.checkGamemode(entity))) {
-					if (entity instanceof LivingEntity _entity) {
-						ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-						_setstack.setCount(1);
-						_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
-						if (_entity instanceof Player _player)
-							_player.getInventory().setChanged();
-					}
-				}
-				if (entity instanceof LivingEntity _entity)
-					_entity.swing(InteractionHand.MAIN_HAND, true);
-			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
-				if (!(new Object() {
-					public boolean checkGamemode(Entity _ent) {
-						if (_ent instanceof ServerPlayer _serverPlayer) {
-							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
-							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
-						}
-						return false;
-					}
-				}.checkGamemode(entity))) {
-					if (entity instanceof LivingEntity _entity) {
-						ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-						_setstack.setCount(1);
-						_entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
-						if (_entity instanceof Player _player)
-							_player.getInventory().setChanged();
-					}
-				}
-				if (entity instanceof LivingEntity _entity)
-					_entity.swing(InteractionHand.OFF_HAND, true);
-			}
-			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = UnusualendModEntities.BOLOK.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
-				if (entityToSpawn != null) {
-				}
-			}
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bucket.fill_fish")), SoundSource.NEUTRAL, 1, 1);
-				} else {
-					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bucket.fill_fish")), SoundSource.NEUTRAL, 1, 1, false);
-				}
-			}
-			if (!world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
-					&& itemstack.getOrCreateTag().getBoolean("isNamed")) {
-				name = itemstack.getDisplayName().getString();
-				name = name.substring(1, (int) ((name).length() - 1));
-				((Entity) world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
-					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-					}
-				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)).setCustomName(Component.literal(name));
-			}
-			if (itemstack.getOrCreateTag().getDouble("tagHealth") != 0) {
-				if (((Entity) world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
-					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-					}
-				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)) instanceof LivingEntity _entity)
-					_entity.setHealth((float) itemstack.getOrCreateTag().getDouble("tagHealth"));
-			}
-		}
-	}
+    public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack itemstack) {
+        if (direction == null || entity == null)
+            return;
+        String name = "";
+        if (!entity.isShiftKeyDown()) {
+            if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
+                if (!(new Object() {
+                    public boolean checkGamemode(Entity _ent) {
+                        if (_ent instanceof ServerPlayer _serverPlayer) {
+                            return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+                        } else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+                            return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+                                    && Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+                        }
+                        return false;
+                    }
+                }.checkGamemode(entity))) {
+                    if (entity instanceof LivingEntity _entity) {
+                        ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
+                        _setstack.setCount(1);
+                        _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
+                        if (_entity instanceof Player _player)
+                            _player.getInventory().setChanged();
+                    }
+                }
+                if (entity instanceof LivingEntity _entity)
+                    _entity.swing(InteractionHand.MAIN_HAND, true);
+            } else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == itemstack.getItem()) {
+                if (!(new Object() {
+                    public boolean checkGamemode(Entity _ent) {
+                        if (_ent instanceof ServerPlayer _serverPlayer) {
+                            return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
+                        } else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+                            return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
+                                    && Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
+                        }
+                        return false;
+                    }
+                }.checkGamemode(entity))) {
+                    if (entity instanceof LivingEntity _entity) {
+                        ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
+                        _setstack.setCount(1);
+                        _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
+                        if (_entity instanceof Player _player)
+                            _player.getInventory().setChanged();
+                    }
+                }
+                if (entity instanceof LivingEntity _entity)
+                    _entity.swing(InteractionHand.OFF_HAND, true);
+            }
+            if (world instanceof ServerLevel _level) {
+                BolokEntity entityToSpawn = UnusualendModEntities.BOLOK.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
+                if (entityToSpawn != null)
+                    entityToSpawn.setIsBaby(itemstack.getOrCreateTag().getBoolean("isBaby"));
+            }
+            if (world instanceof Level _level) {
+                if (!_level.isClientSide()) {
+                    _level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bucket.fill_fish")), SoundSource.NEUTRAL, 1, 1);
+                } else {
+                    _level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bucket.fill_fish")), SoundSource.NEUTRAL, 1, 1, false);
+                }
+            }
+            if (!world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
+                    && itemstack.getOrCreateTag().getBoolean("isNamed")) {
+                name = itemstack.getDisplayName().getString();
+                name = name.substring(1, (name).length() - 1);
+                world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+                    Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+                        return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+                    }
+                }.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null).setCustomName(Component.literal(name));
+            }
+            if (itemstack.getOrCreateTag().getDouble("tagHealth") != 0) {
+                if (((Entity) world.getEntitiesOfClass(BolokEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+                    Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
+                        return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
+                    }
+                }.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)) instanceof LivingEntity _entity)
+                    _entity.setHealth((float) itemstack.getOrCreateTag().getDouble("tagHealth"));
+            }
+        }
+    }
 }

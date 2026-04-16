@@ -1,4 +1,3 @@
-
 package net.mcreator.unusualend.init;
 
 import mezz.jei.api.IModPlugin;

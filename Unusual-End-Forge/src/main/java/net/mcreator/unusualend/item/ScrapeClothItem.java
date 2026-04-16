@@ -2,6 +2,7 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.procedures.EnderlingClothRightclickedProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -22,8 +23,11 @@ public class ScrapeClothItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.invisibility").getString() + " II (1:00)"));
 		list.add(Component.literal("\u00A79" + Component.translatable("effect.unusualend.spectral_stride").getString() + " (1:00)"));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

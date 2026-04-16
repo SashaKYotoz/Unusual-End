@@ -1,8 +1,9 @@
 
 package net.mcreator.unusualend.item;
 
-import net.mcreator.unusualend.client.model.Modelspirit_mask_base;
+import net.mcreator.unusualend.client.model.ModelSpiritMaskBase;
 import net.mcreator.unusualend.init.UnusualendModItems;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -81,7 +82,7 @@ public abstract class SpiritTwistItem extends ArmorItem {
 				@Override
 				public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
 					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
-							Map.of("head", new Modelspirit_mask_base(Minecraft.getInstance().getEntityModels().bakeLayer(Modelspirit_mask_base.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
+							Map.of("head", new ModelSpiritMaskBase(Minecraft.getInstance().getEntityModels().bakeLayer(ModelSpiritMaskBase.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_arm",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_leg",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()))));
@@ -96,9 +97,12 @@ public abstract class SpiritTwistItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
+            if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 			list.add(Component.literal("\u00A77Twist"));
 			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.mask_1").getString()));
 			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.mask_2").getString()));
+            } else
+                list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 		}
 
 		@Override

@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.advancements.Advancement;
@@ -29,7 +29,7 @@ public class OnRightClickOnAnchorProcedure {
 			return;
 		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.TELEPORTATION_ANCHOR.get()) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PRISMATIC_MIRROR.get()) {
-				if (ConfigurationFileConfiguration.CAN_USE_TELEPORTATION_ANCHOR.get() == true) {
+				if (Config.CAN_USE_TELEPORTATION_ANCHOR.get() == true) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("LinkedMirror") == true) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("LinkedMirror", false);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);
@@ -81,7 +81,7 @@ public class OnRightClickOnAnchorProcedure {
 						_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.no_anchor").getString())), true);
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.VOID_TOTEM.get()) {
-				if (ConfigurationFileConfiguration.CAN_LINK_VOID_TOTEM.get() == true) {
+				if (Config.CAN_LINK_VOID_TOTEM.get() == true) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("LinkedTotem") == true) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("LinkedTotem", false);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);
@@ -133,7 +133,7 @@ public class OnRightClickOnAnchorProcedure {
 						_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.no_anchor").getString())), true);
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.TOTEM_OF_UNDYING) {
-				if (ConfigurationFileConfiguration.CAN_LINK_TOTEM.get() == true) {
+				if (Config.CAN_LINK_TOTEM.get() == true) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("LinkedTotem") == true) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putBoolean("LinkedTotem", false);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);

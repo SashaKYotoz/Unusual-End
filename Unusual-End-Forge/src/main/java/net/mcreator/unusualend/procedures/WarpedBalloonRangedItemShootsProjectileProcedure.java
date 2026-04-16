@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.entity.WarpedBalloonProjEntity;
 import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.mcreator.unusualend.init.UnusualendModItems;
@@ -26,7 +26,7 @@ public class WarpedBalloonRangedItemShootsProjectileProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof Player _player)
-			_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.WARPED_BALLOON.get());
+			_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) Config.WARPED_BALLOON.get());
 		if (!(new Object() {
 			public boolean checkGamemode(Entity _ent) {
 				if (_ent instanceof ServerPlayer _serverPlayer) {

@@ -2,6 +2,7 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.procedures.VoidTrackerHandTickUpdateProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -20,10 +21,13 @@ public class VoidTrackerItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77When in Hand:"));
 		list.add(Component.literal("\u00A79Indicates your distance to"));
 		list.add(Component.literal("\u00A79the closest Gloopy Nest"));
 		list.add(Component.literal("\u00A7cWIP STRUCTURE"));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

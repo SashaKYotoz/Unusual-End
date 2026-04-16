@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
 import net.mcreator.unusualend.UnusualEnd;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
@@ -66,7 +66,7 @@ public class FeedBolokFinProcedure {
 						if (entity instanceof LivingEntity _entity)
 							_entity.setHealth((float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) + 9));
 						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, (int) ((double) ConfigurationFileConfiguration.BOLOK_FIN_TIME.get() * 20), 0));
+							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, (int) ((double) Config.BOLOK_FIN_TIME.get() * 20), 0));
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.HEART, (entity.getX()), (entity.getY()), (entity.getZ()), 10, 0.3, 0.5, 0.3, 0);
 						entity.getPersistentData().putBoolean("CooldownBolok", true);
@@ -97,7 +97,7 @@ public class FeedBolokFinProcedure {
 						if (entity instanceof LivingEntity _entity)
 							_entity.setHealth((float) ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) + 6));
 						if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, (int) ((double) ConfigurationFileConfiguration.COOKED_BOLOK_FIN_TIME.get() * 20), 1));
+							_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, (int) ((double) Config.COOKED_BOLOK_FIN_TIME.get() * 20), 1));
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.HEART, (entity.getX()), (entity.getY()), (entity.getZ()), 10, 0.3, 0.5, 0.3, 0);
 						entity.getPersistentData().putBoolean("CooldownBolok", true);

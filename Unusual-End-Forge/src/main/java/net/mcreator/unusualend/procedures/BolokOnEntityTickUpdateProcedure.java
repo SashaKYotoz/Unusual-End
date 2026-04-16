@@ -1,7 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
 import net.mcreator.unusualend.init.UnusualendModParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -17,7 +16,7 @@ public class BolokOnEntityTickUpdateProcedure {
 			return;
 		if (Math.random() < 0.5) {
 			if (world instanceof ServerLevel _level)
-				_level.sendParticles((SimpleParticleType) (UnusualendModParticleTypes.BOLOK_PARTICLE.get()), x, y, z, 1, 0.4, 0.4, 0.4, 0);
+				_level.sendParticles(UnusualendModParticleTypes.BOLOK_PARTICLE.get(), x, y, z, 1, 0.4, 0.4, 0.4, 0);
 		}
 		if ((entity.level().dimension()) == Level.END) {
 			if (y < 30) {
@@ -28,7 +27,7 @@ public class BolokOnEntityTickUpdateProcedure {
 						_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
 				}
 			} else {
-				if (!(entity.getPersistentData().getBoolean("coords") == true)) {
+				if (!(entity.getPersistentData().getBoolean("coords"))) {
 					entity.getPersistentData().putBoolean("coords", true);
 					entity.getPersistentData().putDouble("x", x);
 					entity.getPersistentData().putDouble("y", y);

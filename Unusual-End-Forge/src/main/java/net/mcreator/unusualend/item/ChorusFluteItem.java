@@ -29,9 +29,9 @@ public class ChorusFluteItem extends Item {
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
-		String track = "none";
+		String track;
 		super.appendHoverText(itemstack, world, list, flag);
-		track = (String) ((itemstack).getOrCreateTag().getString("track"));
+		track = (itemstack).getOrCreateTag().getString("track");
 		if ((itemstack.getOrCreateTag().getString("track")).equals("")) {
 			itemstack.getOrCreateTag().putString("track", Component.translatable("text.unusualend.all_tracks").getString());
 		}
@@ -41,9 +41,6 @@ public class ChorusFluteItem extends Item {
 	@Override
 	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
-		double x = player.getX();
-		double y = player.getY();
-		double z = player.getZ();
 		if (!player.isUsingItem()) {
 			ChorusFluteRightclickedProcedure.execute(world, player, itemstack);
 		}

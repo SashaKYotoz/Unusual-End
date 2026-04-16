@@ -1,13 +1,14 @@
 
 package net.mcreator.unusualend.item;
 
-import net.mcreator.unusualend.client.model.Modelchorus_helmet;
+import net.mcreator.unusualend.client.model.ModelChorusHelmet;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,7 +16,6 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.Collections;
 import java.util.List;
@@ -42,7 +42,7 @@ public abstract class ChorusHelmetItem extends ArmorItem {
 
 			@Override
 			public SoundEvent getEquipSound() {
-				return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.chorus_flower.grow"));
+				return SoundEvents.CHORUS_FLOWER_GROW;
 			}
 
 			@Override
@@ -78,7 +78,7 @@ public abstract class ChorusHelmetItem extends ArmorItem {
 				@Override
 				public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
 					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
-							Map.of("head", new Modelchorus_helmet(Minecraft.getInstance().getEntityModels().bakeLayer(Modelchorus_helmet.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
+							Map.of("head", new ModelChorusHelmet(Minecraft.getInstance().getEntityModels().bakeLayer(ModelChorusHelmet.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_arm",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_leg",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()))));
@@ -93,9 +93,12 @@ public abstract class ChorusHelmetItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
+            if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 			list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString()));
 			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.chorus_helmet_1").getString()));
 			list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.chorus_helmet_2").getString()));
+            } else
+                list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 		}
 
 		@Override

@@ -112,7 +112,12 @@ public class EnderblobEntity extends Monster {
 		return super.hurt(damagesource, amount);
 	}
 
-	@Override
+    @Override
+    public float getVoicePitch() {
+        return Math.max(0.1f, super.getVoicePitch() - 0.3f);
+    }
+
+    @Override
 	public void addAdditionalSaveData(CompoundTag compound) {
 		super.addAdditionalSaveData(compound);
 		compound.putInt("DataBrushTimer", this.entityData.get(DATA_BrushTimer));

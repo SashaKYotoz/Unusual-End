@@ -16,8 +16,7 @@ public class BucketBolokProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		String name = "";
-		ItemStack entity_bucket = ItemStack.EMPTY;
+		ItemStack entity_bucket;
 		entity_bucket = new ItemStack(UnusualendModItems.BOLOK_BUCKET.get());
 		if (!(new Object() {
 			public String getValue() {
@@ -30,11 +29,7 @@ public class BucketBolokProcedure {
 			entity_bucket.getOrCreateTag().putBoolean("isNamed", true);
 		}
 		entity_bucket.getOrCreateTag().putDouble("tagHealth", (entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1));
-		if (entity instanceof LivingEntity _livEnt6 && _livEnt6.isBaby()) {
-			entity_bucket.getOrCreateTag().putBoolean("isBaby", true);
-		} else {
-			entity_bucket.getOrCreateTag().putBoolean("isBaby", false);
-		}
+        entity_bucket.getOrCreateTag().putBoolean("isBaby", entity instanceof LivingEntity _livEnt6 && _livEnt6.isBaby());
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
 			if (!entity.level().isClientSide())
 				entity.discard();
@@ -52,7 +47,7 @@ public class BucketBolokProcedure {
 				if (!world.isClientSide()) {
 					if (sourceentity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-						_setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1));
+						_setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1);
 						_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
 						if (_entity instanceof Player _player)
 							_player.getInventory().setChanged();
@@ -81,7 +76,7 @@ public class BucketBolokProcedure {
 				if (!world.isClientSide()) {
 					if (sourceentity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-						_setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1));
+						_setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1);
 						_entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
 						if (_entity instanceof Player _player)
 							_player.getInventory().setChanged();

@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.entity.EnderBugEntity;
 import net.mcreator.unusualend.entity.EnderblobEntity;
+import net.mcreator.unusualend.entity.FlampyrEntity;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.server.level.ServerLevel;
@@ -36,7 +36,7 @@ public class FireFlyRegenProcedure {
 		if (entity == null || sourceentity == null)
 			return;
 		if (entity instanceof EnderblobEntity) {
-			if (sourceentity instanceof EnderBugEntity) {
+			if (sourceentity instanceof FlampyrEntity) {
 				if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1));
 				if (Math.random() < 0.2) {

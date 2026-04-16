@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
 import net.mcreator.unusualend.UnusualEnd;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.entity.*;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
@@ -61,7 +61,7 @@ public class WhenPlayerHurtProcedure {
 			}
 		}
 		if (sourceentity instanceof DraglingEntity) {
-			if (Math.random() < (double) ConfigurationFileConfiguration.DRAGLING_DISRUPTION.get() / 100) {
+			if (Math.random() < (double) Config.DRAGLING_DISRUPTION.get() / 100) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 60, 0));
 			}

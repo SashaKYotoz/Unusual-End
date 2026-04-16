@@ -5,6 +5,7 @@ package net.mcreator.unusualend.item;
 import com.google.common.collect.Iterables;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.procedures.BolokBootsBootsTickEventProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -71,10 +72,13 @@ public abstract class BolokBootsItem extends ArmorItem {
 		@Override
 		public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, level, list, flag);
+            if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 			list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString()));
 			list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.speed").getString() + " (0:03)"));
 			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.inflict_heavy").getString() + " II (0:03)"));
 			list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.to_attacker").getString()));
+        } else
+                list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 		}
 
 		@Override

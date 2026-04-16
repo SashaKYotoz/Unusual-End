@@ -1,8 +1,8 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.entity.EnderBugEntity;
 import net.mcreator.unusualend.entity.EnderblobEntity;
 import net.mcreator.unusualend.entity.EnderbulbEntity;
+import net.mcreator.unusualend.entity.FlampyrEntity;
 import net.mcreator.unusualend.entity.SmallEnderbulbEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;
@@ -39,7 +39,7 @@ public class FireflyInstakillProcedure {
 				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 20);
 			}
 		}
-		if (sourceentity instanceof EnderBugEntity) {
+		if (sourceentity instanceof FlampyrEntity) {
 			if (entity instanceof Endermite || entity instanceof EnderblobEntity || entity instanceof EnderbulbEntity || entity instanceof SmallEnderbulbEntity) {
 				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 15);
 			}

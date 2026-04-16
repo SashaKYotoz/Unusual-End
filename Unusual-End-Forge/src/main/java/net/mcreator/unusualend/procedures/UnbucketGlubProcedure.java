@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.entity.WarpedJellyfishEntity;
+import net.mcreator.unusualend.entity.GlubEntity;
 import net.mcreator.unusualend.init.UnusualendModEntities;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
@@ -78,9 +78,9 @@ public class UnbucketGlubProcedure {
 					_entity.swing(InteractionHand.OFF_HAND, true);
 			}
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = UnusualendModEntities.GLUB.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
-				if (entityToSpawn != null) {
-				}
+				GlubEntity entityToSpawn = UnusualendModEntities.GLUB.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
+                if (entityToSpawn != null)
+                    entityToSpawn.setBaby(itemstack.getOrCreateTag().getBoolean("isBaby"));
 			}
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
@@ -89,18 +89,18 @@ public class UnbucketGlubProcedure {
 					_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bucket.fill_fish")), SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			if (!world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
+			if (!world.getEntitiesOfClass(GlubEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
 					&& itemstack.getOrCreateTag().getBoolean("isNamed")) {
 				name = itemstack.getDisplayName().getString();
-				name = name.substring(1, (int) ((name).length() - 1));
-				((Entity) world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+				name = name.substring(1, (name).length() - 1);
+				world.getEntitiesOfClass(GlubEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}
-				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null)).setCustomName(Component.literal(name));
+				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null).setCustomName(Component.literal(name));
 			}
 			if (itemstack.getOrCreateTag().getDouble("tagHealth") != 0) {
-				if (((Entity) world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+				if (((Entity) world.getEntitiesOfClass(GlubEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}

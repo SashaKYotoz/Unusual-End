@@ -1,13 +1,13 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -23,7 +23,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 
@@ -47,7 +46,7 @@ public class BoneMealEndstoneProcedure {
 		double sy = 0;
 		double sz = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BONE_MEAL) {
-			if (ConfigurationFileConfiguration.REGULAR_BONEMEAL.get() == true) {
+			if (Config.REGULAR_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.INFESTED_END_STONE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.END_STONE) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
@@ -68,9 +67,9 @@ public class BoneMealEndstoneProcedure {
 						_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + 0.5), (y + 0.5), (z + 0.5), 5, 1, 1, 1, 0);
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bone_meal.use")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
 						} else {
-							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bone_meal.use")), SoundSource.BLOCKS, 1, 1, false);
+							_level.playLocalSound(x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1, false);
 						}
 					}
 					sx = -3;
@@ -107,7 +106,7 @@ public class BoneMealEndstoneProcedure {
 					}
 				}
 			}
-			if (ConfigurationFileConfiguration.GLOOPY_BONEMEAL.get() == true) {
+			if (Config.GLOOPY_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.GLOOPSLATE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE.get()) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
@@ -126,9 +125,9 @@ public class BoneMealEndstoneProcedure {
 						_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, x, y, z, 5, 1, 1, 1, 0);
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bone_meal.use")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
 						} else {
-							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bone_meal.use")), SoundSource.BLOCKS, 1, 1, false);
+							_level.playLocalSound(x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1, false);
 						}
 					}
 					if (entity instanceof LivingEntity _entity)
@@ -172,7 +171,7 @@ public class BoneMealEndstoneProcedure {
 					}
 				}
 			}
-			if (ConfigurationFileConfiguration.PURPUR_BONEMEAL.get() == true) {
+			if (Config.PURPUR_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.RAW_PURPUR_BLOCK.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
@@ -193,9 +192,9 @@ public class BoneMealEndstoneProcedure {
 						_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + 0.5), (y + 0.5), (z + 0.5), 5, 1, 1, 1, 0);
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bone_meal.use")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
 						} else {
-							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.bone_meal.use")), SoundSource.BLOCKS, 1, 1, false);
+							_level.playLocalSound(x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1, false);
 						}
 					}
 					sx = -3;

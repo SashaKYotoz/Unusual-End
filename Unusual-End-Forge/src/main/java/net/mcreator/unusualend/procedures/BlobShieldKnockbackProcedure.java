@@ -1,6 +1,6 @@
 package net.mcreator.unusualend.procedures;
 
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementProgress;
@@ -39,7 +39,7 @@ public class BlobShieldKnockbackProcedure {
 		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.isBlocking()) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.ENDERBLOB_SHIELD.get()
 					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.ENDERBLOB_SHIELD.get()) {
-				if (!(immediatesourceentity instanceof Player) || !(immediatesourceentity instanceof ServerPlayer) || ConfigurationFileConfiguration.SHIELD_PVP.get() == true) {
+				if (!(immediatesourceentity instanceof Player) || !(immediatesourceentity instanceof ServerPlayer) || Config.SHIELD_PVP.get() == true) {
 					speed = 0.8;
 					yaw = entity.getYRot();
 					immediatesourceentity.setDeltaMovement(new Vec3((speed * Math.cos((yaw + 90) * (Math.PI / 180))), (immediatesourceentity.getDeltaMovement().y() + 0.1), (speed * Math.sin((yaw + 90) * (Math.PI / 180)))));

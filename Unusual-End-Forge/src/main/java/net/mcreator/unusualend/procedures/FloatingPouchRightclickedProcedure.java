@@ -1,7 +1,7 @@
 package net.mcreator.unusualend.procedures;
 
 import net.mcreator.unusualend.UnusualEnd;
-import net.mcreator.unusualend.configuration.ConfigurationFileConfiguration;
+import net.mcreator.unusualend.configuration.Config;
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -49,7 +49,7 @@ public class FloatingPouchRightclickedProcedure {
 			}
 		}
 		if (entity instanceof Player _player)
-			_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) ConfigurationFileConfiguration.POUCH.get());
+			_player.getCooldowns().addCooldown(itemstack.getItem(), (int) (double) Config.POUCH.get());
 		entity.fallDistance = 0;
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.POOF, x, y, z, 20, 0.3, 0.3, 0.3, 0.1);

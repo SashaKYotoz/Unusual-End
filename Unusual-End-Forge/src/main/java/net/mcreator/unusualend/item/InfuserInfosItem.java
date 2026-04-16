@@ -1,6 +1,7 @@
 
 package net.mcreator.unusualend.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,6 +19,7 @@ public class InfuserInfosItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A7dx1 : 5 min"));
 		list.add(Component.literal("\u00A7dx4 : 20 min"));
 		list.add(Component.literal("\u00A7dx8 : 40 min"));
@@ -27,5 +29,7 @@ public class InfuserInfosItem extends Item {
 		list.add(Component.literal("\u00A75of this mineral. 1 Pearlescent"));
 		list.add(Component.literal("\u00A75Alloy block is considered +1"));
 		list.add(Component.literal("\u00A75for each mineral."));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 }
