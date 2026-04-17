@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "unusualend:gloopstone_lands",
-  "features": "unusualend:gloopy_patchs",
-  "step": "local_modifications"
-}

@@ -16,11 +16,11 @@ public class BolokRenderer extends MobRenderer<BolokEntity, ModelBolok<BolokEnti
     private final ResourceLocation BOLOK = new ResourceLocation("unusualend:textures/entities/bolok.png");
     private final ResourceLocation BABY_BOLOK = new ResourceLocation("unusualend:textures/entities/baby_bolok.png");
 
-	public BolokRenderer(EntityRendererProvider.Context context) {
-		super(context, new ModelBolok<>(context.bakeLayer(ModelBolok.LAYER_LOCATION)), 0.4f);
+    public BolokRenderer(EntityRendererProvider.Context context) {
+        super(context, new ModelBolok<>(context.bakeLayer(ModelBolok.LAYER_LOCATION)), 0.4f);
         this.baseModel = new ModelBolok<>(context.bakeLayer(ModelBolok.LAYER_LOCATION));
         this.babyModel = new ModelBabyBolok<>(context.bakeLayer(ModelBabyBolok.LAYER_LOCATION));
-	}
+    }
 
     @Override
     public void render(BolokEntity entity, float pEntityYaw, float pPartialTicks, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
@@ -28,8 +28,13 @@ public class BolokRenderer extends MobRenderer<BolokEntity, ModelBolok<BolokEnti
         super.render(entity, pEntityYaw, pPartialTicks, pPoseStack, pBuffer, pPackedLight);
     }
 
+    protected void scale(BolokEntity entity, PoseStack posestack, float partialTicks) {
+        float scale = entity.isBaby() ? 0.75f : 1.0F;
+        posestack.scale(scale, scale, scale);
+    }
+
     @Override
-	public ResourceLocation getTextureLocation(BolokEntity entity) {
-		return entity.isBaby() ? BABY_BOLOK : BOLOK;
-	}
+    public ResourceLocation getTextureLocation(BolokEntity entity) {
+        return entity.isBaby() ? BABY_BOLOK : BOLOK;
+    }
 }
