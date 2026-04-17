@@ -3,7 +3,6 @@ package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.client.model.ModelSpiritMaskBase;
 import net.mcreator.unusualend.init.UnusualendModItems;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -97,12 +96,9 @@ public abstract class SpiritSmileItem extends ArmorItem {
         @Override
         public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
             super.appendHoverText(itemstack, level, list, flag);
-            if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
                 list.add(Component.literal("\u00A77Smile"));
                 list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.mask_1").getString()));
                 list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.mask_2").getString()));
-            } else
-                list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
         }
 
         @Override

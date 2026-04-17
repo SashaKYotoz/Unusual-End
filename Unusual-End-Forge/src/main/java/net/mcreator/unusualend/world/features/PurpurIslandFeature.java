@@ -1,8 +1,9 @@
 
 package net.mcreator.unusualend.world.features;
 
-import net.mcreator.unusualend.procedures.PurpurIsland1FeatureAdditionalGenerationConditionProcedure;
+import net.mcreator.unusualend.configuration.Config;
 import net.minecraft.world.level.WorldGenLevel;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.SimpleRandomSelectorFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.SimpleRandomFeatureConfiguration;
@@ -13,12 +14,8 @@ public class PurpurIslandFeature extends SimpleRandomSelectorFeature {
 	}
 
 	public boolean place(FeaturePlaceContext<SimpleRandomFeatureConfiguration> context) {
-		WorldGenLevel world = context.level();
-		int x = context.origin().getX();
-		int y = context.origin().getY();
-		int z = context.origin().getZ();
-		if (!PurpurIsland1FeatureAdditionalGenerationConditionProcedure.execute())
+		if (!Config.PURPUR_ISLANDS.get())
 			return false;
-		return super.place(context);
+		return context.origin().getY() > 16;
 	}
 }

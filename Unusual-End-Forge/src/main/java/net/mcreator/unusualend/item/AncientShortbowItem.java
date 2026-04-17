@@ -2,7 +2,6 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.UnusualEnd;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
@@ -22,10 +21,7 @@ public class AncientShortbowItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, world, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
             list.add(Component.literal("\u00A78Hold when shooting"));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
     }
 
     @Override

@@ -1,13 +1,13 @@
 
 package net.mcreator.unusualend.block;
 
-import net.mcreator.unusualend.procedures.PhantomMembraneBlockEntityCollidesInTheBlockProcedure;
+import net.mcreator.unusualend.procedures.EnderBlobBlockEntityCollidesInTheBlockProcedure;
+import net.mcreator.unusualend.procedures.EnderBlobBlockEntityWalksOnTheBlockProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -16,29 +16,27 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.List;
 
-public class PhantomMembraneBlockBlock extends Block {
-	public PhantomMembraneBlockBlock() {
-		super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.WOOL).strength(0.2f, 3f).speedFactor(0.85f).jumpFactor(0.9f).noOcclusion().pushReaction(PushReaction.DESTROY).isRedstoneConductor((bs, br, bp) -> false));
-	}
-
-	@Override
-	public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return ((EntityCollisionContext) context).getEntity() instanceof Player == true ? state.getShape(world, pos) : Shapes.empty();
+public class EnderBlobBlock extends Block {
+	public EnderBlobBlock() {
+		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.HONEY_BLOCK).strength(0f, 3f).friction(0.8f).speedFactor(0.8f).jumpFactor(0.8f).noOcclusion()
+				.isRedstoneConductor((bs, br, bp) -> false));
 	}
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.player_solid").getString()));
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
+		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.bouncy").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
@@ -67,13 +65,14 @@ public class PhantomMembraneBlockBlock extends Block {
 	}
 
 	@Override
-	public BlockPathTypes getBlockPathType(BlockState state, BlockGetter world, BlockPos pos, Mob entity) {
-		return BlockPathTypes.OPEN;
+	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
+		super.entityInside(blockstate, world, pos, entity);
+		EnderBlobBlockEntityCollidesInTheBlockProcedure.execute(entity);
 	}
 
 	@Override
-	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
-		super.entityInside(blockstate, world, pos, entity);
-		PhantomMembraneBlockEntityCollidesInTheBlockProcedure.execute(entity);
+	public void stepOn(Level world, BlockPos pos, BlockState blockstate, Entity entity) {
+		super.stepOn(world, pos, blockstate, entity);
+		EnderBlobBlockEntityWalksOnTheBlockProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ(), entity);
 	}
 }

@@ -3,11 +3,8 @@ package net.mcreator.unusualend.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.mcreator.unusualend.client.model.ModelBabyBolok;
 import net.mcreator.unusualend.client.model.ModelBabyFlampyr;
-import net.mcreator.unusualend.client.model.ModelBolok;
 import net.mcreator.unusualend.client.model.ModelFlampyr;
-import net.mcreator.unusualend.entity.BolokEntity;
 import net.mcreator.unusualend.entity.FlampyrEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -47,10 +44,6 @@ public class FlampyrRenderer extends MobRenderer<FlampyrEntity, ModelFlampyr<Fla
     public void render(FlampyrEntity entity, float pEntityYaw, float pPartialTicks, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight) {
         this.model = entity.isBaby() ? babyModel : baseModel;
         super.render(entity, pEntityYaw, pPartialTicks, pPoseStack, pBuffer, pPackedLight);
-    }
-
-    protected void scale(FlampyrEntity entity, PoseStack posestack, float partialTicks) {
-        posestack.scale(entity.getScale(), entity.getScale(), entity.getScale());
     }
 
     @Override

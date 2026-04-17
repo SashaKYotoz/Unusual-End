@@ -53,7 +53,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> WEAK_END_STONE_BRICKS = block(UnusualendModBlocks.WEAK_END_STONE_BRICKS);
 	public static final RegistryObject<Item> ENDSTONE_GOLEM_SPAWN_EGG = REGISTRY.register("endstone_golem_spawn_egg", () -> new ForgeSpawnEggItem(UnusualendModEntities.ENDSTONE_GOLEM, -103, -10092391, new Item.Properties()));
 	public static final RegistryObject<Item> SHULKER_SHOOTER = block(UnusualendModBlocks.SHULKER_SHOOTER);
-	public static final RegistryObject<Item> MUSIC_DISC_FLYING_SHIPS = REGISTRY.register("music_disc_flying_ships", () -> new MusicdiscflyingshipsItem());
+	public static final RegistryObject<Item> MUSIC_DISC_FLYING_SHIPS = REGISTRY.register("music_disc_flying_ships", () -> new MusicDiscFlyingShipsItem());
 	public static final RegistryObject<Item> VOID_TOTEM = REGISTRY.register("void_totem", () -> new VoidTotemItem());
 	public static final RegistryObject<Item> GOLEM_ALTAR = block(UnusualendModBlocks.GOLEM_ALTAR);
 	public static final RegistryObject<Item> BLAZING_ORB = REGISTRY.register("blazing_orb", () -> new NetherOrbItem());

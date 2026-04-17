@@ -3,7 +3,6 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.configuration.Config;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
@@ -25,10 +24,7 @@ public class NetherOrbItem extends Item {
 		double raw_proba = Config.ORB_TRIGGER.get();
 		String proba = new java.text.DecimalFormat("0").format(raw_proba);
 		super.appendHoverText(itemstack, level, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_hurt").getString() + " \u00A78(" + proba + "%)"));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.nether_orb").getString()));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 }

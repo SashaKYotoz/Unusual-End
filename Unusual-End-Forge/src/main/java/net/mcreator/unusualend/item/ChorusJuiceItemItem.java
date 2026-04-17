@@ -3,7 +3,6 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.init.UnusualendModMobEffects;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -26,10 +25,7 @@ public class ChorusJuiceItemItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, level, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown())
             list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.clear_infection").getString()));
-        else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
     }
 
     @Override

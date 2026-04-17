@@ -2,6 +2,7 @@
 package net.mcreator.unusualend.block;
 
 import net.mcreator.unusualend.procedures.PhantomBlockEntityCollidesInTheBlockProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -27,8 +28,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.List;
 
-public class PhantomBlockBlock extends AbstractGlassBlock {
-	public PhantomBlockBlock() {
+public class PhantomBlock extends AbstractGlassBlock {
+	public PhantomBlock() {
 		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.WOOL).strength(0.2f, 10f));
 	}
 
@@ -40,7 +41,10 @@ public class PhantomBlockBlock extends AbstractGlassBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.player_non_solid").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

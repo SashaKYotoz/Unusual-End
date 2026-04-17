@@ -5,7 +5,6 @@ package net.mcreator.unusualend.item;
 import com.google.common.collect.ImmutableSet;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
 import net.mcreator.unusualend.procedures.LeechingWandItemInInventoryTickProcedure;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -70,12 +69,9 @@ public class LeechingWandItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.hold_shooting").getString()));
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.on_hit").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.regeneration").getString() + " III (00:03)"));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

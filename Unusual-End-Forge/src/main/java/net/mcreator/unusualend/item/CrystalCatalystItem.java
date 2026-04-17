@@ -5,7 +5,6 @@ import com.google.common.collect.ImmutableSet;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
 import net.mcreator.unusualend.procedures.CrystalCatalystItemInInventoryTickProcedure;
 import net.mcreator.unusualend.procedures.CrystalCatalystRightclickedProcedure;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -78,14 +77,11 @@ public class CrystalCatalystItem extends Item {
 		if ((itemstack.getOrCreateTag().getString("buff")).equals("")) {
 			itemstack.getOrCreateTag().putString("buff", Component.translatable("text.unusualend.no_buff_defined").getString());
 		}
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.consume_effects").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.current_buff").getString()));
 		list.add(Component.literal("\u00A79 - " + ((buff))));
 		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.valid_blocs").getString()));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

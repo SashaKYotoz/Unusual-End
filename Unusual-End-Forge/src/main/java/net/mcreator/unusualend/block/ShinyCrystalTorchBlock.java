@@ -3,6 +3,7 @@ package net.mcreator.unusualend.block;
 
 import net.mcreator.unusualend.procedures.CrystalTorchBlockValidPlacementConditionProcedure;
 import net.mcreator.unusualend.procedures.CrystalTorchGroundClientDisplayRandomTickProcedure;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -56,7 +57,10 @@ public class ShinyCrystalTorchBlock extends Block implements SimpleWaterloggedBl
 	@Override
 	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.place_underwater").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

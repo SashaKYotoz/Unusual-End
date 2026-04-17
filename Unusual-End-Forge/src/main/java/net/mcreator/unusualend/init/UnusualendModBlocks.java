@@ -24,12 +24,12 @@ public class UnusualendModBlocks {
 	public static final RegistryObject<Block> CHISELED_ENDSTONE_WORK = REGISTRY.register("chiseled_endstone_work", () -> new ChiseledEndstone5Block());
 	public static final RegistryObject<Block> CHISELED_ENDSTONE_FRIENDSHIP = REGISTRY.register("chiseled_endstone_friendship", () -> new ChiseledEndstone6Block());
 	public static final RegistryObject<Block> FIREFLY_BULB = REGISTRY.register("firefly_bulb", () -> new FireflyBulbBlock());
-	public static final RegistryObject<Block> ENDERBLOB_BLOCK = REGISTRY.register("enderblob_block", () -> new EnderBlobBlockBlock());
+	public static final RegistryObject<Block> ENDERBLOB_BLOCK = REGISTRY.register("enderblob_block", () -> new EnderBlobBlock());
 	public static final RegistryObject<Block> TELEPORTATION_ANCHOR = REGISTRY.register("teleportation_anchor", () -> new TeleportationAnchorBlock());
 	public static final RegistryObject<Block> WEAK_END_STONE_BRICKS = REGISTRY.register("weak_end_stone_bricks", () -> new WeakendstonebricksBlock());
 	public static final RegistryObject<Block> SHULKER_SHOOTER = REGISTRY.register("shulker_shooter", () -> new ShulkerShooterBlock());
 	public static final RegistryObject<Block> GOLEM_ALTAR = REGISTRY.register("golem_altar", () -> new GolemAltarBlock());
-	public static final RegistryObject<Block> SPECTRAL_BLOCK = REGISTRY.register("spectral_block", () -> new PhantomBlockBlock());
+	public static final RegistryObject<Block> SPECTRAL_BLOCK = REGISTRY.register("spectral_block", () -> new PhantomBlock());
 	public static final RegistryObject<Block> DRAGON_LAMP = REGISTRY.register("dragon_lamp", () -> new DragonLampBlock());
 	public static final RegistryObject<Block> PURPUR_TANK = REGISTRY.register("purpur_tank", () -> new PurpurTankBlock());
 	public static final RegistryObject<Block> PURPUR_EMBEDDED_END_STONE = REGISTRY.register("purpur_embedded_end_stone", () -> new PurpurEmbeddedEndStoneBlock());
@@ -42,7 +42,7 @@ public class UnusualendModBlocks {
 	public static final RegistryObject<Block> FADING_BLOCK = REGISTRY.register("fading_block", () -> new FadingBlockBlock());
 	public static final RegistryObject<Block> ENDSTONE_TILES = REGISTRY.register("endstone_tiles", () -> new EndstonetilesBlock());
 	public static final RegistryObject<Block> ENDERBLOB_MOULT_BLOCK = REGISTRY.register("enderblob_moult_block", () -> new EndermitemoultblockBlock());
-	public static final RegistryObject<Block> PHANTOM_MEMBRANE_BLOCK = REGISTRY.register("phantom_membrane_block", () -> new PhantomMembraneBlockBlock());
+	public static final RegistryObject<Block> PHANTOM_MEMBRANE_BLOCK = REGISTRY.register("phantom_membrane_block", () -> new PhantomMembraneBlock());
 	public static final RegistryObject<Block> POLISHED_PURPUR_TILES = REGISTRY.register("polished_purpur_tiles", () -> new PolishedPurpurTilesBlock());
 	public static final RegistryObject<Block> POLISHED_PURPUR_TILES_STAIRS = REGISTRY.register("polished_purpur_tiles_stairs", () -> new PolishedpurpurtilesstairsBlock());
 	public static final RegistryObject<Block> POLISHED_PURPUR_TILES_SLAB = REGISTRY.register("polished_purpur_tiles_slab", () -> new PolishedpurpurtilesslabBlock());
@@ -91,7 +91,7 @@ public class UnusualendModBlocks {
 	public static final RegistryObject<Block> GNEISS_BRICK_WALL = REGISTRY.register("gneiss_brick_wall", () -> new GneissBrickWallBlock());
 	public static final RegistryObject<Block> GLOOPSTONE_BRICK_WALL = REGISTRY.register("gloopstone_brick_wall", () -> new GloopstoneBrickWallBlock());
 	public static final RegistryObject<Block> SHINY_CRYSTAL_BLOCK = REGISTRY.register("shiny_crystal_block", () -> new ShinyCrystalBlocBlock());
-	public static final RegistryObject<Block> BOLOK_SCALE_BLOCK = REGISTRY.register("bolok_scale_block", () -> new BolokScaleBlockBlock());
+	public static final RegistryObject<Block> BOLOK_SCALE_BLOCK = REGISTRY.register("bolok_scale_block", () -> new BolokScaleBlock());
 	public static final RegistryObject<Block> SHINY_CRYSTAL_TILES = REGISTRY.register("shiny_crystal_tiles", () -> new ShinyCrystalTilesBlock());
 	public static final RegistryObject<Block> CHISELED_GLOOPSTONE_BRICKS = REGISTRY.register("chiseled_gloopstone_bricks", () -> new ChiseledGloopstoneBricksBlock());
 	public static final RegistryObject<Block> WARPED_MOSS = REGISTRY.register("warped_moss", () -> new WarpedMossBlock());

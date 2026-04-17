@@ -6,7 +6,7 @@ import io.netty.buffer.Unpooled;
 import net.mcreator.unusualend.block.entity.PurpurTankBlockEntity;
 import net.mcreator.unusualend.procedures.PurpurTankOnRandomClientDisplayTickProcedure;
 import net.mcreator.unusualend.world.inventory.PurpurTankGUIMenu;
-import net.minecraft.client.Minecraft;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -39,92 +39,94 @@ import net.minecraftforge.network.NetworkHooks;
 import java.util.List;
 
 public class PurpurTankBlock extends Block implements EntityBlock {
-	public PurpurTankBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_BLACK).sound(SoundType.STONE).strength(3f, 9f).lightLevel(s -> 1));
-	}
+    public PurpurTankBlock() {
+        super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_BLACK).sound(SoundType.STONE).strength(3f, 9f).lightLevel(s -> 1));
+    }
 
-	@Override
-	public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
-		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.purpur_tank").getString()));
-	}
+    @Override
+    public void appendHoverText(ItemStack itemstack, BlockGetter level, List<Component> list, TooltipFlag flag) {
+        super.appendHoverText(itemstack, level, list, flag);
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
+            list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.purpur_tank").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
+    }
 
-	@Override
-	public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
-		return 14;
-	}
+    @Override
+    public int getLightBlock(BlockState state, BlockGetter worldIn, BlockPos pos) {
+        return 14;
+    }
 
-	@OnlyIn(Dist.CLIENT)
-	@Override
-	public void animateTick(BlockState blockstate, Level world, BlockPos pos, RandomSource random) {
-		super.animateTick(blockstate, world, pos, random);
-		Player entity = Minecraft.getInstance().player;
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		PurpurTankOnRandomClientDisplayTickProcedure.execute(world, x, y, z);
-	}
+    @OnlyIn(Dist.CLIENT)
+    @Override
+    public void animateTick(BlockState blockstate, Level world, BlockPos pos, RandomSource random) {
+        super.animateTick(blockstate, world, pos, random);
+        int x = pos.getX();
+        int y = pos.getY();
+        int z = pos.getZ();
+        PurpurTankOnRandomClientDisplayTickProcedure.execute(world, x, y, z);
+    }
 
-	@Override
-	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
-		super.use(blockstate, world, pos, entity, hand, hit);
-		if (entity instanceof ServerPlayer player) {
-			NetworkHooks.openScreen(player, new MenuProvider() {
-				@Override
-				public Component getDisplayName() {
-					return Component.literal("Purpur Tank");
-				}
+    @Override
+    public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+        super.use(blockstate, world, pos, entity, hand, hit);
+        if (entity instanceof ServerPlayer player) {
+            NetworkHooks.openScreen(player, new MenuProvider() {
+                @Override
+                public Component getDisplayName() {
+                    return Component.literal("Purpur Tank");
+                }
 
-				@Override
-				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
-					return new PurpurTankGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
-				}
-			}, pos);
-		}
-		return InteractionResult.SUCCESS;
-	}
+                @Override
+                public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+                    return new PurpurTankGUIMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+                }
+            }, pos);
+        }
+        return InteractionResult.SUCCESS;
+    }
 
-	@Override
-	public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
-		BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-		return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
-	}
+    @Override
+    public MenuProvider getMenuProvider(BlockState state, Level worldIn, BlockPos pos) {
+        BlockEntity tileEntity = worldIn.getBlockEntity(pos);
+        return tileEntity instanceof MenuProvider menuProvider ? menuProvider : null;
+    }
 
-	@Override
-	public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-		return new PurpurTankBlockEntity(pos, state);
-	}
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new PurpurTankBlockEntity(pos, state);
+    }
 
-	@Override
-	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
-		super.triggerEvent(state, world, pos, eventID, eventParam);
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		return blockEntity == null ? false : blockEntity.triggerEvent(eventID, eventParam);
-	}
+    @Override
+    public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
+        super.triggerEvent(state, world, pos, eventID, eventParam);
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        return blockEntity == null ? false : blockEntity.triggerEvent(eventID, eventParam);
+    }
 
-	@Override
-	public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
-		if (state.getBlock() != newState.getBlock()) {
-			BlockEntity blockEntity = world.getBlockEntity(pos);
-			if (blockEntity instanceof PurpurTankBlockEntity be) {
-				Containers.dropContents(world, pos, be);
-				world.updateNeighbourForOutputSignal(pos, this);
-			}
-			super.onRemove(state, world, pos, newState, isMoving);
-		}
-	}
+    @Override
+    public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof PurpurTankBlockEntity be) {
+                Containers.dropContents(world, pos, be);
+                world.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, world, pos, newState, isMoving);
+        }
+    }
 
-	@Override
-	public boolean hasAnalogOutputSignal(BlockState state) {
-		return true;
-	}
+    @Override
+    public boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
 
-	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
-		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof PurpurTankBlockEntity be)
-			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
-		else
-			return 0;
-	}
+    @Override
+    public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
+        BlockEntity tileentity = world.getBlockEntity(pos);
+        if (tileentity instanceof PurpurTankBlockEntity be)
+            return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
+        else
+            return 0;
+    }
 }

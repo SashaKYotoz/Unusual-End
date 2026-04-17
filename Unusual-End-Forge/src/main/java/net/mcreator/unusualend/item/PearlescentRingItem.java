@@ -4,7 +4,6 @@ package net.mcreator.unusualend.item;
 import com.google.common.collect.ImmutableSet;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
 import net.mcreator.unusualend.procedures.PearlescentRingInventoryTickProcedure;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Item;
@@ -64,13 +63,10 @@ public class PearlescentRingItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_offhand").getString()));
 		list.add(Component.literal("\u00A77 " + Component.translatable("lore.unusualend.on_hit").getString()));
 		list.add(Component.literal("\u00A79 " + Component.translatable("lore.unusualend.spirit_ring_1").getString()));
 		list.add(Component.literal("\u00A79 " + Component.translatable("lore.unusualend.spirit_ring_2").getString()));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

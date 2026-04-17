@@ -3,7 +3,6 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.procedures.FloatingPouchRightclickedProcedure;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -26,11 +25,8 @@ public class FloatingPouchItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.floating_pouch_1").getString()));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

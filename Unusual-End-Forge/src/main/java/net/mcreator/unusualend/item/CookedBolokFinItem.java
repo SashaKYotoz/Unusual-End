@@ -3,7 +3,6 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.configuration.Config;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
@@ -30,10 +29,7 @@ public class CookedBolokFinItem extends Item {
 		double seconds = (Config.COOKED_BOLOK_FIN_TIME.get() - (Math.floor(minute) * 60));
 		String time = new java.text.DecimalFormat("00").format(minute) + ":" + new java.text.DecimalFormat("00").format(seconds);
 		super.appendHoverText(itemstack, level, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.wolf_food").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("effect.minecraft.resistance").getString() + " II (" + time + ")"));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 }

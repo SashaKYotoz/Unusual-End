@@ -3,7 +3,6 @@ package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.init.UnusualendModItems;
 import net.mcreator.unusualend.procedures.AncientSwordEntitySwingsItem2Procedure;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
@@ -44,13 +43,10 @@ public class AncientSwordItem extends SwordItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77On Hit:"));
 		list.add(Component.literal("\u00A79Attract target"));
 		list.add(Component.literal("\u00A77On Hit while Sneaking:"));
 		list.add(Component.literal("\u00A79Create a Void Slash"));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

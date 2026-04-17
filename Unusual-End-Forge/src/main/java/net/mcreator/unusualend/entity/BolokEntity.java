@@ -67,9 +67,11 @@ public class BolokEntity extends Monster {
         this.entityData.define(IS_BABY, false);
     }
 
-    public void setIsBaby(boolean isBaby) {
+    @Override
+    public void setBaby(boolean isBaby) {
         this.entityData.set(IS_BABY, isBaby);
     }
+
     @Override
     public boolean isBaby() {
         return this.entityData.get(IS_BABY);
@@ -244,7 +246,7 @@ public class BolokEntity extends Monster {
 
     @Override
     public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance instance, MobSpawnType type, @Nullable SpawnGroupData data, @Nullable CompoundTag tag) {
-        this.setIsBaby(random.nextFloat() < 0.1f);
+        this.setBaby(random.nextFloat() < 0.1f);
         return super.finalizeSpawn(accessor, instance, type, data, tag);
     }
 }

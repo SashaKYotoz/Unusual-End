@@ -80,7 +80,7 @@ public class UnbucketBolokProcedure {
             if (world instanceof ServerLevel _level) {
                 BolokEntity entityToSpawn = UnusualendModEntities.BOLOK.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
                 if (entityToSpawn != null)
-                    entityToSpawn.setIsBaby(itemstack.getOrCreateTag().getBoolean("isBaby"));
+                    entityToSpawn.setBaby(itemstack.getOrCreateTag().getBoolean("isBaby"));
             }
             if (world instanceof Level _level) {
                 if (!_level.isClientSide()) {

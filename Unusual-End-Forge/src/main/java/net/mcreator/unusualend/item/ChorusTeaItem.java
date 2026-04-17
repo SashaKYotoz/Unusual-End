@@ -37,9 +37,6 @@ public class ChorusTeaItem extends Item {
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
 		ItemStack retval = new ItemStack(Items.GLASS_BOTTLE);
 		super.finishUsingItem(itemstack, world, entity);
-		double x = entity.getX();
-		double y = entity.getY();
-		double z = entity.getZ();
 		ChorusTeaPlayerFinishesUsingItemProcedure.execute(entity);
 		if (itemstack.isEmpty()) {
 			return retval;

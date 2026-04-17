@@ -2,7 +2,6 @@
 package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -26,11 +25,8 @@ public class EnderblobShieldItem extends ShieldItem {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_block").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.blob_shield_1").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.blob_shield_2").getString()));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 }

@@ -3,7 +3,6 @@ package net.mcreator.unusualend.item;
 
 import net.mcreator.unusualend.procedures.PrismaticPearlItemGlowProcedure;
 import net.mcreator.unusualend.procedures.TPwithChorusProcedure;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -50,14 +49,11 @@ public class PrismaticMirrorItem extends Item {
 		TpY = (itemstack).getOrCreateTag().getDouble("TpY");
 		TpZ = (itemstack).getOrCreateTag().getDouble("TpZ");
 		super.appendHoverText(itemstack, world, list, flag);
-        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_rightclick").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.warp_spawn").getString()));
 		list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_linked").getString()));
 		list.add(Component.literal("\u00A79" + Component.translatable("lore.unusualend.warp_anchor").getString()));
 		list.add(Component.literal("\u00A78● " + ((TpX)) + " " + ((TpY)) + " " + ((TpZ))));
-        } else
-            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
