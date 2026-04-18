@@ -6,8 +6,7 @@
   "mixins": [
     "ChorusFlowerBlockMixin",
     "ChorusPlantBlockMixin",
-    "NoiseGeneratorSettingsAccess",
-    "StructuresMixin"
+    "NoiseGeneratorSettingsAccess"
   ],
   "client": [],
   "minVersion": "0.8"

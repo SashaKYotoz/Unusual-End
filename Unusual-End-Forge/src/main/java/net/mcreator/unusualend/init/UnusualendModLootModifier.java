@@ -22,7 +22,6 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
 
-@Mod.EventBusSubscriber(modid = UnusualEnd.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class UnusualendModLootModifier {
 	public static class UnusualendModLootTableModifier extends LootModifier {
 		public static final Supplier<Codec<UnusualendModLootTableModifier>> CODEC = Suppliers
@@ -48,12 +47,4 @@ public class UnusualendModLootModifier {
 
 	public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, "unusualend");
 	public static final RegistryObject<Codec<UnusualendModLootTableModifier>> LOOT_MODIFIER = LOOT_MODIFIERS.register("unusualend_loot_modifier", UnusualendModLootTableModifier.CODEC);
-
-	@SubscribeEvent
-	public static void register(FMLConstructModEvent event) {
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-		event.enqueueWork(() -> {
-			LOOT_MODIFIERS.register(bus);
-		});
-	}
 }

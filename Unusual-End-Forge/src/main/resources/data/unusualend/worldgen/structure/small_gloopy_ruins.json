@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:jigsaw",
+  "type": "unusualend:void_limited_jigsaw",
   "start_pool": "unusualend:small_gloopy_ruins",
   "size": 1,
   "max_distance_from_center": 116,
