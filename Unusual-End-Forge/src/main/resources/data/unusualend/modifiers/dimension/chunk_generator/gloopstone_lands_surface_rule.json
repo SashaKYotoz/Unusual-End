@@ -126,8 +126,8 @@
                 "type": "minecraft:condition",
                 "if_true": {
                   "type": "minecraft:noise_threshold",
-                  "max_threshold": -0.38,
-                  "min_threshold": -0.4,
+                  "max_threshold": -0.4,
+                  "min_threshold": -0.42,
                   "noise": "minecraft:nether_state_selector"
                 },
                 "then_run": {

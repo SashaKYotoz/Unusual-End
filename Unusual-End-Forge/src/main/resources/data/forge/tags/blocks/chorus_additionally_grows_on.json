@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:raw_purpur_block",
+    "unusualend:infested_end_stone",
+    "unusualend:rooted_raw_purpur",
+    "unusualend:gloopslate",
+    "unusualend:warped_end_stone",
+    "unusualend:purpur_embedded_end_stone",
+    "unusualend:gloopstone"
+  ]
+}

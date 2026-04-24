@@ -17,23 +17,24 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber
 public class UnusualEndSurfaceRules {
-	@SubscribeEvent
-	public static void init(ServerAboutToStartEvent event) {
-		LevelStem levelStem = event.getServer().registryAccess().registryOrThrow(Registries.LEVEL_STEM).get(LevelStem.END);
-		ChunkGenerator chunkGenerator = levelStem.generator();
-		boolean hasEndBiomes = chunkGenerator.getBiomeSource().possibleBiomes().stream().anyMatch(biomeHolder -> biomeHolder.unwrapKey().orElseThrow().location().getNamespace().equals("unusualend"));
-		if (hasEndBiomes) {
-			if (chunkGenerator instanceof NoiseBasedChunkGenerator generator) {
-				NoiseGeneratorSettings noiseGeneratorSettings = generator.settings.value();
-				registerSurfaceRules(new ResourceLocation("unusualend:gloopstone_lands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPSTONE.get().defaultBlockState(), UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState());
-				registerSurfaceRules(new ResourceLocation("unusualend:gloopstone_midlands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPY_ENDSTONE.get().defaultBlockState(), Blocks.END_STONE.defaultBlockState());
-				registerSurfaceRules(new ResourceLocation("unusualend:warped_reef"), noiseGeneratorSettings, Blocks.END_STONE.defaultBlockState(), Blocks.END_STONE.defaultBlockState());
-			}
-		}
-	}
+    @SubscribeEvent
+    public static void init(ServerAboutToStartEvent event) {
+        LevelStem levelStem = event.getServer().registryAccess().registryOrThrow(Registries.LEVEL_STEM).get(LevelStem.END);
+        if (levelStem != null) {
+            ChunkGenerator chunkGenerator = levelStem.generator();
+            boolean hasEndBiomes = chunkGenerator.getBiomeSource().possibleBiomes().stream().anyMatch(biomeHolder -> biomeHolder.unwrapKey().orElseThrow().location().getNamespace().equals("unusualend"));
+            if (hasEndBiomes) {
+                if (chunkGenerator instanceof NoiseBasedChunkGenerator generator) {
+                    NoiseGeneratorSettings noiseGeneratorSettings = generator.settings.value();
+                    registerSurfaceRules(new ResourceLocation("unusualend:gloopstone_lands"), noiseGeneratorSettings, UnusualendModBlocks.GLOOPSTONE.get().defaultBlockState(), UnusualendModBlocks.GLOOPSLATE.get().defaultBlockState());
+                    registerSurfaceRules(new ResourceLocation("unusualend:warped_reef"), noiseGeneratorSettings, Blocks.END_STONE.defaultBlockState(), Blocks.END_STONE.defaultBlockState());
+                }
+            }
+        }
+    }
 
-	public static void registerSurfaceRules(ResourceLocation biome, NoiseGeneratorSettings noiseGeneratorSettings, BlockState groundBlock, BlockState undergroundBlock) {
-		((NoiseGeneratorSettingsAccess) (Object) noiseGeneratorSettings).addSurfaceRule(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ResourceKey.create(Registries.BIOME, biome)),
-				SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(groundBlock)), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, SurfaceRules.state(undergroundBlock)))), noiseGeneratorSettings.surfaceRule()));
-	}
+    public static void registerSurfaceRules(ResourceLocation biome, NoiseGeneratorSettings noiseGeneratorSettings, BlockState groundBlock, BlockState undergroundBlock) {
+        ((NoiseGeneratorSettingsAccess) (Object) noiseGeneratorSettings).addSurfaceRule(SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.isBiome(ResourceKey.create(Registries.BIOME, biome)),
+                SurfaceRules.sequence(SurfaceRules.ifTrue(SurfaceRules.ON_FLOOR, SurfaceRules.state(groundBlock)), SurfaceRules.ifTrue(SurfaceRules.UNDER_FLOOR, SurfaceRules.state(undergroundBlock)))), noiseGeneratorSettings.surfaceRule()));
+    }
 }
