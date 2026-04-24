@@ -171,6 +171,8 @@ public class GlubEntity extends Monster {
             return false;
         if (damagesource.is(DamageTypes.DROWN))
             return false;
+        if (damagesource.is(DamageTypes.IN_WALL))
+            return false;
         return super.hurt(damagesource, amount);
     }
 

@@ -59,7 +59,6 @@ public class UnusualEnd {
 		UnusualendModParticleTypes.REGISTRY.register(bus);
 
 		UnusualendModMenus.REGISTRY.register(bus);
-        bus.addListener(this::registerPacks);
 	}
 
 	private static final String PROTOCOL_VERSION = "1";
@@ -73,31 +72,6 @@ public class UnusualEnd {
 
 	private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
 
-    private void registerPacks(AddPackFindersEvent event) {
-         if (event.getPackType() == PackType.CLIENT_RESOURCES)
-            registerBuiltinPack(event, "unusual_end_eggs", "Unusual End Fancy Spawn Eggs");
-    }
-    private void registerBuiltinPack(AddPackFindersEvent event, String folderName, String displayName) {
-        IModFile modFile = ModList.get().getModFileById("unusualend").getFile();
-        Path resourcePath = modFile.findResource("resourcepacks/" + folderName);
-
-        if (Files.exists(resourcePath)) {
-            event.addRepositorySource((packConsumer) -> {
-                Pack pack = Pack.readMetaAndCreate(
-                        "unusualend:" + folderName,
-                        Component.literal(displayName),
-                        false,
-                        (id) -> new PathPackResources(id, resourcePath, true),
-                        event.getPackType(),
-                        Pack.Position.TOP,
-                        PackSource.BUILT_IN
-                );
-                if (pack != null) {
-                    packConsumer.accept(pack);
-                }
-            });
-        }
-    }
 	public static void queueServerWork(int tick, Runnable action) {
 		if (Thread.currentThread().getThreadGroup() == SidedThreadGroups.SERVER)
 			workQueue.add(new AbstractMap.SimpleEntry<>(action, tick));

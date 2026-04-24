@@ -171,6 +171,8 @@ public class BolokEntity extends Monster {
         BolokEntityIsHurtProcedure.execute(world, entity, sourceentity);
         if (damagesource.is(DamageTypes.DROWN))
             return false;
+        if (damagesource.is(DamageTypes.IN_WALL))
+            return false;
         return super.hurt(damagesource, amount);
     }
 
