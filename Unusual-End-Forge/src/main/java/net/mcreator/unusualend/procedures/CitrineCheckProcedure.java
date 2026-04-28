@@ -8,9 +8,7 @@ import net.minecraft.world.level.LevelAccessor;
 
 public class CitrineCheckProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {
-		boolean found = false;
 		double sx = 0;
-		double sy = 0;
 		double sz = 0;
 		double check = 0;
 		sx = -1;

@@ -3,21 +3,21 @@
     "": [
       {
         "model": "unusualend:block/gloopy_endstone",
-        "weight": 3
+        "weight": 2
       },
       {
         "model": "unusualend:block/gloopy_endstone",
-        "weight": 3,
+        "weight": 2,
         "y": 90
       },
       {
         "model": "unusualend:block/gloopy_endstone",
-        "weight": 3,
+        "weight": 2,
         "y": 180
       },
       {
         "model": "unusualend:block/gloopy_endstone",
-        "weight": 3,
+        "weight": 2,
         "y": 270
       },
       {

@@ -132,16 +132,11 @@ public class EnderblobEntity extends Monster {
 
 	@Override
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
-		ItemStack itemstack = sourceentity.getItemInHand(hand);
-		InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
 		super.mobInteract(sourceentity, hand);
-		double x = this.getX();
-		double y = this.getY();
-		double z = this.getZ();
 		Entity entity = this;
 		Level world = this.level();
 		EnderblobRightClickedOnEntityProcedure.execute(world, entity, sourceentity);
-		return retval;
+		return InteractionResult.sidedSuccess(this.level().isClientSide());
 	}
 
 	@Override

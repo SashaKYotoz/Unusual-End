@@ -11,8 +11,6 @@ public class LeechingChargeWhileProjectileFlyingTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity immediatesourceentity) {
 		if (immediatesourceentity == null)
 			return;
-		double duration_buff = 0;
-		double level_buff = 0;
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.WITCH, x, y, z, 2, 0.1, 0.1, 0.1, 0);
 		if (immediatesourceentity instanceof BondLeechingChargeProjectileEntity) {

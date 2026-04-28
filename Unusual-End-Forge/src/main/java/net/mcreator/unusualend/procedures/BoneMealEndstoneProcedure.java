@@ -46,7 +46,7 @@ public class BoneMealEndstoneProcedure {
 		double sy = 0;
 		double sz = 0;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BONE_MEAL) {
-			if (Config.REGULAR_BONEMEAL.get() == true) {
+			if (Config.REGULAR_BONEMEAL.get()) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.INFESTED_END_STONE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.END_STONE) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
@@ -171,7 +171,7 @@ public class BoneMealEndstoneProcedure {
 					}
 				}
 			}
-			if (Config.PURPUR_BONEMEAL.get() == true) {
+			if (Config.PURPUR_BONEMEAL.get()) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.RAW_PURPUR_BLOCK.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.ROOTED_RAW_PURPUR.get()) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {

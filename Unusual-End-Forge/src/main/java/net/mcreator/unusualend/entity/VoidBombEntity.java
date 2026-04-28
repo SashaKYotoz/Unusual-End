@@ -113,11 +113,6 @@ public class VoidBombEntity extends PathfinderMob {
 
 	@Override
 	public boolean canBreatheUnderwater() {
-		double x = this.getX();
-		double y = this.getY();
-		double z = this.getZ();
-		Level world = this.level();
-		Entity entity = this;
 		return true;
 	}
 

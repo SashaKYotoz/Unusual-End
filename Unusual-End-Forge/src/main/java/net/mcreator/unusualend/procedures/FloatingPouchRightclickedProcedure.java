@@ -42,10 +42,9 @@ public class FloatingPouchRightclickedProcedure {
 			}
 		}
 		{
-			ItemStack _ist = itemstack;
-			if (_ist.hurt(1, RandomSource.create(), null)) {
-				_ist.shrink(1);
-				_ist.setDamageValue(0);
+            if (itemstack.hurt(1, RandomSource.create(), null)) {
+				itemstack.shrink(1);
+				itemstack.setDamageValue(0);
 			}
 		}
 		if (entity instanceof Player _player)

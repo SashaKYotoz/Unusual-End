@@ -31,7 +31,7 @@ import java.util.Map;
 
 public class EndermiteEggUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
-		boolean nearby_player = false;
+		boolean nearby_player;
 		if (!world.getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).isEmpty()) {
 			nearby_player = false;
 			{
@@ -69,7 +69,7 @@ public class EndermiteEggUpdateTickProcedure {
 					}
 				}
 			}
-			if (nearby_player == true) {
+			if (nearby_player) {
 				world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.ENDERMITE_EGGS.get().defaultBlockState()));
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {

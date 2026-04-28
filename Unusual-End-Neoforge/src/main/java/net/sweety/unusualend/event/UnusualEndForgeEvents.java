@@ -232,9 +232,9 @@ public class UnusualEndForgeEvents {
             }
             if (itemstack.getItem() == UnusualEndItems.SCALE_HORSE_ARMOR.get()) {
                 modifier = new AttributeModifier(UnusualEndMiscRegister.getModEffectLocation("784142c5-312a-12ee-8c49-0242ac128802"), 2.0D, AttributeModifier.Operation.ADD_MULTIPLIED_BASE);
-                event.addModifier(NeoForgeMod.SWIM_SPEED, modifier, EquipmentSlotGroup.CHEST);
+                event.addModifier(NeoForgeMod.SWIM_SPEED, modifier, EquipmentSlotGroup.BODY);
                 modifier = new AttributeModifier(UnusualEndMiscRegister.getModEffectLocation("704142c5-312a-12ee-8c49-0242ac125502"), 1.0D, AttributeModifier.Operation.ADD_VALUE);
-                event.addModifier(Attributes.STEP_HEIGHT, modifier, EquipmentSlotGroup.CHEST);
+                event.addModifier(Attributes.STEP_HEIGHT, modifier, EquipmentSlotGroup.BODY);
             }
             if (itemstack.getItem() == UnusualEndItems.WARPED_ANCHOR.get()) {
                 modifier = new AttributeModifier(UnusualEndMiscRegister.getModEffectLocation("0c948739-fac0-431d-854c-9ed62408760d"), -0.5D, AttributeModifier.Operation.ADD_VALUE);

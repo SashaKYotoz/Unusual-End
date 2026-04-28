@@ -1,7 +1,7 @@
 
 package net.mcreator.unusualend.block;
 
-import net.mcreator.unusualend.procedures.DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure;
+import net.mcreator.unusualend.procedures.DrippingGloopstoneGrowthConditionProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.effect.MobEffects;
@@ -51,7 +51,7 @@ public class DrippingGloopstoneBlock extends FlowerBlock {
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
+			additionalCondition = DrippingGloopstoneGrowthConditionProcedure.execute(world, x, y, z);
 		}
 		return additionalCondition;
 	}

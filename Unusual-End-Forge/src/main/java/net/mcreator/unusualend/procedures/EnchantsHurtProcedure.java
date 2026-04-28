@@ -40,7 +40,6 @@ public class EnchantsHurtProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, DamageSource damagesource, Entity entity, Entity sourceentity, double amount) {
 		if (damagesource == null || entity == null || sourceentity == null)
 			return;
-		double basic_amount = 0;
 		if (EnchantmentHelper.getItemEnchantmentLevel(UnusualendModEnchantments.BOLOKS_FURY.get(), (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) >= (entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1)) {
 				if (entity instanceof LivingEntity && !damagesource.isIndirect()) {

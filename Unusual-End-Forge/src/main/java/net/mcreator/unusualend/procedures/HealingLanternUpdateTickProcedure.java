@@ -15,8 +15,6 @@ import java.util.List;
 
 public class HealingLanternUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		double baseRate = 0;
-		double rateWithAmplifier = 0;
 		{
 			final Vec3 _center = new Vec3(x, y, z);
 			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();

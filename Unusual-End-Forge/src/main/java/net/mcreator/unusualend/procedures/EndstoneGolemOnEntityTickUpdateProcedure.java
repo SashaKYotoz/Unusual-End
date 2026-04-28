@@ -30,11 +30,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		boolean is_target_exist = false;
 		double distance = 0;
-		double X = 0;
-		double Y = 0;
-		double Z = 0;
 		double lcl_nb = 0;
 		double xRadius = 0;
 		double loop = 0;

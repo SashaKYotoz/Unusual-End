@@ -89,21 +89,13 @@ public class EndstoneGolemEntity extends Monster {
 
 			@Override
 			public boolean canUse() {
-				double x = EndstoneGolemEntity.this.getX();
-				double y = EndstoneGolemEntity.this.getY();
-				double z = EndstoneGolemEntity.this.getZ();
-				Entity entity = EndstoneGolemEntity.this;
-				Level world = EndstoneGolemEntity.this.level();
+                EndstoneGolemEntity entity = EndstoneGolemEntity.this;
 				return super.canUse() && CanGolemAttackProcedure.execute(entity);
 			}
 
 			@Override
 			public boolean canContinueToUse() {
-				double x = EndstoneGolemEntity.this.getX();
-				double y = EndstoneGolemEntity.this.getY();
-				double z = EndstoneGolemEntity.this.getZ();
-				Entity entity = EndstoneGolemEntity.this;
-				Level world = EndstoneGolemEntity.this.level();
+                EndstoneGolemEntity entity = EndstoneGolemEntity.this;
 				return super.canContinueToUse() && CanGolemAttackProcedure.execute(entity);
 			}
 		});
@@ -161,12 +153,10 @@ public class EndstoneGolemEntity extends Monster {
 		Level world = this.level();
 		Entity entity = this;
 		Entity sourceentity = damagesource.getEntity();
-		Entity immediatesourceentity = damagesource.getDirectEntity();
 		EndstoneGolemEntityIsHurtProcedure.execute(world, x, y, z, entity, sourceentity);
 		if (damagesource.is(DamageTypes.IN_FIRE))
 			return false;
 		if (damagesource.getDirectEntity() instanceof AbstractArrow)
-			//return super.hurt(damagesource, 1);
 			return false;
 		if (damagesource.getDirectEntity() instanceof ThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
@@ -237,21 +227,11 @@ public class EndstoneGolemEntity extends Monster {
 
 	@Override
 	public boolean canBreatheUnderwater() {
-		double x = this.getX();
-		double y = this.getY();
-		double z = this.getZ();
-		Level world = this.level();
-		Entity entity = this;
 		return true;
 	}
 
 	@Override
 	public boolean isPushedByFluid() {
-		double x = this.getX();
-		double y = this.getY();
-		double z = this.getZ();
-		Level world = this.level();
-		Entity entity = this;
 		return false;
 	}
 

@@ -22,7 +22,7 @@ public class ConsumeCitrineProcedure {
 				return -1;
 			}
 		}.getValue(world, BlockPos.containing(x, y, z), "Citrine") >= value) {
-			if (CitrineCheckProcedure.execute(world, x, y, z) == true) {
+			if (CitrineCheckProcedure.execute(world, x, y, z)) {
 				if (!world.isClientSide()) {
 					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);

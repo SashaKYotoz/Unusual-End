@@ -35,28 +35,26 @@ public class EnderInfectionOnEffectActiveTickProcedure {
 		}
 		if (Math.random() < 0.5) {
 			{
-				Entity _ent = entity;
-				_ent.setYRot((float) (entity.getYRot() + 0.1));
-				_ent.setXRot(entity.getXRot());
-				_ent.setYBodyRot(_ent.getYRot());
-				_ent.setYHeadRot(_ent.getYRot());
-				_ent.yRotO = _ent.getYRot();
-				_ent.xRotO = _ent.getXRot();
-				if (_ent instanceof LivingEntity _entity) {
+                entity.setYRot((float) (entity.getYRot() + 0.1));
+				entity.setXRot(entity.getXRot());
+				entity.setYBodyRot(entity.getYRot());
+				entity.setYHeadRot(entity.getYRot());
+				entity.yRotO = entity.getYRot();
+				entity.xRotO = entity.getXRot();
+				if (entity instanceof LivingEntity _entity) {
 					_entity.yBodyRotO = _entity.getYRot();
 					_entity.yHeadRotO = _entity.getYRot();
 				}
 			}
 		} else {
 			{
-				Entity _ent = entity;
-				_ent.setYRot((float) (entity.getYRot() - 0.1));
-				_ent.setXRot(entity.getXRot());
-				_ent.setYBodyRot(_ent.getYRot());
-				_ent.setYHeadRot(_ent.getYRot());
-				_ent.yRotO = _ent.getYRot();
-				_ent.xRotO = _ent.getXRot();
-				if (_ent instanceof LivingEntity _entity) {
+                entity.setYRot((float) (entity.getYRot() - 0.1));
+				entity.setXRot(entity.getXRot());
+				entity.setYBodyRot(entity.getYRot());
+				entity.setYHeadRot(entity.getYRot());
+				entity.yRotO = entity.getYRot();
+				entity.xRotO = entity.getXRot();
+				if (entity instanceof LivingEntity _entity) {
 					_entity.yBodyRotO = _entity.getYRot();
 					_entity.yHeadRotO = _entity.getYRot();
 				}
@@ -64,28 +62,26 @@ public class EnderInfectionOnEffectActiveTickProcedure {
 		}
 		if (Math.random() < 0.5) {
 			{
-				Entity _ent = entity;
-				_ent.setYRot(entity.getYRot());
-				_ent.setXRot((float) (entity.getXRot() + 0.1));
-				_ent.setYBodyRot(_ent.getYRot());
-				_ent.setYHeadRot(_ent.getYRot());
-				_ent.yRotO = _ent.getYRot();
-				_ent.xRotO = _ent.getXRot();
-				if (_ent instanceof LivingEntity _entity) {
+                entity.setYRot(entity.getYRot());
+				entity.setXRot((float) (entity.getXRot() + 0.1));
+				entity.setYBodyRot(entity.getYRot());
+				entity.setYHeadRot(entity.getYRot());
+				entity.yRotO = entity.getYRot();
+				entity.xRotO = entity.getXRot();
+				if (entity instanceof LivingEntity _entity) {
 					_entity.yBodyRotO = _entity.getYRot();
 					_entity.yHeadRotO = _entity.getYRot();
 				}
 			}
 		} else {
 			{
-				Entity _ent = entity;
-				_ent.setYRot(entity.getYRot());
-				_ent.setXRot((float) (entity.getXRot() - 0.1));
-				_ent.setYBodyRot(_ent.getYRot());
-				_ent.setYHeadRot(_ent.getYRot());
-				_ent.yRotO = _ent.getYRot();
-				_ent.xRotO = _ent.getXRot();
-				if (_ent instanceof LivingEntity _entity) {
+                entity.setYRot(entity.getYRot());
+				entity.setXRot((float) (entity.getXRot() - 0.1));
+				entity.setYBodyRot(entity.getYRot());
+				entity.setYHeadRot(entity.getYRot());
+				entity.yRotO = entity.getYRot();
+				entity.xRotO = entity.getXRot();
+				if (entity instanceof LivingEntity _entity) {
 					_entity.yBodyRotO = _entity.getYRot();
 					_entity.yHeadRotO = _entity.getYRot();
 				}
@@ -105,10 +101,9 @@ public class EnderInfectionOnEffectActiveTickProcedure {
 		}
 		if (Math.random() < 0.005) {
 			{
-				Entity _ent = entity;
-				_ent.teleportTo(x, y, z);
-				if (_ent instanceof ServerPlayer _serverPlayer)
-					_serverPlayer.connection.teleport(x, y, z, _ent.getYRot(), _ent.getXRot());
+                entity.teleportTo(x, y, z);
+				if (entity instanceof ServerPlayer _serverPlayer)
+					_serverPlayer.connection.teleport(x, y, z, entity.getYRot(), entity.getXRot());
 			}
 			if (world instanceof Level _level) {
 				if (!_level.isClientSide()) {
@@ -136,8 +131,6 @@ public class EnderInfectionOnEffectActiveTickProcedure {
 					}
 				}
 			}
-		}
-		if (entity instanceof EnderMan) {
 		}
 	}
 }

@@ -7,11 +7,9 @@ import net.minecraft.world.level.block.Block;
 
 public class QueenBreakSurroundingsProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		boolean found = false;
 		double sx = 0;
 		double sy = 0;
 		double sz = 0;
-		found = false;
 		sx = -1;
 		for (int index0 = 0; index0 < 4; index0++) {
 			sy = 0;
@@ -20,7 +18,6 @@ public class QueenBreakSurroundingsProcedure {
 				for (int index2 = 0; index2 < 4; index2++) {
 					if (!world.isEmptyBlock(BlockPos.containing(x + sx, y + sy, z + sz))) {
 						if (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)).getDestroySpeed(world, BlockPos.containing(x + sx, y + sy, z + sz)) >= 0) {
-							found = true;
 							world.destroyBlock(BlockPos.containing(x + sx, y + sy, z + sz), false);
 							world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.VOID_PARTICLES_BLOCK.get().defaultBlockState()));
 						}

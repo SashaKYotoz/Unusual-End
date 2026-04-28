@@ -85,11 +85,7 @@ public class DraglingEntity extends Monster {
 			}
 
 			public boolean canUse() {
-				if (DraglingEntity.this.getTarget() != null && !DraglingEntity.this.getMoveControl().hasWanted()) {
-					return true;
-				} else {
-					return false;
-				}
+                return DraglingEntity.this.getTarget() != null && !DraglingEntity.this.getMoveControl().hasWanted();
 			}
 
 			@Override

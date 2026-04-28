@@ -28,9 +28,9 @@ public class LeechingWandItemInInventoryTickProcedure {
 		} else {
 			itemstack.getOrCreateTag().putDouble("rayCooldown", 400);
 		}
-		if (itemstack.getOrCreateTag().getBoolean("rayEnd") == true) {
+		if (itemstack.getOrCreateTag().getBoolean("rayEnd")) {
 			UnusualEnd.queueServerWork(20, () -> {
-				if (itemstack.getOrCreateTag().getBoolean("rayEnd") == true) {
+				if (itemstack.getOrCreateTag().getBoolean("rayEnd")) {
 					if (!(new Object() {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {

@@ -48,7 +48,7 @@ public class GloopyFogProcedure {
     }
 
     private static void execute(LevelAccessor world, double x, double y, double z) {
-        if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_midlands")) || world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_lands"))) {
+        if (world.getBiome(BlockPos.containing(x, y, z)).is(UnusualEnd.makeUEID("gloopstone_lands"))) {
             if (UEConfig.GLOOPY_FOG.get()) {
                 setDistance(0, 200);
                 setShape(FogShape.CYLINDER);

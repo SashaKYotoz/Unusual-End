@@ -39,8 +39,6 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		double Chain = 0;
-		double ChainWait = 0;
 		double xRadius = 0;
 		double loop = 0;
 		double zRadius = 0;

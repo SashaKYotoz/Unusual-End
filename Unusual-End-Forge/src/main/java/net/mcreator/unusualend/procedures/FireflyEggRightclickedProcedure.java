@@ -27,9 +27,6 @@ public class FireflyEggRightclickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		ItemStack moloch_bucket = ItemStack.EMPTY;
-		ItemStack entity_bucket = ItemStack.EMPTY;
-		String name = "";
 		itemstack.shrink(1);
 		if (entity instanceof Player _player)
 			_player.getCooldowns().addCooldown(UnusualendModItems.ENDER_FIREFLY_EGG.get(), 5);

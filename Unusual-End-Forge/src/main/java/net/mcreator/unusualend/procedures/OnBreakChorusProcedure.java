@@ -30,7 +30,7 @@ public class OnBreakChorusProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
 		if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(new ResourceLocation("unusualend:endermites_infested")))) {
-			if (Math.random() < (double) Config.BREAKING_CHORUS_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
+			if (Math.random() < Config.BREAKING_CHORUS_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
@@ -41,7 +41,7 @@ public class OnBreakChorusProcedure {
 					_level.sendParticles(ParticleTypes.POOF, x, y, z, 5, 0.1, 0.1, 0.1, 0);
 			}
 		} else if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(new ResourceLocation("unusualend:more_endermites_infested")))) {
-			if (Math.random() < (double) Config.BREAKING_POT_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
+			if (Math.random() < Config.BREAKING_POT_SUMMON_ENDERMITE_PERCENTAGE.get() / 100) {
 				if (world instanceof ServerLevel _level) {
 					Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {

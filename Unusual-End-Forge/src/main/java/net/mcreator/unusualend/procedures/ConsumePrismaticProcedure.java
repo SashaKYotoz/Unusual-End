@@ -22,7 +22,7 @@ public class ConsumePrismaticProcedure {
 				return -1;
 			}
 		}.getValue(world, BlockPos.containing(x, y, z), "Prismatic") >= value) {
-			if (PrismaticCheckProcedure.execute(world, x, y, z) == true) {
+			if (PrismaticCheckProcedure.execute(world, x, y, z)) {
 				if (!world.isClientSide()) {
 					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);

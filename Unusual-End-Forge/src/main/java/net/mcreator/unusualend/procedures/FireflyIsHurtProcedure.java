@@ -13,7 +13,7 @@ public class FireflyIsHurtProcedure {
 				entity.saveWithoutId(dataIndex);
 				return dataIndex.getBoolean("Sitting");
 			}
-		}.getValue()) == true) {
+		}.getValue())) {
 			{
 				CompoundTag dataIndex = new CompoundTag();
 				entity.saveWithoutId(dataIndex);

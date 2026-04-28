@@ -20,9 +20,9 @@ public class BlukAuChocolatItem extends Item {
 	}
 
 	@Override
-	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
-		ItemStack retval = super.finishUsingItem(itemstack, world, entity);
-		BlukAuChocolatPlayerFinishesUsingItemProcedure.execute(world, entity);
+	public ItemStack finishUsingItem(ItemStack itemstack, Level level, LivingEntity entity) {
+		ItemStack retval = super.finishUsingItem(itemstack, level, entity);
+		BlukAuChocolatPlayerFinishesUsingItemProcedure.execute(level, entity);
 		return retval;
 	}
 }

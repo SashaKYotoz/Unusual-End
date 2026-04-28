@@ -2,7 +2,7 @@
 package net.mcreator.unusualend.block;
 
 import net.mcreator.unusualend.init.UnusualendModBlocks;
-import net.mcreator.unusualend.procedures.DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure;
+import net.mcreator.unusualend.procedures.DrippingGloopstoneGrowthConditionProcedure;
 import net.mcreator.unusualend.procedures.GloopilonStemNeighbourBlockChangesProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -66,7 +66,7 @@ public class GloopilonStemBlock extends FlowerBlock {
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
+			additionalCondition = DrippingGloopstoneGrowthConditionProcedure.execute(world, x, y, z);
 		}
 		return additionalCondition;
 	}

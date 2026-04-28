@@ -43,7 +43,7 @@ public class LinkedTotemTriggerProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, ItemStack itemstack) {
 		if (entity == null)
 			return;
-		if (itemstack.getOrCreateTag().getBoolean("LinkedTotem") == true) {
+		if (itemstack.getOrCreateTag().getBoolean("LinkedTotem")) {
 			if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level().dimension())) {
 				if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.OVERWORLD)) {
 					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {

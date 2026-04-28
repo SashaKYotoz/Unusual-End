@@ -58,7 +58,7 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = DrippingGloopstoneAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
+			additionalCondition = DrippingGloopstoneGrowthConditionProcedure.execute(world, x, y, z);
 		}
 		return additionalCondition;
 	}

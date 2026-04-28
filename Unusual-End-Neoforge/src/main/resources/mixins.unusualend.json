@@ -4,16 +4,10 @@
   "compatibilityLevel": "JAVA_21",
   "refmap": "mixins.unusualend.refmap.json",
   "mixins": [
-    "BiomeSourceMixin",
     "ChorusFlowerBlockMixin",
     "ChorusPlantBlockMixin",
-    "ChunkNoiseSamplerMixin",
-    "ClimateSamplerMixin",
     "ItemEntityMixin",
-    "NoiseConfigMixin",
-    "NoiseGeneratorSettingsAccess",
-    "StructuresMixin",
-    "TheEndBiomeSourceMixin"
+    "NoiseGeneratorSettingsAccess"
   ],
   "client": [],
   "minVersion": "0.8"

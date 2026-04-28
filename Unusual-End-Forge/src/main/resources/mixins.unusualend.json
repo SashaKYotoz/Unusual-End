@@ -5,8 +5,7 @@
   "refmap": "mixins.unusualend.refmap.json",
   "mixins": [
     "ChorusFlowerBlockMixin",
-    "ChorusPlantBlockMixin",
-    "NoiseGeneratorSettingsAccess"
+    "ChorusPlantBlockMixin"
   ],
   "client": [],
   "minVersion": "0.8"

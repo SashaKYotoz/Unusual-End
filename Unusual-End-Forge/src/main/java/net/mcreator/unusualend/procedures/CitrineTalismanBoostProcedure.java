@@ -30,7 +30,6 @@ public class CitrineTalismanBoostProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		double proba = 0;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.CITRINE_AMULET.get()) {
 			CitrineTalismanTriggerProcedure.execute(world, x, y, z, entity);
 		}

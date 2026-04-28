@@ -1,7 +1,6 @@
 
 package net.mcreator.unusualend.item;
 
-import com.google.common.collect.ImmutableSet;
 import net.mcreator.unusualend.init.UnusualendModEnchantments;
 import net.mcreator.unusualend.procedures.PearlescentRingInventoryTickProcedure;
 import net.minecraft.network.chat.Component;
@@ -12,6 +11,7 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Set;
@@ -23,7 +23,7 @@ public class PearlescentRingItem extends Item {
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-		Set e = ImmutableSet.of(UnusualendModEnchantments.ARCANE_RECOVERY.get());
+		Set<Enchantment> e = Set.of(UnusualendModEnchantments.ARCANE_RECOVERY.get());
 		return e.contains(enchantment);
 	}
 
@@ -39,11 +39,8 @@ public class PearlescentRingItem extends Item {
 
 	@Override
 	public boolean isBarVisible(ItemStack stack) {
-		if (stack.getOrCreateTag().getDouble("ringCooldown") < 400 && stack.getOrCreateTag().getDouble("ringCooldown") > 0) {
-			return true;
-		}
-		return false;
-	}
+        return stack.getOrCreateTag().getDouble("ringCooldown") < 400 && stack.getOrCreateTag().getDouble("ringCooldown") > 0;
+    }
 
 	@Override
 	public int getBarColor(ItemStack stack) {

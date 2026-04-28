@@ -21,7 +21,6 @@ public class LeechingChargeProjectileHitsLivingEntityProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity immediatesourceentity, Entity sourceentity) {
 		if (entity == null || immediatesourceentity == null || sourceentity == null)
 			return;
-		double dividedby = 0;
 		double duration_buff = 0;
 		double level_buff = 0;
 		if (!(entity == sourceentity || (entity instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt ? _tamIsTamedBy.isOwnedBy(_livEnt) : false))) {

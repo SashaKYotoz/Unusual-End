@@ -10,19 +10,15 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class BlukAuChocolatPlayerFinishesUsingItemProcedure {
-	public static void execute(LevelAccessor world, Entity entity) {
-		if (entity == null)
-			return;
-		if (Config.CHOCOLAT_BLUK.get() == true) {
-			if (world.isClientSide()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_fishe")), SoundSource.PLAYERS, 1, 1);
-					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_fishe")), SoundSource.PLAYERS, 1, 1, false);
-					}
-				}
-			}
-		}
-	}
+    public static void execute(Level level, Entity entity) {
+        if (entity == null)
+            return;
+        if (Config.CHOCOLAT_BLUK.get()) {
+            if (!level.isClientSide()) {
+                level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_fishe")), SoundSource.PLAYERS, 1, 1);
+            } else {
+                level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:flute_fishe")), SoundSource.PLAYERS, 1, 1, false);
+            }
+        }
+    }
 }

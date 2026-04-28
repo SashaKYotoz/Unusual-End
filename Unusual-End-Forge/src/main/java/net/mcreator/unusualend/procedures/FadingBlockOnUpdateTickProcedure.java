@@ -16,9 +16,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class FadingBlockOnUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
-		double sx = 0;
-		double sy = 0;
-		double sz = 0;
 		if (new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);

@@ -84,7 +84,7 @@ public class BondLeechingChargeProjectileEntity extends AbstractArrow implements
 	}
 
 	public static BondLeechingChargeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source, float pullingPower) {
-		return shoot(world, entity, source, pullingPower * 1f, 5, 5);
+		return shoot(world, entity, source, pullingPower, 5, 5);
 	}
 
 	public static BondLeechingChargeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage, int knockback) {

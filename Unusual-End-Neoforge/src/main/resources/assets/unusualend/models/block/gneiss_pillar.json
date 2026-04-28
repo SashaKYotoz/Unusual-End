@@ -1,10 +1,12 @@
 {
-  "parent": "block/grass_block",
+  "parent": "block/cube",
   "textures": {
-    "bottom": "unusualend:block/gneiss_pillar_top",
-    "top": "unusualend:block/gneiss_pillar_top",
-    "side": "unusualend:block/gneiss_pillar",
-    "overlay": "unusualend:block/gneiss_pillar",
+    "down": "unusualend:block/gneiss_pillar_top",
+    "up": "unusualend:block/gneiss_pillar_top",
+    "north": "unusualend:block/gneiss_pillar",
+    "east": "unusualend:block/gneiss_pillar",
+    "south": "unusualend:block/gneiss_pillar",
+    "west": "unusualend:block/gneiss_pillar",
     "particle": "unusualend:block/gneiss_pillar_top"
   },
   "render_type": "solid"

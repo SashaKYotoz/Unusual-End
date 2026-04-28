@@ -14,8 +14,6 @@ public class CrystallizationEffectExpiresProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity.getPersistentData().getDouble("CrystalDamages") > 0) {
-		}
 		entity.getPersistentData().putDouble("CrystalDamages", 0);
 		for (int index0 = 0; index0 < 3; index0++) {
 			if (world instanceof Level _level) {

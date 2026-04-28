@@ -5,7 +5,7 @@
     "particle": "minecraft:block/flower_pot",
     "flowerpot": "minecraft:block/flower_pot",
     "plant": "unusualend:block/chorus_roots_pot",
-    "dirt": "minecraft:block/end_stone"
+    "dirt": "minecraft:block/dirt"
   },
   "render_type": "cutout"
 }

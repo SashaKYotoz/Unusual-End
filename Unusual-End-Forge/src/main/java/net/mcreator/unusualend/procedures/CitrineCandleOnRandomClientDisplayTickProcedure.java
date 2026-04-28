@@ -17,7 +17,7 @@ public class CitrineCandleOnRandomClientDisplayTickProcedure {
 		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:candle_soul_flames")))) {
 			world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
 		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(BlockTags.create(new ResourceLocation("unusualend:candle_shiny_flames")))) {
-			world.addParticle((SimpleParticleType) (UnusualendModParticleTypes.PINK_FLAME.get()), (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
+			world.addParticle(UnusualendModParticleTypes.PINK_FLAME.get(), (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
 		} else {
 			world.addParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
 		}

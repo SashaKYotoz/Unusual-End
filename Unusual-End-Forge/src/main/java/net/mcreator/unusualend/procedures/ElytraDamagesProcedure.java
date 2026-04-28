@@ -43,8 +43,6 @@ public class ElytraDamagesProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		double speed = 0;
-		double yaw = 0;
 		if (entity instanceof LivingEntity _livEnt0 && _livEnt0.isFallFlying()) {
 			if (EnchantmentHelper.getItemEnchantmentLevel(UnusualendModEnchantments.BOLOKS_WINGS.get(), (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY)) != 0) {
 				if (Math.abs(entity.getDeltaMovement().x()) + Math.abs(entity.getDeltaMovement().y()) + Math.abs(entity.getDeltaMovement().z()) > 1.8) {

@@ -89,7 +89,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return GloopilonFruitAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
+			return GloopilonFruitGrowthConditionProcedure.execute(world, x, y, z);
 		}
 		return super.canSurvive(blockstate, worldIn, pos);
 	}
