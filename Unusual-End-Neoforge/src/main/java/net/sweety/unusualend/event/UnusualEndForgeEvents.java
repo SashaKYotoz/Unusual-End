@@ -144,11 +144,9 @@ public class UnusualEndForgeEvents {
                     if (level instanceof ServerLevel _level)
                         _level.sendParticles(ParticleTypes.PORTAL, (player.getX()), (player.getY()), (player.getZ()), 50, 0.5, 1.5, 0.5, 0);
                     if (!level.isClientSide()) {
-                        if (!level.isClientSide()) {
-                            level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1);
-                        } else
-                            level.playLocalSound((player.getX()), (player.getY()), (player.getZ()), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1, false);
-                    }
+                        level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1);
+                    } else
+                        level.playLocalSound((player.getX()), (player.getY()), (player.getZ()), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1, false);
                 }
                 variables.teleporting = false;
                 variables.syncPlayerVariables(player);
@@ -163,9 +161,9 @@ public class UnusualEndForgeEvents {
     @SubscribeEvent
     public static void onEffectRemoved(MobEffectEvent.Remove event) {
         LivingEntity entity = event.getEntity();
-        if (event.getEffect().equals(UnusualEndMiscRegister.CRYSTALLIZATION.get()))
+        if (event.getEffect().value().equals(UnusualEndMiscRegister.CRYSTALLIZATION.get()))
             CrystallizationEffectExpiresProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-        if (event.getEffect().equals(UnusualEndMiscRegister.ENDER_INFECTION.get()))
+        if (event.getEffect().value().equals(UnusualEndMiscRegister.ENDER_INFECTION.get()))
             EnderInfectionEffectExpiresProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
     }
 

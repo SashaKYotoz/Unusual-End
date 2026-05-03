@@ -1,6 +1,4 @@
 {
-  "type": "blueprint:chunk_generator_modifier",
-  "generator": "minecraft:noise",
   "modifiers": [
     {
       "type": "surface_rule",

@@ -312,6 +312,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> FLOWER_POT_GLOOPY_TENDRILS = block(UnusualEndBlocks.FLOWER_POT_GLOOPY_TENDRILS);
     public static final DeferredHolder<Item, BlockItem> FLOWER_POT_GLOOPY_BUSH = block(UnusualEndBlocks.FLOWER_POT_GLOOPY_BUSH);
     public static final DeferredHolder<Item, BlockItem> FLOWER_POT_PURPUR_GRASS = block(UnusualEndBlocks.FLOWER_POT_PURPUR_GRASS);
+    public static final DeferredHolder<Item, BlockItem> GLOOPY_ENDSTONE = block(UnusualEndBlocks.GLOOPY_ENDSTONE);
 
     private static DeferredHolder<Item, BlockItem> block(DeferredBlock<? extends Block> block) {
         return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
