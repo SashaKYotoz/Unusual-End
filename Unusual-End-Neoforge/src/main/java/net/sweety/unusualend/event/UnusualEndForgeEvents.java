@@ -85,7 +85,7 @@ public class UnusualEndForgeEvents {
             }
         }
         if (player.isVehicle()) {
-            if ((player.getFirstPassenger()) instanceof WarpedJellyfishEntity) {
+            if ((player.getFirstPassenger()) instanceof GlubEntity) {
                 if (player.isShiftKeyDown()) {
                     (player.getFirstPassenger()).stopRiding();
                 }
@@ -656,7 +656,7 @@ public class UnusualEndForgeEvents {
                     entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 20);
                 }
             }
-            if (sourceEntity instanceof EnderBugEntity) {
+            if (sourceEntity instanceof FlampyrEntity) {
                 if (entity instanceof Endermite || entity instanceof EnderblobEntity || entity instanceof EnderbulbEntity || entity instanceof SmallEnderbulbEntity) {
                     entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 15);
                 }

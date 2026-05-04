@@ -12,57 +12,57 @@ import net.sweety.unusualend.entity.*;
 public class UnusualendModEntities {
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, UnusualEnd.MODID);
     public static final DeferredHolder<EntityType<?>, EntityType<EnderblobEntity>> ENDER_BLOB = register("ender_blob",
-            EntityType.Builder.<EnderblobEntity>of(EnderblobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+            EntityType.Builder.of(EnderblobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.8f, 0.4f));
     public static final DeferredHolder<EntityType<?>, EntityType<EnderlingEntity>> UNDEAD_ENDERLING = register("undead_enderling",
-            EntityType.Builder.<EnderlingEntity>of(EnderlingEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+            EntityType.Builder.of(EnderlingEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.6f, 1.45f));
-    public static final DeferredHolder<EntityType<?>, EntityType<EnderTrapperEntity>> ENDSTONE_TRAPPER = register("endstone_trapper", EntityType.Builder.<EnderTrapperEntity>of(EnderTrapperEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+    public static final DeferredHolder<EntityType<?>, EntityType<EnderTrapperEntity>> ENDSTONE_TRAPPER = register("endstone_trapper", EntityType.Builder.of(EnderTrapperEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
             .setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(0.6f, 1.05f));
-    public static final DeferredHolder<EntityType<?>, EntityType<EnderBugEntity>> ENDER_FIREFLY = register("ender_firefly",
-            EntityType.Builder.<EnderBugEntity>of(EnderBugEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+    public static final DeferredHolder<EntityType<?>, EntityType<FlampyrEntity>> ENDER_FIREFLY = register("ender_firefly",
+            EntityType.Builder.of(FlampyrEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.7f, 0.5f));
-    public static final DeferredHolder<EntityType<?>, EntityType<EndstoneGolemEntity>> ENDSTONE_GOLEM = register("endstone_golem", EntityType.Builder.<EndstoneGolemEntity>of(EndstoneGolemEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+    public static final DeferredHolder<EntityType<?>, EntityType<EndstoneGolemEntity>> ENDSTONE_GOLEM = register("endstone_golem", EntityType.Builder.of(EndstoneGolemEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
             .setTrackingRange(128).setUpdateInterval(3).fireImmune().sized(1.8f, 2.95f));
     public static final DeferredHolder<EntityType<?>, EntityType<DraglingEntity>> DRAGLING = register("dragling",
-            EntityType.Builder.<DraglingEntity>of(DraglingEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(0.5f, 0.7f));
+            EntityType.Builder.of(DraglingEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(0.5f, 0.7f));
     public static final DeferredHolder<EntityType<?>, EntityType<BolokEntity>> BOLOK = register("bolok",
-            EntityType.Builder.<BolokEntity>of(BolokEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+            EntityType.Builder.of(BolokEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.8f, 0.6f));
-    public static final DeferredHolder<EntityType<?>, EntityType<EnderblobQueenEntity>> ENDERBLOB_QUEEN = register("enderblob_queen", EntityType.Builder.<EnderblobQueenEntity>of(EnderblobQueenEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+    public static final DeferredHolder<EntityType<?>, EntityType<EnderblobQueenEntity>> ENDERBLOB_QUEEN = register("enderblob_queen", EntityType.Builder.of(EnderblobQueenEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
             .setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(1.9f, 3f));
-    public static final DeferredHolder<EntityType<?>, EntityType<BlockUpdaterEntity>> BLOCK_UPDATER = register("block_updater", EntityType.Builder.<BlockUpdaterEntity>of(BlockUpdaterEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
+    public static final DeferredHolder<EntityType<?>, EntityType<BlockUpdaterEntity>> BLOCK_UPDATER = register("block_updater", EntityType.Builder.of(BlockUpdaterEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
             .setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(0.2f, 0.2f));
     public static final DeferredHolder<EntityType<?>, EntityType<SpunklerEntity>> SPUNKLER = register("spunkler",
-            EntityType.Builder.<SpunklerEntity>of(SpunklerEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+            EntityType.Builder.of(SpunklerEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.8f, 0.8f));
-    public static final DeferredHolder<EntityType<?>, EntityType<VoidCrackEntity>> VOID_CRACK = register("void_crack", EntityType.Builder.<VoidCrackEntity>of(VoidCrackEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
+    public static final DeferredHolder<EntityType<?>, EntityType<VoidCrackEntity>> VOID_CRACK = register("void_crack", EntityType.Builder.of(VoidCrackEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64)
             .setUpdateInterval(3).fireImmune().sized(0.2f, 0.2f));
     public static final DeferredHolder<EntityType<?>, EntityType<LargeBubbleEntity>> WARPED_BALLOON = register("warped_balloon",
-            EntityType.Builder.<LargeBubbleEntity>of(LargeBubbleEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(16).setUpdateInterval(3)
+            EntityType.Builder.of(LargeBubbleEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(16).setUpdateInterval(3)
 
                     .sized(1.4f, 1.6f));
-    public static final DeferredHolder<EntityType<?>, EntityType<WarpedJellyfishEntity>> GLUB = register("glub",
-            EntityType.Builder.<WarpedJellyfishEntity>of(WarpedJellyfishEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+    public static final DeferredHolder<EntityType<?>, EntityType<GlubEntity>> GLUB = register("glub",
+            EntityType.Builder.of(GlubEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.75f, 1f));
     public static final DeferredHolder<EntityType<?>, EntityType<VoidBombEntity>> VOID_BOMB = register("void_bomb",
-            EntityType.Builder.<VoidBombEntity>of(VoidBombEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(1f, 1f));
+            EntityType.Builder.of(VoidBombEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(1f, 1f));
     public static final DeferredHolder<EntityType<?>, EntityType<EnderbulbEntity>> ENDERBULB = register("enderbulb",
-            EntityType.Builder.<EnderbulbEntity>of(EnderbulbEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+            EntityType.Builder.of(EnderbulbEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.8f, 1.2f));
     public static final DeferredHolder<EntityType<?>, EntityType<SmallEnderbulbEntity>> SMALL_ENDERBULB = register("small_enderbulb",
-            EntityType.Builder.<SmallEnderbulbEntity>of(SmallEnderbulbEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
+            EntityType.Builder.of(SmallEnderbulbEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.4f, 0.4f));
     public static final DeferredHolder<EntityType<?>, EntityType<BlukEntity>> BLUK = register("bluk",
-            EntityType.Builder.<BlukEntity>of(BlukEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(16).setUpdateInterval(3)
+            EntityType.Builder.of(BlukEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(16).setUpdateInterval(3)
 
                     .sized(0.6f, 0.5f));
     public static final DeferredHolder<EntityType<?>, EntityType<PhantomArrowProjectileEntity>> PHANTOM_ARROW_PROJECTILE = register("phantom_arrow_projectile", EntityType.Builder.<PhantomArrowProjectileEntity>of(PhantomArrowProjectileEntity::new, MobCategory.MISC)
@@ -77,7 +77,7 @@ public class UnusualendModEntities {
                     .setUpdateInterval(1).sized(0.5f, 0.5f));
     public static final DeferredHolder<EntityType<?>, EntityType<VoidArrowProjectileEntity>> VOID_ARROW_PROJECTILE = register("void_arrow_projectile", EntityType.Builder.<VoidArrowProjectileEntity>of(VoidArrowProjectileEntity::new, MobCategory.MISC)
             .setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
-    public static final DeferredHolder<EntityType<?>, EntityType<SummonedDraglingEntity>> SUMMONED_DRAGLING = register("summoned_dragling", EntityType.Builder.<SummonedDraglingEntity>of(SummonedDraglingEntity::new, MobCategory.MONSTER)
+    public static final DeferredHolder<EntityType<?>, EntityType<SummonedDraglingEntity>> SUMMONED_DRAGLING = register("summoned_dragling", EntityType.Builder.of(SummonedDraglingEntity::new, MobCategory.MONSTER)
             .setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(0.6f, 1.8f));
     public static final DeferredHolder<EntityType<?>, EntityType<BondLeechingChargeProjectileEntity>> BOND_LEECHING_CHARGE_PROJECTILE = register("bond_leeching_charge_projectile",
             EntityType.Builder.<BondLeechingChargeProjectileEntity>of(BondLeechingChargeProjectileEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true)

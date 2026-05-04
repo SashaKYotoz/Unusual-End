@@ -14,7 +14,7 @@ import net.sweety.unusualend.procedures.EndMathProcedure;
 // Made with Blockbench 4.7.1
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelender_firefly<T extends Entity> extends EntityModel<T> {
+public class ModelFlampyr<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelender_firefly"), "main");
@@ -22,7 +22,7 @@ public class Modelender_firefly<T extends Entity> extends EntityModel<T> {
 	public final ModelPart left_wing;
 	public final ModelPart right_wing;
 
-	public Modelender_firefly(ModelPart root) {
+	public ModelFlampyr(ModelPart root) {
 		this.torso = root.getChild("torso");
 		this.left_wing = root.getChild("left_wing");
 		this.right_wing = root.getChild("right_wing");

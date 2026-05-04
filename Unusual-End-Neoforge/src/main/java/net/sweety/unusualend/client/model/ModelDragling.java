@@ -2,7 +2,7 @@ package net.sweety.unusualend.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import custom.sweety.unusualend.client.animation.draglingAnimation;
+import custom.sweety.unusualend.client.animation.DraglingAnimation;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -14,7 +14,7 @@ import net.sweety.unusualend.entity.DraglingEntity;
 // Made with Blockbench 4.10.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modeldragling<T extends DraglingEntity> extends HierarchicalModel<T> {
+public class ModelDragling<T extends DraglingEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modeldragling"), "main");
@@ -27,7 +27,7 @@ public class Modeldragling<T extends DraglingEntity> extends HierarchicalModel<T
 	public final ModelPart left_wing;
 	public final ModelPart right_wing;
 
-	public Modeldragling(ModelPart root) {
+	public ModelDragling(ModelPart root) {
 		this.all = root.getChild("all");
 		this.head = all.getChild("head");
 		this.main_body = all.getChild("main_body");
@@ -69,10 +69,10 @@ public class Modeldragling<T extends DraglingEntity> extends HierarchicalModel<T
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		root().getAllParts().forEach(ModelPart::resetPose);
-		this.animate(entity.attackAnimationState, draglingAnimation.ATTACK, ageInTicks);
-		this.animate(entity.idleAnimationState, draglingAnimation.IDLE, ageInTicks);
+		this.animate(entity.attackAnimationState, DraglingAnimation.ATTACK, ageInTicks);
+		this.animate(entity.idleAnimationState, DraglingAnimation.IDLE, ageInTicks);
 		if (!entity.isInWaterOrBubble()) {
-			this.animateWalk(draglingAnimation.FLY, limbSwing, limbSwingAmount, 2.0F, 4.0F);
+			this.animateWalk(DraglingAnimation.FLY, limbSwing, limbSwingAmount, 2.0F, 4.0F);
 		}
 	}
 

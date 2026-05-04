@@ -14,7 +14,7 @@ import net.sweety.unusualend.UnusualEnd;
 // Made with Blockbench 4.9.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelglub<T extends Entity> extends EntityModel<T> {
+public class ModelGlub<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelglub"), "main");
@@ -25,7 +25,7 @@ public class Modelglub<T extends Entity> extends EntityModel<T> {
 	public final ModelPart tentacle4;
 	public final ModelPart middle_tentacle;
 
-	public Modelglub(ModelPart root) {
+	public ModelGlub(ModelPart root) {
 		this.body = root.getChild("body");
 		this.tentacle1 = root.getChild("tentacle1");
 		this.tentacle2 = root.getChild("tentacle2");

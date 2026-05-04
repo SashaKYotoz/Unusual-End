@@ -5,7 +5,7 @@ import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
-public class endstonegolemAnimation {
+public class EndstoneGolemAnimation {
 	public static final AnimationDefinition WALK = AnimationDefinition.Builder.withLength(2f).looping()
 			.addAnimation("right_leg",
 					new AnimationChannel(AnimationChannel.Targets.POSITION, new Keyframe(0f, KeyframeAnimations.posVec(0f, 0f, 0f), AnimationChannel.Interpolations.LINEAR),

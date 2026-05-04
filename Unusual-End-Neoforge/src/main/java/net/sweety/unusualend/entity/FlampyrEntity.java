@@ -35,9 +35,9 @@ import net.sweety.unusualend.procedures.ReturnNotSneakingProcedure;
 
 import java.util.EnumSet;
 
-public class EnderBugEntity extends TamableAnimal {
+public class FlampyrEntity extends TamableAnimal {
 
-    public EnderBugEntity(EntityType<EnderBugEntity> type, Level world) {
+    public FlampyrEntity(EntityType<FlampyrEntity> type, Level world) {
         super(type, world);
         xpReward = 1;
         setNoAi(false);
@@ -56,42 +56,26 @@ public class EnderBugEntity extends TamableAnimal {
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.2) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.goalSelector.addGoal(2, new TemptGoal(this, 1.2, Ingredient.of(UnusualEndItems.END_BLOB.get()), false) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
@@ -99,76 +83,56 @@ public class EnderBugEntity extends TamableAnimal {
 
             @Override
             public boolean canUse() {
-                Entity entity = EnderBugEntity.this;
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                Entity entity = EnderBugEntity.this;
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, EnderblobEntity.class, false, false) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, Endermite.class, false, false) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, SmallEnderbulbEntity.class, false, false) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                double x = FlampyrEntity.this.getX();
+                double y = FlampyrEntity.this.getY();
+                double z = FlampyrEntity.this.getZ();
+                Entity entity = FlampyrEntity.this;
+                Level world = FlampyrEntity.this.level();
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
@@ -178,12 +142,8 @@ public class EnderBugEntity extends TamableAnimal {
             }
 
             public boolean canUse() {
-                if (EnderBugEntity.this.getTarget() != null && !EnderBugEntity.this.getMoveControl().hasWanted()) {
-                    double x = EnderBugEntity.this.getX();
-                    double y = EnderBugEntity.this.getY();
-                    double z = EnderBugEntity.this.getZ();
-                    Entity entity = EnderBugEntity.this;
-                    Level world = EnderBugEntity.this.level();
+                if (FlampyrEntity.this.getTarget() != null && !FlampyrEntity.this.getMoveControl().hasWanted()) {
+                    Entity entity = FlampyrEntity.this;
                     return ReturnNotSneakingProcedure.execute(entity);
                 } else {
                     return false;
@@ -192,31 +152,27 @@ public class EnderBugEntity extends TamableAnimal {
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
-                return ReturnNotSneakingProcedure.execute(entity) && EnderBugEntity.this.getMoveControl().hasWanted() && EnderBugEntity.this.getTarget() != null && EnderBugEntity.this.getTarget().isAlive();
+                Entity entity = FlampyrEntity.this;
+                return ReturnNotSneakingProcedure.execute(entity) && FlampyrEntity.this.getMoveControl().hasWanted() && FlampyrEntity.this.getTarget() != null && FlampyrEntity.this.getTarget().isAlive();
             }
 
             @Override
             public void start() {
-                LivingEntity livingentity = EnderBugEntity.this.getTarget();
+                LivingEntity livingentity = FlampyrEntity.this.getTarget();
                 Vec3 vec3d = livingentity.getEyePosition(1);
-                EnderBugEntity.this.moveControl.setWantedPosition(vec3d.x, vec3d.y, vec3d.z, 1.2);
+                FlampyrEntity.this.moveControl.setWantedPosition(vec3d.x, vec3d.y, vec3d.z, 1.2);
             }
 
             @Override
             public void tick() {
-                LivingEntity livingentity = EnderBugEntity.this.getTarget();
-                if (EnderBugEntity.this.getBoundingBox().intersects(livingentity.getBoundingBox())) {
-                    EnderBugEntity.this.doHurtTarget(livingentity);
+                LivingEntity livingentity = FlampyrEntity.this.getTarget();
+                if (FlampyrEntity.this.getBoundingBox().intersects(livingentity.getBoundingBox())) {
+                    FlampyrEntity.this.doHurtTarget(livingentity);
                 } else {
-                    double d0 = EnderBugEntity.this.distanceToSqr(livingentity);
+                    double d0 = FlampyrEntity.this.distanceToSqr(livingentity);
                     if (d0 < 16) {
                         Vec3 vec3d = livingentity.getEyePosition(1);
-                        EnderBugEntity.this.moveControl.setWantedPosition(vec3d.x, vec3d.y, vec3d.z, 1.2);
+                        FlampyrEntity.this.moveControl.setWantedPosition(vec3d.x, vec3d.y, vec3d.z, 1.2);
                     }
                 }
             }
@@ -224,115 +180,87 @@ public class EnderBugEntity extends TamableAnimal {
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, EnderblobEntity.class, (float) 64) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Endermite.class, (float) 64) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, SmallEnderbulbEntity.class, (float) 64) {
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                Entity entity = EnderBugEntity.this;
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.goalSelector.addGoal(10, new FollowOwnerGoal(this, 1.2, 8, 4) {
             @Override
             public boolean canUse() {
-                Entity entity = EnderBugEntity.this;
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.goalSelector.addGoal(11, new RandomStrollGoal(this, 1.2, 20) {
             @Override
             protected Vec3 getPosition() {
-                RandomSource random = EnderBugEntity.this.getRandom();
-                double dir_x = EnderBugEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16);
-                double dir_y = EnderBugEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16);
-                double dir_z = EnderBugEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16);
+                RandomSource random = FlampyrEntity.this.getRandom();
+                double dir_x = FlampyrEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16);
+                double dir_y = FlampyrEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16);
+                double dir_z = FlampyrEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16);
                 return new Vec3(dir_x, dir_y, dir_z);
             }
 
             @Override
             public boolean canUse() {
-                double x = EnderBugEntity.this.getX();
-                double y = EnderBugEntity.this.getY();
-                double z = EnderBugEntity.this.getZ();
-                Entity entity = EnderBugEntity.this;
-                Level world = EnderBugEntity.this.level();
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                Entity entity = EnderBugEntity.this;
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
         this.goalSelector.addGoal(12, new LeapAtTargetGoal(this, (float) 1.2) {
             @Override
             public boolean canUse() {
-                Entity entity = EnderBugEntity.this;
+                Entity entity = FlampyrEntity.this;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                Entity entity = EnderBugEntity.this;
+                Entity entity = FlampyrEntity.this;
                 return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(entity);
             }
         });
@@ -362,17 +290,13 @@ public class EnderBugEntity extends TamableAnimal {
 
     @Override
     public boolean hurt(DamageSource damagesource, float amount) {
-        double x = this.getX();
-        double y = this.getY();
-        double z = this.getZ();
-        Level world = this.level();
         Entity entity = this;
-        Entity sourceentity = damagesource.getEntity();
-        Entity immediatesourceentity = damagesource.getDirectEntity();
         FireflyIsHurtProcedure.execute(entity);
         if (damagesource.is(DamageTypes.FALL))
             return false;
         if (damagesource.is(DamageTypes.DRAGON_BREATH))
+            return false;
+        if (damagesource.is(DamageTypes.IN_WALL))
             return false;
         return super.hurt(damagesource, amount);
     }
@@ -417,9 +341,6 @@ public class EnderBugEntity extends TamableAnimal {
                     this.setPersistenceRequired();
             }
         }
-        double x = this.getX();
-        double y = this.getY();
-        double z = this.getZ();
         Entity entity = this;
         Level world = this.level();
         BucketFireflyProcedure.execute(world, entity, player);
@@ -434,7 +355,7 @@ public class EnderBugEntity extends TamableAnimal {
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
-        EnderBugEntity retval = UnusualendModEntities.ENDER_FIREFLY.get().create(serverWorld);
+        FlampyrEntity retval = UnusualendModEntities.ENDER_FIREFLY.get().create(serverWorld);
         retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }

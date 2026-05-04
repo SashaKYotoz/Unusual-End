@@ -5,12 +5,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.client.model.Modelspunkler;
+import net.sweety.unusualend.client.model.ModelSpunkler;
 import net.sweety.unusualend.entity.SpunklerEntity;
 
-public class SpunklerRenderer extends MobRenderer<SpunklerEntity, Modelspunkler<SpunklerEntity>> {
+public class SpunklerRenderer extends MobRenderer<SpunklerEntity, ModelSpunkler<SpunklerEntity>> {
 	public SpunklerRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelspunkler(context.bakeLayer(Modelspunkler.LAYER_LOCATION)), 0.4f);
+		super(context, new ModelSpunkler(context.bakeLayer(ModelSpunkler.LAYER_LOCATION)), 0.4f);
 	}
 
 	@Override

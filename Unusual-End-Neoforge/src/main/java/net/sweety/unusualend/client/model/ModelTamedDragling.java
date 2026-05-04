@@ -2,7 +2,7 @@ package net.sweety.unusualend.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import custom.sweety.unusualend.client.animation.tameddraglingAnimation;
+import custom.sweety.unusualend.client.animation.TamedDraglingAnimation;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -14,7 +14,7 @@ import net.sweety.unusualend.entity.SummonedDraglingEntity;
 // Made with Blockbench 4.10.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modeltameddragling<T extends SummonedDraglingEntity> extends HierarchicalModel<T> {
+public class ModelTamedDragling<T extends SummonedDraglingEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modeltameddragling"), "main");
@@ -27,7 +27,7 @@ public class Modeltameddragling<T extends SummonedDraglingEntity> extends Hierar
 	public final ModelPart left_wing;
 	public final ModelPart right_wing;
 
-	public Modeltameddragling(ModelPart root) {
+	public ModelTamedDragling(ModelPart root) {
 		this.all = root.getChild("all");
 		this.head = all.getChild("head");
 		this.main_body = all.getChild("main_body");
@@ -69,10 +69,10 @@ public class Modeltameddragling<T extends SummonedDraglingEntity> extends Hierar
 	@Override
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		root().getAllParts().forEach(ModelPart::resetPose);
-		this.animate(entity.attackAnimationState, tameddraglingAnimation.ATTACK, ageInTicks);
-		this.animate(entity.idleAnimationState, tameddraglingAnimation.IDLE, ageInTicks);
+		this.animate(entity.attackAnimationState, TamedDraglingAnimation.ATTACK, ageInTicks);
+		this.animate(entity.idleAnimationState, TamedDraglingAnimation.IDLE, ageInTicks);
 		if (!entity.isInWaterOrBubble()) {
-			this.animateWalk(tameddraglingAnimation.FLY, limbSwing, limbSwingAmount, 2.0F, 4.0F);
+			this.animateWalk(TamedDraglingAnimation.FLY, limbSwing, limbSwingAmount, 2.0F, 4.0F);
 		}
 	}
 

@@ -5,7 +5,7 @@ import net.minecraft.client.animation.AnimationDefinition;
 import net.minecraft.client.animation.Keyframe;
 import net.minecraft.client.animation.KeyframeAnimations;
 
-public class draglingAnimation {
+public class DraglingAnimation {
 	public static final AnimationDefinition WINGS = AnimationDefinition.Builder.withLength(1.5f).looping()
 			.addAnimation("head", new AnimationChannel(AnimationChannel.Targets.ROTATION, new Keyframe(0f, KeyframeAnimations.degreeVec(0f, 0f, 0f), AnimationChannel.Interpolations.CATMULLROM),
 					new Keyframe(0.7916766f, KeyframeAnimations.degreeVec(2.33f, -2.2f, -0.54f), AnimationChannel.Interpolations.CATMULLROM),

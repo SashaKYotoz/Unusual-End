@@ -13,13 +13,13 @@ import net.sweety.unusualend.UnusualEnd;
 // Made with Blockbench 4.6.5
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelstructure_spawn<T extends Entity> extends EntityModel<T> {
+public class ModelStructureSpawn<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelstructure_spawn"), "main");
 	public final ModelPart bb_main;
 
-	public Modelstructure_spawn(ModelPart root) {
+	public ModelStructureSpawn(ModelPart root) {
 		this.bb_main = root.getChild("bb_main");
 	}
 

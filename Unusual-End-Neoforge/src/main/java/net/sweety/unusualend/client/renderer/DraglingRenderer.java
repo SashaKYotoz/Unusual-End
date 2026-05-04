@@ -11,12 +11,12 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.client.model.Modeldragling;
+import net.sweety.unusualend.client.model.ModelDragling;
 import net.sweety.unusualend.entity.DraglingEntity;
 
-public class DraglingRenderer extends MobRenderer<DraglingEntity, Modeldragling<DraglingEntity>> {
+public class DraglingRenderer extends MobRenderer<DraglingEntity, ModelDragling<DraglingEntity>> {
 	public DraglingRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modeldragling(context.bakeLayer(Modeldragling.LAYER_LOCATION)), 0.4f);
+		super(context, new ModelDragling(context.bakeLayer(ModelDragling.LAYER_LOCATION)), 0.4f);
 		this.addLayer(new RenderLayer<>(this) {
             final ResourceLocation LAYER_TEXTURE = UnusualEnd.makeUEID("textures/entities/dragling_glow_layer.png");
 

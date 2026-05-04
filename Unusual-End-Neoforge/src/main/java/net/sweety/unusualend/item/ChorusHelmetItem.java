@@ -13,7 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.client.model.Modelchorus_helmet;
+import net.sweety.unusualend.client.model.ModelChorusHelmet;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
@@ -38,7 +38,7 @@ public abstract class ChorusHelmetItem extends ArmorItem {
 				@Override
 				public HumanoidModel getHumanoidArmorModel(LivingEntity living, ItemStack stack, EquipmentSlot slot, HumanoidModel defaultModel) {
 					HumanoidModel armorModel = new HumanoidModel(new ModelPart(Collections.emptyList(),
-							Map.of("head", new Modelchorus_helmet(Minecraft.getInstance().getEntityModels().bakeLayer(Modelchorus_helmet.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
+							Map.of("head", new ModelChorusHelmet(Minecraft.getInstance().getEntityModels().bakeLayer(ModelChorusHelmet.LAYER_LOCATION)).head, "hat", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "body",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_arm", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_arm",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()), "right_leg", new ModelPart(Collections.emptyList(), Collections.emptyMap()), "left_leg",
 									new ModelPart(Collections.emptyList(), Collections.emptyMap()))));

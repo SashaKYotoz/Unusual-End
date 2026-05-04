@@ -11,7 +11,7 @@ import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.sweety.unusualend.entity.EnderBugEntity;
+import net.sweety.unusualend.entity.FlampyrEntity;
 import net.sweety.unusualend.entity.EnderblobEntity;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndItems;
@@ -35,7 +35,7 @@ public class FireFlyRegenProcedure {
 		if (entity == null || sourceentity == null)
 			return;
 		if (entity instanceof EnderblobEntity) {
-			if (sourceentity instanceof EnderBugEntity entity1) {
+			if (sourceentity instanceof FlampyrEntity entity1) {
 				if (!entity1.level().isClientSide())
 					entity1.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1));
 				if (Math.random() < 0.2) {

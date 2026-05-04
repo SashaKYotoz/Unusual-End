@@ -123,7 +123,7 @@ public class UnusualEndEvents {
         event.put(UnusualendModEntities.ENDER_BLOB.get(), EnderblobEntity.createAttributes().build());
         event.put(UnusualendModEntities.UNDEAD_ENDERLING.get(), EnderlingEntity.createAttributes().build());
         event.put(UnusualendModEntities.ENDSTONE_TRAPPER.get(), EnderTrapperEntity.createAttributes().build());
-        event.put(UnusualendModEntities.ENDER_FIREFLY.get(), EnderBugEntity.createAttributes().build());
+        event.put(UnusualendModEntities.ENDER_FIREFLY.get(), FlampyrEntity.createAttributes().build());
         event.put(UnusualendModEntities.ENDSTONE_GOLEM.get(), EndstoneGolemEntity.createAttributes().build());
         event.put(UnusualendModEntities.DRAGLING.get(), DraglingEntity.createAttributes().build());
         event.put(UnusualendModEntities.BOLOK.get(), BolokEntity.createAttributes().build());
@@ -132,7 +132,7 @@ public class UnusualEndEvents {
         event.put(UnusualendModEntities.SPUNKLER.get(), SpunklerEntity.createAttributes().build());
         event.put(UnusualendModEntities.VOID_CRACK.get(), VoidCrackEntity.createAttributes().build());
         event.put(UnusualendModEntities.WARPED_BALLOON.get(), LargeBubbleEntity.createAttributes().build());
-        event.put(UnusualendModEntities.GLUB.get(), WarpedJellyfishEntity.createAttributes().build());
+        event.put(UnusualendModEntities.GLUB.get(), GlubEntity.createAttributes().build());
         event.put(UnusualendModEntities.VOID_BOMB.get(), VoidBombEntity.createAttributes().build());
         event.put(UnusualendModEntities.ENDERBULB.get(), EnderbulbEntity.createAttributes().build());
         event.put(UnusualendModEntities.SMALL_ENDERBULB.get(), SmallEnderbulbEntity.createAttributes().build());

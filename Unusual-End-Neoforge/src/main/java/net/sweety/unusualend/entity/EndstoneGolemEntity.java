@@ -132,7 +132,6 @@ public class EndstoneGolemEntity extends Monster {
 		Level world = this.level();
 		Entity entity = this;
 		Entity sourceentity = damagesource.getEntity();
-		Entity immediatesourceentity = damagesource.getDirectEntity();
 		EndstoneGolemEntityIsHurtProcedure.execute(world, x, y, z, entity, sourceentity);
 		if (damagesource.is(DamageTypes.IN_FIRE))
 			return false;

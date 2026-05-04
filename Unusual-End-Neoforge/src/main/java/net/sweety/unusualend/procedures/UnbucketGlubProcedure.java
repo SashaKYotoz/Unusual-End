@@ -20,7 +20,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.entity.WarpedJellyfishEntity;
+import net.sweety.unusualend.entity.GlubEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
 
 import java.util.Comparator;
@@ -85,18 +85,18 @@ public class UnbucketGlubProcedure {
 					_level.playLocalSound(x, y, z, SoundEvents.BUCKET_FILL_FISH, SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			if (!world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
+			if (!world.getEntitiesOfClass(GlubEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
 					&& NBTProcessor.getNBTBoolean(stack,"isNamed")) {
 				name = stack.getDisplayName().getString();
 				name = name.substring(1, (name).length() - 1);
-				world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+				world.getEntitiesOfClass(GlubEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}
 				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null).setCustomName(Component.literal(name));
 			}
 			if (NBTProcessor.getNBTDouble(stack,"tagHealth") != 0) {
-				if (((Entity) world.getEntitiesOfClass(WarpedJellyfishEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+				if (((Entity) world.getEntitiesOfClass(GlubEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}

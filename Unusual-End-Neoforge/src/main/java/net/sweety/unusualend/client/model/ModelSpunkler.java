@@ -13,14 +13,14 @@ import net.sweety.unusualend.UnusualEnd;
 // Made with Blockbench 4.8.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelspunkler<T extends Entity> extends EntityModel<T> {
+public class ModelSpunkler<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelspunkler"), "main");
 	public final ModelPart shell;
 	public final ModelPart head;
 
-	public Modelspunkler(ModelPart root) {
+	public ModelSpunkler(ModelPart root) {
 		this.shell = root.getChild("shell");
 		this.head = root.getChild("head");
 	}

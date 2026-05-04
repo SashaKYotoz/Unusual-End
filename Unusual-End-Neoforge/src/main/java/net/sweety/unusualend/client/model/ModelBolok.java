@@ -15,7 +15,7 @@ import net.sweety.unusualend.procedures.EndMathProcedure;
 // Made with Blockbench 4.6.4
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelbolok<T extends Entity> extends EntityModel<T> {
+public class ModelBolok<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelbolok"), "main");
@@ -25,7 +25,7 @@ public class Modelbolok<T extends Entity> extends EntityModel<T> {
 	public final ModelPart fin_back;
 	public final ModelPart tail;
 
-	public Modelbolok(ModelPart root) {
+	public ModelBolok(ModelPart root) {
 		this.body = root.getChild("body");
 		this.left_fin = root.getChild("left_fin");
 		this.right_fin = root.getChild("right_fin");

@@ -5,12 +5,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.client.model.Modelsmall_enderbulb;
+import net.sweety.unusualend.client.model.ModelSmallEnderbulb;
 import net.sweety.unusualend.entity.SmallEnderbulbEntity;
 
-public class SmallEnderbulbRenderer extends MobRenderer<SmallEnderbulbEntity, Modelsmall_enderbulb<SmallEnderbulbEntity>> {
+public class SmallEnderbulbRenderer extends MobRenderer<SmallEnderbulbEntity, ModelSmallEnderbulb<SmallEnderbulbEntity>> {
 	public SmallEnderbulbRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelsmall_enderbulb(context.bakeLayer(Modelsmall_enderbulb.LAYER_LOCATION)), 0.4f);
+		super(context, new ModelSmallEnderbulb(context.bakeLayer(ModelSmallEnderbulb.LAYER_LOCATION)), 0.4f);
 	}
 
 	@Override

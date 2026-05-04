@@ -13,13 +13,13 @@ import net.sweety.unusualend.UnusualEnd;
 // Made with Blockbench 4.9.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelvoid_explosive<T extends Entity> extends EntityModel<T> {
+public class ModelVoidExplosive<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelvoid_explosive"), "main");
 	public final ModelPart bone;
 
-	public Modelvoid_explosive(ModelPart root) {
+	public ModelVoidExplosive(ModelPart root) {
 		this.bone = root.getChild("bone");
 	}
 

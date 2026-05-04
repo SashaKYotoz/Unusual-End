@@ -13,7 +13,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.BlukEntity;
 import net.sweety.unusualend.entity.BolokEntity;
-import net.sweety.unusualend.entity.WarpedJellyfishEntity;
+import net.sweety.unusualend.entity.GlubEntity;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
 
@@ -22,7 +22,7 @@ public class WarpedBubbleEntityCollidesInTheBlockProcedure {
 		if (entity == null)
 			return;
 		double dis = 0;
-		if (!(entity instanceof BolokEntity || entity instanceof WarpedJellyfishEntity || entity instanceof BlukEntity)) {
+		if (!(entity instanceof BolokEntity || entity instanceof GlubEntity || entity instanceof BlukEntity)) {
 			entity.fallDistance = 0;
 			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == UnusualEndItems.WARPED_BOOTS.get())) {
 				world.destroyBlock(BlockPos.containing(x, y, z), false);

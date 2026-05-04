@@ -14,14 +14,14 @@ import net.sweety.unusualend.UnusualEnd;
 // Made with Blockbench 4.9.1
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelwarped_jellyfish<T extends Entity> extends EntityModel<T> {
+public class ModelWarpedJellyfish<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelwarped_jellyfish"), "main");
 	public final ModelPart body;
 	public final ModelPart tentacles;
 
-	public Modelwarped_jellyfish(ModelPart root) {
+	public ModelWarpedJellyfish(ModelPart root) {
 		this.body = root.getChild("body");
 		this.tentacles = root.getChild("tentacles");
 	}

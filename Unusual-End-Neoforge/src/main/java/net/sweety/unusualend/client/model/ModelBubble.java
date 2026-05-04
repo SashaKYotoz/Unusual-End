@@ -7,37 +7,38 @@ import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.sweety.unusualend.UnusualEnd;
 
-// Made with Blockbench 4.9.4
+// Made with Blockbench 4.8.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelenderling_mask<T extends Entity> extends EntityModel<T> {
+public class ModelBubble<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelenderling_mask"), "main");
-	public final ModelPart mask;
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelbubble"), "main");
+	public final ModelPart bubble;
 
-	public Modelenderling_mask(ModelPart root) {
-		this.mask = root.getChild("mask");
+	public ModelBubble(ModelPart root) {
+		this.bubble = root.getChild("bubble");
 	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshdefinition = new MeshDefinition();
 		PartDefinition partdefinition = meshdefinition.getRoot();
-		PartDefinition mask = partdefinition.addOrReplaceChild("mask", CubeListBuilder.create(), PartPose.offset(0.0F, 6.0F, -2.0F));
-		PartDefinition cube_r1 = mask.addOrReplaceChild("cube_r1", CubeListBuilder.create().texOffs(1, 1).addBox(-9.0F, -11.0F, -3.8F, 8.0F, 10.0F, 7.0F, new CubeDeformation(0.1F)), PartPose.offsetAndRotation(5.0F, 3.25F, 1.5F, 0.0436F, 0.0F, 0.0F));
-		return LayerDefinition.create(meshdefinition, 64, 64);
+		PartDefinition bubble = partdefinition.addOrReplaceChild("bubble", CubeListBuilder.create().texOffs(0, 0).addBox(-12.0F, -26.0F, -12.0F, 24.0F, 24.0F, 24.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, 24.0F, 0.0F));
+		return LayerDefinition.create(meshdefinition, 128, 128);
 	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, int color) {
-		mask.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
+		bubble.render(poseStack, vertexConsumer, packedLight, packedOverlay, color);
 	}
 
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.mask.yRot = netHeadYaw / (180F / (float) Math.PI);
-		this.mask.xRot = headPitch / (180F / (float) Math.PI);
+		this.bubble.xRot = (Mth.sin(ageInTicks * 0.3F + 2) * 0.05F) + ((headPitch * 0.017453292F) / 2);
+		this.bubble.zRot = (Mth.sin(ageInTicks * 0.6F + 2) * 0.05F);
+		this.bubble.yRot = ((netHeadYaw * 0.017453292F) / 2);
 	}
 }

@@ -5,12 +5,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.client.model.Modelvoid_explosive;
+import net.sweety.unusualend.client.model.ModelVoidExplosive;
 import net.sweety.unusualend.entity.VoidBombEntity;
 
-public class VoidBombRenderer extends MobRenderer<VoidBombEntity, Modelvoid_explosive<VoidBombEntity>> {
+public class VoidBombRenderer extends MobRenderer<VoidBombEntity, ModelVoidExplosive<VoidBombEntity>> {
 	public VoidBombRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelvoid_explosive(context.bakeLayer(Modelvoid_explosive.LAYER_LOCATION)), 0.4f);
+		super(context, new ModelVoidExplosive(context.bakeLayer(ModelVoidExplosive.LAYER_LOCATION)), 0.4f);
 	}
 
 	@Override

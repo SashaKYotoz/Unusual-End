@@ -14,7 +14,7 @@ import net.sweety.unusualend.UnusualEnd;
 // Made with Blockbench 4.9.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelqueen<T extends Entity> extends EntityModel<T> {
+public class ModelQueen<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelqueen"), "main");
@@ -26,7 +26,7 @@ public class Modelqueen<T extends Entity> extends EntityModel<T> {
 	public final ModelPart right_arm;
 	public final ModelPart head;
 
-	public Modelqueen(ModelPart root) {
+	public ModelQueen(ModelPart root) {
 		this.tail = root.getChild("tail");
 		this.body = root.getChild("body");
 		this.right_wings = root.getChild("right_wings");

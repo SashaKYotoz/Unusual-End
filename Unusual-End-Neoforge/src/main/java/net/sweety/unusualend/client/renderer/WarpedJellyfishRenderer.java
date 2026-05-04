@@ -6,21 +6,21 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.client.model.Modelglub;
-import net.sweety.unusualend.entity.EnderBugEntity;
-import net.sweety.unusualend.entity.WarpedJellyfishEntity;
+import net.sweety.unusualend.client.model.ModelGlub;
+import net.sweety.unusualend.entity.FlampyrEntity;
+import net.sweety.unusualend.entity.GlubEntity;
 
-public class WarpedJellyfishRenderer extends MobRenderer<WarpedJellyfishEntity, Modelglub<WarpedJellyfishEntity>> {
+public class WarpedJellyfishRenderer extends MobRenderer<GlubEntity, ModelGlub<GlubEntity>> {
 	public WarpedJellyfishRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelglub(context.bakeLayer(Modelglub.LAYER_LOCATION)), 0.3f);
+		super(context, new ModelGlub(context.bakeLayer(ModelGlub.LAYER_LOCATION)), 0.3f);
 	}
 
-	protected void scale(EnderBugEntity entity, PoseStack posestack, float partialTicks) {
+	protected void scale(FlampyrEntity entity, PoseStack posestack, float partialTicks) {
 		posestack.scale(entity.getScale(), entity.getScale(), entity.getScale());
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(WarpedJellyfishEntity entity) {
+	public ResourceLocation getTextureLocation(GlubEntity entity) {
 		return UnusualEnd.makeUEID("textures/entities/glub.png");
 	}
 }

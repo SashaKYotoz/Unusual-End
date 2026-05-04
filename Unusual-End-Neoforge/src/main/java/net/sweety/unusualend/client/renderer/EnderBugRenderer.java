@@ -8,12 +8,12 @@ import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.client.renderer.entity.layers.EyesLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.client.model.Modelender_firefly;
-import net.sweety.unusualend.entity.EnderBugEntity;
+import net.sweety.unusualend.client.model.ModelFlampyr;
+import net.sweety.unusualend.entity.FlampyrEntity;
 
-public class EnderBugRenderer extends MobRenderer<EnderBugEntity, Modelender_firefly<EnderBugEntity>> {
+public class EnderBugRenderer extends MobRenderer<FlampyrEntity, ModelFlampyr<FlampyrEntity>> {
 	public EnderBugRenderer(EntityRendererProvider.Context context) {
-		super(context, new Modelender_firefly(context.bakeLayer(Modelender_firefly.LAYER_LOCATION)), 0.4f);
+		super(context, new ModelFlampyr(context.bakeLayer(ModelFlampyr.LAYER_LOCATION)), 0.4f);
 		this.addLayer(new EyesLayer<>(this) {
             @Override
             public RenderType renderType() {
@@ -22,12 +22,12 @@ public class EnderBugRenderer extends MobRenderer<EnderBugEntity, Modelender_fir
         });
 	}
 
-	protected void scale(EnderBugEntity entity, PoseStack posestack, float partialTicks) {
+	protected void scale(FlampyrEntity entity, PoseStack posestack, float partialTicks) {
 		posestack.scale(entity.getScale(), entity.getScale(), entity.getScale());
 	}
 
 	@Override
-	public ResourceLocation getTextureLocation(EnderBugEntity entity) {
+	public ResourceLocation getTextureLocation(FlampyrEntity entity) {
 		return UnusualEnd.makeUEID("textures/entities/ender_firefly.png");
 	}
 }

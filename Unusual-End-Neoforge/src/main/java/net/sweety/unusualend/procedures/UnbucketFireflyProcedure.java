@@ -27,7 +27,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.entity.EnderBugEntity;
+import net.sweety.unusualend.entity.FlampyrEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
 
 import java.util.Comparator;
@@ -132,18 +132,18 @@ public class UnbucketFireflyProcedure {
 					_level.playLocalSound(x, y, z, SoundEvents.ENDERMITE_AMBIENT, SoundSource.NEUTRAL, 1, 1, false);
 				}
 			}
-			if (!world.getEntitiesOfClass(EnderBugEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
+			if (!world.getEntitiesOfClass(FlampyrEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).isEmpty()
 					&& NBTProcessor.getNBTBoolean(stack,"isNamed")) {
 				name = stack.getDisplayName().getString();
 				name = name.substring(1, (name).length() - 1);
-				world.getEntitiesOfClass(EnderBugEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+				world.getEntitiesOfClass(FlampyrEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}
 				}.compareDistOf((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ()))).findFirst().orElse(null).setCustomName(Component.literal(name));
 			}
 			if (NBTProcessor.getNBTDouble(stack,"tagHealth") != 0) {
-				if (((Entity) world.getEntitiesOfClass(EnderBugEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
+				if (((Entity) world.getEntitiesOfClass(FlampyrEntity.class, AABB.ofSize(new Vec3((x + direction.getStepX()), (y + direction.getStepY()), (z + direction.getStepZ())), 1, 1, 1), e -> true).stream().sorted(new Object() {
 					Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
 						return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
 					}

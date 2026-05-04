@@ -14,7 +14,7 @@ import net.sweety.unusualend.UnusualEnd;
 // Made with Blockbench 4.9.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelenderbulb<T extends Entity> extends EntityModel<T> {
+public class ModelEnderbulb<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelenderbulb"), "main");
@@ -22,7 +22,7 @@ public class Modelenderbulb<T extends Entity> extends EntityModel<T> {
 	public final ModelPart eye_2;
 	public final ModelPart eye_3;
 
-	public Modelenderbulb(ModelPart root) {
+	public ModelEnderbulb(ModelPart root) {
 		this.eye_1 = root.getChild("eye_1");
 		this.eye_2 = root.getChild("eye_2");
 		this.eye_3 = root.getChild("eye_3");

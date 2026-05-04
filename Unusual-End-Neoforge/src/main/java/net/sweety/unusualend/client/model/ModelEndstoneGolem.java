@@ -2,7 +2,7 @@ package net.sweety.unusualend.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import custom.sweety.unusualend.client.animation.endstonegolemAnimation;
+import custom.sweety.unusualend.client.animation.EndstoneGolemAnimation;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -14,7 +14,7 @@ import net.sweety.unusualend.entity.EndstoneGolemEntity;
 // Made with Blockbench 4.10.3
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
-public class Modelendstonegolem<T extends EndstoneGolemEntity> extends HierarchicalModel<T> {
+public class ModelEndstoneGolem<T extends EndstoneGolemEntity> extends HierarchicalModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(UnusualEnd.makeUEID("modelendstonegolem"), "main");
@@ -27,7 +27,7 @@ public class Modelendstonegolem<T extends EndstoneGolemEntity> extends Hierarchi
 	public final ModelPart lower_body;
 	public final ModelPart upper_body;
 
-	public Modelendstonegolem(ModelPart root) {
+	public ModelEndstoneGolem(ModelPart root) {
 		this.all = root.getChild("all");
 		this.head = all.getChild("head");
 		this.right_arm = all.getChild("right_arm");
@@ -61,11 +61,11 @@ public class Modelendstonegolem<T extends EndstoneGolemEntity> extends Hierarchi
 
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		root().getAllParts().forEach(ModelPart::resetPose);
-		this.animate(entity.attackAnimationState, endstonegolemAnimation.ATTACK, ageInTicks);
-		this.animate(entity.pushAnimationState, endstonegolemAnimation.PUSH, ageInTicks);
-		this.animate(entity.idleAnimationState, endstonegolemAnimation.IDLE, ageInTicks);
+		this.animate(entity.attackAnimationState, EndstoneGolemAnimation.ATTACK, ageInTicks);
+		this.animate(entity.pushAnimationState, EndstoneGolemAnimation.PUSH, ageInTicks);
+		this.animate(entity.idleAnimationState, EndstoneGolemAnimation.IDLE, ageInTicks);
 		if (!entity.isInWaterOrBubble()) {
-			this.animateWalk(endstonegolemAnimation.WALK, limbSwing, limbSwingAmount, 2.0F, 4.0F);
+			this.animateWalk(EndstoneGolemAnimation.WALK, limbSwing, limbSwingAmount, 2.0F, 4.0F);
 		}
 	}
 
