@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.block;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
@@ -38,7 +39,10 @@ public class PurpurTankBlock extends Block implements EntityBlock {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.translatable("block.unusualend.purpur_tank"));
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
+            list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.purpur_tank").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

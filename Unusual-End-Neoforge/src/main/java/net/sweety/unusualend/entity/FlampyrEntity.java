@@ -69,7 +69,8 @@ public class FlampyrEntity extends TamableAnimal {
         this.goalSelector.addGoal(2, new TemptGoal(this, 1.2, Ingredient.of(UnusualEndItems.END_BLOB.get()), false) {
             @Override
             public boolean canUse() {
-                Entity entity = FlampyrEntity.this;;
+                Entity entity = FlampyrEntity.this;
+                ;
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 
@@ -302,6 +303,16 @@ public class FlampyrEntity extends TamableAnimal {
     }
 
     @Override
+    public void playAmbientSound() {
+        this.playSound(SoundEvents.PARROT_AMBIENT, this.getSoundVolume(), 1.6f);
+    }
+
+    @Override
+    public float getVoicePitch() {
+        return super.getVoicePitch() - 0.4f;
+    }
+
+    @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
         InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
@@ -315,7 +326,7 @@ public class FlampyrEntity extends TamableAnimal {
                 if (this.isOwnedBy(player)) {
                     if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
                         this.usePlayerItem(player, hand, itemstack);
-                        this.heal((float) item.getFoodProperties(itemstack,player).nutrition());
+                        this.heal((float) item.getFoodProperties(itemstack, player).nutrition());
                         retval = InteractionResult.sidedSuccess(this.level().isClientSide());
                     } else if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
                         this.usePlayerItem(player, hand, itemstack);

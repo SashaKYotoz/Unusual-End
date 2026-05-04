@@ -39,7 +39,10 @@ public class PhantomMembraneBlock extends Block {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.translatable("lore.unusualend.player_solid").withStyle(ChatFormatting.GRAY));
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
+            list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.player_solid").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

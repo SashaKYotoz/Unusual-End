@@ -27,111 +27,116 @@ import net.sweety.unusualend.procedures.EnderbulbOnEntityTickUpdateProcedure;
 
 public class EnderbulbEntity extends Monster {
 
-	public EnderbulbEntity(EntityType<EnderbulbEntity> type, Level world) {
-		super(type, world);
-		xpReward = 3;
-		setNoAi(false);
-		this.moveControl = new FlyingMoveControl(this, 10, true);
-	}
+    public EnderbulbEntity(EntityType<EnderbulbEntity> type, Level world) {
+        super(type, world);
+        xpReward = 3;
+        setNoAi(false);
+        this.moveControl = new FlyingMoveControl(this, 10, true);
+    }
 
-	@Override
-	protected PathNavigation createNavigation(Level world) {
-		return new FlyingPathNavigation(this, world);
-	}
+    @Override
+    public float getVoicePitch() {
+        return 0.5f;
+    }
 
-	@Override
-	protected void registerGoals() {
-		super.registerGoals();
-		this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.8, true));
-		this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true, false));
-		this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
-		this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 0.6, false));
-		this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
-		this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, (float) 12));
-		this.goalSelector.addGoal(7, new AvoidEntityGoal<>(this, Player.class, (float) 3, 1.3, 1.5));
-		this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.9, 20) {
-			@Override
-			protected Vec3 getPosition() {
-				RandomSource random = EnderbulbEntity.this.getRandom();
-				double dir_x = EnderbulbEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16);
-				double dir_y = EnderbulbEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16);
-				double dir_z = EnderbulbEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16);
-				return new Vec3(dir_x, dir_y, dir_z);
-			}
-		});
-	}
+    @Override
+    protected PathNavigation createNavigation(Level world) {
+        return new FlyingPathNavigation(this, world);
+    }
 
-	@Override
-	public SoundEvent getAmbientSound() {
-		return SoundEvents.ENDERMITE_AMBIENT;
-	}
+    @Override
+    protected void registerGoals() {
+        super.registerGoals();
+        this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.8, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal(this, Player.class, true, false));
+        this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
+        this.goalSelector.addGoal(4, new MeleeAttackGoal(this, 0.6, false));
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, (float) 12));
+        this.goalSelector.addGoal(7, new AvoidEntityGoal<>(this, Player.class, (float) 3, 1.3, 1.5));
+        this.goalSelector.addGoal(8, new RandomStrollGoal(this, 0.9, 20) {
+            @Override
+            protected Vec3 getPosition() {
+                RandomSource random = EnderbulbEntity.this.getRandom();
+                double dir_x = EnderbulbEntity.this.getX() + ((random.nextFloat() * 2 - 1) * 16);
+                double dir_y = EnderbulbEntity.this.getY() + ((random.nextFloat() * 2 - 1) * 16);
+                double dir_z = EnderbulbEntity.this.getZ() + ((random.nextFloat() * 2 - 1) * 16);
+                return new Vec3(dir_x, dir_y, dir_z);
+            }
+        });
+    }
 
-	@Override
-	public void playStepSound(BlockPos pos, BlockState blockIn) {
-		this.playSound(SoundEvents.ENDERMITE_STEP, 0.15f, 1);
-	}
+    @Override
+    public SoundEvent getAmbientSound() {
+        return SoundEvents.ENDERMITE_AMBIENT;
+    }
 
-	@Override
-	public SoundEvent getHurtSound(DamageSource ds) {
-		return SoundEvents.ENDERMITE_HURT;
-	}
+    @Override
+    public void playStepSound(BlockPos pos, BlockState blockIn) {
+        this.playSound(SoundEvents.ENDERMITE_STEP, 0.15f, 1);
+    }
 
-	@Override
-	public SoundEvent getDeathSound() {
-		return SoundEvents.ENDERMITE_DEATH;
-	}
+    @Override
+    public SoundEvent getHurtSound(DamageSource ds) {
+        return SoundEvents.ENDERMITE_HURT;
+    }
 
-	@Override
-	public boolean causeFallDamage(float l, float d, DamageSource source) {
-		return false;
-	}
+    @Override
+    public SoundEvent getDeathSound() {
+        return SoundEvents.ENDERMITE_DEATH;
+    }
 
-	@Override
-	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.FALL))
-			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
-			return false;
-		return super.hurt(damagesource, amount);
-	}
+    @Override
+    public boolean causeFallDamage(float l, float d, DamageSource source) {
+        return false;
+    }
 
-	@Override
-	public void die(DamageSource source) {
-		super.die(source);
-		EnderbulbEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
-	}
+    @Override
+    public boolean hurt(DamageSource damagesource, float amount) {
+        if (damagesource.is(DamageTypes.FALL))
+            return false;
+        if (damagesource.is(DamageTypes.DRAGON_BREATH))
+            return false;
+        return super.hurt(damagesource, amount);
+    }
 
-	@Override
-	public void baseTick() {
-		super.baseTick();
-		EnderbulbOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
-	}
+    @Override
+    public void die(DamageSource source) {
+        super.die(source);
+        EnderbulbEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+    }
 
-	@Override
-	protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
-	}
+    @Override
+    public void baseTick() {
+        super.baseTick();
+        EnderbulbOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+    }
 
-	@Override
-	public void setNoGravity(boolean ignored) {
-		super.setNoGravity(true);
-	}
+    @Override
+    protected void checkFallDamage(double y, boolean onGroundIn, BlockState state, BlockPos pos) {
+    }
 
-	public void aiStep() {
-		super.aiStep();
-		this.setNoGravity(true);
-	}
+    @Override
+    public void setNoGravity(boolean ignored) {
+        super.setNoGravity(true);
+    }
 
-	public static AttributeSupplier.Builder createAttributes() {
-		AttributeSupplier.Builder builder = Mob.createMobAttributes();
-		builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
-		builder = builder.add(Attributes.MAX_HEALTH, 48);
-		builder = builder.add(Attributes.ARMOR, 4);
-		builder = builder.add(Attributes.ATTACK_DAMAGE, 4);
-		builder = builder.add(Attributes.FOLLOW_RANGE, 16);
-		builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.4);
-		builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.2);
-		builder = builder.add(Attributes.FLYING_SPEED, 0.3);
-		builder = builder.add(Attributes.STEP_HEIGHT, 1.5f);
-		return builder;
-	}
+    public void aiStep() {
+        super.aiStep();
+        this.setNoGravity(true);
+    }
+
+    public static AttributeSupplier.Builder createAttributes() {
+        AttributeSupplier.Builder builder = Mob.createMobAttributes();
+        builder = builder.add(Attributes.MOVEMENT_SPEED, 0.3);
+        builder = builder.add(Attributes.MAX_HEALTH, 48);
+        builder = builder.add(Attributes.ARMOR, 4);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, 4);
+        builder = builder.add(Attributes.FOLLOW_RANGE, 16);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.4);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, 0.2);
+        builder = builder.add(Attributes.FLYING_SPEED, 0.3);
+        builder = builder.add(Attributes.STEP_HEIGHT, 1.5f);
+        return builder;
+    }
 }

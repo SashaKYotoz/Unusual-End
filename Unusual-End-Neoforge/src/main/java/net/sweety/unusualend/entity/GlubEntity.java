@@ -152,6 +152,14 @@ public class GlubEntity extends Monster {
         return retval;
     }
 
+    public void onSyncedDataUpdated(EntityDataAccessor<?> accessor) {
+        if (IS_BABY.equals(accessor)) {
+            this.refreshDimensions();
+        }
+
+        super.onSyncedDataUpdated(accessor);
+    }
+
     @Override
     public void baseTick() {
         super.baseTick();

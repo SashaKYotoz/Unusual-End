@@ -53,10 +53,12 @@ public class UnusualEndClient {
         event.registerLayerDefinition(ModelDragling.LAYER_LOCATION, ModelDragling::createBodyLayer);
         event.registerLayerDefinition(ModelVoidExplosive.LAYER_LOCATION, ModelVoidExplosive::createBodyLayer);
         event.registerLayerDefinition(ModelBolok.LAYER_LOCATION, ModelBolok::createBodyLayer);
+        event.registerLayerDefinition(ModelBabyBolok.LAYER_LOCATION, ModelBabyBolok::createBodyLayer);
         event.registerLayerDefinition(ModelEnderling.LAYER_LOCATION, ModelEnderling::createBodyLayer);
         event.registerLayerDefinition(ModelBluk.LAYER_LOCATION, ModelBluk::createBodyLayer);
         event.registerLayerDefinition(ModelEnderblob.LAYER_LOCATION, ModelEnderblob::createBodyLayer);
         event.registerLayerDefinition(ModelFlampyr.LAYER_LOCATION, ModelFlampyr::createBodyLayer);
+        event.registerLayerDefinition(ModelBabyFlampyr.LAYER_LOCATION, ModelBabyFlampyr::createBodyLayer);
         event.registerLayerDefinition(ModelWarpedJellyfish.LAYER_LOCATION, ModelWarpedJellyfish::createBodyLayer);
         event.registerLayerDefinition(ModelEnderbulb.LAYER_LOCATION, ModelEnderbulb::createBodyLayer);
         event.registerLayerDefinition(ModelSmallEnderbulb.LAYER_LOCATION, ModelSmallEnderbulb::createBodyLayer);
@@ -67,6 +69,7 @@ public class UnusualEndClient {
         event.registerLayerDefinition(ModelEnderTrapper118.LAYER_LOCATION, ModelEnderTrapper118::createBodyLayer);
         event.registerLayerDefinition(ModelBubble.LAYER_LOCATION, ModelBubble::createBodyLayer);
         event.registerLayerDefinition(ModelGlub.LAYER_LOCATION, ModelGlub::createBodyLayer);
+        event.registerLayerDefinition(ModelBabyGlub.LAYER_LOCATION, ModelBabyGlub::createBodyLayer);
         event.registerLayerDefinition(ModelStructureSpawn.LAYER_LOCATION, ModelStructureSpawn::createBodyLayer);
         event.registerLayerDefinition(ModelChorusHelmet.LAYER_LOCATION, ModelChorusHelmet::createBodyLayer);
         event.registerLayerDefinition(ModelArrowModelEntity.LAYER_LOCATION, ModelArrowModelEntity::createBodyLayer);
@@ -78,7 +81,7 @@ public class UnusualEndClient {
         event.registerEntityRenderer(UnusualendModEntities.ENDER_BLOB.get(), EnderblobRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.UNDEAD_ENDERLING.get(), EnderlingRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.ENDSTONE_TRAPPER.get(), EnderTrapperRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.ENDER_FIREFLY.get(), EnderBugRenderer::new);
+        event.registerEntityRenderer(UnusualendModEntities.ENDER_FIREFLY.get(), FlampyrRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.ENDSTONE_GOLEM.get(), EndstoneGolemRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.DRAGLING.get(), DraglingRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.BOLOK.get(), BolokRenderer::new);
@@ -87,7 +90,7 @@ public class UnusualEndClient {
         event.registerEntityRenderer(UnusualendModEntities.SPUNKLER.get(), SpunklerRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.VOID_CRACK.get(), VoidCrackRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.WARPED_BALLOON.get(), LargeBubbleRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.GLUB.get(), WarpedJellyfishRenderer::new);
+        event.registerEntityRenderer(UnusualendModEntities.GLUB.get(), GlubRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.VOID_BOMB.get(), VoidBombRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.ENDERBULB.get(), EnderbulbRenderer::new);
         event.registerEntityRenderer(UnusualendModEntities.SMALL_ENDERBULB.get(), SmallEnderbulbRenderer::new);

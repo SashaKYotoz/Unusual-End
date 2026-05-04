@@ -56,7 +56,10 @@ public class ShinyCrystalTorchBlock extends Block implements SimpleWaterloggedBl
 	@Override
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.translatable("lore.unusualend.place_underwater").withStyle(ChatFormatting.DARK_GRAY));
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
+            list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.place_underwater").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

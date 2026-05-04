@@ -144,6 +144,14 @@ public class BolokEntity extends Monster {
         return super.hurt(damagesource, amount);
     }
 
+    public void onSyncedDataUpdated(EntityDataAccessor<?> accessor) {
+        if (IS_BABY.equals(accessor)) {
+            this.refreshDimensions();
+        }
+
+        super.onSyncedDataUpdated(accessor);
+    }
+
     @Override
     public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
         InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
@@ -203,6 +211,7 @@ public class BolokEntity extends Monster {
         builder = builder.add(Attributes.FLYING_SPEED, 0.3);
         return builder;
     }
+
     @Override
     public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor accessor, DifficultyInstance instance, MobSpawnType type, @Nullable SpawnGroupData data) {
         this.setBaby(random.nextFloat() < 0.1f);

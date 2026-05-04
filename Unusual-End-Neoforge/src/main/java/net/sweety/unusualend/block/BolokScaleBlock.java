@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.block;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
@@ -16,15 +17,18 @@ import net.minecraft.world.level.material.MapColor;
 
 import java.util.List;
 
-public class BolokScaleBlockBlock extends Block {
-	public BolokScaleBlockBlock() {
+public class BolokScaleBlock extends Block {
+	public BolokScaleBlock() {
 		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_BLUE).sound(SoundType.STEM).strength(9.5f, 4000f).requiresCorrectToolForDrops());
 	}
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.literal("\u00A78Highly Blast Resistant"));
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
+            list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.blast_resistant").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override

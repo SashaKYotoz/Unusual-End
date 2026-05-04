@@ -94,7 +94,7 @@ public class UnusualEndBlocks {
     public static final DeferredBlock<GneissBrickWallBlock> GNEISS_BRICK_WALL = REGISTRY.register("gneiss_brick_wall", () -> new GneissBrickWallBlock());
     public static final DeferredBlock<GloopstoneBrickWallBlock> GLOOPSTONE_BRICK_WALL = REGISTRY.register("gloopstone_brick_wall", () -> new GloopstoneBrickWallBlock());
     public static final DeferredBlock<ShinyCrystalBlock> SHINY_CRYSTAL_BLOCK = REGISTRY.register("shiny_crystal_block", () -> new ShinyCrystalBlock());
-    public static final DeferredBlock<BolokScaleBlockBlock> BOLOK_SCALE_BLOCK = REGISTRY.register("bolok_scale_block", () -> new BolokScaleBlockBlock());
+    public static final DeferredBlock<BolokScaleBlock> BOLOK_SCALE_BLOCK = REGISTRY.register("bolok_scale_block", () -> new BolokScaleBlock());
     public static final DeferredBlock<ShinyCrystalTilesBlock> SHINY_CRYSTAL_TILES = REGISTRY.register("shiny_crystal_tiles", () -> new ShinyCrystalTilesBlock());
     public static final DeferredBlock<ChiseledGloopstoneBricksBlock> CHISELED_GLOOPSTONE_BRICKS = REGISTRY.register("chiseled_gloopstone_bricks", () -> new ChiseledGloopstoneBricksBlock());
     public static final DeferredBlock<WarpedMossBlock> WARPED_MOSS = REGISTRY.register("warped_moss", () -> new WarpedMossBlock());

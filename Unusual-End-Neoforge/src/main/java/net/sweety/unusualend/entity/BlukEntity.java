@@ -138,6 +138,11 @@ public class BlukEntity extends Monster {
     }
 
     @Override
+    public float getVoicePitch() {
+        return super.getVoicePitch() + 0.7f;
+    }
+
+    @Override
     public int getAirSupply() {
         return 100;
     }

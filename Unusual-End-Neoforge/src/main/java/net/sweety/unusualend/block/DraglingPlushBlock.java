@@ -40,7 +40,10 @@ public class DraglingPlushBlock extends Block implements SimpleWaterloggedBlock 
 	@Override
 	public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> list, TooltipFlag tooltipFlag) {
 		super.appendHoverText(stack, context, list, tooltipFlag);
-		list.add(Component.translatable("lore.unusualend.plush").withStyle(ChatFormatting.DARK_GRAY));
+        if (net.minecraft.client.gui.screens.Screen.hasControlDown()) {
+            list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.plush").getString()));
+        } else
+            list.add(Component.translatable("item.unusual_end.short_description").withStyle(ChatFormatting.DARK_GRAY));
 	}
 
 	@Override
@@ -61,11 +64,11 @@ public class DraglingPlushBlock extends Block implements SimpleWaterloggedBlock 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> Shapes.or(box(5, 5, 6, 10, 10, 11), box(4, 0, 6, 11, 5, 12));
-			case NORTH -> Shapes.or(box(6, 5, 5, 11, 10, 10), box(5, 0, 4, 12, 5, 10));
+            case NORTH -> Shapes.or(box(6, 5, 5, 11, 10, 10), box(5, 0, 4, 12, 5, 10));
 			case EAST -> Shapes.or(box(6, 5, 6, 11, 10, 11), box(6, 0, 5, 12, 5, 12));
 			case WEST -> Shapes.or(box(5, 5, 5, 10, 10, 10), box(4, 0, 4, 10, 5, 11));
-		};
+            default -> Shapes.or(box(5, 5, 6, 10, 10, 11), box(4, 0, 6, 11, 5, 12));
+        };
 	}
 
 	@Override
