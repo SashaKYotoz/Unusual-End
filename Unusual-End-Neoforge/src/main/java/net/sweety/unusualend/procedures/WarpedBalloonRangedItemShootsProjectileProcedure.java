@@ -35,13 +35,13 @@ public class WarpedBalloonRangedItemShootsProjectileProcedure {
         Level projectileLevel = player.level();
         if (!projectileLevel.isClientSide()) {
             Projectile projectile = new Object() {
-                public Projectile getArrow(Level level, float damage, int knockback) {
+                public Projectile getArrow(Level level, float damage) {
                     AbstractArrow entityToSpawn = new WarpedBalloonProjEntity(UnusualendModEntities.WARPED_BALLOON_PROJ.get(), level);
                     entityToSpawn.setBaseDamage(damage);
                     entityToSpawn.setSilent(true);
                     return entityToSpawn;
                 }
-            }.getArrow(projectileLevel, 0, 0);
+            }.getArrow(projectileLevel, 0);
             projectile.setPos(player.getX(), player.getEyeY() - 0.1, player.getZ());
             projectile.shoot(player.getLookAngle().x, player.getLookAngle().y, player.getLookAngle().z, (float) 1.5, (float) 0.3);
             projectileLevel.addFreshEntity(projectile);

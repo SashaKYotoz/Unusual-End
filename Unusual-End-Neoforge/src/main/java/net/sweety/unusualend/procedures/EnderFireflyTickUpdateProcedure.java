@@ -11,12 +11,11 @@ public class EnderFireflyTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		boolean lcl = false;
 		if (Math.random() < 0.05) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.END_ROD, x, y, z, 1, 0.35, 0.35, 0.35, 0);
 		}
-		if (!(entity.getPersistentData().getBoolean("coords") == true)) {
+		if (!(entity.getPersistentData().getBoolean("coords"))) {
 			entity.getPersistentData().putBoolean("coords", true);
 			entity.getPersistentData().putDouble("x", x);
 			entity.getPersistentData().putDouble("y", y);

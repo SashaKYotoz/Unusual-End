@@ -55,7 +55,6 @@ public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlo
 			int x = pos.getX();
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
-			BlockState blockstate = world.getBlockState(pos.above());
 			additionalCondition = EndstoneSproutsAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
 		}
 		return (groundState.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)

@@ -6,11 +6,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
+import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndItems;
 
 public class BucketBolokProcedure {
@@ -18,18 +21,10 @@ public class BucketBolokProcedure {
         if (entity == null || sourceentity == null)
             return;
         ItemStack entity_bucket = new ItemStack(UnusualEndItems.BOLOK_BUCKET.get());
-        if (!(new Object() {
-            public String getValue() {
-                CompoundTag dataIndex = new CompoundTag();
-                entity.saveWithoutId(dataIndex);
-                return dataIndex.getString("CustomName");
-            }
-        }.getValue()).isEmpty()) {
-            entity_bucket.set(DataComponents.CUSTOM_NAME, Component.literal((entity.getDisplayName().getString())));
-            NBTProcessor.setNBTBoolean(entity_bucket,"isNamed", true);
+        if (entity_bucket.has(DataComponents.BUCKET_ENTITY_DATA) && entity instanceof Mob living) {
+            UnusualEnd.LOGGER.info(NBTProcessor.formBabyTag(living).toString());
+            entity_bucket.set(DataComponents.BUCKET_ENTITY_DATA, CustomData.of(NBTProcessor.formBabyTag(living)));
         }
-        NBTProcessor.setNBTDouble(entity_bucket,"tagHealth", (entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1));
-        NBTProcessor.setNBTBoolean(entity_bucket,"isBaby", entity instanceof LivingEntity _livEnt6 && _livEnt6.isBaby());
         if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
             if (!entity.level().isClientSide())
                 entity.discard();
@@ -47,7 +42,7 @@ public class BucketBolokProcedure {
                 if (!world.isClientSide()) {
                     if (sourceentity instanceof LivingEntity _entity) {
                         ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-                        _setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1));
+                        _setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1);
                         _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
                         if (_entity instanceof Player _player)
                             _player.getInventory().setChanged();
@@ -76,7 +71,7 @@ public class BucketBolokProcedure {
                 if (!world.isClientSide()) {
                     if (sourceentity instanceof LivingEntity _entity) {
                         ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-                        _setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1));
+                        _setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1);
                         _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
                         if (_entity instanceof Player _player)
                             _player.getInventory().setChanged();

@@ -6,10 +6,12 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
@@ -24,24 +26,8 @@ public class BucketFireflyProcedure {
         if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET
                 || (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
             entity_bucket = new ItemStack(UnusualEndItems.ENDERFIREFLY_BUCKET.get());
-            if (!(new Object() {
-                public String getValue() {
-                    CompoundTag dataIndex = new CompoundTag();
-                    entity.saveWithoutId(dataIndex);
-                    return dataIndex.getString("CustomName");
-                }
-            }.getValue()).isEmpty()) {
-                entity_bucket.set(DataComponents.CUSTOM_NAME, Component.literal((entity.getDisplayName().getString())));
-                NBTProcessor.setNBTBoolean(entity_bucket, "isNamed", true);
-            }
-            if (entity instanceof TamableAnimal _tamEnt ? _tamEnt.isTame() : false) {
-                NBTProcessor.setNBTString(entity_bucket,"Owner", ("" + ((entity instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null).getDisplayName().getString())));
-                NBTProcessor.setNBTBoolean(entity_bucket,"isTamed", true);
-            } else {
-                NBTProcessor.setNBTBoolean(entity_bucket,"isTamed", false);
-            }
-            NBTProcessor.setNBTDouble(entity_bucket,"tagHealth", (entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1));
-            NBTProcessor.setNBTBoolean(entity_bucket,"isBaby", entity instanceof LivingEntity _livEnt16 && _livEnt16.isBaby());
+            if (entity_bucket.has(DataComponents.BUCKET_ENTITY_DATA) && entity instanceof Mob living)
+                entity_bucket.set(DataComponents.BUCKET_ENTITY_DATA, CustomData.of(NBTProcessor.formBabyTag(living)));
             if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
                 if (!entity.level().isClientSide())
                     entity.discard();
@@ -59,7 +45,7 @@ public class BucketFireflyProcedure {
                     if (!world.isClientSide()) {
                         if (sourceentity instanceof LivingEntity _entity) {
                             ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-                            _setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1));
+                            _setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1);
                             _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
                             if (_entity instanceof Player _player)
                                 _player.getInventory().setChanged();
@@ -88,7 +74,7 @@ public class BucketFireflyProcedure {
                     if (!world.isClientSide()) {
                         if (sourceentity instanceof LivingEntity _entity) {
                             ItemStack _setstack = new ItemStack(Items.BUCKET).copy();
-                            _setstack.setCount((int) ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1));
+                            _setstack.setCount((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getCount() - 1);
                             _entity.setItemInHand(InteractionHand.OFF_HAND, _setstack);
                             if (_entity instanceof Player _player)
                                 _player.getInventory().setChanged();
@@ -113,7 +99,7 @@ public class BucketFireflyProcedure {
                     }
                 }.getValue())) {
                     if (sourceentity instanceof Player _player && !_player.level().isClientSide())
-                        _player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + Component.translatable("text.unusualend.follow").getString())), true);
+                        _player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + Component.translatable("text.unusualend.follow").getString())), true);
                     {
                         CompoundTag dataIndex = new CompoundTag();
                         entity.saveWithoutId(dataIndex);
@@ -122,7 +108,7 @@ public class BucketFireflyProcedure {
                     }
                 } else {
                     if (sourceentity instanceof Player _player && !_player.level().isClientSide())
-                        _player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + "" + Component.translatable("text.unusualend.sit").getString())), true);
+                        _player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + Component.translatable("text.unusualend.sit").getString())), true);
                     {
                         CompoundTag dataIndex = new CompoundTag();
                         entity.saveWithoutId(dataIndex);

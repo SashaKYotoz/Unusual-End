@@ -21,7 +21,6 @@ public class WarpedBubbleEntityCollidesInTheBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		double dis = 0;
 		if (!(entity instanceof BolokEntity || entity instanceof GlubEntity || entity instanceof BlukEntity)) {
 			entity.fallDistance = 0;
 			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == UnusualEndItems.WARPED_BOOTS.get())) {

@@ -10,7 +10,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.client.model.ModelBabyGlub;
 import net.sweety.unusualend.client.model.ModelGlub;
-import net.sweety.unusualend.entity.FlampyrEntity;
 import net.sweety.unusualend.entity.GlubEntity;
 
 public class GlubRenderer extends MobRenderer<GlubEntity, EntityModel<GlubEntity>> {

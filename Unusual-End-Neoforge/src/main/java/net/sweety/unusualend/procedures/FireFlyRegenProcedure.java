@@ -11,8 +11,8 @@ import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
-import net.sweety.unusualend.entity.FlampyrEntity;
 import net.sweety.unusualend.entity.EnderblobEntity;
+import net.sweety.unusualend.entity.FlampyrEntity;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndItems;
 

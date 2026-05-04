@@ -72,21 +72,13 @@ public class EnderlingEntity extends Monster {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, false, false) {
             @Override
             public boolean canUse() {
-                double x = EnderlingEntity.this.getX();
-                double y = EnderlingEntity.this.getY();
-                double z = EnderlingEntity.this.getZ();
                 Entity entity = EnderlingEntity.this;
-                Level world = EnderlingEntity.this.level();
                 return super.canUse() && ReturnIsWearingMaskProcedure.execute(entity);
             }
 
             @Override
             public boolean canContinueToUse() {
-                double x = EnderlingEntity.this.getX();
-                double y = EnderlingEntity.this.getY();
-                double z = EnderlingEntity.this.getZ();
                 Entity entity = EnderlingEntity.this;
-                Level world = EnderlingEntity.this.level();
                 return super.canContinueToUse() && ReturnIsWearingMaskProcedure.execute(entity);
             }
         });

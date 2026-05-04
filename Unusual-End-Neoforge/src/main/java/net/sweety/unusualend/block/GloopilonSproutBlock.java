@@ -72,9 +72,8 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 
     @Override
     public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) {
-        if (pLevel instanceof LevelAccessor world) {
+        if (pLevel instanceof LevelAccessor)
             return pPos.getY() >= 120;
-        }
         return false;
     }
 

@@ -123,11 +123,7 @@ public class FlampyrEntity extends TamableAnimal {
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, SmallEnderbulbEntity.class, false, false) {
             @Override
             public boolean canUse() {
-                double x = FlampyrEntity.this.getX();
-                double y = FlampyrEntity.this.getY();
-                double z = FlampyrEntity.this.getZ();
                 Entity entity = FlampyrEntity.this;
-                Level world = FlampyrEntity.this.level();
                 return super.canUse() && ReturnNotSneakingProcedure.execute(entity);
             }
 

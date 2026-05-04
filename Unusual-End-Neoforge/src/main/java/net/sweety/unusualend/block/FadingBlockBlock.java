@@ -82,10 +82,6 @@ public class FadingBlockBlock extends Block implements EntityBlock {
 
 	@Override
 	public int getSignal(BlockState blockstate, BlockGetter blockAccess, BlockPos pos, Direction direction) {
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		Level world = (Level) blockAccess;
 		return (int) FadingBlockEmittedRedstonePowerProcedure.execute(blockstate);
 	}
 

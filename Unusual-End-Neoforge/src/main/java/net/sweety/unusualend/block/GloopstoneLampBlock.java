@@ -91,7 +91,6 @@ public class GloopstoneLampBlock extends Block {
 	@Override
 	public void animateTick(BlockState blockstate, Level world, BlockPos pos, RandomSource random) {
 		super.animateTick(blockstate, world, pos, random);
-		Player entity = Minecraft.getInstance().player;
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();

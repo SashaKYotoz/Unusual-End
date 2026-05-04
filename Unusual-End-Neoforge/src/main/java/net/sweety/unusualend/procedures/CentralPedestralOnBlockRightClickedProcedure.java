@@ -42,7 +42,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
             displayAltarMessage(player, altars);
         }
         if (altars == 8) {
-            triggerLightningSequence(world, x, y, z, altarPositions);
+            triggerLightningSequence(world, altarPositions);
             displayMessageToAllPlayers(world, x, y, z, "text.unusualend.queen_theme");
         }
     }
@@ -63,7 +63,7 @@ public class CentralPedestralOnBlockRightClickedProcedure {
         player.displayClientMessage(Component.literal(message.toString()), true);
     }
 
-    private static void triggerLightningSequence(LevelAccessor world, double x, double y, double z, BlockPos[] positions) {
+    private static void triggerLightningSequence(LevelAccessor world, BlockPos[] positions) {
         for (BlockPos pos : positions) {
             world.destroyBlock(pos, false);
             if (world instanceof ServerLevel serverLevel) {

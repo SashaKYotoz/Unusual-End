@@ -17,18 +17,13 @@ public class WanderingPearlProjectileHitsProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		boolean found = false;
 		double X = 0;
 		double Y = 0;
 		double Z = 0;
-		double sx = 0;
-		double sy = 0;
-		double sz = 0;
 		{
-			Entity _ent = entity;
-			_ent.teleportTo(x, y, z);
-			if (_ent instanceof ServerPlayer _serverPlayer)
-				_serverPlayer.connection.teleport(x, y, z, _ent.getYRot(), _ent.getXRot());
+            entity.teleportTo(x, y, z);
+			if (entity instanceof ServerPlayer _serverPlayer)
+				_serverPlayer.connection.teleport(x, y, z, entity.getYRot(), entity.getXRot());
 		}
 		for (int index0 = 0; index0 < 1000; index0++) {
 			X = x + Mth.nextInt(RandomSource.create(), -2, 2);
@@ -40,10 +35,9 @@ public class WanderingPearlProjectileHitsProcedure {
 						|| (world.getBlockState(BlockPos.containing(X, Y + 1, Z))).getBlock() == Blocks.AIR) {
 					if (world.getBlockState(BlockPos.containing(X, Y - 1, Z)).canOcclude()) {
 						{
-							Entity _ent = entity;
-							_ent.teleportTo(X, Y, Z);
-							if (_ent instanceof ServerPlayer _serverPlayer)
-								_serverPlayer.connection.teleport(X, Y, Z, _ent.getYRot(), _ent.getXRot());
+                            entity.teleportTo(X, Y, Z);
+							if (entity instanceof ServerPlayer _serverPlayer)
+								_serverPlayer.connection.teleport(X, Y, Z, entity.getYRot(), entity.getXRot());
 						}
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.PORTAL, X, Y, Z, 30, 0.5, 1.5, 0.5, 0);

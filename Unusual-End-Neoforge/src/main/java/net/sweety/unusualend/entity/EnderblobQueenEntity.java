@@ -105,7 +105,7 @@ public class EnderblobQueenEntity extends Monster {
     @Override
     public void awardKillScore(Entity entity, int score, DamageSource damageSource) {
         super.awardKillScore(entity, score, damageSource);
-        double swing_curve, original_curve, swing_offset, dis;
+        double swing_curve, original_curve, swing_offset;
         this.setSprinting(true);
         swing_offset = 2;
         swing_curve = 1;
