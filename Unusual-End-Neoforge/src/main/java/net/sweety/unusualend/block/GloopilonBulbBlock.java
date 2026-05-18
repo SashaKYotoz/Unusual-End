@@ -33,7 +33,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
     }
 
     public GloopilonBulbBlock() {
-        super(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(1f, 10f).lightLevel(s -> (new Object() {
+        super(BlockBehaviour.Properties.of().sound(SoundType.CORAL_BLOCK).strength(1f, 10f).lightLevel(s -> (new Object() {
             public int getLightLevel() {
                 if (s.getValue(AGE) == 0)
                     return 1;

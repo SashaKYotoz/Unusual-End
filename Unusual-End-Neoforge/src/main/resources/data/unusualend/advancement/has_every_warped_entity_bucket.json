@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:bluk_bucket"
+      "id": "unusualend:bluk_bucket"
     },
     "title": {
       "translate": "advancements.has_every_warped_entity_bucket.title"

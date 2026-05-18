@@ -31,9 +31,8 @@ import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber
 public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
-	public final static HashMap<String, Object> guistate = new HashMap<>();
-	public final Level world;
-	public final Player entity;
+	public final Level level;
+	public final Player player;
 	public int x, y, z;
 	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
 	private IItemHandler internal;
@@ -45,8 +44,8 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 
 	public InfuserGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(UnusualendModMenus.INFUSER_GUI.get(), id);
-		this.entity = inv.player;
-		this.world = inv.player.level();
+		this.player = inv.player;
+		this.level = inv.player.level();
 		this.internal = new ItemStackHandler(4);
 		BlockPos pos = null;
 		if (extraData != null) {
@@ -54,27 +53,27 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 			this.x = pos.getX();
 			this.y = pos.getY();
 			this.z = pos.getZ();
-			access = ContainerLevelAccess.create(world, pos);
+			access = ContainerLevelAccess.create(level, pos);
 		}
 		if (pos != null) {
-			if (extraData.readableBytes() == 1) { // bound to item
+			if (extraData.readableBytes() == 1) {
 				byte hand = extraData.readByte();
-				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
+				ItemStack itemstack = hand == 0 ? this.player.getMainHandItem() : this.player.getOffhandItem();
+				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.player.getMainHandItem() : this.player.getOffhandItem());
 				itemstack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 					this.internal = capability;
 					this.bound = true;
 				});
-			} else if (extraData.readableBytes() > 1) { // bound to entity
-				extraData.readByte(); // drop padding
-				boundEntity = world.getEntity(extraData.readVarInt());
+			} else if (extraData.readableBytes() > 1) {
+				extraData.readByte();
+				boundEntity = level.getEntity(extraData.readVarInt());
 				if (boundEntity != null)
 					boundEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 						this.internal = capability;
 						this.bound = true;
 					});
-			} else { // might be bound to block
-				boundBlockEntity = this.world.getBlockEntity(pos);
+			} else {
+				boundBlockEntity = this.level.getBlockEntity(pos);
 				if (boundBlockEntity != null)
 					boundBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 						this.internal = capability;
@@ -172,14 +171,14 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 	}
 
 	@Override
-	protected boolean moveItemStackTo(ItemStack p_38904_, int p_38905_, int p_38906_, boolean p_38907_) {
+	protected boolean moveItemStackTo(ItemStack stack, int p_38905_, int p_38906_, boolean p_38907_) {
 		boolean flag = false;
 		int i = p_38905_;
 		if (p_38907_) {
 			i = p_38906_ - 1;
 		}
-		if (p_38904_.isStackable()) {
-			while (!p_38904_.isEmpty()) {
+		if (stack.isStackable()) {
+			while (!stack.isEmpty()) {
 				if (p_38907_) {
 					if (i < p_38905_) {
 						break;
@@ -189,16 +188,16 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 				}
 				Slot slot = this.slots.get(i);
 				ItemStack itemstack = slot.getItem();
-				if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameTags(p_38904_, itemstack)) {
-					int j = itemstack.getCount() + p_38904_.getCount();
-					int maxSize = Math.min(slot.getMaxStackSize(), p_38904_.getMaxStackSize());
+				if (slot.mayPlace(itemstack) && !itemstack.isEmpty() && ItemStack.isSameItemSameTags(stack, itemstack)) {
+					int j = itemstack.getCount() + stack.getCount();
+					int maxSize = Math.min(slot.getMaxStackSize(), stack.getMaxStackSize());
 					if (j <= maxSize) {
-						p_38904_.setCount(0);
+						stack.setCount(0);
 						itemstack.setCount(j);
 						slot.set(itemstack);
 						flag = true;
 					} else if (itemstack.getCount() < maxSize) {
-						p_38904_.shrink(maxSize - itemstack.getCount());
+						stack.shrink(maxSize - itemstack.getCount());
 						itemstack.setCount(maxSize);
 						slot.set(itemstack);
 						flag = true;
@@ -211,7 +210,7 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 				}
 			}
 		}
-		if (!p_38904_.isEmpty()) {
+		if (!stack.isEmpty()) {
 			if (p_38907_) {
 				i = p_38906_ - 1;
 			} else {
@@ -227,11 +226,11 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 				}
 				Slot slot1 = this.slots.get(i);
 				ItemStack itemstack1 = slot1.getItem();
-				if (itemstack1.isEmpty() && slot1.mayPlace(p_38904_)) {
-					if (p_38904_.getCount() > slot1.getMaxStackSize()) {
-						slot1.setByPlayer(p_38904_.split(slot1.getMaxStackSize()));
+				if (itemstack1.isEmpty() && slot1.mayPlace(stack)) {
+					if (stack.getCount() > slot1.getMaxStackSize()) {
+						slot1.setByPlayer(stack.split(slot1.getMaxStackSize()));
 					} else {
-						slot1.setByPlayer(p_38904_.split(p_38904_.getCount()));
+						slot1.setByPlayer(stack.split(stack.getCount()));
 					}
 					slot1.setChanged();
 					flag = true;
@@ -250,7 +249,7 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 	@Override
 	public void removed(Player playerIn) {
 		super.removed(playerIn);
-		ClearSlot3Procedure.execute(world, x, y, z);
+		ClearSlot3Procedure.execute(level, x, y, z);
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
 				for (int j = 0; j < internal.getSlots(); ++j) {
@@ -276,10 +275,6 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		Player entity = event.player;
 		if (event.phase == TickEvent.Phase.END && entity.containerMenu instanceof InfuserGUIMenu) {
-			Level world = entity.level();
-			double x = entity.getX();
-			double y = entity.getY();
-			double z = entity.getZ();
 			InfuserGUIWhileThisGUIIsOpenTickProcedure.execute(entity);
 		}
 	}

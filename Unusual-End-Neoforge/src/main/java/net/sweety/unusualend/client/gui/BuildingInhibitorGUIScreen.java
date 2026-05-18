@@ -17,10 +17,8 @@ import net.sweety.unusualend.world.inventory.BuildingInhibitorGUIMenu;
 import java.util.HashMap;
 
 public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<BuildingInhibitorGUIMenu> {
-    private final static HashMap<String, Object> guistate = BuildingInhibitorGUIMenu.guistate;
     private final Level level;
     private final int x, y, z;
-    private final BlockPos pos;
     private final Player player;
 
     public BuildingInhibitorGUIScreen(BuildingInhibitorGUIMenu container, Inventory inventory, Component text) {
@@ -29,8 +27,7 @@ public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<Building
         this.x = container.x;
         this.y = container.y;
         this.z = container.z;
-        this.pos = container.pos;
-        this.player = container.entity;
+        this.player = container.player;
         this.imageWidth = 176;
         this.imageHeight = 126;
     }
@@ -78,11 +75,9 @@ public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<Building
 
     @Override
     protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-        UnusualEnd.LOGGER.info(pos != null && level.getBlockEntity(pos) instanceof BuildingInhibitorBlockEntity entity);
-        guiGraphics.drawString(this.font,
-                (getBlockEntity() != null
-                        ? getBlockEntity().getPersistentData().getDouble("Fuel") + "/32"
-                        : "0/32"), 103, 22, -12829636, false);
+        String s = "%s/32".formatted(getBlockEntity() != null && getBlockEntity().getPersistentData().getDouble("Fuel") > 0
+                ? Math.round(getBlockEntity().getPersistentData().getDouble("Fuel")) : 0);
+        guiGraphics.drawString(this.font, s, 103, 22, -12829636, false);
     }
 
     private BuildingInhibitorBlockEntity getBlockEntity() {

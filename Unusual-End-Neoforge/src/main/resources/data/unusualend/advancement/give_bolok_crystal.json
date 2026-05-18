@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:bolok_fin"
+      "id": "unusualend:bolok_fin"
     },
     "title": {
       "translate": "advancements.give_bolok_crystal.title"

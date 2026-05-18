@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:bluk_au_chocolat"
+      "id": "unusualend:bluk_au_chocolat"
     },
     "title": {
       "translate": "advancements.eat_chocolate_bluk.title"

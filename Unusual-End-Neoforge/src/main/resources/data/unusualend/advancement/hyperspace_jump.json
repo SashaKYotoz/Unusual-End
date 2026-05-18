@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:prismatic_mirror"
+      "id": "unusualend:prismatic_mirror"
     },
     "title": {
       "translate": "advancements.hyperspace_jump.title"

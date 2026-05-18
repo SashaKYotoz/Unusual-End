@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:chorus_helmet"
+      "id": "unusualend:chorus_helmet"
     },
     "title": {
       "translate": "advancements.use_chorus_helmet.title"

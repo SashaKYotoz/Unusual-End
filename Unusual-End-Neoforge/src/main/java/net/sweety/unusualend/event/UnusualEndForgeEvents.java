@@ -335,18 +335,17 @@ public class UnusualEndForgeEvents {
 
     @SubscribeEvent
     public static void onBlockPlace(BlockEvent.EntityPlaceEvent event) {
-        BlockState blockState = event.getState();
+        BlockState blockState = event.getPlacedBlock();
         Entity entity = event.getEntity();
-        LevelAccessor level = event.getLevel();
-        if (blockState.getBlock() == UnusualEndBlocks.BUILDING_INHIBITOR.get()) {
-            if (!level.isClientSide()) {
-                BlockPos _bp = BlockPos.containing(event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
-                BlockEntity _blockEntity = level.getBlockEntity(_bp);
-                BlockState _bs = level.getBlockState(_bp);
-                if (_blockEntity != null)
-                    _blockEntity.getPersistentData().putString("Owner", (entity.getStringUUID()));
-                if (level instanceof Level _level)
-                    _level.sendBlockUpdated(_bp, _bs, _bs, 3);
+        LevelAccessor accessor = event.getLevel();
+        if (blockState.is(UnusualEndBlocks.BUILDING_INHIBITOR.get())) {
+            if (!accessor.isClientSide() && entity != null) {
+                BlockPos pos = BlockPos.containing(event.getPos().getX(), event.getPos().getY(), event.getPos().getZ());
+                BlockEntity blockentity = accessor.getBlockEntity(pos);
+                if (blockentity != null)
+                    blockentity.getPersistentData().putString("Owner", entity.getStringUUID());
+                if (accessor instanceof Level level)
+                    level.sendBlockUpdated(pos, blockState, blockState, 3);
             }
         }
     }

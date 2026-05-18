@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:void_totem"
+      "id": "unusualend:void_totem"
     },
     "title": {
       "translate": "advancements.worse_than_death.title"

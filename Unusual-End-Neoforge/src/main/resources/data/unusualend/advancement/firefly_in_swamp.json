@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:ender_firefly_egg"
+      "id": "unusualend:ender_firefly_egg"
     },
     "title": {
       "translate": "advancements.firefly_in_swamp.title"

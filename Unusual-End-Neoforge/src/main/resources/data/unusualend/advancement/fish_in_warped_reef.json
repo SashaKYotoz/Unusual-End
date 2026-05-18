@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:raw_bluk"
+      "id": "unusualend:raw_bluk"
     },
     "title": {
       "translate": "advancements.fish_in_warped_reef.title"

@@ -22,7 +22,7 @@ public class ConsumeShinyProcedure {
 				return -1;
 			}
 		}.getValue(world, BlockPos.containing(x, y, z), "Shiny") >= value) {
-			if (ShinyCheckProcedure.execute(world, x, y, z) == true) {
+			if (ShinyCheckProcedure.execute(world, x, y, z)) {
 				if (!world.isClientSide()) {
 					BlockPos _bp = BlockPos.containing(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);

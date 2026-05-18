@@ -6,8 +6,11 @@ import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -26,6 +29,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
@@ -39,7 +43,6 @@ import net.sweety.unusualend.entity.BolokEntity;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.jei_recipes.BolokTradingRecipe;
 
-import java.util.Iterator;
 import java.util.List;
 
 @EventBusSubscriber
@@ -48,13 +51,13 @@ public class RideBolokProcedure {
 	public static void onRightClickEntity(PlayerInteractEvent.EntityInteract event) {
 		if (event.getHand() != event.getEntity().getUsedItemHand())
 			return;
-		execute(event, event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), event.getTarget(), event.getEntity());
+		execute(event.getLevel(), event.getPos().getX(), event.getPos().getY(), event.getPos().getZ(), event.getTarget(), event.getEntity());
 	}
 
-	private static void execute(PlayerInteractEvent.EntityInteract event, LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
+	private static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		ItemStack rest = ItemStack.EMPTY;
+		ItemStack rest;
 		if (entity instanceof BolokEntity) {
 			if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.ENCHANTED_BOOK) {
 				if ((sourceentity instanceof Player _plr ? _plr.experienceLevel : 0) >= 15) {
@@ -62,39 +65,52 @@ public class RideBolokProcedure {
 					if (sourceentity instanceof Player _player)
 						_player.giveExperiencePoints(-(315));
 					UnusualEnd.queueServerWork(60, () -> {
-						if (world instanceof Level _level && !_level.isClientSide()) {
-							ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY()), (entity.getZ()), new ItemStack(Items.ENCHANTED_BOOK));
-							entityToSpawn.setPickUpDelay(10);
-							_level.addFreshEntity(entityToSpawn);
-						}
+                        if (world instanceof Level _level && !_level.isClientSide()) {
+                            ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
+                            String enchantmentId;
+                            int rand = Mth.nextInt(RandomSource.create(), 1, 3);
+                            if (rand == 1) enchantmentId = "unusualend:boloks_fury";
+                            else if (rand == 2) enchantmentId = "unusualend:boloks_wings";
+                            else enchantmentId = "unusualend:boloks_head";
+
+                            _level.registryAccess().registry(Registries.ENCHANTMENT).ifPresent(reg -> {
+                                var enchantment = reg.getHolder(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.parse(enchantmentId)));
+                                enchantment.ifPresent(holder -> {
+                                    ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+                                    mutable.set(holder, 1);
+                                    enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, mutable.toImmutable());
+                                });
+                            });
+
+                            ItemEntity entityToSpawn = new ItemEntity(_level, entity.getX(), entity.getY(), entity.getZ(), enchantedBook);
+                            entityToSpawn.setPickUpDelay(10);
+                            _level.addFreshEntity(entityToSpawn);
+                        }
 						if (!world.isClientSide()) {
 							if (Mth.nextInt(RandomSource.create(), 1, 3) == 1) {
 								{
-									Entity _ent = entity;
-									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-										_ent.getServer().getCommands().performPrefixedCommand(
-												new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(),
-														_ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                    if (!entity.level().isClientSide() && entity.getServer() != null) {
+										entity.getServer().getCommands().performPrefixedCommand(
+												new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(),
+														entity.getDisplayName(), entity.level().getServer(), entity),
 												"execute at @s run data merge entity @e[type=minecraft:item,limit=1,distance=..0.1,nbt={Item:{id:\"minecraft:enchanted_book\"}}] {Item:{id:\"minecraft:enchanted_book\",tag:{StoredEnchantments:[{id:\"unusualend:boloks_fury\",lvl:1s}]}}}");
 									}
 								}
 							} else if (Mth.nextInt(RandomSource.create(), 1, 2) == 1) {
 								{
-									Entity _ent = entity;
-									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-										_ent.getServer().getCommands().performPrefixedCommand(
-												new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(),
-														_ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                    if (!entity.level().isClientSide() && entity.getServer() != null) {
+										entity.getServer().getCommands().performPrefixedCommand(
+												new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(),
+														entity.getDisplayName(), entity.level().getServer(), entity),
 												"execute at @s run data merge entity @e[type=minecraft:item,limit=1,distance=..0.1,nbt={Item:{id:\"minecraft:enchanted_book\"}}] {Item:{id:\"minecraft:enchanted_book\",tag:{StoredEnchantments:[{id:\"unusualend:boloks_wings\",lvl:1s}]}}}");
 									}
 								}
 							} else {
 								{
-									Entity _ent = entity;
-									if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-										_ent.getServer().getCommands().performPrefixedCommand(
-												new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(),
-														_ent.getDisplayName(), _ent.level().getServer(), _ent),
+                                    if (!entity.level().isClientSide() && entity.getServer() != null) {
+										entity.getServer().getCommands().performPrefixedCommand(
+												new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(),
+														entity.getDisplayName(), entity.level().getServer(), entity),
 												"execute at @s run data merge entity @e[type=minecraft:item,limit=1,distance=..0.1,nbt={Item:{id:\"minecraft:enchanted_book\"}}] {Item:{id:\"minecraft:enchanted_book\",tag:{StoredEnchantments:[{id:\"unusualend:boloks_head\",lvl:1s}]}}}");
 									}
 								}
@@ -126,9 +142,7 @@ public class RideBolokProcedure {
 						AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("give_bolok_crystal"));
 						AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 						if (!_ap.isDone()) {
-							Iterator _iterator = _ap.getRemainingCriteria().iterator();
-							while (_iterator.hasNext())
-								_player.getAdvancements().award(_adv, (String) _iterator.next());
+                            for (String s : _ap.getRemainingCriteria()) _player.getAdvancements().award(_adv, s);
 						}
 					}
 				}
@@ -139,7 +153,7 @@ public class RideBolokProcedure {
 						List<RecipeHolder<BolokTradingRecipe>> recipes = rm.getAllRecipesFor(BolokTradingRecipe.Type.INSTANCE);
 						for (RecipeHolder<BolokTradingRecipe> recipe : recipes) {
 							NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
-							if (!ingredients.get(0).test((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))
+							if (!ingredients.getFirst().test((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))
 								continue;
 							return recipe.value().getResultItem(null);
 						}
@@ -154,7 +168,7 @@ public class RideBolokProcedure {
 							List<RecipeHolder<BolokTradingRecipe>> recipes = rm.getAllRecipesFor(BolokTradingRecipe.Type.INSTANCE);
 							for (RecipeHolder<BolokTradingRecipe> recipe : recipes) {
 								NonNullList<Ingredient> ingredients = recipe.value().getIngredients();
-								if (!ingredients.get(0).test((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))
+								if (!ingredients.getFirst().test((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))
 									continue;
 								return recipe.value().getResultItem(null);
 							}

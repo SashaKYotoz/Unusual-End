@@ -23,6 +23,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
+import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
 
@@ -30,7 +31,7 @@ import java.util.Comparator;
 import java.util.List;
 
 @EventBusSubscriber
-public class GolemOrbUseProcedure {
+public class OrbUseProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingIncomingDamageEvent event) {
 		if (event != null)
@@ -49,7 +50,7 @@ public class GolemOrbUseProcedure {
 				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.SHULKER_ORB.get())) : false)
 				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualEndItems.WITHERING_ORB.get())) : false)) {
 			if (entity instanceof Player) {
-				if (Math.random() < 0.05) {
+				if (Math.random() < UEConfig.ORB_TRIGGER.get() / 100) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
 							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ZOMBIE_BREAK_WOODEN_DOOR, SoundSource.PLAYERS, 1, (float) 0.1);

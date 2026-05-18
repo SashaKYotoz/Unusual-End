@@ -48,7 +48,7 @@ public class BolokTradingRecipeCategory implements IRecipeCategory<BolokTradingR
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, BolokTradingRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 8, 19).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 8, 19).addIngredients(recipe.getIngredients().getFirst());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 152, 19).addItemStack(recipe.getResultItem(null));
     }
 }

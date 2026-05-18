@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:leeching_wand"
+      "id": "unusualend:leeching_wand"
     },
     "title": {
       "translate": "advancements.use_enchanted_leeching_wand.title"
@@ -23,11 +23,13 @@
             "items": [
               "unusualend:leeching_wand"
             ],
-            "enchantments": [
-              {
-                "enchantment": "unusualend:benevolence"
+            "components": {
+              "minecraft:enchantments": {
+                "levels": {
+                  "unusualend:benevolence": 1
+                }
               }
-            ]
+            }
           }
         ]
       }
@@ -40,11 +42,13 @@
             "items": [
               "unusualend:leeching_wand"
             ],
-            "enchantments": [
-              {
-                "enchantment": "unusualend:bonding"
+            "components": {
+              "minecraft:enchantments": {
+                "levels": {
+                  "unusualend:benevolence": 1
+                }
               }
-            ]
+            }
           }
         ]
       }

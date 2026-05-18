@@ -25,7 +25,7 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
 
     public BolokNotesScreen(BolokNotesMenu container, Inventory inventory, Component text) {
         super(container, inventory, text);
-        this.level = container.world;
+        this.level = container.level;
         this.x = container.x;
         this.y = container.y;
         this.z = container.z;

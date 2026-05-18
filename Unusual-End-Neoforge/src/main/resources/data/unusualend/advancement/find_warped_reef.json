@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:warped_end_stone"
+      "id": "unusualend:warped_end_stone"
     },
     "title": {
       "translate": "advancements.find_warped_reef.title"
@@ -24,7 +24,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "unusualend:warped_reef"
+                "biomes": "unusualend:warped_reef"
               }
             }
           }

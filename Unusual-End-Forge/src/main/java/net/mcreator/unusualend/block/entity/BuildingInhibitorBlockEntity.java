@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class BuildingInhibitorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(1, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(1, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public BuildingInhibitorBlockEntity(BlockPos position, BlockState state) {

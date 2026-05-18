@@ -2,7 +2,7 @@
   "type": "unusualend:bolok_trading",
   "ingredients": [
     {
-      "tag": "neoforge:chorus_flower"
+      "tag": "c:chorus_flower"
     }
   ],
   "output": {

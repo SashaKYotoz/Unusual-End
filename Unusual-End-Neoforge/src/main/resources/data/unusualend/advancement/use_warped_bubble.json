@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:warped_bubble"
+      "id": "unusualend:warped_bubble"
     },
     "title": {
       "translate": "advancements.use_warped_bubble.title"

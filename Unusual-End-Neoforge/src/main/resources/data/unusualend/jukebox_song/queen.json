@@ -1,7 +1,7 @@
 {
   "comparator_output": 1,
   "description": {
-    "translate": "item.unusualend.music_disc_queen"
+    "translate": "item.unusualend.music_disc_queen.desc"
   },
   "length_in_seconds": 190,
   "sound_event": "unusualend:music_disc_queen"

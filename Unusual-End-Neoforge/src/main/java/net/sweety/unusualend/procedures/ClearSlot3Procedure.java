@@ -11,22 +11,21 @@ import net.sweety.unusualend.init.UnusualEndItems;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class ClearSlot3Procedure {
-    public static void execute(LevelAccessor world, double x, double y, double z) {
-        if (getItemStack(world, BlockPos.containing(x, y, z), 3).getItem() == UnusualEndItems.INFUSER_INFOS.get()) {
-            BlockEntity block = world.getBlockEntity(BlockPos.containing(x, y, z));
+    public static void execute(LevelAccessor level, BlockPos pos) {
+        if (getItemStack(level, pos).is(UnusualEndItems.INFUSER_INFOS.get())) {
+            BlockEntity block = level.getBlockEntity(pos);
             if (block instanceof BaseContainerBlockEntity entity) {
-                final int _slotid = 3;
                 InvWrapper wrapper = new InvWrapper(entity);
-                wrapper.setStackInSlot(_slotid, ItemStack.EMPTY);
+                wrapper.setStackInSlot(3, ItemStack.EMPTY);
             }
         }
     }
 
-    private static ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-        AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+    private static ItemStack getItemStack(LevelAccessor world, BlockPos pos) {
+        AtomicReference<ItemStack> reference = new AtomicReference<>(ItemStack.EMPTY);
         BlockEntity block = world.getBlockEntity(pos);
         if (block instanceof BaseContainerBlockEntity entity)
-            _retval.set(entity.getItem(slotid).copy());
-        return _retval.get();
+            reference.set(entity.getItem(3).copy());
+        return reference.get();
     }
 }

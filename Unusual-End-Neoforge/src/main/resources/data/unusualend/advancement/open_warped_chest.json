@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:warped_chest"
+      "id": "unusualend:warped_chest"
     },
     "title": {
       "translate": "advancements.open_warped_chest.title"

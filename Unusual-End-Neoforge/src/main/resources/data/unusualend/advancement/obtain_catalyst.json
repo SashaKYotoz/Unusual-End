@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:crystal_catalyst"
+      "id": "unusualend:crystal_catalyst"
     },
     "title": {
       "translate": "advancements.obtain_catalyst.title"

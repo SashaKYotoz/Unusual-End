@@ -10,7 +10,7 @@
       "item": "minecraft:chorus_fruit"
     },
     "b": {
-      "tag": "neoforge:chorus_flower"
+      "tag": "c:chorus_flower"
     },
     "c": {
       "item": "unusualend:end_blob"

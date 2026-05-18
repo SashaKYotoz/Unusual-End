@@ -25,9 +25,8 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class BuildingInhibitorGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
-    public final static HashMap<String, Object> guistate = new HashMap<>();
     public final Level level;
-    public final Player entity;
+    public final Player player;
     public int x, y, z;
     public BlockPos pos = null;
     private ContainerLevelAccess access = ContainerLevelAccess.NULL;
@@ -40,7 +39,7 @@ public class BuildingInhibitorGUIMenu extends AbstractContainerMenu implements S
 
     public BuildingInhibitorGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(UnusualEndMiscRegister.BUILDING_INHIBITOR_GUI.get(), id);
-        this.entity = inv.player;
+        this.player = inv.player;
         this.level = inv.player.level();
         this.internal = new ItemStackHandler(1);
         if (extraData != null) {
@@ -58,11 +57,10 @@ public class BuildingInhibitorGUIMenu extends AbstractContainerMenu implements S
             }
         }
         this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 80, 15) {
-            private final int slot = 0;
 
             @Override
             public boolean mayPlace(ItemStack stack) {
-                return Items.DRAGON_BREATH == stack.getItem();
+                return stack.is(Items.DRAGON_BREATH);
             }
         }));
         for (int si = 0; si < 3; ++si)

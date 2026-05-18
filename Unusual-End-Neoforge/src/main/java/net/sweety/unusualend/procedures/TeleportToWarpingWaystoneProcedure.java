@@ -1,7 +1,6 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -15,6 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 
 @EventBusSubscriber
@@ -34,7 +34,7 @@ public class TeleportToWarpingWaystoneProcedure {
         double lookY = 0;
         double lookZ = 0;
         if (DisplayOverlayWaystoneProcedure.execute(level, player)) {
-            if (player.getMainHandItem().is(ItemTags.create(ResourceLocation.parse("neoforge:can_teleport_to_warping_waystone")))) {
+            if (player.getMainHandItem().is(ItemTags.create(UnusualEnd.makeUEID("can_teleport_to_warping_waystone")))) {
                 if (!player.isCreative())
                     player.getMainHandItem().shrink(1);
                 player.getCooldowns().addCooldown(player.getMainHandItem().getItem(), 10);

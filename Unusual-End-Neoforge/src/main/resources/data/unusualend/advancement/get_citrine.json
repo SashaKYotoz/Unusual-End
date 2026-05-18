@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:citrine_chunk"
+      "id": "unusualend:citrine_chunk"
     },
     "title": {
       "translate": "advancements.get_citrine.title"

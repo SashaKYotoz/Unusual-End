@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:spirit_grim_helmet"
+      "id": "unusualend:spirit_grim_helmet"
     },
     "title": {
       "translate": "advancements.obtain_enderling_mask.title"

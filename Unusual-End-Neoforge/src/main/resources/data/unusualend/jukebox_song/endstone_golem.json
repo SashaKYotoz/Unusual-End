@@ -1,7 +1,7 @@
 {
   "comparator_output": 15,
   "description": {
-    "translate": "item.unusualend.endstone_golem_theme"
+    "translate": "item.unusualend.music_disc_endstone_golem_theme.desc"
   },
   "length_in_seconds": 180,
   "sound_event": "unusualend:endstone_golem_theme"

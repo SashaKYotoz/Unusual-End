@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:wandering_pearl"
+      "id": "unusualend:wandering_pearl"
     },
     "title": {
       "translate": "advancements.you_but_stronger.title"

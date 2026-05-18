@@ -25,11 +25,11 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sweety.unusualend.procedures.GloopyVaseBlockDestroyedByPlayerProcedure;
 
-public class GloopyVaseBlock extends Block implements SimpleWaterloggedBlock {
+public class GloopyUrnBlock extends Block implements SimpleWaterloggedBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-	public GloopyVaseBlock() {
+	public GloopyUrnBlock() {
 		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.MUD_BRICKS).strength(0.75f, 5f).noOcclusion().pushReaction(PushReaction.DESTROY)
 				.isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH).setValue(WATERLOGGED, false));
@@ -53,11 +53,11 @@ public class GloopyVaseBlock extends Block implements SimpleWaterloggedBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> box(3, 0, 3, 13, 14, 13);
-			case NORTH -> box(3, 0, 3, 13, 14, 13);
+            case NORTH -> box(3, 0, 3, 13, 14, 13);
 			case EAST -> box(3, 0, 3, 13, 14, 13);
 			case WEST -> box(3, 0, 3, 13, 14, 13);
-		};
+            default -> box(3, 0, 3, 13, 14, 13);
+        };
 	}
 
 	@Override
@@ -94,8 +94,7 @@ public class GloopyVaseBlock extends Block implements SimpleWaterloggedBlock {
 
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
-		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
 		GloopyVaseBlockDestroyedByPlayerProcedure.execute(entity);
-		return retval;
+		return super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
 	}
 }

@@ -25,6 +25,8 @@ public class UEConfig {
     public static final ModConfigSpec.ConfigValue<Double> VOID_TOTEM_Y;
     public static final ModConfigSpec.ConfigValue<Double> PODIUM_ITEM;
     public static final ModConfigSpec.ConfigValue<Double> PODIUM_BLOCK;
+    public static final ModConfigSpec.ConfigValue<Boolean> EVERLASTING;
+    public static final ModConfigSpec.ConfigValue<Double> ORB_TRIGGER;
     public static final ModConfigSpec.ConfigValue<Double> PRISMATIC_MIRROR;
     public static final ModConfigSpec.ConfigValue<Double> VOID_TOTEM;
     public static final ModConfigSpec.ConfigValue<Double> POUCH;
@@ -42,9 +44,9 @@ public class UEConfig {
     public static final ModConfigSpec.ConfigValue<Boolean> INFESTED_ENDSTONE;
     public static final ModConfigSpec.ConfigValue<Boolean> PURPUR_ISLANDS;
     public static final ModConfigSpec.ConfigValue<Double> STEW_TIME;
-    public static final ModConfigSpec.ConfigValue<Double> BIOME_SIZE;
+    public static final ModConfigSpec.ConfigValue<Double> BOLOK_FIN_TIME;
+    public static final ModConfigSpec.ConfigValue<Double> COOKED_BOLOK_FIN_TIME;
     public static final ModConfigSpec.ConfigValue<Double> TENACITY_TIME;
-
     static {
         BUILDER.push("Main Config");
         BREAKING_CHORUS_SUMMON_ENDERMITE_PERCENTAGE = BUILDER.comment("Probability in % for Chorus to summon an Endermite when broken. Includes all blocks in the 'unusualend:endermites_infested' tag").define("Endermite Infestation Probability",
@@ -68,8 +70,10 @@ public class UEConfig {
         ENDERLING_MASK = BUILDER.comment("Probability in % for an Undead Enderling to spawn with an Enderling Mask").define("Enderling Mask Probability", (double) 22);
         CRYSTAL_NAUSEA = BUILDER.comment("Whether the Crystal Flower should inflict Nausea to entities interacting with it").define("Crystal Flower Nausea", true);
         VOID_TOTEM_Y = BUILDER.comment("The Y altitude under which the Void Totem will be triggered").define("Void Totem Altitude", (double) -1);
-        PODIUM_ITEM = BUILDER.comment("The scale the Ancient Podium will display blocks at").define("Podium Item Size", (double) 0.55);
-        PODIUM_BLOCK = BUILDER.comment("The scale the Ancient Podium will display items as").define("Podium Block Size", (double) 0.4);
+        PODIUM_ITEM = BUILDER.comment("The scale the Ancient Podium will display items as").define("Podium Item Size", (double) 0.55);
+        PODIUM_BLOCK = BUILDER.comment("The scale the Ancient Podium will display blocks at").define("Podium Block Size", (double) 0.4);
+        EVERLASTING = BUILDER.comment("Whether the player will be able to obtain Everlasting (makes items never despawn)").define("Can Everlasting be obtained", true);
+        ORB_TRIGGER = BUILDER.comment("Probability in % for Orbs to trigger").define("Orb Activation", (double) 5);
         BUILDER.pop();
         BUILDER.push("Cooldowns (in tick)");
         PRISMATIC_MIRROR = BUILDER.define("Prismatic Mirror", (double) 6000);
@@ -90,9 +94,8 @@ public class UEConfig {
                 .define("Totems requiere Anchor", false);
         BUILDER.pop();
         BUILDER.push("Biomes");
-        GLOOPY_FOG = BUILDER.define("Fog inside of the Gloopstone Plains", false);
+        GLOOPY_FOG = BUILDER.define("Fog inside of the Gloopstone Biomes", false);
         WARPED_FOG = BUILDER.define("Fog inside of the Warped Reef", false);
-        BIOME_SIZE = BUILDER.define("Biomes size factor", (double) 1);
         BUILDER.pop();
         BUILDER.push("Generation");
         HIGHLAND_PLANTS = BUILDER.define("End Highlands Vegetation", true);
@@ -101,8 +104,10 @@ public class UEConfig {
         PURPUR_ISLANDS = BUILDER.define("Overgrown Small End Islands", true);
         BUILDER.pop();
         BUILDER.push("Potion Effect Durations (in seconds)");
-        TENACITY_TIME = BUILDER.define("Warped Infusion", (double) 60);
         STEW_TIME = BUILDER.define("Wandering Stew", (double) 600);
+        BOLOK_FIN_TIME = BUILDER.define("Bolok Fin", (double) 600);
+        COOKED_BOLOK_FIN_TIME = BUILDER.define("Cooked Bolok Fin", (double) 1200);
+        TENACITY_TIME = BUILDER.define("Warped Infusion", (double) 60);
         BUILDER.pop();
 
         SPEC = BUILDER.build();

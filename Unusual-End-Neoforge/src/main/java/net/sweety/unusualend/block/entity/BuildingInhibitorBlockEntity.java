@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class BuildingInhibitorBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-    private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(1, ItemStack.EMPTY);
+    private NonNullList<ItemStack> stacks = NonNullList.withSize(1, ItemStack.EMPTY);
 
     public SidedInvWrapper getHandler() {
         return handler;
@@ -77,7 +77,7 @@ public class BuildingInhibitorBlockEntity extends RandomizableContainerBlockEnti
 
     @Override
     public Component getDefaultName() {
-        return Component.literal("building_inhibitor");
+        return Component.translatable("block.unusualend.building_inhibitor");
     }
 
     @Override
@@ -92,7 +92,7 @@ public class BuildingInhibitorBlockEntity extends RandomizableContainerBlockEnti
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Building Inhibitor");
+        return Component.translatable("block.unusualend.building_inhibitor");
     }
 
     @Override

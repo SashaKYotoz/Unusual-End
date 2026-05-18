@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:warped_balloon"
+      "id": "unusualend:warped_balloon"
     },
     "title": {
       "translate": "advancements.use_warped_bubble_transportation.title"
@@ -47,11 +47,13 @@
         "player": {
           "equipment": {
             "mainhand": {
-              "enchantments": [
-                {
-                  "enchantment": "minecraft:knockback"
+              "components": {
+                "minecraft:enchantments": {
+                  "levels": {
+                    "minecraft:knockback": 1
+                  }
                 }
-              ]
+              }
             }
           },
           "vehicle": {

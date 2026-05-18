@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:end_blob"
+      "id": "unusualend:end_blob"
     },
     "title": {
       "translate": "advancements.forced_social_distancing.title"

@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:bouncy_dagger"
+      "id": "unusualend:bouncy_dagger"
     },
     "title": {
       "translate": "advancements.use_knockback_dagger.title"

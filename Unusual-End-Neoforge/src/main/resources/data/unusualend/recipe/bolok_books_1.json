@@ -8,6 +8,13 @@
   "output": {
     "id": "minecraft:enchanted_book",
     "count": 1,
-    "nbt": "{StoredEnchantments: [{lvl:1s, id:\"unusualend:boloks_head\"}]}"
+    "components": {
+      "minecraft:enchantments": {
+        "levels": {
+          "unusualend:boloks_head": 1
+        },
+        "show_in_tooltip": true
+      }
+    }
   }
 }

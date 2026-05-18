@@ -14,10 +14,7 @@ import net.sweety.unusualend.world.features.StructureFeature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.AbstractMap;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Mod("unusualend")
@@ -45,20 +42,24 @@ public class UnusualEnd {
         return ResourceLocation.fromNamespaceAndPath(MODID, path);
     }
 
-    private static final Collection<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
+    private static final Queue<AbstractMap.SimpleEntry<Runnable, Integer>> workQueue = new ConcurrentLinkedQueue<>();
 
     public static void queueServerWork(int tick, Runnable action) {
         workQueue.add(new AbstractMap.SimpleEntry<>(action, tick));
     }
 
     public void tick(ServerTickEvent.Post event) {
-        List<AbstractMap.SimpleEntry<Runnable, Integer>> actions = new ArrayList<>();
-        workQueue.forEach(work -> {
+        if (workQueue.isEmpty()) return;
+        List<AbstractMap.SimpleEntry<Runnable, Integer>> delayedBacklog = new ArrayList<>();
+        AbstractMap.SimpleEntry<Runnable, Integer> work;
+        while ((work = workQueue.poll()) != null) {
             work.setValue(work.getValue() - 1);
-            if (work.getValue() == 0)
-                actions.add(work);
-        });
-        actions.forEach(e -> e.getKey().run());
-        workQueue.removeAll(actions);
+            if (work.getValue() <= 0) {
+                work.getKey().run();
+            } else {
+                delayedBacklog.add(work);
+            }
+        }
+        workQueue.addAll(delayedBacklog);
     }
 }

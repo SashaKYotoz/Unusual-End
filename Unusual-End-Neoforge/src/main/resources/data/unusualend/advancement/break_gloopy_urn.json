@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:gloopy_urn"
+      "id": "unusualend:gloopy_urn"
     },
     "title": {
       "translate": "advancements.break_gloopy_urn.title"

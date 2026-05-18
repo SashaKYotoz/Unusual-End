@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:golem_orb"
+      "id": "unusualend:golem_orb"
     },
     "title": {
       "translate": "advancements.obtain_all_orbs.title"

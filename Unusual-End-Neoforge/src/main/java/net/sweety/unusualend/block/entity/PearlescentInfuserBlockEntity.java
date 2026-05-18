@@ -24,7 +24,7 @@ import javax.annotation.Nullable;
 import java.util.stream.IntStream;
 
 public class PearlescentInfuserBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.withSize(4, ItemStack.EMPTY);
 	public SidedInvWrapper getHandler() {
 		return handler;
 	}
@@ -75,7 +75,7 @@ public class PearlescentInfuserBlockEntity extends RandomizableContainerBlockEnt
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("pearlescent_infuser");
+		return Component.translatable("block.unusualend.pearlescent_infuser");
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class PearlescentInfuserBlockEntity extends RandomizableContainerBlockEnt
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("§bPearlescent Infuser");
+		return Component.translatable("block.unusualend.pearlescent_infuser");
 	}
 
 	@Override

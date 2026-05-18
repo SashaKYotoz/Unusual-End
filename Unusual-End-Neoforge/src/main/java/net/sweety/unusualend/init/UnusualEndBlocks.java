@@ -187,7 +187,7 @@ public class UnusualEndBlocks {
     public static final DeferredBlock<EnderblobMoultBrickSlabBlock> ENDERBLOB_MOULT_BRICK_SLAB = REGISTRY.register("enderblob_moult_brick_slab", () -> new EnderblobMoultBrickSlabBlock());
     public static final DeferredBlock<GloopstoneTileBlock> GLOOPSTONE_TILES = REGISTRY.register("gloopstone_tiles", () -> new GloopstoneTileBlock());
     public static final DeferredBlock<EnderblobMoultWallBlock> ENDERBLOB_MOULT_WALL = REGISTRY.register("enderblob_moult_wall", () -> new EnderblobMoultWallBlock());
-    public static final DeferredBlock<GloopyVaseBlock> GLOOPY_URN = REGISTRY.register("gloopy_urn", () -> new GloopyVaseBlock());
+    public static final DeferredBlock<GloopyUrnBlock> GLOOPY_URN = REGISTRY.register("gloopy_urn", () -> new GloopyUrnBlock());
     public static final DeferredBlock<FlowerPotWarpedBushBlock> FLOWER_POT_WARPED_BUSH = REGISTRY.register("flower_pot_warped_bush", () -> new FlowerPotWarpedBushBlock());
     public static final DeferredBlock<FlowerPotCaneBlock> FLOWER_POT_CANE = REGISTRY.register("flower_pot_cane", () -> new FlowerPotCaneBlock());
     public static final DeferredBlock<CitrineCandleBlock> CITRINE_CANDLE = REGISTRY.register("citrine_candle", () -> new CitrineCandleBlock());

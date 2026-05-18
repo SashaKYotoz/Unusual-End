@@ -4,6 +4,7 @@ package net.sweety.unusualend.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionResult;
@@ -66,7 +67,7 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		ClearSlot3Procedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		ClearSlot3Procedure.execute(world, pos);
 		return retval;
 	}
 
@@ -79,7 +80,7 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
-		ClearSlot3Procedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		ClearSlot3Procedure.execute(world, pos);
 	}
 
 	@Override
@@ -90,8 +91,8 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	}
 	private void openScreen(Level level, BlockPos pos, Player player) {
 		BlockEntity blockentity = level.getBlockEntity(pos);
-		if (blockentity instanceof PearlescentInfuserBlockEntity block)
-			player.openMenu(block);
+		if (blockentity instanceof PearlescentInfuserBlockEntity block && player instanceof ServerPlayer)
+			player.openMenu(block, buf -> buf.writeBlockPos(pos));
 		else
 			throw new IllegalStateException("Container provider is missing!");
 	}
@@ -108,10 +109,10 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public boolean triggerEvent(BlockState state, Level world, BlockPos pos, int eventID, int eventParam) {
-		super.triggerEvent(state, world, pos, eventID, eventParam);
-		BlockEntity blockEntity = world.getBlockEntity(pos);
-		return blockEntity == null ? false : blockEntity.triggerEvent(eventID, eventParam);
+	public boolean triggerEvent(BlockState state, Level level, BlockPos pos, int eventID, int eventParam) {
+		super.triggerEvent(state, level, pos, eventID, eventParam);
+		BlockEntity blockEntity = level.getBlockEntity(pos);
+		return blockEntity != null && blockEntity.triggerEvent(eventID, eventParam);
 	}
 
 	@Override
@@ -119,7 +120,7 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 		if (state.getBlock() != newState.getBlock()) {
 			BlockEntity blockEntity = world.getBlockEntity(pos);
 			if (blockEntity instanceof PearlescentInfuserBlockEntity be) {
-				ClearSlot3Procedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+				ClearSlot3Procedure.execute(world, pos);
 				Containers.dropContents(world, pos, be);
 				world.updateNeighbourForOutputSignal(pos, this);
 			}
@@ -133,9 +134,9 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	}
 
 	@Override
-	public int getAnalogOutputSignal(BlockState blockState, Level world, BlockPos pos) {
-		BlockEntity tileentity = world.getBlockEntity(pos);
-		if (tileentity instanceof PearlescentInfuserBlockEntity be)
+	public int getAnalogOutputSignal(BlockState blockState, Level level, BlockPos pos) {
+		BlockEntity entity = level.getBlockEntity(pos);
+		if (entity instanceof PearlescentInfuserBlockEntity be)
 			return AbstractContainerMenu.getRedstoneSignalFromContainer(be);
 		else
 			return 0;

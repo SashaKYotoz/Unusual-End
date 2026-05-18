@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:pearlescent_infuser"
+      "id": "unusualend:pearlescent_infuser"
     },
     "title": {
       "translate": "advancements.use_pearlescent_buff.title"

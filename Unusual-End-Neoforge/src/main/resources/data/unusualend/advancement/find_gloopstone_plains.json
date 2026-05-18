@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:gloopstone"
+      "id": "unusualend:gloopstone"
     },
     "title": {
       "translate": "advancements.find_gloopstone_plains.title"
@@ -24,7 +24,7 @@
             "entity": "this",
             "predicate": {
               "location": {
-                "biome": "unusualend:gloopstone_lands"
+                "biomes": "unusualend:gloopstone_lands"
               }
             }
           }

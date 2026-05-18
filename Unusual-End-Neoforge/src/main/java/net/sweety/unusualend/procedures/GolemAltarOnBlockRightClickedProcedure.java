@@ -32,6 +32,7 @@ import java.util.List;
 
 public class GolemAltarOnBlockRightClickedProcedure {
     public static void execute(Level level, double x, double y, double z, Player player) {
+        if (level.isClientSide()) return;
         if (player.getMainHandItem().is(Items.DRAGON_BREATH)) {
             if (!player.isCreative()) {
                 player.getMainHandItem().shrink(1);
@@ -39,86 +40,107 @@ public class GolemAltarOnBlockRightClickedProcedure {
                 stack.setCount(1);
                 ItemHandlerHelper.giveItemToPlayer(player, stack);
             }
+
             level.destroyBlock(BlockPos.containing(x, y, z), false);
-            if (level instanceof ServerLevel _level) {
-                LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-                entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
-                entityToSpawn.setVisualOnly(true);
-                _level.addFreshEntity(entityToSpawn);
+
+            if (level instanceof ServerLevel serverLevel) {
+                LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(serverLevel);
+                if (entityToSpawn != null) {
+                    entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+                    entityToSpawn.setVisualOnly(true);
+                    serverLevel.addFreshEntity(entityToSpawn);
+                }
             }
             if (level instanceof ServerLevel _level)
                 _level.sendParticles(ParticleTypes.FIREWORK, (x + 0.5), (y + 1), (z + 0.5), 10, 0, 0, 0, 0.1);
+
             UnusualEnd.queueServerWork(10, () -> {
                 if (level instanceof ServerLevel _level) {
                     LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-                    entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
-                    entityToSpawn.setVisualOnly(true);
-                    _level.addFreshEntity(entityToSpawn);
-                }
-                UnusualEnd.queueServerWork(20, () -> {
-                    if (level instanceof ServerLevel _level) {
-                        LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                    if (entityToSpawn != null) {
                         entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
                         entityToSpawn.setVisualOnly(true);
                         _level.addFreshEntity(entityToSpawn);
                     }
-                    if (level instanceof ServerLevel _level)
-                        _level.sendParticles(ParticleTypes.FIREWORK, (x + 0.5), (y + 1), (z + 0.5), 5, 0, 0, 0, 0.1);
-                    UnusualEnd.queueServerWork(5, () -> {
-                        if (level instanceof ServerLevel _level) {
-                            LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                }
+                UnusualEnd.queueServerWork(20, () -> {
+                    if (level instanceof ServerLevel _level) {
+                        LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                        if (entityToSpawn != null) {
                             entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
                             entityToSpawn.setVisualOnly(true);
                             _level.addFreshEntity(entityToSpawn);
                         }
-                        EndstoneGolemBreakSurroundingsProcedure.execute(level, x, (y - 1), z);
-                        UnusualEnd.queueServerWork(10, () -> {
-                            if (level instanceof ServerLevel _level) {
-                                LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                    }
+                    if (level instanceof ServerLevel _level)
+                        _level.sendParticles(ParticleTypes.FIREWORK, (x + 0.5), (y + 1), (z + 0.5), 5, 0, 0, 0, 0.1);
+
+                    UnusualEnd.queueServerWork(5, () -> {
+                        if (level instanceof ServerLevel _level) {
+                            LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                            if (entityToSpawn != null) {
                                 entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
                                 entityToSpawn.setVisualOnly(true);
                                 _level.addFreshEntity(entityToSpawn);
                             }
-                            if (level instanceof ServerLevel _level)
-                                _level.sendParticles(ParticleTypes.EXPLOSION, (x + 0.5), y, (z + 0.5), 10, 0.5, 0.5, 0.5, 0);
-                            UnusualEnd.queueServerWork(10, () -> {
-                                if (level instanceof ServerLevel _level) {
-                                    LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                        }
+
+                        EndstoneGolemBreakSurroundingsProcedure.execute(level, x, (y - 1), z);
+
+                        UnusualEnd.queueServerWork(10, () -> {
+                            if (level instanceof ServerLevel _level) {
+                                LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                                if (entityToSpawn != null) {
                                     entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
                                     entityToSpawn.setVisualOnly(true);
                                     _level.addFreshEntity(entityToSpawn);
                                 }
+                            }
+                            if (level instanceof ServerLevel _level)
+                                _level.sendParticles(ParticleTypes.EXPLOSION, (x + 0.5), y, (z + 0.5), 10, 0.5, 0.5, 0.5, 0);
+
+                            UnusualEnd.queueServerWork(10, () -> {
+                                if (level instanceof ServerLevel _level) {
+                                    LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
+                                    if (entityToSpawn != null) {
+                                        entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+                                        entityToSpawn.setVisualOnly(true);
+                                        _level.addFreshEntity(entityToSpawn);
+                                    }
+                                }
                                 final Vec3 _center = new Vec3(x, y, z);
-                                List<Entity> _entfound = level.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(100 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
+                                List<Entity> list = level.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(100 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center)))
                                         .toList();
-                                for (Entity entityiterator : _entfound) {
+                                for (Entity entityiterator : list) {
                                     if (entityiterator instanceof Player) {
                                         if (entityiterator instanceof ServerPlayer _player) {
                                             AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("use_golem_altar"));
-                                            AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-                                            if (!_ap.isDone()) {
-                                                for (String criteria : _ap.getRemainingCriteria())
-                                                    _player.getAdvancements().award(_adv, criteria);
+                                            if (_adv != null) {
+                                                AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
+                                                if (!_ap.isDone()) {
+                                                    for (String criteria : _ap.getRemainingCriteria())
+                                                        _player.getAdvancements().award(_adv, criteria);
+                                                }
                                             }
                                         }
                                         if (entityiterator instanceof Player _player && !_player.level().isClientSide())
                                             _player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.golem_theme").getString())), true);
                                     }
                                 }
-                                if (!level.isClientSide()) {
-                                    level.playSound(null, BlockPos.containing(x + 0.5, y, z + 0.5), SoundEvents.STONE_PLACE, SoundSource.NEUTRAL, 1, 1);
-                                } else {
-                                    level.playLocalSound((x + 0.5), y, (z + 0.5), SoundEvents.STONE_PLACE, SoundSource.NEUTRAL, 1, 1, false);
-                                }
+                                level.playSound(null, BlockPos.containing(x + 0.5, y, z + 0.5), SoundEvents.STONE_PLACE, SoundSource.NEUTRAL, 1, 1);
+
                                 if (level instanceof ServerLevel serverLevel) {
-                                    EndstoneGolemEntity golem = UnusualendModEntities.ENDSTONE_GOLEM.get().spawn(serverLevel, BlockPos.containing(x + 0.5, y - 1, z + 0.5), MobSpawnType.MOB_SUMMONED);
+                                    EndstoneGolemEntity golem = UnusualendModEntities.ENDSTONE_GOLEM.get().create(serverLevel);
                                     if (golem != null) {
                                         golem.setYRot(level.getRandom().nextFloat() * 360F);
                                         golem.moveTo(x, y + 1, z);
                                         golem.getPersistentData().putDouble("x", x);
                                         golem.getPersistentData().putDouble("y", y);
                                         golem.getPersistentData().putDouble("z", z);
-                                        level.addFreshEntity(golem);
+                                        golem.finalizeSpawn(serverLevel, serverLevel.getCurrentDifficultyAt(golem.blockPosition()), MobSpawnType.MOB_SUMMONED, null);
+                                        serverLevel.addFreshEntity(golem);
+                                        Player closestPlayer = level.getNearestPlayer(golem, 16.0);
+                                        if (closestPlayer != null) golem.lookAt(closestPlayer, 30.0F, 30.0F);
                                     }
                                 }
                                 if (level instanceof ServerLevel _level)
@@ -135,10 +157,6 @@ public class GolemAltarOnBlockRightClickedProcedure {
                                     _level.sendParticles(ParticleTypes.DRAGON_BREATH, (x + 0.5), y, (z + 0.5), 40, 0.8, 0.8, 0.8, 0.3);
                                 if (level instanceof ServerLevel _level)
                                     _level.sendParticles(ParticleTypes.END_ROD, (x + 0.5), y, (z + 0.5), 40, 0.8, 0.8, 0.8, 0.3);
-                                if (level instanceof ServerLevel _level)
-                                    _level.getServer().getCommands().performPrefixedCommand(
-                                            new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                            "execute as @e[type=!minecraft:player,type=unusualend:endstone_golem] at @s run tp @s ~ ~ ~ facing entity @p[distance=..16]");
                             });
                         });
                     });

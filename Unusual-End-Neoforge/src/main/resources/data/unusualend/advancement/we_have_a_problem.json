@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "minecraft:elytra"
+      "id": "minecraft:elytra"
     },
     "title": {
       "translate": "advancements.we_have_a_problem.title"

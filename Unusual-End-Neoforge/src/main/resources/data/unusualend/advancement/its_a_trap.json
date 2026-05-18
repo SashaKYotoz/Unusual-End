@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:infested_end_stone"
+      "id": "unusualend:infested_end_stone"
     },
     "title": {
       "translate": "advancements.its_a_trap.title"

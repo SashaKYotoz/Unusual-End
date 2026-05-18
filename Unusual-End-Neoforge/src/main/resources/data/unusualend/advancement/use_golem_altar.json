@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:golem_altar"
+      "id": "unusualend:golem_altar"
     },
     "title": {
       "translate": "advancements.use_golem_altar.title"

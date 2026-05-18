@@ -16,11 +16,11 @@ public class WarpedSpearToolInHandTickProcedure {
 		if (EnchantmentHelper.getItemEnchantmentLevel(UnusualendModEnchantments.JOUST.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 			if (entity.isPassenger()) {
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 25, (int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getEnchantmentLevel(UnusualendModEnchantments.JOUST.get()) - 1),
+					_entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 25, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getEnchantmentLevel(UnusualendModEnchantments.JOUST.get()) - 1,
 							false, false));
 				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 					_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.SWIFT_STRIKES.get(), 25,
-							(int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getEnchantmentLevel(UnusualendModEnchantments.JOUST.get()) - 1), false, false));
+                            (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getEnchantmentLevel(UnusualendModEnchantments.JOUST.get()) - 1, false, false));
 			}
 		}
 	}

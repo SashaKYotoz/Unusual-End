@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.item;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -8,6 +9,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.procedures.ChorusFluteRightclickedProcedure;
 import net.sweety.unusualend.procedures.NBTProcessor;
@@ -16,7 +18,7 @@ import java.util.List;
 
 public class ChorusFluteItem extends Item {
     public ChorusFluteItem() {
-        super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+        super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).component(DataComponents.CUSTOM_DATA, CustomData.EMPTY));
     }
 
     @Override

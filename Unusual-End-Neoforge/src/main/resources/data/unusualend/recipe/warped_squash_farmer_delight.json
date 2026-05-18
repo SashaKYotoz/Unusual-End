@@ -12,7 +12,7 @@
     }
   ],
   "tool": {
-    "tag": "neoforge:tools/knives"
+    "tag": "c:tools/knives"
   },
   "neoforge:conditions": [
     {

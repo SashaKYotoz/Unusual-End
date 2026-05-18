@@ -61,7 +61,6 @@ public class BolokTradingRecipe implements Recipe<CraftingInput> {
         }
 
         public static final Type INSTANCE = new Type();
-        public static final String ID = "bolok_trading";
     }
 
     public static class Serializer implements RecipeSerializer<BolokTradingRecipe> {

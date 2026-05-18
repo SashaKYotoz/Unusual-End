@@ -27,72 +27,59 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
-    public final static HashMap<String, Object> guistate = new HashMap<>();
-    public final Level world;
-    public final Player entity;
-    public int x, y, z;
+    public final Level level;
+    public final Player player;
+    public BlockPos pos;
     private ContainerLevelAccess access = ContainerLevelAccess.NULL;
     private IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
     private boolean bound = false;
-    private Supplier<Boolean> boundItemMatcher = null;
+    private final Supplier<Boolean> boundItemMatcher = null;
     private final Entity boundEntity = null;
     private BlockEntity boundBlockEntity = null;
 
     public InfuserGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         super(UnusualEndMiscRegister.INFUSER_GUI.get(), id);
-        this.entity = inv.player;
-        this.world = inv.player.level();
+        this.player = inv.player;
+        this.level = inv.player.level();
         this.internal = new ItemStackHandler(4);
-        BlockPos pos = null;
         if (extraData != null) {
-            pos = extraData.readBlockPos();
-            this.x = pos.getX();
-            this.y = pos.getY();
-            this.z = pos.getZ();
-            access = ContainerLevelAccess.create(world, pos);
+            this.pos = extraData.readBlockPos();
+            access = ContainerLevelAccess.create(level, pos);
         }
         if (pos != null) {
-            boundBlockEntity = this.world.getBlockEntity(pos);
+            boundBlockEntity = this.level.getBlockEntity(pos);
             if (boundBlockEntity instanceof BaseContainerBlockEntity block) {
                 this.internal = new InvWrapper(block);
                 this.bound = true;
             }
         }
         this.customSlots.put(2, this.
-
                 addSlot(new SlotItemHandler(internal, 2, 142, 53) {
-                    private final int slot = 2;
 
                     @Override
                     public boolean mayPlace(ItemStack stack) {
-                        return UnusualEndItems.PRISMALITE_GEM.get() == stack.getItem();
+                        return stack.is(UnusualEndItems.PRISMALITE_GEM.get());
                     }
                 }));
         this.customSlots.put(0, this.
-
                 addSlot(new SlotItemHandler(internal, 0, 34, 53) {
-                    private final int slot = 0;
 
                     @Override
                     public boolean mayPlace(ItemStack stack) {
-                        return UnusualEndItems.CITRINE_CHUNK.get() == stack.getItem();
+                        return stack.is(UnusualEndItems.CITRINE_CHUNK.get());
                     }
                 }));
         this.customSlots.put(1, this.
-
                 addSlot(new SlotItemHandler(internal, 1, 88, 53) {
-                    private final int slot = 1;
 
                     @Override
                     public boolean mayPlace(ItemStack stack) {
-                        return UnusualEndItems.SHINY_CRYSTAL.get() == stack.getItem();
+                        return stack.is(UnusualEndItems.SHINY_CRYSTAL.get());
                     }
                 }));
         this.customSlots.put(3, this.
-
                 addSlot(new SlotItemHandler(internal, 3, 176, 1) {
-                    private final int slot = 3;
 
                     @Override
                     public boolean mayPickup(Player entity) {
@@ -236,7 +223,7 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
     @Override
     public void removed(Player playerIn) {
         super.removed(playerIn);
-        ClearSlot3Procedure.execute(world, x, y, z);
+        ClearSlot3Procedure.execute(level, pos);
         if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
             if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
                 for (int j = 0; j < internal.getSlots(); ++j) {

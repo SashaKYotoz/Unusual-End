@@ -5,6 +5,6 @@
     "#minecraft:walls",
     "minecraft:chain",
     "minecraft:iron_bars",
-    "#neoforge:glass_panes"
+    "#c:glass_panes"
   ]
 }

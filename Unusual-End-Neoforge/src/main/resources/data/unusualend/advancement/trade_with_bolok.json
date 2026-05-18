@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:bolok_bucket"
+      "id": "unusualend:bolok_bucket"
     },
     "title": {
       "translate": "advancements.trade_with_bolok.title"

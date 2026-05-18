@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:ancient_shard"
+      "id": "unusualend:ancient_shard"
     },
     "title": {
       "translate": "advancements.ancient_wisdom.title"

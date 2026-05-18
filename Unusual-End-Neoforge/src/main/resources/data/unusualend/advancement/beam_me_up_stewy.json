@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:wandering_stew"
+      "id": "unusualend:wandering_stew"
     },
     "title": {
       "translate": "advancements.beam_me_up_stewy.title"

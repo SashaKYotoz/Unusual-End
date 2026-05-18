@@ -1,7 +1,7 @@
 {
   "comparator_output": 3,
   "description": {
-    "translate": "item.unusualend.music_disc_flying_ships"
+    "translate": "item.unusualend.music_disc_flying_ships.desc"
   },
   "length_in_seconds": 195,
   "sound_event": "unusualend:music_disc_flying_ships"

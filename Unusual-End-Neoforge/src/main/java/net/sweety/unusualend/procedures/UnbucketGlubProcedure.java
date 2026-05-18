@@ -4,7 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -20,12 +19,8 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.GlubEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
-
-import java.util.Comparator;
 
 public class UnbucketGlubProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack stack) {

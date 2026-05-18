@@ -44,24 +44,24 @@ public class UnusualEndForgeClient {
         int w = event.getGuiGraphics().guiWidth();
         int h = event.getGuiGraphics().guiHeight();
         Level level = null;
-        Player entity = Minecraft.getInstance().player;
-        if (entity != null)
-            level = entity.level();
+        Player player = Minecraft.getInstance().player;
+        if (player != null)
+            level = player.level();
         RenderSystem.disableDepthTest();
         RenderSystem.depthMask(false);
         RenderSystem.enableBlend();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         RenderSystem.setShaderColor(1, 1, 1, 1);
-        if (GetLookingValidAltarProcedure.execute(level, entity))
+        if (GetLookingValidAltarProcedure.execute(level, player))
             event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/dragon_breath_valid_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
-        if (GetLookingAltarProcedure.execute(level, entity))
+        if (GetLookingAltarProcedure.execute(level, player))
             event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/dragon_breath_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
-        if (GetLookingWaystoneProcedure.execute(level, entity))
+        if (GetLookingWaystoneProcedure.execute(level, player))
             event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/bubble_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
-        if (IsCristallizedProcedure.execute(entity))
+        if (IsCristallizedProcedure.execute(player))
             event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/crystalisation.png"), w / 2 + -91, h - 49, 0, 0, 81, 19, 81, 19);
-        if (ScrapeClothOverlayDisplayOverlayIngameProcedure.execute(entity))
+        if (ScrapeClothOverlayDisplayOverlayIngameProcedure.execute(player))
             event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/cloth_overlay.png"), 0, 0, 0, 0, w, h, w, h);
         RenderSystem.depthMask(true);
         RenderSystem.defaultBlendFunc();

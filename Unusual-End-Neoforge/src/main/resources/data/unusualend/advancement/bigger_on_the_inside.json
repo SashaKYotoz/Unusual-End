@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:purpur_tank"
+      "id": "unusualend:purpur_tank"
     },
     "title": {
       "translate": "advancements.bigger_on_the_inside.title"

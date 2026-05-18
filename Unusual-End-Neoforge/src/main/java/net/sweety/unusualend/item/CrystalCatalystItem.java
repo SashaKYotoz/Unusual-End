@@ -1,7 +1,7 @@
-//lore + block rclick
 package net.sweety.unusualend.item;
 
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -12,6 +12,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.procedures.CrystalCatalystItemInInventoryTickProcedure;
 import net.sweety.unusualend.procedures.CrystalCatalystRightclickedProcedure;
@@ -21,7 +22,7 @@ import java.util.List;
 
 public class CrystalCatalystItem extends Item {
     public CrystalCatalystItem() {
-        super(new Item.Properties().durability(64).rarity(Rarity.UNCOMMON));
+        super(new Item.Properties().durability(64).rarity(Rarity.UNCOMMON).component(DataComponents.CUSTOM_DATA, CustomData.EMPTY));
     }
 
     @Override
@@ -52,9 +53,9 @@ public class CrystalCatalystItem extends Item {
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(stack, context, list, flag);
-        String buff = NBTProcessor.getNBTString(stack,"buff");
+        String buff = NBTProcessor.getNBTString(stack, "buff");
         if (NBTProcessor.getNBTString(stack, "buff").isEmpty())
-            NBTProcessor.setNBTString(stack,"track", "No Current Buff");
+            NBTProcessor.setNBTString(stack, "track", "No Current Buff");
         list.add(Component.translatable("lore.unusualend.valid_blocs").withStyle(ChatFormatting.DARK_GRAY));
         list.add(Component.translatable("lore.unusualend.when_rightclick").withStyle(ChatFormatting.GRAY));
         list.add(Component.translatable("lore.unusualend.consume_effects").withStyle(ChatFormatting.BLUE));
@@ -76,6 +77,6 @@ public class CrystalCatalystItem extends Item {
     @Override
     public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
         super.inventoryTick(stack, level, entity, slot, selected);
-        CrystalCatalystItemInInventoryTickProcedure.execute(stack,level);
+        CrystalCatalystItemInInventoryTickProcedure.execute(stack, level);
     }
 }

@@ -75,7 +75,7 @@ public class WarpingWaystoneBlockEntity extends RandomizableContainerBlockEntity
 
     @Override
     public Component getDefaultName() {
-        return Component.literal("warping_waystone");
+        return Component.translatable("block.unusualend.warping_waystone");
     }
 
     @Override
@@ -90,7 +90,7 @@ public class WarpingWaystoneBlockEntity extends RandomizableContainerBlockEntity
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Warping Waystone");
+        return Component.translatable("block.unusualend.warping_waystone");
     }
 
     @Override

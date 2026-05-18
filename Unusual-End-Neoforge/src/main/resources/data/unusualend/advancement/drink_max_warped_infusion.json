@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "unusualend:warped_infusion"
+      "id": "unusualend:warped_infusion"
     },
     "title": {
       "translate": "advancements.drink_max_warped_infusion.title"

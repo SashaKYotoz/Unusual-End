@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "unusualend:warped_end_stone",
+    "unusualend:infested_end_stone",
+    "unusualend:weak_end_stone_bricks",
+    "unusualend:shulker_shooter",
+    "unusualend:endstone_pillar",
+    "unusualend:chiseled_endstone_builder",
+    "unusualend:chiseled_endstone_us",
+    "unusualend:chiseled_endstone_dragon",
+    "unusualend:chiseled_endstone_scared",
+    "unusualend:chiseled_endstone_work",
+    "unusualend:chiseled_endstone_friendship",
+    "unusualend:infused_end_stone_tiles",
+    "unusualend:fading_block",
+    "unusualend:endstone_tiles"
+  ]
+}

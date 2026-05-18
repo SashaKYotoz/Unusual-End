@@ -8,7 +8,7 @@
   ],
   "key": {
     "a": {
-      "tag": "neoforge:endstone_bricks"
+      "tag": "c:endstone_bricks"
     },
     "b": {
       "item": "unusualend:lurker_sludge"

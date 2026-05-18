@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 
@@ -19,6 +20,6 @@ public class DiscFragmentFlyingShipsItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.literal("\u00A77Music Disc - Flying Ships"));
+		list.add(Component.translatable("item.unusualend.music_disc_flying_ships.desc").withStyle(ChatFormatting.GRAY));
 	}
 }

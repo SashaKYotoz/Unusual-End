@@ -28,7 +28,6 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
-	public static final int MAX_AGE = 1;
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
 
 	protected IntegerProperty getAgeProperty() {
@@ -102,9 +101,6 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	@Override
 	public void randomTick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
 		GloopilonSproutUpdateTickProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 	}
 
@@ -112,7 +108,6 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	@Override
 	public void animateTick(BlockState blockstate, Level world, BlockPos pos, RandomSource random) {
 		super.animateTick(blockstate, world, pos, random);
-		Player entity = Minecraft.getInstance().player;
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();

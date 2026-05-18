@@ -2,7 +2,6 @@
 package net.sweety.unusualend.block;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -35,9 +34,9 @@ public class BuildingInhibitorBlock extends BaseEntityBlock {
     @Override
     public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
-        list.add(Component.translatable("lore.unusualend.need_breath").withStyle(ChatFormatting.DARK_GRAY));
-        list.add(Component.translatable("lore.unusualend.when_nearby").withStyle(ChatFormatting.GRAY));
-        list.add(Component.translatable("effect.unusualend.disruption"));
+        list.add(Component.literal("\u00A78" + Component.translatable("lore.unusualend.need_breath").getString()));
+        list.add(Component.literal("\u00A77" + Component.translatable("lore.unusualend.when_nearby").getString()));
+        list.add(Component.literal("\u00A7c" + Component.translatable("effect.unusualend.disruption").getString() + " (0:05)"));
     }
 
     @Override
