@@ -14,7 +14,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.sweety.unusualend.init.UnusualEndBlocks;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 public class BreakEggProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -40,7 +40,7 @@ public class BreakEggProcedure {
 			}
 		}
 		if (world instanceof ServerLevel _level) {
-			Entity entityToSpawn = UnusualendModEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+			Entity entityToSpawn = UnusualEndEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 			if (entityToSpawn != null) {
 				entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 			}

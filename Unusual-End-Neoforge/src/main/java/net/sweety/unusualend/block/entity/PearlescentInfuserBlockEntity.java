@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlockEntities;
+import net.sweety.unusualend.init.UnusualEndBlockEntities;
 import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
 
 import javax.annotation.Nullable;
@@ -31,7 +31,7 @@ public class PearlescentInfuserBlockEntity extends RandomizableContainerBlockEnt
 
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 	public PearlescentInfuserBlockEntity(BlockPos position, BlockState state) {
-		super(UnusualendModBlockEntities.PEARLESCENT_INFUSER.get(), position, state);
+		super(UnusualEndBlockEntities.PEARLESCENT_INFUSER.get(), position, state);
 	}
 
 	@Override

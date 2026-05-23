@@ -15,7 +15,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.WanderingPearlProjectileHitsLivingEntityProcedure;
 import net.sweety.unusualend.procedures.WanderingPearlProjectileHitsProcedure;
 
@@ -77,7 +77,7 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
     }
 
     public static WanderingPearlProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
-        WanderingPearlProjectileEntity entityarrow = new WanderingPearlProjectileEntity(UnusualendModEntities.WANDERING_PEARL_PROJECTILE.get(), entity, world);
+        WanderingPearlProjectileEntity entityarrow = new WanderingPearlProjectileEntity(UnusualEndEntities.WANDERING_PEARL_PROJECTILE.get(), entity, world);
         entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
         entityarrow.setSilent(true);
         entityarrow.setCritArrow(false);
@@ -88,7 +88,7 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
     }
 
     public static WanderingPearlProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-        WanderingPearlProjectileEntity entityarrow = new WanderingPearlProjectileEntity(UnusualendModEntities.WANDERING_PEARL_PROJECTILE.get(), entity, entity.level());
+        WanderingPearlProjectileEntity entityarrow = new WanderingPearlProjectileEntity(UnusualEndEntities.WANDERING_PEARL_PROJECTILE.get(), entity, entity.level());
         double dx = target.getX() - entity.getX();
         double dy = target.getY() + target.getEyeHeight() - 1.1;
         double dz = target.getZ() - entity.getZ();

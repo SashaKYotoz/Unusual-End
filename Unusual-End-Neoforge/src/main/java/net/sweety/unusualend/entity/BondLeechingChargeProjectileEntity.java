@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.LeechingChargeProjectileHitsLivingEntityProcedure;
 import net.sweety.unusualend.procedures.LeechingChargeWhileProjectileFlyingTickProcedure;
 
@@ -69,7 +69,7 @@ public class BondLeechingChargeProjectileEntity extends AbstractArrow implements
     }
 
     public static BondLeechingChargeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
-        BondLeechingChargeProjectileEntity entityarrow = new BondLeechingChargeProjectileEntity(UnusualendModEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), entity, world);
+        BondLeechingChargeProjectileEntity entityarrow = new BondLeechingChargeProjectileEntity(UnusualEndEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), entity, world);
         entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
         entityarrow.setSilent(true);
         entityarrow.setCritArrow(false);
@@ -80,7 +80,7 @@ public class BondLeechingChargeProjectileEntity extends AbstractArrow implements
     }
 
     public static BondLeechingChargeProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-        BondLeechingChargeProjectileEntity entityarrow = new BondLeechingChargeProjectileEntity(UnusualendModEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level());
+        BondLeechingChargeProjectileEntity entityarrow = new BondLeechingChargeProjectileEntity(UnusualEndEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level());
         double dx = target.getX() - entity.getX();
         double dy = target.getY() + target.getEyeHeight() - 1.1;
         double dz = target.getZ() - entity.getZ();

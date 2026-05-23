@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlockEntities;
+import net.sweety.unusualend.init.UnusualEndBlockEntities;
 import net.sweety.unusualend.world.inventory.BuildingInhibitorGUIMenu;
 
 import javax.annotation.Nullable;
@@ -33,7 +33,7 @@ public class BuildingInhibitorBlockEntity extends RandomizableContainerBlockEnti
     private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
     public BuildingInhibitorBlockEntity(BlockPos position, BlockState state) {
-        super(UnusualendModBlockEntities.BUILDING_INHIBITOR.get(), position, state);
+        super(UnusualEndBlockEntities.BUILDING_INHIBITOR.get(), position, state);
     }
 
     @Override

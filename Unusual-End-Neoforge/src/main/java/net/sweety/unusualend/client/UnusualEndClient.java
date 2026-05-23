@@ -33,17 +33,17 @@ import net.sweety.unusualend.client.particle.WarpedBubblesParticle;
 import net.sweety.unusualend.client.renderer.*;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModBlockEntities;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndBlockEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.CrystalCatalystPropertyValueProviderProcedure;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class UnusualEndClient {
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer((BlockEntityType<GloopslatePedestralBlockEntity>) UnusualendModBlockEntities.GLOOPSLATE_PEDESTRAL.get(),
+        event.registerBlockEntityRenderer((BlockEntityType<GloopslatePedestralBlockEntity>) UnusualEndBlockEntities.GLOOPSLATE_PEDESTRAL.get(),
                 GloopslatePedestralEntityRenderer::new);
-        event.registerBlockEntityRenderer((BlockEntityType<AncientPodiumBlockEntity>) UnusualendModBlockEntities.ANCIENT_PODIUM.get(),
+        event.registerBlockEntityRenderer((BlockEntityType<AncientPodiumBlockEntity>) UnusualEndBlockEntities.ANCIENT_PODIUM.get(),
                 AncientPodiumEntityRenderer::new);
     }
 
@@ -78,32 +78,32 @@ public class UnusualEndClient {
 
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerEntityRenderer(UnusualendModEntities.ENDER_BLOB.get(), EnderblobRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.UNDEAD_ENDERLING.get(), EnderlingRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.ENDSTONE_TRAPPER.get(), EnderTrapperRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.ENDER_FIREFLY.get(), FlampyrRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.ENDSTONE_GOLEM.get(), EndstoneGolemRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.DRAGLING.get(), DraglingRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.BOLOK.get(), BolokRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.ENDERBLOB_QUEEN.get(), EnderblobQueenRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.BLOCK_UPDATER.get(), BlockUpdaterRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.SPUNKLER.get(), SpunklerRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.VOID_CRACK.get(), VoidCrackRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.WARPED_BALLOON.get(), LargeBubbleRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.GLUB.get(), GlubRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.VOID_BOMB.get(), VoidBombRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.ENDERBULB.get(), EnderbulbRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.SMALL_ENDERBULB.get(), SmallEnderbulbRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.BLUK.get(), BlukRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), PhantomArrowProjectileRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.WANDERING_PEARL_PROJECTILE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.SHINY_GRENADE_PROJECTILE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.LEECHING_CHARGE_PROJECTILE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), VoidArrowProjectileRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.SUMMONED_DRAGLING.get(), SummonedDraglingRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(UnusualendModEntities.WARPED_BALLOON_PROJ.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.ENDER_BLOB.get(), EnderblobRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.UNDEAD_ENDERLING.get(), EnderlingRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.ENDSTONE_TRAPPER.get(), EnderTrapperRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.FLAMPYR.get(), FlampyrRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.ENDSTONE_GOLEM.get(), EndstoneGolemRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.DRAGLING.get(), DraglingRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.BOLOK.get(), BolokRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.ENDERBLOB_QUEEN.get(), EnderblobQueenRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.BLOCK_UPDATER.get(), BlockUpdaterRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.SPUNKLER.get(), SpunklerRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.VOID_CRACK.get(), VoidCrackRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.WARPED_BALLOON.get(), LargeBubbleRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.GLUB.get(), GlubRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.VOID_BOMB.get(), VoidBombRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.ENDERBULB.get(), EnderbulbRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.SMALL_ENDERBULB.get(), SmallEnderbulbRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.BLUK.get(), BlukRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.PHANTOM_ARROW_PROJECTILE.get(), PhantomArrowProjectileRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.WANDERING_PEARL_PROJECTILE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.SHINY_GRENADE_PROJECTILE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.LEECHING_CHARGE_PROJECTILE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.VOID_ARROW_PROJECTILE.get(), VoidArrowProjectileRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.SUMMONED_DRAGLING.get(), SummonedDraglingRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(UnusualEndEntities.WARPED_BALLOON_PROJ.get(), ThrownItemRenderer::new);
     }
 
     @SubscribeEvent

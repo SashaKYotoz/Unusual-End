@@ -32,38 +32,38 @@ public class UnusualEndEvents {
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerItem(Capabilities.ItemHandler.ITEM, (stack, content) -> stack.getCapability(BolokResearchNotesItem.NOTES_ITEM_HANDLER), UnusualEndItems.BOLOK_RESEARCH_NOTES.get());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.ANCIENT_PODIUM.get(), (block, side) -> ((AncientPodiumBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.PURPUR_TANK.get(), (block, side) -> ((PurpurTankBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.GLOOPSLATE_PEDESTRAL.get(), (block, side) -> ((GloopslatePedestralBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.BUILDING_INHIBITOR.get(), (block, side) -> ((BuildingInhibitorBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.FADING_BLOCK.get(), (block, side) -> ((FadingBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.PEARLESCENT_INFUSER.get(), (block, side) -> ((PearlescentInfuserBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.WARPED_CHEST.get(), (block, side) -> ((WarpedChestBlockEntity) block).getHandler());
-        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualendModBlockEntities.WARPING_WAYSTONE.get(), (block, side) -> ((WarpingWaystoneBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.ANCIENT_PODIUM.get(), (block, side) -> ((AncientPodiumBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.PURPUR_TANK.get(), (block, side) -> ((PurpurTankBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.GLOOPSLATE_PEDESTRAL.get(), (block, side) -> ((GloopslatePedestralBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.BUILDING_INHIBITOR.get(), (block, side) -> ((BuildingInhibitorBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.FADING_BLOCK.get(), (block, side) -> ((FadingBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.PEARLESCENT_INFUSER.get(), (block, side) -> ((PearlescentInfuserBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.WARPED_CHEST.get(), (block, side) -> ((WarpedChestBlockEntity) block).getHandler());
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, UnusualEndBlockEntities.WARPING_WAYSTONE.get(), (block, side) -> ((WarpingWaystoneBlockEntity) block).getHandler());
     }
 
     @SubscribeEvent
     public static void registerSpawnConditions(RegisterSpawnPlacementsEvent event) {
-        event.register(UnusualendModEntities.BLUK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.BLUK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.BOLOK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.BOLOK.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.UNDEAD_ENDERLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.UNDEAD_ENDERLING.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.ENDER_BLOB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.ENDER_BLOB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.SMALL_ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.SMALL_ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.ENDERBULB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> (level.getDifficulty() != Difficulty.PEACEFUL && Mob.checkMobSpawnRules(entityType, level, reason, pos, random)), RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.GLUB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.GLUB.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> {
                     int x = pos.getX();
                     int y = pos.getY();
                     int z = pos.getZ();
                     return SpunklerNaturalEntitySpawningConditionProcedure.execute(level, x, y, z);
                 }, RegisterSpawnPlacementsEvent.Operation.AND);
-        event.register(UnusualendModEntities.SPUNKLER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+        event.register(UnusualEndEntities.SPUNKLER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 (entityType, level, reason, pos, random) -> {
                     int x = pos.getX();
                     int y = pos.getY();
@@ -120,23 +120,23 @@ public class UnusualEndEvents {
 
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
-        event.put(UnusualendModEntities.ENDER_BLOB.get(), EnderblobEntity.createAttributes().build());
-        event.put(UnusualendModEntities.UNDEAD_ENDERLING.get(), EnderlingEntity.createAttributes().build());
-        event.put(UnusualendModEntities.ENDSTONE_TRAPPER.get(), EnderTrapperEntity.createAttributes().build());
-        event.put(UnusualendModEntities.ENDER_FIREFLY.get(), FlampyrEntity.createAttributes().build());
-        event.put(UnusualendModEntities.ENDSTONE_GOLEM.get(), EndstoneGolemEntity.createAttributes().build());
-        event.put(UnusualendModEntities.DRAGLING.get(), DraglingEntity.createAttributes().build());
-        event.put(UnusualendModEntities.BOLOK.get(), BolokEntity.createAttributes().build());
-        event.put(UnusualendModEntities.ENDERBLOB_QUEEN.get(), EnderblobQueenEntity.createAttributes().build());
-        event.put(UnusualendModEntities.BLOCK_UPDATER.get(), BlockUpdaterEntity.createAttributes().build());
-        event.put(UnusualendModEntities.SPUNKLER.get(), SpunklerEntity.createAttributes().build());
-        event.put(UnusualendModEntities.VOID_CRACK.get(), VoidCrackEntity.createAttributes().build());
-        event.put(UnusualendModEntities.WARPED_BALLOON.get(), LargeBubbleEntity.createAttributes().build());
-        event.put(UnusualendModEntities.GLUB.get(), GlubEntity.createAttributes().build());
-        event.put(UnusualendModEntities.VOID_BOMB.get(), VoidBombEntity.createAttributes().build());
-        event.put(UnusualendModEntities.ENDERBULB.get(), EnderbulbEntity.createAttributes().build());
-        event.put(UnusualendModEntities.SMALL_ENDERBULB.get(), SmallEnderbulbEntity.createAttributes().build());
-        event.put(UnusualendModEntities.BLUK.get(), BlukEntity.createAttributes().build());
-        event.put(UnusualendModEntities.SUMMONED_DRAGLING.get(), SummonedDraglingEntity.createAttributes().build());
+        event.put(UnusualEndEntities.ENDER_BLOB.get(), EnderblobEntity.createAttributes().build());
+        event.put(UnusualEndEntities.UNDEAD_ENDERLING.get(), EnderlingEntity.createAttributes().build());
+        event.put(UnusualEndEntities.ENDSTONE_TRAPPER.get(), EnderTrapperEntity.createAttributes().build());
+        event.put(UnusualEndEntities.FLAMPYR.get(), FlampyrEntity.createAttributes().build());
+        event.put(UnusualEndEntities.ENDSTONE_GOLEM.get(), EndstoneGolemEntity.createAttributes().build());
+        event.put(UnusualEndEntities.DRAGLING.get(), DraglingEntity.createAttributes().build());
+        event.put(UnusualEndEntities.BOLOK.get(), BolokEntity.createAttributes().build());
+        event.put(UnusualEndEntities.ENDERBLOB_QUEEN.get(), EnderblobQueenEntity.createAttributes().build());
+        event.put(UnusualEndEntities.BLOCK_UPDATER.get(), BlockUpdaterEntity.createAttributes().build());
+        event.put(UnusualEndEntities.SPUNKLER.get(), SpunklerEntity.createAttributes().build());
+        event.put(UnusualEndEntities.VOID_CRACK.get(), VoidCrackEntity.createAttributes().build());
+        event.put(UnusualEndEntities.WARPED_BALLOON.get(), LargeBubbleEntity.createAttributes().build());
+        event.put(UnusualEndEntities.GLUB.get(), GlubEntity.createAttributes().build());
+        event.put(UnusualEndEntities.VOID_BOMB.get(), VoidBombEntity.createAttributes().build());
+        event.put(UnusualEndEntities.ENDERBULB.get(), EnderbulbEntity.createAttributes().build());
+        event.put(UnusualEndEntities.SMALL_ENDERBULB.get(), SmallEnderbulbEntity.createAttributes().build());
+        event.put(UnusualEndEntities.BLUK.get(), BlukEntity.createAttributes().build());
+        event.put(UnusualEndEntities.SUMMONED_DRAGLING.get(), SummonedDraglingEntity.createAttributes().build());
     }
 }

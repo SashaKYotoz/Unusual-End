@@ -21,7 +21,7 @@ import net.sweety.unusualend.entity.BondLeechingChargeProjectileEntity;
 import net.sweety.unusualend.entity.LeechingChargeProjectileEntity;
 import net.sweety.unusualend.init.UnusualEndEnchantments;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 @EventBusSubscriber
 public class LeechingWandRightClickProcedure {
@@ -52,7 +52,7 @@ public class LeechingWandRightClickProcedure {
                     if (!projectileLevel.isClientSide()) {
                         Projectile _entityToSpawn = new Object() {
                             public Projectile getArrow(Level level, Entity shooter, float damage, int knockback, byte piercing) {
-                                AbstractArrow entityToSpawn = new BondLeechingChargeProjectileEntity(UnusualendModEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), level);
+                                AbstractArrow entityToSpawn = new BondLeechingChargeProjectileEntity(UnusualEndEntities.BOND_LEECHING_CHARGE_PROJECTILE.get(), level);
                                 entityToSpawn.setOwner(shooter);
                                 entityToSpawn.setBaseDamage(damage);
                                 entityToSpawn.setSilent(true);
@@ -68,7 +68,7 @@ public class LeechingWandRightClickProcedure {
                     if (!projectileLevel.isClientSide()) {
                         Projectile _entityToSpawn = new Object() {
                             public Projectile getArrow(Level level, float damage, int knockback, byte piercing) {
-                                AbstractArrow entityToSpawn = new BenevolentLeechingChargeProjectileEntity(UnusualendModEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), level);
+                                AbstractArrow entityToSpawn = new BenevolentLeechingChargeProjectileEntity(UnusualEndEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), level);
                                 entityToSpawn.setBaseDamage(damage);
                                 entityToSpawn.setSilent(true);
                                 return entityToSpawn;
@@ -85,7 +85,7 @@ public class LeechingWandRightClickProcedure {
                         if (!projectileLevel.isClientSide()) {
                             Projectile _entityToSpawn = new Object() {
                                 public Projectile getArrow(Level level, Entity shooter, float damage, int knockback, byte piercing) {
-                                    AbstractArrow entityToSpawn = new LeechingChargeProjectileEntity(UnusualendModEntities.LEECHING_CHARGE_PROJECTILE.get(), level);
+                                    AbstractArrow entityToSpawn = new LeechingChargeProjectileEntity(UnusualEndEntities.LEECHING_CHARGE_PROJECTILE.get(), level);
                                     entityToSpawn.setOwner(shooter);
                                     entityToSpawn.setBaseDamage(damage);
                                     entityToSpawn.setSilent(true);

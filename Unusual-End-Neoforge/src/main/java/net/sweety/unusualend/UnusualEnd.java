@@ -26,14 +26,14 @@ public class UnusualEnd {
         NeoForge.EVENT_BUS.addListener(this::tick);
         UnusualEndSounds.REGISTRY.register(bus);
         UnusualEndBlocks.REGISTRY.register(bus);
-        UnusualendModBlockEntities.REGISTRY.register(bus);
+        UnusualEndBlockEntities.REGISTRY.register(bus);
         UnusualEndItems.REGISTRY.register(bus);
-        UnusualendModEntities.REGISTRY.register(bus);
-        UnusualendModTabs.REGISTRY.register(bus);
+        UnusualEndEntities.REGISTRY.register(bus);
+        UnusualEndTabs.REGISTRY.register(bus);
         StructureFeature.REGISTRY.register(bus);
         UnusualEndPotions.REGISTRY.register(bus);
         UnusualEndVariables.ATTACHMENT_TYPES.register(bus);
-        UnusualendStructures.STRUCTURES.register(bus);
+        UnusualEndStructures.STRUCTURES.register(bus);
         UnusualEndMiscRegister.register(bus);
         container.registerConfig(ModConfig.Type.COMMON, UEConfig.SPEC, "unusualend-common.toml");
     }

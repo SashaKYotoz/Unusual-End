@@ -24,7 +24,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.biome.Biomes;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.FlampyrEntity;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 public class UnbucketFireflyProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack stack) {
@@ -90,7 +90,7 @@ public class UnbucketFireflyProcedure {
                     _entity.swing(InteractionHand.OFF_HAND, true);
             }
             if (world instanceof ServerLevel _level) {
-                FlampyrEntity entityToSpawn = UnusualendModEntities.ENDER_FIREFLY.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
+                FlampyrEntity entityToSpawn = UnusualEndEntities.FLAMPYR.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
                 if (entityToSpawn != null)
                     NBTProcessor.writeTagsIntoEntity(stack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY).copyTag(), entityToSpawn);
             }

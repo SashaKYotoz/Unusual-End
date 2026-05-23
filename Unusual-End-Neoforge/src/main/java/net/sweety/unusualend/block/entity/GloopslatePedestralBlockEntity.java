@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlockEntities;
+import net.sweety.unusualend.init.UnusualEndBlockEntities;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
@@ -40,7 +40,7 @@ public class GloopslatePedestralBlockEntity extends RandomizableContainerBlockEn
 	};
 
 	public GloopslatePedestralBlockEntity(BlockPos position, BlockState state) {
-		super(UnusualendModBlockEntities.GLOOPSLATE_PEDESTRAL.get(), position, state);
+		super(UnusualEndBlockEntities.GLOOPSLATE_PEDESTRAL.get(), position, state);
 	}
 
 	public ItemStack getRenderStack() {

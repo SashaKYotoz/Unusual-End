@@ -41,7 +41,7 @@ public class ShinyGrenadeItem extends Item {
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.when_rightclick").withStyle(ChatFormatting.GRAY));
-		list.add(Component.literal("lore.unusualend.monster_efficient").withStyle(ChatFormatting.BLUE));
+		list.add(Component.translatable("lore.unusualend.monster_efficient").withStyle(ChatFormatting.BLUE));
 	}
 
 	@Override

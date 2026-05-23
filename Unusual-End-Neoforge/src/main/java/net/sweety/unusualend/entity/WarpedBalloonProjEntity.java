@@ -14,7 +14,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.WarpedBalloonProjProjectileHitsBlockProcedure;
 import net.sweety.unusualend.procedures.WarpedBalloonProjProjectileHitsLivingEntityProcedure;
 import net.sweety.unusualend.procedures.WarpedBalloonProjWhileProjectileFlyingTickProcedure;
@@ -78,7 +78,7 @@ public class WarpedBalloonProjEntity extends AbstractArrow implements ItemSuppli
     }
 
     public static WarpedBalloonProjEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
-        WarpedBalloonProjEntity entityarrow = new WarpedBalloonProjEntity(UnusualendModEntities.WARPED_BALLOON_PROJ.get(), entity, world);
+        WarpedBalloonProjEntity entityarrow = new WarpedBalloonProjEntity(UnusualEndEntities.WARPED_BALLOON_PROJ.get(), entity, world);
         entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
         entityarrow.setSilent(true);
         entityarrow.setCritArrow(false);
@@ -89,7 +89,7 @@ public class WarpedBalloonProjEntity extends AbstractArrow implements ItemSuppli
     }
 
     public static WarpedBalloonProjEntity shoot(LivingEntity entity, LivingEntity target) {
-        WarpedBalloonProjEntity entityarrow = new WarpedBalloonProjEntity(UnusualendModEntities.WARPED_BALLOON_PROJ.get(), entity, entity.level());
+        WarpedBalloonProjEntity entityarrow = new WarpedBalloonProjEntity(UnusualEndEntities.WARPED_BALLOON_PROJ.get(), entity, entity.level());
         double dx = target.getX() - entity.getX();
         double dy = target.getY() + target.getEyeHeight() - 1.1;
         double dz = target.getZ() - entity.getZ();

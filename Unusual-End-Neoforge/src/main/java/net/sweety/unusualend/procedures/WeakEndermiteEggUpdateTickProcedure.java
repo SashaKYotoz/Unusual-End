@@ -27,7 +27,7 @@ import net.minecraft.world.level.block.state.properties.Property;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualEndBlocks;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 import java.util.Comparator;
 import java.util.List;
@@ -105,7 +105,7 @@ public class WeakEndermiteEggUpdateTickProcedure {
 							}
 						} else {
 							if (world instanceof ServerLevel _level) {
-								Entity entityToSpawn = UnusualendModEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+								Entity entityToSpawn = UnusualEndEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 								if (entityToSpawn != null) {
 									entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 								}

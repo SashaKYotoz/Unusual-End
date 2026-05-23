@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.sweety.unusualend.UnusualEnd;
 
-public class UnusualendModTabs {
+public class UnusualEndTabs {
     public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, UnusualEnd.MODID);
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> UNUSUAL_END = REGISTRY.register("unusual_end",
             () -> CreativeModeTab.builder().title(Component.translatable("item_group.unusualend.unusual_end")).icon(() -> new ItemStack(UnusualEndBlocks.FLOWERING_PURPUR_GRASS.get())).displayItems((parameters, tabData) -> {
@@ -260,7 +260,6 @@ public class UnusualendModTabs {
                 tabData.accept(UnusualEndItems.PRISMALITE_GEM.get());
                 tabData.accept(UnusualEndItems.PRISMATIC_GUM.get());
                 tabData.accept(UnusualEndBlocks.PRISMALITE_BLOCK.get().asItem());
-                tabData.accept(UnusualEndBlocks.GLOOPSLATE_PEDESTRAL.get().asItem());
                 tabData.accept(UnusualEndItems.PRISMATIC_MIRROR.get());
                 tabData.accept(UnusualEndBlocks.GLOOPY_ENDSTONE.get().asItem());
                 tabData.accept(UnusualEndBlocks.GLOOPSLATE.get().asItem());

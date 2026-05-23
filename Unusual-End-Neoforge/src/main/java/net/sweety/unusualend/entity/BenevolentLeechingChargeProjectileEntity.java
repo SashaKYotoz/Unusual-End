@@ -23,7 +23,7 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.LeechingChargeWhileProjectileFlyingTickProcedure;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
@@ -96,7 +96,7 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
     }
 
     public static BenevolentLeechingChargeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
-        BenevolentLeechingChargeProjectileEntity entityarrow = new BenevolentLeechingChargeProjectileEntity(UnusualendModEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), entity, world);
+        BenevolentLeechingChargeProjectileEntity entityarrow = new BenevolentLeechingChargeProjectileEntity(UnusualEndEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), entity, world);
         entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
         entityarrow.setSilent(true);
         entityarrow.setCritArrow(false);
@@ -107,7 +107,7 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
     }
 
     public static BenevolentLeechingChargeProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-        BenevolentLeechingChargeProjectileEntity entityarrow = new BenevolentLeechingChargeProjectileEntity(UnusualendModEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level());
+        BenevolentLeechingChargeProjectileEntity entityarrow = new BenevolentLeechingChargeProjectileEntity(UnusualEndEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level());
         double dx = target.getX() - entity.getX();
         double dy = target.getY() + target.getEyeHeight() - 1.1;
         double dz = target.getZ() - entity.getZ();

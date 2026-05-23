@@ -16,7 +16,6 @@ import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.sweety.unusualend.procedures.NBTProcessor;
-import net.sweety.unusualend.procedures.PrismaticPearlItemGlowProcedure;
 import net.sweety.unusualend.procedures.TPwithChorusProcedure;
 
 import java.util.List;
@@ -39,8 +38,8 @@ public class PrismaticMirrorItem extends Item {
 
     @Override
     @OnlyIn(Dist.CLIENT)
-    public boolean isFoil(ItemStack itemstack) {
-        return PrismaticPearlItemGlowProcedure.execute(itemstack);
+    public boolean isFoil(ItemStack stack) {
+        return NBTProcessor.getNBTBoolean(stack,"LinkedMirror") || NBTProcessor.getNBTBoolean(stack,"LinkedTotem");
     }
 
     @Override

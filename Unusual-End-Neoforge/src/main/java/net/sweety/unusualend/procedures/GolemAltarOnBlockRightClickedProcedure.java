@@ -25,7 +25,7 @@ import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 import java.util.Comparator;
 import java.util.List;
@@ -130,7 +130,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
                                 level.playSound(null, BlockPos.containing(x + 0.5, y, z + 0.5), SoundEvents.STONE_PLACE, SoundSource.NEUTRAL, 1, 1);
 
                                 if (level instanceof ServerLevel serverLevel) {
-                                    EndstoneGolemEntity golem = UnusualendModEntities.ENDSTONE_GOLEM.get().create(serverLevel);
+                                    EndstoneGolemEntity golem = UnusualEndEntities.ENDSTONE_GOLEM.get().create(serverLevel);
                                     if (golem != null) {
                                         golem.setYRot(level.getRandom().nextFloat() * 360F);
                                         golem.moveTo(x, y + 1, z);

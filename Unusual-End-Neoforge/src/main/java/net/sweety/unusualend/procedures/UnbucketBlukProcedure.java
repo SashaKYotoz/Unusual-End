@@ -21,7 +21,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.BlukEntity;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 import java.util.Comparator;
 
@@ -77,7 +77,7 @@ public class UnbucketBlukProcedure {
                     _entity.swing(InteractionHand.OFF_HAND, true);
             }
             if (world instanceof ServerLevel _level) {
-                Entity entityToSpawn = UnusualendModEntities.BLUK.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
+                Entity entityToSpawn = UnusualEndEntities.BLUK.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
                 if (entityToSpawn != null) {
                 }
             }

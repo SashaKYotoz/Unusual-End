@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlockEntities;
+import net.sweety.unusualend.init.UnusualEndBlockEntities;
 import net.sweety.unusualend.world.inventory.PurpurTankGUIMenu;
 
 import javax.annotation.Nullable;
@@ -32,7 +32,7 @@ public class PurpurTankBlockEntity extends RandomizableContainerBlockEntity impl
     }
 
     public PurpurTankBlockEntity(BlockPos position, BlockState state) {
-        super(UnusualendModBlockEntities.PURPUR_TANK.get(), position, state);
+        super(UnusualEndBlockEntities.PURPUR_TANK.get(), position, state);
     }
 
     @Override

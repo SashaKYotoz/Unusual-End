@@ -15,7 +15,7 @@ import net.sweety.unusualend.UnusualEnd;
 import java.util.List;
 
 @JeiPlugin
-public class UnusualendModJeiInformation implements IModPlugin {
+public class UnusualEndJeiInformation implements IModPlugin {
 	@Override
 	public ResourceLocation getPluginUid() {
 		return UnusualEnd.makeUEID("information");

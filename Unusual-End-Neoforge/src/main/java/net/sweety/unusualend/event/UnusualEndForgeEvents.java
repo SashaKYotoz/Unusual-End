@@ -261,7 +261,7 @@ public class UnusualEndForgeEvents {
             if (sourceEntity instanceof BolokEntity) {
                 if (Math.random() < 0.7) {
                     if (entity.level() instanceof ServerLevel _level) {
-                        Entity entityToSpawn = UnusualendModEntities.SPUNKLER.get().spawn(_level, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), MobSpawnType.MOB_SUMMONED);
+                        Entity entityToSpawn = UnusualEndEntities.SPUNKLER.get().spawn(_level, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), MobSpawnType.MOB_SUMMONED);
                         if (entityToSpawn != null) {
                             entityToSpawn.setYRot(entity.level().getRandom().nextFloat() * 360F);
                         }
@@ -322,7 +322,7 @@ public class UnusualEndForgeEvents {
                     }
                     for (int index1 = 0; index1 < Mth.nextInt(RandomSource.create(), 0, 1); index1++) {
                         if (level instanceof ServerLevel _level) {
-                            Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+                            Entity entityToSpawn = UnusualEndEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
                             if (entityToSpawn != null) {
                                 entityToSpawn.setYRot(level.getRandom().nextFloat() * 360F);
                             }

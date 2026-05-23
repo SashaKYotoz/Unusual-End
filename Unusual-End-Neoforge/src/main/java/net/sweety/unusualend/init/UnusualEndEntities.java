@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.*;
 
-public class UnusualendModEntities {
+public class UnusualEndEntities {
     public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, UnusualEnd.MODID);
     public static final DeferredHolder<EntityType<?>, EntityType<EnderblobEntity>> ENDER_BLOB = register("ender_blob",
             EntityType.Builder.of(EnderblobEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
@@ -21,7 +21,7 @@ public class UnusualendModEntities {
                     .sized(0.6f, 1.45f));
     public static final DeferredHolder<EntityType<?>, EntityType<EnderTrapperEntity>> ENDSTONE_TRAPPER = register("endstone_trapper", EntityType.Builder.of(EnderTrapperEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
             .setTrackingRange(64).setUpdateInterval(3).fireImmune().sized(0.6f, 1.05f));
-    public static final DeferredHolder<EntityType<?>, EntityType<FlampyrEntity>> ENDER_FIREFLY = register("ender_firefly",
+    public static final DeferredHolder<EntityType<?>, EntityType<FlampyrEntity>> FLAMPYR = register("ender_firefly",
             EntityType.Builder.of(FlampyrEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3)
 
                     .sized(0.7f, 0.5f));

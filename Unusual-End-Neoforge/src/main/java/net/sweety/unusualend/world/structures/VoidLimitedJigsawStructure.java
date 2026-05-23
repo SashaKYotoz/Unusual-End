@@ -19,7 +19,7 @@ import net.minecraft.world.level.levelgen.structure.pools.StructureTemplatePool;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasBinding;
 import net.minecraft.world.level.levelgen.structure.pools.alias.PoolAliasLookup;
 import net.minecraft.world.level.levelgen.structure.templatesystem.LiquidSettings;
-import net.sweety.unusualend.init.UnusualendStructures;
+import net.sweety.unusualend.init.UnusualEndStructures;
 
 import java.util.List;
 import java.util.Optional;
@@ -147,6 +147,6 @@ public class VoidLimitedJigsawStructure extends Structure {
 
     @Override
     public StructureType<?> type() {
-        return UnusualendStructures.VOID_LIMITED_JIGSAW.get();
+        return UnusualEndStructures.VOID_LIMITED_JIGSAW.get();
     }
 }

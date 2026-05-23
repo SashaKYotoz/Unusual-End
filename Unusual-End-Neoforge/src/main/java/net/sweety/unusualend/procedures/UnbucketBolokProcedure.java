@@ -20,7 +20,7 @@ import net.minecraft.world.level.GameType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.entity.BolokEntity;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 public class UnbucketBolokProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Direction direction, Entity entity, ItemStack stack) {
@@ -73,7 +73,7 @@ public class UnbucketBolokProcedure {
                     _entity.swing(InteractionHand.OFF_HAND, true);
             }
             if (world instanceof ServerLevel _level) {
-                BolokEntity entityToSpawn = UnusualendModEntities.BOLOK.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
+                BolokEntity entityToSpawn = UnusualEndEntities.BOLOK.get().spawn(_level, BlockPos.containing(x + direction.getStepX(), y + direction.getStepY(), z + direction.getStepZ()), MobSpawnType.MOB_SUMMONED);
                 if (entityToSpawn != null)
                     NBTProcessor.writeTagsIntoEntity(stack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY).copyTag(), entityToSpawn);
             }

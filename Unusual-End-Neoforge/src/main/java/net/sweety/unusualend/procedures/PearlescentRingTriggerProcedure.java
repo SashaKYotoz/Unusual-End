@@ -18,7 +18,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 @EventBusSubscriber
 public class PearlescentRingTriggerProcedure {
@@ -107,7 +107,7 @@ public class PearlescentRingTriggerProcedure {
             if (!((sourceEntity instanceof Player _plrCldRem42 ? _plrCldRem42.getCooldowns().getCooldownPercent(UnusualEndItems.PEARLESCENT_RING.get(), 0f) * 100 : 0) > 0)) {
                 if (sourceEntity instanceof LivingEntity _livEnt && NBTProcessor.getNBTDouble(_livEnt.getOffhandItem(),"ringCooldown") >= 400) {
                     if (world instanceof ServerLevel _serverLevel) {
-                        Entity entitytospawn = UnusualendModEntities.SUMMONED_DRAGLING.get()
+                        Entity entitytospawn = UnusualEndEntities.SUMMONED_DRAGLING.get()
                                 .spawn(_serverLevel,
                                         BlockPos.containing(
                                                 (sourceEntity.level()
@@ -142,7 +142,7 @@ public class PearlescentRingTriggerProcedure {
                     }
                     if ((sourceEntity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(ItemTags.create(UnusualEnd.makeUEID("enderling_mask")))) {
                         if (world instanceof ServerLevel _serverLevel) {
-                            Entity entitytospawn = UnusualendModEntities.SUMMONED_DRAGLING.get()
+                            Entity entitytospawn = UnusualEndEntities.SUMMONED_DRAGLING.get()
                                     .spawn(_serverLevel,
                                             BlockPos.containing(
                                                     (sourceEntity.level()

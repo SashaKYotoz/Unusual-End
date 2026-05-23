@@ -22,7 +22,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 @JeiPlugin
-public class UnusualendModJeiPlugin implements IModPlugin {
+public class UnusualEndJeiPlugin implements IModPlugin {
 	public static mezz.jei.api.recipe.RecipeType<BolokTradingRecipe> BolokTrading_Type = new mezz.jei.api.recipe.RecipeType<>(BolokTradingRecipeCategory.UID, BolokTradingRecipe.class);
 	public static mezz.jei.api.recipe.RecipeType<InfuserRecipe> Infuser_Type = new mezz.jei.api.recipe.RecipeType<>(InfuserRecipeCategory.UID, InfuserRecipe.class);
 

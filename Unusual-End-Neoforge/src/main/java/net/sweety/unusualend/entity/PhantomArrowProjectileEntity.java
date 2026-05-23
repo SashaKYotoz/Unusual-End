@@ -13,7 +13,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.PhantomArrowWhileProjectileFlyingTickProcedure;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
@@ -62,7 +62,7 @@ public class PhantomArrowProjectileEntity extends AbstractArrow implements ItemS
     }
 
     public static PhantomArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
-        PhantomArrowProjectileEntity entityarrow = new PhantomArrowProjectileEntity(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), entity, world);
+        PhantomArrowProjectileEntity entityarrow = new PhantomArrowProjectileEntity(UnusualEndEntities.PHANTOM_ARROW_PROJECTILE.get(), entity, world);
         entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
         entityarrow.setSilent(true);
         entityarrow.setCritArrow(false);
@@ -73,7 +73,7 @@ public class PhantomArrowProjectileEntity extends AbstractArrow implements ItemS
     }
 
     public static PhantomArrowProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-        PhantomArrowProjectileEntity entityarrow = new PhantomArrowProjectileEntity(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), entity, entity.level());
+        PhantomArrowProjectileEntity entityarrow = new PhantomArrowProjectileEntity(UnusualEndEntities.PHANTOM_ARROW_PROJECTILE.get(), entity, entity.level());
         double dx = target.getX() - entity.getX();
         double dy = target.getY() + target.getEyeHeight() - 1.1;
         double dz = target.getZ() - entity.getZ();

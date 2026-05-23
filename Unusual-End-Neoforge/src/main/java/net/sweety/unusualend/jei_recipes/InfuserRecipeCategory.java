@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndBlocks;
-import net.sweety.unusualend.init.UnusualendModJeiPlugin;
+import net.sweety.unusualend.init.UnusualEndJeiPlugin;
 
 public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
 	public final static ResourceLocation UID = UnusualEnd.makeUEID("infuser");
@@ -28,7 +28,7 @@ public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
 
 	@Override
 	public mezz.jei.api.recipe.RecipeType<InfuserRecipe> getRecipeType() {
-		return UnusualendModJeiPlugin.Infuser_Type;
+		return UnusualEndJeiPlugin.Infuser_Type;
 	}
 
 	@Override

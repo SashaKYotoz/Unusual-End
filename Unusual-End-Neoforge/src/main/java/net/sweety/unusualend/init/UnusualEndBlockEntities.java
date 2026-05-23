@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.block.entity.*;
 
-public class UnusualendModBlockEntities {
+public class UnusualEndBlockEntities {
 	public static final DeferredRegister<BlockEntityType<?>> REGISTRY = DeferredRegister.create(BuiltInRegistries.BLOCK_ENTITY_TYPE, UnusualEnd.MODID);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> PURPUR_TANK = register("purpur_tank", UnusualEndBlocks.PURPUR_TANK, PurpurTankBlockEntity::new);
 	public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<?>> FADING_BLOCK = register("fading_block", UnusualEndBlocks.FADING_BLOCK, FadingBlockEntity::new);

@@ -13,11 +13,11 @@ import net.sweety.unusualend.item.*;
 
 public class UnusualEndItems {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.createItems(UnusualEnd.MODID);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDER_BLOB_SPAWN_EGG = REGISTRY.register("ender_blob_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.ENDER_BLOB, -13295268, -16777216, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDER_BLOB_SPAWN_EGG = REGISTRY.register("ender_blob_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDER_BLOB, -13295268, -16777216, new Item.Properties()));
     public static final DeferredHolder<Item, EndblobBallItem> END_BLOB = REGISTRY.register("end_blob", () -> new EndblobBallItem());
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> UNDEAD_ENDERLING_SPAWN_EGG = REGISTRY.register("undead_enderling_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.UNDEAD_ENDERLING, -16777216, -6750055, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> UNDEAD_ENDERLING_SPAWN_EGG = REGISTRY.register("undead_enderling_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.UNDEAD_ENDERLING, -16777216, -6750055, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> RAW_PURPUR_BLOCK = block(UnusualEndBlocks.RAW_PURPUR_BLOCK);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDSTONE_TRAPPER_SPAWN_EGG = REGISTRY.register("endstone_trapper_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.ENDSTONE_TRAPPER, -131665, -5547578, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDSTONE_TRAPPER_SPAWN_EGG = REGISTRY.register("endstone_trapper_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDSTONE_TRAPPER, -131665, -5547578, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> INFESTED_END_STONE = block(UnusualEndBlocks.INFESTED_END_STONE);
     public static final DeferredHolder<Item, BlockItem> POLISHED_PURPUR = block(UnusualEndBlocks.POLISHED_PURPUR);
     public static final DeferredHolder<Item, BlockItem> POLISHED_PURPUR_STAIRS = block(UnusualEndBlocks.POLISHED_PURPUR_STAIRS);
@@ -27,7 +27,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> FLOWER_POT_CHORUS_FUNGUS = block(UnusualEndBlocks.FLOWER_POT_CHORUS_FUNGUS);
     public static final DeferredHolder<Item, ChorusHelmetItem.Helmet> CHORUS_HELMET = REGISTRY.register("chorus_helmet", () -> new ChorusHelmetItem.Helmet());
     public static final DeferredHolder<Item, EnderStewItem> ENDER_STEW = REGISTRY.register("ender_stew", () -> new EnderStewItem());
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDER_FIREFLY_SPAWN_EGG = REGISTRY.register("ender_firefly_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.ENDER_FIREFLY, -6590274, -2699937, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDER_FIREFLY_SPAWN_EGG = REGISTRY.register("ender_firefly_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.FLAMPYR, -6590274, -2699937, new Item.Properties()));
     public static final DeferredHolder<Item, EnderScrapeItem> ENDERLING_SCRAP = REGISTRY.register("enderling_scrap", () -> new EnderScrapeItem());
     public static final DeferredHolder<Item, BlockItem> CHISELED_ENDSTONE_BUILDER = block(UnusualEndBlocks.CHISELED_ENDSTONE_BUILDER);
     public static final DeferredHolder<Item, BlockItem> CHISELED_ENDSTONE_US = block(UnusualEndBlocks.CHISELED_ENDSTONE_US);
@@ -41,7 +41,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, ChorusJuiceItemItem> CHORUS_JUICE = REGISTRY.register("chorus_juice", () -> new ChorusJuiceItemItem());
     public static final DeferredHolder<Item, EnderlingScrapItem.Leggings> SPECTRAL_LEGGINGS = REGISTRY.register("spectral_leggings", () -> new EnderlingScrapItem.Leggings());
     public static final DeferredHolder<Item, BlockItem> WEAK_END_STONE_BRICKS = block(UnusualEndBlocks.WEAK_END_STONE_BRICKS);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDSTONE_GOLEM_SPAWN_EGG = REGISTRY.register("endstone_golem_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.ENDSTONE_GOLEM, -103, -10092391, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDSTONE_GOLEM_SPAWN_EGG = REGISTRY.register("endstone_golem_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDSTONE_GOLEM, -103, -10092391, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> SHULKER_SHOOTER = block(UnusualEndBlocks.SHULKER_SHOOTER);
     public static final DeferredHolder<Item, MusicDiscFlyingShipsItem> MUSIC_DISC_FLYING_SHIPS = REGISTRY.register("music_disc_flying_ships", () -> new MusicDiscFlyingShipsItem());
     public static final DeferredHolder<Item, VoidTotemItem> VOID_TOTEM = REGISTRY.register("void_totem", () -> new VoidTotemItem());
@@ -84,7 +84,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> CHISELED_POLISHED_PURPUR_TILES = block(UnusualEndBlocks.CHISELED_POLISHED_PURPUR_TILES);
     public static final DeferredHolder<Item, BlockItem> CHORUS_NEST_MOSAIC_FENCE = block(UnusualEndBlocks.CHORUS_NEST_MOSAIC_FENCE);
     public static final DeferredHolder<Item, BlockItem> CHORUS_NEST_FENCE_GATE = block(UnusualEndBlocks.CHORUS_NEST_FENCE_GATE);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> DRAGLING_SPAWN_EGG = REGISTRY.register("dragling_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.DRAGLING, -15395820, -3771427, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> DRAGLING_SPAWN_EGG = REGISTRY.register("dragling_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.DRAGLING, -15395820, -3771427, new Item.Properties()));
     public static final DeferredHolder<Item, MoultDaggerItem> BOUNCY_DAGGER = REGISTRY.register("bouncy_dagger", () -> new MoultDaggerItem());
     public static final DeferredHolder<Item, ChorusPetalItem> CHORUS_PETAL = REGISTRY.register("chorus_petal", () -> new ChorusPetalItem());
     public static final DeferredHolder<Item, ScrapeClothItem> SPECTRAL_CLOTH = REGISTRY.register("spectral_cloth", () -> new ScrapeClothItem());
@@ -122,7 +122,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> GLOOPSTONE_BRICK_SLAB = block(UnusualEndBlocks.GLOOPSTONE_BRICK_SLAB);
     public static final DeferredHolder<Item, BlockItem> GNEISS_BRICK_WALL = block(UnusualEndBlocks.GNEISS_BRICK_WALL);
     public static final DeferredHolder<Item, BlockItem> GLOOPSTONE_BRICK_WALL = block(UnusualEndBlocks.GLOOPSTONE_BRICK_WALL);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> BOLOK_SPAWN_EGG = REGISTRY.register("bolok_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.BOLOK, -15059298, -12998000, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> BOLOK_SPAWN_EGG = REGISTRY.register("bolok_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.BOLOK, -15059298, -12998000, new Item.Properties()));
     public static final DeferredHolder<Item, BolokScaleItem> BOLOK_SCALE = REGISTRY.register("bolok_scale", () -> new BolokScaleItem());
     public static final DeferredHolder<Item, BolokItem.Chestplate> WARPED_CHESTPLATE = REGISTRY.register("warped_chestplate", () -> new BolokItem.Chestplate());
     public static final DeferredHolder<Item, BolokItem.Boots> WARPED_BOOTS = REGISTRY.register("warped_boots", () -> new BolokItem.Boots());
@@ -177,7 +177,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> CARVED_WARPED_SQUASH = block(UnusualEndBlocks.CARVED_WARPED_SQUASH);
     public static final DeferredHolder<Item, BlockItem> VOID_PARTICLES_BLOCK = block(UnusualEndBlocks.VOID_PARTICLES_BLOCK);
     public static final DeferredHolder<Item, AncientSwordItem> ANCIENT_SWORD = REGISTRY.register("ancient_sword", () -> new AncientSwordItem());
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> SPUNKLER_SPAWN_EGG = REGISTRY.register("spunkler_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.SPUNKLER, -13553268, -655943, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> SPUNKLER_SPAWN_EGG = REGISTRY.register("spunkler_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.SPUNKLER, -13553268, -655943, new Item.Properties()));
     public static final DeferredHolder<Item, LurkerSludgeItem> LURKER_SLUDGE = REGISTRY.register("lurker_sludge", () -> new LurkerSludgeItem());
     public static final DeferredHolder<Item, LurkerSpineItem> LURKER_SPINE = REGISTRY.register("lurker_spine", () -> new LurkerSpineItem());
     public static final DeferredHolder<Item, StabilisedVoidItem> STABILISED_VOID = REGISTRY.register("stabilised_void", () -> new StabilisedVoidItem());
@@ -215,7 +215,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> GLOOPY_TENDRILS = block(UnusualEndBlocks.GLOOPY_TENDRILS);
     public static final DeferredHolder<Item, BlockItem> WARPED_BUSH = block(UnusualEndBlocks.WARPED_BUSH);
     public static final DeferredHolder<Item, BlockItem> GROWN_WARPED_BUSH = block(UnusualEndBlocks.GROWN_WARPED_BUSH);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> GLUB_SPAWN_EGG = REGISTRY.register("glub_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.GLUB, -16737895, -39424, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> GLUB_SPAWN_EGG = REGISTRY.register("glub_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.GLUB, -16737895, -39424, new Item.Properties()));
     public static final DeferredHolder<Item, DoubleHighBlockItem> FLOWERING_GLOOPY_PILE = doubleBlock(UnusualEndBlocks.FLOWERING_GLOOPY_PILE);
     public static final DeferredHolder<Item, BlockItem> POLISHED_WARPED_STONE = block(UnusualEndBlocks.POLISHED_WARPED_STONE);
     public static final DeferredHolder<Item, BlockItem> CHISELED_POLISHED_WARPED_STONE = block(UnusualEndBlocks.CHISELED_POLISHED_WARPED_STONE);
@@ -244,17 +244,17 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> WARPED_LANTERN = block(UnusualEndBlocks.WARPED_LANTERN);
     public static final DeferredHolder<Item, BlockItem> DRAGLING_PLUSH = block(UnusualEndBlocks.DRAGLING_PLUSH);
     public static final DeferredHolder<Item, BlockItem> CITRINE_PILLAR = block(UnusualEndBlocks.CITRINE_PILLAR);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDERBULB_SPAWN_EGG = REGISTRY.register("enderbulb_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.ENDERBULB, -13295268, -10283736, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDERBULB_SPAWN_EGG = REGISTRY.register("enderbulb_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDERBULB, -13295268, -10283736, new Item.Properties()));
     public static final DeferredHolder<Item, BlobLensItem> ENDERBULB_LENS = REGISTRY.register("enderbulb_lens", () -> new BlobLensItem());
     public static final DeferredHolder<Item, BlockItem> LENS_HARDGLASS = block(UnusualEndBlocks.LENS_HARDGLASS);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> SMALL_ENDERBULB_SPAWN_EGG = REGISTRY.register("small_enderbulb_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.SMALL_ENDERBULB, -11851124, -8641478, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> SMALL_ENDERBULB_SPAWN_EGG = REGISTRY.register("small_enderbulb_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.SMALL_ENDERBULB, -11851124, -8641478, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> SQUASH_O_LANTERN = block(UnusualEndBlocks.SQUASH_O_LANTERN);
     public static final DeferredHolder<Item, BlockItem> WARPED_STONE_PILLAR = block(UnusualEndBlocks.WARPED_STONE_PILLAR);
     public static final DeferredHolder<Item, BlockItem> WARPED_STONE_EMBEDDED_CITRINE = block(UnusualEndBlocks.WARPED_STONE_EMBEDDED_CITRINE);
     public static final DeferredHolder<Item, LeechingWandItem> LEECHING_WAND = REGISTRY.register("leeching_wand", () -> new LeechingWandItem());
     public static final DeferredHolder<Item, ScaleHorseArmorItem> SCALE_HORSE_ARMOR = REGISTRY.register("scale_horse_armor", () -> new ScaleHorseArmorItem());
     public static final DeferredHolder<Item, BlockItem> CRACKED_LENS_HARDGLASS = block(UnusualEndBlocks.CRACKED_LENS_HARDGLASS);
-    public static final DeferredHolder<Item, DeferredSpawnEggItem> BLUK_SPAWN_EGG = REGISTRY.register("bluk_spawn_egg", () -> new DeferredSpawnEggItem(UnusualendModEntities.BLUK, -13346172, -9446212, new Item.Properties()));
+    public static final DeferredHolder<Item, DeferredSpawnEggItem> BLUK_SPAWN_EGG = REGISTRY.register("bluk_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.BLUK, -13346172, -9446212, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> SMALL_WARPED_SQUASH = block(UnusualEndBlocks.SMALL_WARPED_SQUASH);
     public static final DeferredHolder<Item, RawBlukItem> RAW_BLUK = REGISTRY.register("raw_bluk", () -> new RawBlukItem());
     public static final DeferredHolder<Item, CookedBlukItem> COOKED_BLUK = REGISTRY.register("cooked_bluk", () -> new CookedBlukItem());

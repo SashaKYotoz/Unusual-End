@@ -33,7 +33,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.SummonedDraglingOnEntityTickUpdateProcedure;
 
 import java.util.EnumSet;
@@ -241,7 +241,7 @@ public class SummonedDraglingEntity extends TamableAnimal {
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
-        SummonedDraglingEntity retval = UnusualendModEntities.SUMMONED_DRAGLING.get().create(serverWorld);
+        SummonedDraglingEntity retval = UnusualEndEntities.SUMMONED_DRAGLING.get().create(serverWorld);
         retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }

@@ -36,13 +36,13 @@ public class VoidTotemItemInInventoryTickProcedure {
                 if (!((entity instanceof Player _plrCldRem6 ? _plrCldRem6.getCooldowns().getCooldownPercent(stack.getItem(), 0f) * 100 : 0) > 0)) {
                     if (world.isClientSide()) {
                         if (world.isClientSide())
-                            Minecraft.getInstance().gameRenderer.displayItemActivation(new ItemStack(UnusualEndItems.VOID_TOTEM.get()));
+                            Minecraft.getInstance().gameRenderer.displayItemActivation(UnusualEndItems.VOID_TOTEM.get().getDefaultInstance());
                     }
                     if (entity instanceof Player _player)
                         _player.getCooldowns().addCooldown(stack.getItem(), (int) (double) UEConfig.VOID_TOTEM.get());
-                    if (entity instanceof Player _player) {
-                        ItemStack _stktoremove = new ItemStack(UnusualEndItems.VOID_TOTEM.get());
-                        _player.getInventory().clearOrCountMatchingItems(p -> _stktoremove.getItem() == p.getItem(), 1, _player.inventoryMenu.getCraftSlots());
+                    if (entity instanceof Player player) {
+                        ItemStack stack1 = new ItemStack(UnusualEndItems.VOID_TOTEM.get());
+                        player.getInventory().clearOrCountMatchingItems(p -> stack1.getItem() == p.getItem(), 1, player.inventoryMenu.getCraftSlots());
                     }
                     if (!(entity instanceof ServerPlayer _plr13 && _plr13.level() instanceof ServerLevel
                             && _plr13.getAdvancements().getOrStartProgress(_plr13.server.getAdvancements().get(UnusualEnd.makeUEID("worse_than_death"))).isDone())) {
@@ -99,8 +99,8 @@ public class VoidTotemItemInInventoryTickProcedure {
                                         _player.connection.send(new ClientboundGameEventPacket(ClientboundGameEventPacket.WIN_GAME, 0));
                                         _player.teleportTo(nextLevel, _player.getX(), _player.getY(), _player.getZ(), _player.getYRot(), _player.getXRot());
                                         _player.connection.send(new ClientboundPlayerAbilitiesPacket(_player.getAbilities()));
-                                        for (MobEffectInstance _effectinstance : _player.getActiveEffects())
-                                            _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), _effectinstance, true));
+                                        for (MobEffectInstance instance : _player.getActiveEffects())
+                                            _player.connection.send(new ClientboundUpdateMobEffectPacket(_player.getId(), instance, true));
                                         _player.connection.send(new ClientboundLevelEventPacket(1032, BlockPos.ZERO, 0, false));
                                     }
                                 }

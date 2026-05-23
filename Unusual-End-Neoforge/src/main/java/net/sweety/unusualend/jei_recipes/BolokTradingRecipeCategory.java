@@ -13,7 +13,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualendModJeiPlugin;
+import net.sweety.unusualend.init.UnusualEndJeiPlugin;
 
 public class BolokTradingRecipeCategory implements IRecipeCategory<BolokTradingRecipe> {
     public final static ResourceLocation UID = UnusualEnd.makeUEID("bolok_trading");
@@ -28,7 +28,7 @@ public class BolokTradingRecipeCategory implements IRecipeCategory<BolokTradingR
 
     @Override
     public mezz.jei.api.recipe.RecipeType<BolokTradingRecipe> getRecipeType() {
-        return UnusualendModJeiPlugin.BolokTrading_Type;
+        return UnusualEndJeiPlugin.BolokTrading_Type;
     }
 
     @Override

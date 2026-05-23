@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlockEntities;
+import net.sweety.unusualend.init.UnusualEndBlockEntities;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
@@ -31,7 +31,7 @@ public class FadingBlockEntity extends RandomizableContainerBlockEntity implemen
     private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 
     public FadingBlockEntity(BlockPos position, BlockState state) {
-        super(UnusualendModBlockEntities.FADING_BLOCK.get(), position, state);
+        super(UnusualEndBlockEntities.FADING_BLOCK.get(), position, state);
     }
 
     @Override

@@ -20,7 +20,7 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.init.UnusualEndBlocks;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 public class WarpedPotionRightclickedOnBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity, ItemStack itemstack) {
@@ -69,7 +69,7 @@ public class WarpedPotionRightclickedOnBlockProcedure {
 			}
 			world.destroyBlock(BlockPos.containing(x, y, z), false);
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = UnusualendModEntities.GLUB.get().spawn(_level, BlockPos.containing(x + 0.5, y, z + 0.5), MobSpawnType.MOB_SUMMONED);
+				Entity entityToSpawn = UnusualEndEntities.GLUB.get().spawn(_level, BlockPos.containing(x + 0.5, y, z + 0.5), MobSpawnType.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setYRot((float) YAW);
 					entityToSpawn.setYBodyRot((float) YAW);

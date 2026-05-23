@@ -16,7 +16,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 public class EndstoneGolemEntityIsHurtProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
@@ -121,7 +121,7 @@ public class EndstoneGolemEntityIsHurtProcedure {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.REVERSE_PORTAL, (sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ()), 5, 0.5, 0.5, 0.5, 0.1);
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = UnusualendModEntities.DRAGLING.get().spawn(_level, BlockPos.containing(sourceentity.getX(), sourceentity.getY(), sourceentity.getZ()), MobSpawnType.MOB_SUMMONED);
+						Entity entityToSpawn = UnusualEndEntities.DRAGLING.get().spawn(_level, BlockPos.containing(sourceentity.getX(), sourceentity.getY(), sourceentity.getZ()), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 							entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 						}

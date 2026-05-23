@@ -27,7 +27,7 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EnderTrapperEntity;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 import java.util.Comparator;
 import java.util.List;
@@ -44,7 +44,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 					if (!(world.getDifficulty() == Difficulty.PEACEFUL)) {
 						if (!(!world.getEntitiesOfClass(EnderTrapperEntity.class, AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty())) {
 							if (world instanceof ServerLevel _level) {
-								Entity entityToSpawn = UnusualendModEntities.ENDSTONE_TRAPPER.get().spawn(_level, BlockPos.containing(x + 0.5, Math.round(entity.getY() - 1), z + 0.5), MobSpawnType.MOB_SUMMONED);
+								Entity entityToSpawn = UnusualEndEntities.ENDSTONE_TRAPPER.get().spawn(_level, BlockPos.containing(x + 0.5, Math.round(entity.getY() - 1), z + 0.5), MobSpawnType.MOB_SUMMONED);
 								if (entityToSpawn != null) {
 									entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 								}

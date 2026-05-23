@@ -9,7 +9,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.entity.PhantomArrowProjectileEntity;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import org.jetbrains.annotations.Nullable;
 
 public class PhantomArrowItem extends ArrowItem {
@@ -25,6 +25,6 @@ public class PhantomArrowItem extends ArrowItem {
 
 	@Override
 	public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, @Nullable ItemStack weapon) {
-		return new PhantomArrowProjectileEntity(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), shooter, level);
+		return new PhantomArrowProjectileEntity(UnusualEndEntities.PHANTOM_ARROW_PROJECTILE.get(), shooter, level);
 	}
 }

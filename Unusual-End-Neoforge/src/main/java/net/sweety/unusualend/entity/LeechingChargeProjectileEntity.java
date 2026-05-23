@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.LeechingChargeProjectileHitsLivingEntityProcedure;
 import net.sweety.unusualend.procedures.LeechingChargeWhileProjectileFlyingTickProcedure;
 
@@ -71,7 +71,7 @@ public class LeechingChargeProjectileEntity extends AbstractArrow implements Ite
     }
 
     public static LeechingChargeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
-        LeechingChargeProjectileEntity entityarrow = new LeechingChargeProjectileEntity(UnusualendModEntities.LEECHING_CHARGE_PROJECTILE.get(), entity, world);
+        LeechingChargeProjectileEntity entityarrow = new LeechingChargeProjectileEntity(UnusualEndEntities.LEECHING_CHARGE_PROJECTILE.get(), entity, world);
         entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
         entityarrow.setSilent(true);
         entityarrow.setCritArrow(false);
@@ -82,7 +82,7 @@ public class LeechingChargeProjectileEntity extends AbstractArrow implements Ite
     }
 
     public static LeechingChargeProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-        LeechingChargeProjectileEntity entityarrow = new LeechingChargeProjectileEntity(UnusualendModEntities.LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level());
+        LeechingChargeProjectileEntity entityarrow = new LeechingChargeProjectileEntity(UnusualEndEntities.LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level());
         double dx = target.getX() - entity.getX();
         double dy = target.getY() + target.getEyeHeight() - 1.1;
         double dz = target.getZ() - entity.getZ();

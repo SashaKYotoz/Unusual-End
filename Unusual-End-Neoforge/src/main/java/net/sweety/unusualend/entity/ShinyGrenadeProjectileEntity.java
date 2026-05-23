@@ -15,7 +15,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.ShinyGrenadeProjectileProjectileHitsBlockProcedure;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
@@ -75,7 +75,7 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 	}
 
 	public static ShinyGrenadeProjectileEntity shoot(Level world, LivingEntity entity, RandomSource random, float power, double damage) {
-		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualendModEntities.SHINY_GRENADE_PROJECTILE.get(), entity, world);
+		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualEndEntities.SHINY_GRENADE_PROJECTILE.get(), entity, world);
 		entityarrow.shoot(entity.getViewVector(1).x, entity.getViewVector(1).y, entity.getViewVector(1).z, power * 2, 0);
 		entityarrow.setSilent(true);
 		entityarrow.setCritArrow(false);
@@ -86,7 +86,7 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 	}
 
 	public static ShinyGrenadeProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualendModEntities.SHINY_GRENADE_PROJECTILE.get(), entity, entity.level());
+		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualEndEntities.SHINY_GRENADE_PROJECTILE.get(), entity, entity.level());
 		double dx = target.getX() - entity.getX();
 		double dy = target.getY() + target.getEyeHeight() - 1.1;
 		double dz = target.getZ() - entity.getZ();

@@ -21,7 +21,7 @@ import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.LargeBubbleEntity;
 import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 import java.util.Comparator;
 
@@ -34,7 +34,7 @@ public class WarpedBalloonProjProjectileHitsLivingEntityProcedure {
 					&& !entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, UnusualEnd.makeUEID("ballon_immune")))) {
 				if (!entity.isPassenger()) {
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = UnusualendModEntities.WARPED_BALLOON.get().spawn(_level, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), MobSpawnType.MOB_SUMMONED);
+						Entity entityToSpawn = UnusualEndEntities.WARPED_BALLOON.get().spawn(_level, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 							entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 						}

@@ -30,3 +30,9 @@ type = "required"
 versionRange = "[21,)"
 ordering = "NONE"
 side = "BOTH"
+[[dependencies.unusualend]]
+modId="blueprint"
+mandatory=true
+versionRange="[0,)"
+ordering="NONE"
+side="BOTH"

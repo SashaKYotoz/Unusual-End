@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.wrapper.SidedInvWrapper;
-import net.sweety.unusualend.init.UnusualendModBlockEntities;
+import net.sweety.unusualend.init.UnusualEndBlockEntities;
 
 import javax.annotation.Nullable;
 import java.util.stream.IntStream;
@@ -29,7 +29,7 @@ public class WarpedChestBlockEntity extends RandomizableContainerBlockEntity imp
 
 	private final SidedInvWrapper handler = new SidedInvWrapper(this, null);
 	public WarpedChestBlockEntity(BlockPos position, BlockState state) {
-		super(UnusualendModBlockEntities.WARPED_CHEST.get(), position, state);
+		super(UnusualEndBlockEntities.WARPED_CHEST.get(), position, state);
 	}
 
 	@Override

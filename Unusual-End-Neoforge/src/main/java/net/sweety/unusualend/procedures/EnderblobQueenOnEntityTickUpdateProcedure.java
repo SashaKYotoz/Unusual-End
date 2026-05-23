@@ -29,7 +29,7 @@ import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EnderblobEntity;
 import net.sweety.unusualend.entity.EnderblobQueenEntity;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 import java.util.Comparator;
 import java.util.List;
@@ -78,7 +78,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                         }
                     }
                     if (world instanceof ServerLevel _level) {
-                        Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
+                        Entity entityToSpawn = UnusualEndEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
                                 (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1, (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ()), MobSpawnType.MOB_SUMMONED);
                         if (entityToSpawn != null) {
                         }
@@ -213,7 +213,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                         }
                     } else {
                         if (world instanceof ServerLevel _level) {
-                            Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level,
+                            Entity entityToSpawn = UnusualEndEntities.ENDER_BLOB.get().spawn(_level,
                                     BlockPos.containing(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y + 0.5, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), MobSpawnType.MOB_SUMMONED);
                             if (entityToSpawn != null) {
                             }
@@ -251,7 +251,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                     _level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y, z, 20, 3, 3, 3, 0);
                 for (int index3 = 0; index3 < Mth.nextInt(RandomSource.create(), 5, 10); index3++) {
                     if (world instanceof ServerLevel _level) {
-                        Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+                        Entity entityToSpawn = UnusualEndEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
                         if (entityToSpawn != null) {
                         }
                     }

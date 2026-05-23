@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualEndBlocks;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 public class LargeBubbleEntity extends Animal {
 
@@ -78,7 +78,7 @@ public class LargeBubbleEntity extends Animal {
 
     @Override
     public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
-        LargeBubbleEntity retval = UnusualendModEntities.WARPED_BALLOON.get().create(serverWorld);
+        LargeBubbleEntity retval = UnusualEndEntities.WARPED_BALLOON.get().create(serverWorld);
         retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null);
         return retval;
     }

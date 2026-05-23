@@ -9,7 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualEndEntities;
 
 public class EnderbulbEntityDiesProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -19,7 +19,7 @@ public class EnderbulbEntityDiesProcedure {
 			_level.explode(null, x, y, z, 0, Level.ExplosionInteraction.MOB);
 		for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 2, 4); index0++) {
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = UnusualendModEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + Mth.nextDouble(RandomSource.create(), -0.15, 0.15), y, z + Mth.nextDouble(RandomSource.create(), -0.15, 0.15)),
+				Entity entityToSpawn = UnusualEndEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + Mth.nextDouble(RandomSource.create(), -0.15, 0.15), y, z + Mth.nextDouble(RandomSource.create(), -0.15, 0.15)),
 						MobSpawnType.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
