@@ -30,7 +30,7 @@ import net.sweety.unusualend.init.UnusualEndMiscRegister;
 
 public class WarpedChestOnBlockRightClickedProcedure {
     public static void execute(LevelAccessor level, double x, double y, double z, BlockState blockstate, Direction direction, Entity entity) {
-        if (direction == null || entity == null)
+        if (direction == null || entity == null || level.isClientSide())
             return;
         if (!(new Object() {
             public String getValue(LevelAccessor world, BlockPos pos, String tag) {
@@ -49,13 +49,8 @@ public class WarpedChestOnBlockRightClickedProcedure {
                         level.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
                 }
                 if (level.isClientSide()) {
-                    if (level instanceof Level _level) {
-                        if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(RandomSource.create(), 1.2, 1.4));
-                        } else {
-                            _level.playLocalSound(x, y, z, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(RandomSource.create(), 1.2, 1.4), false);
-                        }
-                    }
+                    if (level instanceof Level _level)
+                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(RandomSource.create(), 1.2, 1.4));
                 }
                 if (!level.isClientSide()) {
                     BlockPos _bp = BlockPos.containing(x, y, z);
@@ -73,12 +68,11 @@ public class WarpedChestOnBlockRightClickedProcedure {
                     if (level instanceof Level _level)
                         _level.sendBlockUpdated(_bp, _bs, _bs, 3);
                 }
-                if (level instanceof ServerLevel _level)
+                if (level instanceof ServerLevel _level) {
                     _level.sendParticles(ParticleTypes.CLOUD, (x + 0.5), (y + 0.8), (z + 0.5), 5, 0.4, 0.1, 0.4, 0);
-                if (level instanceof ServerLevel _level)
                     _level.sendParticles(UnusualEndMiscRegister.WARPED_BUBBLES.get(), (x + 0.5), (y + Mth.nextDouble(RandomSource.create(), 0.6, 0.9)), (z + 0.5), 20, 0.3, 0.1, 0.3, 0.05);
-                if (level instanceof ServerLevel _level)
                     _level.sendParticles(ParticleTypes.FISHING, (x + 0.5), (y + 0.8), (z + 0.5), 15, 0.4, 0.1, 0.4, 0);
+                }
                 for (int index0 = 0; index0 < (int) Mth.nextDouble(RandomSource.create(), 4, 5); index0++) {
                     if (!level.isClientSide() && level.getServer() != null) {
                         for (ItemStack itemstackiterator : level.getServer().reloadableRegistries().getLootTable(ResourceKey.create(Registries.LOOT_TABLE, UnusualEnd.makeUEID("chests/warped_ship")))
@@ -99,11 +93,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
                         level.setBlock(_pos, _bs.setValue(_integerProp, 0), 3);
                     if (level.isClientSide()) {
                         if (level instanceof Level _level) {
-                            if (!_level.isClientSide()) {
-                                _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(RandomSource.create(), 1.1, 1.2));
-                            } else {
-                                _level.playLocalSound(x, y, z, SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(RandomSource.create(), 1.1, 1.2), false);
-                            }
+                            _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(RandomSource.create(), 1.1, 1.2));
                         }
                     }
                 });
@@ -124,14 +114,9 @@ public class WarpedChestOnBlockRightClickedProcedure {
                 _level.sendParticles(ParticleTypes.SMOKE, (x + 0.5), (y + 0.8), (z + 0.5), 5, 0.4, 0.1, 0.4, 0);
             if (entity instanceof Player player && !player.level().isClientSide())
                 player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.alreay_opened").getString())), true);
-            if (level.isClientSide()) {
-                if (level instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) 0.95);
-                    } else {
-                        _level.playLocalSound(x, y, z, SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) 0.95, false);
-                    }
-                }
+            if (level instanceof Level _level) {
+                if (!_level.isClientSide())
+                    _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) 0.95);
             }
         }
     }
