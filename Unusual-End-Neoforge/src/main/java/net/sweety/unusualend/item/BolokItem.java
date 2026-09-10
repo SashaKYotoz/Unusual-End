@@ -19,7 +19,7 @@ import java.util.List;
 
 public abstract class BolokItem extends ArmorItem {
     public BolokItem(ArmorItem.Type type, Item.Properties properties) {
-        super(ModArmorMaterials.BOLOK_ARMOR_MATERIAL, type, properties);
+        super(ModArmorMaterials.BOLOK_ARMOR_MATERIAL, type, properties.stacksTo(1));
     }
 
     public static class Chestplate extends BolokItem {

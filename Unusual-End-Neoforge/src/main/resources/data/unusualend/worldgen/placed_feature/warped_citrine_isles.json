@@ -3,13 +3,13 @@
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 5
+      "chance": 2
     },
     {
       "type": "minecraft:in_square"
     },
     {
-      "type": "environment_scan",
+      "type": "minecraft:environment_scan",
       "direction_of_search": "down",
       "target_condition": {
         "type": "minecraft:all_of",
@@ -18,66 +18,42 @@
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                3,
-                0,
-                0
-              ]
+              "offset": [3, 0, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                0,
-                3
-              ]
+              "offset": [0, 0, 3]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                -3,
-                0,
-                0
-              ]
+              "offset": [-3, 0, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                0,
-                -3
-              ]
+              "offset": [0, 0, -3]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                3,
-                0
-              ]
+              "offset": [0, 3, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                -3,
-                0
-              ]
+              "offset": [0, -3, 0]
             }
           }
         ]
@@ -85,7 +61,7 @@
       "max_steps": 3
     },
     {
-      "type": "environment_scan",
+      "type": "minecraft:environment_scan",
       "direction_of_search": "up",
       "target_condition": {
         "type": "minecraft:all_of",
@@ -94,66 +70,42 @@
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                3,
-                0,
-                0
-              ]
+              "offset": [3, 0, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                0,
-                3
-              ]
+              "offset": [0, 0, 3]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                -3,
-                0,
-                0
-              ]
+              "offset": [-3, 0, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                0,
-                -3
-              ]
+              "offset": [0, 0, -3]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                3,
-                0
-              ]
+              "offset": [0, 3, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                -3,
-                0
-              ]
+              "offset": [0, -3, 0]
             }
           }
         ]
@@ -161,19 +113,19 @@
       "max_steps": 3
     },
     {
-      "type": "minecraft:biome"
-    },
-    {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
+        "type": "minecraft:trapezoid",
         "min_inclusive": {
-          "absolute": 24
+          "absolute": 15
         },
         "max_inclusive": {
-          "absolute": 40
+          "absolute": 35
         }
       }
+    },
+    {
+      "type": "minecraft:biome"
     }
   ]
 }

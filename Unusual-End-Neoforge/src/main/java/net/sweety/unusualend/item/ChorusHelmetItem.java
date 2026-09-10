@@ -23,7 +23,7 @@ import java.util.function.Consumer;
 
 public abstract class ChorusHelmetItem extends ArmorItem {
 	public ChorusHelmetItem(ArmorItem.Type type, Item.Properties properties) {
-		super(ModArmorMaterials.CHORUS_ARMOR_MATERIAL, type, properties);
+		super(ModArmorMaterials.CHORUS_ARMOR_MATERIAL, type, properties.stacksTo(1));
 	}
 
 	public static class Helmet extends ChorusHelmetItem {

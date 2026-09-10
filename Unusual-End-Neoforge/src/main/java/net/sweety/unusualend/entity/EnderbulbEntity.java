@@ -2,13 +2,18 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
@@ -22,7 +27,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.procedures.EnderbulbEntityDiesProcedure;
+import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.procedures.EnderbulbOnEntityTickUpdateProcedure;
 
 public class EnderbulbEntity extends Monster {
@@ -103,7 +108,22 @@ public class EnderbulbEntity extends Monster {
     @Override
     public void die(DamageSource source) {
         super.die(source);
-        EnderbulbEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+        if (this.level() instanceof ServerLevel _level)
+            _level.sendParticles(ParticleTypes.POOF, this.getX(), this.getY(), this.getZ(), 10, 0.5, 0.5, 0.5, 0);
+        if (this.level() instanceof Level _level && !_level.isClientSide())
+            _level.explode(null, this.getX(), this.getY(), this.getZ(), 0, Level.ExplosionInteraction.MOB);
+        for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 2, 4); index0++) {
+            if (this.level() instanceof ServerLevel _level) {
+                Entity entityToSpawn = UnusualEndEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(
+                                this.getX() + Mth.nextDouble(RandomSource.create(), -0.15, 0.15),
+                                this.getY(),
+                                this.getZ() + Mth.nextDouble(RandomSource.create(), -0.15, 0.15)),
+                        MobSpawnType.MOB_SUMMONED);
+                if (entityToSpawn != null) {
+                    entityToSpawn.setYRot(this.level().getRandom().nextFloat() * 360F);
+                }
+            }
+        }
     }
 
     @Override

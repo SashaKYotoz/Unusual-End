@@ -19,7 +19,9 @@
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
-          { "items": "#unusualend:enderling_mask" }
+          {
+            "items": "#unusualend:enderling_mask"
+          }
         ]
       }
     }

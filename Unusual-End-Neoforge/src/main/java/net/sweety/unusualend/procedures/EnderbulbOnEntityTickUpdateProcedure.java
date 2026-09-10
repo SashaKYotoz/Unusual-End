@@ -13,11 +13,11 @@ public class EnderbulbOnEntityTickUpdateProcedure {
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.PORTAL, x, (y - 0.2), z, 1, 0.2, 0.2, 0.2, 0.2);
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) < (entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1) / 2) {
-			if (entity.getPersistentData().getBoolean("BulbClose") == false) {
+			if (!entity.getPersistentData().getBoolean("BulbClose")) {
 				entity.getPersistentData().putBoolean("BulbClose", true);
 			}
 		} else {
-			if (!(entity.getPersistentData().getBoolean("BulbClose") == false)) {
+			if (entity.getPersistentData().getBoolean("BulbClose")) {
 				entity.getPersistentData().putBoolean("BulbClose", false);
 			}
 		}

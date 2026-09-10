@@ -151,6 +151,66 @@
           }
         },
         "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_island_11",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_island_12",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_island_13",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
+      },
+      {
+        "feature": {
+          "type": "unusualend:structure_feature",
+          "config": {
+            "structure": "unusualend:warped_island_14",
+            "random_rotation": true,
+            "random_mirror": true,
+            "ignored_blocks": [
+              "minecraft:structure_block",
+              "minecraft:air"
+            ]
+          }
+        },
+        "placement": []
       }
     ]
   }

@@ -25,7 +25,7 @@ import java.util.function.Consumer;
 
 public abstract class SpiritGrimItem extends ArmorItem {
 	public SpiritGrimItem(ArmorItem.Type type, Item.Properties properties) {
-		super(ModArmorMaterials.SPIRIT_ARMOR_MATERIAL, type, properties);
+		super(ModArmorMaterials.SPIRIT_ARMOR_MATERIAL, type, properties.stacksTo(1));
 	}
 
 	public static class Helmet extends SpiritGrimItem {

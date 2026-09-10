@@ -4,24 +4,53 @@
     {
       "type": "minecraft:count",
       "count": {
-        "type": "uniform",
-        "min_inclusive": 7,
-        "max_inclusive": 13
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "data": 2,
+            "weight": 1
+          },
+          {
+            "data": {
+              "type": "minecraft:uniform",
+              "min_inclusive": 1,
+              "max_inclusive": 2
+            },
+            "weight": 1
+          }
+        ]
       }
-    },
-    {
-      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:height_range",
       "height": {
-        "type": "minecraft:uniform",
-        "min_inclusive": {
-          "absolute": 25
-        },
-        "max_inclusive": {
-          "absolute": 115
-        }
+        "type": "minecraft:weighted_list",
+        "distribution": [
+          {
+            "data": {
+              "type": "minecraft:uniform",
+              "min_inclusive": {
+                "absolute": 65
+              },
+              "max_inclusive": {
+                "absolute": 90
+              }
+            },
+            "weight": 1
+          },
+          {
+            "data": {
+              "type": "minecraft:trapezoid",
+              "min_inclusive": {
+                "absolute": 35
+              },
+              "max_inclusive": {
+                "absolute": 115
+              }
+            },
+            "weight": 1
+          }
+        ]
       }
     },
     {
@@ -33,70 +62,55 @@
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                2,
-                0,
-                0
-              ]
+              "offset": [4, 0, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                0,
-                2
-              ]
+              "offset": [0, 0, 4]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                -2,
-                0,
-                0
-              ]
+              "offset": [-4, 0, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                0,
-                -2
-              ]
+              "offset": [0, 0, -4]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                2,
-                0
-              ]
+              "offset": [0, 4, 0]
             }
           },
           {
             "type": "minecraft:not",
             "predicate": {
               "type": "minecraft:solid",
-              "offset": [
-                0,
-                -2,
-                0
-              ]
+              "offset": [0, -4, 0]
+            }
+          },
+          {
+            "type": "minecraft:not",
+            "predicate": {
+              "type": "minecraft:solid"
             }
           }
         ]
       }
+    },
+    {
+      "type": "minecraft:in_square"
     },
     {
       "type": "minecraft:biome"
