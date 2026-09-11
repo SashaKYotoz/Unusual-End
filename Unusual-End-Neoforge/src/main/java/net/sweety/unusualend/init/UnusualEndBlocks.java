@@ -204,5 +204,5 @@ public class UnusualEndBlocks {
     public static final DeferredBlock<FlowerPotGloopyBushBlock> FLOWER_POT_GLOOPY_BUSH = REGISTRY.register("flower_pot_gloopy_bush", () -> new FlowerPotGloopyBushBlock());
     public static final DeferredBlock<FlowerPotPurpurGrassBlock> FLOWER_POT_PURPUR_GRASS = REGISTRY.register("flower_pot_purpur_grass", () -> new FlowerPotPurpurGrassBlock());
     public static final DeferredBlock<Block> GLOOPY_ENDSTONE = REGISTRY.register("gloopy_endstone", () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.CORAL_BLOCK)
-            .strength(0.95f, 5f).lightLevel((state) -> 12).requiresCorrectToolForDrops()));
+            .strength(0.95f, 5f).requiresCorrectToolForDrops()));
 }
