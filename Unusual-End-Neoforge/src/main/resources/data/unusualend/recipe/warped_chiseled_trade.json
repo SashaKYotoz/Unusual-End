@@ -2,7 +2,7 @@
   "type": "unusualend:bolok_trading",
   "ingredients": [
     {
-      "tag": "neoforge:chiseled_end_stone"
+      "tag": "c:chiseled_end_stone"
     }
   ],
   "output": {
