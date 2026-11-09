@@ -72,9 +72,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
                             AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("obtain_catalyst"));
                             AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
                             if (!_ap.isDone()) {
-                                Iterator _iterator = _ap.getRemainingCriteria().iterator();
-                                while (_iterator.hasNext())
-                                    _player.getAdvancements().award(_adv, (String) _iterator.next());
+                                for (String s : _ap.getRemainingCriteria()) _player.getAdvancements().award(_adv, s);
                             }
                         }
                     }

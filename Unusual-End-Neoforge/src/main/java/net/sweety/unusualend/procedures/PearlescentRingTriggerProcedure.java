@@ -17,8 +17,8 @@ import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 @EventBusSubscriber
 public class PearlescentRingTriggerProcedure {
@@ -28,7 +28,6 @@ public class PearlescentRingTriggerProcedure {
             execute(event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getSource().getEntity());
     }
 
-    @SuppressWarnings({"removal", "deprecation"})
     private static void execute(LevelAccessor world, double x, double y, double z, Entity sourceEntity) {
         if (sourceEntity == null)
             return;

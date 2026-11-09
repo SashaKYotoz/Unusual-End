@@ -97,7 +97,7 @@ public class ModelQueen<T extends Entity> extends EntityModel<T> {
 		}
 		if (entity.isSprinting()) {
 			this.right_arm.yRot = (Mth.sin(ageInTicks * -1F) * 0.4F);
-			this.left_arm.yRot = (Mth.sin(ageInTicks * 1F) * 0.4F);
+			this.left_arm.yRot = (Mth.sin(ageInTicks) * 0.4F);
 			this.left_arm.xRot = 0;
 			this.right_arm.xRot = 0;
 		} else {

@@ -50,7 +50,7 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
         RenderSystem.defaultBlendFunc();
         guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 
-        guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/bolok_note.png"), this.leftPos + -74, this.topPos + -116, 0, 0, 146, 180, 146, 180);
+        guiGraphics.blit(UnusualEnd.makeUEID("textures/screens/bolok_note.png"), this.leftPos - 74, this.topPos - 116, 0, 0, 146, 180, 146, 180);
 
         RenderSystem.disableBlend();
     }

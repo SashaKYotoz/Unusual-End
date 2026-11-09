@@ -54,13 +54,13 @@ public class UnusualEndForgeClient {
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
         RenderSystem.setShaderColor(1, 1, 1, 1);
         if (GetLookingValidAltarProcedure.execute(level, player))
-            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/dragon_breath_valid_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
+            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/dragon_breath_valid_overlay.png"), w / 2 + 6, h / 2 - 9, 0, 0, 16, 16, 16, 16);
         if (GetLookingAltarProcedure.execute(level, player))
-            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/dragon_breath_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
+            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/dragon_breath_overlay.png"), w / 2 + 6, h / 2 - 9, 0, 0, 16, 16, 16, 16);
         if (GetLookingWaystoneProcedure.execute(level, player))
-            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/bubble_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
+            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/bubble_overlay.png"), w / 2 + 6, h / 2 - 9, 0, 0, 16, 16, 16, 16);
         if (IsCristallizedProcedure.execute(player))
-            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/crystalisation.png"), w / 2 + -91, h - 49, 0, 0, 81, 19, 81, 19);
+            event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/crystalisation.png"), w / 2 - 91, h - 49, 0, 0, 81, 19, 81, 19);
         if (ScrapeClothOverlayDisplayOverlayIngameProcedure.execute(player))
             event.getGuiGraphics().blit(UnusualEnd.makeUEID("textures/screens/cloth_overlay.png"), 0, 0, 0, 0, w, h, w, h);
         RenderSystem.depthMask(true);

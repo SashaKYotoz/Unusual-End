@@ -57,8 +57,8 @@ public class ModelBolok<T extends Entity> extends EntityModel<T> {
 	}
 
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.left_fin.zRot = Mth.cos(limbSwing * 1.0F) * -1.0F * limbSwingAmount;
-		this.right_fin.zRot = Mth.cos(limbSwing * 1.0F) * 1.0F * limbSwingAmount;
+		this.left_fin.zRot = Mth.cos(limbSwing) * -1.0F * limbSwingAmount;
+		this.right_fin.zRot = Mth.cos(limbSwing) * 1.0F * limbSwingAmount;
 		this.tail.yRot = (EndMathProcedure.sin(ageInTicks * 0.2F + 2) * 0.1F);
 	}
 }

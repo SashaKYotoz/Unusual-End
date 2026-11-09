@@ -33,8 +33,8 @@ public class PurpurTankGUIMenu extends AbstractContainerMenu implements Supplier
     private IItemHandler internal;
     private final Map<Integer, Slot> customSlots = new HashMap<>();
     private boolean bound = false;
-    private Supplier<Boolean> boundItemMatcher = null;
-    private Entity boundEntity = null;
+    private final Supplier<Boolean> boundItemMatcher = null;
+    private final Entity boundEntity = null;
     private BlockEntity boundBlockEntity = null;
 
     public PurpurTankGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
@@ -221,9 +221,9 @@ public class PurpurTankGUIMenu extends AbstractContainerMenu implements Supplier
         }));
         for (int si = 0; si < 3; ++si)
             for (int sj = 0; sj < 9; ++sj)
-                this.addSlot(new Slot(inv, sj + (si + 1) * 9, 0 + 8 + sj * 18, 54 + 84 + si * 18));
+                this.addSlot(new Slot(inv, sj + (si + 1) * 9, 8 + sj * 18, 54 + 84 + si * 18));
         for (int si = 0; si < 9; ++si)
-            this.addSlot(new Slot(inv, si, 0 + 8 + si * 18, 54 + 142));
+            this.addSlot(new Slot(inv, si, 8 + si * 18, 54 + 142));
     }
 
     @Override
@@ -242,7 +242,7 @@ public class PurpurTankGUIMenu extends AbstractContainerMenu implements Supplier
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
         ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = (Slot) this.slots.get(index);
+        Slot slot = this.slots.get(index);
         if (slot != null && slot.hasItem()) {
             ItemStack itemstack1 = slot.getItem();
             itemstack = itemstack1.copy();

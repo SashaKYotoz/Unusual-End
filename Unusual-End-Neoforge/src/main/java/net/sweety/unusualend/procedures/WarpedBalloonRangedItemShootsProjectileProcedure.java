@@ -12,8 +12,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.WarpedBalloonProjEntity;
-import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 public class WarpedBalloonRangedItemShootsProjectileProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Player player, ItemStack itemstack) {

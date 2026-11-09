@@ -14,8 +14,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.procedures.WanderingPearlProjectileHitsLivingEntityProcedure;
 import net.sweety.unusualend.procedures.WanderingPearlProjectileHitsProcedure;
 

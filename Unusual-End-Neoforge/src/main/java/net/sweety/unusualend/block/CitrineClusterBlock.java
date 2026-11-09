@@ -54,12 +54,7 @@ public class CitrineClusterBlock extends DropExperienceBlock implements SimpleWa
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> switch (state.getValue(FACE)) {
-				case FLOOR -> box(3, 0, 3, 13, 7, 13);
-				case WALL -> box(3, 3, 0, 13, 13, 7);
-				case CEILING -> box(3, 9, 3, 13, 16, 13);
-			};
-			case NORTH -> switch (state.getValue(FACE)) {
+            case NORTH -> switch (state.getValue(FACE)) {
 				case FLOOR -> box(3, 0, 3, 13, 7, 13);
 				case WALL -> box(3, 3, 9, 13, 13, 16);
 				case CEILING -> box(3, 9, 3, 13, 16, 13);
@@ -74,7 +69,12 @@ public class CitrineClusterBlock extends DropExperienceBlock implements SimpleWa
 				case WALL -> box(9, 3, 3, 16, 13, 13);
 				case CEILING -> box(3, 9, 3, 13, 16, 13);
 			};
-		};
+            default -> switch (state.getValue(FACE)) {
+                case FLOOR -> box(3, 0, 3, 13, 7, 13);
+                case WALL -> box(3, 3, 0, 13, 13, 7);
+                case CEILING -> box(3, 9, 3, 13, 16, 13);
+            };
+        };
 	}
 
 	@Override

@@ -20,8 +20,8 @@ import net.sweety.unusualend.entity.BenevolentLeechingChargeProjectileEntity;
 import net.sweety.unusualend.entity.BondLeechingChargeProjectileEntity;
 import net.sweety.unusualend.entity.LeechingChargeProjectileEntity;
 import net.sweety.unusualend.init.UnusualEndEnchantments;
-import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 @EventBusSubscriber
 public class LeechingWandRightClickProcedure {

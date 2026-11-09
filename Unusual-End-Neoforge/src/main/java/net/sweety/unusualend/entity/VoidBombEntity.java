@@ -23,11 +23,6 @@ public class VoidBombEntity extends PathfinderMob {
 		setNoAi(false);
 		setPersistenceRequired();
 	}
-	@Override
-	protected void registerGoals() {
-		super.registerGoals();
-
-	}
 
 	@Override
 	public boolean removeWhenFarAway(double distanceToClosestPlayer) {

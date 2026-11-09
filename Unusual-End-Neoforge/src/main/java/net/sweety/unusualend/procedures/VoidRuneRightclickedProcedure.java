@@ -1,6 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -27,10 +26,7 @@ public class VoidRuneRightclickedProcedure {
                 player.giveExperiencePoints((int) NBTProcessor.getNBTDouble(stack, "XP"));
             NBTProcessor.setNBTDouble(stack, "XP", 0);
             if (level.isClientSide()) {
-                if (!level.isClientSide()) {
-                    level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1, 2);
-                } else
-                    level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1, 2, false);
+                level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 1, 2, false);
             }
         }
     }
