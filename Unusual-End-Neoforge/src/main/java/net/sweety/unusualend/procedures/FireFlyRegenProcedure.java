@@ -1,10 +1,8 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.bus.api.Event;
@@ -15,6 +13,7 @@ import net.sweety.unusualend.entity.EnderblobEntity;
 import net.sweety.unusualend.entity.FlampyrEntity;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import javax.annotation.Nullable;
 
@@ -39,17 +38,9 @@ public class FireFlyRegenProcedure {
 				if (!entity1.level().isClientSide())
 					entity1.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 300, 1));
 				if (Math.random() < 0.2) {
-					if (world instanceof ServerLevel _level) {
-						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndItems.ENDER_FIREFLY_EGG.get()));
-						entityToSpawn.setPickUpDelay(10);
-						_level.addFreshEntity(entityToSpawn);
-					}
+					ProcedureHelper.dropItem(world, x, y, z, new ItemStack(UnusualEndItems.ENDER_FIREFLY_EGG.get()), 10);
 				} else if (Math.random() < 0.2) {
-					if (world instanceof ServerLevel _level) {
-						ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(UnusualEndBlocks.FIREFLY_BULB.get()));
-						entityToSpawn.setPickUpDelay(10);
-						_level.addFreshEntity(entityToSpawn);
-					}
+					ProcedureHelper.dropItem(world, x, y, z, new ItemStack(UnusualEndBlocks.FIREFLY_BULB.get()), 10);
 				}
 			}
 		}

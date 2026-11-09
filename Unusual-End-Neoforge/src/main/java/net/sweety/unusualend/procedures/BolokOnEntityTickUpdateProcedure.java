@@ -9,6 +9,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class BolokOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -23,8 +24,7 @@ public class BolokOnEntityTickUpdateProcedure {
 				if (entity instanceof Mob _entity)
 					_entity.getNavigation().moveTo(x, 45, z, 0.8);
 				if (y < 10) {
-					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
+					ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
 				}
 			} else {
 				if (!(entity.getPersistentData().getBoolean("coords"))) {
@@ -42,8 +42,7 @@ public class BolokOnEntityTickUpdateProcedure {
 		if (entity instanceof LivingEntity _livEnt15 && _livEnt15.hasEffect(MobEffects.REGENERATION)) {
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(MobEffects.REGENERATION);
-			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 100, 1));
+			ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.WITHER, 100, 1));
 		}
 	}
 }

@@ -67,19 +67,19 @@ public class CitrineCandleOnBlockRightClickedProcedure {
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
 			if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip19 ? blockstate.getValue(_getip19) : -1) == 1) {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.candle.phantom").getString())), true);
+					_player.displayClientMessage(Component.translatable("text.unusualend.candle.phantom"), true);
 			} else if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip23 ? blockstate.getValue(_getip23) : -1) == 2) {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.candle.enderling").getString())), true);
+					_player.displayClientMessage(Component.translatable("text.unusualend.candle.enderling"), true);
 			} else if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip27 ? blockstate.getValue(_getip27) : -1) == 3) {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.candle.rest").getString())), true);
+					_player.displayClientMessage(Component.translatable("text.unusualend.candle.rest"), true);
 			} else if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip31 ? blockstate.getValue(_getip31) : -1) == 4) {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.candle.glow").getString())), true);
+					_player.displayClientMessage(Component.translatable("text.unusualend.candle.glow"), true);
 			} else {
 				if (entity instanceof Player _player && !_player.level().isClientSide())
-					_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.candle.nothing").getString())), true);
+					_player.displayClientMessage(Component.translatable("text.unusualend.candle.nothing"), true);
 			}
 		}
 	}

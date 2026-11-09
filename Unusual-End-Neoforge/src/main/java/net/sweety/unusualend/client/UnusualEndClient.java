@@ -1,7 +1,4 @@
 
-/*
- *    MCreator note: This file will be REGENERATED on each build.
- */
 package net.sweety.unusualend.client;
 
 import custom.sweety.unusualend.block.entity.renderer.AncientPodiumEntityRenderer;

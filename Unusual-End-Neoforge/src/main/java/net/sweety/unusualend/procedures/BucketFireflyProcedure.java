@@ -17,6 +17,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class BucketFireflyProcedure {
     public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
@@ -91,13 +92,7 @@ public class BucketFireflyProcedure {
         if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
             if (entity instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt && _tamIsTamedBy.isOwnedBy(_livEnt)) {
                 entity.setDeltaMovement(new Vec3(0, 0, 0));
-                if ((new Object() {
-                    public boolean getValue() {
-                        CompoundTag dataIndex = new CompoundTag();
-                        entity.saveWithoutId(dataIndex);
-                        return dataIndex.getBoolean("Sitting");
-                    }
-                }.getValue())) {
+                if ((ProcedureHelper.isOrderedToSit(entity))) {
                     if (sourceentity instanceof Player _player && !_player.level().isClientSide())
                         _player.displayClientMessage(Component.literal((entity.getDisplayName().getString() + Component.translatable("text.unusualend.follow").getString())), true);
                     {

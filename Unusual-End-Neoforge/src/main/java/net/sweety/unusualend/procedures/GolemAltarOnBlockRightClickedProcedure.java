@@ -1,14 +1,9 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
@@ -19,13 +14,16 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
@@ -113,18 +111,9 @@ public class GolemAltarOnBlockRightClickedProcedure {
                                         .toList();
                                 for (Entity entityiterator : list) {
                                     if (entityiterator instanceof Player) {
-                                        if (entityiterator instanceof ServerPlayer _player) {
-                                            AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("use_golem_altar"));
-                                            if (_adv != null) {
-                                                AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-                                                if (!_ap.isDone()) {
-                                                    for (String criteria : _ap.getRemainingCriteria())
-                                                        _player.getAdvancements().award(_adv, criteria);
-                                                }
-                                            }
-                                        }
+                                        ProcedureHelper.awardAdvancement(entityiterator, "use_golem_altar");
                                         if (entityiterator instanceof Player _player && !_player.level().isClientSide())
-                                            _player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.golem_theme").getString())), true);
+                                            _player.displayClientMessage(Component.translatable("text.unusualend.golem_theme"), true);
                                     }
                                 }
                                 level.playSound(null, BlockPos.containing(x + 0.5, y, z + 0.5), SoundEvents.STONE_PLACE, SoundSource.NEUTRAL, 1, 1);
@@ -143,14 +132,8 @@ public class GolemAltarOnBlockRightClickedProcedure {
                                         if (closestPlayer != null) golem.lookAt(closestPlayer, 30.0F, 30.0F);
                                     }
                                 }
-                                if (level instanceof ServerLevel _level)
-                                    _level.getServer().getCommands().performPrefixedCommand(
-                                            new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5), y, (z + 0.5)), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                            "particle minecraft:block unusualend:raw_purpur_block ~ ~ ~ 1 2 1 0.1 100 force");
-                                if (level instanceof ServerLevel _level)
-                                    _level.getServer().getCommands().performPrefixedCommand(
-                                            new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5), y, (z + 0.5)), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                            "particle minecraft:block end_stone_bricks ~ ~ ~ 1 2 1 0.1 100 force");
+                                ParticleHelper.spawn(level, ParticleHelper.block(UnusualEndBlocks.RAW_PURPUR_BLOCK.get()), (x + 0.5), y, (z + 0.5), 100, 1, 2, 1, 0.1, true);
+                                ParticleHelper.spawn(level, ParticleHelper.block(Blocks.END_STONE_BRICKS), (x + 0.5), y, (z + 0.5), 100, 1, 2, 1, 0.1, true);
                                 if (level instanceof ServerLevel _level)
                                     _level.sendParticles(ParticleTypes.EXPLOSION, (x + 0.5), (y + 1), (z + 0.5), 10, 0.5, 1, 0.5, 0);
                                 if (level instanceof ServerLevel _level)

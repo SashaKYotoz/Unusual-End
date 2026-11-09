@@ -24,6 +24,7 @@ import net.sweety.unusualend.entity.DraglingEntity;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
@@ -70,8 +71,7 @@ public class CooldownEndstoneGolemProcedure {
                 }
             }
             if (damagesource.is(DamageTypes.CRAMMING)) {
-                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 40, 2, false, true));
+                ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 40, 2, false, true));
                 if (!(entity instanceof Player _plrCldCheck21 && _plrCldCheck21.getCooldowns().isOnCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()))) {
                     if (entity instanceof Player _player)
                         _player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 60);

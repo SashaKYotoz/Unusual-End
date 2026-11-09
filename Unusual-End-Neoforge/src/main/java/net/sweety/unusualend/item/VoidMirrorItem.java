@@ -24,11 +24,11 @@ public class VoidMirrorItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.literal("\u00A77When Right-Clicking:"));
-		list.add(Component.literal("\u00A79Breach-Linked (5:00)"));
-		list.add(Component.literal("\u00A77When the Effect expire:"));
-		list.add(Component.literal("\u00A79Teleport back where"));
-		list.add(Component.literal("\u00A79the item was used"));
+		list.add(Component.translatable("tooltip.unusualend.void_mirror.0"));
+		list.add(Component.translatable("tooltip.unusualend.void_mirror.1"));
+		list.add(Component.translatable("tooltip.unusualend.void_mirror.2"));
+		list.add(Component.translatable("tooltip.unusualend.void_mirror.3"));
+		list.add(Component.translatable("tooltip.unusualend.void_mirror.4"));
 	}
 
 	@Override

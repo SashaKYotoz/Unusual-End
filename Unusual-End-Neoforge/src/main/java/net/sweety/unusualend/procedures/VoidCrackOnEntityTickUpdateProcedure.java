@@ -1,13 +1,12 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ParticleHelper;
 
 public class VoidCrackOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -24,15 +23,13 @@ public class VoidCrackOnEntityTickUpdateProcedure {
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-				_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "particle minecraft:block unusualend:void_particles_block ~ ~ ~ 2 2 2 0 3");
+				ParticleHelper.spawn(_ent.level(), ParticleHelper.voidParticles(), _ent.position(), 3, 2, 2, 2, 0);
 			}
 		}
 		{
 			Entity _ent = entity;
 			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-				_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-						_ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), "particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0.5 0.5 0.5 0 10");
+				ParticleHelper.spawn(_ent.level(), ParticleHelper.voidParticles(), _ent.position(), 10, 0.5, 0.5, 0.5, 0);
 			}
 		}
 		if (Math.random() < 0.1) {

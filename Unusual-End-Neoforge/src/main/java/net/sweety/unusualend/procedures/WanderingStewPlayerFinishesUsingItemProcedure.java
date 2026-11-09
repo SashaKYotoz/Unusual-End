@@ -14,10 +14,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class WanderingStewPlayerFinishesUsingItemProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -26,13 +26,7 @@ public class WanderingStewPlayerFinishesUsingItemProcedure {
         if (!((world instanceof Level _lvl ? _lvl.dimension() : (world instanceof WorldGenLevel _wgl ? _wgl.getLevel().dimension() : Level.OVERWORLD)) == Level.OVERWORLD)) {
             if (world instanceof ServerLevel _level)
                 _level.sendParticles(ParticleTypes.PORTAL, x, (y + 1), z, 60, 0.5, 1, 0.5, 0);
-            if (world instanceof Level _level) {
-                if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, (float) 0.1, 1);
-                } else {
-                    _level.playLocalSound(x, y, z, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, (float) 0.1, 1, false);
-                }
-            }
+            ProcedureHelper.playSound(world, x, y, z, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, (float) 0.1, 1);
             if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
                 ResourceKey<Level> destinationType = Level.OVERWORLD;
                 if (_player.level().dimension() == destinationType)
@@ -55,8 +49,7 @@ public class WanderingStewPlayerFinishesUsingItemProcedure {
                 _level.sendParticles(ParticleTypes.PORTAL, (world.getLevelData().getSpawnPos().getX()), (world.getLevelData().getSpawnPos().getY() + 1), (world.getLevelData().getSpawnPos().getZ()), 60, 0.5, 1, 0.5, 0);
         }
         if ((world instanceof Level _lvl ? _lvl.dimension() : (world instanceof WorldGenLevel _wgl ? _wgl.getLevel().dimension() : Level.OVERWORLD)) == Level.OVERWORLD) {
-            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, true));
+            ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.INVISIBILITY, 12000, 0, false, true));
         }
     }
 }

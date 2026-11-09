@@ -1,6 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,18 +10,17 @@ import net.minecraft.stats.StatsCounter;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Phantom;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EnderlingEntity;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
@@ -50,13 +48,7 @@ public class CitrineCandleOnTickUpdateProcedure {
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.EFFECT, (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 10, 0.7, 0.7, 0.7, 0.05);
 							if (world.isClientSide()) {
-								if (world instanceof Level _level) {
-									if (!_level.isClientSide()) {
-										_level.playSound(null, BlockPos.containing(x, y, z),SoundEvents.FIRE_EXTINGUISH, SoundSource.HOSTILE, 1, (float) 0.75);
-									} else {
-										_level.playLocalSound(x, y, z, SoundEvents.FIRE_EXTINGUISH, SoundSource.HOSTILE, 1, (float) 0.75, false);
-									}
-								}
+								ProcedureHelper.playSound(world, x, y, z, SoundEvents.FIRE_EXTINGUISH, SoundSource.HOSTILE, 1, (float) 0.75);
 							}
 						}
 					}
@@ -77,8 +69,7 @@ public class CitrineCandleOnTickUpdateProcedure {
 				List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(32 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 				for (Entity entityiterator : _entfound) {
 					if (entityiterator instanceof EnderMan || entityiterator instanceof Monster || entityiterator instanceof Player) {
-						if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-							_entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false));
+						ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false));
 					}
 				}
 			}

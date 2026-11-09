@@ -1,47 +1,40 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.BolokEntity;
+import net.sweety.unusualend.init.UnusualEndEnchantments;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.jei_recipes.BolokTradingRecipe;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.List;
 
@@ -66,86 +59,31 @@ public class RideBolokProcedure {
 						_player.giveExperiencePoints(-(315));
 					UnusualEnd.queueServerWork(60, () -> {
                         if (world instanceof Level _level && !_level.isClientSide()) {
+                            ResourceKey<Enchantment> enchantmentKey = switch (Mth.nextInt(_level.getRandom(), 1, 3)) {
+                                case 1 -> UnusualEndEnchantments.BOLOKS_FURY;
+                                case 2 -> UnusualEndEnchantments.BOLOKS_WINGS;
+                                default -> UnusualEndEnchantments.BOLOKS_HEAD;
+                            };
                             ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
-                            String enchantmentId;
-                            int rand = Mth.nextInt(RandomSource.create(), 1, 3);
-                            if (rand == 1) enchantmentId = "unusualend:boloks_fury";
-                            else if (rand == 2) enchantmentId = "unusualend:boloks_wings";
-                            else enchantmentId = "unusualend:boloks_head";
-
-                            _level.registryAccess().registry(Registries.ENCHANTMENT).ifPresent(reg -> {
-                                var enchantment = reg.getHolder(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.parse(enchantmentId)));
-                                enchantment.ifPresent(holder -> {
-                                    ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
-                                    mutable.set(holder, 1);
-                                    enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, mutable.toImmutable());
-                                });
+                            _level.registryAccess().registryOrThrow(Registries.ENCHANTMENT).getHolder(enchantmentKey).ifPresent(holder -> {
+                                ItemEnchantments.Mutable mutable = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+                                mutable.set(holder, 1);
+                                enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, mutable.toImmutable());
                             });
-
-                            ItemEntity entityToSpawn = new ItemEntity(_level, entity.getX(), entity.getY(), entity.getZ(), enchantedBook);
-                            entityToSpawn.setPickUpDelay(10);
-                            _level.addFreshEntity(entityToSpawn);
+                            ProcedureHelper.dropItem(_level, entity.getX(), entity.getY(), entity.getZ(), enchantedBook, 10);
                         }
-						if (!world.isClientSide()) {
-							if (Mth.nextInt(RandomSource.create(), 1, 3) == 1) {
-								{
-                                    if (!entity.level().isClientSide() && entity.getServer() != null) {
-										entity.getServer().getCommands().performPrefixedCommand(
-												new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(),
-														entity.getDisplayName(), entity.level().getServer(), entity),
-												"execute at @s run data merge entity @e[type=minecraft:item,limit=1,distance=..0.1,nbt={Item:{id:\"minecraft:enchanted_book\"}}] {Item:{id:\"minecraft:enchanted_book\",tag:{StoredEnchantments:[{id:\"unusualend:boloks_fury\",lvl:1s}]}}}");
-									}
-								}
-							} else if (Mth.nextInt(RandomSource.create(), 1, 2) == 1) {
-								{
-                                    if (!entity.level().isClientSide() && entity.getServer() != null) {
-										entity.getServer().getCommands().performPrefixedCommand(
-												new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(),
-														entity.getDisplayName(), entity.level().getServer(), entity),
-												"execute at @s run data merge entity @e[type=minecraft:item,limit=1,distance=..0.1,nbt={Item:{id:\"minecraft:enchanted_book\"}}] {Item:{id:\"minecraft:enchanted_book\",tag:{StoredEnchantments:[{id:\"unusualend:boloks_wings\",lvl:1s}]}}}");
-									}
-								}
-							} else {
-								{
-                                    if (!entity.level().isClientSide() && entity.getServer() != null) {
-										entity.getServer().getCommands().performPrefixedCommand(
-												new CommandSourceStack(CommandSource.NULL, entity.position(), entity.getRotationVector(), entity.level() instanceof ServerLevel ? (ServerLevel) entity.level() : null, 4, entity.getName().getString(),
-														entity.getDisplayName(), entity.level().getServer(), entity),
-												"execute at @s run data merge entity @e[type=minecraft:item,limit=1,distance=..0.1,nbt={Item:{id:\"minecraft:enchanted_book\"}}] {Item:{id:\"minecraft:enchanted_book\",tag:{StoredEnchantments:[{id:\"unusualend:boloks_head\",lvl:1s}]}}}");
-									}
-								}
-							}
-						}
 					});
 				} else {
 					if (sourceentity instanceof Player _player && !_player.level().isClientSide())
-						_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.no_xp_bolok").getString())), true);
+						_player.displayClientMessage(Component.translatable("text.unusualend.no_xp_bolok"), true);
 				}
 			} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualEndItems.SHINY_CRYSTAL.get()) {
 				((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).shrink(1);
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1);
-					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1, false);
-					}
-				}
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-							("execute at " + entity.getStringUUID() + " anchored eyes run particle minecraft:glow_squid_ink ^ ^ ^0.6 0.1 0.1 0.1 0.01 10 force"));
+				ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1);
+				ParticleHelper.spawn(world, ParticleTypes.GLOW_SQUID_INK, ParticleHelper.localToEyes(entity, 0, 0, 0.6), 10, 0.1, 0.1, 0.1, 0.01, true);
 				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 1);
-				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(MobEffects.WITHER, 300, 1));
-				if (!(sourceentity instanceof ServerPlayer _plr31 && _plr31.level() instanceof ServerLevel
-						&& _plr31.getAdvancements().getOrStartProgress(_plr31.server.getAdvancements().get(UnusualEnd.makeUEID("give_bolok_crystal"))).isDone())) {
-					if (sourceentity instanceof ServerPlayer _player) {
-						AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("give_bolok_crystal"));
-						AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-						if (!_ap.isDone()) {
-                            for (String s : _ap.getRemainingCriteria()) _player.getAdvancements().award(_adv, s);
-						}
-					}
-				}
+				ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.WITHER, 300, 1));
+				ProcedureHelper.awardAdvancement(sourceentity, "give_bolok_crystal");
 			} else if (!((new Object() {
 				public ItemStack getResult() {
 					if (world instanceof Level _lvl) {
@@ -177,11 +115,7 @@ public class RideBolokProcedure {
 					}
 				}.getResult());
 				BolokTradeEffectsProcedure.execute(world, x, y, z, entity, sourceentity);
-				if (world instanceof Level _level && !_level.isClientSide()) {
-					ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY()), (entity.getZ()), rest);
-					entityToSpawn.setPickUpDelay(10);
-					_level.addFreshEntity(entityToSpawn);
-				}
+				ProcedureHelper.dropItem(world, (entity.getX()), (entity.getY()), (entity.getZ()), rest, 10);
 			}
 		}
 	}

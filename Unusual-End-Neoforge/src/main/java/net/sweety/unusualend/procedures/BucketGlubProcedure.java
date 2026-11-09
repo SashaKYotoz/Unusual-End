@@ -1,10 +1,6 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,8 +12,8 @@ import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
-import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class BucketGlubProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
@@ -90,17 +86,7 @@ public class BucketGlubProcedure {
 			}
 		} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
 			entity.startRiding(sourceentity);
-			if (!(sourceentity instanceof ServerPlayer _plr40 && _plr40.level() instanceof ServerLevel
-					&& _plr40.getAdvancements().getOrStartProgress(_plr40.server.getAdvancements().get(UnusualEnd.makeUEID("wear_glub"))).isDone())) {
-				if (sourceentity instanceof ServerPlayer _player) {
-					AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("wear_glub"));
-					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
-					}
-				}
-			}
+			ProcedureHelper.awardAdvancement(sourceentity, "wear_glub");
 		}
 	}
 }

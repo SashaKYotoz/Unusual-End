@@ -72,7 +72,7 @@ public class WarpedChestBlockEntity extends RandomizableContainerBlockEntity imp
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("warped_chest");
+		return Component.translatable("block.unusualend.warped_chest");
 	}
 
 	@Override
@@ -87,7 +87,7 @@ public class WarpedChestBlockEntity extends RandomizableContainerBlockEntity imp
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Warped Chest");
+		return Component.translatable("block.unusualend.warped_chest");
 	}
 
 	@Override

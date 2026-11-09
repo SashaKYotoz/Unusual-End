@@ -31,8 +31,8 @@ public abstract class BolokItem extends ArmorItem {
         public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
             super.appendHoverText(itemstack, context, list, flag);
             list.add(Component.translatable("lore.unusualend.when_hurt").withStyle(ChatFormatting.GRAY));
-            list.add(Component.literal("\u00A79Speed (0:03)"));
-            list.add(Component.literal("\u00A79Inflict Heaviness II (0:03)"));
+            list.add(Component.translatable("tooltip.unusualend.bolok.0"));
+            list.add(Component.translatable("tooltip.unusualend.bolok.1"));
             list.add(Component.translatable("lore.unusualend.to_attacker").withStyle(ChatFormatting.BLUE));
         }
 

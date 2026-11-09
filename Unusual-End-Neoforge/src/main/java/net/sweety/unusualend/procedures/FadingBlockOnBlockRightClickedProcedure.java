@@ -12,6 +12,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class FadingBlockOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -22,13 +23,7 @@ public class FadingBlockOnBlockRightClickedProcedure {
 		double sz = 0;
 		if (!entity.isShiftKeyDown()) {
 			if (!world.isClientSide()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS, 1, 1);
-					} else {
-						_level.playLocalSound(x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS, 1, 1, false);
-					}
-				}
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.BLOCKS, 1, 1);
 			}
 			sx = -3;
 			for (int index0 = 0; index0 < 7; index0++) {

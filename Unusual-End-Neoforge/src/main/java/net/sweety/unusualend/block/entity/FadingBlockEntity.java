@@ -75,7 +75,7 @@ public class FadingBlockEntity extends RandomizableContainerBlockEntity implemen
 
     @Override
     public Component getDefaultName() {
-        return Component.literal("fading_block");
+        return Component.translatable("block.unusualend.fading_block");
     }
 
     @Override
@@ -90,7 +90,7 @@ public class FadingBlockEntity extends RandomizableContainerBlockEntity implemen
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Fading Block");
+        return Component.translatable("block.unusualend.fading_block");
     }
 
     @Override

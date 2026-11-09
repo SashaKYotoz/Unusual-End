@@ -76,7 +76,7 @@ public class PurpurTankBlockEntity extends RandomizableContainerBlockEntity impl
 
     @Override
     public Component getDefaultName() {
-        return Component.literal("purpur_tank");
+        return Component.translatable("block.unusualend.purpur_tank");
     }
 
     @Override
@@ -91,7 +91,7 @@ public class PurpurTankBlockEntity extends RandomizableContainerBlockEntity impl
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Purpur Tank");
+        return Component.translatable("block.unusualend.purpur_tank");
     }
 
     @Override

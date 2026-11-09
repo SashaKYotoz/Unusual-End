@@ -47,10 +47,10 @@ public class VoidRuneItem extends Item {
 	public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		double xp = NBTProcessor.getNBTDouble(stack,"XP");
 		super.appendHoverText(stack, context, list, flag);
-		list.add(Component.literal("\u00A77When Sneaking:"));
-		list.add(Component.literal("\u00A79Slowly store Experience"));
-		list.add(Component.literal("\u00A77When Right-Clicking:"));
-		list.add(Component.literal("\u00A79Collect stored Experience"));
+		list.add(Component.translatable("tooltip.unusualend.void_rune.0"));
+		list.add(Component.translatable("tooltip.unusualend.void_rune.1"));
+		list.add(Component.translatable("tooltip.unusualend.void_rune.2"));
+		list.add(Component.translatable("tooltip.unusualend.void_rune.3"));
 		list.add(Component.literal("\u00A79 - " + ((xp)) + " XP"));
 	}
 

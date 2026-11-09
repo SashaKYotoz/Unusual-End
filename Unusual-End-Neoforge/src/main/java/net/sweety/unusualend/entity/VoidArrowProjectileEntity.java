@@ -98,7 +98,7 @@ public class VoidArrowProjectileEntity extends AbstractArrow implements ItemSupp
         entityarrow.setBaseDamage(3.5);
         entityarrow.setCritArrow(false);
         entity.level().addFreshEntity(entityarrow);
-        entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
+        entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
         return entityarrow;
     }
 }

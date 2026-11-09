@@ -1,0 +1,12 @@
+{
+  "values": [
+    "#minecraft:nylium",
+    "minecraft:grass_block",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:podzol",
+    "minecraft:mycelium",
+    "unusualend:gloopstone",
+    "unusualend:gloopslate"
+  ]
+}

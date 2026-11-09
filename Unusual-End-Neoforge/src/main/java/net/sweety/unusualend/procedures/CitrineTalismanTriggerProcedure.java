@@ -3,7 +3,6 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
@@ -22,8 +21,8 @@ public class CitrineTalismanTriggerProcedure {
 					if (proba < 0.2) {
 						for (int index0 = 0; index0 < 10; index0++) {
 							if (world instanceof ServerLevel _level)
-								_level.addFreshEntity(new ExperienceOrb(_level, (x + Mth.nextDouble(RandomSource.create(), -0.3, 0.3)), (y + Mth.nextDouble(RandomSource.create(), -0.3, 0.3) + entity.getBbHeight() / 2),
-										(z + Mth.nextDouble(RandomSource.create(), -0.3, 0.3)), 1));
+								_level.addFreshEntity(new ExperienceOrb(_level, (x + Mth.nextDouble(world.getRandom(), -0.3, 0.3)), (y + Mth.nextDouble(world.getRandom(), -0.3, 0.3) + entity.getBbHeight() / 2),
+										(z + Mth.nextDouble(world.getRandom(), -0.3, 0.3)), 1));
 						}
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.TOTEM_OF_UNDYING, x, (y + entity.getBbHeight() / 2), z, 15, 0.3, 0.3, 0.3, 0.4);

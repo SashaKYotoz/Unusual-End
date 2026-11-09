@@ -1,11 +1,8 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -19,9 +16,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import net.sweety.unusualend.util.ParticleHelper;
 
 public class AncientPodiumOnBlockRightClickedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -78,10 +74,7 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 
         if (world instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(ParticleTypes.ENCHANT, pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5, 15, 0.2, 0.2, 0.2, 0);
-            serverLevel.getServer().getCommands().performPrefixedCommand(
-                    new CommandSourceStack(CommandSource.NULL, new Vec3(pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5), Vec2.ZERO, serverLevel, 4, "", Component.literal(""), serverLevel.getServer(), null).withSuppressedOutput(),
-                    "particle dust 0.8 0.8 3.1 0.7 ~ ~ ~ 0.15 0.2 0.15 0 15"
-            );
+            ParticleHelper.spawn(serverLevel, ParticleHelper.dust(0.8f, 0.8f, 3.1f, 0.7f), pos.getX() + 0.5, pos.getY() + 0.9, pos.getZ() + 0.5, 15, 0.15, 0.2, 0.15, 0);
         }
 
         playSound(world, pos, "block.chiseled_bookshelf.insert.enchanted");

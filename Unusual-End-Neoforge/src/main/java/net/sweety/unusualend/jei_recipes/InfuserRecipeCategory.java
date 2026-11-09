@@ -33,7 +33,7 @@ public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
 
 	@Override
 	public Component getTitle() {
-		return Component.literal("Infusing");
+		return Component.translatable("jei.unusualend.category.infuser");
 	}
 
 	@Override

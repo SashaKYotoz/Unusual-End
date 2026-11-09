@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -22,7 +21,7 @@ public class CitrineCandleOnRandomClientDisplayTickProcedure {
 		}
 		if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip8 ? blockstate.getValue(_getip8) : -1) == 1) {
 			if (Math.random() < 0.5) {
-				world.addParticle(ParticleTypes.FIREWORK, (x + Mth.nextDouble(RandomSource.create(), 0.3, 0.7)), (y + 0.92), (z + Mth.nextDouble(RandomSource.create(), 0.3, 0.7)), 0, 0, 0);
+				world.addParticle(ParticleTypes.FIREWORK, (x + Mth.nextDouble(world.getRandom(), 0.3, 0.7)), (y + 0.92), (z + Mth.nextDouble(world.getRandom(), 0.3, 0.7)), 0, 0, 0);
 			}
 		} else if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip13 ? blockstate.getValue(_getip13) : -1) == 2) {
 			if (Math.random() < 0.5) {
@@ -34,7 +33,7 @@ public class CitrineCandleOnRandomClientDisplayTickProcedure {
 			}
 		} else if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip19 ? blockstate.getValue(_getip19) : -1) == 4) {
 			if (Math.random() < 0.5) {
-				world.addParticle(ParticleTypes.END_ROD, (x + Mth.nextDouble(RandomSource.create(), 0.3, 0.7)), (y + 0.92), (z + Mth.nextDouble(RandomSource.create(), 0.3, 0.7)), 0, 0, 0);
+				world.addParticle(ParticleTypes.END_ROD, (x + Mth.nextDouble(world.getRandom(), 0.3, 0.7)), (y + 0.92), (z + Mth.nextDouble(world.getRandom(), 0.3, 0.7)), 0, 0, 0);
 			}
 		} else {
 			if (Math.random() < 0.05) {

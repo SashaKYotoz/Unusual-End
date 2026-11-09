@@ -1,6 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -11,12 +10,12 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class FloatingPouchRightclickedProcedure {
     public static void execute(LevelAccessor level, double x, double y, double z, LivingEntity entity, ItemStack itemstack) {
@@ -28,13 +27,7 @@ public class FloatingPouchRightclickedProcedure {
             entity.swing(InteractionHand.OFF_HAND, true);
         }
         if (level.isClientSide()) {
-            if (level instanceof Level _level) {
-                if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, (float) 0.5, 1);
-                } else {
-                    _level.playLocalSound(x, y, z, SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, (float) 0.5, 1, false);
-                }
-            }
+            ProcedureHelper.playSound(level, x, y, z, SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, (float) 0.5, 1);
         }
         itemstack.hurtAndBreak(1, entity, entity.getEquipmentSlotForItem(itemstack));
         if (entity instanceof Player _player)
@@ -48,8 +41,7 @@ public class FloatingPouchRightclickedProcedure {
             entity.setDeltaMovement(new Vec3((entity.getDeltaMovement().x() * 1.3), 0.8, (entity.getDeltaMovement().z() * 1.3)));
         } else {
             entity.setDeltaMovement(new Vec3((entity.getDeltaMovement().x()), 1, (entity.getDeltaMovement().z())));
-            if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                _entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 40, 0));
+            ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.SLOW_FALLING, 40, 0));
             UnusualEnd.queueServerWork(60, () -> {
                 entity.fallDistance = 0;
                 UnusualEnd.queueServerWork(20, () -> {

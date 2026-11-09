@@ -1,15 +1,12 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.level.Level;
@@ -22,6 +19,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 @EventBusSubscriber
 public class ShearChorusProcedure {
@@ -85,19 +83,9 @@ public class ShearChorusProcedure {
 				if (world instanceof Level _level)
 					_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
 				world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(Blocks.CHORUS_PLANT.defaultBlockState()));
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1, 1);
-					} else {
-						_level.playLocalSound(x, y, z, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1, 1, false);
-					}
-				}
-				for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 1, 3); index0++) {
-					if (world instanceof ServerLevel _level) {
-						ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualEndItems.CHORUS_PETAL.get()));
-						entityToSpawn.setPickUpDelay(10);
-						_level.addFreshEntity(entityToSpawn);
-					}
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1, 1);
+				for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 1, 3); index0++) {
+					ProcedureHelper.dropItem(world, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualEndItems.CHORUS_PETAL.get()), 10);
 				}
 			}
 		}

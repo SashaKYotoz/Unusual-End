@@ -6,14 +6,12 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class ChorusFungusBlock extends FlowerBlock {
 	public ChorusFungusBlock() {
@@ -32,10 +30,7 @@ public class ChorusFungusBlock extends FlowerBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
-				|| groundState.is(Blocks.MYCELIUM) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(UnusualEndBlocks.RAW_PURPUR_BLOCK.get())
-				|| groundState.is(UnusualEndBlocks.GNEISS.get()) || groundState.is(UnusualEndBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualEndBlocks.ROOTED_RAW_PURPUR.get())
-				|| groundState.is(UnusualEndBlocks.PURPUR_EMBEDDED_END_STONE.get());
+		return groundState.is(UnusualEndTags.Blocks.CHORUS_FUNGUS_MAY_PLACE_ON);
 	}
 
 	@Override

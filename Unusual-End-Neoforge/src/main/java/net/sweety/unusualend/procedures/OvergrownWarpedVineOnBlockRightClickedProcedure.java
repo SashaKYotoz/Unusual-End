@@ -1,19 +1,16 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Map;
 
@@ -31,21 +28,11 @@ public class OvergrownWarpedVineOnBlockRightClickedProcedure {
                 }
         }
         world.setBlock(_bp, _bs, 3);
-        for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 1, 3); index0++) {
-            if (world instanceof ServerLevel _level) {
-                ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.5), (z + 0.5), new ItemStack(UnusualEndItems.WARPED_BERRIES.get()));
-                entityToSpawn.setPickUpDelay(10);
-                _level.addFreshEntity(entityToSpawn);
-            }
+        for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 1, 3); index0++) {
+            ProcedureHelper.dropItem(world, (x + 0.5), (y + 0.5), (z + 0.5), new ItemStack(UnusualEndItems.WARPED_BERRIES.get()), 10);
         }
         if (world.isClientSide()) {
-            if (world instanceof Level _level) {
-                if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1, 1);
-                } else {
-                    _level.playLocalSound(x, y, z, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1, 1, false);
-                }
-            }
+            ProcedureHelper.playSound(world, x, y, z, SoundEvents.SWEET_BERRY_BUSH_PICK_BERRIES, SoundSource.BLOCKS, 1, 1);
         }
     }
 }

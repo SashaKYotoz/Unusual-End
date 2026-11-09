@@ -1,10 +1,7 @@
 
 package net.sweety.unusualend.entity;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -19,8 +16,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.sweety.unusualend.init.UnusualEndEntities;
@@ -76,8 +71,13 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
         if (!this.level().isClientSide())
             this.discard();
         if (this.level() instanceof ServerLevel level) {
-            level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, (y + 1), z), Vec2.ZERO, level, 4, "", Component.literal(""), level.getServer(), null).withSuppressedOutput(),
-                    "summon area_effect_cloud ~ ~ ~ {Particle:\"dust 0.94 0.3 0.88 1\",Potion:strong_regeneration,Radius:2,RadiusPerTick:-0.01,Duration:100}");
+            AreaEffectCloud cloud = new AreaEffectCloud(level, x, y + 1, z);
+            cloud.setParticle(ParticleHelper.dust(0.94f, 0.3f, 0.88f, 1f));
+            cloud.setPotionContents(new PotionContents(Potions.STRONG_REGENERATION));
+            cloud.setRadius(2);
+            cloud.setRadiusPerTick(-0.01f);
+            cloud.setDuration(100);
+            level.addFreshEntity(cloud);
             level.sendParticles(ParticleTypes.POOF, x, (y + 1.2), z, 3, 0.5, 0.2, 0.5, 0.1);
             level.sendParticles(ParticleTypes.HEART, x, (y + 1.2), z, 5, 1.2, 0.2, 1.2, 0.1);
         }
@@ -117,7 +117,7 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
         entityarrow.setCritArrow(false);
         entity.level().addFreshEntity(entityarrow);
         entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.FIREWORK_ROCKET_SHOOT, SoundSource.PLAYERS, 1,
-                1f / (RandomSource.create().nextFloat() * 0.5f + 1));
+                1f / (entity.getRandom().nextFloat() * 0.5f + 1));
         return entityarrow;
     }
 }

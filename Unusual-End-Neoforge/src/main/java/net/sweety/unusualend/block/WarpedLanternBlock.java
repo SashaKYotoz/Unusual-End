@@ -132,8 +132,8 @@ public class WarpedLanternBlock extends Block implements SimpleWaterloggedBlock 
 		int y = pos.getY();
 		int z = pos.getZ();
 		if (level.hasNeighborSignal(BlockPos.containing(x, y, z))) {
-			level.addParticle(UnusualEndMiscRegister.CITRINE_SHINE.get(), (x + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)), (y + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)),
-					(z + Mth.nextDouble(RandomSource.create(), 0.1, 0.9)), 0, 0, 0);
+			level.addParticle(UnusualEndMiscRegister.CITRINE_SHINE.get(), (x + Mth.nextDouble(level.getRandom(), 0.1, 0.9)), (y + Mth.nextDouble(level.getRandom(), 0.1, 0.9)),
+					(z + Mth.nextDouble(level.getRandom(), 0.1, 0.9)), 0, 0, 0);
 		}
 	}
 }

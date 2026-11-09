@@ -13,6 +13,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.BondLeechingChargeProjectileEntity;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
@@ -25,8 +26,7 @@ public class LeechingChargeProjectileHitsLivingEntityProcedure {
 		double level_buff = 0;
 		if (!(entity == sourceentity || (entity instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt ? _tamIsTamedBy.isOwnedBy(_livEnt) : false))) {
 			if (entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(MobEffects.REGENERATION)) {
-				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 20, 0));
+				ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 20, 0));
 				duration_buff = 40;
 			} else {
 				duration_buff = 0;
@@ -36,8 +36,7 @@ public class LeechingChargeProjectileHitsLivingEntityProcedure {
 			} else {
 				level_buff = 0;
 			}
-			if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, (int) (60 + duration_buff), (int) (2 + level_buff)));
+			ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.REGENERATION, (int) (60 + duration_buff), (int) (2 + level_buff)));
 			entity.invulnerableTime = 0;
 			entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.MAGIC)), 4);
 			if (immediatesourceentity instanceof BondLeechingChargeProjectileEntity) {
@@ -46,8 +45,7 @@ public class LeechingChargeProjectileHitsLivingEntityProcedure {
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(48 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 					for (Entity entityiterator : _entfound) {
 						if (entityiterator instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt ? _tamIsTamedBy.isOwnedBy(_livEnt) : false) {
-							if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-								_entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, (int) (120 + duration_buff), (int) (1 + level_buff)));
+							ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(MobEffects.REGENERATION, (int) (120 + duration_buff), (int) (1 + level_buff)));
 						}
 					}
 				}

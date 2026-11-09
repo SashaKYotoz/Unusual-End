@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
 import net.sweety.unusualend.procedures.WarpedVineOnBoneMealSuccessProcedure;
 import net.sweety.unusualend.procedures.WarpedVineUpdateTickProcedure;
@@ -49,8 +47,7 @@ public class WarpedBushBlock extends FlowerBlock implements BonemealableBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(UnusualEndBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE.get()) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(UnusualEndBlocks.GNEISS.get())
-				|| groundState.is(Blocks.END_STONE);
+		return groundState.is(UnusualEndTags.Blocks.WARPED_BUSH_MAY_PLACE_ON);
 	}
 
 	@Override

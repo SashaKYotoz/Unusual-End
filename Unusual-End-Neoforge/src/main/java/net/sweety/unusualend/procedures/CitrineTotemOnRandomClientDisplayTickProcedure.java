@@ -3,7 +3,6 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
@@ -17,8 +16,8 @@ public class CitrineTotemOnRandomClientDisplayTickProcedure {
 				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(UnusualEnd.makeUEID("citrine_totem_base")))
 						&& (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep7 ? blockstate.getValue(_getep7).toString() : "").equals("CEILING")) {
 			if (Math.random() < 0.3) {
-				world.addParticle(UnusualEndMiscRegister.CITRINE_SHINE.get(), (x + Mth.nextDouble(RandomSource.create(), -0.1, 1.1)), (y + Mth.nextDouble(RandomSource.create(), -0.1, 1.1)),
-						(z + Mth.nextDouble(RandomSource.create(), -0.1, 1.1)), 0, 0, 0);
+				world.addParticle(UnusualEndMiscRegister.CITRINE_SHINE.get(), (x + Mth.nextDouble(world.getRandom(), -0.1, 1.1)), (y + Mth.nextDouble(world.getRandom(), -0.1, 1.1)),
+						(z + Mth.nextDouble(world.getRandom(), -0.1, 1.1)), 0, 0, 0);
 			}
 		}
 	}

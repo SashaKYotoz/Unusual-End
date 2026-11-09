@@ -9,7 +9,6 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
 import net.sweety.unusualend.procedures.SmallWarpedAlgaeOnBoneMealSuccessProcedure;
 
@@ -47,12 +45,7 @@ public class SmallWarpedAlgaeBlock extends FlowerBlock implements BonemealableBl
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(UnusualEndBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
-				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.GNEISS.get())
-				|| groundState.is(UnusualEndBlocks.WARPED_END_STONE.get()) || groundState.is(UnusualEndBlocks.GNEISS_BRICKS.get()) || groundState.is(UnusualEndBlocks.POLISHED_GNEISS.get())
-				|| groundState.is(UnusualEndBlocks.CHISELED_GNEISS_BRICK.get()) || groundState.is(UnusualEndBlocks.BOLOK_SCALE_BLOCK.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE.get())
-				|| groundState.is(UnusualEndBlocks.POLISHED_WARPED_STONE.get()) || groundState.is(UnusualEndBlocks.CHISELED_POLISHED_WARPED_STONE.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE_BRICKS.get())
-				|| groundState.is(UnusualEndBlocks.WARPED_STONE_TILES.get()) || groundState.is(UnusualEndBlocks.WARPED_STONE_PILLAR.get());
+		return groundState.is(UnusualEndTags.Blocks.WARPED_ALGAE_MAY_PLACE_ON);
 	}
 
 	@Override

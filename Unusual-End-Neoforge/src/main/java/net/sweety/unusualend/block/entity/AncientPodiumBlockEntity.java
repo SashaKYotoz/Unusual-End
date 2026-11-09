@@ -82,7 +82,7 @@ public class AncientPodiumBlockEntity extends RandomizableContainerBlockEntity i
 
     @Override
     public Component getDefaultName() {
-        return Component.literal("ancient_podium");
+        return Component.translatable("block.unusualend.ancient_podium");
     }
 
     @Override
@@ -97,7 +97,7 @@ public class AncientPodiumBlockEntity extends RandomizableContainerBlockEntity i
 
     @Override
     public Component getDisplayName() {
-        return Component.literal("Ancient Podium");
+        return Component.translatable("block.unusualend.ancient_podium");
     }
 
     @Override

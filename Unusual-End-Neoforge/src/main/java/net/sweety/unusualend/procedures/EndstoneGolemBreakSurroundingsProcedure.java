@@ -5,9 +5,9 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class EndstoneGolemBreakSurroundingsProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -42,13 +42,7 @@ public class EndstoneGolemBreakSurroundingsProcedure {
 		if (found) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y, z, 15, 1, 1, 1, 0);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.NEUTRAL, 1, 1);
-				} else {
-					_level.playLocalSound(x, y, z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.NEUTRAL, 1, 1, false);
-				}
-			}
+			ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.NEUTRAL, 1, 1);
 		}
 	}
 }

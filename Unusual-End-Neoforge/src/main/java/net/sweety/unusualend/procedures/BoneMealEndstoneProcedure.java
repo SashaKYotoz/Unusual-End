@@ -1,20 +1,15 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.bus.api.Event;
@@ -23,6 +18,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import javax.annotation.Nullable;
 
@@ -48,30 +44,14 @@ public class BoneMealEndstoneProcedure {
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BONE_MEAL) {
 			if (UEConfig.REGULAR_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.INFESTED_END_STONE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.END_STONE) {
-					if (!(new Object() {
-						public boolean checkGamemode(Entity _ent) {
-							if (_ent instanceof ServerPlayer _serverPlayer) {
-								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
-								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
-							}
-							return false;
-						}
-					}.checkGamemode(entity))) {
+					if (!(ProcedureHelper.isCreative(entity))) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 					}
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + 0.5), (y + 0.5), (z + 0.5), 5, 1, 1, 1, 0);
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
-						} else {
-							_level.playLocalSound(x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1, false);
-						}
-					}
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
 					sx = -3;
 					for (int index0 = 0; index0 < 6; index0++) {
 						sy = -1;
@@ -108,28 +88,12 @@ public class BoneMealEndstoneProcedure {
 			}
 			if (UEConfig.GLOOPY_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.GLOOPSLATE.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.GLOOPSTONE.get()) {
-					if (!(new Object() {
-						public boolean checkGamemode(Entity _ent) {
-							if (_ent instanceof ServerPlayer _serverPlayer) {
-								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
-								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
-							}
-							return false;
-						}
-					}.checkGamemode(entity))) {
+					if (!(ProcedureHelper.isCreative(entity))) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 					}
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, x, y, z, 5, 1, 1, 1, 0);
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
-						} else {
-							_level.playLocalSound(x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1, false);
-						}
-					}
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
 					sx = -3;
@@ -173,30 +137,14 @@ public class BoneMealEndstoneProcedure {
 			}
 			if (UEConfig.PURPUR_BONEMEAL.get() == true) {
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.RAW_PURPUR_BLOCK.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualEndBlocks.ROOTED_RAW_PURPUR.get()) {
-					if (!(new Object() {
-						public boolean checkGamemode(Entity _ent) {
-							if (_ent instanceof ServerPlayer _serverPlayer) {
-								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
-								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
-							}
-							return false;
-						}
-					}.checkGamemode(entity))) {
+					if (!(ProcedureHelper.isCreative(entity))) {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 					}
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.HAPPY_VILLAGER, (x + 0.5), (y + 0.5), (z + 0.5), 5, 1, 1, 1, 0);
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
-						} else {
-							_level.playLocalSound(x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1, false);
-						}
-					}
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1, 1);
 					sx = -3;
 					for (int index6 = 0; index6 < 6; index6++) {
 						sy = -1;

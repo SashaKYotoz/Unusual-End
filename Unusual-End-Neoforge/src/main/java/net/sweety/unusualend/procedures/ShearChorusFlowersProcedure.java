@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 @EventBusSubscriber
 public class ShearChorusFlowersProcedure {
@@ -36,10 +37,7 @@ public class ShearChorusFlowersProcedure {
                 BlockState _bs = level.getBlockState(_pos);
                 if (_bs.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(5))
                     level.setBlock(_pos, _bs.setValue(_integerProp, 5), 3);
-                if (!level.isClientSide()) {
-                    level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHORUS_FLOWER_DEATH, SoundSource.NEUTRAL, 1, 1);
-                } else
-                    level.playLocalSound(x, y, z, SoundEvents.CHORUS_FLOWER_DEATH, SoundSource.NEUTRAL, 1, 1, false);
+                ProcedureHelper.playSound(level, x, y, z, SoundEvents.CHORUS_FLOWER_DEATH, SoundSource.NEUTRAL, 1, 1);
             }
         }
     }

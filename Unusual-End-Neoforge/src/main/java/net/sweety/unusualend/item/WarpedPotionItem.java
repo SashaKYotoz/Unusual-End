@@ -29,7 +29,7 @@ public class WarpedPotionItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.literal("Nausea (0:10)").withStyle(ChatFormatting.RED));
+		list.add(Component.translatable("tooltip.unusualend.warped_potion.0").withStyle(ChatFormatting.RED));
 	}
 
 	@Override

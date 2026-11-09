@@ -10,7 +10,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShearsItem;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
@@ -20,6 +19,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 @EventBusSubscriber
 public class WarpedSquashOnBlockRightClickedProcedure {
@@ -48,13 +48,7 @@ public class WarpedSquashOnBlockRightClickedProcedure {
 				}.with(UnusualEndBlocks.CARVED_WARPED_SQUASH.get().defaultBlockState(),
 						(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()))), 3);
 				if (world.isClientSide()) {
-					if (world instanceof Level _level) {
-						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.PUMPKIN_CARVE, SoundSource.NEUTRAL, 1, 1);
-						} else {
-							_level.playLocalSound(x, y, z, SoundEvents.PUMPKIN_CARVE, SoundSource.NEUTRAL, 1, 1, false);
-						}
-					}
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.PUMPKIN_CARVE, SoundSource.NEUTRAL, 1, 1);
 				}
 			}
 		}

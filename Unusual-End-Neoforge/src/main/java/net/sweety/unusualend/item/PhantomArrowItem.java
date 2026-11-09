@@ -17,11 +17,6 @@ public class PhantomArrowItem extends ArrowItem {
 		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
 	}
 
-	//@Override
-	//public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
-	//	super.appendHoverText(itemstack, level, list, flag);
-	//	list.add(Component.literal("\u00A77Not affected by Gravity"));
-	//}
 
 	@Override
 	public AbstractArrow createArrow(Level level, ItemStack ammo, LivingEntity shooter, @Nullable ItemStack weapon) {

@@ -1,12 +1,11 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.init.UnusualEndSounds;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class BlukAuChocolatPlayerFinishesUsingItemProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
@@ -14,13 +13,7 @@ public class BlukAuChocolatPlayerFinishesUsingItemProcedure {
 			return;
 		if (UEConfig.CHOCOLAT_BLUK.get()) {
 			if (world.isClientSide()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY() + 2, entity.getZ()), UnusualEndSounds.FLUTE_FISHE.get(), SoundSource.PLAYERS, 1, 1);
-					} else {
-						_level.playLocalSound((entity.getX()), (entity.getY() + 2), (entity.getZ()), UnusualEndSounds.FLUTE_FISHE.get(), SoundSource.PLAYERS, 1, 1, false);
-					}
-				}
+				ProcedureHelper.playSound(world, entity.getX(), entity.getY() + 2, entity.getZ(), UnusualEndSounds.FLUTE_FISHE.get(), SoundSource.PLAYERS, 1, 1);
 			}
 		}
 	}

@@ -1,20 +1,17 @@
 package net.sweety.unusualend.event;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundStopSoundPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -37,7 +34,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModList;
@@ -63,6 +59,8 @@ import net.sweety.unusualend.entity.*;
 import net.sweety.unusualend.init.*;
 import net.sweety.unusualend.network.UnusualEndVariables;
 import net.sweety.unusualend.procedures.*;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME)
@@ -141,14 +139,11 @@ public class UnusualEndForgeEvents {
                     if (!player.level().isClientSide()) {
                         player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 300, 1));
                         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 80, 0));
-                        player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.tp_error").getString())), true);
+                        player.displayClientMessage(Component.translatable("text.unusualend.tp_error"), true);
                     }
                     if (level instanceof ServerLevel _level)
                         _level.sendParticles(ParticleTypes.PORTAL, (player.getX()), (player.getY()), (player.getZ()), 50, 0.5, 1.5, 0.5, 0);
-                    if (!level.isClientSide()) {
-                        level.playSound(null, BlockPos.containing(player.getX(), player.getY(), player.getZ()), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1);
-                    } else
-                        level.playLocalSound((player.getX()), (player.getY()), (player.getZ()), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1, false);
+                    ProcedureHelper.playSound(level, player.getX(), player.getY(), player.getZ(), SoundEvents.ENDER_EYE_DEATH, SoundSource.PLAYERS, 1, 1);
                 }
                 variables.teleporting = false;
                 variables.syncPlayerVariables(player);
@@ -274,9 +269,6 @@ public class UnusualEndForgeEvents {
             CitrineTalismanTriggerProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
         }
         if (ModList.get().isLoaded("curios")) {
-//            if (sourceEntity instanceof LivingEntity livingEntity && CuriosApi.getCuriosHelper().findEquippedCurio(UnusualEndItems.CITRINE_AMULET.get(), livingEntity).isPresent()) {
-//                CitrineTalismanTriggerProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
-//            }
         }
         if (entity instanceof LargeBubbleEntity) {
             if (entity.level() instanceof ServerLevel _level)
@@ -305,12 +297,9 @@ public class UnusualEndForgeEvents {
             if (!player.isCreative()) {
                 if (Math.random() < 0.02) {
                     if (level instanceof Level _level) {
-                        if (!_level.isClientSide())
-                            _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);
-                        else
-                            _level.playLocalSound(x, y, z, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1, false);
+                        ProcedureHelper.playSound(_level, x, y, z, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);
                     }
-                    for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 1, 2); index0++) {
+                    for (int index0 = 0; index0 < Mth.nextInt(level.getRandom(), 1, 2); index0++) {
                         if (level instanceof ServerLevel _level) {
                             Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
                             if (entityToSpawn != null)
@@ -321,7 +310,7 @@ public class UnusualEndForgeEvents {
                             _level.sendParticles(ParticleTypes.REVERSE_PORTAL, (x + 0.5), (y + 0.2), (z + 0.5), 5, 1.3, 1.3, 1.3, 0);
                         }
                     }
-                    for (int index1 = 0; index1 < Mth.nextInt(RandomSource.create(), 0, 1); index1++) {
+                    for (int index1 = 0; index1 < Mth.nextInt(level.getRandom(), 0, 1); index1++) {
                         if (level instanceof ServerLevel _level) {
                             Entity entityToSpawn = UnusualEndEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
                             if (entityToSpawn != null) {
@@ -368,9 +357,8 @@ public class UnusualEndForgeEvents {
 
     @SubscribeEvent
     public static void onPlayerRespawned(PlayerEvent.PlayerRespawnEvent event) {
-        if (event.getEntity().level() instanceof ServerLevel level)
-            level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, event.getEntity().position(), Vec2.ZERO, level, 4, "", Component.literal(""), level.getServer(), null).withSuppressedOutput(),
-                    ("stopsound " + event.getEntity().getDisplayName().getString() + " music"));
+        if (event.getEntity() instanceof ServerPlayer player)
+            player.connection.send(new ClientboundStopSoundPacket(null, SoundSource.MUSIC));
     }
 
 
@@ -392,9 +380,9 @@ public class UnusualEndForgeEvents {
                 if (!entity.isShiftKeyDown()) {
                     if (Math.random() < UEConfig.CHORUS_HELMET_PROBABILITY_TO_TELEPORT.get() / 100) {
                         for (int index0 = 0; index0 < 1000; index0++) {
-                            X = x + Mth.nextInt(RandomSource.create(), -5, 5);
-                            Y = y + Mth.nextInt(RandomSource.create(), -2, 2);
-                            Z = z + Mth.nextInt(RandomSource.create(), -5, 5);
+                            X = x + Mth.nextInt(entity.getRandom(), -5, 5);
+                            Y = y + Mth.nextInt(entity.getRandom(), -2, 2);
+                            Z = z + Mth.nextInt(entity.getRandom(), -5, 5);
                             if ((level.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.CAVE_AIR || (level.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.VOID_AIR
                                     || (level.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.AIR) {
                                 if (level.getBlockState(BlockPos.containing(X, Y - 1, Z)).canOcclude()) {
@@ -406,22 +394,9 @@ public class UnusualEndForgeEvents {
                                     }
                                     if (level instanceof ServerLevel _level)
                                         _level.sendParticles(ParticleTypes.PORTAL, X, Y, Z, 30, 0.5, 1.5, 0.5, 0);
-                                    if (!level.isClientSide()) {
-                                        level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1, 1);
-                                    } else
-                                        level.playLocalSound(x, y, z, SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1, 1, false);
+                                    ProcedureHelper.playSound(level, x, y, z, SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.PLAYERS, 1, 1);
                                     if (amount <= UEConfig.MAX_DAMAGE_CHORUS_HELMET_CAN_DODGE_WITH_TP_.get()) {
-                                        if (!(entity instanceof ServerPlayer _plr18 && _plr18.level() instanceof ServerLevel
-                                                && _plr18.getAdvancements().getOrStartProgress(_plr18.server.getAdvancements().get(UnusualEnd.makeUEID("use_chorus_helmet"))).isDone())) {
-                                            if (entity instanceof ServerPlayer _player) {
-                                                AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("use_chorus_helmet"));
-                                                AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-                                                if (!_ap.isDone()) {
-                                                    for (String criteria : _ap.getRemainingCriteria())
-                                                        _player.getAdvancements().award(_adv, criteria);
-                                                }
-                                            }
-                                        }
+                                        ProcedureHelper.awardAdvancement(entity, "use_chorus_helmet");
                                     }
                                     break;
                                 }
@@ -437,7 +412,7 @@ public class UnusualEndForgeEvents {
             if (sourceEntity instanceof LivingEntity livingEntity && livingEntity.getMainHandItem().is(UnusualEndItems.ANCIENT_SWORD.get())) {
                 if (immediateSourceentity == sourceEntity) {
                     swing_offset = 1.5;
-                    swing_curve = Mth.nextDouble(RandomSource.create(), -0.5, 0.5);
+                    swing_curve = Mth.nextDouble(entity.getRandom(), -0.5, 0.5);
                     original_curve = swing_curve;
                     if (swing_curve > 0.1) {
                         swing = true;
@@ -446,34 +421,25 @@ public class UnusualEndForgeEvents {
                     } else {
                         if (Math.random() < 0.5) {
                             swing = true;
-                            swing_curve = Mth.nextDouble(RandomSource.create(), 0.2, 0.5);
+                            swing_curve = Mth.nextDouble(entity.getRandom(), 0.2, 0.5);
                         } else {
                             swing = false;
-                            swing_curve = Mth.nextDouble(RandomSource.create(), -0.5, -0.2);
+                            swing_curve = Mth.nextDouble(entity.getRandom(), -0.5, -0.2);
                         }
                         original_curve = swing_curve;
                     }
                     for (int index0 = 0; index0 < 30; index0++) {
                         if (!sourceEntity.level().isClientSide() && sourceEntity.getServer() != null) {
-                            sourceEntity.getServer().getCommands().performPrefixedCommand(
-                                    new CommandSourceStack(CommandSource.NULL, sourceEntity.position(), sourceEntity.getRotationVector(), sourceEntity.level() instanceof ServerLevel ? (ServerLevel) sourceEntity.level() : null, 4, sourceEntity.getName().getString(), sourceEntity.getDisplayName(),
-                                            sourceEntity.level().getServer(), sourceEntity),
-                                    ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve - 0.5) + " ^1.8 run particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0.1 0.1 0.1 0 3"));
+                            ParticleHelper.spawn(sourceEntity.level(), ParticleHelper.voidParticles(), ParticleHelper.localToEyes(sourceEntity, swing_offset, swing_curve - 0.5, 1.8), 3, 0.1, 0.1, 0.1, 0);
                         }
                         if (Math.random() < 0.1) {
                             if (!sourceEntity.level().isClientSide() && sourceEntity.getServer() != null) {
-                                sourceEntity.getServer().getCommands()
-                                        .performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, sourceEntity.position(), sourceEntity.getRotationVector(), sourceEntity.level() instanceof ServerLevel ? (ServerLevel) sourceEntity.level() : null, 4,
-                                                        sourceEntity.getName().getString(), sourceEntity.getDisplayName(), sourceEntity.level().getServer(), sourceEntity),
-                                                ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve - 0.5) + " ^1.8 run particle minecraft:end_rod ~ ~ ~"));
+                                ParticleHelper.spawn(sourceEntity.level(), ParticleTypes.END_ROD, ParticleHelper.localToEyes(sourceEntity, swing_offset, swing_curve - 0.5, 1.8), 0, 0, 0, 0, 0);
                             }
                         }
                         if (Math.random() < 0.3) {
                             if (!sourceEntity.level().isClientSide() && sourceEntity.getServer() != null) {
-                                sourceEntity.getServer().getCommands()
-                                        .performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, sourceEntity.position(), sourceEntity.getRotationVector(), sourceEntity.level() instanceof ServerLevel ? (ServerLevel) sourceEntity.level() : null, 4,
-                                                        sourceEntity.getName().getString(), sourceEntity.getDisplayName(), sourceEntity.level().getServer(), sourceEntity),
-                                                ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve - 0.5) + " ^1.8 run particle minecraft:squid_ink ~ ~ ~"));
+                                ParticleHelper.spawn(sourceEntity.level(), ParticleTypes.SQUID_INK, ParticleHelper.localToEyes(sourceEntity, swing_offset, swing_curve - 0.5, 1.8), 0, 0, 0, 0, 0);
                             }
                         }
                         swing_offset = swing_offset - 0.1;
@@ -491,23 +457,16 @@ public class UnusualEndForgeEvents {
                 original_curve = swing_curve;
                 for (int index0 = 0; index0 < 30; index0++) {
                     if (!sourceEntity.level().isClientSide() && sourceEntity.getServer() != null) {
-                        sourceEntity.getServer().getCommands()
-                                .performPrefixedCommand(
-                                        new CommandSourceStack(CommandSource.NULL, sourceEntity.position(), sourceEntity.getRotationVector(), sourceEntity.level() instanceof ServerLevel ? (ServerLevel) sourceEntity.level() : null, 4, sourceEntity.getName().getString(),
-                                                sourceEntity.getDisplayName(), sourceEntity.level().getServer(), sourceEntity),
-                                        ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve + 0.6) + " ^2 run particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0.1 0.1 0.1 0 3"));
+                        ParticleHelper.spawn(sourceEntity.level(), ParticleHelper.voidParticles(), ParticleHelper.localToEyes(sourceEntity, swing_offset, swing_curve + 0.6, 2), 3, 0.1, 0.1, 0.1, 0);
                     }
                     if (Math.random() < 0.1) {
                         if (!sourceEntity.level().isClientSide() && sourceEntity.getServer() != null) {
-                            sourceEntity.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, sourceEntity.position(), sourceEntity.getRotationVector(), sourceEntity.level() instanceof ServerLevel ? (ServerLevel) sourceEntity.level() : null, 4,
-                                    sourceEntity.getName().getString(), sourceEntity.getDisplayName(), sourceEntity.level().getServer(), sourceEntity), ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve + 0.6) + " ^2 run particle minecraft:end_rod ~ ~ ~"));
+                            ParticleHelper.spawn(sourceEntity.level(), ParticleTypes.END_ROD, ParticleHelper.localToEyes(sourceEntity, swing_offset, swing_curve + 0.6, 2), 0, 0, 0, 0, 0);
                         }
                     }
                     if (Math.random() < 0.3) {
                         if (!sourceEntity.level().isClientSide() && sourceEntity.getServer() != null) {
-                            sourceEntity.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, sourceEntity.position(), sourceEntity.getRotationVector(), sourceEntity.level() instanceof ServerLevel ? (ServerLevel) sourceEntity.level() : null, 4,
-                                            sourceEntity.getName().getString(), sourceEntity.getDisplayName(), sourceEntity.level().getServer(), sourceEntity),
-                                    ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve + 0.6) + " ^2 run particle minecraft:squid_ink ~ ~ ~"));
+                            ParticleHelper.spawn(sourceEntity.level(), ParticleTypes.SQUID_INK, ParticleHelper.localToEyes(sourceEntity, swing_offset, swing_curve + 0.6, 2), 0, 0, 0, 0, 0);
                         }
                     }
                     swing_offset = swing_offset - 0.1;
@@ -524,14 +483,7 @@ public class UnusualEndForgeEvents {
                         speed = 0.8;
                         yaw = entity.getYRot();
                         immediateSourceEntity.setDeltaMovement(new Vec3((speed * Math.cos((yaw + 90) * (Math.PI / 180))), (immediateSourceEntity.getDeltaMovement().y() + 0.1), (speed * Math.sin((yaw + 90) * (Math.PI / 180)))));
-                        if (entity instanceof ServerPlayer _player) {
-                            AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("forced_social_distancing"));
-                            AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-                            if (!_ap.isDone()) {
-                                for (String criteria : _ap.getRemainingCriteria())
-                                    _player.getAdvancements().award(_adv, criteria);
-                            }
-                        }
+                        ProcedureHelper.awardAdvancement(entity, "forced_social_distancing");
                     }
                 }
             }
@@ -543,30 +495,24 @@ public class UnusualEndForgeEvents {
                 if (!entity1.level().isClientSide())
                     entity1.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 60, 0, false, false));
                 entity.setDeltaMovement(new Vec3(0, (-0.1), 0));
-                if (level instanceof ServerLevel _level)
-                    _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                            "particle dust_color_transition 0.827 0.216 0.741 1.5 0.047 0.047 0.047 ~ ~1 ~ 0.2 0.3 0.2 0 20 normal");
+                ParticleHelper.spawn(level, ParticleHelper.enderClothDust(), new Vec3(x, y, z).add(0, 1, 0), 20, 0.2, 0.3, 0.2, 0);
             }
             if (sourceEntity instanceof Endermite || sourceEntity instanceof EnderblobEntity) {
                 if (entity instanceof EnderMan) {
                     if (Math.random() < 0.5) {
-                        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                            _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 36000, 0));
+                        ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 36000, 0));
                     }
                 } else {
                     if (Math.random() < UEConfig.ENDERMITES_PROBABILITY_TO_INFECT.get() / 100) {
-                        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                            _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 600, 0));
+                        ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 600, 0));
                     }
                 }
             }
             double dividedby = 0;
             if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == UnusualEndItems.WARPED_CHESTPLATE.get()) {
-                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                    _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 40, 0, false, true));
+                ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 40, 0, false, true));
                 if (!(entity == sourceEntity)) {
-                    if (sourceEntity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 40, 1, false, true));
+                    ProcedureHelper.addEffect(sourceEntity, new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 40, 1, false, true));
                 }
             }
             if (entity instanceof VoidBombEntity || entity instanceof VoidCrackEntity) {
@@ -576,8 +522,7 @@ public class UnusualEndForgeEvents {
             }
             if (sourceEntity instanceof DraglingEntity) {
                 if (Math.random() < UEConfig.DRAGLING_DISRUPTION.get() / 100) {
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION, 60, 0));
+                    ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualEndMiscRegister.DISRUPTION, 60, 0));
                 }
             }
             if (sourceEntity instanceof EnderbulbEntity) {
@@ -585,8 +530,7 @@ public class UnusualEndForgeEvents {
                 {
                     Entity _ent = sourceEntity;
                     if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-                        _ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(), _ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4,
-                                _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent), ("tp @s ~ ~ ~ facing entity " + entity));
+                        _ent.lookAt(EntityAnchorArgument.Anchor.FEET, entity.position());
                     }
                 }
                 for (int index0 = 0; index0 < 25; index0++) {
@@ -595,12 +539,8 @@ public class UnusualEndForgeEvents {
                                 (sourceEntity.getZ() + (entity.getZ() - sourceEntity.getZ()) / dividedby), 1, 0, 0, 0, 0);
                     dividedby = dividedby + 0.4;
                 }
-                if (sourceEntity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                    _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 2));
-                if (!level.isClientSide())
-                    level.playSound(null, BlockPos.containing(sourceEntity.getX(), sourceEntity.getY(), sourceEntity.getZ()), SoundEvents.EVOKER_CAST_SPELL, SoundSource.HOSTILE, 1, 2);
-                else
-                    level.playLocalSound((sourceEntity.getX()), (sourceEntity.getY()), (sourceEntity.getZ()), SoundEvents.EVOKER_CAST_SPELL, SoundSource.HOSTILE, 1, 2, false);
+                ProcedureHelper.addEffect(sourceEntity, new MobEffectInstance(MobEffects.REGENERATION, 60, 2));
+                ProcedureHelper.playSound(level, sourceEntity.getX(), sourceEntity.getY(), sourceEntity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.HOSTILE, 1, 2);
             }
             if (sourceEntity instanceof DraglingEntity) {
                 if ((sourceEntity instanceof DraglingEntity _datEntL28 && _datEntL28.getEntityData().get(DraglingEntity.DATA_atk))) {

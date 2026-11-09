@@ -2,10 +2,7 @@
 package net.sweety.unusualend.enchantment;
 
 import com.mojang.serialization.MapCodec;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -14,7 +11,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.enchantment.EnchantedItemInUse;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Comparator;
@@ -35,10 +31,8 @@ public record BoloksWingsEnchantment() implements EnchantmentEntityEffect {
                             (float) ((Math.abs(player.getDeltaMovement().x()) + Math.abs(player.getDeltaMovement().y()) + Math.abs(player.getDeltaMovement().z()) + 1) * i));
                 }
             }
-            level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, player.position(), Vec2.ZERO, level, 4, "", Component.literal(""), level.getServer(), null).withSuppressedOutput(),
-                    "particle dust_color_transition 0.067 0.608 0.522 1 0.737 0.902 0.922 ~ ~0.1 ~ 0.4 0.2 0.4 0 1 normal");
-            level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, player.position(), Vec2.ZERO, level, 4, "", Component.literal(""), level.getServer(), null).withSuppressedOutput(),
-                    "particle dust_color_transition 0.094 0.851 0.729 1.2 0.980 0.988 1.000 ~ ~0.1 ~ 0.4 0.2 0.4 0 1 normal");
+            ParticleHelper.spawn(level, ParticleHelper.dustTransition(0.067f, 0.608f, 0.522f, 1.0f, 0.737f, 0.902f, 0.922f), player.position().add(0, 0.1, 0), 1, 0.4, 0.2, 0.4, 0);
+            ParticleHelper.spawn(level, ParticleHelper.dustTransition(0.094f, 0.851f, 0.729f, 1.2f, 0.98f, 0.988f, 1.0f), player.position().add(0, 0.1, 0), 1, 0.4, 0.2, 0.4, 0);
         }
     }
 

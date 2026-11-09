@@ -1,9 +1,6 @@
 
 package net.sweety.unusualend.item;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
@@ -23,7 +20,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualEndItems;
 
@@ -63,10 +59,10 @@ public class AncientSwordItem extends SwordItem {
     @Override
     public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
-        list.add(Component.literal("\u00A77On Hit:"));
-        list.add(Component.literal("\u00A79Attract target"));
-        list.add(Component.literal("\u00A77On Hit while Sneaking:"));
-        list.add(Component.literal("\u00A79Create a Void Slash"));
+        list.add(Component.translatable("tooltip.unusualend.ancient_sword.0"));
+        list.add(Component.translatable("tooltip.unusualend.ancient_sword.1"));
+        list.add(Component.translatable("tooltip.unusualend.ancient_sword.2"));
+        list.add(Component.translatable("tooltip.unusualend.ancient_sword.3"));
     }
 
     @SuppressWarnings("removal")
@@ -92,10 +88,7 @@ public class AncientSwordItem extends SwordItem {
                         double zV = Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius;
                         serverLevel.sendParticles(ParticleTypes.SQUID_INK, (x + 0.5 + xV), (y + 1), (z + 0.5 + zV), 3, 0.3, 0.2, 0.3, 0.1);
                         serverLevel.sendParticles(ParticleTypes.END_ROD, (x + 0.5 + xV), (y + 1), (z + 0.5 + zV), 3, 0.3, 0.2, 0.3, 0.1);
-                        serverLevel.getServer().getCommands().performPrefixedCommand(
-                                new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5 + xV), (y + 1), (z + 0.5 + zV)), Vec2.ZERO,
-                                        serverLevel, 4, "", Component.literal(""), serverLevel.getServer(), null).withSuppressedOutput(),
-                                "particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0 0.05 0 0 5");
+                        ParticleHelper.spawn(serverLevel, ParticleHelper.voidParticles(), (x + 0.5 + xV), (y + 1), (z + 0.5 + zV), 5, 0, 0.05, 0, 0);
                     }
                     loop = loop + 1;
                 }
@@ -107,10 +100,7 @@ public class AncientSwordItem extends SwordItem {
                         iterator.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.MAGIC), entity), 12);
                     }
                 }
-                if (!level.isClientSide())
-                    level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.PLAYERS, 1, 2);
-                else
-                    level.playLocalSound(x, y, z, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.PLAYERS, 1, 2, false);
+                ProcedureHelper.playSound(level, x, y, z, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.PLAYERS, 1, 2);
             }
         }
         return super.onEntitySwing(itemstack, entity);

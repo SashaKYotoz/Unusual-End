@@ -9,6 +9,7 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class WarpedTenacityOnEffectActiveTickProcedure {
 	public static void execute(LevelAccessor world, Entity entity) {
@@ -28,12 +29,10 @@ public class WarpedTenacityOnEffectActiveTickProcedure {
 			}
 		}
 		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) >= 3) {
-			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 0));
+			ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 100, 0));
 		}
 		if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualEndMiscRegister.WARPED_TENACITY) ? _livEnt.getEffect(UnusualEndMiscRegister.WARPED_TENACITY).getAmplifier() : 0) >= 2) {
-			if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-				_entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 100, 0));
+			ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.CONFUSION, 100, 0));
 		}
 	}
 }

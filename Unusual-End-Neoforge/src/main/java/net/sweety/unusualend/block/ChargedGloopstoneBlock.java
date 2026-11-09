@@ -35,7 +35,7 @@ public class ChargedGloopstoneBlock extends Block {
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext tooltipContext, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, tooltipContext, list, flag);
 		list.add(Component.translatable("lore.unusualend.when_walk").withStyle(ChatFormatting.GRAY));
-		list.add(Component.literal("\u00A79+50% Speed"));
+		list.add(Component.translatable("tooltip.unusualend.charged_gloopstone.0"));
 	}
 
 	@Override

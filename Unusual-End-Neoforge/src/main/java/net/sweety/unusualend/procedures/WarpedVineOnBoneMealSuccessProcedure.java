@@ -2,27 +2,11 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.Property;
 import net.sweety.unusualend.init.UnusualEndBlocks;
-
-import java.util.Map;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class WarpedVineOnBoneMealSuccessProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		{
-			BlockPos _bp = BlockPos.containing(x, y, z);
-			BlockState _bs = UnusualEndBlocks.GROWN_WARPED_BUSH.get().defaultBlockState();
-			BlockState _bso = world.getBlockState(_bp);
-			for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
-				Property _property = _bs.getBlock().getStateDefinition().getProperty(entry.getKey().getName());
-				if (_property != null && _bs.getValue(_property) != null)
-					try {
-						_bs = _bs.setValue(_property, (Comparable) entry.getValue());
-					} catch (Exception e) {
-					}
-			}
-			world.setBlock(_bp, _bs, 3);
-		}
+		ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z), UnusualEndBlocks.GROWN_WARPED_BUSH.get().defaultBlockState(), 3);
 	}
 }

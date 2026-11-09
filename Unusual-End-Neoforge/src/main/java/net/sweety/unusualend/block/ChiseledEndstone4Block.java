@@ -24,7 +24,7 @@ public class ChiseledEndstone4Block extends Block {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.literal("\u00A77Scared"));
+		list.add(Component.translatable("tooltip.unusualend.chiseled_endstone_4.0"));
 	}
 
 	@Override

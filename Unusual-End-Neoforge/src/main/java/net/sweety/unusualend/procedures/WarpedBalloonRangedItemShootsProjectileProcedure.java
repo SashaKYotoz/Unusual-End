@@ -1,6 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -14,6 +13,7 @@ import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.WarpedBalloonProjEntity;
 import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class WarpedBalloonRangedItemShootsProjectileProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Player player, ItemStack itemstack) {
@@ -25,13 +25,7 @@ public class WarpedBalloonRangedItemShootsProjectileProcedure {
             player.swing(InteractionHand.MAIN_HAND, true);
         else
             player.swing(InteractionHand.OFF_HAND, true);
-        if (world instanceof Level _level) {
-            if (!_level.isClientSide()) {
-                _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, (float) 0.3, (float) 1.4);
-            } else {
-                _level.playLocalSound(x, y, z, SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, (float) 0.3, (float) 1.4, false);
-            }
-        }
+        ProcedureHelper.playSound(world, x, y, z, SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, (float) 0.3, (float) 1.4);
         Level projectileLevel = player.level();
         if (!projectileLevel.isClientSide()) {
             Projectile projectile = new Object() {
@@ -43,7 +37,7 @@ public class WarpedBalloonRangedItemShootsProjectileProcedure {
                 }
             }.getArrow(projectileLevel, 0);
             projectile.setPos(player.getX(), player.getEyeY() - 0.1, player.getZ());
-            projectile.shoot(player.getLookAngle().x, player.getLookAngle().y, player.getLookAngle().z, (float) 1.5, (float) 0.3);
+            projectile.shoot(player.getLookAngle(), (float) 1.5, (float) 0.3);
             projectileLevel.addFreshEntity(projectile);
         }
     }

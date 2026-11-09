@@ -6,6 +6,7 @@ import net.minecraft.world.entity.SpawnPlacementTypes;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLConstructModEvent;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
@@ -15,10 +16,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import net.sweety.unusualend.block.entity.*;
 import net.sweety.unusualend.entity.*;
-import net.sweety.unusualend.init.UnusualEndBlockEntities;
-import net.sweety.unusualend.init.UnusualEndEntities;
-import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.init.*;
 import net.sweety.unusualend.item.BolokResearchNotesItem;
 import net.sweety.unusualend.jei_recipes.BolokTradingRecipe;
 import net.sweety.unusualend.jei_recipes.InfuserRecipe;
@@ -30,6 +28,11 @@ import net.sweety.unusualend.procedures.SpunklerNaturalEntitySpawningConditionPr
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class UnusualEndEvents {
+    @SubscribeEvent
+    public static void commonSetup(FMLCommonSetupEvent event) {
+        event.enqueueWork(UnusualEndBlocks::registerPottedPlants);
+    }
+
     @SubscribeEvent
     public static void registerCapabilities(RegisterCapabilitiesEvent event) {
         event.registerItem(Capabilities.ItemHandler.ITEM, (stack, content) -> stack.getCapability(BolokResearchNotesItem.NOTES_ITEM_HANDLER), UnusualEndItems.BOLOK_RESEARCH_NOTES.get());

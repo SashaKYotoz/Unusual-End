@@ -26,6 +26,6 @@ public class BolokFinItem extends Item {
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.wolf_food").withStyle(ChatFormatting.GRAY));
-		list.add(Component.literal("Resistance (10:00)").withStyle(ChatFormatting.BLUE));
+		list.add(Component.translatable("tooltip.unusualend.bolok_fin.0").withStyle(ChatFormatting.BLUE));
 	}
 }

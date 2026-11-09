@@ -16,6 +16,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 @EventBusSubscriber
 public class TeleportToWarpingWaystoneProcedure {
@@ -47,10 +48,7 @@ public class TeleportToWarpingWaystoneProcedure {
             }
             if (event != null)
                 event.setCanceled(true);
-            if (!level.isClientSide())
-                level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1, 1);
-            else
-                level.playLocalSound(x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1, 1, false);
+            ProcedureHelper.playSound(level, x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1, 1);
             raydistance = 1;
             while (!((level.getBlockState(BlockPos.containing(lookX, lookY, lookZ))).getBlock() == UnusualEndBlocks.WARPING_WAYSTONE.get())) {
                 lookX = player.level().clip(new ClipContext(player.getEyePosition(1f), player.getEyePosition(1f).add(player.getViewVector(1f).scale(raydistance)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player)).getBlockPos().getX();

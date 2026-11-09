@@ -1,16 +1,12 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
+import net.sweety.unusualend.util.ParticleHelper;
 
 public class VoidExplosiveEntityOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -50,11 +46,7 @@ public class VoidExplosiveEntityOnEntityTickUpdateProcedure {
 					_level.sendParticles(ParticleTypes.SQUID_INK, (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 1), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 3, 0.3, 0.2, 0.3, 0.1);
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(ParticleTypes.END_ROD, (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 1), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 3, 0.3, 0.2, 0.3, 0.1);
-				if (world instanceof ServerLevel _level)
-					_level.getServer().getCommands().performPrefixedCommand(
-							new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 1), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)), Vec2.ZERO,
-									_level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-							"particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0 0.05 0 0 5");
+				ParticleHelper.spawn(world, ParticleHelper.voidParticles(), (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 1), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 5, 0, 0.05, 0, 0);
 				loop = loop + 1;
 			}
 			if (world instanceof ServerLevel _level)

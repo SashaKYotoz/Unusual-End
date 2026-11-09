@@ -90,7 +90,7 @@ public class GloopslatePedestralBlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public Component getDefaultName() {
-		return Component.literal("gloopslate_pedestral");
+		return Component.translatable("block.unusualend.gloopslate_pedestral");
 	}
 
 	@Override
@@ -105,7 +105,7 @@ public class GloopslatePedestralBlockEntity extends RandomizableContainerBlockEn
 
 	@Override
 	public Component getDisplayName() {
-		return Component.literal("Gloopslate Pedestral");
+		return Component.translatable("block.unusualend.gloopslate_pedestral");
 	}
 
 	@Override

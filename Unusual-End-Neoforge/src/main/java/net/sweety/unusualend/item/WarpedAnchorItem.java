@@ -30,7 +30,7 @@ public class WarpedAnchorItem extends PickaxeItem {
     public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
         list.add(Component.translatable("lore.unusualend.on_hit").withStyle(ChatFormatting.GRAY));
-        list.add(Component.literal("Heaviness II (0:05)").withStyle(ChatFormatting.BLUE));
+        list.add(Component.translatable("tooltip.unusualend.warped_anchor.0").withStyle(ChatFormatting.BLUE));
         list.add(Component.translatable("lore.unusualend.when_offhand").withStyle(ChatFormatting.GRAY));
         list.add(Component.translatable("lore.unusualend.clear_levitation").withStyle(ChatFormatting.BLUE));
     }

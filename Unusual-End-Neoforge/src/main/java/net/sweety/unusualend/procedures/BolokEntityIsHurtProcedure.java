@@ -1,26 +1,17 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class BolokEntityIsHurtProcedure {
 	public static void execute(LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		if (sourceentity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-			_entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 100, 0));
-		if (world instanceof ServerLevel _level)
-			_level.getServer().getCommands().performPrefixedCommand(
-					new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY()), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-					"particle dust_color_transition 0.165 1.000 0.753 2 0.137 0.506 0.533 ~ ~ ~ 0.4 0.4 0.4 0 10 normal");
+		ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(UnusualEndMiscRegister.HEAVINESS, 100, 0));
+		ParticleHelper.spawn(world, ParticleHelper.dustTransition(0.165f, 1.0f, 0.753f, 2.0f, 0.137f, 0.506f, 0.533f), (entity.getX()), (entity.getY()), (entity.getZ()), 10, 0.4, 0.4, 0.4, 0);
 	}
 }

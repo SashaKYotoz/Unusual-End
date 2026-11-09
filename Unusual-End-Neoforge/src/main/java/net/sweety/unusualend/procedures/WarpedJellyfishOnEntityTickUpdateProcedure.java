@@ -12,6 +12,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.entity.LargeBubbleEntity;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class WarpedJellyfishOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -25,8 +26,7 @@ public class WarpedJellyfishOnEntityTickUpdateProcedure {
 			if (entity instanceof Mob _entity)
 				_entity.getNavigation().moveTo(x, 45, z, 0.8);
 			if (y < 10) {
-				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
+				ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
 			}
 		}
 		if (!((entity.getVehicle()) == null) && !((entity.getVehicle()) instanceof LargeBubbleEntity)) {
@@ -35,7 +35,7 @@ public class WarpedJellyfishOnEntityTickUpdateProcedure {
 			if ((entity.getVehicle()) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 15, 0));
 			if ((entity.getVehicle()) instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.unequip_glub").getString())), true);
+				_player.displayClientMessage(Component.translatable("text.unusualend.unequip_glub"), true);
 		}
 	}
 }

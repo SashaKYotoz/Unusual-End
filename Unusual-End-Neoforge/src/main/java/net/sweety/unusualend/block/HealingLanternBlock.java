@@ -46,7 +46,7 @@ public class HealingLanternBlock extends Block implements SimpleWaterloggedBlock
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.when_nearby").withStyle(ChatFormatting.GRAY));
-		list.add(Component.literal("Regeneration (0:05)").withStyle(ChatFormatting.BLUE));
+		list.add(Component.translatable("tooltip.unusualend.healing_lantern.0").withStyle(ChatFormatting.BLUE));
 		list.add(Component.translatable("lore.unusualend.place_side").withStyle(ChatFormatting.DARK_GRAY));
 	}
 

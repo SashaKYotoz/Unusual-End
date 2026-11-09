@@ -63,7 +63,7 @@ public class LeechingWandItem extends Item {
         super.appendHoverText(itemstack, context, list, flag);
         list.add(Component.translatable("lore.unusualend.hold_shooting").withStyle(ChatFormatting.DARK_GRAY));
         list.add(Component.translatable("lore.unusualend.on_hit").withStyle(ChatFormatting.GRAY));
-        list.add(Component.literal("\u00A79Regeneration III (00:03)"));
+        list.add(Component.translatable("tooltip.unusualend.leeching_wand.0"));
     }
 
     @Override

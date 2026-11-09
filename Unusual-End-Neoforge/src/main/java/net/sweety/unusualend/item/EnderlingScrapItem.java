@@ -30,7 +30,7 @@ public abstract class EnderlingScrapItem extends ArmorItem {
 		public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 			super.appendHoverText(itemstack, context, list, flag);
 			list.add(Component.translatable("lore.unusualend.when_sprint").withStyle(ChatFormatting.GRAY));
-			list.add(Component.literal("Spectral Stride (0:01)").withStyle(ChatFormatting.BLUE));
+			list.add(Component.translatable("tooltip.unusualend.enderling_scrap.0").withStyle(ChatFormatting.BLUE));
 		}
 
 		@Override

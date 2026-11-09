@@ -1,10 +1,6 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -17,12 +13,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.scores.PlayerTeam;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
 import net.sweety.unusualend.network.UnusualEndVariables;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class EnderlingClothRightclickedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
@@ -36,19 +33,14 @@ public class EnderlingClothRightclickedProcedure {
             if (entity instanceof LivingEntity _entity)
                 _entity.swing(InteractionHand.OFF_HAND, true);
         }
-        double _setval = 1200;
         UnusualEndVariables.PlayerVariables variables = entity.getData(UnusualEndVariables.PLAYER_VARIABLES.get());
-        variables.scrapeOverlay = _setval;
+        variables.scrapeOverlay = 1200;
         variables.syncPlayerVariables(entity);
-        if (world instanceof ServerLevel _level)
-            _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                    "particle dust_color_transition 0.827 0.216 0.741 1.5 0.047 0.047 0.047 ~ ~1 ~ 0.4 0.5 0.4 0 40 normal");
+        ParticleHelper.spawn(world, ParticleHelper.enderClothDust(), new Vec3(x, y, z).add(0, 1, 0), 40, 0.4, 0.5, 0.4, 0);
         if (world instanceof ServerLevel _level)
             _level.sendParticles(ParticleTypes.POOF, x, (y + 1), z, 10, 0.5, 0.5, 0.5, 0);
-        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-            _entity.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 1200, 1, false, false));
-        if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-            _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.SPECTRAL_STRIDE, 1200, 0, false, false));
+        ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.INVISIBILITY, 1200, 1, false, false));
+        ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualEndMiscRegister.SPECTRAL_STRIDE, 1200, 0, false, false));
         if (entity instanceof Player _player)
             _player.getCooldowns().addCooldown(UnusualEndItems.SPECTRAL_CLOTH.get(), 100);
         if (world instanceof Level _level)
@@ -64,13 +56,7 @@ public class EnderlingClothRightclickedProcedure {
             }
         }
         if (world.isClientSide()) {
-            if (world instanceof Level _level) {
-                if (!_level.isClientSide()) {
-                    _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GENERIC_BURN, SoundSource.PLAYERS, (float) 0.3, 1);
-                } else {
-                    _level.playLocalSound(x, y, z, SoundEvents.GENERIC_BURN, SoundSource.PLAYERS, (float) 0.3, 1, false);
-                }
-            }
+            ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_BURN, SoundSource.PLAYERS, (float) 0.3, 1);
         }
     }
 }

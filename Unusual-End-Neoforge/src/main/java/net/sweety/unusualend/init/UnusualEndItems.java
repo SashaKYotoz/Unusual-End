@@ -1,8 +1,12 @@
 package net.sweety.unusualend.init;
 
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DoubleHighBlockItem;
-import net.minecraft.world.item.Item;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -11,10 +15,12 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.item.*;
 
+import java.util.function.Supplier;
+
 public class UnusualEndItems {
     public static final DeferredRegister<Item> REGISTRY = DeferredRegister.createItems(UnusualEnd.MODID);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDER_BLOB_SPAWN_EGG = REGISTRY.register("ender_blob_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDER_BLOB, -13295268, -16777216, new Item.Properties()));
-    public static final DeferredHolder<Item, EndblobBallItem> END_BLOB = REGISTRY.register("end_blob", () -> new EndblobBallItem());
+    public static final DeferredHolder<Item, Item> END_BLOB = item("end_blob", () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 300, 0), 0.3F).nutrition(2).saturationModifier(0.2f).alwaysEdible().build()));
     public static final DeferredHolder<Item, DeferredSpawnEggItem> UNDEAD_ENDERLING_SPAWN_EGG = REGISTRY.register("undead_enderling_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.UNDEAD_ENDERLING, -16777216, -6750055, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> RAW_PURPUR_BLOCK = block(UnusualEndBlocks.RAW_PURPUR_BLOCK);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDSTONE_TRAPPER_SPAWN_EGG = REGISTRY.register("endstone_trapper_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDSTONE_TRAPPER, -131665, -5547578, new Item.Properties()));
@@ -43,7 +49,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> WEAK_END_STONE_BRICKS = block(UnusualEndBlocks.WEAK_END_STONE_BRICKS);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDSTONE_GOLEM_SPAWN_EGG = REGISTRY.register("endstone_golem_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDSTONE_GOLEM, -103, -10092391, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> SHULKER_SHOOTER = block(UnusualEndBlocks.SHULKER_SHOOTER);
-    public static final DeferredHolder<Item, MusicDiscFlyingShipsItem> MUSIC_DISC_FLYING_SHIPS = REGISTRY.register("music_disc_flying_ships", () -> new MusicDiscFlyingShipsItem());
+    public static final DeferredHolder<Item, Item> MUSIC_DISC_FLYING_SHIPS = item("music_disc_flying_ships", () -> new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(UnusualEndSounds.FLYING_SHIPS));
     public static final DeferredHolder<Item, VoidTotemItem> VOID_TOTEM = REGISTRY.register("void_totem", () -> new VoidTotemItem());
     public static final DeferredHolder<Item, BlockItem> GOLEM_ALTAR = block(UnusualEndBlocks.GOLEM_ALTAR);
     public static final DeferredHolder<Item, NetherOrbItem> BLAZING_ORB = REGISTRY.register("blazing_orb", () -> new NetherOrbItem());
@@ -64,7 +70,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> FADING_BLOCK = block(UnusualEndBlocks.FADING_BLOCK);
     public static final DeferredHolder<Item, BlockItem> ENDSTONE_TILES = block(UnusualEndBlocks.ENDSTONE_TILES);
     public static final DeferredHolder<Item, WanderingStewItem> WANDERING_STEW = REGISTRY.register("wandering_stew", () -> new WanderingStewItem());
-    public static final DeferredHolder<Item, MusicDiscEndstoneGolemThemeItem> MUSIC_DISC_ENDSTONE_GOLEM_THEME = REGISTRY.register("music_disc_endstone_golem_theme", () -> new MusicDiscEndstoneGolemThemeItem());
+    public static final DeferredHolder<Item, Item> MUSIC_DISC_ENDSTONE_GOLEM_THEME = item("music_disc_endstone_golem_theme", () -> new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(UnusualEndSounds.ENDSTONE_GOLEM));
     public static final DeferredHolder<Item, BlockItem> ENDERBLOB_MOULT_BLOCK = block(UnusualEndBlocks.ENDERBLOB_MOULT_BLOCK);
     public static final DeferredHolder<Item, BlockItem> PHANTOM_MEMBRANE_BLOCK = block(UnusualEndBlocks.PHANTOM_MEMBRANE_BLOCK);
     public static final DeferredHolder<Item, BlockItem> POLISHED_PURPUR_TILES = block(UnusualEndBlocks.POLISHED_PURPUR_TILES);
@@ -86,7 +92,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> CHORUS_NEST_FENCE_GATE = block(UnusualEndBlocks.CHORUS_NEST_FENCE_GATE);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> DRAGLING_SPAWN_EGG = REGISTRY.register("dragling_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.DRAGLING, -15395820, -3771427, new Item.Properties()));
     public static final DeferredHolder<Item, MoultDaggerItem> BOUNCY_DAGGER = REGISTRY.register("bouncy_dagger", () -> new MoultDaggerItem());
-    public static final DeferredHolder<Item, ChorusPetalItem> CHORUS_PETAL = REGISTRY.register("chorus_petal", () -> new ChorusPetalItem());
+    public static final DeferredHolder<Item, Item> CHORUS_PETAL = item("chorus_petal", () -> new Item.Properties().food(new FoodProperties.Builder().nutrition(1).saturationModifier(0.2f).alwaysEdible().fast().build()));
     public static final DeferredHolder<Item, ScrapeClothItem> SPECTRAL_CLOTH = REGISTRY.register("spectral_cloth", () -> new ScrapeClothItem());
     public static final DeferredHolder<Item, BlockItem> PURPUR_GRASS = block(UnusualEndBlocks.PURPUR_GRASS);
     public static final DeferredHolder<Item, BlockItem> FLOWERING_PURPUR_GRASS = block(UnusualEndBlocks.FLOWERING_PURPUR_GRASS);
@@ -94,13 +100,13 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> CHISELED_GLASS = block(UnusualEndBlocks.CHISELED_GLASS);
     public static final DeferredHolder<Item, BlockItem> CHISELED_GLASS_PANE = block(UnusualEndBlocks.CHISELED_GLASS_PANE);
     public static final DeferredHolder<Item, FireflyEggItem> ENDER_FIREFLY_EGG = REGISTRY.register("ender_firefly_egg", () -> new FireflyEggItem());
-    public static final DeferredHolder<Item, ChorusPieItem> CHORUS_PIE = REGISTRY.register("chorus_pie", () -> new ChorusPieItem());
+    public static final DeferredHolder<Item, Item> CHORUS_PIE = item("chorus_pie", () -> new Item.Properties().food(new FoodProperties.Builder().nutrition(8).saturationModifier(0.6f).build()));
     public static final DeferredHolder<Item, BlockItem> ENDERBLOB_MOULT_BRICKS = block(UnusualEndBlocks.ENDERBLOB_MOULT_BRICKS);
     public static final DeferredHolder<Item, BlockItem> RAW_PURPUR_WALL = block(UnusualEndBlocks.RAW_PURPUR_WALL);
     public static final DeferredHolder<Item, BlockItem> POLISHED_RAW_PURPUR_BRICK_WALL = block(UnusualEndBlocks.POLISHED_RAW_PURPUR_BRICK_WALL);
     public static final DeferredHolder<Item, ChorusTeaItem> CHORUS_TEA = REGISTRY.register("chorus_tea", () -> new ChorusTeaItem());
     public static final DeferredHolder<Item, BlockItem> GNEISS = block(UnusualEndBlocks.GNEISS);
-    public static final DeferredHolder<Item, EndBlobJellyItem> END_BLOB_JELLY = REGISTRY.register("end_blob_jelly", () -> new EndBlobJellyItem());
+    public static final DeferredHolder<Item, Item> END_BLOB_JELLY = item("end_blob_jelly", () -> new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.5f).alwaysEdible().build()));
     public static final DeferredHolder<Item, BlockItem> WARPED_END_STONE = block(UnusualEndBlocks.WARPED_END_STONE);
     public static final DeferredHolder<Item, BlockItem> GLOOPSTONE = block(UnusualEndBlocks.GLOOPSTONE);
     public static final DeferredHolder<Item, BlockItem> GNEISS_BRICKS = block(UnusualEndBlocks.GNEISS_BRICKS);
@@ -123,10 +129,10 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> GNEISS_BRICK_WALL = block(UnusualEndBlocks.GNEISS_BRICK_WALL);
     public static final DeferredHolder<Item, BlockItem> GLOOPSTONE_BRICK_WALL = block(UnusualEndBlocks.GLOOPSTONE_BRICK_WALL);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> BOLOK_SPAWN_EGG = REGISTRY.register("bolok_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.BOLOK, -15059298, -12998000, new Item.Properties()));
-    public static final DeferredHolder<Item, BolokScaleItem> BOLOK_SCALE = REGISTRY.register("bolok_scale", () -> new BolokScaleItem());
+    public static final DeferredHolder<Item, Item> BOLOK_SCALE = item("bolok_scale", () -> new Item.Properties());
     public static final DeferredHolder<Item, BolokItem.Chestplate> WARPED_CHESTPLATE = REGISTRY.register("warped_chestplate", () -> new BolokItem.Chestplate());
     public static final DeferredHolder<Item, BolokItem.Boots> WARPED_BOOTS = REGISTRY.register("warped_boots", () -> new BolokItem.Boots());
-    public static final DeferredHolder<Item, ShinyCrystalItem> SHINY_CRYSTAL = REGISTRY.register("shiny_crystal", () -> new ShinyCrystalItem());
+    public static final DeferredHolder<Item, Item> SHINY_CRYSTAL = item("shiny_crystal", () -> new Item.Properties());
     public static final DeferredHolder<Item, BlockItem> SHINY_CRYSTAL_BLOCK = block(UnusualEndBlocks.SHINY_CRYSTAL_BLOCK);
     public static final DeferredHolder<Item, BlockItem> BOLOK_SCALE_BLOCK = block(UnusualEndBlocks.BOLOK_SCALE_BLOCK);
     public static final DeferredHolder<Item, GolemOrbItem> GOLEM_ORB = REGISTRY.register("golem_orb", () -> new GolemOrbItem());
@@ -138,7 +144,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> SHINY_CRYSTAL_BRICKS = block(UnusualEndBlocks.SHINY_CRYSTAL_BRICKS);
     public static final DeferredHolder<Item, BlockItem> CHORUS_PETALS_BLOCK = block(UnusualEndBlocks.CHORUS_PETALS_BLOCK);
     public static final DeferredHolder<Item, WarpedPotionItem> WARPED_POTION = REGISTRY.register("warped_potion", () -> new WarpedPotionItem());
-    public static final DeferredHolder<Item, WarpedWartItem> WARPED_SPORES = REGISTRY.register("warped_spores", () -> new WarpedWartItem());
+    public static final DeferredHolder<Item, Item> WARPED_SPORES = item("warped_spores", () -> new Item.Properties());
     public static final DeferredHolder<Item, BolokBucketItem> BOLOK_BUCKET = REGISTRY.register("bolok_bucket", () -> new BolokBucketItem());
     public static final DeferredHolder<Item, EnderfireflyBucketItem> ENDERFIREFLY_BUCKET = REGISTRY.register("enderfirefly_bucket", () -> new EnderfireflyBucketItem());
     public static final DeferredHolder<Item, BlockItem> DRIPPING_GLOOPSTONE = block(UnusualEndBlocks.DRIPPING_GLOOPSTONE);
@@ -152,7 +158,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> HEALING_LANTERN = block(UnusualEndBlocks.HEALING_LANTERN);
     public static final DeferredHolder<Item, BlockItem> POLISHED_GLOOPSLATE = block(UnusualEndBlocks.POLISHED_GLOOPSLATE);
     public static final DeferredHolder<Item, BlockItem> GLOOPSLATE_BRICKS = block(UnusualEndBlocks.GLOOPSLATE_BRICKS);
-    public static final DeferredHolder<Item, ShinyGumItem> SHINY_GUM = REGISTRY.register("shiny_gum", () -> new ShinyGumItem());
+    public static final DeferredHolder<Item, Item> SHINY_GUM = food("shiny_gum", 48, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1), 1F).nutrition(1).saturationModifier(0.3f).alwaysEdible().build()));
     public static final DeferredHolder<Item, BolokResearchNotesItem> BOLOK_RESEARCH_NOTES = REGISTRY.register("bolok_research_notes", () -> new BolokResearchNotesItem());
     public static final DeferredHolder<Item, BolokFinItem> BOLOK_FIN = REGISTRY.register("bolok_fin", () -> new BolokFinItem());
     public static final DeferredHolder<Item, CookedBolokFinItem> COOKED_BOLOK_FIN = REGISTRY.register("cooked_bolok_fin", () -> new CookedBolokFinItem());
@@ -164,7 +170,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> GNEISS_PILE = block(UnusualEndBlocks.GNEISS_PILE);
     public static final DeferredHolder<Item, BlockItem> WARPED_ALGAE = block(UnusualEndBlocks.WARPED_ALGAE);
     public static final DeferredHolder<Item, BlockItem> ANCIENT_ENCASED_END_STONE = block(UnusualEndBlocks.ANCIENT_ENCASED_END_STONE);
-    public static final DeferredHolder<Item, SpectralAlloyIngotItem> PEARLESCENT_INGOT = REGISTRY.register("pearlescent_ingot", () -> new SpectralAlloyIngotItem());
+    public static final DeferredHolder<Item, Item> PEARLESCENT_INGOT = item("pearlescent_ingot", () -> new Item.Properties());
     public static final DeferredHolder<Item, BlockItem> PEARLESCENT_BLOCK = block(UnusualEndBlocks.PEARLESCENT_BLOCK);
     public static final DeferredHolder<Item, SpectralPickaxeItem> PEARLESCENT_PICKAXE = REGISTRY.register("pearlescent_pickaxe", () -> new SpectralPickaxeItem());
     public static final DeferredHolder<Item, SpectralAxeItem> PEARLESCENT_AXE = REGISTRY.register("pearlescent_axe", () -> new SpectralAxeItem());
@@ -173,18 +179,18 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, SpectralHoeItem> PEARLESCENT_HOE = REGISTRY.register("pearlescent_hoe", () -> new SpectralHoeItem());
     public static final DeferredHolder<Item, BlockItem> WARPED_SQUASH = block(UnusualEndBlocks.WARPED_SQUASH);
     public static final DeferredHolder<Item, BlockItem> GNEISS_PILLAR = block(UnusualEndBlocks.GNEISS_PILLAR);
-    public static final DeferredHolder<Item, WarpedSquashWedgeItem> WARPED_SQUASH_WEDGE = REGISTRY.register("warped_squash_wedge", () -> new WarpedSquashWedgeItem());
+    public static final DeferredHolder<Item, Item> WARPED_SQUASH_WEDGE = item("warped_squash_wedge", () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 200, 0), 1.0F).nutrition(4).saturationModifier(0.4f).alwaysEdible().build()));
     public static final DeferredHolder<Item, BlockItem> CARVED_WARPED_SQUASH = block(UnusualEndBlocks.CARVED_WARPED_SQUASH);
     public static final DeferredHolder<Item, BlockItem> VOID_PARTICLES_BLOCK = block(UnusualEndBlocks.VOID_PARTICLES_BLOCK);
     public static final DeferredHolder<Item, AncientSwordItem> ANCIENT_SWORD = REGISTRY.register("ancient_sword", () -> new AncientSwordItem());
     public static final DeferredHolder<Item, DeferredSpawnEggItem> SPUNKLER_SPAWN_EGG = REGISTRY.register("spunkler_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.SPUNKLER, -13553268, -655943, new Item.Properties()));
-    public static final DeferredHolder<Item, LurkerSludgeItem> LURKER_SLUDGE = REGISTRY.register("lurker_sludge", () -> new LurkerSludgeItem());
-    public static final DeferredHolder<Item, LurkerSpineItem> LURKER_SPINE = REGISTRY.register("lurker_spine", () -> new LurkerSpineItem());
-    public static final DeferredHolder<Item, StabilisedVoidItem> STABILISED_VOID = REGISTRY.register("stabilised_void", () -> new StabilisedVoidItem());
+    public static final DeferredHolder<Item, Item> LURKER_SLUDGE = item("lurker_sludge", () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.LEVITATION, 200, 0), 1.0F).nutrition(2).saturationModifier(0.3f).alwaysEdible().build()));
+    public static final DeferredHolder<Item, Item> LURKER_SPINE = item("lurker_spine", () -> new Item.Properties());
+    public static final DeferredHolder<Item, Item> STABILISED_VOID = item("stabilised_void", () -> new Item.Properties().rarity(Rarity.UNCOMMON));
     public static final DeferredHolder<Item, BlockItem> WARPED_BUBBLE = block(UnusualEndBlocks.WARPED_BUBBLE);
     public static final DeferredHolder<Item, BlockItem> WARPING_WAYSTONE = block(UnusualEndBlocks.WARPING_WAYSTONE);
-    public static final DeferredHolder<Item, PrismaliteShardItem> PRISMALITE_SHARD = REGISTRY.register("prismalite_shard", () -> new PrismaliteShardItem());
-    public static final DeferredHolder<Item, PrismaliteGemItem> PRISMALITE_GEM = REGISTRY.register("prismalite_gem", () -> new PrismaliteGemItem());
+    public static final DeferredHolder<Item, Item> PRISMALITE_SHARD = item("prismalite_shard", () -> new Item.Properties());
+    public static final DeferredHolder<Item, Item> PRISMALITE_GEM = item("prismalite_gem", () -> new Item.Properties());
     public static final DeferredHolder<Item, BlockItem> PRISMALITIC_GLOOPSLATE = block(UnusualEndBlocks.PRISMALITIC_GLOOPSLATE);
     public static final DeferredHolder<Item, PrismaticPearlItem> PRISMATIC_PEARL = REGISTRY.register("prismatic_pearl", () -> new PrismaticPearlItem());
     public static final DeferredHolder<Item, BlockItem> PRISMALITE_BLOCK = block(UnusualEndBlocks.PRISMALITE_BLOCK);
@@ -192,17 +198,17 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> GLOOPSLATE_PEDESTRAL = block(UnusualEndBlocks.GLOOPSLATE_PEDESTRAL);
     public static final DeferredHolder<Item, BlockItem> PRISMATIC_PEARL_DISPLAY = block(UnusualEndBlocks.PRISMATIC_PEARL_DISPLAY);
     public static final DeferredHolder<Item, BlockItem> CENTRAL_PEDESTAL = block(UnusualEndBlocks.CENTRAL_PEDESTAL);
-    public static final DeferredHolder<Item, PrismaticGumItem> PRISMATIC_GUM = REGISTRY.register("prismatic_gum", () -> new PrismaticGumItem());
-    public static final DeferredHolder<Item, CitrineItem> CITRINE_CHUNK = REGISTRY.register("citrine_chunk", () -> new CitrineItem());
+    public static final DeferredHolder<Item, Item> PRISMATIC_GUM = food("prismatic_gum", 48, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.DIG_SPEED, 300, 2), 1F).effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 2), 1F).nutrition(1).saturationModifier(0.3f).alwaysEdible().build()));
+    public static final DeferredHolder<Item, Item> CITRINE_CHUNK = item("citrine_chunk", () -> new Item.Properties());
     public static final DeferredHolder<Item, BlockItem> CITRINE_BLOCK = block(UnusualEndBlocks.CITRINE_BLOCK);
     public static final DeferredHolder<Item, BlockItem> CITRINE_CLUSTER = block(UnusualEndBlocks.CITRINE_CLUSTER);
     public static final DeferredHolder<Item, BlockItem> CITRINE_BUD = block(UnusualEndBlocks.CITRINE_BUD);
     public static final DeferredHolder<Item, BlockItem> BUDDING_CITRINE = block(UnusualEndBlocks.BUDDING_CITRINE);
     public static final DeferredHolder<Item, BlockItem> LARGE_CITRINE_BUD = block(UnusualEndBlocks.LARGE_CITRINE_BUD);
     public static final DeferredHolder<Item, WarpedSpearItem> WARPED_SPEAR = REGISTRY.register("warped_spear", () -> new WarpedSpearItem());
-    public static final DeferredHolder<Item, CitrineGumItem> CITRINE_GUM = REGISTRY.register("citrine_gum", () -> new CitrineGumItem());
+    public static final DeferredHolder<Item, Item> CITRINE_GUM = food("citrine_gum", 48, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.LUCK, 300, 1), 1F).effect(new MobEffectInstance(MobEffects.ABSORPTION, 600, 1), 1F).nutrition(1).saturationModifier(0.3f).alwaysEdible().build()));
     public static final DeferredHolder<Item, CrystalCatalystItem> CRYSTAL_CATALYST = REGISTRY.register("crystal_catalyst", () -> new CrystalCatalystItem());
-    public static final DeferredHolder<Item, CitrineAmuletItem> CITRINE_AMULET = REGISTRY.register("citrine_amulet", () -> new CitrineAmuletItem());
+    public static final DeferredHolder<Item, TooltipItem> CITRINE_AMULET = REGISTRY.register("citrine_amulet", () -> new TooltipItem(new Item.Properties().stacksTo(1), Component.translatable("lore.unusualend.when_offhand").withStyle(ChatFormatting.GRAY), Component.translatable("lore.unusualend.extra_xp").withStyle(ChatFormatting.BLUE)));
     public static final DeferredHolder<Item, BlockItem> CONDENSED_CITRINE_BLOCK = block(UnusualEndBlocks.CONDENSED_CITRINE_BLOCK);
     public static final DeferredHolder<Item, BlockItem> PEARLESCENT_INFUSER = block(UnusualEndBlocks.PEARLESCENT_INFUSER);
     public static final DeferredHolder<Item, VoidRuneItem> VOID_RUNE = REGISTRY.register("void_rune", () -> new VoidRuneItem());
@@ -211,7 +217,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> SMALL_WARPED_ALGAE = block(UnusualEndBlocks.SMALL_WARPED_ALGAE);
     public static final DeferredHolder<Item, BlockItem> WARPED_SPROUTS = block(UnusualEndBlocks.WARPED_SPROUTS);
     public static final DeferredHolder<Item, BlockItem> WARPED_STONE = block(UnusualEndBlocks.WARPED_STONE);
-    public static final DeferredHolder<Item, WarpedBerryItem> WARPED_BERRIES = REGISTRY.register("warped_berries", () -> new WarpedBerryItem());
+    public static final DeferredHolder<Item, Item> WARPED_BERRIES = item("warped_berries", () -> new Item.Properties().food(new FoodProperties.Builder().nutrition(3).saturationModifier(0.3f).alwaysEdible().build()));
     public static final DeferredHolder<Item, BlockItem> GLOOPY_TENDRILS = block(UnusualEndBlocks.GLOOPY_TENDRILS);
     public static final DeferredHolder<Item, BlockItem> WARPED_BUSH = block(UnusualEndBlocks.WARPED_BUSH);
     public static final DeferredHolder<Item, BlockItem> GROWN_WARPED_BUSH = block(UnusualEndBlocks.GROWN_WARPED_BUSH);
@@ -245,7 +251,7 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> DRAGLING_PLUSH = block(UnusualEndBlocks.DRAGLING_PLUSH);
     public static final DeferredHolder<Item, BlockItem> CITRINE_PILLAR = block(UnusualEndBlocks.CITRINE_PILLAR);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> ENDERBULB_SPAWN_EGG = REGISTRY.register("enderbulb_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.ENDERBULB, -13295268, -10283736, new Item.Properties()));
-    public static final DeferredHolder<Item, BlobLensItem> ENDERBULB_LENS = REGISTRY.register("enderbulb_lens", () -> new BlobLensItem());
+    public static final DeferredHolder<Item, Item> ENDERBULB_LENS = item("enderbulb_lens", () -> new Item.Properties());
     public static final DeferredHolder<Item, BlockItem> LENS_HARDGLASS = block(UnusualEndBlocks.LENS_HARDGLASS);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> SMALL_ENDERBULB_SPAWN_EGG = REGISTRY.register("small_enderbulb_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.SMALL_ENDERBULB, -11851124, -8641478, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> SQUASH_O_LANTERN = block(UnusualEndBlocks.SQUASH_O_LANTERN);
@@ -256,21 +262,21 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> CRACKED_LENS_HARDGLASS = block(UnusualEndBlocks.CRACKED_LENS_HARDGLASS);
     public static final DeferredHolder<Item, DeferredSpawnEggItem> BLUK_SPAWN_EGG = REGISTRY.register("bluk_spawn_egg", () -> new DeferredSpawnEggItem(UnusualEndEntities.BLUK, -13346172, -9446212, new Item.Properties()));
     public static final DeferredHolder<Item, BlockItem> SMALL_WARPED_SQUASH = block(UnusualEndBlocks.SMALL_WARPED_SQUASH);
-    public static final DeferredHolder<Item, RawBlukItem> RAW_BLUK = REGISTRY.register("raw_bluk", () -> new RawBlukItem());
-    public static final DeferredHolder<Item, CookedBlukItem> COOKED_BLUK = REGISTRY.register("cooked_bluk", () -> new CookedBlukItem());
+    public static final DeferredHolder<Item, Item> RAW_BLUK = food("raw_bluk", 48, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1), 0.8F).effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 0.5F).nutrition(4).saturationModifier(0.4f).build()));
+    public static final DeferredHolder<Item, Item> COOKED_BLUK = food("cooked_bluk", 80, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 1.0F).nutrition(6).saturationModifier(0.5f).build()));
     public static final DeferredHolder<Item, BlukAuChocolatItem> BLUK_AU_CHOCOLAT = REGISTRY.register("bluk_au_chocolat", () -> new BlukAuChocolatItem());
     public static final DeferredHolder<Item, GlubBucketItem> GLUB_BUCKET = REGISTRY.register("glub_bucket", () -> new GlubBucketItem());
     public static final DeferredHolder<Item, BlockItem> CITRINE_TOTEM = block(UnusualEndBlocks.CITRINE_TOTEM);
     public static final DeferredHolder<Item, BlukSkewerItem> BLUK_SKEWER = REGISTRY.register("bluk_skewer", () -> new BlukSkewerItem());
     public static final DeferredHolder<Item, BlockItem> GLOOPILON_SEEDS = block(UnusualEndBlocks.GLOOPILON_SEEDS);
     public static final DeferredHolder<Item, BlockItem> GLOOPILON_STEM = block(UnusualEndBlocks.GLOOPILON_STEM);
-    public static final DeferredHolder<Item, GloopilonSliceItem> GLOOPILON_SLICE = REGISTRY.register("gloopilon_slice", () -> new GloopilonSliceItem());
+    public static final DeferredHolder<Item, Item> GLOOPILON_SLICE = food("gloopilon_slice", 24, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.DIG_SPEED, 200, 0), 1.0F).nutrition(3).saturationModifier(0.3f).alwaysEdible().build()));
     public static final DeferredHolder<Item, BlockItem> CHARGED_GLOOPSTONE = block(UnusualEndBlocks.CHARGED_GLOOPSTONE);
-    public static final DeferredHolder<Item, MusicDiscQueenItem> MUSIC_DISC_QUEEN = REGISTRY.register("music_disc_queen", () -> new MusicDiscQueenItem());
+    public static final DeferredHolder<Item, Item> MUSIC_DISC_QUEEN = item("music_disc_queen", () -> new Item.Properties().stacksTo(1).rarity(Rarity.RARE).jukeboxPlayable(UnusualEndSounds.QUEEN));
     public static final DeferredHolder<Item, BlockItem> SHINY_CRYSTAL_TILES_SLAB = block(UnusualEndBlocks.SHINY_CRYSTAL_TILES_SLAB);
     public static final DeferredHolder<Item, BlockItem> SHINY_CRYSTAL_TILE_STAIRS = block(UnusualEndBlocks.SHINY_CRYSTAL_TILE_STAIRS);
     public static final DeferredHolder<Item, BlukBucketItem> BLUK_BUCKET = REGISTRY.register("bluk_bucket", () -> new BlukBucketItem());
-    public static final DeferredHolder<Item, InfuserInfosItem> INFUSER_INFOS = REGISTRY.register("infuser_infos", () -> new InfuserInfosItem());
+    public static final DeferredHolder<Item, TooltipItem> INFUSER_INFOS = REGISTRY.register("infuser_infos", () -> new TooltipItem(new Item.Properties().rarity(Rarity.UNCOMMON), Component.translatable("tooltip.unusualend.infuser_infos.0"), Component.translatable("tooltip.unusualend.infuser_infos.1"), Component.translatable("tooltip.unusualend.infuser_infos.2"), Component.translatable("tooltip.unusualend.infuser_infos.3"), Component.translatable("tooltip.unusualend.infuser_infos.4"), Component.translatable("tooltip.unusualend.infuser_infos.5"), Component.translatable("tooltip.unusualend.infuser_infos.6"), Component.translatable("tooltip.unusualend.infuser_infos.7"), Component.translatable("tooltip.unusualend.infuser_infos.8")));
     public static final DeferredHolder<Item, BlockItem> ENDERBLOB_MOULT_BRICK_STAIRS = block(UnusualEndBlocks.ENDERBLOB_MOULT_BRICK_STAIRS);
     public static final DeferredHolder<Item, BlockItem> ENDERBLOB_MOULT_BRICK_SLAB = block(UnusualEndBlocks.ENDERBLOB_MOULT_BRICK_SLAB);
     public static final DeferredHolder<Item, BlockItem> GLOOPSTONE_TILES = block(UnusualEndBlocks.GLOOPSTONE_TILES);
@@ -305,9 +311,9 @@ public class UnusualEndItems {
     public static final DeferredHolder<Item, BlockItem> GLOOPILON_BULB = block(UnusualEndBlocks.GLOOPILON_BULB);
     public static final DeferredHolder<Item, WarpedBalloonItem> WARPED_BALLOON = REGISTRY.register("warped_balloon", () -> new WarpedBalloonItem());
     public static final DeferredHolder<Item, BlockItem> CRYSTAL_TORCH = block(UnusualEndBlocks.CRYSTAL_TORCH);
-    public static final DeferredHolder<Item, CreativeHealthBoostItem> CREATIVE_HEALTH_BOOST = REGISTRY.register("creative_health_boost", () -> new CreativeHealthBoostItem());
-    public static final DeferredHolder<Item, CreativeSwiftStrikesItem> CREATIVE_SWIFT_STRIKES = REGISTRY.register("creative_swift_strikes", () -> new CreativeSwiftStrikesItem());
-    public static final DeferredHolder<Item, CreativeSerenityItem> CREATIVE_SERENITY = REGISTRY.register("creative_serenity", () -> new CreativeSerenityItem());
+    public static final DeferredHolder<Item, TooltipItem> CREATIVE_HEALTH_BOOST = REGISTRY.register("creative_health_boost", () -> new TooltipItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON), Component.translatable("tooltip.unusualend.creative_health_boost.0"), Component.translatable("tooltip.unusualend.creative_health_boost.1"), Component.translatable("tooltip.unusualend.creative_health_boost.2")));
+    public static final DeferredHolder<Item, TooltipItem> CREATIVE_SWIFT_STRIKES = REGISTRY.register("creative_swift_strikes", () -> new TooltipItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON), Component.translatable("tooltip.unusualend.creative_swift_strikes.0"), Component.translatable("tooltip.unusualend.creative_swift_strikes.1"), Component.translatable("tooltip.unusualend.creative_swift_strikes.2")));
+    public static final DeferredHolder<Item, TooltipItem> CREATIVE_SERENITY = REGISTRY.register("creative_serenity", () -> new TooltipItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON), Component.translatable("tooltip.unusualend.creative_serenity.0"), Component.translatable("tooltip.unusualend.creative_serenity.1"), Component.translatable("tooltip.unusualend.creative_serenity.2")));
     public static final DeferredHolder<Item, BlockItem> FLOWER_POT_CRYSTAL_FLOWER = block(UnusualEndBlocks.FLOWER_POT_CRYSTAL_FLOWER);
     public static final DeferredHolder<Item, BlockItem> FLOWER_POT_GLOOPY_TENDRILS = block(UnusualEndBlocks.FLOWER_POT_GLOOPY_TENDRILS);
     public static final DeferredHolder<Item, BlockItem> FLOWER_POT_GLOOPY_BUSH = block(UnusualEndBlocks.FLOWER_POT_GLOOPY_BUSH);
@@ -320,5 +326,18 @@ public class UnusualEndItems {
 
     private static DeferredHolder<Item, DoubleHighBlockItem> doubleBlock(DeferredBlock<? extends Block> block) {
         return REGISTRY.register(block.getId().getPath(), () -> new DoubleHighBlockItem(block.get(), new Item.Properties()));
+    }
+
+    private static DeferredHolder<Item, Item> item(String name, Supplier<Item.Properties> properties) {
+        return REGISTRY.register(name, () -> new Item(properties.get()));
+    }
+
+    private static DeferredHolder<Item, Item> food(String name, int useDuration, Supplier<Item.Properties> properties) {
+        return REGISTRY.register(name, () -> new Item(properties.get()) {
+            @Override
+            public int getUseDuration(ItemStack stack, LivingEntity entity) {
+                return useDuration;
+            }
+        });
     }
 }

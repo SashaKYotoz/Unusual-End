@@ -1,24 +1,20 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.GameType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BaseContainerBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.wrapper.InvWrapper;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -38,28 +34,12 @@ public class GloopslatePedestralOnBlockRightClickedProcedure {
                     return _retval.get();
                 }
             }.getAmount(world, BlockPos.containing(x, y, z), 0) == 0) {
-                if (!(new Object() {
-                    public boolean checkGamemode(Entity _ent) {
-                        if (_ent instanceof ServerPlayer _serverPlayer) {
-                            return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-                        } else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
-                            return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
-                                    && Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
-                        }
-                        return false;
-                    }
-                }.checkGamemode(entity))) {
+                if (!(ProcedureHelper.isCreative(entity))) {
                     (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
                 }
                 if (world instanceof ServerLevel _level)
                     _level.sendParticles(ParticleTypes.FIREWORK, (x + 0.5), (y + 1.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 0.01);
-                if (world instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.AMETHYST_BLOCK_PLACE, SoundSource.BLOCKS, 1, 1);
-                    } else {
-                        _level.playLocalSound(x, y, z, SoundEvents.AMETHYST_BLOCK_PLACE, SoundSource.BLOCKS, 1, 1, false);
-                    }
-                }
+                ProcedureHelper.playSound(world, x, y, z, SoundEvents.AMETHYST_BLOCK_PLACE, SoundSource.BLOCKS, 1, 1);
                 {
                     BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
                     if (_ent instanceof BaseContainerBlockEntity entity1) {

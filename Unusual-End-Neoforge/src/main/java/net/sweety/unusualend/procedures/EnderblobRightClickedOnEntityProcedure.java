@@ -1,27 +1,21 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.phys.Vec2;
-import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EnderblobEntity;
+import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class EnderblobRightClickedOnEntityProcedure {
     public static void execute(LevelAccessor level, Entity entity, Player player) {
@@ -32,31 +26,12 @@ public class EnderblobRightClickedOnEntityProcedure {
                 if (!player.isCreative())
                     player.getMainHandItem().hurtAndBreak(1,player,player.getEquipmentSlotForItem(player.getMainHandItem()));
                 player.swing(InteractionHand.MAIN_HAND, true);
-                if (level instanceof ServerLevel _level) {
-                    ItemEntity entityToSpawn = new ItemEntity(_level, (entity.getX()), (entity.getY() + 0.3), (entity.getZ()), new ItemStack(UnusualEndItems.ENDERBLOB_MOULT.get()));
-                    entityToSpawn.setPickUpDelay(10);
-                    _level.addFreshEntity(entityToSpawn);
-                }
+                ProcedureHelper.dropItem(level, (entity.getX()), (entity.getY() + 0.3), (entity.getZ()), new ItemStack(UnusualEndItems.ENDERBLOB_MOULT.get()), 10);
                 entity.hurt(new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), (float) 0.1);
-                if (level instanceof ServerLevel _level)
-                    _level.getServer().getCommands().performPrefixedCommand(
-                            new CommandSourceStack(CommandSource.NULL, new Vec3((entity.getX()), (entity.getY() + 0.2), (entity.getZ())), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                            "particle minecraft:block unusualend:enderblob_block ~ ~ ~ 0.3 0.3 0.3 0 15");
+                ParticleHelper.spawn(level, ParticleHelper.block(UnusualEndBlocks.ENDERBLOB_BLOCK.get()), (entity.getX()), (entity.getY() + 0.2), (entity.getZ()), 15, 0.3, 0.3, 0.3, 0);
                 if (level.isClientSide()) {
-                    if (level instanceof Level _level) {
-                        if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL, 1, (float) 1.3);
-                        } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL, 1, (float) 1.3, false);
-                        }
-                    }
-                    if (level instanceof Level _level) {
-                        if (!_level.isClientSide()) {
-                            _level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, (float) 0.85);
-                        } else {
-                            _level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, (float) 0.85, false);
-                        }
-                    }
+                    ProcedureHelper.playSound(level, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.BRUSH_GENERIC, SoundSource.NEUTRAL, 1, (float) 1.3);
+                    ProcedureHelper.playSound(level, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, (float) 0.85);
                 }
                 if (entity instanceof EnderblobEntity _datEntSetI)
                     _datEntSetI.getEntityData().set(EnderblobEntity.DATA_BrushTimer, 120);

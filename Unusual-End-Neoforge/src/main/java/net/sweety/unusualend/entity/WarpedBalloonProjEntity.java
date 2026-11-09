@@ -98,7 +98,7 @@ public class WarpedBalloonProjEntity extends AbstractArrow implements ItemSuppli
         entityarrow.setBaseDamage(0);
         entityarrow.setCritArrow(false);
         entity.level().addFreshEntity(entityarrow);
-        entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1, 1f / (RandomSource.create().nextFloat() * 0.5f + 1));
+        entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
         return entityarrow;
     }
 }

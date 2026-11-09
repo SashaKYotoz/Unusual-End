@@ -6,11 +6,11 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.sweety.unusualend.init.UnusualEndBlocks;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class SpawnExplosiveProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
@@ -22,13 +22,7 @@ public class SpawnExplosiveProcedure {
 					entityToSpawn.setDeltaMovement(0, 0.02, 0);
 				}
 			}
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BEACON_AMBIENT, SoundSource.BLOCKS, 8, (float) 0.7);
-				} else {
-					_level.playLocalSound(x, y, z, SoundEvents.BEACON_AMBIENT, SoundSource.BLOCKS, 8, (float) 0.7, false);
-				}
-			}
+			ProcedureHelper.playSound(world, x, y, z, SoundEvents.BEACON_AMBIENT, SoundSource.BLOCKS, 8, (float) 0.7);
 		}
 	}
 }

@@ -92,7 +92,7 @@ public class LeechingChargeProjectileEntity extends AbstractArrow implements Ite
         entityarrow.setCritArrow(false);
         entity.level().addFreshEntity(entityarrow);
         entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.FIREWORK_ROCKET_SHOOT, SoundSource.PLAYERS, 1,
-                1f / (RandomSource.create().nextFloat() * 0.5f + 1));
+                1f / (entity.getRandom().nextFloat() * 0.5f + 1));
         return entityarrow;
     }
 }

@@ -1,7 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
@@ -9,8 +7,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndSounds;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.List;
 import java.util.Map;
@@ -36,21 +34,10 @@ public class ChorusFluteRightclickedProcedure {
         player.getCooldowns().addCooldown(itemstack.getItem(), 100);
         if (level.isClientSide() || !(player instanceof ServerPlayer serverPlayer))
             return;
-        awardAdvancement(serverPlayer);
+        ProcedureHelper.awardAdvancement(serverPlayer, "using_chorus_flute");
         DeferredHolder<SoundEvent, SoundEvent> track = TRACKS.get(NBTProcessor.getNBTString(itemstack, "track"));
         if (track == null)
             track = SHUFFLE_POOL.get(level.random.nextInt(SHUFFLE_POOL.size()));
         level.playSound(null, player.getX(), player.getY() + 2, player.getZ(), track.get(), SoundSource.RECORDS, 6, 1);
-    }
-
-    private static void awardAdvancement(ServerPlayer player) {
-        AdvancementHolder advancement = player.server.getAdvancements().get(UnusualEnd.makeUEID("using_chorus_flute"));
-        if (advancement == null)
-            return;
-        AdvancementProgress progress = player.getAdvancements().getOrStartProgress(advancement);
-        if (!progress.isDone()) {
-            for (String criteria : progress.getRemainingCriteria())
-                player.getAdvancements().award(advancement, criteria);
-        }
     }
 }

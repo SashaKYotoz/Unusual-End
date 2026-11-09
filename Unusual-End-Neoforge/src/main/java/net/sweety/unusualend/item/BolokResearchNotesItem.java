@@ -36,8 +36,8 @@ public class BolokResearchNotesItem extends Item {
     @Override
     public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
         super.appendHoverText(itemstack, context, list, flag);
-        list.add(Component.literal("\u00A78Detailled explanations of the"));
-        list.add(Component.literal("\u00A78Bolok's related mechanics"));
+        list.add(Component.translatable("tooltip.unusualend.bolok_research_notes.0"));
+        list.add(Component.translatable("tooltip.unusualend.bolok_research_notes.1"));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class BolokResearchNotesItem extends Item {
             serverPlayer.openMenu(new MenuProvider() {
                 @Override
                 public Component getDisplayName() {
-                    return Component.literal("Boloks Research Notes");
+                    return Component.translatable("tooltip.unusualend.bolok_research_notes.2");
                 }
 
                 @Override

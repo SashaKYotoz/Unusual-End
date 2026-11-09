@@ -13,14 +13,12 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -35,7 +33,6 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sweety.unusualend.configuration.UEConfig;
-import net.sweety.unusualend.init.UnusualEndBlocks;
 
 import java.util.Comparator;
 import java.util.List;
@@ -63,9 +60,7 @@ public class CrystalFlowerBlock extends FlowerBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.MYCELIUM) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(UnusualEndBlocks.GLOOPSLATE.get())
-				|| groundState.is(UnusualEndBlocks.SHINY_GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.BOUNCY_GLOOPSLATE.get()) || groundState.is(Blocks.DIRT)
-				|| groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.ROOTED_DIRT);
+		return groundState.is(UnusualEndTags.Blocks.CRYSTAL_FLOWER_MAY_PLACE_ON);
 	}
 
 	@Override
@@ -109,8 +104,7 @@ public class CrystalFlowerBlock extends FlowerBlock {
             return;
         if (UEConfig.CRYSTAL_NAUSEA.get()) {
             if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("neoforge:blobqueen_immune")))) {
-                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                    _entity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 120, 0));
+                ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.CONFUSION, 120, 0));
             }
         }
     }
@@ -122,8 +116,7 @@ public class CrystalFlowerBlock extends FlowerBlock {
         List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
         for (Entity entityiterator : _entfound) {
             if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.parse("neoforge:blobqueen_immune")))) {
-                if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                    _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
+                ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
             }
             if (entityiterator instanceof Player player) {
                 if (!player.level().isClientSide())

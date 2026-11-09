@@ -71,12 +71,6 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 		return retval;
 	}
 
-	//	@Override
-	//	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-	//		if (player.getInventory().getSelected().getItem() instanceof PickaxeItem tieredItem)
-	//			return tieredItem.getTier().getLevel() >= 0;
-	//		return false;
-	//	}
 	@Override
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);

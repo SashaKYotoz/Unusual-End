@@ -112,12 +112,12 @@ public class EnderbulbEntity extends Monster {
             _level.sendParticles(ParticleTypes.POOF, this.getX(), this.getY(), this.getZ(), 10, 0.5, 0.5, 0.5, 0);
         if (this.level() instanceof Level _level && !_level.isClientSide())
             _level.explode(null, this.getX(), this.getY(), this.getZ(), 0, Level.ExplosionInteraction.MOB);
-        for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 2, 4); index0++) {
+        for (int index0 = 0; index0 < Mth.nextInt(this.getRandom(), 2, 4); index0++) {
             if (this.level() instanceof ServerLevel _level) {
                 Entity entityToSpawn = UnusualEndEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(
-                                this.getX() + Mth.nextDouble(RandomSource.create(), -0.15, 0.15),
+                                this.getX() + Mth.nextDouble(_level.getRandom(), -0.15, 0.15),
                                 this.getY(),
-                                this.getZ() + Mth.nextDouble(RandomSource.create(), -0.15, 0.15)),
+                                this.getZ() + Mth.nextDouble(_level.getRandom(), -0.15, 0.15)),
                         MobSpawnType.MOB_SUMMONED);
                 if (entityToSpawn != null) {
                     entityToSpawn.setYRot(this.level().getRandom().nextFloat() * 360F);

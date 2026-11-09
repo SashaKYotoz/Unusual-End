@@ -11,7 +11,6 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.level.Level;
@@ -21,6 +20,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
 import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
@@ -74,13 +74,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 						}
 					}
 					if (world.isClientSide()) {
-						if (world instanceof Level _level) {
-							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ZOMBIE_BREAK_WOODEN_DOOR, SoundSource.HOSTILE, 3, 1);
-							} else {
-								_level.playLocalSound(x, y, z, SoundEvents.ZOMBIE_BREAK_WOODEN_DOOR, SoundSource.HOSTILE, 3, 1, false);
-							}
-						}
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.ZOMBIE_BREAK_WOODEN_DOOR, SoundSource.HOSTILE, 3, 1);
 					}
 					EndstoneGolemBreakSurroundingsProcedure.execute(world, x, y, z);
 				}
@@ -100,21 +94,14 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 		}
 		if ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) : 0) >= 120) {
 			if ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_push) : 0) == 0) {
-				if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-					_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 2, false, false));
+				ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 50, 2, false, false));
 				if (entity instanceof EndstoneGolemEntity _datEntSetI)
 					_datEntSetI.getEntityData().set(EndstoneGolemEntity.DATA_aoe_cooldown, 0);
 				if ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_animtime) : 0) == 0) {
 					if (entity instanceof EndstoneGolemEntity _datEntSetI)
 						_datEntSetI.getEntityData().set(EndstoneGolemEntity.DATA_aoe_animtime, 35);
 					if (world.isClientSide()) {
-						if (world instanceof Level _level) {
-							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.ELDER_GUARDIAN_AMBIENT, SoundSource.HOSTILE, 3, 1);
-							} else {
-								_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.ELDER_GUARDIAN_AMBIENT, SoundSource.HOSTILE, 3, 1, false);
-							}
-						}
+						ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ELDER_GUARDIAN_AMBIENT, SoundSource.HOSTILE, 3, 1);
 					}
 				}
 			}
@@ -128,14 +115,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 							_datEntSetI.getEntityData().set(EndstoneGolemEntity.DATA_aoe_cooldown, (int) ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) : 0) + 1));
 						if ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) : 0) == 110) {
 							if (world.isClientSide()) {
-								if (world instanceof Level _level) {
-									if (!_level.isClientSide()) {
-										_level.playSound(null, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, 3,
-												(float) 0.6);
-									} else {
-										_level.playLocalSound((entity.getX()), (entity.getY()), (entity.getZ()), SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, 3, (float) 0.6, false);
-									}
-								}
+								ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, 3, (float) 0.6);
 							}
 						}
 						if ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) : 0) >= 115) {
@@ -162,13 +142,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.ENCHANT, x, y, z, 20, 1, 1, 1, 0);
 					if (!world.isClientSide()) {
-						if (world instanceof Level _level) {
-							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.HOSTILE, 2, (float) 0.5);
-							} else {
-								_level.playLocalSound(x, y, z, SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.HOSTILE, 2, (float) 0.5, false);
-							}
-						}
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.HOSTILE, 2, (float) 0.5);
 					}
 					if (!entity.level().isClientSide())
 						entity.discard();

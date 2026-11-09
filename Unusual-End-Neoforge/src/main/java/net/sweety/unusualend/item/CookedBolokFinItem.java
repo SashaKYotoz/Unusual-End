@@ -26,6 +26,6 @@ public class CookedBolokFinItem extends Item {
 	public void appendHoverText(ItemStack itemstack, TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
 		list.add(Component.translatable("lore.unusualend.wolf_food").withStyle(ChatFormatting.GRAY));
-		list.add(Component.literal("\u00A79Resistance II (20:00)"));
+		list.add(Component.translatable("tooltip.unusualend.cooked_bolok_fin.0"));
 	}
 }

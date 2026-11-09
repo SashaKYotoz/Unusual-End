@@ -1,8 +1,6 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,11 +11,11 @@ import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.neoforged.neoforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndSounds;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class BucketBlukProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
@@ -27,13 +25,7 @@ public class BucketBlukProcedure {
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET
 				|| (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BUCKET) {
 			entity_bucket = new ItemStack(UnusualEndItems.BLUK_BUCKET.get());
-			if (!(new Object() {
-				public String getValue() {
-					CompoundTag dataIndex = new CompoundTag();
-					entity.saveWithoutId(dataIndex);
-					return dataIndex.getString("CustomName");
-				}
-			}.getValue()).isEmpty()) {
+			if (entity.hasCustomName()) {
 				entity_bucket.set(DataComponents.CUSTOM_NAME,Component.literal((entity.getDisplayName().getString())));
 				NBTProcessor.setNBTBoolean(entity_bucket,"isNamed", true);
 			}
@@ -111,20 +103,8 @@ public class BucketBlukProcedure {
 			if (sourceentity instanceof Player _player)
 				_player.getCooldowns().addCooldown(Items.CARROT, 10);
 			if (world.isClientSide()) {
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1);
-					} else {
-						_level.playLocalSound(x, y, z, SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1, false);
-					}
-				}
-				if (world instanceof Level _level) {
-					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), UnusualEndSounds.BLUK_EAT.get(), SoundSource.HOSTILE, (float) 0.7, 1);
-					} else {
-						_level.playLocalSound(x, y, z, UnusualEndSounds.BLUK_EAT.get(), SoundSource.HOSTILE, (float) 0.7, 1, false);
-					}
-				}
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1);
+				ProcedureHelper.playSound(world, x, y, z, UnusualEndSounds.BLUK_EAT.get(), SoundSource.HOSTILE, (float) 0.7, 1);
 			}
 		}
 	}

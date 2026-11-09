@@ -1,6 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -22,6 +21,7 @@ import net.sweety.unusualend.entity.LeechingChargeProjectileEntity;
 import net.sweety.unusualend.init.UnusualEndEnchantments;
 import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 @EventBusSubscriber
 public class LeechingWandRightClickProcedure {
@@ -39,13 +39,7 @@ public class LeechingWandRightClickProcedure {
         if (stack.is(UnusualEndItems.LEECHING_WAND.get())) {
             if (NBTProcessor.getNBTDouble(stack,"rayCooldown") >= 400) {
                 player.swing(InteractionHand.MAIN_HAND, true);
-                if (level instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1, 2);
-                    } else {
-                        _level.playLocalSound(x, y, z, SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1, 2, false);
-                    }
-                }
+                ProcedureHelper.playSound(level, x, y, z, SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1, 2);
                 if (EnchantmentHelper.getItemEnchantmentLevel(level.holderOrThrow(UnusualEndEnchantments.BENEVOLENCE), (player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
                     Entity _shootFrom = player;
                     Level projectileLevel = _shootFrom.level();
@@ -60,7 +54,7 @@ public class LeechingWandRightClickProcedure {
                             }
                         }.getArrow(projectileLevel, player, 0, 0, (byte) 1);
                         _entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
-                        _entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 3, 0);
+                        _entityToSpawn.shoot(_shootFrom.getLookAngle(), 3, 0);
                         projectileLevel.addFreshEntity(_entityToSpawn);
                     }
                 } else if (EnchantmentHelper.getTagEnchantmentLevel(level.holderOrThrow(UnusualEndEnchantments.BENEVOLENCE), (player instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
@@ -75,7 +69,7 @@ public class LeechingWandRightClickProcedure {
                             }
                         }.getArrow(projectileLevel, 0, 0, (byte) 1);
                         _entityToSpawn.setPos(player.getX(), player.getEyeY() - 0.1, player.getZ());
-                        _entityToSpawn.shoot(player.getLookAngle().x, player.getLookAngle().y, player.getLookAngle().z, 3, 0);
+                        _entityToSpawn.shoot(player.getLookAngle(), 3, 0);
                         projectileLevel.addFreshEntity(_entityToSpawn);
                     }
                 } else {
@@ -93,7 +87,7 @@ public class LeechingWandRightClickProcedure {
                                 }
                             }.getArrow(projectileLevel, player, 0, 0, (byte) 1);
                             _entityToSpawn.setPos(_shootFrom.getX(), _shootFrom.getEyeY() - 0.1, _shootFrom.getZ());
-                            _entityToSpawn.shoot(_shootFrom.getLookAngle().x, _shootFrom.getLookAngle().y, _shootFrom.getLookAngle().z, 3, 0);
+                            _entityToSpawn.shoot(_shootFrom.getLookAngle(), 3, 0);
                             projectileLevel.addFreshEntity(_entityToSpawn);
                         }
                     }

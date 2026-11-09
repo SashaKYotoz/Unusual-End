@@ -88,8 +88,6 @@ public class ModelQueen<T extends Entity> extends EntityModel<T> {
 	}
 
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		// this.root().getAllParts().forEach(ModelPart::resetPose);
-		// this.animate(entity.idleAnim, EnderblobQueenAnimation.idle, ageInTicks);
 		if (!(entity.getDeltaMovement().x() == 0 && entity.getDeltaMovement().z() == 0)) {
 			this.tail.xRot = (Mth.sin(ageInTicks * 0.1F + 2) * 0.05F) + ((headPitch * 0.017453292F) / 2);
 			this.tail.zRot = (Mth.sin(ageInTicks * 0.2F + 2) * 0.05F);

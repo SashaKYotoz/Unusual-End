@@ -1,12 +1,8 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -20,14 +16,14 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EnderTrapperEntity;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
@@ -39,8 +35,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 		if (entity instanceof Player) {
 			if (!entity.isShiftKeyDown()) {
 				if (!(entity instanceof LivingEntity _livEnt2 && _livEnt2.hasEffect(MobEffects.INVISIBILITY))) {
-					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-						_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3, 4, false, false));
+					ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3, 4, false, false));
 					if (!(world.getDifficulty() == Difficulty.PEACEFUL)) {
 						if (world.getEntitiesOfClass(EnderTrapperEntity.class, AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty()) {
 							if (world instanceof ServerLevel _level) {
@@ -57,18 +52,10 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 										{
 											Entity _ent = entityiterator;
 											if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-												_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-														_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-														("tp @s ~ ~ ~ facing entity " + entity));
+												_ent.lookAt(EntityAnchorArgument.Anchor.FEET, entity.position());
 											}
 										}
-										if (world instanceof Level _level) {
-											if (!_level.isClientSide()) {
-												_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.EVOKER_FANGS_ATTACK, SoundSource.NEUTRAL, 1, 1);
-											} else {
-												_level.playLocalSound(x, y, z, SoundEvents.EVOKER_FANGS_ATTACK, SoundSource.NEUTRAL, 1, 1, false);
-											}
-										}
+										ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_FANGS_ATTACK, SoundSource.NEUTRAL, 1, 1);
 										{
 											Entity _ent = entityiterator;
 											_ent.teleportTo((entityiterator.getX()), (entityiterator.getY() + 0.25), (entityiterator.getZ()));
@@ -85,9 +72,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 											{
 												Entity _ent = entityiterator;
 												if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-													_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-															_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-															("tp @s ~ ~ ~ facing entity " + entity));
+													_ent.lookAt(EntityAnchorArgument.Anchor.FEET, entity.position());
 												}
 											}
 											UnusualEnd.queueServerWork(1, () -> {
@@ -100,22 +85,15 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 												{
 													Entity _ent = entityiterator;
 													if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-														_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-																("tp @s ~ ~ ~ facing entity " + entity));
+														_ent.lookAt(EntityAnchorArgument.Anchor.FEET, entity.position());
 													}
 												}
-												if (world instanceof ServerLevel _level)
-													_level.getServer().getCommands().performPrefixedCommand(
-															new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5), (y + 1), (z + 0.5)), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-															"particle dust_color_transition 0.976 1.000 0.620 1.5 0.706 0.451 0.725 ~ ~0.2 ~ 0.3 0.3 0.3 0 20");
+												ParticleHelper.spawn(world, ParticleHelper.dustTransition(0.976f, 1.0f, 0.62f, 1.5f, 0.706f, 0.451f, 0.725f), new Vec3((x + 0.5), (y + 1), (z + 0.5)).add(0, 0.2, 0), 20, 0.3, 0.3, 0.3, 0);
 												UnusualEnd.queueServerWork(1, () -> {
 													{
 														Entity _ent = entityiterator;
 														if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-															_ent.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, _ent.position(), _ent.getRotationVector(),
-																	_ent.level() instanceof ServerLevel ? (ServerLevel) _ent.level() : null, 4, _ent.getName().getString(), _ent.getDisplayName(), _ent.level().getServer(), _ent),
-																	("tp @s ~ ~ ~ facing entity " + entity));
+															_ent.lookAt(EntityAnchorArgument.Anchor.FEET, entity.position());
 														}
 													}
 													{
@@ -126,14 +104,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 													}
 													entity.hurt(new DamageSource(
 															world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, UnusualEnd.makeUEID("trapper_damages")))), 2);
-													if (entity instanceof ServerPlayer _player) {
-														AdvancementHolder _adv = _player.server.getAdvancements().get(UnusualEnd.makeUEID("its_a_trap"));
-														AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
-														if (!_ap.isDone()) {
-															for (String criteria : _ap.getRemainingCriteria())
-																_player.getAdvancements().award(_adv, criteria);
-														}
-													}
+													ProcedureHelper.awardAdvancement(entity, "its_a_trap");
 													UnusualEnd.queueServerWork(10, () -> {
 														if (!entityiterator.level().isClientSide())
 															entityiterator.discard();

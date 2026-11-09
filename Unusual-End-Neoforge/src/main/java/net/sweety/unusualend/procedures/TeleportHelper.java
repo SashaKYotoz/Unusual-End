@@ -1,7 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.advancements.AdvancementHolder;
-import net.minecraft.advancements.AdvancementProgress;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -17,8 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
-import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.network.UnusualEndVariables;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Optional;
 
@@ -98,13 +96,6 @@ public final class TeleportHelper {
     }
 
     public static void awardAdvancement(ServerPlayer player, String path) {
-        AdvancementHolder advancement = player.server.getAdvancements().get(UnusualEnd.makeUEID(path));
-        if (advancement == null)
-            return;
-        AdvancementProgress progress = player.getAdvancements().getOrStartProgress(advancement);
-        if (!progress.isDone()) {
-            for (String criteria : progress.getRemainingCriteria())
-                player.getAdvancements().award(advancement, criteria);
-        }
+        ProcedureHelper.awardAdvancement(player, path);
     }
 }

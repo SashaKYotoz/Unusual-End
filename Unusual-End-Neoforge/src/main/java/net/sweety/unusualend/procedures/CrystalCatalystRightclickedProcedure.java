@@ -1,6 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -9,13 +8,12 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class CrystalCatalystRightclickedProcedure {
     public static void execute(LevelAccessor world, double x, double y, double z, Player player, ItemStack stack) {
@@ -35,13 +33,7 @@ public class CrystalCatalystRightclickedProcedure {
                     if (player instanceof Player _player)
                         _player.getCooldowns().addCooldown(stack.getItem(), 10);
                     if (NBTProcessor.getNBTDouble(stack, "Catalyser") == 1) {
-                        if (world instanceof Level _level) {
-                            if (!_level.isClientSide()) {
-                                _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2);
-                            } else {
-                                _level.playLocalSound(x, y, z, SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2, false);
-                            }
-                        }
+                        ProcedureHelper.playSound(world, x, y, z, SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2);
                         if (world instanceof ServerLevel _level)
                             _level.sendParticles(ParticleTypes.END_ROD, x, (y + 1.5), z, 30, 0.9, 0.9, 0.9, 0);
                         if (Math.random() < 0.5) {
@@ -58,25 +50,12 @@ public class CrystalCatalystRightclickedProcedure {
                             }
                         }
                     } else if (NBTProcessor.getNBTDouble(stack, "Catalyser") == 2) {
-                        if (world instanceof Level _level) {
-                            if (!_level.isClientSide()) {
-                                _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2);
-                            } else {
-                                _level.playLocalSound(x, y, z, SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2, false);
-                            }
-                        }
+                        ProcedureHelper.playSound(world, x, y, z, SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2);
                         if (world instanceof ServerLevel _level)
                             _level.sendParticles(ParticleTypes.SPLASH, x, (y + 1.5), z, 30, 0.9, 0.9, 0.9, 0);
-                        if (player instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                            _entity.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 400, 0, false, false));
+                        ProcedureHelper.addEffect(player, new MobEffectInstance(MobEffects.CONDUIT_POWER, 400, 0, false, false));
                     } else if (NBTProcessor.getNBTDouble(stack, "Catalyser") == 3) {
-                        if (world instanceof Level _level) {
-                            if (!_level.isClientSide()) {
-                                _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GENERIC_BURN, SoundSource.PLAYERS, (float) 0.5, 2);
-                            } else {
-                                _level.playLocalSound(x, y, z, SoundEvents.GENERIC_BURN, SoundSource.PLAYERS, (float) 0.5, 2, false);
-                            }
-                        }
+                        ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_BURN, SoundSource.PLAYERS, (float) 0.5, 2);
                         if (world instanceof ServerLevel _level)
                             _level.sendParticles(ParticleTypes.WITCH, x, (y + 1.5), z, 30, 0.9, 0.9, 0.9, 0);
                         if (Math.random() < 0.3) {
@@ -94,7 +73,7 @@ public class CrystalCatalystRightclickedProcedure {
                     }
                 } else {
                     if (player instanceof Player _player && !_player.level().isClientSide())
-                        _player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.no_xp").getString())), true);
+                        _player.displayClientMessage(Component.translatable("text.unusualend.no_xp"), true);
                 }
             }
         }

@@ -21,7 +21,7 @@ public class BreachLinkedEffectStartedappliedProcedure {
 			entity.getPersistentData().putString("BreachW", ("" + (world instanceof Level _lvl ? _lvl.dimension() : (world instanceof WorldGenLevel _wgl ? _wgl.getLevel().dimension() : Level.OVERWORLD))));
 		} else {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
-				_player.displayClientMessage(Component.literal((Component.translatable("text.unusualend.cant_open_breach").getString())), true);
+				_player.displayClientMessage(Component.translatable("text.unusualend.cant_open_breach"), true);
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(UnusualEndMiscRegister.BREACH_LINKED);
 		}

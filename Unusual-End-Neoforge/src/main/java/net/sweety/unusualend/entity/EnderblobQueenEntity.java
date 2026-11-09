@@ -1,11 +1,8 @@
 
 package net.sweety.unusualend.entity;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -112,23 +109,16 @@ public class EnderblobQueenEntity extends Monster {
         original_curve = swing_curve;
         for (int index0 = 0; index0 < 30; index0++) {
             if (!this.level().isClientSide() && this.getServer() != null) {
-                this.getServer().getCommands()
-                        .performPrefixedCommand(
-                                new CommandSourceStack(CommandSource.NULL, this.position(), this.getRotationVector(), this.level() instanceof ServerLevel ? (ServerLevel) this.level() : null, 4, this.getName().getString(),
-                                        this.getDisplayName(), this.level().getServer(), this),
-                                ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve + 0.6) + " ^2 run particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0.1 0.1 0.1 0 3"));
+                ParticleHelper.spawn(this.level(), ParticleHelper.voidParticles(), ParticleHelper.localToEyes(this, swing_offset, swing_curve + 0.6, 2), 3, 0.1, 0.1, 0.1, 0);
             }
             if (Math.random() < 0.1) {
                 if (!this.level().isClientSide() && this.getServer() != null) {
-                    this.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, this.position(), this.getRotationVector(), this.level() instanceof ServerLevel ? (ServerLevel) this.level() : null, 4,
-                            this.getName().getString(), this.getDisplayName(), this.level().getServer(), this), ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve + 0.6) + " ^2 run particle minecraft:end_rod ~ ~ ~"));
+                    ParticleHelper.spawn(this.level(), ParticleTypes.END_ROD, ParticleHelper.localToEyes(this, swing_offset, swing_curve + 0.6, 2), 0, 0, 0, 0, 0);
                 }
             }
             if (Math.random() < 0.3) {
                 if (!this.level().isClientSide() && this.getServer() != null) {
-                    this.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, this.position(), this.getRotationVector(), this.level() instanceof ServerLevel ? (ServerLevel) this.level() : null, 4,
-                                    this.getName().getString(), this.getDisplayName(), this.level().getServer(), this),
-                            ("execute anchored eyes positioned ^" + swing_offset + " ^" + (swing_curve + 0.6) + " ^2 run particle minecraft:squid_ink ~ ~ ~"));
+                    ParticleHelper.spawn(this.level(), ParticleTypes.SQUID_INK, ParticleHelper.localToEyes(this, swing_offset, swing_curve + 0.6, 2), 0, 0, 0, 0, 0);
                 }
             }
             swing_offset = swing_offset - 0.1;

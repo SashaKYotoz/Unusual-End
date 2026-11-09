@@ -4,7 +4,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoublePlantBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -12,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
-import net.sweety.unusualend.init.UnusualEndBlocks;
+import net.sweety.unusualend.datagen.tags.UnusualEndTags;
 
 public class FloweringGloopyPileBlock extends DoublePlantBlock {
 	public FloweringGloopyPileBlock() {
@@ -31,8 +30,7 @@ public class FloweringGloopyPileBlock extends DoublePlantBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL)
-				|| groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.GLOOPSLATE.get());
+		return groundState.is(UnusualEndTags.Blocks.GLOOPY_PILE_MAY_PLACE_ON);
 	}
 
 	@Override

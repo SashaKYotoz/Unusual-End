@@ -1,14 +1,13 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.entity.SummonedDraglingEntity;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class SummonedDraglingOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
@@ -23,13 +22,7 @@ public class SummonedDraglingOnEntityTickUpdateProcedure {
 				_level.sendParticles(ParticleTypes.SQUID_INK, x, y, z, 5, 0.3, 0.3, 0.3, 0);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.REVERSE_PORTAL, x, y, z, 5, 0.3, 0.3, 0.3, 0);
-			if (world instanceof Level _level) {
-				if (!_level.isClientSide()) {
-					_level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ENDERMAN_TELEPORT, SoundSource.HOSTILE, 1, 1);
-				} else {
-					_level.playLocalSound(x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.HOSTILE, 1, 1, false);
-				}
-			}
+			ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.HOSTILE, 1, 1);
 		}
 		if (Math.random() < 0.1) {
 			if (world instanceof ServerLevel _level)

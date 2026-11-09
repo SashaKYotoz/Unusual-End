@@ -49,7 +49,7 @@ public class GloopslatePedestralBlock extends Block implements SimpleWaterlogged
 	@Override
 	public void appendHoverText(ItemStack itemstack, Item.TooltipContext context, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, context, list, flag);
-		list.add(Component.literal("§cWork in Progress"));
+		list.add(Component.translatable("tooltip.unusualend.gloopslate_pedestral.0"));
 	}
 
 	@Override

@@ -6,7 +6,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.init.UnusualEndBlocks;
 
 public class GloopyBushBlock extends FlowerBlock {
 	public GloopyBushBlock() {
@@ -42,9 +40,7 @@ public class GloopyBushBlock extends FlowerBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL)
-				|| groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualEndBlocks.GLOOPSTONE.get()) || groundState.is(UnusualEndBlocks.GLOOPSLATE.get()) || groundState.is(UnusualEndBlocks.SHINY_GLOOPSTONE.get())
-				|| groundState.is(Blocks.BARREL);
+		return groundState.is(UnusualEndTags.Blocks.GLOOPY_BUSH_MAY_PLACE_ON);
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public class BolokTradingRecipeCategory implements IRecipeCategory<BolokTradingR
 
     @Override
     public Component getTitle() {
-        return Component.literal("Bolok Trading");
+        return Component.translatable("jei.unusualend.category.bolok_trading");
     }
 
     @Override

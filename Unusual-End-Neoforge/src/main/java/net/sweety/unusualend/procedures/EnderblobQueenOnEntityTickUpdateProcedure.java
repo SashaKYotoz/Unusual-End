@@ -1,12 +1,8 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,22 +10,21 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.level.ClipContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EnderblobEntity;
 import net.sweety.unusualend.entity.EnderblobQueenEntity;
 import net.sweety.unusualend.init.UnusualEndEntities;
 import net.sweety.unusualend.init.UnusualEndMiscRegister;
+import net.sweety.unusualend.util.ParticleHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
@@ -56,42 +51,26 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
         if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
             entity.getPersistentData().putDouble("IA", (entity.getPersistentData().getDouble("IA") + 1));
             if (entity.getPersistentData().getDouble("IA") == 100) {
-                if (world instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ENDERMITE_DEATH, SoundSource.HOSTILE, 2, (float) 0.5);
-                    } else {
-                        _level.playLocalSound(x, y, z, SoundEvents.ENDERMITE_DEATH, SoundSource.HOSTILE, 2, (float) 0.5, false);
-                    }
-                }
+                ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_DEATH, SoundSource.HOSTILE, 2, (float) 0.5);
                 dis = Math.sqrt(Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX() - entity.getX(), 2) + Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() - entity.getY(), 2)
                         + Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ() - entity.getZ(), 2));
                 if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
                     if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
                         _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 100, 0, false, false));
-                    for (int index0 = 0; index0 < Mth.nextInt(RandomSource.create(), 2, 3); index0++) {
-                        if (world instanceof Level _level) {
-                            if (!_level.isClientSide()) {
-                                _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ENDERMITE_STEP, SoundSource.NEUTRAL, 1, (float) 0.75);
-                            } else {
-                                _level.playLocalSound(x, y, z, SoundEvents.ENDERMITE_STEP, SoundSource.NEUTRAL, 1, (float) 0.75, false);
-                            }
-                        }
+                    for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 2, 3); index0++) {
+                        ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_STEP, SoundSource.NEUTRAL, 1, (float) 0.75);
                     }
                     if (world instanceof ServerLevel _level) {
                         Entity entityToSpawn = UnusualEndEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
                                 (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1, (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ()), MobSpawnType.MOB_SUMMONED);
-                        if (entityToSpawn != null) {
-                        }
                     }
                     if (world instanceof ServerLevel _level) {
                         Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
                                 (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1, (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ()), MobSpawnType.MOB_SUMMONED);
-                        if (entityToSpawn != null) {
-                        }
                     }
                     if (dis >= 7) {
                         {
-                            Entity _ent = (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null);
+                            Entity _ent = (entity instanceof Mob _mobEnt ? _mobEnt.getTarget() : null);
                             _ent.teleportTo(
                                     (entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
                                     (entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY()),
@@ -107,15 +86,9 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                                         _ent.getYRot(), _ent.getXRot());
                         }
                         if (world instanceof ServerLevel _level)
-                            _level.sendParticles((SimpleParticleType) (UnusualEndMiscRegister.PINK_FLAME.get()), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX()),
+                            _level.sendParticles(UnusualEndMiscRegister.PINK_FLAME.get(), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX()),
                                     ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ()), 20, 1, 1, 1, 0.1);
-                        if (world instanceof ServerLevel _level)
-                            _level.getServer().getCommands().performPrefixedCommand(
-                                    new CommandSourceStack(CommandSource.NULL,
-                                            new Vec3(((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX() + 0.5), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1),
-                                                    ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ() + 0.5)),
-                                            Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                    "particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0.5 0.5 0.5 0 5");
+                        ParticleHelper.spawn(world, ParticleHelper.voidParticles(), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX() + 0.5), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ() + 0.5), 5, 0.5, 0.5, 0.5, 0);
                         if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
                             _entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 9, false, false));
                         if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
@@ -124,13 +97,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                 }
             }
             if (entity.getPersistentData().getDouble("IA") == 300) {
-                if (world instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ENDERMITE_HURT, SoundSource.HOSTILE, 2, (float) 0.5);
-                    } else {
-                        _level.playLocalSound(x, y, z, SoundEvents.ENDERMITE_HURT, SoundSource.HOSTILE, 2, (float) 0.5, false);
-                    }
-                }
+                ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_HURT, SoundSource.HOSTILE, 2, (float) 0.5);
                 QueenBreakSurroundingsProcedure.execute(world, x, y, z);
                 if (world instanceof ServerLevel _level)
                     _level.sendParticles(UnusualEndMiscRegister.PINK_FLAME.get(), x, y, z, 30, 2, 2, 2, 0.1);
@@ -142,29 +109,11 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                 xRadius = 8;
                 zRadius = 8;
                 loop = 0;
-                if (world instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.NEUTRAL, 3, 2);
-                    } else {
-                        _level.playLocalSound(x, y, z, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.NEUTRAL, 3, 2, false);
-                    }
-                }
+                ProcedureHelper.playSound(world, x, y, z, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.NEUTRAL, 3, 2);
                 while (loop < particleAmount) {
-                    if (world instanceof ServerLevel _level)
-                        _level.getServer().getCommands().performPrefixedCommand(
-                                new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)),
-                                        Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                "particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0 0.05 0 0 5");
-                    if (world instanceof ServerLevel _level)
-                        _level.getServer().getCommands().performPrefixedCommand(
-                                new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)),
-                                        Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                "particle minecraft:squid_ink ~ ~ ~ 0 0.05 0 0 1");
-                    if (world instanceof ServerLevel _level)
-                        _level.getServer().getCommands().performPrefixedCommand(
-                                new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)),
-                                        Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                "particle minecraft:end_rod ~ ~ ~ 0 0.05 0 0 1");
+                    ParticleHelper.spawn(world, ParticleHelper.voidParticles(), (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 5, 0, 0.05, 0, 0);
+                    ParticleHelper.spawn(world, ParticleTypes.SQUID_INK, (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 1, 0, 0.05, 0, 0);
+                    ParticleHelper.spawn(world, ParticleTypes.END_ROD, (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 1, 0, 0.05, 0, 0);
                     loop = loop + 1;
                 }
                 {
@@ -175,10 +124,8 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                             entityiterator.invulnerableTime = 0;
                             entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 8);
                             if (!world.isClientSide()) {
-                                if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 400, 0, false, false));
-                                if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                                    _entity.addEffect(new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 100, 0, false, false));
+                                ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(UnusualEndMiscRegister.ENDER_INFECTION, 400, 0, false, false));
+                                ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(UnusualEndMiscRegister.CRYSTALLIZATION, 100, 0, false, false));
                             }
                             entityiterator.invulnerableTime = 0;
                             entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 6);
@@ -187,23 +134,13 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
                 }
             }
             if (entity.getPersistentData().getDouble("IA") == 400) {
-                if (world instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.ENDERMITE_AMBIENT, SoundSource.HOSTILE, 2, (float) 0.7);
-                    } else {
-                        _level.playLocalSound(x, y, z, SoundEvents.ENDERMITE_AMBIENT, SoundSource.HOSTILE, 2, (float) 0.7, false);
-                    }
-                }
+                ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_AMBIENT, SoundSource.HOSTILE, 2, (float) 0.7);
                 loop = 1;
                 particleAmount = 3;
                 xRadius = 3;
                 zRadius = 3;
                 while (loop < particleAmount) {
-                    if (world instanceof ServerLevel _level)
-                        _level.getServer().getCommands().performPrefixedCommand(
-                                new CommandSourceStack(CommandSource.NULL, new Vec3((x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)),
-                                        Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                                "particle minecraft:block unusualend:void_particles_block ~ ~ ~ 0 0.05 0 0 5");
+                    ParticleHelper.spawn(world, ParticleHelper.voidParticles(), (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 5, 0, 0.05, 0, 0);
                     if (Math.random() < 0.5) {
                         if (world instanceof ServerLevel _level) {
                             Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level,
@@ -225,48 +162,30 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
             if (entity.getPersistentData().getDouble("IA") % 150 == 0) {
                 if (!world.getEntitiesOfClass(EnderblobEntity.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).isEmpty()) {
                     if (world instanceof ServerLevel _level)
-                        _level.sendParticles(ParticleTypes.SOUL, (((Entity) world.getEntitiesOfClass(EnderblobEntity.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).stream().sorted(new Object() {
-                            Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-                                return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-                            }
-                        }.compareDistOf(x, y, z)).findFirst().orElse(null)).getX()), (((Entity) world.getEntitiesOfClass(EnderblobEntity.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).stream().sorted(new Object() {
-                            Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-                                return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-                            }
-                        }.compareDistOf(x, y, z)).findFirst().orElse(null)).getY()), (((Entity) world.getEntitiesOfClass(EnderblobEntity.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).stream().sorted(new Object() {
-                            Comparator<Entity> compareDistOf(double _x, double _y, double _z) {
-                                return Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_x, _y, _z));
-                            }
-                        }.compareDistOf(x, y, z)).findFirst().orElse(null)).getZ()), 5, 0.5, 0.5, 0.5, 0);
-                    if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                        _entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 100, 1));
+                        _level.sendParticles(ParticleTypes.SOUL, (world.getEntitiesOfClass(EnderblobEntity.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).stream().sorted(ProcedureHelper.byDistanceTo(x, y, z)).findFirst().orElse(null).getX()), (world.getEntitiesOfClass(EnderblobEntity.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).stream().sorted(ProcedureHelper.byDistanceTo(x, y, z)).findFirst().orElse(null).getY()), (world.getEntitiesOfClass(EnderblobEntity.class, AABB.ofSize(new Vec3(x, y, z), 8, 8, 8), e -> true).stream().sorted(ProcedureHelper.byDistanceTo(x, y, z)).findFirst().orElse(null).getZ()), 5, 0.5, 0.5, 0.5, 0);
+                    ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.REGENERATION, 100, 1));
                 }
             }
-            if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) < 100 && !(entity.getPersistentData().getBoolean("SecondPhase") == true)) {
+            if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) < 100 && !(entity.getPersistentData().getBoolean("SecondPhase"))) {
                 QueenBreakSurroundingsProcedure.execute(world, x, y, z);
                 entity.getPersistentData().putBoolean("SecondPhase", true);
                 if (entity instanceof LivingEntity _entity)
                     _entity.setHealth(entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1);
                 if (world instanceof ServerLevel _level)
                     _level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y, z, 20, 3, 3, 3, 0);
-                for (int index3 = 0; index3 < Mth.nextInt(RandomSource.create(), 5, 10); index3++) {
+                for (int index3 = 0; index3 < Mth.nextInt(world.getRandom(), 5, 10); index3++) {
                     if (world instanceof ServerLevel _level) {
                         Entity entityToSpawn = UnusualEndEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
-                        if (entityToSpawn != null) {
-                        }
                     }
                 }
-                for (int index4 = 0; index4 < Mth.nextInt(RandomSource.create(), 5, 10); index4++) {
+                for (int index4 = 0; index4 < Mth.nextInt(world.getRandom(), 5, 10); index4++) {
                     if (world instanceof ServerLevel _level) {
                         Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
-                        if (entityToSpawn != null) {
-                        }
                     }
                 }
             }
-            if (entity.getPersistentData().getBoolean("SecondPhase") == true) {
-                if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
-                    _entity.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 2));
+            if (entity.getPersistentData().getBoolean("SecondPhase")) {
+                ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 2));
             }
             if (entity.getPersistentData().getDouble("IA") > 500) {
                 entity.getPersistentData().putDouble("IA", 0);
