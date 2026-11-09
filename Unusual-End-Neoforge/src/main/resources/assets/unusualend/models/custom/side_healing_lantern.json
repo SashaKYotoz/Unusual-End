@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "side_healing_lantern",
+  "parent": "minecraft:block/block",
   "elements": [
     {
       "from": [

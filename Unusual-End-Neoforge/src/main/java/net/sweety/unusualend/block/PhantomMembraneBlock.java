@@ -28,12 +28,13 @@ import java.util.List;
 
 public class PhantomMembraneBlock extends Block {
 	public PhantomMembraneBlock() {
-		super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.WOOL).strength(0.2f, 3f).speedFactor(0.85f).jumpFactor(0.9f).noOcclusion().pushReaction(PushReaction.DESTROY).isRedstoneConductor((bs, br, bp) -> false));
+		super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.WOOL).strength(0.2f, 3f).speedFactor(0.85f).jumpFactor(0.9f).noOcclusion().pushReaction(PushReaction.DESTROY).isRedstoneConductor((bs, br, bp) -> false).dynamicShape()
+				.isSuffocating((bs, br, bp) -> false).isViewBlocking((bs, br, bp) -> false));
 	}
 
 	@Override
 	public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return ((EntityCollisionContext) context).getEntity() instanceof Player ? state.getShape(world, pos) : Shapes.empty();
+		return context instanceof EntityCollisionContext entityContext && entityContext.getEntity() instanceof Player ? state.getShape(world, pos) : Shapes.empty();
 	}
 
 	@Override

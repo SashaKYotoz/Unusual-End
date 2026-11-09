@@ -106,6 +106,8 @@ public class ShinyCrystalTorchBlock extends Block implements SimpleWaterloggedBl
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		boolean flag = context.getLevel().getFluidState(context.getClickedPos()).getType() == Fluids.WATER;
+		if (context.getClickedFace() == Direction.DOWN)
+			return null;
 		if (context.getClickedFace().getAxis() == Direction.Axis.Y)
 			return this.defaultBlockState().setValue(FACE, context.getClickedFace().getOpposite() == Direction.UP ? AttachFace.CEILING : AttachFace.FLOOR).setValue(FACING, context.getHorizontalDirection()).setValue(WATERLOGGED, flag);
 		return this.defaultBlockState().setValue(FACE, AttachFace.WALL).setValue(FACING, context.getClickedFace()).setValue(WATERLOGGED, flag);

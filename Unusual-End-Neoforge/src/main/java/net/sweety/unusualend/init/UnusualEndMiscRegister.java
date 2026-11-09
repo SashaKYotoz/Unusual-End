@@ -11,6 +11,7 @@ import net.minecraft.world.inventory.MenuType;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -19,6 +20,7 @@ import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.effect.*;
 import net.sweety.unusualend.enchantment.BoloksFuryEnchantment;
 import net.sweety.unusualend.enchantment.BoloksWingsEnchantment;
+import net.sweety.unusualend.enchantment.FullHealthCondition;
 import net.sweety.unusualend.world.features.*;
 import net.sweety.unusualend.world.inventory.BolokNotesMenu;
 import net.sweety.unusualend.world.inventory.BuildingInhibitorGUIMenu;
@@ -52,6 +54,9 @@ public class UnusualEndMiscRegister {
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> BOLOKS_FURY = ENCHANTMENT_EFFECTS.register("boloks_fury", () -> BoloksFuryEnchantment.CODEC);
     public static final Supplier<MapCodec<? extends EnchantmentEntityEffect>> BOLOKS_WINGS = ENCHANTMENT_EFFECTS.register("boloks_wings", () -> BoloksWingsEnchantment.CODEC);
 
+    public static final DeferredRegister<LootItemConditionType> LOOT_CONDITIONS = DeferredRegister.create(Registries.LOOT_CONDITION_TYPE, UnusualEnd.MODID);
+    public static final DeferredHolder<LootItemConditionType, LootItemConditionType> FULL_HEALTH_CONDITION = LOOT_CONDITIONS.register("full_health", () -> new LootItemConditionType(FullHealthCondition.CODEC));
+
     public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(BuiltInRegistries.PARTICLE_TYPE, UnusualEnd.MODID);
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BOLOK_PARTICLE = PARTICLES.register("bolok_particle", () -> new SimpleParticleType(true));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> PINK_FLAME = PARTICLES.register("pink_flame", () -> new SimpleParticleType(false));
@@ -74,6 +79,7 @@ public class UnusualEndMiscRegister {
         MENUS.register(bus);
         MOB_EFFECTS.register(bus);
         ENCHANTMENT_EFFECTS.register(bus);
+        LOOT_CONDITIONS.register(bus);
         PARTICLES.register(bus);
         FEATURES.register(bus);
     }

@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "small_warped_squash",
+  "parent": "minecraft:block/block",
   "texture_size": [
     32,
     32

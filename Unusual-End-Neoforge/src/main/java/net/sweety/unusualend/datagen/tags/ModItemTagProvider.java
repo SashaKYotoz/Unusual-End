@@ -1,14 +1,13 @@
 package net.sweety.unusualend.datagen.tags;
 
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.world.item.AxeItem;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualEndItems;
@@ -31,12 +30,18 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(UnusualEndItems.LEECHING_WAND.get())
                 .add(UnusualEndItems.ANCIENT_SWORD.get())
                 .add(UnusualEndItems.PEARLESCENT_RING.get());
-        BuiltInRegistries.ITEM.stream().filter(item ->
-                item instanceof AxeItem || item instanceof SwordItem
-                        || item instanceof TridentItem).forEach(item ->
-                tag(UnusualEndTags.Items.BOLOK_ENCHANTABLE).add(item)
-        );
-        tag(UnusualEndTags.Items.BOLOK_ENCHANTABLE).add(UnusualEndItems.WARPED_ANCHOR.get());
+        tag(UnusualEndTags.Items.BOLOK_ENCHANTABLE)
+                .add(Items.TRIDENT)
+                .add(UnusualEndItems.BOUNCY_DAGGER.get())
+                .add(UnusualEndItems.PEARLESCENT_AXE.get())
+                .add(UnusualEndItems.PEARLESCENT_SWORD.get())
+                .add(UnusualEndItems.ANCIENT_SWORD.get())
+                .add(UnusualEndItems.WARPED_SPEAR.get())
+                .add(UnusualEndItems.WARPED_ANCHOR.get())
+                .addTag(ItemTags.SWORDS)
+                .addTag(ItemTags.AXES);
+        tag(UnusualEndTags.Items.BOLOK_ENCHANTABLE).addOptionalTag(Tags.Items.MELEE_WEAPON_TOOLS.location());
+        tag(UnusualEndTags.Items.BOLOK_ENCHANTABLE).addOptionalTag(ResourceLocation.fromNamespaceAndPath("c", "tools/knife"));
         tag(UnusualEndTags.Items.LEECHING_WAND_ENCHANTABLE)
                 .add(UnusualEndItems.LEECHING_WAND.get());
         tag(UnusualEndTags.Items.ELYTRA_ENCHANTABLE)

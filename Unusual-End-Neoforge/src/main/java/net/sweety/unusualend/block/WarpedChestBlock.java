@@ -37,9 +37,8 @@ public class WarpedChestBlock extends Block implements EntityBlock {
 	public WarpedChestBlock() {
 		super(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.WOOD).sound(SoundType.STEM).strength(30f, 9f).lightLevel(s -> (new Object() {
 			public int getLightLevel() {
-				if (s.getValue(BLOCKSTATE) == 1)
-					return 0;
-				return 0;
+                s.getValue(BLOCKSTATE);
+                return 0;
 			}
 		}.getLightLevel())).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));

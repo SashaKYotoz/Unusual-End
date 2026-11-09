@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "plush",
+  "parent": "minecraft:block/block",
   "texture_size": [
     32,
     32

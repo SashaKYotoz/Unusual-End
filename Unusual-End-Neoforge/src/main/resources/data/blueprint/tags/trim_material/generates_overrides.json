@@ -1,8 +1,8 @@
 {
   "values": [
-    "unusualend:prismalite_gem",
-    "unusualend:shiny_crystal",
-    "unusualend:citrine_chunk",
-    "unusualend:pearlescent_ingot"
+    "unusualend:prismatic_material",
+    "unusualend:shiny_material",
+    "unusualend:citrine_material",
+    "unusualend:pearlescent_material"
   ]
 }

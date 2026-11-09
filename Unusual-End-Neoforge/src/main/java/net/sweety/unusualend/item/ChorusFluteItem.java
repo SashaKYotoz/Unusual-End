@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.item;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
@@ -36,10 +37,10 @@ public class ChorusFluteItem extends Item {
         super.appendHoverText(stack, context, list, flag);
 
         String track = NBTProcessor.getNBTString(stack, "track");
-        if (NBTProcessor.getNBTString(stack, "track").isEmpty()) {
-            NBTProcessor.setNBTString(stack, "track", "All Tracks");
-        }
-        list.add(Component.literal("\u00A77" + ((track))));
+        if (track.isEmpty() || track.equalsIgnoreCase("All Tracks"))
+            list.add(Component.translatable("text.unusualend.all_tracks").withStyle(ChatFormatting.GRAY));
+        else
+            list.add(Component.literal(track).withStyle(ChatFormatting.GRAY));
     }
 
     @Override

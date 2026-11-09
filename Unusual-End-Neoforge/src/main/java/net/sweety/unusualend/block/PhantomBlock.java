@@ -16,7 +16,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.TransparentBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -34,12 +33,17 @@ import java.util.List;
 
 public class PhantomBlock extends TransparentBlock {
 	public PhantomBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.WOOL).strength(0.2f, 10f));
+		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).instrument(NoteBlockInstrument.BASEDRUM).sound(SoundType.WOOL).strength(0.2f, 10f).noOcclusion().dynamicShape()
+				.isSuffocating((state, level, pos) -> false).isViewBlocking((state, level, pos) -> false).isRedstoneConductor((state, level, pos) -> false));
 	}
 
 	@Override
 	public VoxelShape getCollisionShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
-		return !(((EntityCollisionContext) context).getEntity() instanceof Player) ? state.getShape(world, pos) : Shapes.empty();
+		return isPlayerContext(context) ? Shapes.empty() : state.getShape(world, pos);
+	}
+
+	private static boolean isPlayerContext(CollisionContext context) {
+		return context instanceof EntityCollisionContext entityContext && entityContext.getEntity() instanceof Player;
 	}
 
 	@Override
@@ -79,8 +83,8 @@ public class PhantomBlock extends TransparentBlock {
 	@Override
 	public void entityInside(BlockState blockstate, Level level, BlockPos pos, Entity entity) {
 		super.entityInside(blockstate, level, pos, entity);
-		entity.makeStuckInBlock(Blocks.AIR.defaultBlockState(), new Vec3(0.99, 0.99, 0.99));
-		if (entity instanceof LivingEntity livingEntity)
-			livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 18, 0));
+		entity.makeStuckInBlock(blockstate, new Vec3(0.99, 0.99, 0.99));
+		if (!level.isClientSide() && entity instanceof LivingEntity livingEntity && !livingEntity.hasEffect(MobEffects.BLINDNESS))
+			livingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 18, 0, false, false));
 	}
 }

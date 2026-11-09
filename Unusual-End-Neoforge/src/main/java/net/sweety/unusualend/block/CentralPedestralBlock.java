@@ -53,11 +53,11 @@ public class CentralPedestralBlock extends Block implements SimpleWaterloggedBlo
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> Shapes.or(box(2, 0, 2, 14, 10, 14), box(1, 10, 1, 15, 14, 15));
-			case NORTH -> Shapes.or(box(2, 0, 2, 14, 10, 14), box(1, 10, 1, 15, 14, 15));
+            case NORTH -> Shapes.or(box(2, 0, 2, 14, 10, 14), box(1, 10, 1, 15, 14, 15));
 			case EAST -> Shapes.or(box(2, 0, 2, 14, 10, 14), box(1, 10, 1, 15, 14, 15));
 			case WEST -> Shapes.or(box(2, 0, 2, 14, 10, 14), box(1, 10, 1, 15, 14, 15));
-		};
+            default -> Shapes.or(box(2, 0, 2, 14, 10, 14), box(1, 10, 1, 15, 14, 15));
+        };
 	}
 
 	@Override

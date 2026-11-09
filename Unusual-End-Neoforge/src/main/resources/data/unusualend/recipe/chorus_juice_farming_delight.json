@@ -13,10 +13,12 @@
     }
   ],
   "result": {
-    "id": "unusualend:chorus_juice"
+    "id": "unusualend:chorus_juice",
+    "count": 1
   },
   "container": {
-    "item": "minecraft:glass_bottle"
+    "count": 1,
+    "id": "minecraft:glass_bottle"
   },
   "experience": 1.0,
   "cookingtime": 200,

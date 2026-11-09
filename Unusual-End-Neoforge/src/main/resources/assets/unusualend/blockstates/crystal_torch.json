@@ -18,6 +18,26 @@
     "face=wall,facing=west": {
       "model": "unusualend:block/crystal_torch_wall",
       "y": 180
+    },
+    "face=ceiling,facing=north": {
+      "model": "unusualend:block/crystal_torch",
+      "x": 180,
+      "y": 0
+    },
+    "face=ceiling,facing=east": {
+      "model": "unusualend:block/crystal_torch",
+      "x": 180,
+      "y": 90
+    },
+    "face=ceiling,facing=south": {
+      "model": "unusualend:block/crystal_torch",
+      "x": 180,
+      "y": 180
+    },
+    "face=ceiling,facing=west": {
+      "model": "unusualend:block/crystal_torch",
+      "x": 180,
+      "y": 270
     }
   }
 }

@@ -38,7 +38,7 @@ public class BucketBlukProcedure {
 				NBTProcessor.setNBTBoolean(entity_bucket,"isNamed", true);
 			}
 			if (entity instanceof TamableAnimal _tamEnt ? _tamEnt.isTame() : false) {
-				NBTProcessor.setNBTString(entity_bucket,"Owner", ("" + ((entity instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null).getDisplayName().getString())));
+				NBTProcessor.setNBTString(entity_bucket,"Owner", ((entity instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null).getDisplayName().getString()));
 				NBTProcessor.setNBTBoolean(entity_bucket,"isTamed", true);
 			} else {
 				NBTProcessor.setNBTBoolean(entity_bucket,"isTamed", false);

@@ -20,8 +20,8 @@ import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.configuration.UEConfig;
 import net.sweety.unusualend.entity.LargeBubbleEntity;
-import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndItems;
 
 import java.util.Comparator;
 

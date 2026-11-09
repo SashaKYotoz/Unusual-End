@@ -12,8 +12,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
-import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.procedures.PhantomArrowWhileProjectileFlyingTickProcedure;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)

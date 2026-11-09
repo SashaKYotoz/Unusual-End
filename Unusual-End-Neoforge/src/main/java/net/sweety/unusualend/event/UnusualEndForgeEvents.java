@@ -132,10 +132,12 @@ public class UnusualEndForgeEvents {
             if ((player.getPersistentData().getString("TargetDimension")).equals("" + player.level().dimension())) {
                 if (!((level.getBlockState(BlockPos.containing(player.getPersistentData().getDouble("TargetX"), player.getPersistentData().getDouble("TargetY") - 1, player.getPersistentData().getDouble("TargetZ"))))
                         .getBlock() == UnusualEndBlocks.TELEPORTATION_ANCHOR.get())) {
-                    player.teleportTo((Mth.nextDouble(RandomSource.create(), -1000, 1000)), (Mth.nextDouble(RandomSource.create(), 100, 120)), (Mth.nextDouble(RandomSource.create(), -1000, 1000)));
+                    double randomX = Mth.nextDouble(player.getRandom(), -1000, 1000);
+                    double randomY = Mth.nextDouble(player.getRandom(), 100, 120);
+                    double randomZ = Mth.nextDouble(player.getRandom(), -1000, 1000);
+                    player.teleportTo(randomX, randomY, randomZ);
                     if (player instanceof ServerPlayer _serverPlayer)
-                        _serverPlayer.connection.teleport((Mth.nextDouble(RandomSource.create(), -1000, 1000)), (Mth.nextDouble(RandomSource.create(), 100, 120)), (Mth.nextDouble(RandomSource.create(), -1000, 1000)), player.getYRot(),
-                                player.getXRot());
+                        _serverPlayer.connection.teleport(randomX, randomY, randomZ, player.getYRot(), player.getXRot());
                     if (!player.level().isClientSide()) {
                         player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 300, 1));
                         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 80, 0));
@@ -252,7 +254,6 @@ public class UnusualEndForgeEvents {
         }
     }
 
-    @SuppressWarnings("removal")
     @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
         LivingEntity entity = event.getEntity();
@@ -476,10 +477,7 @@ public class UnusualEndForgeEvents {
                             }
                         }
                         swing_offset = swing_offset - 0.1;
-                        if (swing)
-                            swing_curve = swing_curve - original_curve / 10;
-                        else
-                            swing_curve = swing_curve - original_curve / 10;
+                        swing_curve = swing_curve - original_curve / 10;
                     }
                 }
                 dis = Math.sqrt(Math.pow(entity.getX() - sourceEntity.getX(), 2) + Math.pow(entity.getY() - sourceEntity.getY(), 2) + Math.pow(entity.getZ() - sourceEntity.getZ(), 2));

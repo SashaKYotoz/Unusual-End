@@ -1,78 +1,61 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.commands.CommandSource;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LightningBolt;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec2;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
+import net.sweety.unusualend.init.UnusualEndItems;
 import net.sweety.unusualend.init.UnusualEndSounds;
 
 public class EndstoneGolemEntityDiesProcedure {
-    public static void execute(EndstoneGolemEntity entity, Level level, double x, double y, double z) {
-        if (level instanceof ServerLevel _level)
-            _level.sendParticles(ParticleTypes.EXPLOSION, x, y, z, 10, 1, 1, 1, 0);
-        if (!level.isClientSide()) {
-            level.playSound(entity, BlockPos.containing(x, y, z), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 1f, 1f);
-        } else
-            level.playLocalSound(x, y, z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 1, 1, false);
-        if (level instanceof ServerLevel _level) {
-            LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-            entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
-            entityToSpawn.setVisualOnly(true);
-            _level.addFreshEntity(entityToSpawn);
-        }
-        for (int index0 = 0; index0 < 5; index0++) {
-            UnusualEnd.queueServerWork((int) Mth.nextDouble(RandomSource.create(), 5, 10), () -> {
-                if (level instanceof ServerLevel _level) {
-                    LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-                    entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
-                    entityToSpawn.setVisualOnly(true);
-                    _level.addFreshEntity(entityToSpawn);
-                }
-                if (!level.isClientSide()) {
-                    level.playSound(null, BlockPos.containing(x, y, z), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 1, 1);
-                } else
-                    level.playLocalSound(x, y, z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 1, 1, false);
+    public static void execute(EndstoneGolemEntity entity) {
+        if (!(entity.level() instanceof ServerLevel level))
+            return;
+        Vec3 pos = entity.position();
+        level.sendParticles(ParticleTypes.EXPLOSION, pos.x, pos.y, pos.z, 10, 1, 1, 1, 0);
+        level.playSound(null, pos.x, pos.y, pos.z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 1f, 1f);
+        strikeVisualLightning(level, pos);
+        for (int i = 0; i < 5; i++) {
+            UnusualEnd.queueServerWork(5 + level.random.nextInt(6), () -> {
+                strikeVisualLightning(level, pos);
+                level.playSound(null, pos.x, pos.y, pos.z, SoundEvents.GENERIC_EXPLODE.value(), SoundSource.HOSTILE, 1f, 1f);
             });
         }
-        for (int index1 = 0; index1 < 3; index1++) {
-            UnusualEnd.queueServerWork(15, () -> {
-                if (level instanceof Level _level) {
-                    if (!_level.isClientSide()) {
-                        _level.playSound(null, BlockPos.containing(x, y, z), UnusualEndSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1);
-                    } else {
-                        _level.playLocalSound(x, y, z, UnusualEndSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1, false);
-                    }
-                }
-            });
-        }
-        if (level instanceof ServerLevel _level)
-            _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                    "summon item ~ ~ ~ {Health:100,Glowing:1b,Invulnerable:1b,Item:{id:\"unusualend:golem_orb\",Count:1b}}");
-        for (int index2 = 0; index2 < Mth.nextInt(RandomSource.create(), 2, 4); index2++) {
-            if (level instanceof ServerLevel _level)
-                _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                        "summon item ~ ~ ~ {Health:100,Invulnerable:1b,Item:{id:\"unusualend:ancient_shard\",Count:1b}}");
-        }
-        if (level instanceof ServerLevel _level)
-            _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                    "summon experience_orb ~ ~ ~ {Value:5000,Health:100,Invulnerable:1b,Attributes:[{Name:\"generic.max_health\",Base:100f}]}");
-        if (Math.random() < 0.3) {
-            if (level instanceof ServerLevel _level)
-                _level.getServer().getCommands().performPrefixedCommand(new CommandSourceStack(CommandSource.NULL, new Vec3(x, y, z), Vec2.ZERO, _level, 4, "", Component.literal(""), _level.getServer(), null).withSuppressedOutput(),
-                        "summon item ~ ~ ~ {Health:100,Invulnerable:1b,Item:{id:\"unusualend:music_disc_endstone_golem_theme\",Count:1b}}");
-        }
+        UnusualEnd.queueServerWork(15, () -> level.playSound(null, pos.x, pos.y, pos.z, UnusualEndSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2f, 1f));
+
+        ItemEntity orb = dropProtected(level, pos, UnusualEndItems.GOLEM_ORB.get());
+        orb.setGlowingTag(true);
+        int shards = 2 + level.random.nextInt(3);
+        for (int i = 0; i < shards; i++)
+            dropProtected(level, pos, UnusualEndItems.ANCIENT_SHARD.get());
+        if (level.random.nextFloat() < 0.3f)
+            dropProtected(level, pos, UnusualEndItems.MUSIC_DISC_ENDSTONE_GOLEM_THEME.get());
+        ExperienceOrb.award(level, pos, 5000);
+    }
+
+    private static void strikeVisualLightning(ServerLevel level, Vec3 pos) {
+        LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(level);
+        if (bolt == null)
+            return;
+        bolt.moveTo(pos.x, pos.y, pos.z);
+        bolt.setVisualOnly(true);
+        level.addFreshEntity(bolt);
+    }
+
+    private static ItemEntity dropProtected(ServerLevel level, Vec3 pos, ItemLike item) {
+        ItemEntity drop = new ItemEntity(level, pos.x, pos.y, pos.z, new ItemStack(item));
+        drop.setInvulnerable(true);
+        drop.setUnlimitedLifetime();
+        level.addFreshEntity(drop);
+        return drop;
     }
 }

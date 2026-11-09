@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "pedestral_filled",
+  "parent": "minecraft:block/block",
   "texture_size": [
     64,
     64

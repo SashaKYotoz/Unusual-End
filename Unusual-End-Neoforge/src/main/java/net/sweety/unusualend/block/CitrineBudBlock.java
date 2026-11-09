@@ -47,12 +47,7 @@ public class CitrineBudBlock extends Block implements SimpleWaterloggedBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> switch (state.getValue(FACE)) {
-				case FLOOR -> box(4, 0, 4, 12, 2, 12);
-				case WALL -> box(4, 4, 0, 12, 12, 2);
-				case CEILING -> box(4, 14, 4, 12, 16, 12);
-			};
-			case NORTH -> switch (state.getValue(FACE)) {
+            case NORTH -> switch (state.getValue(FACE)) {
 				case FLOOR -> box(4, 0, 4, 12, 2, 12);
 				case WALL -> box(4, 4, 14, 12, 12, 16);
 				case CEILING -> box(4, 14, 4, 12, 16, 12);
@@ -67,7 +62,12 @@ public class CitrineBudBlock extends Block implements SimpleWaterloggedBlock {
 				case WALL -> box(14, 4, 4, 16, 12, 12);
 				case CEILING -> box(4, 14, 4, 12, 16, 12);
 			};
-		};
+            default -> switch (state.getValue(FACE)) {
+                case FLOOR -> box(4, 0, 4, 12, 2, 12);
+                case WALL -> box(4, 4, 0, 12, 12, 2);
+                case CEILING -> box(4, 14, 4, 12, 16, 12);
+            };
+        };
 	}
 
 	@Override

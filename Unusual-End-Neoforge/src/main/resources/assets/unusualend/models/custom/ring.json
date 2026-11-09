@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "ring",
+  "parent": "minecraft:block/block",
   "elements": [
     {
       "from": [

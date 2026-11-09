@@ -31,10 +31,10 @@ import net.sweety.unusualend.client.particle.CitrineShineParticle;
 import net.sweety.unusualend.client.particle.PinkFlameParticle;
 import net.sweety.unusualend.client.particle.WarpedBubblesParticle;
 import net.sweety.unusualend.client.renderer.*;
-import net.sweety.unusualend.init.UnusualEndItems;
-import net.sweety.unusualend.init.UnusualEndMiscRegister;
 import net.sweety.unusualend.init.UnusualEndBlockEntities;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndItems;
+import net.sweety.unusualend.init.UnusualEndMiscRegister;
 import net.sweety.unusualend.procedures.CrystalCatalystPropertyValueProviderProcedure;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

@@ -52,11 +52,6 @@ public class WeakEndermiteEggBlock extends Block implements SimpleWaterloggedBlo
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
         return switch (state.getValue(FACING)) {
-            default -> switch (state.getValue(FACE)) {
-                case FLOOR -> Shapes.or(box(4, 0, 8, 10, 7, 14), box(9, 0, 6, 14, 4, 11), box(2, 0, 2, 7, 5, 7));
-                case WALL -> Shapes.or(box(4, 2, 0, 10, 8, 7), box(9, 5, 0, 14, 10, 4), box(2, 9, 0, 7, 14, 5));
-                case CEILING -> Shapes.or(box(6, 9, 8, 12, 16, 14), box(2, 12, 6, 7, 16, 11), box(9, 11, 2, 14, 16, 7));
-            };
             case NORTH -> switch (state.getValue(FACE)) {
                 case FLOOR -> Shapes.or(box(6, 0, 2, 12, 7, 8), box(2, 0, 5, 7, 4, 10), box(9, 0, 9, 14, 5, 14));
                 case WALL -> Shapes.or(box(6, 2, 9, 12, 8, 16), box(2, 5, 12, 7, 10, 16), box(9, 9, 11, 14, 14, 16));
@@ -71,6 +66,11 @@ public class WeakEndermiteEggBlock extends Block implements SimpleWaterloggedBlo
                 case FLOOR -> Shapes.or(box(2, 0, 4, 8, 7, 10), box(5, 0, 9, 10, 4, 14), box(9, 0, 2, 14, 5, 7));
                 case WALL -> Shapes.or(box(9, 2, 4, 16, 8, 10), box(12, 5, 9, 16, 10, 14), box(11, 9, 2, 16, 14, 7));
                 case CEILING -> Shapes.or(box(2, 9, 6, 8, 16, 12), box(5, 12, 2, 10, 16, 7), box(9, 11, 9, 14, 16, 14));
+            };
+            default -> switch (state.getValue(FACE)) {
+                case FLOOR -> Shapes.or(box(4, 0, 8, 10, 7, 14), box(9, 0, 6, 14, 4, 11), box(2, 0, 2, 7, 5, 7));
+                case WALL -> Shapes.or(box(4, 2, 0, 10, 8, 7), box(9, 5, 0, 14, 10, 4), box(2, 9, 0, 7, 14, 5));
+                case CEILING -> Shapes.or(box(6, 9, 8, 12, 16, 14), box(2, 12, 6, 7, 16, 11), box(9, 11, 2, 14, 16, 7));
             };
         };
     }

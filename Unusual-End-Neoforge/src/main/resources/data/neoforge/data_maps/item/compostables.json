@@ -1,0 +1,85 @@
+{
+  "values": {
+    "unusualend:chorus_cane_flower": {
+      "chance": 0.85
+    },
+    "unusualend:chorus_cane": {
+      "chance": 0.3
+    },
+    "unusualend:blooming_chorus_cane": {
+      "chance": 0.3
+    },
+    "unusualend:chorus_fungus": {
+      "chance": 0.65
+    },
+    "unusualend:chorus_roots": {
+      "chance": 0.65
+    },
+    "unusualend:endstone_sprouts": {
+      "chance": 0.5
+    },
+    "unusualend:purpur_grass": {
+      "chance": 0.65
+    },
+    "unusualend:flowering_purpur_grass": {
+      "chance": 0.65
+    },
+    "unusualend:warped_moss": {
+      "chance": 0.3
+    },
+    "unusualend:chorus_pie": {
+      "chance": 1.0
+    },
+    "unusualend:chorus_petal": {
+      "chance": 0.3
+    },
+    "unusualend:dripping_gloopstone": {
+      "chance": 0.3
+    },
+    "unusualend:gloopy_bush": {
+      "chance": 0.5
+    },
+    "unusualend:shiny_spirea": {
+      "chance": 0.65
+    },
+    "unusualend:warped_spores": {
+      "chance": 0.65
+    },
+    "unusualend:warped_algae": {
+      "chance": 0.5
+    },
+    "unusualend:small_warped_algae": {
+      "chance": 0.3
+    },
+    "unusualend:warped_sprouts": {
+      "chance": 0.3
+    },
+    "unusualend:crystal_flower": {
+      "chance": 1.0
+    },
+    "unusualend:warped_berries": {
+      "chance": 0.85
+    },
+    "unusualend:gloopy_tendrils": {
+      "chance": 0.3
+    },
+    "unusualend:warped_bush": {
+      "chance": 0.5
+    },
+    "unusualend:warped_squash": {
+      "chance": 0.65
+    },
+    "unusualend:warped_squash_wedge": {
+      "chance": 0.5
+    },
+    "unusualend:small_warped_squash": {
+      "chance": 0.5
+    },
+    "unusualend:gloopilon_slice": {
+      "chance": 0.85
+    },
+    "unusualend:gloopilon_seeds": {
+      "chance": 0.85
+    }
+  }
+}

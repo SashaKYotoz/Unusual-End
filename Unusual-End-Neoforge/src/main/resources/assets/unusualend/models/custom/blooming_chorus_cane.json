@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "blooming_chorus_cane",
+  "parent": "minecraft:block/block",
   "elements": [
     {
       "from": [

@@ -68,12 +68,7 @@ public class HealingLanternBlock extends Block implements SimpleWaterloggedBlock
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter world, BlockPos pos, CollisionContext context) {
 		return switch (state.getValue(FACING)) {
-			default -> switch (state.getValue(FACE)) {
-				case FLOOR -> Shapes.or(box(6, 7, 6, 10, 9, 10), box(5, 0, 5, 11, 7, 11));
-				case WALL -> Shapes.or(box(6, 8, 5, 10, 10, 9), box(5, 1, 4, 11, 8, 10));
-				case CEILING -> Shapes.or(box(6, 8, 6, 10, 10, 10), box(5, 1, 5, 11, 8, 11));
-			};
-			case SOUTH -> switch (state.getValue(FACE)) {
+            case SOUTH -> switch (state.getValue(FACE)) {
 				case FLOOR -> Shapes.or(box(6, 7, 6, 10, 9, 10), box(5, 0, 5, 11, 7, 11));
 				case WALL -> Shapes.or(box(6, 8, 5, 10, 10, 9), box(5, 1, 4, 11, 8, 10));
 				case CEILING -> Shapes.or(box(6, 8, 6, 10, 10, 10), box(5, 1, 5, 11, 8, 11));
@@ -93,7 +88,12 @@ public class HealingLanternBlock extends Block implements SimpleWaterloggedBlock
 				case WALL -> Shapes.or(box(7, 8, 6, 11, 10, 10), box(6, 1, 5, 12, 8, 11));
 				case CEILING -> Shapes.or(box(6, 8, 6, 10, 10, 10), box(5, 1, 5, 11, 8, 11));
 			};
-		};
+            default -> switch (state.getValue(FACE)) {
+                case FLOOR -> Shapes.or(box(6, 7, 6, 10, 9, 10), box(5, 0, 5, 11, 7, 11));
+                case WALL -> Shapes.or(box(6, 8, 5, 10, 10, 9), box(5, 1, 4, 11, 8, 10));
+                case CEILING -> Shapes.or(box(6, 8, 6, 10, 10, 10), box(5, 1, 5, 11, 8, 11));
+            };
+        };
 	}
 
 	@Override

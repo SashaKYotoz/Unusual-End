@@ -4,13 +4,20 @@
     "translate": "enchantment.unusualend.boloks_fury"
   },
   "effects": {
-    "minecraft:post_attack": [
+    "minecraft:damage": [
       {
-        "affected": "victim",
         "effect": {
-          "type": "unusualend:boloks_fury"
+          "type": "minecraft:add",
+          "value": {
+            "type": "minecraft:linear",
+            "base": 2.0,
+            "per_level_above_first": 2.0
+          }
         },
-        "enchanted": "attacker"
+        "requirements": {
+          "condition": "unusualend:full_health",
+          "entity": "this"
+        }
       }
     ]
   },

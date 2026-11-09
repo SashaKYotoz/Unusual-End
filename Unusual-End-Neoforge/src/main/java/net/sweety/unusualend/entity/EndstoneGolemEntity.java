@@ -174,7 +174,7 @@ public class EndstoneGolemEntity extends Monster {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		EndstoneGolemEntityDiesProcedure.execute(this,this.level(), this.getX(), this.getY(), this.getZ());
+		EndstoneGolemEntityDiesProcedure.execute(this);
 	}
 
 	@Override

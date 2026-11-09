@@ -28,8 +28,8 @@ import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.entity.EnderblobEntity;
 import net.sweety.unusualend.entity.EnderblobQueenEntity;
-import net.sweety.unusualend.init.UnusualEndMiscRegister;
 import net.sweety.unusualend.init.UnusualEndEntities;
+import net.sweety.unusualend.init.UnusualEndMiscRegister;
 
 import java.util.Comparator;
 import java.util.List;

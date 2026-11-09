@@ -69,7 +69,7 @@ public class UEConfig {
         SAVE_BALLOON = BUILDER.comment("Whether a Warped Balloon that missed or is unable to capture its target will drop the Warped Ballon back at the target's localisation.").define("Get Warped Ballons Back", true);
         ENDERLING_MASK = BUILDER.comment("Probability in % for an Undead Enderling to spawn with an Enderling Mask").define("Enderling Mask Probability", (double) 22);
         CRYSTAL_NAUSEA = BUILDER.comment("Whether the Crystal Flower should inflict Nausea to entities interacting with it").define("Crystal Flower Nausea", true);
-        VOID_TOTEM_Y = BUILDER.comment("The Y altitude under which the Void Totem will be triggered").define("Void Totem Altitude", (double) -1);
+        VOID_TOTEM_Y = BUILDER.comment("Offset from the dimension's minimum build height under which the Void Totem will be triggered (-1 means one block below the bottom of the world)").define("Void Totem Altitude", (double) -1);
         PODIUM_ITEM = BUILDER.comment("The scale the Ancient Podium will display items as").define("Podium Item Size", (double) 0.55);
         PODIUM_BLOCK = BUILDER.comment("The scale the Ancient Podium will display blocks at").define("Podium Block Size", (double) 0.4);
         EVERLASTING = BUILDER.comment("Whether the player will be able to obtain Everlasting (makes items never despawn)").define("Can Everlasting be obtained", true);

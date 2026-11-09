@@ -26,6 +26,10 @@
     {
       "modid": "everycomp",
       "type": "neoforge:mod_loaded"
+    },
+    {
+      "type": "neoforge:item_exists",
+      "item": "everycomp:fd/unusualend/chorus_cane_cabinet"
     }
   ]
 }

@@ -12,14 +12,14 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.EnchantmentTarget;
 import net.minecraft.world.item.enchantment.LevelBasedValue;
 import net.minecraft.world.item.enchantment.effects.AddValue;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.predicates.DamageSourceCondition;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.datagen.tags.UnusualEndTags;
-import net.sweety.unusualend.enchantment.BoloksFuryEnchantment;
 import net.sweety.unusualend.enchantment.BoloksWingsEnchantment;
+import net.sweety.unusualend.enchantment.FullHealthCondition;
 
 public class UnusualEndEnchantments {
     public static final ResourceKey<Enchantment> EVERLASTING = ResourceKey.create(Registries.ENCHANTMENT,
@@ -50,8 +50,8 @@ public class UnusualEndEnchantments {
                         Enchantment.dynamicCost(20, 5),
                         2,
                         EquipmentSlotGroup.MAINHAND))
-                .withEffect(EnchantmentEffectComponents.POST_ATTACK, EnchantmentTarget.ATTACKER,
-                        EnchantmentTarget.VICTIM, new BoloksFuryEnchantment()));
+                .withEffect(EnchantmentEffectComponents.DAMAGE, new AddValue(LevelBasedValue.perLevel(2.0F)),
+                        FullHealthCondition.of(LootContext.EntityTarget.THIS)));
         register(context, BOLOKS_WINGS, Enchantment.enchantment(Enchantment.definition(
                         items.getOrThrow(UnusualEndTags.Items.ELYTRA_ENCHANTABLE),
                         4,

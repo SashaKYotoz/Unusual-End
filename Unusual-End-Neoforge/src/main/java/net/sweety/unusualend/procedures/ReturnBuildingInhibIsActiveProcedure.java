@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class ReturnBuildingInhibIsActiveProcedure {
 	public static String execute(LevelAccessor world, double x, double y, double z) {
-		return Component.translatable("text.unusualend.inhibit_gui").getString() + "" + Math.round((new Object() {
+		return Component.translatable("text.unusualend.inhibit_gui").getString() + Math.round((new Object() {
 			public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 				BlockEntity blockEntity = world.getBlockEntity(pos);
 				if (blockEntity != null)

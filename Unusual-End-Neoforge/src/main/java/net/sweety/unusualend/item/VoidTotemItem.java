@@ -34,7 +34,7 @@ public class VoidTotemItem extends Item {
     @Override
     public void inventoryTick(ItemStack itemstack, Level level, Entity entity, int slot, boolean selected) {
         super.inventoryTick(itemstack, level, entity, slot, selected);
-        if (entity instanceof Player && slot >= 0 && slot <= 40)
-            VoidTotemItemInInventoryTickProcedure.execute(level, entity.getX(), entity.getY(), entity.getZ(), entity, itemstack);
+        if (entity instanceof Player player && slot >= 0 && slot <= 40)
+            VoidTotemItemInInventoryTickProcedure.execute(level, player, itemstack);
     }
 }

@@ -1,6 +1,6 @@
 {
   "credit": "Made with Blockbench",
-  "parent": "vine",
+  "parent": "minecraft:block/block",
   "elements": [
     {
       "from": [

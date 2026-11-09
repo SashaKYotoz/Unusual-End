@@ -10,10 +10,12 @@
     }
   ],
   "result": {
-    "id": "unusualend:blob_stew"
+    "id": "unusualend:blob_stew",
+    "count": 1
   },
   "container": {
-    "item": "minecraft:bowl"
+    "count": 1,
+    "id": "minecraft:bowl"
   },
   "experience": 1.0,
   "cookingtime": 200,

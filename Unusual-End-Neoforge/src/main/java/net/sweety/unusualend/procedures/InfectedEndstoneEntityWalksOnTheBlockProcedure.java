@@ -42,7 +42,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 					if (entity instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 3, 4, false, false));
 					if (!(world.getDifficulty() == Difficulty.PEACEFUL)) {
-						if (!(!world.getEntitiesOfClass(EnderTrapperEntity.class, AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty())) {
+						if (world.getEntitiesOfClass(EnderTrapperEntity.class, AABB.ofSize(new Vec3(x, y, z), 10, 10, 10), e -> true).isEmpty()) {
 							if (world instanceof ServerLevel _level) {
 								Entity entityToSpawn = UnusualEndEntities.ENDSTONE_TRAPPER.get().spawn(_level, BlockPos.containing(x + 0.5, Math.round(entity.getY() - 1), z + 0.5), MobSpawnType.MOB_SUMMONED);
 								if (entityToSpawn != null) {

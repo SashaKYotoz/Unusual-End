@@ -1,6 +1,6 @@
 {
   "parent": "item/bow",
   "textures": {
-    "layer0": "unusualend:items/ancient_bow_pulling_1"
+    "layer0": "unusualend:item/ancient_bow_pulling_1"
   }
 }

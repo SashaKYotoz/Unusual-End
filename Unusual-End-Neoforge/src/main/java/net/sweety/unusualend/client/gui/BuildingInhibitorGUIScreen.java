@@ -14,8 +14,6 @@ import net.sweety.unusualend.block.entity.BuildingInhibitorBlockEntity;
 import net.sweety.unusualend.procedures.ReturnBuildingInhibIsActiveProcedure;
 import net.sweety.unusualend.world.inventory.BuildingInhibitorGUIMenu;
 
-import java.util.HashMap;
-
 public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<BuildingInhibitorGUIMenu> {
     private final Level level;
     private final int x, y, z;
