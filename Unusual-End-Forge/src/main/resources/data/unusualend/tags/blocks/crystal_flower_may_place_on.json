@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:nylium",
+    "minecraft:grass_block",
+    "minecraft:mycelium",
+    "unusualend:gloopslate",
+    "unusualend:shiny_gloopstone",
+    "unusualend:gloopstone",
+    "unusualend:bouncy_gloopslate",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:podzol",
+    "minecraft:rooted_dirt",
+    "unusualend:gloopy_endstone",
+    "unusualend:bouncy_gloopstone"
+  ]
+}

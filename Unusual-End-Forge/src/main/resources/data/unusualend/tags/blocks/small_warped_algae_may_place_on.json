@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:nylium",
+    "unusualend:infested_end_stone",
+    "minecraft:end_stone",
+    "minecraft:grass_block",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:podzol",
+    "minecraft:mycelium",
+    "unusualend:gneiss",
+    "unusualend:warped_end_stone",
+    "unusualend:gneiss_bricks",
+    "unusualend:polished_gneiss",
+    "unusualend:chiseled_gneiss_brick",
+    "unusualend:bolok_scale_block",
+    "unusualend:warped_stone",
+    "unusualend:polished_warped_stone",
+    "unusualend:chiseled_polished_warped_stone",
+    "unusualend:warped_stone_bricks",
+    "unusualend:warped_stone_tiles",
+    "unusualend:warped_stone_pillar"
+  ]
+}

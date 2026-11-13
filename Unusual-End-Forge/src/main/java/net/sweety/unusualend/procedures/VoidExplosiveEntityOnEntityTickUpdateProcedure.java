@@ -1,0 +1,65 @@
+package net.sweety.unusualend.procedures;
+
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.sweety.unusualend.util.ParticleHelper;
+
+public class VoidExplosiveEntityOnEntityTickUpdateProcedure {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
+			return;
+		double xRadius = 0;
+		double loop = 0;
+		double zRadius = 0;
+		double particleAmount = 0;
+		{
+            entity.setYRot(0);
+			entity.setXRot(0);
+			entity.setYBodyRot(entity.getYRot());
+			entity.setYHeadRot(entity.getYRot());
+			entity.yRotO = entity.getYRot();
+			entity.xRotO = entity.getXRot();
+			if (entity instanceof LivingEntity _entity) {
+				_entity.yBodyRotO = _entity.getYRot();
+				_entity.yHeadRotO = _entity.getYRot();
+			}
+		}
+		if (world instanceof ServerLevel _level)
+			_level.sendParticles(ParticleTypes.LARGE_SMOKE, (entity.getX()), (entity.getY() + 1), (entity.getZ()), 1, 0.2, 0.2, 0.2, 0);
+		if (world instanceof ServerLevel _level)
+			_level.sendParticles(ParticleTypes.END_ROD, (entity.getX()), (entity.getY() + 1), (entity.getZ()), 1, 1, 1, 1, 0);
+		entity.getPersistentData().putDouble("explosion", (entity.getPersistentData().getDouble("explosion") + 1));
+		if (entity.getPersistentData().getDouble("explosion") >= 150 && entity.getPersistentData().getDouble("explosion") < 220) {
+			if (world instanceof Level _level && !_level.isClientSide())
+				_level.explode(null, x, y, z, 8, Level.ExplosionInteraction.TNT);
+			loop = 0;
+			particleAmount = 40;
+			xRadius = 6;
+			zRadius = 6;
+			while (loop < particleAmount) {
+				if (world instanceof ServerLevel _level)
+					_level.sendParticles(ParticleTypes.SQUID_INK, (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 1), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 3, 0.3, 0.2, 0.3, 0.1);
+				if (world instanceof ServerLevel _level)
+					_level.sendParticles(ParticleTypes.END_ROD, (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 1), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 3, 0.3, 0.2, 0.3, 0.1);
+				ParticleHelper.spawn(world, ParticleHelper.voidParticles(), (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 1), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 5, 0, 0.05, 0, 0);
+				loop = loop + 1;
+			}
+			if (world instanceof ServerLevel _level)
+				_level.sendParticles(ParticleTypes.SQUID_INK, (entity.getX()), (entity.getY() + 1), (entity.getZ()), 30, 3, 3, 3, 0.2);
+		} else if (entity.getPersistentData().getDouble("explosion") >= 220) {
+			if (!entity.level().isClientSide())
+				entity.discard();
+		}
+		if (entity.getPersistentData().getDouble("explosion") % 6 == 0) {
+			if (entity.getPersistentData().getBoolean("isWhite") == true) {
+				entity.getPersistentData().putBoolean("isWhite", false);
+			} else {
+				entity.getPersistentData().putBoolean("isWhite", true);
+			}
+		}
+	}
+}

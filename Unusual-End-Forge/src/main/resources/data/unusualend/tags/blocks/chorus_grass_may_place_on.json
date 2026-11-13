@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "#minecraft:nylium",
+    "unusualend:infested_end_stone",
+    "minecraft:end_stone",
+    "minecraft:grass_block",
+    "minecraft:dirt",
+    "minecraft:coarse_dirt",
+    "minecraft:podzol",
+    "minecraft:mycelium",
+    "unusualend:raw_purpur_block",
+    "unusualend:rooted_raw_purpur"
+  ]
+}

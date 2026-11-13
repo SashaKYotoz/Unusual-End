@@ -1,0 +1,42 @@
+package net.sweety.unusualend.procedures;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.ProcedureHelper;
+
+public class BreakEggProcedure {
+	public static void execute(LevelAccessor world, double x, double y, double z) {
+		world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
+		ProcedureHelper.playSound(world, x, y, z, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 1, 1);
+		world.destroyBlock(BlockPos.containing(x, y, z), false);
+		if (world instanceof ServerLevel _level)
+			_level.sendParticles(ParticleTypes.POOF, (x + 0.5), (y + 0.2), (z + 0.5), 20, 1.3, 1.3, 1.3, 0);
+		if (world instanceof ServerLevel _level)
+			_level.sendParticles(ParticleTypes.REVERSE_PORTAL, (x + 0.5), (y + 0.2), (z + 0.5), 10, 1.3, 1.3, 1.3, 0);
+		for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 2, 3); index0++) {
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+				if (entityToSpawn != null) {
+					entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
+				}
+			}
+		}
+		if (world instanceof ServerLevel _level) {
+			Entity entityToSpawn = UnusualendModEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+			if (entityToSpawn != null) {
+				entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
+			}
+		}
+	}
+}

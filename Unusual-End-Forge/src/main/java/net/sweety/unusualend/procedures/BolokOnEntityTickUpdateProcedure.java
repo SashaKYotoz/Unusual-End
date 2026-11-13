@@ -1,0 +1,48 @@
+package net.sweety.unusualend.procedures;
+
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.sweety.unusualend.init.UnusualendModParticleTypes;
+import net.sweety.unusualend.util.ProcedureHelper;
+
+public class BolokOnEntityTickUpdateProcedure {
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
+			return;
+		if (Math.random() < 0.5) {
+			if (world instanceof ServerLevel _level)
+				_level.sendParticles(UnusualendModParticleTypes.BOLOK_PARTICLE.get(), x, y, z, 1, 0.4, 0.4, 0.4, 0);
+		}
+		if ((entity.level().dimension()) == Level.END) {
+			if (y < 30) {
+				if (entity instanceof Mob _entity)
+					_entity.getNavigation().moveTo(x, 45, z, 0.8);
+				if (y < 10) {
+					ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.LEVITATION, 60, 0));
+				}
+			} else {
+				if (!(entity.getPersistentData().getBoolean("coords"))) {
+					entity.getPersistentData().putBoolean("coords", true);
+					entity.getPersistentData().putDouble("x", x);
+					entity.getPersistentData().putDouble("y", y);
+					entity.getPersistentData().putDouble("z", z);
+				}
+				if (Math.random() < 0.005) {
+					if (entity instanceof Mob _entity)
+						_entity.getNavigation().moveTo((entity.getPersistentData().getDouble("x")), (entity.getPersistentData().getDouble("y")), (entity.getPersistentData().getDouble("z")), 0.8);
+				}
+			}
+		}
+		if (entity instanceof LivingEntity _livEnt15 && _livEnt15.hasEffect(MobEffects.REGENERATION)) {
+			if (entity instanceof LivingEntity _entity)
+				_entity.removeEffect(MobEffects.REGENERATION);
+			ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.WITHER, 100, 1));
+		}
+	}
+}

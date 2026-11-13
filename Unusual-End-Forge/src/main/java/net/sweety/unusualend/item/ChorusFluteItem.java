@@ -1,0 +1,54 @@
+
+package net.sweety.unusualend.item;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.Level;
+import net.sweety.unusualend.procedures.ChorusFluteRightclickedProcedure;
+
+import java.util.List;
+
+public class ChorusFluteItem extends Item {
+	public ChorusFluteItem() {
+		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+	}
+
+	@Override
+	public UseAnim getUseAnimation(ItemStack itemstack) {
+		return UseAnim.BOW;
+	}
+
+	@Override
+	public int getUseDuration(ItemStack itemstack) {
+		return 100;
+	}
+
+	@Override
+	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
+		String track;
+		super.appendHoverText(itemstack, world, list, flag);
+		track = (itemstack).getOrCreateTag().getString("track");
+		if ((itemstack.getOrCreateTag().getString("track")).equals("")) {
+			itemstack.getOrCreateTag().putString("track", Component.translatable("text.unusualend.all_tracks").getString());
+		}
+		list.add(Component.literal("\u00A77" + ((track))));
+	}
+
+	@Override
+	public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
+		ItemStack itemstack = player.getItemInHand(hand);
+		if (!player.isUsingItem()) {
+			ChorusFluteRightclickedProcedure.execute(world, player, itemstack);
+		}
+		if (getUseDuration(itemstack) <= 0) {
+			finishUsingItem(itemstack, world, player);
+		} else {
+			player.startUsingItem(hand);
+		}
+		return new InteractionResultHolder<>(InteractionResult.SUCCESS, itemstack);
+	}
+}

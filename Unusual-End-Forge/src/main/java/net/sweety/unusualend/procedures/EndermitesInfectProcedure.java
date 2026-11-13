@@ -1,0 +1,42 @@
+package net.sweety.unusualend.procedures;
+
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.EnderMan;
+import net.minecraft.world.entity.monster.Endermite;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.Event;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.sweety.unusualend.config.Config;
+import net.sweety.unusualend.entity.EnderblobEntity;
+import net.sweety.unusualend.init.UnusualendModMobEffects;
+import net.sweety.unusualend.util.ProcedureHelper;
+
+import javax.annotation.Nullable;
+
+@Mod.EventBusSubscriber
+public class EndermitesInfectProcedure {
+	@SubscribeEvent
+	public static void onEntityAttacked(LivingHurtEvent event) {
+		if (event != null && event.getEntity() != null) {
+			execute(event, event.getEntity(), event.getSource().getEntity());
+		}
+	}
+
+	private static void execute(@Nullable Event event, Entity entity, Entity sourceentity) {
+		if (entity == null || sourceentity == null)
+			return;
+		if (sourceentity instanceof Endermite || sourceentity instanceof EnderblobEntity) {
+			if (entity instanceof EnderMan) {
+				if (Math.random() < 0.5) {
+					ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 36000, 0));
+				}
+			} else {
+				if (Math.random() < (double) Config.ENDERMITES_PROBABILITY_TO_INFECT.get() / 100) {
+					ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 600, 0));
+				}
+			}
+		}
+	}
+}
