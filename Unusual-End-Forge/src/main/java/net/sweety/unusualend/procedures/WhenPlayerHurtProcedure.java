@@ -2,8 +2,8 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.commands.arguments.EntityAnchorArgument;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,7 +16,6 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.config.Config;
 import net.sweety.unusualend.entity.*;
@@ -72,7 +71,7 @@ public class WhenPlayerHurtProcedure {
 				dividedby = dividedby + 0.4;
 			}
 			ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.REGENERATION, 60, 2));
-			ProcedureHelper.playSound(world, sourceentity.getX(), sourceentity.getY(), sourceentity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.evoker.cast_spell")), SoundSource.HOSTILE, 1, 2);
+			ProcedureHelper.playSound(world, sourceentity.getX(), sourceentity.getY(), sourceentity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.HOSTILE, 1, 2);
 		}
 		if (sourceentity instanceof DraglingEntity) {
 			if ((sourceentity instanceof DraglingEntity _datEntL28 && _datEntL28.getEntityData().get(DraglingEntity.DATA_atk)) == true) {

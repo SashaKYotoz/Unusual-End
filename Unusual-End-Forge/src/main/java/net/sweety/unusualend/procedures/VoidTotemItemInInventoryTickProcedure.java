@@ -8,9 +8,9 @@ import net.minecraft.network.protocol.game.ClientboundLevelEventPacket;
 import net.minecraft.network.protocol.game.ClientboundPlayerAbilitiesPacket;
 import net.minecraft.network.protocol.game.ClientboundUpdateMobEffectPacket;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -19,7 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.config.Config;
 import net.sweety.unusualend.init.UnusualendModItems;
@@ -104,7 +103,7 @@ public class VoidTotemItemInInventoryTickProcedure {
 						}
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);
-						ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.chorus_fruit.teleport")), SoundSource.NEUTRAL, 1, 1);
+						ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.NEUTRAL, 1, 1);
 						if (Config.NEED_ANCHOR.get() == true) {
 							entity.getPersistentData().putString("TargetDimension", (itemstack.getOrCreateTag().getString("TpW")));
 							entity.getPersistentData().putDouble("TargetX", (itemstack.getOrCreateTag().getDouble("TpX") - 0.5));
@@ -125,7 +124,7 @@ public class VoidTotemItemInInventoryTickProcedure {
 							if (_ent instanceof ServerPlayer _serverPlayer)
 								_serverPlayer.connection.teleport(x, 260, z, _ent.getYRot(), _ent.getXRot());
 						}
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.phantom.ambient")), SoundSource.PLAYERS, 2, 1);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.PHANTOM_AMBIENT, SoundSource.PLAYERS, 2, 1);
 						if (!world.isClientSide()) {
 							ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.SLOW_FALLING, 600, 0, false, true));
 							ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.DARKNESS, 100, 0));

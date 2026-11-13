@@ -26,7 +26,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sweety.unusualend.block.entity.FadingBlockBlockEntity;
-import net.sweety.unusualend.procedures.FadingBlockEmittedRedstonePowerProcedure;
 import net.sweety.unusualend.procedures.FadingBlockOnBlockRightClickedProcedure;
 import net.sweety.unusualend.procedures.FadingBlockOnUpdateTickProcedure;
 
@@ -87,7 +86,7 @@ public class FadingBlockBlock extends Block implements EntityBlock {
 		int y = pos.getY();
 		int z = pos.getZ();
 		Level world = (Level) blockAccess;
-		return (int) FadingBlockEmittedRedstonePowerProcedure.execute(blockstate);
+		return (int) ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip1_1 ? blockstate.getValue(_getip1_1) : -1) + 1);
 	}
 
 	@Override

@@ -25,9 +25,9 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModTags;
-import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
-import net.sweety.unusualend.procedures.SmallWarpedAlgaeOnBoneMealSuccessProcedure;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class SmallWarpedAlgaeBlock extends FlowerBlock implements BonemealableBlock, SimpleWaterloggedBlock {
 	public SmallWarpedAlgaeBlock() {
@@ -101,11 +101,11 @@ public class SmallWarpedAlgaeBlock extends FlowerBlock implements BonemealableBl
 
 	@Override
 	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		return ChorusRootsBoneMealSuccessConditionProcedure.execute();
+		return (Math.random() < 0.4);
 	}
 
 	@Override
 	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		SmallWarpedAlgaeOnBoneMealSuccessProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		ProcedureHelper.replaceBlockKeepingState(world, pos, UnusualendModBlocks.WARPED_ALGAE.get().defaultBlockState(), 3);
 	}
 }

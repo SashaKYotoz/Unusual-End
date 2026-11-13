@@ -14,6 +14,7 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -36,9 +37,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.procedures.EnderlingOnInitialEntitySpawnProcedure;
-import net.sweety.unusualend.procedures.HasInvisibilityProcedure;
-import net.sweety.unusualend.procedures.ReturnIsWearingMaskProcedure;
 
 import javax.annotation.Nullable;
 
@@ -77,12 +77,12 @@ public class EnderlingEntity extends Monster {
 
             @Override
             public boolean canUse() {
-                return super.canUse() && HasInvisibilityProcedure.execute(EnderlingEntity.this);
+                return super.canUse() && EnderlingEntity.this.hasEffect(MobEffects.INVISIBILITY);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && HasInvisibilityProcedure.execute(EnderlingEntity.this);
+                return super.canContinueToUse() && EnderlingEntity.this.hasEffect(MobEffects.INVISIBILITY);
             }
         });
         this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.2, false) {
@@ -94,12 +94,12 @@ public class EnderlingEntity extends Monster {
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal(this, Player.class, false, false) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnIsWearingMaskProcedure.execute(EnderlingEntity.this);
+                return super.canUse() && !(EnderlingEntity.this.getTarget() != null && EnderlingEntity.this.getTarget().getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModTags.Items.ENDERLING_MASK));
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnIsWearingMaskProcedure.execute(EnderlingEntity.this);
+                return super.canContinueToUse() && !(EnderlingEntity.this.getTarget() != null && EnderlingEntity.this.getTarget().getItemBySlot(EquipmentSlot.HEAD).is(UnusualendModTags.Items.ENDERLING_MASK));
             }
         });
         this.targetSelector.addGoal(4, new HurtByTargetGoal(this));

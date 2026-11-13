@@ -3,6 +3,7 @@ package net.sweety.unusualend.init;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -19,7 +20,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.item.*;
 import net.sweety.unusualend.procedures.CrystalCatalystPropertyValueProviderProcedure;
-import net.sweety.unusualend.procedures.VoidTrackerPropertyValueProviderProcedure;
 
 import java.util.function.Supplier;
 
@@ -152,8 +152,8 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> CHORUS_PETALS_BLOCK = block(UnusualendModBlocks.CHORUS_PETALS_BLOCK);
 	public static final RegistryObject<Item> WARPED_POTION = REGISTRY.register("warped_potion", () -> new WarpedPotionItem());
 	public static final RegistryObject<Item> WARPED_SPORES = item("warped_spores", () -> new Item.Properties());
-	public static final RegistryObject<Item> BOLOK_BUCKET = REGISTRY.register("bolok_bucket", () -> new BolokBucketItem());
-	public static final RegistryObject<Item> ENDERFIREFLY_BUCKET = REGISTRY.register("enderfirefly_bucket", () -> new EnderfireflyBucketItem());
+	public static final RegistryObject<Item> BOLOK_BUCKET = REGISTRY.register("bolok_bucket", () -> new EntityBucketItem(UnusualendModEntities.BOLOK, () -> SoundEvents.BUCKET_FILL_FISH));
+	public static final RegistryObject<Item> ENDERFIREFLY_BUCKET = REGISTRY.register("enderfirefly_bucket", () -> new EntityBucketItem(UnusualendModEntities.ENDER_FIREFLY, () -> SoundEvents.ENDERMITE_AMBIENT));
 	public static final RegistryObject<Item> DRIPPING_GLOOPSTONE = block(UnusualendModBlocks.DRIPPING_GLOOPSTONE);
 	public static final RegistryObject<Item> GLOOPSLATE = block(UnusualendModBlocks.GLOOPSLATE);
 	public static final RegistryObject<Item> GLOOPY_BUSH = block(UnusualendModBlocks.GLOOPY_BUSH);
@@ -273,7 +273,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> RAW_BLUK = food("raw_bluk", 48, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 1), 0.8F).effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 0.5F).nutrition(4).saturationMod(0.4f).meat().build()));
 	public static final RegistryObject<Item> COOKED_BLUK = food("cooked_bluk", 80, () -> new Item.Properties().food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 0), 1.0F).nutrition(6).saturationMod(0.5f).meat().build()));
 	public static final RegistryObject<Item> BLUK_AU_CHOCOLAT = REGISTRY.register("bluk_au_chocolat", () -> new BlukAuChocolatItem());
-	public static final RegistryObject<Item> GLUB_BUCKET = REGISTRY.register("glub_bucket", () -> new GlubBucketItem());
+	public static final RegistryObject<Item> GLUB_BUCKET = REGISTRY.register("glub_bucket", () -> new EntityBucketItem(UnusualendModEntities.GLUB, () -> SoundEvents.BUCKET_FILL_FISH));
 	public static final RegistryObject<Item> CITRINE_TOTEM = block(UnusualendModBlocks.CITRINE_TOTEM);
 	public static final RegistryObject<Item> BLUK_SKEWER = REGISTRY.register("bluk_skewer", () -> new BlukSkewerItem());
 	public static final RegistryObject<Item> GLOOPILON_SEEDS = block(UnusualendModBlocks.GLOOPILON_SEEDS);
@@ -283,7 +283,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> MUSIC_DISC_QUEEN = REGISTRY.register("music_disc_queen", () -> new MusicDiscQueenItem());
 	public static final RegistryObject<Item> SHINY_CRYSTAL_TILES_SLAB = block(UnusualendModBlocks.SHINY_CRYSTAL_TILES_SLAB);
 	public static final RegistryObject<Item> SHINY_CRYSTAL_TILE_STAIRS = block(UnusualendModBlocks.SHINY_CRYSTAL_TILE_STAIRS);
-	public static final RegistryObject<Item> BLUK_BUCKET = REGISTRY.register("bluk_bucket", () -> new BlukBucketItem());
+	public static final RegistryObject<Item> BLUK_BUCKET = REGISTRY.register("bluk_bucket", () -> new EntityBucketItem(UnusualendModEntities.BLUK, () -> SoundEvents.BUCKET_FILL_FISH));
 	public static final RegistryObject<Item> INFUSER_INFOS = REGISTRY.register("infuser_infos", () -> new TooltipItem(new Item.Properties().rarity(Rarity.UNCOMMON), Component.translatable("tooltip.unusualend.infuser_infos.0"), Component.translatable("tooltip.unusualend.infuser_infos.1"), Component.translatable("tooltip.unusualend.infuser_infos.2"), Component.translatable("tooltip.unusualend.infuser_infos.3"), Component.translatable("tooltip.unusualend.infuser_infos.4"), Component.translatable("tooltip.unusualend.infuser_infos.5"), Component.translatable("tooltip.unusualend.infuser_infos.6"), Component.translatable("tooltip.unusualend.infuser_infos.7"), Component.translatable("tooltip.unusualend.infuser_infos.8")));
 	public static final RegistryObject<Item> ENDERBLOB_MOULT_BRICK_STAIRS = block(UnusualendModBlocks.ENDERBLOB_MOULT_BRICK_STAIRS);
 	public static final RegistryObject<Item> ENDERBLOB_MOULT_BRICK_SLAB = block(UnusualendModBlocks.ENDERBLOB_MOULT_BRICK_SLAB);
@@ -354,7 +354,7 @@ public class UnusualendModItems {
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			ItemProperties.register(VOID_TRACKER.get(), new ResourceLocation("unusualend:void_tracker_void_state"),
-					(itemStackToRender, clientWorld, entity, itemEntityId) -> (float) VoidTrackerPropertyValueProviderProcedure.execute(itemStackToRender));
+					(itemStackToRender, clientWorld, entity, itemEntityId) -> (float) (itemStackToRender.getOrCreateTag().getDouble("VoidState")));
 			ItemProperties.register(CRYSTAL_CATALYST.get(), new ResourceLocation("unusualend:crystal_catalyst_is_renamed"),
 					(itemStackToRender, clientWorld, entity, itemEntityId) -> (float) CrystalCatalystPropertyValueProviderProcedure.execute(itemStackToRender));
 			ItemProperties.register(ENDERBLOB_SHIELD.get(), new ResourceLocation("blocking"), ItemProperties.getProperty(Items.SHIELD, new ResourceLocation("blocking")));

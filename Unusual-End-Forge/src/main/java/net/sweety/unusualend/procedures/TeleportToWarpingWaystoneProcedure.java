@@ -1,10 +1,9 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,8 +18,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualendModTags;
+import net.sweety.unusualend.util.LookHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 import javax.annotation.Nullable;
@@ -35,61 +34,29 @@ public class TeleportToWarpingWaystoneProcedure {
 	}
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
-		if (entity == null)
+		if (!(entity instanceof LivingEntity living) || !LookHelper.isLookingAtWaystone(entity))
 			return;
-		double raydistance = 0;
-		double lookX = 0;
-		double lookY = 0;
-		double lookZ = 0;
-		if (DisplayOverlayWaystoneProcedure.execute(world, entity) == true) {
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("forge:can_teleport_to_warping_waystone")))) {
-				if (!(ProcedureHelper.isCreative(entity))) {
-					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
-				}
-				if (entity instanceof Player _player)
-					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 10);
-				if (entity instanceof LivingEntity _entity)
-					_entity.swing(InteractionHand.MAIN_HAND, true);
-			} else {
-				if (!(ProcedureHelper.isCreative(entity))) {
-					(entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).shrink(1);
-				}
-				if (entity instanceof Player _player)
-					_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem(), 10);
-				if (entity instanceof LivingEntity _entity)
-					_entity.swing(InteractionHand.OFF_HAND, true);
-			}
-			if (event != null && event.isCancelable()) {
-				event.setCanceled(true);
-			}
-			ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.enderman.teleport")), SoundSource.PLAYERS, 1, 1);
-			raydistance = 1;
-			while (!((world.getBlockState(BlockPos.containing(lookX, lookY, lookZ))).getBlock() == UnusualendModBlocks.WARPING_WAYSTONE.get())) {
-				lookX = entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(raydistance)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity)).getBlockPos().getX();
-				lookY = entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(raydistance)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity)).getBlockPos().getY();
-				lookZ = entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(raydistance)), ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ();
-				raydistance = raydistance + 1;
-				if (raydistance > 65) {
-					break;
-				}
-			}
-			if (raydistance <= 64) {
-				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(lookX, lookY, lookZ);
-					BlockEntity _blockEntity = world.getBlockEntity(_bp);
-					BlockState _bs = world.getBlockState(_bp);
-					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("RedstoneLevel", 60);
-					if (world instanceof Level _level)
-						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
-				}
-				{
-					Entity _ent = entity;
-					_ent.teleportTo((lookX + 0.5), (lookY + 1), (lookZ + 0.5));
-					if (_ent instanceof ServerPlayer _serverPlayer)
-						_serverPlayer.connection.teleport((lookX + 0.5), (lookY + 1), (lookZ + 0.5), _ent.getYRot(), _ent.getXRot());
-				}
-			}
+		InteractionHand hand = living.getMainHandItem().is(UnusualendModTags.Items.CAN_TELEPORT_TO_WARPING_WAYSTONE) ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+		ItemStack key = living.getItemInHand(hand);
+		if (entity instanceof Player player)
+			player.getCooldowns().addCooldown(key.getItem(), 10);
+		if (!ProcedureHelper.isCreative(entity))
+			key.shrink(1);
+		living.swing(hand, true);
+		if (event != null && event.isCancelable())
+			event.setCanceled(true);
+		ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1, 1);
+		BlockPos target = LookHelper.raycast(entity, LookHelper.WAYSTONE_RANGE, ClipContext.Block.COLLIDER).getBlockPos();
+		if (!world.isClientSide()) {
+			BlockEntity blockEntity = world.getBlockEntity(target);
+			if (blockEntity != null)
+				blockEntity.getPersistentData().putDouble("RedstoneLevel", 60);
+			BlockState state = world.getBlockState(target);
+			if (world instanceof Level level)
+				level.sendBlockUpdated(target, state, state, 3);
 		}
+		entity.teleportTo(target.getX() + 0.5, target.getY() + 1, target.getZ() + 0.5);
+		if (entity instanceof ServerPlayer serverPlayer)
+			serverPlayer.connection.teleport(target.getX() + 0.5, target.getY() + 1, target.getZ() + 0.5, entity.getYRot(), entity.getXRot());
 	}
 }

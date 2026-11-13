@@ -7,8 +7,8 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.sweety.unusualend.entity.FlampyrEntity;
-import net.sweety.unusualend.procedures.EndMathProcedure;
 
 public class ModelBabyFlampyr<T extends FlampyrEntity> extends ModelFlampyr<T> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("unusualend", "model_baby_flampyr"), "main");
@@ -41,8 +41,8 @@ public class ModelBabyFlampyr<T extends FlampyrEntity> extends ModelFlampyr<T> {
 
     @Override
     public void setupAnim(FlampyrEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.right_wing.zRot = (EndMathProcedure.sin(ageInTicks * 0.6F) * 0.6F);
-        this.left_wing.zRot = (EndMathProcedure.sin(ageInTicks * 0.6F + 3) * 0.6F);
+        this.right_wing.zRot = (Mth.sin(ageInTicks * 0.6F) * 0.6F);
+        this.left_wing.zRot = (Mth.sin(ageInTicks * 0.6F + 3) * 0.6F);
     }
 
     @Override

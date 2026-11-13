@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
-import net.sweety.unusualend.procedures.ShulkerShooterBlockAddedProcedure;
 import net.sweety.unusualend.procedures.ShulkerShooterRedstoneOnProcedure;
 
 public class ShulkerShooterBlock extends Block {
@@ -38,7 +37,7 @@ public class ShulkerShooterBlock extends Block {
 	public void onPlace(BlockState blockstate, Level world, BlockPos pos, BlockState oldState, boolean moving) {
 		super.onPlace(blockstate, world, pos, oldState, moving);
 		world.scheduleTick(pos, this, 40);
-		ShulkerShooterBlockAddedProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		world.scheduleTick(pos, world.getBlockState(pos).getBlock(), 20);
 	}
 
 	@Override

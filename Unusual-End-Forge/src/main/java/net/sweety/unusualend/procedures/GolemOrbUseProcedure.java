@@ -3,8 +3,8 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -22,7 +22,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.config.Config;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
@@ -54,7 +53,7 @@ public class GolemOrbUseProcedure {
 				|| (entity instanceof Player _playerHasItem ? _playerHasItem.getInventory().contains(new ItemStack(UnusualendModItems.WITHERING_ORB.get())) : false)) {
 			if (entity instanceof Player) {
 				if (Math.random() < Config.ORB_TRIGGER.get() / 100) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie.attack_wooden_door")), SoundSource.PLAYERS, 1, (float) 0.1);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.ZOMBIE_ATTACK_WOODEN_DOOR, SoundSource.PLAYERS, 1, (float) 0.1);
 					world.levelEvent(2001, BlockPos.containing(x, y - 1, z), Block.getId((world.getBlockState(BlockPos.containing(x, y - 1, z)))));
 					{
 						final Vec3 _center = new Vec3(x, y, z);

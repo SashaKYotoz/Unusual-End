@@ -1,9 +1,9 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.stats.StatsCounter;
@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.entity.EnderlingEntity;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -50,7 +49,7 @@ public class CitrineCandleOnTickUpdateProcedure {
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.EFFECT, (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 10, 0.7, 0.7, 0.7, 0.05);
 							if (world.isClientSide()) {
-								ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.extinguish_fire")), SoundSource.HOSTILE, 1, (float) 0.75);
+								ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_EXTINGUISH_FIRE, SoundSource.HOSTILE, 1, (float) 0.75);
 							}
 						}
 					}

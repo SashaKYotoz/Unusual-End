@@ -3,8 +3,8 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.items.ItemHandlerHelper;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
 import net.sweety.unusualend.init.UnusualendModBlocks;
@@ -101,7 +100,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 										}
 									}
 								}
-								ProcedureHelper.playSound(world, x + 0.5, y, z + 0.5, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.place")), SoundSource.NEUTRAL, 1, 1);
+								ProcedureHelper.playSound(world, x + 0.5, y, z + 0.5, SoundEvents.STONE_PLACE, SoundSource.NEUTRAL, 1, 1);
 								if (world instanceof ServerLevel _level) {
 									Entity entityToSpawn = UnusualendModEntities.ENDSTONE_GOLEM.get().spawn(_level, BlockPos.containing(x + 0.5, y - 1, z + 0.5), MobSpawnType.MOB_SUMMONED);
 									if (entityToSpawn != null) {

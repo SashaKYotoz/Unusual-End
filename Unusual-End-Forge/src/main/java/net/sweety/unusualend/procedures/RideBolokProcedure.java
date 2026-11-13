@@ -4,7 +4,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -26,7 +26,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.BolokEntity;
 import net.sweety.unusualend.init.UnusualendModEnchantments;
@@ -69,7 +68,7 @@ public class RideBolokProcedure {
 				}
 			} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.SHINY_CRYSTAL.get()) {
 				((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).shrink(1);
-				ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.eat")), SoundSource.HOSTILE, 1, 1);
+				ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1);
 				ParticleHelper.spawn(world, ParticleTypes.GLOW_SQUID_INK, ParticleHelper.localToEyes(entity, 0, 0, 0.6), 10, 0.1, 0.1, 0.1, 0.01, true);
 				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 1);
 				ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.WITHER, 300, 1));

@@ -2,9 +2,9 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,7 +16,6 @@ import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -28,7 +27,7 @@ public class EndstoneGolemEntityIsHurtProcedure {
 		if (y - sourceentity.getY() > 3 || y - sourceentity.getY() < -3) {
 			if (Math.random() < 0.15) {
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.evoker.prepare_attack")), SoundSource.HOSTILE, (float) 1.5, 1);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, (float) 1.5, 1);
 				}
 				{
 					Entity _ent = sourceentity;
@@ -48,13 +47,13 @@ public class EndstoneGolemEntityIsHurtProcedure {
 							(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(3)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()), 15, 0.5,
 							0.5, 0.5, 0.1);
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, sourceentity.getX(), sourceentity.getY(), sourceentity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("intentionally_empty")), SoundSource.PLAYERS, 2, (float) 1.35);
+					ProcedureHelper.playSound(world, sourceentity.getX(), sourceentity.getY(), sourceentity.getZ(), SoundEvents.EMPTY, SoundSource.PLAYERS, 2, (float) 1.35);
 				}
 			}
 		} else {
 			if (Math.random() < 0.02) {
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.illusioner.prepare_blindness")), SoundSource.HOSTILE, 2, (float) 1.3);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.ILLUSIONER_PREPARE_BLINDNESS, SoundSource.HOSTILE, 2, (float) 1.3);
 				}
 				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 600, 0));
 				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
@@ -65,7 +64,7 @@ public class EndstoneGolemEntityIsHurtProcedure {
 				}
 			} else if (Math.random() < 0.01) {
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.evoker.prepare_attack")), SoundSource.HOSTILE, 2, (float) 1.3);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, 2, (float) 1.3);
 				}
 				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 900, 0));
 				EndstoneGolemBreakSurroundingsProcedure.execute(world, x, y, z);
@@ -78,7 +77,7 @@ public class EndstoneGolemEntityIsHurtProcedure {
 				}
 			} else if (Math.random() < 0.02) {
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.evoker.prepare_summon")), SoundSource.HOSTILE, 2, (float) 0.5);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.HOSTILE, 2, (float) 0.5);
 				}
 				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.LEVITATION, 60, 1));
 				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.DARKNESS, 60, 0));

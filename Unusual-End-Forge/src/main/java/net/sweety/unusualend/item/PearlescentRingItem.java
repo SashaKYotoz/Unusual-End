@@ -10,7 +10,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModEnchantments;
-import net.sweety.unusualend.procedures.PearlescentRingInventoryTickProcedure;
+import net.sweety.unusualend.util.ItemCooldownHelper;
 
 import java.util.List;
 import java.util.Set;
@@ -68,6 +68,6 @@ public class PearlescentRingItem extends Item {
 	@Override
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
-		PearlescentRingInventoryTickProcedure.execute(itemstack);
+		ItemCooldownHelper.recharge(itemstack, "ringCooldown", 0.4, 0.2);
 	}
 }

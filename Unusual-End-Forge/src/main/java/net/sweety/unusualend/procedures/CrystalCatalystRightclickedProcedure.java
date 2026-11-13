@@ -2,8 +2,8 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,7 +13,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -45,7 +44,7 @@ public class CrystalCatalystRightclickedProcedure {
 					if (entity instanceof Player _player)
 						_player.getCooldowns().addCooldown(itemstack.getItem(), 10);
 					if (itemstack.getOrCreateTag().getDouble("Catalyser") == 1) {
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.beacon.activate")), SoundSource.PLAYERS, (float) 0.5, 2);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2);
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.END_ROD, x, (y + 1.5), z, 30, 0.9, 0.9, 0.9, 0);
 						if (Math.random() < 0.5) {
@@ -58,12 +57,12 @@ public class CrystalCatalystRightclickedProcedure {
 							ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.REGENERATION, 400, 0, false, false));
 						}
 					} else if (itemstack.getOrCreateTag().getDouble("Catalyser") == 2) {
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.conduit.activate")), SoundSource.PLAYERS, (float) 0.5, 2);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.CONDUIT_ACTIVATE, SoundSource.PLAYERS, (float) 0.5, 2);
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.SPLASH, x, (y + 1.5), z, 30, 0.9, 0.9, 0.9, 0);
 						ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.CONDUIT_POWER, 400, 0, false, false));
 					} else if (itemstack.getOrCreateTag().getDouble("Catalyser") == 3) {
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.burn")), SoundSource.PLAYERS, (float) 0.5, 2);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_BURN, SoundSource.PLAYERS, (float) 0.5, 2);
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.WITCH, x, (y + 1.5), z, 30, 0.9, 0.9, 0.9, 0);
 						if (Math.random() < 0.3) {

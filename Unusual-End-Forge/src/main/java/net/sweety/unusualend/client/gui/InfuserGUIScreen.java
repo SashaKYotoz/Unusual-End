@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
@@ -11,9 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.network.InfuserGUIButtonMessage;
-import net.sweety.unusualend.procedures.ReturnCitrineProcedure;
-import net.sweety.unusualend.procedures.ReturnPrismaticProcedure;
-import net.sweety.unusualend.procedures.ReturnShinyProcedure;
+import net.sweety.unusualend.util.InfuserGem;
 import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
 
 public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
@@ -62,77 +61,12 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 1)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 62, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 2)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 55, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 3)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 48, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 4)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 41, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 5)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 34, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 6)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 27, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 7)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 20, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnCitrineProcedure.execute(level, x, y, z, 8)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/citrine_charge.png"), this.leftPos + 14, this.topPos + 13, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 1)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 62, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 2)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 55, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 3)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 48, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 4)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 41, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 5)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 34, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 6)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 27, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 7)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 20, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnShinyProcedure.execute(level, x, y, z, 8)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/shiny_charge.png"), this.leftPos + 68, this.topPos + 13, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 1)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 62, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 2)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 55, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 3)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 48, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 4)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 41, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 5)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 34, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 6)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 27, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 7)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 20, 0, 0, 16, 7, 16, 7);
-		}
-		if (ReturnPrismaticProcedure.execute(level, x, y, z, 8)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/prismatic_charge.png"), this.leftPos + 122, this.topPos + 13, 0, 0, 16, 7, 16, 7);
+		BlockPos pos = new BlockPos(x, y, z);
+		for (InfuserGem gem : InfuserGem.values()) {
+			for (int charge = 1; charge <= InfuserGem.MAX_CHARGE; charge++) {
+				if (gem.hasCharge(level, pos, charge))
+					guiGraphics.blit(gem.chargeTexture(), this.leftPos + gem.screenX(), this.topPos + 62 - 7 * (charge - 1), 0, 0, 16, 7, 16, 7);
+			}
 		}
 		RenderSystem.disableBlend();
 	}

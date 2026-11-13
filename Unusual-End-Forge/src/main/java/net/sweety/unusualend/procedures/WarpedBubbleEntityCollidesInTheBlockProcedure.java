@@ -2,8 +2,8 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -11,7 +11,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.BlukEntity;
 import net.sweety.unusualend.entity.BolokEntity;
@@ -45,7 +44,7 @@ public class WarpedBubbleEntityCollidesInTheBlockProcedure {
 					});
 				});
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.bubble_column.bubble_pop")), SoundSource.NEUTRAL, (float) 1.2, (float) 1.3);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, SoundSource.NEUTRAL, (float) 1.2, (float) 1.3);
 				}
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles((SimpleParticleType) (UnusualendModParticleTypes.WARPED_BUBBLES.get()), (x + 0.5), (y + 0.5), (z + 0.5), 5, 0.2, 0.2, 0.2, 0);

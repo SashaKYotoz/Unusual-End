@@ -6,6 +6,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
@@ -13,7 +14,8 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.sweety.unusualend.procedures.IsCristallizedProcedure;
+import net.sweety.unusualend.init.UnusualendModMobEffects;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 @Mod.EventBusSubscriber({Dist.CLIENT})
 public class CrystallizationOverlayOverlay {
@@ -38,7 +40,7 @@ public class CrystallizationOverlayOverlay {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
-		if (IsCristallizedProcedure.execute(entity)) {
+		if ((entity != null && entity instanceof LivingEntity _livEnt0_6 && _livEnt0_6.hasEffect(UnusualendModMobEffects.CRYSTALLIZATION.get()) && !(ProcedureHelper.isCreative(entity)) && !(ProcedureHelper.isSpectator(entity)))) {
 			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/crystalisation.png"), w / 2 + -91, h - 49, 0, 0, 81, 19, 81, 19);
 
 		}

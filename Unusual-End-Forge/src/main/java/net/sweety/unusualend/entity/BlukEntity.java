@@ -40,7 +40,7 @@ import net.minecraftforge.network.PlayMessages;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.BlukOnEntityTickUpdateProcedure;
-import net.sweety.unusualend.procedures.BucketBlukProcedure;
+import net.sweety.unusualend.util.MobBucketHelper;
 
 public class BlukEntity extends Monster {
     public BlukEntity(PlayMessages.SpawnEntity packet, Level world) {
@@ -161,7 +161,7 @@ public class BlukEntity extends Monster {
         double x = this.getX();
         double y = this.getY();
         double z = this.getZ();
-        BucketBlukProcedure.execute(this.level(), x, y, z, this, sourceentity);
+        MobBucketHelper.capture(this, sourceentity, UnusualendModItems.BLUK_BUCKET.get());
         return InteractionResult.sidedSuccess(this.level().isClientSide());
     }
 

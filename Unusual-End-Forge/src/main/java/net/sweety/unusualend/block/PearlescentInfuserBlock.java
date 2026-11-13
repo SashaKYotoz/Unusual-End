@@ -32,7 +32,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import net.sweety.unusualend.block.entity.PearlescentInfuserBlockEntity;
 import net.sweety.unusualend.procedures.ClearSlot3Procedure;
-import net.sweety.unusualend.procedures.PearlescentInfuserUpdateTickProcedure;
+import net.sweety.unusualend.util.InfuserGem;
 import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
 
 public class PearlescentInfuserBlock extends Block implements EntityBlock {
@@ -64,10 +64,7 @@ public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	@Override
 	public void tick(BlockState blockstate, ServerLevel world, BlockPos pos, RandomSource random) {
 		super.tick(blockstate, world, pos, random);
-		int x = pos.getX();
-		int y = pos.getY();
-		int z = pos.getZ();
-		PearlescentInfuserUpdateTickProcedure.execute(world, x, y, z);
+		InfuserGem.tick(world, pos);
 		world.scheduleTick(pos, this, 20);
 	}
 

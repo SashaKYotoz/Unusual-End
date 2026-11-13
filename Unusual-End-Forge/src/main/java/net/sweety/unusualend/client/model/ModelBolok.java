@@ -10,7 +10,6 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.sweety.unusualend.procedures.EndMathProcedure;
 
 public class ModelBolok<T extends Entity> extends EntityModel<T> {
 	// This layer location should be baked with EntityRendererProvider.Context in
@@ -56,6 +55,6 @@ public class ModelBolok<T extends Entity> extends EntityModel<T> {
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
 		this.left_fin.zRot = Mth.cos(limbSwing * 1.0F) * -1.0F * limbSwingAmount;
 		this.right_fin.zRot = Mth.cos(limbSwing * 1.0F) * 1.0F * limbSwingAmount;
-		this.tail.yRot = (EndMathProcedure.sin(ageInTicks * 0.2F + 2) * 0.1F);
+		this.tail.yRot = (Mth.sin(ageInTicks * 0.2F + 2) * 0.1F);
 	}
 }

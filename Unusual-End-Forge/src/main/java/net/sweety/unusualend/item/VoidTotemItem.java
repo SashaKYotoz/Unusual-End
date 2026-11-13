@@ -9,7 +9,6 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.sweety.unusualend.procedures.PrismaticPearlItemGlowProcedure;
 import net.sweety.unusualend.procedures.VoidTotemItemInInventoryTickProcedure;
 
 public class VoidTotemItem extends Item {
@@ -25,7 +24,7 @@ public class VoidTotemItem extends Item {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public boolean isFoil(ItemStack itemstack) {
-		return PrismaticPearlItemGlowProcedure.execute(itemstack);
+		return (itemstack.getOrCreateTag().getBoolean("LinkedMirror") || itemstack.getOrCreateTag().getBoolean("LinkedTotem"));
 	}
 
 	@Override

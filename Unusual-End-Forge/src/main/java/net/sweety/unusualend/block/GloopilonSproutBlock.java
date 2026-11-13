@@ -15,13 +15,17 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
-import net.sweety.unusualend.procedures.*;
+import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualendModTags;
+import net.sweety.unusualend.procedures.GloopilonSproutUpdateTickProcedure;
+import net.sweety.unusualend.procedures.GrowGloopilonProcedure;
 
 public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlock {
 	public GloopilonSproutBlock() {
@@ -58,7 +62,7 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = DrippingGloopstoneGrowthConditionProcedure.execute(world, x, y, z);
+			additionalCondition = ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.POLISHED_GLOOPSTONE.get() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE_BRICKS.get());
 		}
 		return additionalCondition;
 	}
@@ -83,14 +87,14 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 	@Override
 	public boolean isValidBonemealTarget(LevelReader worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
 		if (worldIn instanceof LevelAccessor world) {
-			return GloopilonSproutCanBoneMealBeUsedOnThisBlockProcedure.execute(pos.getY(), blockstate);
+			return (pos.getY() >= 120 && (blockstate.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _getip1_2 ? blockstate.getValue(_getip1_2) : -1) < 2);
 		}
 		return false;
 	}
 
 	@Override
 	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		return GloopilonSproutBoneMealSuccessConditionProcedure.execute();
+		return (Math.random() < 0.05);
 	}
 
 	@Override

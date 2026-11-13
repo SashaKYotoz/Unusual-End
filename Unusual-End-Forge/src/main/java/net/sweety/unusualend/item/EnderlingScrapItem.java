@@ -4,15 +4,14 @@ package net.sweety.unusualend.item;
 
 import com.google.common.collect.Iterables;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.procedures.EnderlingScrapLeggingsTickEventProcedure;
 
@@ -38,7 +37,7 @@ public abstract class EnderlingScrapItem extends ArmorItem {
 
 			@Override
 			public SoundEvent getEquipSound() {
-				return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.armor.equip_leather"));
+				return SoundEvents.ARMOR_EQUIP_LEATHER;
 			}
 
 			@Override

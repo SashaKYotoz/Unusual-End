@@ -3,8 +3,8 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffects;
@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -52,7 +51,7 @@ public class WeakEndermiteEggUpdateTickProcedure {
 			}
 			if (nearby_player == true) {
 				world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.turtle.egg_crack")), SoundSource.BLOCKS, 1, 1);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);
 				if (hidden == true) {
 					proba = 0.3;
 				} else {

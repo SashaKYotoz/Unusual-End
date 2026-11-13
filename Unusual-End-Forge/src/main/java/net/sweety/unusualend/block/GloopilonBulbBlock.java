@@ -24,7 +24,10 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.sweety.unusualend.init.UnusualendModBlocks;
-import net.sweety.unusualend.procedures.*;
+import net.sweety.unusualend.init.UnusualendModTags;
+import net.sweety.unusualend.procedures.GloopilonFruitOnRandomClientDisplayTickProcedure;
+import net.sweety.unusualend.procedures.GloopilonSproutUpdateTickProcedure;
+import net.sweety.unusualend.procedures.GrowGloopilonProcedure;
 
 public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
@@ -87,7 +90,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return GloopilonFruitGrowthConditionProcedure.execute(world, x, y, z);
+			return ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPILON_STEM.get());
 		}
 		return super.canSurvive(blockstate, worldIn, pos);
 	}
@@ -116,14 +119,14 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	@Override
 	public boolean isValidBonemealTarget(LevelReader worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
 		if (worldIn instanceof LevelAccessor world) {
-			return GloopilonSproutCanBoneMealBeUsedOnThisBlockProcedure.execute(pos.getY(), blockstate);
+			return (pos.getY() >= 120 && (blockstate.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _getip1_3 ? blockstate.getValue(_getip1_3) : -1) < 2);
 		}
 		return false;
 	}
 
 	@Override
 	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		return GloopilonSproutBoneMealSuccessConditionProcedure.execute();
+		return (Math.random() < 0.05);
 	}
 
 	@Override

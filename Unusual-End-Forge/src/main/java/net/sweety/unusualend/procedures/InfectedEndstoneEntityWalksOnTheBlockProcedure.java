@@ -7,6 +7,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
@@ -19,7 +20,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EnderTrapperEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
@@ -55,7 +55,7 @@ public class InfectedEndstoneEntityWalksOnTheBlockProcedure {
 												entityiterator.lookAt(EntityAnchorArgument.Anchor.FEET, entity.position());
 											}
 										}
-										ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.evoker_fangs.attack")), SoundSource.NEUTRAL, 1, 1);
+										ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_FANGS_ATTACK, SoundSource.NEUTRAL, 1, 1);
 										{
                                             entityiterator.teleportTo((entityiterator.getX()), (entityiterator.getY() + 0.25), (entityiterator.getZ()));
 											if (entityiterator instanceof ServerPlayer _serverPlayer)

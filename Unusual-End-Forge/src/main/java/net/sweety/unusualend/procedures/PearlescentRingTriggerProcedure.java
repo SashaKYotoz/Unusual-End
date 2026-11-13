@@ -1,7 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,6 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModTags;
 import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nullable;
@@ -39,7 +38,7 @@ public class PearlescentRingTriggerProcedure {
 						if (!((sourceentity instanceof Player _plrCldRem3 ? _plrCldRem3.getCooldowns().getCooldownPercent(UnusualendModItems.PEARLESCENT_RING.get(), 0f) * 100 : 0) > 0)) {
 							if (itemstackiterator.getOrCreateTag().getDouble("ringCooldown") >= 400) {
 								sourceentity.getPersistentData().putBoolean("wasRingUsed", true);
-								if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("unusualend:enderling_mask")))) {
+								if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(UnusualendModTags.Items.ENDERLING_MASK)) {
 								}
 								itemstackiterator.getOrCreateTag().putDouble("ringCooldown", 0);
 								if (sourceentity instanceof Player _player)
@@ -53,7 +52,7 @@ public class PearlescentRingTriggerProcedure {
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PEARLESCENT_RING.get()) {
 			if (!((sourceentity instanceof Player _plrCldRem15 ? _plrCldRem15.getCooldowns().getCooldownPercent(UnusualendModItems.PEARLESCENT_RING.get(), 0f) * 100 : 0) > 0)) {
 				if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("ringCooldown") >= 400) {
-					if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("unusualend:enderling_mask")))) {
+					if ((sourceentity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY).is(UnusualendModTags.Items.ENDERLING_MASK)) {
 					}
 					(sourceentity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("ringCooldown", 0);
 					if (sourceentity instanceof Player _player)

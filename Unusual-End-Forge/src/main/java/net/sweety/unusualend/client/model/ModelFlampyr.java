@@ -8,8 +8,8 @@ import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.sweety.unusualend.procedures.EndMathProcedure;
 
 // Made with Blockbench 4.7.1
 // Exported for Minecraft version 1.17 or later with Mojang mappings
@@ -57,7 +57,7 @@ public class ModelFlampyr<T extends Entity> extends EntityModel<T> {
 	}
 
 	public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-		this.right_wing.zRot = (EndMathProcedure.sin(ageInTicks * 0.6F) * 0.6F);
-		this.left_wing.zRot = (EndMathProcedure.sin(ageInTicks * 0.6F + 3) * 0.6F);
+		this.right_wing.zRot = (Mth.sin(ageInTicks * 0.6F) * 0.6F);
+		this.left_wing.zRot = (Mth.sin(ageInTicks * 0.6F + 3) * 0.6F);
 	}
 }

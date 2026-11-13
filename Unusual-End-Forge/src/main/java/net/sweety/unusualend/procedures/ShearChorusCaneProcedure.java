@@ -1,7 +1,7 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -14,7 +14,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -43,7 +42,7 @@ public class ShearChorusCaneProcedure {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.OFF_HAND, true);
 				}
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.growing_plant.crop")), SoundSource.BLOCKS, 1, 1);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1, 1);
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_FLOWER.get()) {
 					world.destroyBlock(BlockPos.containing(x, y, z), false);
 					for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 1, 2); index0++) {

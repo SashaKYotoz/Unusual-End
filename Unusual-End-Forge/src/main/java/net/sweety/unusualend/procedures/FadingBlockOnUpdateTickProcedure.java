@@ -2,8 +2,8 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -59,7 +58,7 @@ public class FadingBlockOnUpdateTickProcedure {
 		}
 		if (ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "open") == 1) {
 			if (!world.isClientSide()) {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("intentionally_empty")), SoundSource.BLOCKS, (float) 0.7, (float) 1.8);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.EMPTY, SoundSource.BLOCKS, (float) 0.7, (float) 1.8);
 			}
 			if (!world.isClientSide()) {
 				BlockPos _bp = BlockPos.containing(x, y, z);

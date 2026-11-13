@@ -3,8 +3,8 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -18,7 +18,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -75,7 +74,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 						}
 					}
 					if (world.isClientSide()) {
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.zombie.break_wooden_door")), SoundSource.HOSTILE, 3, 1);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.ZOMBIE_BREAK_WOODEN_DOOR, SoundSource.HOSTILE, 3, 1);
 					}
 					EndstoneGolemBreakSurroundingsProcedure.execute(world, x, y, z);
 				}
@@ -102,7 +101,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 					if (entity instanceof EndstoneGolemEntity _datEntSetI)
 						_datEntSetI.getEntityData().set(EndstoneGolemEntity.DATA_aoe_animtime, 35);
 					if (world.isClientSide()) {
-						ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.elder_guardian.ambient")), SoundSource.HOSTILE, 3, 1);
+						ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ELDER_GUARDIAN_AMBIENT, SoundSource.HOSTILE, 3, 1);
 					}
 				}
 			}
@@ -116,7 +115,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 							_datEntSetI.getEntityData().set(EndstoneGolemEntity.DATA_aoe_cooldown, (int) ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) : 0) + 1));
 						if ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) : 0) == 110) {
 							if (world.isClientSide()) {
-								ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.evoker.prepare_attack")), SoundSource.HOSTILE, 3, (float) 0.6);
+								ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, 3, (float) 0.6);
 							}
 						}
 						if ((entity instanceof EndstoneGolemEntity _datEntI ? _datEntI.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) : 0) >= 115) {
@@ -143,7 +142,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.ENCHANT, x, y, z, 20, 1, 1, 1, 0);
 					if (!world.isClientSide()) {
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.elder_guardian.curse")), SoundSource.HOSTILE, 2, (float) 0.5);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.HOSTILE, 2, (float) 0.5);
 					}
 					if (!entity.level().isClientSide())
 						entity.discard();

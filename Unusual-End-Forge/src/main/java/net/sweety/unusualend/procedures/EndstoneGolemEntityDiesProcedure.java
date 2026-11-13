@@ -2,8 +2,8 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
@@ -12,16 +12,16 @@ import net.minecraft.world.entity.LightningBolt;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModSounds;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 public class EndstoneGolemEntityDiesProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.EXPLOSION, x, y, z, 10, 1, 1, 1, 0);
-		ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.explode")), SoundSource.HOSTILE, 1, 1);
+		ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_EXPLODE, SoundSource.HOSTILE, 1, 1);
 		if (world instanceof ServerLevel _level) {
 			LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
 			entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
@@ -36,12 +36,12 @@ public class EndstoneGolemEntityDiesProcedure {
 					entityToSpawn.setVisualOnly(true);
 					_level.addFreshEntity(entityToSpawn);
 				}
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.explode")), SoundSource.HOSTILE, 1, 1);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_EXPLODE, SoundSource.HOSTILE, 1, 1);
 			});
 		}
 		for (int index1 = 0; index1 < 3; index1++) {
 			UnusualEnd.queueServerWork(15, () -> {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:endstone_golem_death")), SoundSource.HOSTILE, 2, 1);
+				ProcedureHelper.playSound(world, x, y, z, UnusualendModSounds.ENDSTONE_GOLEM_DEATH.get(), SoundSource.HOSTILE, 2, 1);
 			});
 		}
 		if (world instanceof ServerLevel _level)

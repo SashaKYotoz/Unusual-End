@@ -3,7 +3,6 @@ package net.sweety.unusualend.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -31,13 +30,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.init.UnusualendModItems;
-import net.sweety.unusualend.procedures.BucketFireflyProcedure;
 import net.sweety.unusualend.procedures.EnderFireflyTickUpdateProcedure;
 import net.sweety.unusualend.procedures.FireflyIsHurtProcedure;
-import net.sweety.unusualend.procedures.ReturnNotSneakingProcedure;
+import net.sweety.unusualend.util.MobBucketHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.EnumSet;
 
@@ -71,23 +69,23 @@ public class FlampyrEntity extends TamableAnimal {
         this.goalSelector.addGoal(1, new BreedGoal(this, 1.2) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(2, new TemptGoal(this, 1.2, Ingredient.of(UnusualendModItems.END_BLOB.get()), false) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2, false) {
@@ -98,45 +96,45 @@ public class FlampyrEntity extends TamableAnimal {
 
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal(this, EnderblobEntity.class, false, false) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, Endermite.class, false, false) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.targetSelector.addGoal(5, new NearestAttackableTargetGoal(this, SmallEnderbulbEntity.class, false, false) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(6, new Goal() {
@@ -146,7 +144,7 @@ public class FlampyrEntity extends TamableAnimal {
 
             public boolean canUse() {
                 if (FlampyrEntity.this.getTarget() != null && !FlampyrEntity.this.getMoveControl().hasWanted()) {
-                    return ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                    return !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
                 } else {
                     return false;
                 }
@@ -154,7 +152,7 @@ public class FlampyrEntity extends TamableAnimal {
 
             @Override
             public boolean canContinueToUse() {
-                return ReturnNotSneakingProcedure.execute(FlampyrEntity.this) && FlampyrEntity.this.getMoveControl().hasWanted() && FlampyrEntity.this.getTarget() != null && FlampyrEntity.this.getTarget().isAlive();
+                return !ProcedureHelper.isOrderedToSit(FlampyrEntity.this) && FlampyrEntity.this.getMoveControl().hasWanted() && FlampyrEntity.this.getTarget() != null && FlampyrEntity.this.getTarget().isAlive();
             }
 
             @Override
@@ -181,45 +179,45 @@ public class FlampyrEntity extends TamableAnimal {
         this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, EnderblobEntity.class, (float) 64) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(8, new LookAtPlayerGoal(this, Endermite.class, (float) 64) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(9, new LookAtPlayerGoal(this, SmallEnderbulbEntity.class, (float) 64) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(10, new FollowOwnerGoal(this, 1.2, (float) 8, (float) 4, false) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(11, new RandomStrollGoal(this, 1.2, 20) {
@@ -234,23 +232,23 @@ public class FlampyrEntity extends TamableAnimal {
 
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(12, new LeapAtTargetGoal(this, (float) 1.2) {
             @Override
             public boolean canUse() {
-                return super.canUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
 
             @Override
             public boolean canContinueToUse() {
-                return super.canContinueToUse() && ReturnNotSneakingProcedure.execute(FlampyrEntity.this);
+                return super.canContinueToUse() && !ProcedureHelper.isOrderedToSit(FlampyrEntity.this);
             }
         });
         this.goalSelector.addGoal(13, new RandomLookAroundGoal(this));
@@ -269,12 +267,12 @@ public class FlampyrEntity extends TamableAnimal {
 
     @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.hurt"));
+        return SoundEvents.ENDERMITE_HURT;
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.death"));
+        return SoundEvents.ENDERMITE_DEATH;
     }
 
     @Override
@@ -334,7 +332,7 @@ public class FlampyrEntity extends TamableAnimal {
         }
         Entity entity = this;
         Level world = this.level();
-        BucketFireflyProcedure.execute(world, entity, player);
+        MobBucketHelper.capture(entity, player, UnusualendModItems.ENDERFIREFLY_BUCKET.get());
         return retval;
     }
 

@@ -3,8 +3,8 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -17,7 +17,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -53,7 +52,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 						if (entity instanceof LivingEntity _entity)
 							_entity.swing(InteractionHand.OFF_HAND, true);
 					}
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.beacon.activate")), SoundSource.BLOCKS, 1, 1);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1, 1);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.END_ROD, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 0);
 				} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.CONDUIT) {
@@ -70,7 +69,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 						if (entity instanceof LivingEntity _entity)
 							_entity.swing(InteractionHand.OFF_HAND, true);
 					}
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.conduit.activate")), SoundSource.BLOCKS, 1, 1);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.CONDUIT_ACTIVATE, SoundSource.BLOCKS, 1, 1);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.SPLASH, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 1);
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putString("buff", (Component.translatable("text.unusualend.catalyst_description_conduit").getString()));
@@ -88,7 +87,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 						if (entity instanceof LivingEntity _entity)
 							_entity.swing(InteractionHand.OFF_HAND, true);
 					}
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.enchantment_table.use")), SoundSource.BLOCKS, 1, (float) 0.5);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1, (float) 0.5);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.WITCH, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 1);
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putString("buff", (Component.translatable("text.unusualend.catalyst_description_infuser").getString()));

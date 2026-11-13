@@ -4,14 +4,16 @@ package net.sweety.unusualend.item;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.sweety.unusualend.procedures.WarpedPotionPlayerFinishesUsingItemProcedure;
 import net.sweety.unusualend.procedures.WarpedPotionRightclickedOnBlockProcedure;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.List;
 
@@ -35,7 +37,8 @@ public class WarpedPotionItem extends Item {
 	public ItemStack finishUsingItem(ItemStack itemstack, Level world, LivingEntity entity) {
 		ItemStack retval = new ItemStack(Items.GLASS_BOTTLE);
 		super.finishUsingItem(itemstack, world, entity);
-		WarpedPotionPlayerFinishesUsingItemProcedure.execute(entity);
+		if (entity != null)
+			ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
 		if (itemstack.isEmpty()) {
 			return retval;
 		} else {

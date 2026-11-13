@@ -1,9 +1,8 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,8 +14,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 import javax.annotation.Nullable;
@@ -35,7 +34,7 @@ public class StipPlanksProcedure {
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof AxeItem || (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() instanceof AxeItem
 				&& (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(new ResourceLocation("unusualend:strippable")))) {
+			if ((world.getBlockState(BlockPos.containing(x, y, z))).is(UnusualendModTags.Blocks.STRIPPABLE)) {
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof AxeItem) {
 					if (!(ProcedureHelper.isCreative(entity))) {
 						{
@@ -62,7 +61,7 @@ public class StipPlanksProcedure {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.axe.strip")), SoundSource.BLOCKS, 1, 1);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1, 1);
 				}
 				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_NEST_PLANKS.get()) {
 					ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z), UnusualendModBlocks.STRIPPED_CHORUS_NEST_PLANKS.get().defaultBlockState(), 3);

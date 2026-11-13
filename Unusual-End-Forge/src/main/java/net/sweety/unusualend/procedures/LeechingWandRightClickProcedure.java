@@ -1,6 +1,6 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +16,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.entity.BenevolentLeechingChargeProjectileEntity;
 import net.sweety.unusualend.entity.BondLeechingChargeProjectileEntity;
 import net.sweety.unusualend.entity.LeechingChargeProjectileEntity;
@@ -43,7 +42,7 @@ public class LeechingWandRightClickProcedure {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getDouble("rayCooldown") >= 400) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.firework_rocket.launch")), SoundSource.PLAYERS, 1, 2);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1, 2);
 				if (EnchantmentHelper.getItemEnchantmentLevel(UnusualendModEnchantments.BONDING.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 					{
 						Entity _shootFrom = entity;

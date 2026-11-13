@@ -2,7 +2,7 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -19,7 +19,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -52,7 +51,7 @@ public class WarpedSquashOnBlockRightClickedProcedure {
 				}.with(UnusualendModBlocks.CARVED_WARPED_SQUASH.get().defaultBlockState(),
 						(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()))), 3);
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.pumpkin.carve")), SoundSource.NEUTRAL, 1, 1);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.PUMPKIN_CARVE, SoundSource.NEUTRAL, 1, 1);
 				}
 			}
 		}

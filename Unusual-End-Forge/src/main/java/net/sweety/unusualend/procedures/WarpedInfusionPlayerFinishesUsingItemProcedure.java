@@ -1,12 +1,11 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.config.Config;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -34,7 +33,7 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 			ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) Config.TENACITY_TIME.get() * 20), 0));
 		}
 		if (world.isClientSide()) {
-			ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.break")), SoundSource.PLAYERS, (float) 0.9, (float) 1.5);
+			ProcedureHelper.playSound(world, x, y, z, SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, (float) 0.9, (float) 1.5);
 		}
 	}
 }

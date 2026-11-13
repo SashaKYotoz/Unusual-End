@@ -1,7 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,6 +11,7 @@ import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualendModTags;
 
 import javax.annotation.Nullable;
 
@@ -29,12 +28,12 @@ public class OnRightClickOnVoidExplosiveProcedure {
 		if (entity == null)
 			return;
 		if (blockstate.getBlock() == UnusualendModBlocks.VOID_EXPLOSIVE.get()) {
-			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("unusualend:explosive_igniter")))
-					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("unusualend:explosive_igniter")))) {
+			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(UnusualendModTags.Items.EXPLOSIVE_IGNITER)
+					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).is(UnusualendModTags.Items.EXPLOSIVE_IGNITER)) {
 				if (event != null && event.isCancelable()) {
 					event.setCanceled(true);
 				}
-				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("unusualend:explosive_igniter")))) {
+				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(UnusualendModTags.Items.EXPLOSIVE_IGNITER)) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
 				} else {

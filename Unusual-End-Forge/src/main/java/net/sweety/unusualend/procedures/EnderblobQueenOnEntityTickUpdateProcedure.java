@@ -6,6 +6,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.entity.EnderblobEntity;
 import net.sweety.unusualend.entity.EnderblobQueenEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
@@ -52,14 +52,14 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 		if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
 			entity.getPersistentData().putDouble("IA", (entity.getPersistentData().getDouble("IA") + 1));
 			if (entity.getPersistentData().getDouble("IA") == 100) {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.death")), SoundSource.HOSTILE, 2, (float) 0.5);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_DEATH, SoundSource.HOSTILE, 2, (float) 0.5);
 				dis = Math.sqrt(Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX() - entity.getX(), 2) + Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() - entity.getY(), 2)
 						+ Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ() - entity.getZ(), 2));
 				if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
 					if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
 						_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.CRYSTALLIZATION.get(), 100, 0, false, false));
 					for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 2, 3); index0++) {
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.step")), SoundSource.NEUTRAL, 1, (float) 0.75);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_STEP, SoundSource.NEUTRAL, 1, (float) 0.75);
 					}
 					if (world instanceof ServerLevel _level) {
 						Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
@@ -102,7 +102,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 				}
 			}
 			if (entity.getPersistentData().getDouble("IA") == 300) {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.hurt")), SoundSource.HOSTILE, 2, (float) 0.5);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_HURT, SoundSource.HOSTILE, 2, (float) 0.5);
 				QueenBreakSurroundingsProcedure.execute(world, x, y, z);
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(UnusualendModParticleTypes.PINK_FLAME.get(), x, y, z, 30, 2, 2, 2, 0.1);
@@ -114,7 +114,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 				xRadius = 8;
 				zRadius = 8;
 				loop = 0;
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.respawn_anchor.set_spawn")), SoundSource.NEUTRAL, 3, 2);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.NEUTRAL, 3, 2);
 				while (loop < particleAmount) {
 					ParticleHelper.spawn(world, ParticleHelper.voidParticles(), (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 5, 0, 0.05, 0, 0);
 					ParticleHelper.spawn(world, ParticleTypes.SQUID_INK, (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 1, 0, 0.05, 0, 0);
@@ -139,7 +139,7 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 				}
 			}
 			if (entity.getPersistentData().getDouble("IA") == 400) {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.endermite.ambient")), SoundSource.HOSTILE, 2, (float) 0.7);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_AMBIENT, SoundSource.HOSTILE, 2, (float) 0.7);
 				loop = 1;
 				particleAmount = 3;
 				xRadius = 3;

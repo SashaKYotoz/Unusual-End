@@ -10,9 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.network.NetworkEvent;
 import net.sweety.unusualend.UnusualEnd;
-import net.sweety.unusualend.procedures.ConsumeCitrineProcedure;
-import net.sweety.unusualend.procedures.ConsumePrismaticProcedure;
-import net.sweety.unusualend.procedures.ConsumeShinyProcedure;
+import net.sweety.unusualend.util.InfuserGem;
 
 import java.util.function.Supplier;
 
@@ -58,33 +56,7 @@ public class InfuserGUIButtonMessage {
 		Level world = entity.level();
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;
-		if (buttonID == 0) {
-			ConsumeCitrineProcedure.execute(world, x, y, z, entity, 1);
-		}
-		if (buttonID == 1) {
-			ConsumeShinyProcedure.execute(world, x, y, z, entity, 1);
-		}
-		if (buttonID == 2) {
-			ConsumePrismaticProcedure.execute(world, x, y, z, entity, 1);
-		}
-		if (buttonID == 3) {
-			ConsumeCitrineProcedure.execute(world, x, y, z, entity, 4);
-		}
-		if (buttonID == 4) {
-			ConsumeShinyProcedure.execute(world, x, y, z, entity, 4);
-		}
-		if (buttonID == 5) {
-			ConsumePrismaticProcedure.execute(world, x, y, z, entity, 4);
-		}
-		if (buttonID == 6) {
-			ConsumeCitrineProcedure.execute(world, x, y, z, entity, 8);
-		}
-		if (buttonID == 7) {
-			ConsumeShinyProcedure.execute(world, x, y, z, entity, 8);
-		}
-		if (buttonID == 8) {
-			ConsumePrismaticProcedure.execute(world, x, y, z, entity, 8);
-		}
+		InfuserGem.handleButton(world, new BlockPos(x, y, z), entity, buttonID);
 	}
 
 	@SubscribeEvent

@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -11,7 +12,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.util.ParticleHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -24,7 +24,7 @@ public class FireflyEggRightclickedProcedure {
 		if (entity instanceof Player _player)
 			_player.getCooldowns().addCooldown(UnusualendModItems.ENDER_FIREFLY_EGG.get(), 5);
 		if (world.isClientSide()) {
-			ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.turtle.egg_break")), SoundSource.PLAYERS, (float) 0.5, (float) 1.3);
+			ProcedureHelper.playSound(world, x, y, z, SoundEvents.TURTLE_EGG_BREAK, SoundSource.PLAYERS, (float) 0.5, (float) 1.3);
 		}
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.ENDER_FIREFLY_EGG.get()) {
 			if (entity instanceof LivingEntity _entity)

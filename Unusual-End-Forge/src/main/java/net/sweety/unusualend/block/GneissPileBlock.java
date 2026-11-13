@@ -26,7 +26,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.procedures.GneissPileBlockValidPlacementConditionProcedure;
+import net.sweety.unusualend.init.UnusualendModTags;
 
 public class GneissPileBlock extends Block implements SimpleWaterloggedBlock {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -74,7 +74,7 @@ public class GneissPileBlock extends Block implements SimpleWaterloggedBlock {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return GneissPileBlockValidPlacementConditionProcedure.execute(world, x, y, z);
+			return ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.GNEISS));
 		}
 		return super.canSurvive(blockstate, worldIn, pos);
 	}

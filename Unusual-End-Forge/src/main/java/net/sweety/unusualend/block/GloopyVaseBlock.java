@@ -23,7 +23,7 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.procedures.GloopyVaseBlockDestroyedByPlayerProcedure;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class GloopyVaseBlock extends Block implements SimpleWaterloggedBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -95,7 +95,8 @@ public class GloopyVaseBlock extends Block implements SimpleWaterloggedBlock {
 	@Override
 	public boolean onDestroyedByPlayer(BlockState blockstate, Level world, BlockPos pos, Player entity, boolean willHarvest, FluidState fluid) {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
-		GloopyVaseBlockDestroyedByPlayerProcedure.execute(entity);
+		if (entity != null)
+			ProcedureHelper.awardAdvancement(entity, "break_gloopy_urn");
 		return retval;
 	}
 }

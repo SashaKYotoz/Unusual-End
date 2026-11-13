@@ -22,8 +22,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sweety.unusualend.init.UnusualendModBlocks;
-import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
-import net.sweety.unusualend.procedures.EndstoneSproutsAdditionalPlacinggrowthConditionProcedure;
+import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.procedures.EndstoneSproutsOnBoneMealSuccessProcedure;
 
 public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlock {
@@ -61,7 +60,7 @@ public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlo
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = EndstoneSproutsAdditionalPlacinggrowthConditionProcedure.execute(world, x, y, z);
+			additionalCondition = (!(world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT));
 		}
 		return (groundState.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
 				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get())
@@ -83,7 +82,7 @@ public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlo
 
 	@Override
 	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		return ChorusRootsBoneMealSuccessConditionProcedure.execute();
+		return (Math.random() < 0.4);
 	}
 
 	@Override

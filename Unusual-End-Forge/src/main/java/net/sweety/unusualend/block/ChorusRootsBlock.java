@@ -21,7 +21,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.procedures.BonemealChorusProcedure;
-import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
 
 public class ChorusRootsBlock extends FlowerBlock implements BonemealableBlock {
 	public ChorusRootsBlock() {
@@ -69,7 +68,7 @@ public class ChorusRootsBlock extends FlowerBlock implements BonemealableBlock {
 
 	@Override
 	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		return ChorusRootsBoneMealSuccessConditionProcedure.execute();
+		return (Math.random() < 0.4);
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +16,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 import javax.annotation.Nullable;
@@ -53,7 +52,7 @@ public class ShearChorusFlowersProcedure {
 					if (_bs.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.chorus_flower.death")), SoundSource.NEUTRAL, 1, 1);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHORUS_FLOWER_DEATH, SoundSource.NEUTRAL, 1, 1);
 			}
 		}
 	}

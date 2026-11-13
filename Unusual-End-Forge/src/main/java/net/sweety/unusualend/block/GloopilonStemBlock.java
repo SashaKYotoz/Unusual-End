@@ -23,7 +23,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.PlantType;
 import net.sweety.unusualend.init.UnusualendModBlocks;
-import net.sweety.unusualend.procedures.DrippingGloopstoneGrowthConditionProcedure;
+import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.procedures.GloopilonStemNeighbourBlockChangesProcedure;
 
 public class GloopilonStemBlock extends FlowerBlock {
@@ -66,7 +66,7 @@ public class GloopilonStemBlock extends FlowerBlock {
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = DrippingGloopstoneGrowthConditionProcedure.execute(world, x, y, z);
+			additionalCondition = ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.POLISHED_GLOOPSTONE.get() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE_BRICKS.get());
 		}
 		return additionalCondition;
 	}

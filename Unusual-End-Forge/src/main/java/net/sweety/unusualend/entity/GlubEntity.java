@@ -8,8 +8,8 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -36,13 +36,12 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.init.UnusualendModItems;
-import net.sweety.unusualend.procedures.BucketGlubProcedure;
-import net.sweety.unusualend.procedures.SpunklerNaturalEntitySpawningConditionProcedure;
+import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.procedures.WarpedJellyfishOnEntityTickUpdateProcedure;
+import net.sweety.unusualend.util.MobBucketHelper;
 import org.jetbrains.annotations.Nullable;
 
 public class GlubEntity extends Monster {
@@ -144,17 +143,17 @@ public class GlubEntity extends Monster {
 
     @Override
     public SoundEvent getAmbientSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.glow_squid.ambient"));
+        return SoundEvents.GLOW_SQUID_AMBIENT;
     }
 
     @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.glow_squid.hurt"));
+        return SoundEvents.GLOW_SQUID_HURT;
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.glow_squid.death"));
+        return SoundEvents.GLOW_SQUID_DEATH;
     }
 
     @Override
@@ -176,7 +175,7 @@ public class GlubEntity extends Monster {
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         super.mobInteract(player, hand);
-        BucketGlubProcedure.execute(this.level(), this, player);
+        MobBucketHelper.capture(this, player, UnusualendModItems.GLUB_BUCKET.get());
         return InteractionResult.sidedSuccess(this.level().isClientSide());
     }
 
@@ -220,7 +219,7 @@ public class GlubEntity extends Monster {
             int x = pos.getX();
             int y = pos.getY();
             int z = pos.getZ();
-            return SpunklerNaturalEntitySpawningConditionProcedure.execute(world, x, y, z);
+            return ((world.getBlockState(BlockPos.containing(x, y, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(BlockPos.containing(x, y - 2, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS));
         });
     }
 

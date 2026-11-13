@@ -7,7 +7,6 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
@@ -39,11 +38,12 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModSounds;
 import net.sweety.unusualend.procedures.BolokEntityIsHurtProcedure;
 import net.sweety.unusualend.procedures.BolokOnEntityTickUpdateProcedure;
-import net.sweety.unusualend.procedures.BucketBolokProcedure;
+import net.sweety.unusualend.util.MobBucketHelper;
 import org.jetbrains.annotations.Nullable;
 
 public class BolokEntity extends Monster {
@@ -145,17 +145,17 @@ public class BolokEntity extends Monster {
 
     @Override
     public SoundEvent getAmbientSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:bolok_ambient"));
+        return UnusualendModSounds.BOLOK_AMBIENT.get();
     }
 
     @Override
     public SoundEvent getHurtSound(DamageSource ds) {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:bolok_hurts"));
+        return UnusualendModSounds.BOLOK_HURTS.get();
     }
 
     @Override
     public SoundEvent getDeathSound() {
-        return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("unusualend:bolok_dies"));
+        return UnusualendModSounds.BOLOK_DIES.get();
     }
 
     @Override
@@ -179,7 +179,7 @@ public class BolokEntity extends Monster {
     @Override
     public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
         super.mobInteract(sourceentity, hand);
-        BucketBolokProcedure.execute(this.level(), this, sourceentity);
+        MobBucketHelper.capture(this, sourceentity, UnusualendModItems.BOLOK_BUCKET.get());
         return InteractionResult.sidedSuccess(this.level().isClientSide());
     }
 

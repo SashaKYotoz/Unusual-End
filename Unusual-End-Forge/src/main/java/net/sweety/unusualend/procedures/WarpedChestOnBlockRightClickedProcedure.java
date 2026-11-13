@@ -6,6 +6,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -18,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualendModParticleTypes;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -37,7 +37,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.chest.open")), SoundSource.BLOCKS, 1, (float) Mth.nextDouble(world.getRandom(), 1.2, 1.4));
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(world.getRandom(), 1.2, 1.4));
 				}
 				if (!world.isClientSide()) {
 					BlockPos _bp = BlockPos.containing(x, y, z);
@@ -71,7 +71,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 					}
 					if (world.isClientSide()) {
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.chest.locked")), SoundSource.BLOCKS, 1, (float) Mth.nextDouble(world.getRandom(), 1.1, 1.2));
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(world.getRandom(), 1.1, 1.2));
 					}
 				});
 				ProcedureHelper.awardAdvancement(entity, "open_warped_chest");
@@ -82,7 +82,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
 			if (entity instanceof Player _player && !_player.level().isClientSide())
 				_player.displayClientMessage(Component.translatable("text.unusualend.alreay_opened"), true);
 			if (world.isClientSide()) {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.chest.locked")), SoundSource.BLOCKS, 1, (float) 0.95);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) 0.95);
 			}
 		}
 	}

@@ -25,8 +25,8 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
-import net.sweety.unusualend.procedures.SmallWarpedSquashOnBoneMealSuccessProcedure;
+import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class SmallWarpedSquashBlock extends Block implements SimpleWaterloggedBlock, BonemealableBlock {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -87,11 +87,11 @@ public class SmallWarpedSquashBlock extends Block implements SimpleWaterloggedBl
 
 	@Override
 	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		return ChorusRootsBoneMealSuccessConditionProcedure.execute();
+		return (Math.random() < 0.4);
 	}
 
 	@Override
 	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		SmallWarpedSquashOnBoneMealSuccessProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		ProcedureHelper.replaceBlockKeepingState(world, pos, UnusualendModBlocks.WARPED_SQUASH.get().defaultBlockState(), 3);
 	}
 }

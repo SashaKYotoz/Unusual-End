@@ -1,10 +1,11 @@
 
 package net.sweety.unusualend.entity;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
@@ -19,10 +20,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.procedures.SpunklerEntityIsHurtProcedure;
-import net.sweety.unusualend.procedures.SpunklerNaturalEntitySpawningConditionProcedure;
 import net.sweety.unusualend.procedures.SpunklerPlayerCollidesWithThisEntityProcedure;
 
 public class SpunklerEntity extends Monster {
@@ -56,17 +56,17 @@ public class SpunklerEntity extends Monster {
 
 	@Override
 	public SoundEvent getAmbientSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.shulker.ambient"));
+		return SoundEvents.SHULKER_AMBIENT;
 	}
 
 	@Override
 	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.shulker.hurt"));
+		return SoundEvents.SHULKER_HURT;
 	}
 
 	@Override
 	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.shulker.death"));
+		return SoundEvents.SHULKER_DEATH;
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class SpunklerEntity extends Monster {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return SpunklerNaturalEntitySpawningConditionProcedure.execute(world, x, y, z);
+			return ((world.getBlockState(BlockPos.containing(x, y, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(BlockPos.containing(x, y - 2, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS));
 		});
 	}
 

@@ -26,7 +26,8 @@ import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.procedures.ChorusCaneBlockValidPlacementConditionProcedure;
+import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualendModTags;
 
 public class BloomingChorusCaneBlock extends Block implements SimpleWaterloggedBlock {
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
@@ -74,7 +75,7 @@ public class BloomingChorusCaneBlock extends Block implements SimpleWaterloggedB
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return ChorusCaneBlockValidPlacementConditionProcedure.execute(world, x, y, z);
+			return ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE.get() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.BLOOMING_CHORUS_CANE.get() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.PURPUR_EMBEDDED_END_STONE.get() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.CHORUS_LIB_END_STONES));
 		}
 		return super.canSurvive(blockstate, worldIn, pos);
 	}

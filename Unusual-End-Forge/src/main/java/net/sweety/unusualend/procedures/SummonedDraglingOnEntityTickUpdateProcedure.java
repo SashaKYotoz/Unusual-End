@@ -1,12 +1,11 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.entity.SummonedDraglingEntity;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -23,7 +22,7 @@ public class SummonedDraglingOnEntityTickUpdateProcedure {
 				_level.sendParticles(ParticleTypes.SQUID_INK, x, y, z, 5, 0.3, 0.3, 0.3, 0);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.REVERSE_PORTAL, x, y, z, 5, 0.3, 0.3, 0.3, 0);
-			ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.enderman.teleport")), SoundSource.HOSTILE, 1, 1);
+			ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMAN_TELEPORT, SoundSource.HOSTILE, 1, 1);
 		}
 		if (Math.random() < 0.1) {
 			if (world instanceof ServerLevel _level)

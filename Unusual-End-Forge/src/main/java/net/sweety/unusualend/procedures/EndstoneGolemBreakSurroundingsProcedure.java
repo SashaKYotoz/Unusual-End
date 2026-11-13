@@ -2,12 +2,11 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 public class EndstoneGolemBreakSurroundingsProcedure {
@@ -43,7 +42,7 @@ public class EndstoneGolemBreakSurroundingsProcedure {
 		if (found) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y, z, 15, 1, 1, 1, 0);
-			ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.generic.explode")), SoundSource.NEUTRAL, 1, 1);
+			ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_EXPLODE, SoundSource.NEUTRAL, 1, 1);
 		}
 	}
 }

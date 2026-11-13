@@ -16,8 +16,8 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModEnchantments;
-import net.sweety.unusualend.procedures.CrystalCatalystItemInInventoryTickProcedure;
 import net.sweety.unusualend.procedures.CrystalCatalystRightclickedProcedure;
+import net.sweety.unusualend.util.ItemCooldownHelper;
 
 import java.util.List;
 import java.util.Set;
@@ -98,6 +98,6 @@ public class CrystalCatalystItem extends Item {
 	@Override
 	public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 		super.inventoryTick(itemstack, world, entity, slot, selected);
-		CrystalCatalystItemInInventoryTickProcedure.execute(itemstack);
+		ItemCooldownHelper.recharge(itemstack, "cataCooldown", 0.3, 0.1);
 	}
 }

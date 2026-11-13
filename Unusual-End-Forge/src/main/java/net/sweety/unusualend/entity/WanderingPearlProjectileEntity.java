@@ -3,7 +3,7 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
@@ -18,11 +18,9 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.init.UnusualendModItems;
-import net.sweety.unusualend.procedures.WanderingPearlProjectileHitsLivingEntityProcedure;
-import net.sweety.unusualend.procedures.WanderingPearlProjectileHitsProcedure;
+import net.sweety.unusualend.util.TeleportHelper;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class WanderingPearlProjectileEntity extends AbstractArrow implements ItemSupplier {
@@ -69,13 +67,15 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 	@Override
 	public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
-		WanderingPearlProjectileHitsLivingEntityProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), entityHitResult.getEntity(), this.getOwner());
+		if (this.getOwner() != null && entityHitResult.getEntity() != this.getOwner())
+			TeleportHelper.scatter(this.level(), entityHitResult.getEntity(), this.getX(), this.getY(), this.getZ(), 5, 5);
 	}
 
 	@Override
 	public void onHitBlock(BlockHitResult blockHitResult) {
 		super.onHitBlock(blockHitResult);
-		WanderingPearlProjectileHitsProcedure.execute(this.level(), blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ(), this.getOwner());
+		if (this.getOwner() != null)
+			TeleportHelper.scatter(this.level(), this.getOwner(), blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ(), 2, 4);
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 		entityarrow.setBaseDamage(damage);
 		entityarrow.setKnockback(knockback);
 		world.addFreshEntity(entityarrow);
-		world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ender_pearl.throw")), SoundSource.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
+		world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.PLAYERS, 1, 1f / (random.nextFloat() * 0.5f + 1) + (power / 2));
 		return entityarrow;
 	}
 
@@ -116,7 +116,7 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 		entityarrow.setKnockback(0);
 		entityarrow.setCritArrow(false);
 		entity.level().addFreshEntity(entityarrow);
-		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.ender_pearl.throw")), SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
+		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}
 }

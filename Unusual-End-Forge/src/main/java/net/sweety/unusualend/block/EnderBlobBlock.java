@@ -19,7 +19,6 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.procedures.EnderBlobBlockEntityCollidesInTheBlockProcedure;
 import net.sweety.unusualend.procedures.EnderBlobBlockEntityWalksOnTheBlockProcedure;
 
 import java.util.List;
@@ -67,7 +66,7 @@ public class EnderBlobBlock extends Block {
 	@Override
 	public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
 		super.entityInside(blockstate, world, pos, entity);
-		EnderBlobBlockEntityCollidesInTheBlockProcedure.execute(entity);
+		entity.resetFallDistance();
 	}
 
 	@Override

@@ -1,7 +1,5 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,6 +11,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.config.Config;
+import net.sweety.unusualend.init.UnusualendModTags;
 
 public class EnderlingOnInitialEntitySpawnProcedure {
     public static void execute(LevelAccessor world, Entity entity) {
@@ -21,11 +20,11 @@ public class EnderlingOnInitialEntitySpawnProcedure {
         if (!world.isClientSide()) {
             if (Math.random() < Config.ENDERLING_MASK.get() / 100) {
                 if (entity instanceof Player player) {
-                    player.getInventory().armor.set(3, new ItemStack((ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("unusualend:enderling_mask"))).getRandomElement(world.getRandom()).orElseGet(() -> Items.AIR))));
+                    player.getInventory().armor.set(3, new ItemStack((ForgeRegistries.ITEMS.tags().getTag(UnusualendModTags.Items.ENDERLING_MASK).getRandomElement(world.getRandom()).orElseGet(() -> Items.AIR))));
                     player.getInventory().setChanged();
                 } else if (entity instanceof LivingEntity living) {
                     living.setItemSlot(EquipmentSlot.HEAD,
-                            new ItemStack((ForgeRegistries.ITEMS.tags().getTag(ItemTags.create(new ResourceLocation("unusualend:enderling_mask"))).getRandomElement(world.getRandom()).orElseGet(() -> Items.AIR))));
+                            new ItemStack((ForgeRegistries.ITEMS.tags().getTag(UnusualendModTags.Items.ENDERLING_MASK).getRandomElement(world.getRandom()).orElseGet(() -> Items.AIR))));
                 }
 
                 ItemStack stack = (entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.HEAD) : ItemStack.EMPTY);

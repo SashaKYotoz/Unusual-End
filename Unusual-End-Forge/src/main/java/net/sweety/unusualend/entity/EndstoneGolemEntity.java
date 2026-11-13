@@ -8,10 +8,10 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
@@ -30,9 +30,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModEntities;
-import net.sweety.unusualend.procedures.CanGolemAttackProcedure;
 import net.sweety.unusualend.procedures.EndstoneGolemEntityDiesProcedure;
 import net.sweety.unusualend.procedures.EndstoneGolemEntityIsHurtProcedure;
 import net.sweety.unusualend.procedures.EndstoneGolemOnEntityTickUpdateProcedure;
@@ -90,13 +88,13 @@ public class EndstoneGolemEntity extends Monster {
 			@Override
 			public boolean canUse() {
                 EndstoneGolemEntity entity = EndstoneGolemEntity.this;
-				return super.canUse() && CanGolemAttackProcedure.execute(entity);
+				return super.canUse() && (entity != null && entity.getEntityData().get(EndstoneGolemEntity.DATA_aoe_animtime) == 0 && entity.getEntityData().get(EndstoneGolemEntity.DATA_push) == 0 && entity.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) < 110);
 			}
 
 			@Override
 			public boolean canContinueToUse() {
                 EndstoneGolemEntity entity = EndstoneGolemEntity.this;
-				return super.canContinueToUse() && CanGolemAttackProcedure.execute(entity);
+				return super.canContinueToUse() && (entity != null && entity.getEntityData().get(EndstoneGolemEntity.DATA_aoe_animtime) == 0 && entity.getEntityData().get(EndstoneGolemEntity.DATA_push) == 0 && entity.getEntityData().get(EndstoneGolemEntity.DATA_aoe_cooldown) < 110);
 			}
 		});
 		this.targetSelector.addGoal(2, new HurtByTargetGoal(this));
@@ -127,22 +125,22 @@ public class EndstoneGolemEntity extends Monster {
 
 	@Override
 	public SoundEvent getAmbientSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.elder_guardian.ambient"));
+		return SoundEvents.ELDER_GUARDIAN_AMBIENT;
 	}
 
 	@Override
 	public void playStepSound(BlockPos pos, BlockState blockIn) {
-		this.playSound(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.place")), 0.15f, 1);
+		this.playSound(SoundEvents.STONE_PLACE, 0.15f, 1);
 	}
 
 	@Override
 	public SoundEvent getHurtSound(DamageSource ds) {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.elder_guardian.hurt"));
+		return SoundEvents.ELDER_GUARDIAN_HURT;
 	}
 
 	@Override
 	public SoundEvent getDeathSound() {
-		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.enderman.teleport"));
+		return SoundEvents.ENDERMAN_TELEPORT;
 	}
 
 	@Override

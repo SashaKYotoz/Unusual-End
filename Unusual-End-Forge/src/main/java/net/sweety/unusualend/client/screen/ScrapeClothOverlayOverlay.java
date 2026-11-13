@@ -13,7 +13,7 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.sweety.unusualend.procedures.ScrapeClothOverlayDisplayOverlayIngameProcedure;
+import net.sweety.unusualend.network.UnusualendModVariables;
 
 @Mod.EventBusSubscriber({Dist.CLIENT})
 public class ScrapeClothOverlayOverlay {
@@ -38,7 +38,7 @@ public class ScrapeClothOverlayOverlay {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
-		if (ScrapeClothOverlayDisplayOverlayIngameProcedure.execute(entity)) {
+		if ((entity != null && (entity.getCapability(UnusualendModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new UnusualendModVariables.PlayerVariables())).ScrapeOverlay > 0)) {
 			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/cloth_overlay.png"), 0, 0, 0, 0, w, h, w, h);
 		}
 		RenderSystem.depthMask(true);

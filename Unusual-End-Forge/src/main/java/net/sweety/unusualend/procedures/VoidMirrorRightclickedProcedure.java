@@ -1,8 +1,8 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
 import net.sweety.unusualend.util.ParticleHelper;
@@ -44,6 +43,6 @@ public class VoidMirrorRightclickedProcedure {
 				_ist.setDamageValue(0);
 			}
 		}
-		ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.respawn_anchor.set_spawn")), SoundSource.NEUTRAL, 1, 2);
+		ProcedureHelper.playSound(world, x, y, z, SoundEvents.RESPAWN_ANCHOR_SET_SPAWN, SoundSource.NEUTRAL, 1, 2);
 	}
 }

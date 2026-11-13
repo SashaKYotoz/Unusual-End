@@ -2,8 +2,8 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +15,6 @@ import net.minecraftforge.event.level.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.util.ProcedureHelper;
@@ -36,7 +35,7 @@ public class ShinyGloopstoneBlockDestroyedByPlayerProcedure {
 		if (blockstate.getBlock() == UnusualendModBlocks.SHINY_GLOOPSTONE.get()) {
 			if (!(ProcedureHelper.isCreative(entity))) {
 				if (Math.random() < 0.02) {
-					ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.turtle.egg_crack")), SoundSource.BLOCKS, 1, 1);
+					ProcedureHelper.playSound(world, x, y, z, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);
 					for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 1, 2); index0++) {
 						if (world instanceof ServerLevel _level) {
 							Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);

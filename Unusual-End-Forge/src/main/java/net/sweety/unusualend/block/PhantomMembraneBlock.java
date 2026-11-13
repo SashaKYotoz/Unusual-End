@@ -22,7 +22,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.sweety.unusualend.procedures.PhantomMembraneBlockEntityCollidesInTheBlockProcedure;
 
 import java.util.List;
 
@@ -78,6 +77,6 @@ public class PhantomMembraneBlock extends Block {
     @Override
     public void entityInside(BlockState blockstate, Level world, BlockPos pos, Entity entity) {
         super.entityInside(blockstate, world, pos, entity);
-        PhantomMembraneBlockEntityCollidesInTheBlockProcedure.execute(entity);
+        entity.resetFallDistance();
     }
 }

@@ -9,7 +9,6 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.sweety.unusualend.entity.BolokEntity;
-import net.sweety.unusualend.procedures.EndMathProcedure;
 
 public class ModelBabyBolok<T extends BolokEntity> extends ModelBolok<T> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("unusualend", "model_baby_bolok"), "main");
@@ -51,7 +50,7 @@ public class ModelBabyBolok<T extends BolokEntity> extends ModelBolok<T> {
     public void setupAnim(BolokEntity entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.left_fin.zRot = Mth.cos(limbSwing) * -1.0F * limbSwingAmount;
         this.right_fin.zRot = Mth.cos(limbSwing) * limbSwingAmount;
-        this.tail.yRot = (EndMathProcedure.sin(ageInTicks * 0.15F + 2) * 0.1F);
+        this.tail.yRot = (Mth.sin(ageInTicks * 0.15F + 2) * 0.1F);
     }
 
     @Override

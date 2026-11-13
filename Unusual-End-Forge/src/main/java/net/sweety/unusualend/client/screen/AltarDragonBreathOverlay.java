@@ -13,7 +13,7 @@ import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.sweety.unusualend.procedures.GetLookingAltarProcedure;
+import net.sweety.unusualend.util.LookHelper;
 
 @Mod.EventBusSubscriber({Dist.CLIENT})
 public class AltarDragonBreathOverlay {
@@ -38,7 +38,7 @@ public class AltarDragonBreathOverlay {
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
-		if (GetLookingAltarProcedure.execute(world, entity)) {
+		if (LookHelper.isLookingAtAltar(entity, false)) {
 			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/dragon_breath_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
 		}
 		RenderSystem.depthMask(true);

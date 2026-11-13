@@ -19,10 +19,10 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModTags;
-import net.sweety.unusualend.procedures.ChorusRootsBoneMealSuccessConditionProcedure;
-import net.sweety.unusualend.procedures.WarpedVineOnBoneMealSuccessProcedure;
 import net.sweety.unusualend.procedures.WarpedVineUpdateTickProcedure;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 public class WarpedBushBlock extends FlowerBlock implements BonemealableBlock {
 	public WarpedBushBlock() {
@@ -75,11 +75,11 @@ public class WarpedBushBlock extends FlowerBlock implements BonemealableBlock {
 
 	@Override
 	public boolean isBonemealSuccess(Level world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		return ChorusRootsBoneMealSuccessConditionProcedure.execute();
+		return (Math.random() < 0.4);
 	}
 
 	@Override
 	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		WarpedVineOnBoneMealSuccessProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+		ProcedureHelper.replaceBlockKeepingState(world, pos, UnusualendModBlocks.GROWN_WARPED_BUSH.get().defaultBlockState(), 3);
 	}
 }

@@ -3,8 +3,8 @@ package net.sweety.unusualend.procedures;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +15,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.config.Config;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModItems;
@@ -33,7 +32,7 @@ public class OnRightClickOnAnchorProcedure {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpY", 0);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpZ", 0);
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.grindstone.use")), SoundSource.NEUTRAL, 1, 1);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.GRINDSTONE_USE, SoundSource.NEUTRAL, 1, 1);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.unusualend.prismatic_mirror").getString())));
 					} else {
 						if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
@@ -46,7 +45,7 @@ public class OnRightClickOnAnchorProcedure {
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.unusualend.linked_prismatic_mirror").getString())));
 							if (entity instanceof LivingEntity _entity)
 								_entity.swing(InteractionHand.MAIN_HAND, true);
-							ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.enchantment_table.use")), SoundSource.BLOCKS, 1, 1);
+							ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1, 1);
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 							ProcedureHelper.awardAdvancement(entity, "hyperspace_jump");
@@ -66,7 +65,7 @@ public class OnRightClickOnAnchorProcedure {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpY", 0);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpZ", 0);
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.grindstone.use")), SoundSource.BLOCKS, 1, 1);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1, 1);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.unusualend.void_totem").getString())));
 					} else {
 						if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
@@ -79,7 +78,7 @@ public class OnRightClickOnAnchorProcedure {
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.unusualend.linked_void_totem").getString())));
 							if (entity instanceof LivingEntity _entity)
 								_entity.swing(InteractionHand.MAIN_HAND, true);
-							ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.enchantment_table.use")), SoundSource.BLOCKS, 1, 1);
+							ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1, 1);
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 							ProcedureHelper.awardAdvancement(entity, "hyperspace_jump");
@@ -99,7 +98,7 @@ public class OnRightClickOnAnchorProcedure {
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", 0);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpY", 0);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpZ", 0);
-						ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.grindstone.use")), SoundSource.BLOCKS, 1, 1);
+						ProcedureHelper.playSound(world, x, y, z, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1, 1);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.minecraft.totem_of_undying").getString())));
 					} else {
 						if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
@@ -112,7 +111,7 @@ public class OnRightClickOnAnchorProcedure {
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.unusualend.linked_totem_undying").getString())));
 							if (entity instanceof LivingEntity _entity)
 								_entity.swing(InteractionHand.MAIN_HAND, true);
-							ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.enchantment_table.use")), SoundSource.BLOCKS, 1, 1);
+							ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 1, 1);
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 						} else {

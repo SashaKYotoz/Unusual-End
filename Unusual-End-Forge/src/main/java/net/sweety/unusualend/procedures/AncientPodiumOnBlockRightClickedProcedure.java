@@ -2,8 +2,8 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -16,7 +16,6 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.IItemHandlerModifiable;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.sweety.unusualend.util.ParticleHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -46,7 +45,7 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 				_level.sendParticles(ParticleTypes.ENCHANT, (x + 0.5), (y + 0.9), (z + 0.5), 15, 0.2, 0.2, 0.2, 0);
 			ParticleHelper.spawn(world, ParticleHelper.dust(0.8f, 0.8f, 3.1f, 0.7f), (x + 0.5), (y + 0.9), (z + 0.5), 15, 0.15, 0.2, 0.15, 0);
 			if (world.isClientSide()) {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.chiseled_bookshelf.insert.enchanted")), SoundSource.BLOCKS, 1, (float) 1.8);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHISELED_BOOKSHELF_INSERT_ENCHANTED, SoundSource.BLOCKS, 1, (float) 1.8);
 			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem() && ProcedureHelper.getItemCount(world, BlockPos.containing(x, y, z), 0) != 0) {
 			item = (ProcedureHelper.getItemStack(world, BlockPos.containing(x, y, z), 0));
@@ -74,7 +73,7 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 			if (world instanceof Level _level)
 				_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
 			if (world.isClientSide()) {
-				ProcedureHelper.playSound(world, x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.chiseled_bookshelf.pickup.enchanted")), SoundSource.BLOCKS, 1, (float) 1.8);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED, SoundSource.BLOCKS, 1, (float) 1.8);
 			}
 		}
 	}

@@ -11,7 +11,6 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.sweety.unusualend.procedures.VoidRuneItemInHandTickProcedure;
-import net.sweety.unusualend.procedures.VoidRuneMakeItemGlowProcedure;
 import net.sweety.unusualend.procedures.VoidRuneRightclickedProcedure;
 
 import java.util.List;
@@ -39,7 +38,7 @@ public class VoidRuneItem extends Item {
 	@Override
 	@OnlyIn(Dist.CLIENT)
 	public boolean isFoil(ItemStack itemstack) {
-		return VoidRuneMakeItemGlowProcedure.execute(itemstack);
+		return (itemstack.getOrCreateTag().getDouble("XP") > 0);
 	}
 
 	@Override

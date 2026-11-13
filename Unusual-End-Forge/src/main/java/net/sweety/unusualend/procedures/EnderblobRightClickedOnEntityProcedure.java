@@ -2,6 +2,7 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
@@ -40,7 +41,7 @@ public class EnderblobRightClickedOnEntityProcedure {
 				ParticleHelper.spawn(world, ParticleHelper.block(UnusualendModBlocks.ENDERBLOB_BLOCK.get()), (entity.getX()), (entity.getY() + 0.2), (entity.getZ()), 15, 0.3, 0.3, 0.3, 0);
 				if (world.isClientSide()) {
 					ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.brush.brushing.generic")), SoundSource.NEUTRAL, 1, (float) 1.3);
-					ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.item.pickup")), SoundSource.NEUTRAL, 1, (float) 0.85);
+					ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.NEUTRAL, 1, (float) 0.85);
 				}
 				if (entity instanceof EnderblobEntity _datEntSetI)
 					_datEntSetI.getEntityData().set(EnderblobEntity.DATA_BrushTimer, 120);
