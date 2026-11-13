@@ -23,24 +23,14 @@ public class CrystallizationOverlayOverlay {
 	public static void eventHandler(RenderGuiEvent.Pre event) {
 		int w = event.getWindow().getGuiScaledWidth();
 		int h = event.getWindow().getGuiScaledHeight();
-		Level world = null;
-		double x = 0;
-		double y = 0;
-		double z = 0;
-		Player entity = Minecraft.getInstance().player;
-		if (entity != null) {
-			world = entity.level();
-			x = entity.getX();
-			y = entity.getY();
-			z = entity.getZ();
-		}
+		Player player = Minecraft.getInstance().player;
 		RenderSystem.disableDepthTest();
 		RenderSystem.depthMask(false);
 		RenderSystem.enableBlend();
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
-		if ((entity != null && entity instanceof LivingEntity _livEnt0_6 && _livEnt0_6.hasEffect(UnusualendModMobEffects.CRYSTALLIZATION.get()) && !(ProcedureHelper.isCreative(entity)) && !(ProcedureHelper.isSpectator(entity)))) {
+		if ((player != null && player.hasEffect(UnusualendModMobEffects.CRYSTALLIZATION.get()) && !(ProcedureHelper.isCreative(player)) && !(ProcedureHelper.isSpectator(player)))) {
 			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/crystalisation.png"), w / 2 + -91, h - 49, 0, 0, 81, 19, 81, 19);
 
 		}

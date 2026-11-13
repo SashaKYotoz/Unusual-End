@@ -37,9 +37,7 @@ public class WhenPlayerHurtProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
-		double dis = 0;
 		double dividedby = 0;
-		boolean wasRingUsed = false;
 		if ((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.CHEST) : ItemStack.EMPTY).getItem() == UnusualendModItems.WARPED_CHESTPLATE.get()) {
 			ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 40, 0, false, true));
 			if (!(entity == sourceentity)) {
