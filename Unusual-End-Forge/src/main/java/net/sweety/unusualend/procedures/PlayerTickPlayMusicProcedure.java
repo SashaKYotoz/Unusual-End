@@ -13,7 +13,7 @@ public class PlayerTickPlayMusicProcedure {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.phase == TickEvent.Phase.END)
-            execute(event.player.level(), event.player);
+            execute(event.player.level, event.player);
     }
 
     private static void execute(LevelAccessor world, Entity entity) {

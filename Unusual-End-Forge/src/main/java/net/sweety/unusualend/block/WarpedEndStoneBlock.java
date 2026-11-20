@@ -13,14 +13,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.IPlantable;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 
 public class WarpedEndStoneBlock extends Block {
 	public WarpedEndStoneBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_CYAN).sound(SoundType.STONE).strength(3f, 9f).requiresCorrectToolForDrops().randomTicks());
+		super(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_CYAN).sound(SoundType.STONE).strength(3f, 9f).requiresCorrectToolForDrops().randomTicks());
 	}
 
 	@Override
@@ -45,9 +45,9 @@ public class WarpedEndStoneBlock extends Block {
 		int x = pos.getX();
 		int y = pos.getY();
 		int z = pos.getZ();
-		if (world.getBlockState(BlockPos.containing(x, y + 1, z)).canOcclude() && !((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.GNEISS.get())
-				&& !((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == Blocks.WARPED_WART_BLOCK)) {
-			world.setBlockAndUpdate(BlockPos.containing(x, y, z), Blocks.END_STONE.defaultBlockState());
+		if (world.getBlockState(new BlockPos(x, y + 1, z)).canOcclude() && !((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.GNEISS.get())
+				&& !((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == Blocks.WARPED_WART_BLOCK)) {
+			world.setBlockAndUpdate(new BlockPos(x, y, z), Blocks.END_STONE.defaultBlockState());
 		}
 	}
 }

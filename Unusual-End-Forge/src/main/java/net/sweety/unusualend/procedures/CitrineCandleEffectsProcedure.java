@@ -24,10 +24,10 @@ public class CitrineCandleEffectsProcedure {
 		if (!(ProcedureHelper.isCreative(entity))) {
 			(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 		}
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SOUL_FLAMES)) {
+		if ((world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SOUL_FLAMES)) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SOUL_FIRE_FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 10, 0.2, 0.1, 0.2, 0);
-		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SHINY_FLAMES)) {
+		} else if ((world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SHINY_FLAMES)) {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles((SimpleParticleType) (UnusualendModParticleTypes.PINK_FLAME.get()), (x + 0.5), (y + 0.92), (z + 0.5), 10, 0.2, 0.1, 0.2, 0);
 		} else {

@@ -1,24 +1,23 @@
 package net.sweety.unusualend.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
+import com.mojang.math.Vector3f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 import net.sweety.unusualend.block.entity.AncientPodiumBlockEntity;
 import net.sweety.unusualend.config.Config;
 import net.sweety.unusualend.init.UnusualendModItems;
-
 public class AncientPodiumEntityRenderer implements BlockEntityRenderer<AncientPodiumBlockEntity> {
 	public AncientPodiumEntityRenderer(BlockEntityRendererProvider.Context context) {
 	}
@@ -44,11 +43,11 @@ public class AncientPodiumEntityRenderer implements BlockEntityRenderer<AncientP
 		} else {
 			pPoseStack.scale(scaleitem, scaleitem, scaleitem);
 		}
-		pPoseStack.mulPose(Axis.YP.rotationDegrees((float) rotation));
+		pPoseStack.mulPose(Vector3f.YP.rotationDegrees((float) rotation));
 		if (itemStack.getItem() instanceof BlockItem) {
-			itemRenderer.renderStatic(itemStack, ItemDisplayContext.NONE, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
+			itemRenderer.renderStatic(itemStack, ItemTransforms.TransformType.NONE, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, 1);
 		} else {
-			itemRenderer.renderStatic(itemStack, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
+			itemRenderer.renderStatic(itemStack, ItemTransforms.TransformType.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, 1);
 		}
 		pPoseStack.popPose();
 	}

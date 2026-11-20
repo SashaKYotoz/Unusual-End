@@ -2,12 +2,10 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -24,7 +22,6 @@ import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
-
 public class EndstoneGolemOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
@@ -53,8 +50,8 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 					xRadius = 3;
 					zRadius = 3;
 					while (loop < particleAmount) {
-						world.levelEvent(2001, BlockPos.containing(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius),
-								Block.getId((world.getBlockState(BlockPos.containing(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y - 1, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)))));
+						world.levelEvent(2001, new BlockPos(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius),
+								Block.getId((world.getBlockState(new BlockPos(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y - 1, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)))));
 						loop = loop + 1;
 					}
 					lcl_nb = 0;
@@ -62,13 +59,13 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 						final Vec3 _center = new Vec3((entity.getX()), (entity.getY()), (entity.getZ()));
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(12 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 						for (Entity entityiterator : _entfound) {
-							if (!(entityiterator == entity) && entityiterator.onGround()
+							if (!(entityiterator == entity) && entityiterator.isOnGround()
 									&& !((entityiterator instanceof TamableAnimal _tamEnt ? _tamEnt.isTame() : false) && (entityiterator instanceof TamableAnimal _tamEnt ? (Entity) _tamEnt.getOwner() : null) == entity)) {
 								distance = Math.sqrt(Math.pow(entity.getX() - entityiterator.getX(), 2) + Math.pow(entity.getY() - entityiterator.getY(), 2) + Math.pow(entity.getZ() - entityiterator.getZ(), 2));
 								entityiterator.setDeltaMovement(new Vec3((entityiterator.getDeltaMovement().x() + (distance == 0 ? 0 : ((entityiterator.getX() - entity.getX()) / distance) * 2.5)), (entityiterator.getDeltaMovement().y()),
 										(entityiterator.getDeltaMovement().z() + (distance == 0 ? 0 : ((entityiterator.getZ() - entity.getZ()) / distance) * 2.5))));
 								entityiterator.invulnerableTime = 0;
-								entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.CRAMMING), entity),
+								entityiterator.hurt(new EntityDamageSource("cramming", entity).bypassArmor(),
 										(float) (20 - (entityiterator != null ? entity.distanceTo(entityiterator) : -1)));
 							}
 						}
@@ -132,10 +129,10 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 			}
 		}
 		if (y <= -10) {
-			if ((entity.level().dimension()) == Level.END) {
-				if (world.isEmptyBlock(BlockPos.containing(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")))) {
-					world.setBlock(BlockPos.containing(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")), UnusualendModBlocks.GOLEM_ALTAR.get().defaultBlockState(), 3);
-					world.levelEvent(2001, BlockPos.containing(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")),
+			if ((entity.level.dimension()) == Level.END) {
+				if (world.isEmptyBlock(new BlockPos(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")))) {
+					world.setBlock(new BlockPos(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")), UnusualendModBlocks.GOLEM_ALTAR.get().defaultBlockState(), 3);
+					world.levelEvent(2001, new BlockPos(entity.getPersistentData().getDouble("x"), entity.getPersistentData().getDouble("y"), entity.getPersistentData().getDouble("z")),
 							Block.getId(UnusualendModBlocks.ANCIENT_ENCASED_END_STONE.get().defaultBlockState()));
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.REVERSE_PORTAL, x, y, z, 20, 2, 2, 2, 0.1);
@@ -144,7 +141,7 @@ public class EndstoneGolemOnEntityTickUpdateProcedure {
 					if (!world.isClientSide()) {
 						ProcedureHelper.playSound(world, x, y, z, SoundEvents.ELDER_GUARDIAN_CURSE, SoundSource.HOSTILE, 2, (float) 0.5);
 					}
-					if (!entity.level().isClientSide())
+					if (!entity.level.isClientSide())
 						entity.discard();
 				}
 			}

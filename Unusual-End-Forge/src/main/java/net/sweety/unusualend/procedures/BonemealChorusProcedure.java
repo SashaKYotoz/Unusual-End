@@ -15,19 +15,19 @@ import net.sweety.unusualend.util.ProcedureHelper;
 public class BonemealChorusProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHORUS_FLOWER_GROW, SoundSource.BLOCKS, 1, (float) 1.3);
-		if (!world.getBlockState(BlockPos.containing(x, y + 1, z)).canOcclude() && !world.getBlockState(BlockPos.containing(x, y + 2, z)).canOcclude() && !world.getBlockState(BlockPos.containing(x, y + 3, z)).canOcclude()) {
+		if (!world.getBlockState(new BlockPos(x, y + 1, z)).canOcclude() && !world.getBlockState(new BlockPos(x, y + 2, z)).canOcclude() && !world.getBlockState(new BlockPos(x, y + 3, z)).canOcclude()) {
 			if (Math.random() < 0.2) {
 				if (world instanceof ServerLevel _serverworld) {
 					StructureTemplate template = _serverworld.getStructureManager().getOrCreate(new ResourceLocation("unusualend", "chorus_tree_1"));
 					if (template != null) {
-						template.placeInWorld(_serverworld, BlockPos.containing(x, y, z), BlockPos.containing(x, y, z), new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false), _serverworld.random, 3);
+						template.placeInWorld(_serverworld, new BlockPos(x, y, z), new BlockPos(x, y, z), new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false), _serverworld.random, 3);
 					}
 				}
 			} else if (Math.random() < 0.2) {
 				if (world instanceof ServerLevel _serverworld) {
 					StructureTemplate template = _serverworld.getStructureManager().getOrCreate(new ResourceLocation("unusualend", "chorus_tree_2"));
 					if (template != null) {
-						template.placeInWorld(_serverworld, BlockPos.containing(x, y, z), BlockPos.containing(x, y, z), new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false), _serverworld.random, 3);
+						template.placeInWorld(_serverworld, new BlockPos(x, y, z), new BlockPos(x, y, z), new StructurePlaceSettings().setRotation(Rotation.NONE).setMirror(Mirror.NONE).setIgnoreEntities(false), _serverworld.random, 3);
 					}
 				}
 			}

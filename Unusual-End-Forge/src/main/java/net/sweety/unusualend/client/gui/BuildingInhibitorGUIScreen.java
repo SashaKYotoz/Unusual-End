@@ -1,7 +1,8 @@
 package net.sweety.unusualend.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.GuiGraphics;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -35,26 +36,28 @@ public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<Building
 	private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/screens/building_inhibitor_gui.png");
 
 	@Override
-	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics);
-		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		this.renderTooltip(guiGraphics, mouseX, mouseY);
-		if ((Math.round(ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "isActive")) > 0))
+	public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+		this.renderBackground(poseStack);
+		super.render(poseStack, mouseX, mouseY, partialTicks);
+		this.renderTooltip(poseStack, mouseX, mouseY);
+		if ((Math.round(ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "isActive")) > 0))
 			if (mouseX > leftPos + 122 && mouseX < leftPos + 146 && mouseY > topPos + 11 && mouseY < topPos + 35)
-				guiGraphics.renderTooltip(font, Component.literal(ReturnBuildingInhibIsActiveProcedure.execute(world, x, y, z)), mouseX, mouseY);
-		if ((Math.round(ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "isActive")) > 0))
+				this.renderTooltip(poseStack, Component.literal(ReturnBuildingInhibIsActiveProcedure.execute(world, x, y, z)), mouseX, mouseY);
+		if ((Math.round(ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "isActive")) > 0))
 			if (mouseX > leftPos + 99 && mouseX < leftPos + 123 && mouseY > topPos + 11 && mouseY < topPos + 35)
-				guiGraphics.renderTooltip(font, Component.literal(ReturnBuildingInhibIsActiveProcedure.execute(world, x, y, z)), mouseX, mouseY);
+				this.renderTooltip(poseStack, Component.literal(ReturnBuildingInhibIsActiveProcedure.execute(world, x, y, z)), mouseX, mouseY);
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
+	protected void renderBg(PoseStack poseStack, float partialTicks, int gx, int gy) {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
-		if ((ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "isActive") > 0)) {
-			guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/inhibiter_active_arrow.png"), this.leftPos + 100, this.topPos + 11, 0, 0, 19, 6, 19, 6);
+		RenderSystem.setShaderTexture(0, texture);
+		GuiComponent.blit(poseStack, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		if ((ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "isActive") > 0)) {
+			RenderSystem.setShaderTexture(0, new ResourceLocation("unusualend:textures/screens/inhibiter_active_arrow.png"));
+			GuiComponent.blit(poseStack, this.leftPos + 100, this.topPos + 11, 0, 0, 19, 6, 19, 6);
 		}
 		RenderSystem.disableBlend();
 	}
@@ -74,10 +77,8 @@ public class BuildingInhibitorGUIScreen extends AbstractContainerScreen<Building
 	}
 
 	@Override
-	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
-		guiGraphics.drawString(this.font,
-
-				(Math.round(ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "Fuel")) + "/32\u25C6"), 103, 22, -12829636, false);
+	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
+		this.font.draw(poseStack, (Math.round(ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "Fuel")) + "/32\u25C6"), 103, 22, -12829636);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ public class AncientEndCityStructureOnStructureInstanceGeneratedProcedure {
 		double sx = 0;
 		double sy = 0;
 		double sz = 0;
-		if (!entity.level().isClientSide())
+		if (!entity.level.isClientSide())
 			entity.discard();
 		sx = -2;
 		for (int index0 = 0; index0 < 4; index0++) {
@@ -20,8 +20,8 @@ public class AncientEndCityStructureOnStructureInstanceGeneratedProcedure {
 			for (int index1 = 0; index1 < 6; index1++) {
 				sz = -2;
 				for (int index2 = 0; index2 < 4; index2++) {
-					if ((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == UnusualendModBlocks.SHULKER_SHOOTER.get()) {
-						world.scheduleTick(BlockPos.containing(x + sx, y + sy, z + sz), world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)).getBlock(), 20);
+					if ((world.getBlockState(new BlockPos(x + sx, y + sy, z + sz))).getBlock() == UnusualendModBlocks.SHULKER_SHOOTER.get()) {
+						world.scheduleTick(new BlockPos(x + sx, y + sy, z + sz), world.getBlockState(new BlockPos(x + sx, y + sy, z + sz)).getBlock(), 20);
 					}
 					sz = sz + 1;
 				}

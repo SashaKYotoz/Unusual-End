@@ -3,11 +3,9 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -31,7 +29,7 @@ public class BlockUpdaterEntity extends PathfinderMob {
 
 	public BlockUpdaterEntity(EntityType<BlockUpdaterEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
+		this.maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(true);
 		setPersistenceRequired();
@@ -39,7 +37,7 @@ public class BlockUpdaterEntity extends PathfinderMob {
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -75,7 +73,7 @@ public class BlockUpdaterEntity extends PathfinderMob {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.IN_FIRE))
+		if (damagesource.getMsgId().equals("inFire"))
 			return false;
 		if (damagesource.getDirectEntity() instanceof AbstractArrow)
 			return false;
@@ -83,23 +81,23 @@ public class BlockUpdaterEntity extends PathfinderMob {
 			return false;
 		if (damagesource.getDirectEntity() instanceof ThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.CACTUS))
+		if (damagesource.getMsgId().equals("cactus"))
 			return false;
-		if (damagesource.is(DamageTypes.DROWN))
+		if (damagesource.getMsgId().equals("drown"))
 			return false;
-		if (damagesource.is(DamageTypes.LIGHTNING_BOLT))
+		if (damagesource.getMsgId().equals("lightningBolt"))
 			return false;
-		if (damagesource.is(DamageTypes.EXPLOSION) || damagesource.is(DamageTypes.PLAYER_EXPLOSION))
+		if (damagesource.isExplosion() || damagesource.isExplosion())
 			return false;
-		if (damagesource.is(DamageTypes.TRIDENT))
+		if (damagesource.getMsgId().equals("trident"))
 			return false;
-		if (damagesource.is(DamageTypes.FALLING_ANVIL))
+		if (damagesource.getMsgId().equals("anvil"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
-		if (damagesource.is(DamageTypes.WITHER) || damagesource.is(DamageTypes.WITHER_SKULL))
+		if (damagesource.getMsgId().equals("wither") || damagesource.getMsgId().equals("witherSkull"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -117,7 +115,7 @@ public class BlockUpdaterEntity extends PathfinderMob {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		AncientEndCityStructureOnStructureInstanceGeneratedProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+		AncientEndCityStructureOnStructureInstanceGeneratedProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

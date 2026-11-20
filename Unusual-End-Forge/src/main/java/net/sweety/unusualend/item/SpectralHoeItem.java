@@ -7,6 +7,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 public class SpectralHoeItem extends HoeItem {
 	public SpectralHoeItem() {
@@ -34,6 +35,6 @@ public class SpectralHoeItem extends HoeItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of(new ItemStack(UnusualendModItems.PEARLESCENT_INGOT.get()));
 			}
-		}, 0, -3f, new Item.Properties().fireResistant());
+		}, 0, -3f, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).fireResistant());
 	}
 }

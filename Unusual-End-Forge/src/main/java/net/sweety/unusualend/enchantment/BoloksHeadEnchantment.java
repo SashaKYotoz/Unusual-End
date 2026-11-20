@@ -2,7 +2,6 @@
 package net.sweety.unusualend.enchantment;
 
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentCategory;
@@ -14,7 +13,7 @@ public class BoloksHeadEnchantment extends Enchantment {
 
 	@Override
 	public int getDamageProtection(int level, DamageSource source) {
-		return !source.isCreativePlayer() && source.is(DamageTypes.FLY_INTO_WALL) ? level * 6 : 0;
+		return !source.isCreativePlayer() && source.getMsgId().equals("flyIntoWall") ? level * 6 : 0;
 	}
 
 	@Override

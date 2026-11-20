@@ -7,11 +7,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 
 public class WarpedSquashBlock extends Block {
 	public WarpedSquashBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.WARPED_WART_BLOCK).sound(SoundType.STEM).strength(3f, 9f));
+		super(BlockBehaviour.Properties.of(Material.VEGETABLE, MaterialColor.WARPED_WART_BLOCK).sound(SoundType.STEM).strength(3f, 9f));
 	}
 
 	@Override

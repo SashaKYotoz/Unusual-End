@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.block;
 
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -32,7 +34,7 @@ import net.sweety.unusualend.procedures.GrowGloopilonProcedure;
 public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	public static final IntegerProperty AGE = BlockStateProperties.AGE_2;
 
-	protected IntegerProperty getAgeProperty() {
+	public IntegerProperty getAgeProperty() {
 		return AGE;
 	}
 
@@ -41,7 +43,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	}
 
 	public GloopilonBulbBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.GRAVEL).strength(1f, 10f).lightLevel(s -> (new Object() {
+		super(BlockBehaviour.Properties.of(Material.DECORATION).sound(SoundType.GRAVEL).strength(1f, 10f).lightLevel(s -> (new Object() {
 			public int getLightLevel() {
 				if (s.getValue(AGE) == 1)
 					return 2;
@@ -90,7 +92,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPILON_STEM.get());
+			return ((world.getBlockState(new BlockPos(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPILON_STEM.get());
 		}
 		return super.canSurvive(blockstate, worldIn, pos);
 	}
@@ -117,7 +119,7 @@ public class GloopilonBulbBlock extends CropBlock implements BonemealableBlock {
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
+	public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
 		if (worldIn instanceof LevelAccessor world) {
 			return (pos.getY() >= 120 && (blockstate.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _getip1_3 ? blockstate.getValue(_getip1_3) : -1) < 2);
 		}

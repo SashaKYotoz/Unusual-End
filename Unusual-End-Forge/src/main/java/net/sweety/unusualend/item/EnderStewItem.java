@@ -9,10 +9,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 public class EnderStewItem extends Item {
 	public EnderStewItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).build()));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(7).saturationMod(0.8f).build()));
 	}
 
 	@Override

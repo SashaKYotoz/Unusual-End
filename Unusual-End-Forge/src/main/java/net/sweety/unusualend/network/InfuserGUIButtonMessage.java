@@ -53,7 +53,7 @@ public class InfuserGUIButtonMessage {
 	}
 
 	public static void handleButtonAction(Player entity, int buttonID, int x, int y, int z) {
-		Level world = entity.level();
+		Level world = entity.level;
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;
 		InfuserGem.handleButton(world, new BlockPos(x, y, z), entity, buttonID);

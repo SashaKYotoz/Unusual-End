@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 public class EnderInfectionEffectExpiresProcedure {
@@ -25,7 +26,7 @@ public class EnderInfectionEffectExpiresProcedure {
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(ParticleTypes.POOF, x, y, z, 5, 1, 1, 1, 0);
 				if (world instanceof ServerLevel _level) {
-					Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+					Entity entityToSpawn = EntitySpawnHelper.spawn(EntityType.ENDERMITE, _level, new BlockPos(x, y, z), MobSpawnType.MOB_SUMMONED);
 					if (entityToSpawn != null) {
 						entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 					}

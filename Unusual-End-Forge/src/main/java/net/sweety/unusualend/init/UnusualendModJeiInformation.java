@@ -42,7 +42,7 @@ public class UnusualendModJeiInformation implements IModPlugin {
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModItems.LEECHING_WAND.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_13"));
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModBlocks.BUILDING_INHIBITOR.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_15"));
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModBlocks.GLOOPILON_SEEDS.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_16"));
-		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModItems.ENDERBLOB_MOULT.get()), new ItemStack(Items.BRUSH)), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_18"));
+		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModItems.ENDERBLOB_MOULT.get()), new ItemStack(Items.SHEARS)), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_18"));
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModItems.WANDERING_STEW.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_19"));
 		registration.addIngredientInfo(List.of(new ItemStack(UnusualendModItems.VOID_TOTEM.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.unusualend.jei_desc_14"));
 		registration.addIngredientInfo(

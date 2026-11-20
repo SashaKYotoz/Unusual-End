@@ -8,13 +8,14 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.config.Config;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.WarpedInfusionPlayerFinishesUsingItemProcedure;
 
 import java.util.List;
 
 public class WarpedInfusionItem extends Item {
 	public WarpedInfusionItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(0).saturationMod(0f).alwaysEat().build()));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF).stacksTo(16).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(0).saturationMod(0f).alwaysEat().build()));
 	}
 
 	@Override

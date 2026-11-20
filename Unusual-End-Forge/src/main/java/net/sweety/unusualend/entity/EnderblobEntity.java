@@ -4,7 +4,6 @@ package net.sweety.unusualend.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -14,7 +13,6 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -44,13 +42,13 @@ public class EnderblobEntity extends Monster {
 
 	public EnderblobEntity(EntityType<EnderblobEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
+		this.maxUpStep = 0.6f;
 		xpReward = 1;
 		setNoAi(false);
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -103,9 +101,9 @@ public class EnderblobEntity extends Monster {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -132,9 +130,9 @@ public class EnderblobEntity extends Monster {
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
 		super.mobInteract(sourceentity, hand);
 		Entity entity = this;
-		Level world = this.level();
+		Level world = this.level;
 		EnderblobRightClickedOnEntityProcedure.execute(world, entity, sourceentity);
-		return InteractionResult.sidedSuccess(this.level().isClientSide());
+		return InteractionResult.sidedSuccess(this.level.isClientSide());
 	}
 
 	@Override

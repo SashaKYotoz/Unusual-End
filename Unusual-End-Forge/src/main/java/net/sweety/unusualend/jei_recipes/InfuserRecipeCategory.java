@@ -49,6 +49,6 @@ public class InfuserRecipeCategory implements IRecipeCategory<InfuserRecipe> {
 	public void setRecipe(IRecipeLayoutBuilder builder, InfuserRecipe recipe, IFocusGroup focuses) {
 		builder.addSlot(RecipeIngredientRole.INPUT, 4, 4).addIngredients(recipe.getIngredients().get(0));
 		builder.addSlot(RecipeIngredientRole.INPUT, 49, 24).addIngredients(recipe.getIngredients().get(1));
-		builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 4).addItemStack(recipe.getResultItem(null));
+		builder.addSlot(RecipeIngredientRole.OUTPUT, 73, 4).addItemStack(recipe.getResultItem());
 	}
 }

@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -26,8 +26,7 @@ public class GloopyTendrilsBlock extends FlowerBlock {
 	public static final BooleanProperty GLOOPY = BooleanProperty.create("gloopy");
 
 	public GloopyTendrilsBlock() {
-		super(() -> MobEffects.WEAKNESS, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.ROOTS).strength(0.1f, 0f).speedFactor(0.98f).jumpFactor(0.95f).noCollission().replaceable()
-				.offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+		super(() -> MobEffects.WEAKNESS, 100, BlockBehaviour.Properties.of(Material.REPLACEABLE_FIREPROOF_PLANT, MaterialColor.COLOR_PURPLE).offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.ROOTS).strength(0.1f, 0f).speedFactor(0.98f).jumpFactor(0.95f).noCollission());
 	}
 
 	@Override

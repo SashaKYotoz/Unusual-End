@@ -12,26 +12,22 @@ import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModTags;
 
 public final class LookHelper {
-	public static final double ALTAR_RANGE = 5;
 	public static final double WAYSTONE_RANGE = 64;
-
-	private LookHelper() {
-	}
 
 	public static BlockHitResult raycast(Entity entity, double range, ClipContext.Block shape) {
 		Vec3 eye = entity.getEyePosition(1f);
-		return entity.level().clip(new ClipContext(eye, eye.add(entity.getViewVector(1f).scale(range)), shape, ClipContext.Fluid.NONE, entity));
+		return entity.level.clip(new ClipContext(eye, eye.add(entity.getViewVector(1f).scale(range)), shape, ClipContext.Fluid.NONE, entity));
 	}
 
 	public static boolean isLookingAt(Entity entity, Block block, double range, ClipContext.Block shape) {
 		if (entity == null)
 			return false;
 		BlockHitResult hit = raycast(entity, range, shape);
-		return hit.getType() == HitResult.Type.BLOCK && entity.level().getBlockState(hit.getBlockPos()).is(block);
+		return hit.getType() == HitResult.Type.BLOCK && entity.level.getBlockState(hit.getBlockPos()).is(block);
 	}
 
 	public static boolean isLookingAtAltar(Entity entity, boolean holdingDragonBreath) {
-		return isLookingAt(entity, UnusualendModBlocks.GOLEM_ALTAR.get(), ALTAR_RANGE, ClipContext.Block.OUTLINE)
+		return isLookingAt(entity, UnusualendModBlocks.GOLEM_ALTAR.get(), 5, ClipContext.Block.OUTLINE)
 				&& entity instanceof LivingEntity living && living.getMainHandItem().is(Items.DRAGON_BREATH) == holdingDragonBreath;
 	}
 

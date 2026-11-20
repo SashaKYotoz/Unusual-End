@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -20,7 +20,7 @@ import net.sweety.unusualend.init.UnusualendModTags;
 public class GloopyBushBlock extends FlowerBlock {
 	public GloopyBushBlock() {
 		super(() -> MobEffects.LEVITATION, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.NETHER_SPROUTS).instabreak().speedFactor(0.95f).noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of(Material.REPLACEABLE_FIREPROOF_PLANT, MaterialColor.COLOR_PURPLE).offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.NETHER_SPROUTS).instabreak().speedFactor(0.95f).noCollission());
 	}
 
 	@Override

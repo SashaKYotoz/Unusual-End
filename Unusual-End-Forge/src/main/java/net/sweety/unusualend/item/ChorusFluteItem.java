@@ -8,13 +8,14 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.ChorusFluteRightclickedProcedure;
 
 import java.util.List;
 
 public class ChorusFluteItem extends Item {
 	public ChorusFluteItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(1).rarity(Rarity.COMMON));
 	}
 
 	@Override

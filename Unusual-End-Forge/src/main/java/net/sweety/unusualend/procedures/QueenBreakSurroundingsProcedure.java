@@ -16,10 +16,10 @@ public class QueenBreakSurroundingsProcedure {
 			for (int index1 = 0; index1 < 5; index1++) {
 				sz = -1;
 				for (int index2 = 0; index2 < 4; index2++) {
-					if (!world.isEmptyBlock(BlockPos.containing(x + sx, y + sy, z + sz))) {
-						if (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)).getDestroySpeed(world, BlockPos.containing(x + sx, y + sy, z + sz)) >= 0) {
-							world.destroyBlock(BlockPos.containing(x + sx, y + sy, z + sz), false);
-							world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.VOID_PARTICLES_BLOCK.get().defaultBlockState()));
+					if (!world.isEmptyBlock(new BlockPos(x + sx, y + sy, z + sz))) {
+						if (world.getBlockState(new BlockPos(x + sx, y + sy, z + sz)).getDestroySpeed(world, new BlockPos(x + sx, y + sy, z + sz)) >= 0) {
+							world.destroyBlock(new BlockPos(x + sx, y + sy, z + sz), false);
+							world.levelEvent(2001, new BlockPos(x, y, z), Block.getId(UnusualendModBlocks.VOID_PARTICLES_BLOCK.get().defaultBlockState()));
 						}
 					}
 					sz = sz + 1;

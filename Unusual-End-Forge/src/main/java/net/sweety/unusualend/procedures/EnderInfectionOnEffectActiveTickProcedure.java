@@ -2,24 +2,20 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Endermite;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Blocks;
 import net.sweety.unusualend.entity.EnderblobEntity;
+import net.sweety.unusualend.init.UnusualendModDamageSources;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
 import net.sweety.unusualend.util.ProcedureHelper;
-
 public class EnderInfectionOnEffectActiveTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
@@ -86,7 +82,7 @@ public class EnderInfectionOnEffectActiveTickProcedure {
 			}
 		}
 		if (Math.random() < 0.005) {
-			entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation("unusualend:infection_damages")))), 1);
+			entity.hurt(UnusualendModDamageSources.INFECTION, 1);
 			ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_HURT, SoundSource.NEUTRAL, 1, 1);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 0.5, 0.5, 0.5, 0);
@@ -102,9 +98,9 @@ public class EnderInfectionOnEffectActiveTickProcedure {
 				X = x + Mth.nextInt(world.getRandom(), -3, 3);
 				Y = y + Mth.nextInt(world.getRandom(), -2, 2);
 				Z = z + Mth.nextInt(world.getRandom(), -3, 3);
-				if ((world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.CAVE_AIR || (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.VOID_AIR
-						|| (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.AIR) {
-					if (world.getBlockState(BlockPos.containing(X, Y - 1, Z)).canOcclude()) {
+				if ((world.getBlockState(new BlockPos(X, Y, Z))).getBlock() == Blocks.CAVE_AIR || (world.getBlockState(new BlockPos(X, Y, Z))).getBlock() == Blocks.VOID_AIR
+						|| (world.getBlockState(new BlockPos(X, Y, Z))).getBlock() == Blocks.AIR) {
+					if (world.getBlockState(new BlockPos(X, Y - 1, Z)).canOcclude()) {
 						if (world instanceof ServerLevel _level)
 							_level.sendParticles(ParticleTypes.PORTAL, X, Y, Z, 30, 0.5, 1.5, 0.5, 0);
 						{

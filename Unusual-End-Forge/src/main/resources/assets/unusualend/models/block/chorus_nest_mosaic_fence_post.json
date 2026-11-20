@@ -1,8 +1,79 @@
 {
-  "parent": "block/custom_fence_post",
   "textures": {
-    "texture": "unusualend:block/chorus_nest_fence",
-    "particle": "unusualend:block/chorus_nest_fence"
+    "particle": "unusualend:block/chorus_nest_fence",
+    "texture": "unusualend:block/chorus_nest_fence"
   },
-  "render_type": "solid"
+  "render_type": "solid",
+  "elements": [
+    {
+      "from": [
+        6,
+        0,
+        6
+      ],
+      "to": [
+        10,
+        16,
+        10
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#texture",
+          "cullface": "up"
+        },
+        "down": {
+          "uv": [
+            4,
+            0,
+            8,
+            4
+          ],
+          "texture": "#texture",
+          "cullface": "down"
+        },
+        "north": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            4,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
 }

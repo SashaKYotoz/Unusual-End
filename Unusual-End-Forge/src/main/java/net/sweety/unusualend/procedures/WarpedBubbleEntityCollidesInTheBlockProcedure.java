@@ -26,7 +26,7 @@ public class WarpedBubbleEntityCollidesInTheBlockProcedure {
 		if (!(entity instanceof BolokEntity || entity instanceof GlubEntity || entity instanceof BlukEntity)) {
 			entity.fallDistance = 0;
 			if (!((entity instanceof LivingEntity _entGetArmor ? _entGetArmor.getItemBySlot(EquipmentSlot.FEET) : ItemStack.EMPTY).getItem() == UnusualendModItems.WARPED_BOOTS.get())) {
-				world.destroyBlock(BlockPos.containing(x, y, z), false);
+				world.destroyBlock(new BlockPos(x, y, z), false);
 				entity.setDeltaMovement(new Vec3((entity.getDeltaMovement().x() + entity.getLookAngle().x), (entity.getDeltaMovement().y() + 1.5 + entity.getLookAngle().y), (entity.getDeltaMovement().z() + entity.getLookAngle().z)));
 				UnusualEnd.queueServerWork(40, () -> {
 					entity.fallDistance = 0;

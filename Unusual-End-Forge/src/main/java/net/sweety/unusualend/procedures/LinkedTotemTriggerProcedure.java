@@ -32,7 +32,7 @@ public class LinkedTotemTriggerProcedure {
 	@SubscribeEvent
 	public static void whenEntityUsesTotem(LivingUseTotemEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity(), event.getTotem());
+			execute(event, event.getEntity().level, event.getEntity(), event.getTotem());
 		}
 	}
 
@@ -40,11 +40,11 @@ public class LinkedTotemTriggerProcedure {
 		if (entity == null)
 			return;
 		if (itemstack.getOrCreateTag().getBoolean("LinkedTotem")) {
-			if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level().dimension())) {
+			if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level.dimension())) {
 				if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.OVERWORLD)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.OVERWORLD;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -58,9 +58,9 @@ public class LinkedTotemTriggerProcedure {
 					}
 				}
 				if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.NETHER)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.NETHER;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -74,9 +74,9 @@ public class LinkedTotemTriggerProcedure {
 					}
 				}
 				if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.END)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.END;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {

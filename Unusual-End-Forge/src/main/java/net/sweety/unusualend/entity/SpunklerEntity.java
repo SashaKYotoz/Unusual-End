@@ -3,11 +3,9 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -32,13 +30,13 @@ public class SpunklerEntity extends Monster {
 
 	public SpunklerEntity(EntityType<SpunklerEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
+		this.maxUpStep = 0.6f;
 		xpReward = 7;
 		setNoAi(false);
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -71,16 +69,16 @@ public class SpunklerEntity extends Monster {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		Level world = this.level();
+		Level world = this.level;
 		Entity sourceentity = damagesource.getEntity();
 		Entity immediatesourceentity = damagesource.getDirectEntity();
 
 		SpunklerEntityIsHurtProcedure.execute(world, immediatesourceentity, sourceentity);
 		if (damagesource.getDirectEntity() instanceof AbstractArrow)
 			return false;
-		if (damagesource.is(DamageTypes.DROWN))
+		if (damagesource.getMsgId().equals("drown"))
 			return false;
-		if (damagesource.is(DamageTypes.TRIDENT))
+		if (damagesource.getMsgId().equals("trident"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -88,7 +86,7 @@ public class SpunklerEntity extends Monster {
 	@Override
 	public void playerTouch(Player sourceentity) {
 		super.playerTouch(sourceentity);
-		SpunklerPlayerCollidesWithThisEntityProcedure.execute(this.level(), this, sourceentity);
+		SpunklerPlayerCollidesWithThisEntityProcedure.execute(this.level, this, sourceentity);
 	}
 
 	@Override
@@ -101,7 +99,7 @@ public class SpunklerEntity extends Monster {
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return ((world.getBlockState(BlockPos.containing(x, y, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(BlockPos.containing(x, y - 2, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS));
+			return ((world.getBlockState(new BlockPos(x, y, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS) || (world.getBlockState(new BlockPos(x, y - 2, z))).is(UnusualendModTags.Blocks.WARPED_BLOCKS));
 		});
 	}
 

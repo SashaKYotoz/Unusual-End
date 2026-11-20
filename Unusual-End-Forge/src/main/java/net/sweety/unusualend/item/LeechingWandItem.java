@@ -14,6 +14,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModEnchantments;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.LeechingWandItemInInventoryTickProcedure;
 
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.Set;
 
 public class LeechingWandItem extends Item {
 	public LeechingWandItem() {
-		super(new Item.Properties().durability(256).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS).durability(256).rarity(Rarity.COMMON));
 	}
 
 	@Override

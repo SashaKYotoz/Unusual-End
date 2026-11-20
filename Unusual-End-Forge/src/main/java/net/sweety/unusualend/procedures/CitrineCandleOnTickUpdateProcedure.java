@@ -40,7 +40,7 @@ public class CitrineCandleOnTickUpdateProcedure {
 					}
 					if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip9 ? blockstate.getValue(_getip9) : -1) == 2) {
 						if (entityiterator instanceof EnderlingEntity) {
-							if (!entityiterator.level().isClientSide())
+							if (!entityiterator.level.isClientSide())
 								entityiterator.discard();
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.POOF, (entityiterator.getX()), (entityiterator.getY()), (entityiterator.getZ()), 10, 0.7, 0.7, 0.7, 0.05);

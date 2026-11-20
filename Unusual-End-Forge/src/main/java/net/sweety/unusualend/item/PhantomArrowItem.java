@@ -10,10 +10,11 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.entity.PhantomArrowProjectileEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 public class PhantomArrowItem extends ArrowItem {
 	public PhantomArrowItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(64).rarity(Rarity.COMMON));
 	}
 
 	@Override

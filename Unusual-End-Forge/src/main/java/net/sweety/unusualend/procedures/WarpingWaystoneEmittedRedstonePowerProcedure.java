@@ -6,7 +6,7 @@ import net.sweety.unusualend.util.ProcedureHelper;
 
 public class WarpingWaystoneEmittedRedstonePowerProcedure {
 	public static double execute(LevelAccessor world, double x, double y, double z) {
-		if (ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "RedstoneLevel") >= 1) {
+		if (ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "RedstoneLevel") >= 1) {
 			return 15;
 		}
 		return 0;

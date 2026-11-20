@@ -26,7 +26,7 @@ public class EnchantsHurtProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingHurtEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getSource(), event.getEntity(), event.getSource().getEntity(), event.getAmount());
+			execute(event, event.getEntity().level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getSource(), event.getEntity(), event.getSource().getEntity(), event.getAmount());
 		}
 	}
 
@@ -35,7 +35,7 @@ public class EnchantsHurtProcedure {
 			return;
 		if (EnchantmentHelper.getItemEnchantmentLevel(UnusualendModEnchantments.BOLOKS_FURY.get(), (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getHealth() : -1) >= (entity instanceof LivingEntity _livEnt ? _livEnt.getMaxHealth() : -1)) {
-				if (entity instanceof LivingEntity && !damagesource.isIndirect()) {
+				if (entity instanceof LivingEntity && damagesource.getDirectEntity() == damagesource.getEntity()) {
 					if (event instanceof LivingHurtEvent _hurt) {
 						_hurt.setAmount((float) (amount + 0.5 + 2 * (sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getEnchantmentLevel(UnusualendModEnchantments.BOLOKS_FURY.get())));
 					}

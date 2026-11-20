@@ -9,11 +9,12 @@ import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.VoidTotemItemInInventoryTickProcedure;
 
 public class VoidTotemItem extends Item {
 	public VoidTotemItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(1).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

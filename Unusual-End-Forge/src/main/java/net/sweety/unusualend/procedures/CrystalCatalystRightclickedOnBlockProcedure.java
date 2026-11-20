@@ -37,7 +37,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.CRYSTAL_CATALYST.get()) {
 			if (entity.isShiftKeyDown()) {
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.BEACON) {
+				if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == Blocks.BEACON) {
 					ProcedureHelper.awardAdvancement(entity, "obtain_catalyst");
 					if (!(entity instanceof Player _player ? _player.getCooldowns().isOnCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) : false)) {
 						if (entity instanceof Player _player)
@@ -55,7 +55,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.BEACON_ACTIVATE, SoundSource.BLOCKS, 1, 1);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.END_ROD, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 0);
-				} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.CONDUIT) {
+				} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == Blocks.CONDUIT) {
 					ProcedureHelper.awardAdvancement(entity, "obtain_catalyst");
 					if (!(entity instanceof Player _player ? _player.getCooldowns().isOnCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) : false)) {
 						if (entity instanceof Player _player)
@@ -73,7 +73,7 @@ public class CrystalCatalystRightclickedOnBlockProcedure {
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.SPLASH, (x + 0.5), (y + 0.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 1);
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putString("buff", (Component.translatable("text.unusualend.catalyst_description_conduit").getString()));
-				} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.PEARLESCENT_INFUSER.get()) {
+				} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == UnusualendModBlocks.PEARLESCENT_INFUSER.get()) {
 					if (!(entity instanceof Player _player ? _player.getCooldowns().isOnCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem()) : false)) {
 						if (entity instanceof Player _player)
 							_player.getCooldowns().addCooldown((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem(), 10);

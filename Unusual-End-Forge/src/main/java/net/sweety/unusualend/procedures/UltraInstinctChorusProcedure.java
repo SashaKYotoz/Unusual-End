@@ -28,7 +28,7 @@ public class UltraInstinctChorusProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingHurtEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity(), event.getAmount());
+			execute(event, event.getEntity().level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity(), event.getAmount());
 		}
 	}
 
@@ -45,9 +45,9 @@ public class UltraInstinctChorusProcedure {
 						X = x + Mth.nextInt(world.getRandom(), -5, 5);
 						Y = y + Mth.nextInt(world.getRandom(), -2, 2);
 						Z = z + Mth.nextInt(world.getRandom(), -5, 5);
-						if ((world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.CAVE_AIR || (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.VOID_AIR
-								|| (world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() == Blocks.AIR) {
-							if (world.getBlockState(BlockPos.containing(X, Y - 1, Z)).canOcclude()) {
+						if ((world.getBlockState(new BlockPos(X, Y, Z))).getBlock() == Blocks.CAVE_AIR || (world.getBlockState(new BlockPos(X, Y, Z))).getBlock() == Blocks.VOID_AIR
+								|| (world.getBlockState(new BlockPos(X, Y, Z))).getBlock() == Blocks.AIR) {
+							if (world.getBlockState(new BlockPos(X, Y - 1, Z)).canOcclude()) {
 								{
 									Entity _ent = entity;
 									_ent.teleportTo(X, Y, Z);

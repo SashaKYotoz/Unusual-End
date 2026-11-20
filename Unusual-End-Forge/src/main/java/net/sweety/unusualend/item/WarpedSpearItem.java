@@ -14,6 +14,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.WarpedSpearToolInHandTickProcedure;
 
 import java.util.function.Consumer;
@@ -44,7 +45,7 @@ public class WarpedSpearItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of(new ItemStack(UnusualendModItems.LURKER_SPINE.get()), new ItemStack(UnusualendModItems.BOLOK_SCALE.get()));
 			}
-		}, 3, -3.4f, new Item.Properties());
+		}, 3, -3.4f, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF));
 	}
 
 	@Override

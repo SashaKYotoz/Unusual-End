@@ -8,7 +8,7 @@
   "placement": {
     "type": "minecraft:random_spread",
     "exclusion_zone": {
-      "other_set": " unusualend:wanderer_island",
+      "other_set": "unusualend:wanderer_island",
       "chunk_count": 9
     },
     "spacing": 40,

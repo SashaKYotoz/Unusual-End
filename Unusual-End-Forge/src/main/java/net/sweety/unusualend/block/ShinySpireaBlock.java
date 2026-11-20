@@ -10,8 +10,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -20,7 +20,7 @@ import net.sweety.unusualend.init.UnusualendModTags;
 public class ShinySpireaBlock extends FlowerBlock {
 	public ShinySpireaBlock() {
 		super(() -> MobEffects.LEVITATION, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.FUNGUS).instabreak().speedFactor(0.9f).lightLevel(s -> 8).noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_PINK).offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.FUNGUS).instabreak().speedFactor(0.9f).lightLevel(s -> 8).noCollission());
 	}
 
 	@Override

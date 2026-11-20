@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.block;
 
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,7 +17,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class PhantomMembraneBlock extends Block {
     public PhantomMembraneBlock() {
-        super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.WOOL).strength(0.2f, 3f).speedFactor(0.85f).jumpFactor(0.9f).noOcclusion().pushReaction(PushReaction.DESTROY).isRedstoneConductor((bs, br, bp) -> false));
+        super(BlockBehaviour.Properties.of(Material.BAMBOO).sound(SoundType.WOOL).strength(0.2f, 3f).speedFactor(0.85f).jumpFactor(0.9f).noOcclusion().isRedstoneConductor((bs, br, bp) -> false));
     }
 
     @Override

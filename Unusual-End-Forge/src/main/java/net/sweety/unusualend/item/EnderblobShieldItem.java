@@ -9,12 +9,13 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModBlocks;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.List;
 
 public class EnderblobShieldItem extends ShieldItem {
 	public EnderblobShieldItem() {
-		super(new Item.Properties().durability(224));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS).durability(224));
 	}
 
 	@Override

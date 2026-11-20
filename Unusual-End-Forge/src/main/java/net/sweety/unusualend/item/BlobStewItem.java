@@ -12,10 +12,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 public class BlobStewItem extends Item {
 	public BlobStewItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.JUMP, 200, 0), 1.0F).nutrition(6).saturationMod(0.6f).alwaysEat().build()));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS).stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).effect(new MobEffectInstance(MobEffects.JUMP, 200, 0), 1.0F).nutrition(6).saturationMod(0.6f).alwaysEat().build()));
 	}
 
 	@Override

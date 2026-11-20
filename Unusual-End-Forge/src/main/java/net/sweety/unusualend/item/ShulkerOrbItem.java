@@ -9,12 +9,13 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.config.Config;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.List;
 
 public class ShulkerOrbItem extends Item {
 	public ShulkerOrbItem() {
-		super(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

@@ -5,7 +5,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -13,7 +12,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -49,14 +47,14 @@ public class EnderlingEntity extends Monster {
 
     public EnderlingEntity(EntityType<EnderlingEntity> type, Level world) {
         super(type, world);
-        setMaxUpStep(0.6f);
+        this.maxUpStep = 0.6f;
         xpReward = 1;
         setNoAi(false);
         this.moveControl = new FlyingMoveControl(this, 10, true);
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
@@ -148,9 +146,9 @@ public class EnderlingEntity extends Monster {
 
     @Override
     public boolean hurt(DamageSource damagesource, float amount) {
-        if (damagesource.is(DamageTypes.FALL))
+        if (damagesource.getMsgId().equals("fall"))
             return false;
-        if (damagesource.is(DamageTypes.DRAGON_BREATH))
+        if (damagesource.getMsgId().equals("dragonBreath"))
             return false;
         return super.hurt(damagesource, amount);
     }
@@ -165,7 +163,7 @@ public class EnderlingEntity extends Monster {
     @Override
     public void baseTick() {
         super.baseTick();
-        if (this.level() instanceof ServerLevel level && (this.tickCount & 1) == 0)
+        if (this.level instanceof ServerLevel level && (this.tickCount & 1) == 0)
             level.sendParticles(ParticleTypes.REVERSE_PORTAL, (this.getX() + 0.1), (this.getY() + 0.3), (this.getZ() + 0.1), 1, 0.3, 0.3, 0.3, 0.01);
     }
 

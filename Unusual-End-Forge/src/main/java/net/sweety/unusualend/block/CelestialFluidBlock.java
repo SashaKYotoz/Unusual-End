@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.block;
 
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
@@ -15,13 +16,14 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.sweety.unusualend.block.entity.CelestialFluidBlockEntity;
 
 import java.util.List;
 
 public class CelestialFluidBlock extends Block implements EntityBlock {
 	public CelestialFluidBlock() {
-		super(BlockBehaviour.Properties.of().sound(SoundType.SCULK).strength(1f, 10f).lightLevel(s -> 15).noCollission().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true));
+		super(BlockBehaviour.Properties.of(Material.DECORATION).sound(SoundType.SCULK).strength(1f, 10f).lightLevel(s -> 15).noCollission().hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true));
 	}
 
 	@Override

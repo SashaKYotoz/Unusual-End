@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -29,7 +29,7 @@ import net.sweety.unusualend.procedures.GloopilonStemNeighbourBlockChangesProced
 public class GloopilonStemBlock extends FlowerBlock {
 	public GloopilonStemBlock() {
 		super(() -> MobEffects.MOVEMENT_SPEED, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).sound(SoundType.CORAL_BLOCK).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_MAGENTA).offsetType(BlockBehaviour.OffsetType.NONE).sound(SoundType.CORAL_BLOCK).instabreak().noCollission());
 	}
 
 	@Override
@@ -66,7 +66,7 @@ public class GloopilonStemBlock extends FlowerBlock {
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.POLISHED_GLOOPSTONE.get() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE_BRICKS.get());
+			additionalCondition = ((world.getBlockState(new BlockPos(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.POLISHED_GLOOPSTONE.get() || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE_BRICKS.get());
 		}
 		return additionalCondition;
 	}

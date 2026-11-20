@@ -3,13 +3,11 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -40,14 +38,14 @@ public class EnderblobQueenEntity extends Monster {
 
 	public EnderblobQueenEntity(EntityType<EnderblobQueenEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(1f);
+		this.maxUpStep = 1f;
 		xpReward = 5000;
 		setNoAi(false);
 		setPersistenceRequired();
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -99,17 +97,17 @@ public class EnderblobQueenEntity extends Monster {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.IN_FIRE))
+		if (damagesource.getMsgId().equals("inFire"))
 			return false;
 		if (damagesource.getDirectEntity() instanceof AbstractArrow)
 			return false;
 		if (damagesource.getDirectEntity() instanceof ThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
-		if (damagesource.is(DamageTypes.WITHER) || damagesource.is(DamageTypes.WITHER_SKULL))
+		if (damagesource.getMsgId().equals("wither") || damagesource.getMsgId().equals("witherSkull"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -122,13 +120,13 @@ public class EnderblobQueenEntity extends Monster {
 	@Override
 	public void awardKillScore(Entity entity, int score, DamageSource damageSource) {
 		super.awardKillScore(entity, score, damageSource);
-		BlobQueenAttackAnimProcedure.execute(this.level(), this);
+		BlobQueenAttackAnimProcedure.execute(this.level, this);
 	}
 
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		EnderblobQueenOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+		EnderblobQueenOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

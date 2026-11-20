@@ -37,7 +37,7 @@ public class WarpedBalloonRangedItemShootsProjectileProcedure {
 		ProcedureHelper.playSound(world, x, y, z, SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, (float) 0.3, (float) 1.4);
 		{
 			Entity _shootFrom = entity;
-			Level projectileLevel = _shootFrom.level();
+			Level projectileLevel = _shootFrom.level;
 			if (!projectileLevel.isClientSide()) {
 				Projectile _entityToSpawn = new Object() {
 					public Projectile getArrow(Level level, float damage, int knockback) {

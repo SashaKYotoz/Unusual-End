@@ -30,7 +30,7 @@ public class WhenPlayerHurtProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingAttackEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity(), event.getSource().getEntity());
+			execute(event, event.getEntity().level, event.getEntity(), event.getSource().getEntity());
 		}
 	}
 
@@ -58,7 +58,7 @@ public class WhenPlayerHurtProcedure {
 			dividedby = 1;
 			{
 				Entity _ent = sourceentity;
-				if (!_ent.level().isClientSide() && _ent.getServer() != null) {
+				if (!_ent.level.isClientSide() && _ent.getServer() != null) {
 					_ent.lookAt(EntityAnchorArgument.Anchor.FEET, entity.position());
 				}
 			}

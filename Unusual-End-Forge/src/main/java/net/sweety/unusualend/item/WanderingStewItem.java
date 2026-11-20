@@ -8,13 +8,14 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.config.Config;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.WanderingStewPlayerFinishesUsingItemProcedure;
 
 import java.util.List;
 
 public class WanderingStewItem extends Item {
 	public WanderingStewItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.6f).alwaysEat().build()));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(1).rarity(Rarity.UNCOMMON).food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.6f).alwaysEat().build()));
 	}
 
 	@Override

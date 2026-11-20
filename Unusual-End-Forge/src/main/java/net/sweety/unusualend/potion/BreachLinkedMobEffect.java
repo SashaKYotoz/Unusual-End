@@ -15,13 +15,13 @@ public class BreachLinkedMobEffect extends MobEffect {
 
 	@Override
 	public void addAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
-		BreachLinkedEffectStartedappliedProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+		BreachLinkedEffectStartedappliedProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override
 	public void removeAttributeModifiers(LivingEntity entity, AttributeMap attributeMap, int amplifier) {
 		super.removeAttributeModifiers(entity, attributeMap, amplifier);
-		BreachLinkedEffectExpiresProcedure.execute(entity.level(), entity);
+		BreachLinkedEffectExpiresProcedure.execute(entity.level, entity);
 	}
 
 	@Override

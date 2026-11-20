@@ -24,7 +24,7 @@ public class EndstoneGolemEntityDiesProcedure {
 		ProcedureHelper.playSound(world, x, y, z, SoundEvents.GENERIC_EXPLODE, SoundSource.HOSTILE, 1, 1);
 		if (world instanceof ServerLevel _level) {
 			LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-			entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
+			entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x, y, z)));
 			entityToSpawn.setVisualOnly(true);
 			_level.addFreshEntity(entityToSpawn);
 		}
@@ -32,7 +32,7 @@ public class EndstoneGolemEntityDiesProcedure {
 			UnusualEnd.queueServerWork((int) Mth.nextDouble(world.getRandom(), 5, 10), () -> {
 				if (world instanceof ServerLevel _level) {
 					LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-					entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x, y, z)));
+					entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x, y, z)));
 					entityToSpawn.setVisualOnly(true);
 					_level.addFreshEntity(entityToSpawn);
 				}

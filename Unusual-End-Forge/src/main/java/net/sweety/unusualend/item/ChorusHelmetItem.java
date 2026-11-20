@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.sweety.unusualend.client.model.ModelChorusHelmet;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.Collections;
 import java.util.List;
@@ -22,16 +23,16 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public abstract class ChorusHelmetItem extends ArmorItem {
-	public ChorusHelmetItem(ArmorItem.Type type, Item.Properties properties) {
+	public ChorusHelmetItem(EquipmentSlot type, Item.Properties properties) {
 		super(new ArmorMaterial() {
 			@Override
-			public int getDurabilityForType(ArmorItem.Type type) {
-				return new int[]{13, 15, 16, 11}[type.getSlot().getIndex()] * 9;
+			public int getDurabilityForSlot(EquipmentSlot type) {
+				return new int[]{13, 15, 16, 11}[type.getIndex()] * 9;
 			}
 
 			@Override
-			public int getDefenseForType(ArmorItem.Type type) {
-				return new int[]{0, 0, 0, 2}[type.getSlot().getIndex()];
+			public int getDefenseForSlot(EquipmentSlot type) {
+				return new int[]{0, 0, 0, 2}[type.getIndex()];
 			}
 
 			@Override
@@ -68,7 +69,7 @@ public abstract class ChorusHelmetItem extends ArmorItem {
 
 	public static class Helmet extends ChorusHelmetItem {
 		public Helmet() {
-			super(ArmorItem.Type.HELMET, new Item.Properties());
+			super(EquipmentSlot.HEAD, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END));
 		}
 
 		@Override

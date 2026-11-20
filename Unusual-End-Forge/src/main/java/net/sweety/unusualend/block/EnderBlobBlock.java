@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -25,7 +25,7 @@ import java.util.List;
 
 public class EnderBlobBlock extends Block {
 	public EnderBlobBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.HONEY_BLOCK).strength(0f, 3f).friction(0.8f).speedFactor(0.8f).jumpFactor(0.8f).noOcclusion()
+		super(BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.COLOR_PURPLE).sound(SoundType.HONEY_BLOCK).strength(0f, 3f).friction(0.8f).speedFactor(0.8f).jumpFactor(0.8f).noOcclusion()
 				.isRedstoneConductor((bs, br, bp) -> false));
 	}
 

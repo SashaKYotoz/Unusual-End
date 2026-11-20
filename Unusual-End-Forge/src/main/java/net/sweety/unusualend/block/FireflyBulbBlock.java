@@ -9,15 +9,15 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class FireflyBulbBlock extends Block {
 	public FireflyBulbBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.COLOR_YELLOW).sound(SoundType.SLIME_BLOCK).strength(0.15f, 1f).lightLevel(s -> 15).speedFactor(0.9f).jumpFactor(0.9f).noOcclusion()
+		super(BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.COLOR_YELLOW).sound(SoundType.SLIME_BLOCK).strength(0.15f, 1f).lightLevel(s -> 15).speedFactor(0.9f).jumpFactor(0.9f).noOcclusion()
 				.hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).isRedstoneConductor((bs, br, bp) -> false));
 	}
 

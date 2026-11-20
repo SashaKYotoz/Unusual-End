@@ -3,13 +3,11 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -38,14 +36,14 @@ public class EnderbulbEntity extends Monster {
 
 	public EnderbulbEntity(EntityType<EnderbulbEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(1.5f);
+		this.maxUpStep = 1.5f;
 		xpReward = 3;
 		setNoAi(false);
 		this.moveControl = new FlyingMoveControl(this, 10, true);
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -123,9 +121,9 @@ public class EnderbulbEntity extends Monster {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -133,13 +131,13 @@ public class EnderbulbEntity extends Monster {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		EnderbulbEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+		EnderbulbEntityDiesProcedure.execute(this.level, this.getX(), this.getY(), this.getZ());
 	}
 
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		EnderbulbOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+		EnderbulbOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

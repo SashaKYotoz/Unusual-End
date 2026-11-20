@@ -16,41 +16,41 @@ public class BuddingCitrineUpdateTickProcedure {
 		double randomNumber = 0;
 		randomNumber = Mth.nextInt(world.getRandom(), 1, 6);
 		if (randomNumber == 1) {
-			if (world.isEmptyBlock(BlockPos.containing(x, y + 1, z))) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y + 1, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
+			if (world.isEmptyBlock(new BlockPos(x, y + 1, z))) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y + 1, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
 				{
 					String _value = "floor";
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _enumProp && _enumProp.getValue(_value).isPresent())
 						world.setBlock(_pos, _bs.setValue(_enumProp, (Enum) _enumProp.getValue(_value).get()), 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y + 1, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
-			} else if ((world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y + 1, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y + 1, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y + 1, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
 			}
 		} else if (randomNumber == 2) {
-			if (world.isEmptyBlock(BlockPos.containing(x, y - 1, z))) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y - 1, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
+			if (world.isEmptyBlock(new BlockPos(x, y - 1, z))) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y - 1, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
 				{
 					String _value = "ceiling";
-					BlockPos _pos = BlockPos.containing(x, y - 1, z);
+					BlockPos _pos = new BlockPos(x, y - 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _enumProp && _enumProp.getValue(_value).isPresent())
 						world.setBlock(_pos, _bs.setValue(_enumProp, (Enum) _enumProp.getValue(_value).get()), 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y - 1, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
-			} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y - 1, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y - 1, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y - 1, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
 			}
 		} else if (randomNumber == 3) {
-			if (world.isEmptyBlock(BlockPos.containing(x, y, z - 1))) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z - 1), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
+			if (world.isEmptyBlock(new BlockPos(x, y, z - 1))) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z - 1), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
 				{
 					Direction _dir = Direction.NORTH;
-					BlockPos _pos = BlockPos.containing(x, y, z - 1);
+					BlockPos _pos = new BlockPos(x, y, z - 1);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -61,17 +61,17 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z - 1), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z - 1), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y, z - 1))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z - 1), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y, z - 1))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z - 1), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
 			}
 		} else if (randomNumber == 4) {
-			if (world.isEmptyBlock(BlockPos.containing(x, y, z + 1))) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z + 1), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
+			if (world.isEmptyBlock(new BlockPos(x, y, z + 1))) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z + 1), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
 				{
 					Direction _dir = Direction.SOUTH;
-					BlockPos _pos = BlockPos.containing(x, y, z + 1);
+					BlockPos _pos = new BlockPos(x, y, z + 1);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -82,17 +82,17 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z + 1), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z + 1), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y, z + 1))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z + 1), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x, y, z + 1))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z + 1), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
 			}
 		} else if (randomNumber == 5) {
-			if (world.isEmptyBlock(BlockPos.containing(x - 1, y, z))) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x - 1, y, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
+			if (world.isEmptyBlock(new BlockPos(x - 1, y, z))) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x - 1, y, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
 				{
 					Direction _dir = Direction.WEST;
-					BlockPos _pos = BlockPos.containing(x - 1, y, z);
+					BlockPos _pos = new BlockPos(x - 1, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -103,17 +103,17 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x - 1, y, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
-			} else if ((world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x - 1, y, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x - 1, y, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x - 1, y, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x - 1, y, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x - 1, y, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
 			}
 		} else if (randomNumber == 6) {
-			if (world.isEmptyBlock(BlockPos.containing(x + 1, y, z))) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x + 1, y, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
+			if (world.isEmptyBlock(new BlockPos(x + 1, y, z))) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x + 1, y, z), UnusualendModBlocks.CITRINE_BUD.get().defaultBlockState(), 3);
 				{
 					Direction _dir = Direction.EAST;
-					BlockPos _pos = BlockPos.containing(x + 1, y, z);
+					BlockPos _pos = new BlockPos(x + 1, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -124,10 +124,10 @@ public class BuddingCitrineUpdateTickProcedure {
 							world.setBlock(_pos, _bs.setValue(_ap, _dir.getAxis()), 3);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x + 1, y, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
-			} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
-				ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x + 1, y, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x + 1, y, z))).getBlock() == UnusualendModBlocks.CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x + 1, y, z), UnusualendModBlocks.LARGE_CITRINE_BUD.get().defaultBlockState(), 3);
+			} else if ((world.getBlockState(new BlockPos(x + 1, y, z))).getBlock() == UnusualendModBlocks.LARGE_CITRINE_BUD.get()) {
+				ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x + 1, y, z), UnusualendModBlocks.CITRINE_CLUSTER.get().defaultBlockState(), 3);
 			}
 		}
 	}

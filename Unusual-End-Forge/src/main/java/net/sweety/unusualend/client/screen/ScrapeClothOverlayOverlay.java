@@ -4,6 +4,7 @@ package net.sweety.unusualend.client.screen;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +28,7 @@ public class ScrapeClothOverlayOverlay {
 		double z = 0;
 		Player entity = Minecraft.getInstance().player;
 		if (entity != null) {
-			world = entity.level();
+			world = entity.level;
 			x = entity.getX();
 			y = entity.getY();
 			z = entity.getZ();
@@ -39,7 +40,8 @@ public class ScrapeClothOverlayOverlay {
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		if ((entity != null && (entity.getCapability(UnusualendModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new UnusualendModVariables.PlayerVariables())).ScrapeOverlay > 0)) {
-			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/cloth_overlay.png"), 0, 0, 0, 0, w, h, w, h);
+			RenderSystem.setShaderTexture(0, new ResourceLocation("unusualend:textures/screens/cloth_overlay.png"));
+			GuiComponent.blit(event.getPoseStack(), 0, 0, 0, 0, w, h, w, h);
 		}
 		RenderSystem.depthMask(true);
 		RenderSystem.defaultBlendFunc();

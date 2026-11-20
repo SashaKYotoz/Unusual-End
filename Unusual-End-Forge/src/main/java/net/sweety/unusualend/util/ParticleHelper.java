@@ -1,5 +1,6 @@
 package net.sweety.unusualend.util;
 
+import com.mojang.math.Vector3f;
 import net.minecraft.core.particles.*;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -13,12 +14,8 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualendModBlocks;
-import org.joml.Vector3f;
 
 public final class ParticleHelper {
-	private ParticleHelper() {
-	}
-
 	public static ParticleOptions block(Block block) {
 		return new BlockParticleOption(ParticleTypes.BLOCK, block.defaultBlockState());
 	}

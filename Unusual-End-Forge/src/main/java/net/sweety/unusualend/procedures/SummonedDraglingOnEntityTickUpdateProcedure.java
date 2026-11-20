@@ -16,7 +16,7 @@ public class SummonedDraglingOnEntityTickUpdateProcedure {
 		if (entity instanceof SummonedDraglingEntity _datEntSetI)
 			_datEntSetI.getEntityData().set(SummonedDraglingEntity.DATA_despawn, (int) ((entity instanceof SummonedDraglingEntity _datEntI ? _datEntI.getEntityData().get(SummonedDraglingEntity.DATA_despawn) : 0) - 1));
 		if ((entity instanceof SummonedDraglingEntity _datEntI ? _datEntI.getEntityData().get(SummonedDraglingEntity.DATA_despawn) : 0) <= 0) {
-			if (!entity.level().isClientSide())
+			if (!entity.level.isClientSide())
 				entity.discard();
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SQUID_INK, x, y, z, 5, 0.3, 0.3, 0.3, 0);

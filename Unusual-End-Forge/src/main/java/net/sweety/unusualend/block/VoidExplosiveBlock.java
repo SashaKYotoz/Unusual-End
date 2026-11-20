@@ -1,6 +1,7 @@
 
 package net.sweety.unusualend.block;
 
+
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockGetter;
@@ -9,12 +10,12 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
 import net.sweety.unusualend.procedures.SpawnExplosiveProcedure;
 
 public class VoidExplosiveBlock extends Block {
 	public VoidExplosiveBlock() {
-		super(BlockBehaviour.Properties.of().ignitedByLava().sound(SoundType.ANCIENT_DEBRIS).strength(2f, 600f).pushReaction(PushReaction.BLOCK));
+		super(BlockBehaviour.Properties.of(Material.HEAVY_METAL).sound(SoundType.ANCIENT_DEBRIS).strength(2f, 600f));
 	}
 
 	@Override

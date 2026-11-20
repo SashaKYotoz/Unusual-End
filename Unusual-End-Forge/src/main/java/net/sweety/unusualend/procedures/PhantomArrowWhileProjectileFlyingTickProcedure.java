@@ -18,7 +18,7 @@ public class PhantomArrowWhileProjectileFlyingTickProcedure {
 			immediatesourceentity.setNoGravity(false);
 		}
 		if (immediatesourceentity.getPersistentData().getDouble("Despawn") == 240) {
-			if (!immediatesourceentity.level().isClientSide())
+			if (!immediatesourceentity.level.isClientSide())
 				immediatesourceentity.discard();
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.FIREWORK, x, y, z, 10, 0.3, 0.3, 0.3, 0);

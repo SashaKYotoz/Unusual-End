@@ -1,6 +1,5 @@
 {
-  "type": "minecraft:smithing_transform",
-  "template": [],
+  "type": "minecraft:smithing",
   "base": {
     "tag": "minecraft:music_discs"
   },

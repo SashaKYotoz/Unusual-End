@@ -23,14 +23,14 @@ public class VoidCrackOnEntityTickUpdateProcedure {
 		}
 		{
 			Entity _ent = entity;
-			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-				ParticleHelper.spawn(_ent.level(), ParticleHelper.voidParticles(), _ent.position(), 3, 2, 2, 2, 0);
+			if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+				ParticleHelper.spawn(_ent.level, ParticleHelper.voidParticles(), _ent.position(), 3, 2, 2, 2, 0);
 			}
 		}
 		{
 			Entity _ent = entity;
-			if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-				ParticleHelper.spawn(_ent.level(), ParticleHelper.voidParticles(), _ent.position(), 10, 0.5, 0.5, 0.5, 0);
+			if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+				ParticleHelper.spawn(_ent.level, ParticleHelper.voidParticles(), _ent.position(), 10, 0.5, 0.5, 0.5, 0);
 			}
 		}
 		if (Math.random() < 0.1) {

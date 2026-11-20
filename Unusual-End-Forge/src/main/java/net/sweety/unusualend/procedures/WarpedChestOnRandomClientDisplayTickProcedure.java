@@ -12,7 +12,7 @@ public class WarpedChestOnRandomClientDisplayTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (!(ProcedureHelper.getBlockEntityString(world, BlockPos.containing(x, y, z), "UUID")).contains(entity.getStringUUID())) {
+		if (!(ProcedureHelper.getBlockEntityString(world, new BlockPos(x, y, z), "UUID")).contains(entity.getStringUUID())) {
 			world.addParticle(ParticleTypes.DRIPPING_WATER, (x + Mth.nextDouble(world.getRandom(), -0.1, 1.1)), (y + Mth.nextDouble(world.getRandom(), 0.4, 0.85)), (z + Mth.nextDouble(world.getRandom(), -0.1, 1.1)), 0, 0, 0);
 			world.addParticle(UnusualendModParticleTypes.BOLOK_PARTICLE.get(), (x + Mth.nextDouble(world.getRandom(), -0.1, 1.1)), (y + Mth.nextDouble(world.getRandom(), 0.4, 0.85)),
 					(z + Mth.nextDouble(world.getRandom(), -0.1, 1.1)), 0, 0, 0);

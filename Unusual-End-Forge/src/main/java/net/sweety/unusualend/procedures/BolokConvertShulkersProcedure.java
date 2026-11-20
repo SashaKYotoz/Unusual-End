@@ -12,6 +12,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.sweety.unusualend.entity.BolokEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 
 import javax.annotation.Nullable;
 
@@ -20,7 +21,7 @@ public class BolokConvertShulkersProcedure {
 	@SubscribeEvent
 	public static void onEntityDeath(LivingDeathEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity(), event.getSource().getEntity());
+			execute(event, event.getEntity().level, event.getEntity(), event.getSource().getEntity());
 		}
 	}
 
@@ -35,7 +36,7 @@ public class BolokConvertShulkersProcedure {
 			if (sourceentity instanceof BolokEntity) {
 				if (Math.random() < 0.7) {
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = UnusualendModEntities.SPUNKLER.get().spawn(_level, BlockPos.containing(entity.getX(), entity.getY(), entity.getZ()), MobSpawnType.MOB_SUMMONED);
+						Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.SPUNKLER.get(), _level, new BlockPos(entity.getX(), entity.getY(), entity.getZ()), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 							entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 						}

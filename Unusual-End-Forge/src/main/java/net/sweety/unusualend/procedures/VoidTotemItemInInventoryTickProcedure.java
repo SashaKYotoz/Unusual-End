@@ -30,7 +30,7 @@ public class VoidTotemItemInInventoryTickProcedure {
 		if (entity == null)
 			return;
 		if (entity.getY() < Config.VOID_TOTEM_Y.get()) {
-			if ((entity.level().dimension()) == Level.END) {
+			if ((entity.level.dimension()) == Level.END) {
 				if (!((entity instanceof Player _plrCldRem6 ? _plrCldRem6.getCooldowns().getCooldownPercent(itemstack.getItem(), 0f) * 100 : 0) > 0)) {
 					if (world.isClientSide()) {
 						if (world.isClientSide())
@@ -44,11 +44,11 @@ public class VoidTotemItemInInventoryTickProcedure {
 					}
 					ProcedureHelper.awardAdvancement(entity, "worse_than_death");
 					if (itemstack.getOrCreateTag().getBoolean("LinkedTotem")) {
-						if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level().dimension())) {
+						if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level.dimension())) {
 							if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.OVERWORLD)) {
-								if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+								if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 									ResourceKey<Level> destinationType = Level.OVERWORLD;
-									if (_player.level().dimension() == destinationType)
+									if (_player.level.dimension() == destinationType)
 										return;
 									ServerLevel nextLevel = _player.server.getLevel(destinationType);
 									if (nextLevel != null) {
@@ -62,9 +62,9 @@ public class VoidTotemItemInInventoryTickProcedure {
 								}
 							}
 							if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.NETHER)) {
-								if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+								if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 									ResourceKey<Level> destinationType = Level.NETHER;
-									if (_player.level().dimension() == destinationType)
+									if (_player.level.dimension() == destinationType)
 										return;
 									ServerLevel nextLevel = _player.server.getLevel(destinationType);
 									if (nextLevel != null) {
@@ -78,9 +78,9 @@ public class VoidTotemItemInInventoryTickProcedure {
 								}
 							}
 							if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.END)) {
-								if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+								if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 									ResourceKey<Level> destinationType = Level.END;
-									if (_player.level().dimension() == destinationType)
+									if (_player.level.dimension() == destinationType)
 										return;
 									ServerLevel nextLevel = _player.server.getLevel(destinationType);
 									if (nextLevel != null) {

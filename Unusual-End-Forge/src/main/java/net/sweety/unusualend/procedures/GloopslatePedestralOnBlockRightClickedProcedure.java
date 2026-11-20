@@ -21,7 +21,7 @@ public class GloopslatePedestralOnBlockRightClickedProcedure {
 		if (entity == null)
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PRISMATIC_PEARL.get()) {
-			if (ProcedureHelper.getItemCount(world, BlockPos.containing(x, y, z), 0) == 0) {
+			if (ProcedureHelper.getItemCount(world, new BlockPos(x, y, z), 0) == 0) {
 				if (!(ProcedureHelper.isCreative(entity))) {
 					(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 				}
@@ -29,7 +29,7 @@ public class GloopslatePedestralOnBlockRightClickedProcedure {
 					_level.sendParticles(ParticleTypes.FIREWORK, (x + 0.5), (y + 1.5), (z + 0.5), 15, 0.4, 0.4, 0.4, 0.01);
 				ProcedureHelper.playSound(world, x, y, z, SoundEvents.AMETHYST_BLOCK_PLACE, SoundSource.BLOCKS, 1, 1);
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final ItemStack _setstack = new ItemStack(UnusualendModBlocks.PRISMATIC_PEARL_DISPLAY.get()).copy();

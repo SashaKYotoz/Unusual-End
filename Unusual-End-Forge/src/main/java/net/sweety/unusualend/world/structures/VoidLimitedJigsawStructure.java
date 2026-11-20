@@ -6,7 +6,6 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.ExtraCodecs;
 import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.WorldGenerationContext;
@@ -20,7 +19,7 @@ import net.sweety.unusualend.init.UnusualendModStructures;
 import java.util.Optional;
 
 public class VoidLimitedJigsawStructure extends Structure {
-    public static final Codec<VoidLimitedJigsawStructure> CODEC = ExtraCodecs.validate(RecordCodecBuilder.mapCodec((instance) -> instance.group(settingsCodec(instance),
+    public static final Codec<VoidLimitedJigsawStructure> CODEC = RecordCodecBuilder.<VoidLimitedJigsawStructure>mapCodec((instance) -> instance.group(settingsCodec(instance),
                     StructureTemplatePool.CODEC.fieldOf("start_pool").forGetter((o) -> o.startPool),
                     ResourceLocation.CODEC.optionalFieldOf("start_jigsaw_name").forGetter((o) -> o.startJigsawName),
                     Codec.intRange(0, 7).fieldOf("size").forGetter((o) -> o.maxDepth),
@@ -28,7 +27,7 @@ public class VoidLimitedJigsawStructure extends Structure {
                     Codec.BOOL.fieldOf("use_expansion_hack").forGetter((o) -> o.useExpansionHack),
                     Heightmap.Types.CODEC.optionalFieldOf("project_start_to_heightmap").forGetter((o) -> o.projectStartToHeightmap),
                     Codec.intRange(1, 128).fieldOf("max_distance_from_center").forGetter((o) -> o.maxDistanceFromCenter))
-            .apply(instance, VoidLimitedJigsawStructure::new)), VoidLimitedJigsawStructure::verifyRange).codec();
+            .apply(instance, VoidLimitedJigsawStructure::new)).flatXmap(VoidLimitedJigsawStructure::verifyRange, VoidLimitedJigsawStructure::verifyRange).codec();
     private final Holder<StructureTemplatePool> startPool;
     private final Optional<ResourceLocation> startJigsawName;
     private final int maxDepth;
@@ -42,7 +41,7 @@ public class VoidLimitedJigsawStructure extends Structure {
             case NONE -> 0;
             case BURY, BEARD_THIN, BEARD_BOX -> 12;
         };
-        return structure.maxDistanceFromCenter + i > 128 ? DataResult.error(() -> "Structure size including terrain adaptation must not exceed 256") : DataResult.success(structure);
+        return structure.maxDistanceFromCenter + i > 128 ? DataResult.error("Structure size including terrain adaptation must not exceed 128") : DataResult.success(structure);
     }
 
     public VoidLimitedJigsawStructure(Structure.StructureSettings settings, Holder<StructureTemplatePool> startPool, Optional<ResourceLocation> startJigsawName, int maxDepth, HeightProvider startHeight, boolean useExpansionHack, Optional<Heightmap.Types> projectStartToHeightmap, int maxDistanceFromCenter) {

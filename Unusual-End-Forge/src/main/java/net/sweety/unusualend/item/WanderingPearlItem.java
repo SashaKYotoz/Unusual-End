@@ -13,11 +13,12 @@ import net.minecraft.world.item.ProjectileWeaponItem;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.entity.WanderingPearlProjectileEntity;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.WanderingPearlRangedItemUsedProcedure;
 
 public class WanderingPearlItem extends Item {
 	public WanderingPearlItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(16).rarity(Rarity.COMMON));
 	}
 
 	@Override

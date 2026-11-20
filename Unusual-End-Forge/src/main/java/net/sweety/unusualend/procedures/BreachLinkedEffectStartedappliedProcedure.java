@@ -13,14 +13,14 @@ public class BreachLinkedEffectStartedappliedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
+		if ((entity.level.dimension()) == Level.OVERWORLD || (entity.level.dimension()) == Level.NETHER || (entity.level.dimension()) == Level.END) {
 			entity.getPersistentData().putDouble("BreachX", x);
 			entity.getPersistentData().putDouble("BreachY", y);
 			entity.getPersistentData().putDouble("BreachZ", z);
 			entity.getPersistentData().putBoolean("isBreached", true);
 			entity.getPersistentData().putString("BreachW", ("" + (world instanceof Level _lvl ? _lvl.dimension() : (world instanceof WorldGenLevel _wgl ? _wgl.getLevel().dimension() : Level.OVERWORLD))));
 		} else {
-			if (entity instanceof Player _player && !_player.level().isClientSide())
+			if (entity instanceof Player _player && !_player.level.isClientSide())
 				_player.displayClientMessage(Component.translatable("text.unusualend.cant_open_breach"), true);
 			if (entity instanceof LivingEntity _entity)
 				_entity.removeEffect(UnusualendModMobEffects.BREACH_LINKED.get());

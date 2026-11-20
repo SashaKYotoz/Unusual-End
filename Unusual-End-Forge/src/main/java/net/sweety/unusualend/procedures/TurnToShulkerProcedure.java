@@ -21,9 +21,9 @@ public class TurnToShulkerProcedure {
 		if (entity == null || sourceentity == null)
 			return;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.END_STONE.asItem()) {
-			if ((world.getBlockState(BlockPos.containing(entity.getX(), entity.getY() - 1, entity.getZ()))).getBlock() == UnusualendModBlocks.INFESTED_END_STONE.get()) {
-				world.setBlock(BlockPos.containing(entity.getX(), entity.getY() - 1, entity.getZ()), Blocks.AIR.defaultBlockState(), 3);
-				world.setBlock(BlockPos.containing(entity.getX(), entity.getY() - 1, entity.getZ()), Blocks.END_STONE.defaultBlockState(), 3);
+			if ((world.getBlockState(new BlockPos(entity.getX(), entity.getY() - 1, entity.getZ()))).getBlock() == UnusualendModBlocks.INFESTED_END_STONE.get()) {
+				world.setBlock(new BlockPos(entity.getX(), entity.getY() - 1, entity.getZ()), Blocks.AIR.defaultBlockState(), 3);
+				world.setBlock(new BlockPos(entity.getX(), entity.getY() - 1, entity.getZ()), Blocks.END_STONE.defaultBlockState(), 3);
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 30, 1, 1, 1, 0);
 				if (world instanceof ServerLevel _level)
@@ -31,7 +31,7 @@ public class TurnToShulkerProcedure {
 				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.HOSTILE, 1, 1);
 				if (sourceentity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-				if (!entity.level().isClientSide())
+				if (!entity.level.isClientSide())
 					entity.discard();
 				if (sourceentity instanceof Player _player) {
 					ItemStack _stktoremove = new ItemStack(Blocks.END_STONE);

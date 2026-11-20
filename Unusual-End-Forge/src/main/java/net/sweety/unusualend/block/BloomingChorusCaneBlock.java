@@ -17,11 +17,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -33,7 +32,7 @@ public class BloomingChorusCaneBlock extends Block implements SimpleWaterloggedB
 	public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
 	public BloomingChorusCaneBlock() {
-		super(BlockBehaviour.Properties.of().ignitedByLava().instrument(NoteBlockInstrument.BASS).mapColor(MapColor.COLOR_PURPLE).sound(SoundType.WOOD).strength(1.7f, 2f).noOcclusion().pushReaction(PushReaction.DESTROY)
+		super(BlockBehaviour.Properties.of(Material.BAMBOO, MaterialColor.COLOR_PURPLE).sound(SoundType.WOOD).strength(1.7f, 2f).noOcclusion()
 				.isRedstoneConductor((bs, br, bp) -> false));
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
 	}
@@ -75,7 +74,7 @@ public class BloomingChorusCaneBlock extends Block implements SimpleWaterloggedB
 			int x = pos.getX();
 			int y = pos.getY();
 			int z = pos.getZ();
-			return ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE.get() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.BLOOMING_CHORUS_CANE.get() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.PURPUR_EMBEDDED_END_STONE.get() || (world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.CHORUS_LIB_END_STONES));
+			return ((world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE.get() || (world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == UnusualendModBlocks.BLOOMING_CHORUS_CANE.get() || (world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == UnusualendModBlocks.PURPUR_EMBEDDED_END_STONE.get() || (world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.CHORUS_LIB_END_STONES));
 		}
 		return super.canSurvive(blockstate, worldIn, pos);
 	}

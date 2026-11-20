@@ -2,7 +2,6 @@
 package net.sweety.unusualend.potion;
 
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,12 +18,12 @@ public class SpectralStrideMobEffect extends MobEffect {
 	}
 
 	public int getDamageProtection(int level, DamageSource source) {
-		return !source.isCreativePlayer() && source.is(DamageTypes.FALL) ? level * 40 : 0;
+		return !source.isCreativePlayer() && source.getMsgId().equals("fall") ? level * 40 : 0;
 	}
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		SpectralStrideOnEffectActiveTickProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+		SpectralStrideOnEffectActiveTickProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 	}
 
 	@Override

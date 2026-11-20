@@ -36,11 +36,11 @@ public class WarpedSquashOnBlockRightClickedProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.WARPED_SQUASH.get()) {
+		if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == UnusualendModBlocks.WARPED_SQUASH.get()) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-				world.setBlock(BlockPos.containing(x, y, z), (new Object() {
+				world.setBlock(new BlockPos(x, y, z), (new Object() {
 					public BlockState with(BlockState _bs, Direction newValue) {
 						Property<?> _prop = _bs.getBlock().getStateDefinition().getProperty("facing");
 						if (_prop instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(newValue))
@@ -49,7 +49,7 @@ public class WarpedSquashOnBlockRightClickedProcedure {
 						return _prop instanceof EnumProperty _ep && _ep.getPossibleValues().contains(newValue.getAxis()) ? _bs.setValue(_ep, newValue.getAxis()) : _bs;
 					}
 				}.with(UnusualendModBlocks.CARVED_WARPED_SQUASH.get().defaultBlockState(),
-						(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()))), 3);
+						(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(10)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getDirection()))), 3);
 				if (world.isClientSide()) {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.PUMPKIN_CARVE, SoundSource.NEUTRAL, 1, 1);
 				}

@@ -1,7 +1,8 @@
 package net.sweety.unusualend.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.GuiGraphics;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.network.chat.Component;
@@ -36,20 +37,22 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
 	private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/screens/bolok_notes.png");
 
 	@Override
-	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics);
-		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		this.renderTooltip(guiGraphics, mouseX, mouseY);
+	public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+		this.renderBackground(poseStack);
+		super.render(poseStack, mouseX, mouseY, partialTicks);
+		this.renderTooltip(poseStack, mouseX, mouseY);
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
+	protected void renderBg(PoseStack poseStack, float partialTicks, int gx, int gy) {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		RenderSystem.setShaderTexture(0, texture);
+		GuiComponent.blit(poseStack, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 
-		guiGraphics.blit(new ResourceLocation("unusualend:textures/screens/bolok_note.png"), this.leftPos + -74, this.topPos + -116, 0, 0, 146, 180, 146, 180);
+		RenderSystem.setShaderTexture(0, new ResourceLocation("unusualend:textures/screens/bolok_note.png"));
+		GuiComponent.blit(poseStack, this.leftPos + -74, this.topPos + -116, 0, 0, 146, 180, 146, 180);
 
 		RenderSystem.disableBlend();
 	}
@@ -64,18 +67,18 @@ public class BolokNotesScreen extends AbstractContainerScreen<BolokNotesMenu> {
 	}
 
 	@Override
-	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
 	}
 
 	@Override
 	public void init() {
 		super.init();
-		button_done = Button.builder(Component.translatable("gui.unusualend.bolok_notes.button_done"), e -> {
+		button_done = new Button(this.leftPos + -72, this.topPos + 66, 142, 20, Component.translatable("gui.unusualend.bolok_notes.button_done"), e -> {
 			if (true) {
 				UnusualEnd.PACKET_HANDLER.sendToServer(new BolokNotesButtonMessage(0, x, y, z));
 				BolokNotesButtonMessage.handleButtonAction(entity, 0, x, y, z);
 			}
-		}).bounds(this.leftPos + -72, this.topPos + 66, 142, 20).build();
+		});
 		guistate.put("button:button_done", button_done);
 		this.addRenderableWidget(button_done);
 	}

@@ -46,7 +46,7 @@ public class LeechingWandRightClickProcedure {
 				if (EnchantmentHelper.getItemEnchantmentLevel(UnusualendModEnchantments.BONDING.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 					{
 						Entity _shootFrom = entity;
-						Level projectileLevel = _shootFrom.level();
+						Level projectileLevel = _shootFrom.level;
 						if (!projectileLevel.isClientSide()) {
 							Projectile _entityToSpawn = new Object() {
 								public Projectile getArrow(Level level, Entity shooter, float damage, int knockback, byte piercing) {
@@ -68,7 +68,7 @@ public class LeechingWandRightClickProcedure {
 				} else if (EnchantmentHelper.getItemEnchantmentLevel(UnusualendModEnchantments.BENEVOLENCE.get(), (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)) != 0) {
 					{
 						Entity _shootFrom = entity;
-						Level projectileLevel = _shootFrom.level();
+						Level projectileLevel = _shootFrom.level;
 						if (!projectileLevel.isClientSide()) {
 							Projectile _entityToSpawn = new Object() {
 								public Projectile getArrow(Level level, float damage, int knockback, byte piercing) {
@@ -89,7 +89,7 @@ public class LeechingWandRightClickProcedure {
 				} else {
 					{
 						Entity _shootFrom = entity;
-						Level projectileLevel = _shootFrom.level();
+						Level projectileLevel = _shootFrom.level;
 						if (!projectileLevel.isClientSide()) {
 							Projectile _entityToSpawn = new Object() {
 								public Projectile getArrow(Level level, Entity shooter, float damage, int knockback, byte piercing) {

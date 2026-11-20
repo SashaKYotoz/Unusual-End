@@ -12,6 +12,7 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.WarpedPotionRightclickedOnBlockProcedure;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public class WarpedPotionItem extends Item {
 	public WarpedPotionItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(0).saturationMod(0f).alwaysEat().build()));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(0).saturationMod(0f).alwaysEat().build()));
 	}
 
 	@Override

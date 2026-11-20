@@ -1,7 +1,7 @@
 package net.sweety.unusualend.procedures;
 
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
@@ -17,7 +17,6 @@ import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.util.ParticleHelper;
 
 import javax.annotation.Nullable;
-
 @Mod.EventBusSubscriber
 public class AncientSwordEntitySwingsItemProcedure {
 	@SubscribeEvent
@@ -38,7 +37,7 @@ public class AncientSwordEntitySwingsItemProcedure {
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.ANCIENT_SWORD.get()) {
 			if (immediatesourceentity == sourceentity) {
 				swing_offset = 1.5;
-				swing_curve = Mth.nextDouble(entity.level().getRandom(), -0.5, 0.5);
+				swing_curve = Mth.nextDouble(entity.level.getRandom(), -0.5, 0.5);
 				original_curve = swing_curve;
 				if (swing_curve > 0.1) {
 					swing = true;
@@ -47,34 +46,34 @@ public class AncientSwordEntitySwingsItemProcedure {
 				} else {
 					if (Math.random() < 0.5) {
 						swing = true;
-						swing_curve = Mth.nextDouble(entity.level().getRandom(), 0.2, 0.5);
+						swing_curve = Mth.nextDouble(entity.level.getRandom(), 0.2, 0.5);
 						original_curve = swing_curve;
 					} else {
 						swing = false;
-						swing_curve = Mth.nextDouble(entity.level().getRandom(), -0.5, -0.2);
+						swing_curve = Mth.nextDouble(entity.level.getRandom(), -0.5, -0.2);
 						original_curve = swing_curve;
 					}
 				}
 				for (int index0 = 0; index0 < 30; index0++) {
 					{
 						Entity _ent = sourceentity;
-						if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-							ParticleHelper.spawn(_ent.level(), ParticleHelper.voidParticles(), ParticleHelper.localToEyes(_ent, swing_offset, swing_curve - 0.5, 1.8), 3, 0.1, 0.1, 0.1, 0);
+						if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+							ParticleHelper.spawn(_ent.level, ParticleHelper.voidParticles(), ParticleHelper.localToEyes(_ent, swing_offset, swing_curve - 0.5, 1.8), 3, 0.1, 0.1, 0.1, 0);
 						}
 					}
 					if (Math.random() < 0.1) {
 						{
 							Entity _ent = sourceentity;
-							if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-								ParticleHelper.spawn(_ent.level(), ParticleTypes.END_ROD, ParticleHelper.localToEyes(_ent, swing_offset, swing_curve - 0.5, 1.8), 0, 0, 0, 0, 0);
+							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+								ParticleHelper.spawn(_ent.level, ParticleTypes.END_ROD, ParticleHelper.localToEyes(_ent, swing_offset, swing_curve - 0.5, 1.8), 0, 0, 0, 0, 0);
 							}
 						}
 					}
 					if (Math.random() < 0.3) {
 						{
 							Entity _ent = sourceentity;
-							if (!_ent.level().isClientSide() && _ent.getServer() != null) {
-								ParticleHelper.spawn(_ent.level(), ParticleTypes.SQUID_INK, ParticleHelper.localToEyes(_ent, swing_offset, swing_curve - 0.5, 1.8), 0, 0, 0, 0, 0);
+							if (!_ent.level.isClientSide() && _ent.getServer() != null) {
+								ParticleHelper.spawn(_ent.level, ParticleTypes.SQUID_INK, ParticleHelper.localToEyes(_ent, swing_offset, swing_curve - 0.5, 1.8), 0, 0, 0, 0, 0);
 							}
 						}
 					}
@@ -87,7 +86,7 @@ public class AncientSwordEntitySwingsItemProcedure {
 				}
 			}
 			dis = Math.sqrt(Math.pow(entity.getX() - sourceentity.getX(), 2) + Math.pow(entity.getY() - sourceentity.getY(), 2) + Math.pow(entity.getZ() - sourceentity.getZ(), 2));
-			if (!entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:bosses")))) {
+			if (!entity.getType().is(TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("forge:bosses")))) {
 				entity.setDeltaMovement(new Vec3((((sourceentity.getX() - entity.getX()) / dis) * 1), (((sourceentity.getY() - entity.getY()) / dis) * 1), (((sourceentity.getZ() - entity.getZ()) / dis) * 1)));
 			}
 		}

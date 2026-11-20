@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 import net.sweety.unusualend.util.ParticleHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -37,9 +38,9 @@ public class WarpedPotionRightclickedOnBlockProcedure {
 			} else {
 				YAW = 180;
 			}
-			world.destroyBlock(BlockPos.containing(x, y, z), false);
+			world.destroyBlock(new BlockPos(x, y, z), false);
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = UnusualendModEntities.GLUB.get().spawn(_level, BlockPos.containing(x + 0.5, y, z + 0.5), MobSpawnType.MOB_SUMMONED);
+				Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.GLUB.get(), _level, new BlockPos(x + 0.5, y, z + 0.5), MobSpawnType.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setYRot((float) YAW);
 					entityToSpawn.setYBodyRot((float) YAW);

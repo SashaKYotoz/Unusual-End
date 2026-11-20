@@ -3,12 +3,10 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -31,13 +29,13 @@ public class SmallEnderbulbEntity extends Monster {
 
     public SmallEnderbulbEntity(EntityType<SmallEnderbulbEntity> type, Level world) {
         super(type, world);
-        setMaxUpStep(0.7f);
+        this.maxUpStep = 0.7f;
         xpReward = 1;
         setNoAi(false);
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
@@ -91,9 +89,9 @@ public class SmallEnderbulbEntity extends Monster {
 
     @Override
     public boolean hurt(DamageSource damagesource, float amount) {
-        if (damagesource.is(DamageTypes.FALL))
+        if (damagesource.getMsgId().equals("fall"))
             return false;
-        if (damagesource.is(DamageTypes.DRAGON_BREATH))
+        if (damagesource.getMsgId().equals("dragonBreath"))
             return false;
         return super.hurt(damagesource, amount);
     }

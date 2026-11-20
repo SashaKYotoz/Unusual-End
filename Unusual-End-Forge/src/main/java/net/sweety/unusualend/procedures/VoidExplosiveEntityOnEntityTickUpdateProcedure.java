@@ -4,10 +4,10 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.util.ParticleHelper;
-
 public class VoidExplosiveEntityOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
@@ -35,7 +35,7 @@ public class VoidExplosiveEntityOnEntityTickUpdateProcedure {
 		entity.getPersistentData().putDouble("explosion", (entity.getPersistentData().getDouble("explosion") + 1));
 		if (entity.getPersistentData().getDouble("explosion") >= 150 && entity.getPersistentData().getDouble("explosion") < 220) {
 			if (world instanceof Level _level && !_level.isClientSide())
-				_level.explode(null, x, y, z, 8, Level.ExplosionInteraction.TNT);
+				_level.explode(null, x, y, z, 8, Explosion.BlockInteraction.BREAK);
 			loop = 0;
 			particleAmount = 40;
 			xRadius = 6;
@@ -51,7 +51,7 @@ public class VoidExplosiveEntityOnEntityTickUpdateProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SQUID_INK, (entity.getX()), (entity.getY() + 1), (entity.getZ()), 30, 3, 3, 3, 0.2);
 		} else if (entity.getPersistentData().getDouble("explosion") >= 220) {
-			if (!entity.level().isClientSide())
+			if (!entity.level.isClientSide())
 				entity.discard();
 		}
 		if (entity.getPersistentData().getDouble("explosion") % 6 == 0) {

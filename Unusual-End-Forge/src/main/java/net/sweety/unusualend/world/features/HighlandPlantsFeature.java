@@ -19,7 +19,7 @@ public class HighlandPlantsFeature extends SimpleRandomSelectorFeature {
 		int x = context.origin().getX();
 		int y = context.origin().getY();
 		int z = context.origin().getZ();
-		if (!(!world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_lands")) && Config.HIGHLAND_PLANTS.get()))
+		if (!(!world.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_lands")) && Config.HIGHLAND_PLANTS.get()))
 			return false;
 		return super.place(context);
 	}

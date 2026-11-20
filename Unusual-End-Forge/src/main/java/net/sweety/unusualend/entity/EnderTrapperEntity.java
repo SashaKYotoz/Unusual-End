@@ -2,13 +2,11 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -31,13 +29,13 @@ public class EnderTrapperEntity extends Monster {
 
 	public EnderTrapperEntity(EntityType<EnderTrapperEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
+		this.maxUpStep = 0.6f;
 		xpReward = 1;
 		setNoAi(true);
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -63,29 +61,29 @@ public class EnderTrapperEntity extends Monster {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.IN_FIRE))
+		if (damagesource.getMsgId().equals("inFire"))
 			return false;
 		if (damagesource.getDirectEntity() instanceof AbstractArrow)
 			return false;
 		if (damagesource.getDirectEntity() instanceof ThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.CACTUS))
+		if (damagesource.getMsgId().equals("cactus"))
 			return false;
-		if (damagesource.is(DamageTypes.DROWN))
+		if (damagesource.getMsgId().equals("drown"))
 			return false;
-		if (damagesource.is(DamageTypes.LIGHTNING_BOLT))
+		if (damagesource.getMsgId().equals("lightningBolt"))
 			return false;
-		if (damagesource.is(DamageTypes.EXPLOSION) || damagesource.is(DamageTypes.PLAYER_EXPLOSION))
+		if (damagesource.isExplosion() || damagesource.isExplosion())
 			return false;
-		if (damagesource.is(DamageTypes.TRIDENT))
+		if (damagesource.getMsgId().equals("trident"))
 			return false;
-		if (damagesource.is(DamageTypes.FALLING_ANVIL))
+		if (damagesource.getMsgId().equals("anvil"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
-		if (damagesource.is(DamageTypes.WITHER) || damagesource.is(DamageTypes.WITHER_SKULL))
+		if (damagesource.getMsgId().equals("wither") || damagesource.getMsgId().equals("witherSkull"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -103,13 +101,13 @@ public class EnderTrapperEntity extends Monster {
 	@Override
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
 		ItemStack itemstack = sourceentity.getItemInHand(hand);
-		InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
+		InteractionResult retval = InteractionResult.sidedSuccess(this.level.isClientSide());
 		super.mobInteract(sourceentity, hand);
 		double x = this.getX();
 		double y = this.getY();
 		double z = this.getZ();
 		Entity entity = this;
-		Level world = this.level();
+		Level world = this.level;
 
 		TurnToShulkerProcedure.execute(world, x, y, z, entity, sourceentity);
 		return retval;
@@ -118,7 +116,7 @@ public class EnderTrapperEntity extends Monster {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		EnderTrapperOnEntityTickUpdateProcedure.execute(this.level(), this);
+		EnderTrapperOnEntityTickUpdateProcedure.execute(this.level, this);
 	}
 
 	@Override

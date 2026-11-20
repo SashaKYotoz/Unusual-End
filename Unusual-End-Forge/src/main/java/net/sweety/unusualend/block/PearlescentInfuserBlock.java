@@ -26,7 +26,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
@@ -37,7 +38,7 @@ import net.sweety.unusualend.world.inventory.InfuserGUIMenu;
 
 public class PearlescentInfuserBlock extends Block implements EntityBlock {
 	public PearlescentInfuserBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.NETHERITE_BLOCK).strength(3f, 40f).lightLevel(s -> 4).speedFactor(1.1f));
+		super(BlockBehaviour.Properties.of(Material.METAL, MaterialColor.COLOR_PINK).sound(SoundType.NETHERITE_BLOCK).strength(3f, 40f).lightLevel(s -> 4).speedFactor(1.1f));
 	}
 
 	@Override

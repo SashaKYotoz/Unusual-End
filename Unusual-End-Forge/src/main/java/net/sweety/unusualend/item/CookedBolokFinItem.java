@@ -10,12 +10,13 @@ import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.config.Config;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.List;
 
 public class CookedBolokFinItem extends Item {
 	public CookedBolokFinItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(9).saturationMod(1f).build()));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(9).saturationMod(1f).build()));
 	}
 
 	@Override

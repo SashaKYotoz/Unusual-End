@@ -26,9 +26,6 @@ public final class MobBucketHelper {
 	private static final String OWNER = "Owner";
 	private static final int BUCKETED_BABY_AGE = -6000;
 
-	private MobBucketHelper() {
-	}
-
 	@Nullable
 	private static InteractionHand handHolding(LivingEntity living, Item item) {
 		if (living.getMainHandItem().is(item))
@@ -60,7 +57,7 @@ public final class MobBucketHelper {
 				tag.putString(OWNER, tamable.getOwnerUUID().toString());
 		}
 		living.swing(hand, true);
-		if (mob.level().isClientSide())
+		if (mob.level.isClientSide())
 			return;
 		mob.discard();
 		ItemStack held = living.getItemInHand(hand);
@@ -88,7 +85,7 @@ public final class MobBucketHelper {
 		ProcedureHelper.playSound(level, clickedPos.getX(), clickedPos.getY(), clickedPos.getZ(), sound, SoundSource.NEUTRAL, 1, 1);
 		if (!(level instanceof ServerLevel serverLevel))
 			return null;
-		T mob = type.spawn(serverLevel, clickedPos.relative(face), MobSpawnType.MOB_SUMMONED);
+		T mob = EntitySpawnHelper.spawn(type, serverLevel, clickedPos.relative(face), MobSpawnType.MOB_SUMMONED);
 		if (mob == null)
 			return null;
 		CompoundTag tag = bucket.getOrCreateTag();

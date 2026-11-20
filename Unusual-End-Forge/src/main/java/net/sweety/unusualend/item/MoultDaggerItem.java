@@ -8,6 +8,7 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 public class MoultDaggerItem extends SwordItem {
 	public MoultDaggerItem() {
@@ -35,6 +36,6 @@ public class MoultDaggerItem extends SwordItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of(new ItemStack(UnusualendModItems.END_BLOB.get()), new ItemStack(UnusualendModBlocks.ENDERBLOB_BLOCK.get()));
 			}
-		}, 3, -3f, new Item.Properties());
+		}, 3, -3f, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS));
 	}
 }

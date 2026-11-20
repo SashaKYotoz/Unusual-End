@@ -27,17 +27,17 @@ public class CitrineTotemUpdateTickProcedure {
 		double Y = 0;
 		double Z = 0;
 		double dividedby = 0;
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.CITRINE_TOTEM_BASE)
+		if ((world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.CITRINE_TOTEM_BASE)
 				&& (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep3 ? blockstate.getValue(_getep3).toString() : "").equals("FLOOR")
-				|| (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(UnusualendModTags.Blocks.CITRINE_TOTEM_BASE)
+				|| (world.getBlockState(new BlockPos(x, y + 1, z))).is(UnusualendModTags.Blocks.CITRINE_TOTEM_BASE)
 						&& (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep7 ? blockstate.getValue(_getep7).toString() : "").equals("CEILING")) {
 			for (int index0 = 0; index0 < (int) (double) Config.CITRINE_TOTEM_ACCURACY.get(); index0++) {
 				X = x + Mth.nextInt(world.getRandom(), -8, 8);
 				Y = y + Mth.nextInt(world.getRandom(), -3, 1);
 				Z = z + Mth.nextInt(world.getRandom(), -8, 8);
-				if ((world.getBlockState(BlockPos.containing(X, Y, Z))).getBlock() instanceof BonemealableBlock) {
+				if ((world.getBlockState(new BlockPos(X, Y, Z))).getBlock() instanceof BonemealableBlock) {
 					if (world instanceof Level _level) {
-						BlockPos _bp = BlockPos.containing(X, Y, Z);
+						BlockPos _bp = new BlockPos(X, Y, Z);
 						if (BoneMealItem.growCrop(new ItemStack(Items.BONE_MEAL), _level, _bp) || BoneMealItem.growWaterPlant(new ItemStack(Items.BONE_MEAL), _level, _bp, null)) {
 							if (!_level.isClientSide())
 								_level.levelEvent(2005, _bp, 0);

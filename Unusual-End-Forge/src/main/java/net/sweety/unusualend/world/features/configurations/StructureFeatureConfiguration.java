@@ -3,13 +3,12 @@ package net.sweety.unusualend.world.features.configurations;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.HolderSet;
+import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryCodecs;
 import net.minecraft.core.Vec3i;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
-
 public record StructureFeatureConfiguration(ResourceLocation structure, boolean randomRotation, boolean randomMirror, HolderSet<Block> ignoredBlocks, Vec3i offset) implements FeatureConfiguration {
 	public static final Codec<StructureFeatureConfiguration> CODEC = RecordCodecBuilder.create(builder -> {
 		return builder.group(ResourceLocation.CODEC.fieldOf("structure").forGetter(config -> {
@@ -18,9 +17,9 @@ public record StructureFeatureConfiguration(ResourceLocation structure, boolean 
 			return config.randomRotation;
 		}), Codec.BOOL.fieldOf("random_mirror").orElse(false).forGetter(config -> {
 			return config.randomMirror;
-		}), RegistryCodecs.homogeneousList(Registries.BLOCK).fieldOf("ignored_blocks").forGetter(config -> {
+		}), RegistryCodecs.homogeneousList(Registry.BLOCK_REGISTRY).fieldOf("ignored_blocks").forGetter(config -> {
 			return config.ignoredBlocks;
-		}), Vec3i.offsetCodec(48).optionalFieldOf("offset", Vec3i.ZERO).forGetter(config -> {
+		}), Vec3i.CODEC.optionalFieldOf("offset", Vec3i.ZERO).forGetter(config -> {
 			return config.offset;
 		})).apply(builder, StructureFeatureConfiguration::new);
 	});

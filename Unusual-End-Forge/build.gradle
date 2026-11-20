@@ -1,9 +1,21 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
 plugins {
     id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0.16,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
 }
+
+apply plugin: 'org.spongepowered.mixin'
 
 group = mod_group_id
 version = mod_version
@@ -62,6 +74,11 @@ minecraft {
     }
 }
 
+mixin {
+    add sourceSets.main, 'mixins.unusualend.refmap.json'
+    config 'mixins.unusualend.json'
+}
+
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
@@ -70,17 +87,21 @@ repositories {
         url = "https://maven.blamejared.com/"
     }
     maven {
-        url "https://cursemaven.com"
+        name = "ModMaven"
+        url = "https://modmaven.dev"
     }
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        filter {
-            includeGroup "maven.modrinth"
+    maven {
+        name = "Curios"
+        url = "https://maven.theillusivec4.top/"
+    }
+    maven {
+        name = "Team Abnormals"
+        url = "https://maven.teamabnormals.com"
+    }
+    maven {
+        url "https://cursemaven.com"
+        content {
+            includeGroup "curse.maven"
         }
     }
 }
@@ -88,16 +109,16 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    annotationProcessor "org.spongepowered:mixin:${mixin_version}:processor"
 
-    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
-    compileOnly fg.deobf("curse.maven:curios-309927:5680164")
-    compileOnly fg.deobf("curse.maven:blueprint-382216:6408581")
-    runtimeOnly fg.deobf("curse.maven:curios-309927:5680164")
-    runtimeOnly fg.deobf("curse.maven:blueprint-382216:6408581")
-    implementation fg.deobf("maven.modrinth:sollib:${sollib_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+    compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+    runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
+    compileOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}:api")
+    runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${curios_version}")
+
+    implementation fg.deobf("com.teamabnormals:blueprint:${blueprint_version}")
 }
 
 tasks.named('processResources', ProcessResources).configure {

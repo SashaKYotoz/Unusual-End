@@ -24,10 +24,10 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 		if (entity == null)
 			return;
 		ItemStack item = ItemStack.EMPTY;
-		if (!((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) && ProcedureHelper.getItemCount(world, BlockPos.containing(x, y, z), 0) == 0) {
+		if (!((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem()) && ProcedureHelper.getItemCount(world, new BlockPos(x, y, z), 0) == 0) {
 			item = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 0;
 					final ItemStack _setstack = item.copy();
@@ -39,16 +39,16 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 				}
 			}
 			if (world instanceof Level _level)
-				_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
+				_level.updateNeighborsAt(new BlockPos(x, y, z), _level.getBlockState(new BlockPos(x, y, z)).getBlock());
 			(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).shrink(1);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.ENCHANT, (x + 0.5), (y + 0.9), (z + 0.5), 15, 0.2, 0.2, 0.2, 0);
 			ParticleHelper.spawn(world, ParticleHelper.dust(0.8f, 0.8f, 3.1f, 0.7f), (x + 0.5), (y + 0.9), (z + 0.5), 15, 0.15, 0.2, 0.15, 0);
 			if (world.isClientSide()) {
-				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHISELED_BOOKSHELF_INSERT_ENCHANTED, SoundSource.BLOCKS, 1, (float) 1.8);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1, (float) 1.8);
 			}
-		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem() && ProcedureHelper.getItemCount(world, BlockPos.containing(x, y, z), 0) != 0) {
-			item = (ProcedureHelper.getItemStack(world, BlockPos.containing(x, y, z), 0));
+		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem() && ProcedureHelper.getItemCount(world, new BlockPos(x, y, z), 0) != 0) {
+			item = (ProcedureHelper.getItemStack(world, new BlockPos(x, y, z), 0));
 			if (entity instanceof LivingEntity _entity) {
 				ItemStack _setstack = item.copy();
 				_setstack.setCount(1);
@@ -57,7 +57,7 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 					_player.getInventory().setChanged();
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 0;
 					final int _amount = 1;
@@ -71,9 +71,9 @@ public class AncientPodiumOnBlockRightClickedProcedure {
 				}
 			}
 			if (world instanceof Level _level)
-				_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
+				_level.updateNeighborsAt(new BlockPos(x, y, z), _level.getBlockState(new BlockPos(x, y, z)).getBlock());
 			if (world.isClientSide()) {
-				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED, SoundSource.BLOCKS, 1, (float) 1.8);
+				ProcedureHelper.playSound(world, x, y, z, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1, (float) 1.8);
 			}
 		}
 	}

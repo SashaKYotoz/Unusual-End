@@ -2,6 +2,7 @@ package net.sweety.unusualend.procedures;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
+import com.mojang.math.Matrix4f;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.GameRenderer;
@@ -12,7 +13,6 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import org.joml.Matrix4f;
 
 import javax.annotation.Nullable;
 
@@ -37,9 +37,9 @@ public class CelestialFluidRendererProcedure {
 		if (bufferBuilder == null || !bufferBuilder.building())
 			return;
 		if (format == DefaultVertexFormat.POSITION_COLOR) {
-			bufferBuilder.vertex(x, y, z).color(color).endVertex();
+			bufferBuilder.vertex(x, y, z).color(color >> 16 & 255, color >> 8 & 255, color & 255, color >>> 24).endVertex();
 		} else if (format == DefaultVertexFormat.POSITION_TEX_COLOR) {
-			bufferBuilder.vertex(x, y, z).uv(u, v).color(color).endVertex();
+			bufferBuilder.vertex(x, y, z).uv(u, v).color(color >> 16 & 255, color >> 8 & 255, color & 255, color >>> 24).endVertex();
 		}
 	}
 
@@ -78,7 +78,7 @@ public class CelestialFluidRendererProcedure {
 			return;
 		if (vertexBuffer != null)
 			vertexBuffer.close();
-		vertexBuffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
+		vertexBuffer = new VertexBuffer();
 		vertexBuffer.bind();
 		vertexBuffer.upload(bufferBuilder.end());
 		VertexBuffer.unbind();
@@ -128,9 +128,9 @@ public class CelestialFluidRendererProcedure {
 		}
 		poseStack.pushPose();
 		poseStack.translate(i, j, k);
-		poseStack.mulPose(com.mojang.math.Axis.YN.rotationDegrees(yaw));
-		poseStack.mulPose(com.mojang.math.Axis.XP.rotationDegrees(pitch));
-		poseStack.mulPose(com.mojang.math.Axis.ZN.rotationDegrees(roll));
+		poseStack.mulPose(com.mojang.math.Vector3f.YN.rotationDegrees(yaw));
+		poseStack.mulPose(com.mojang.math.Vector3f.XP.rotationDegrees(pitch));
+		poseStack.mulPose(com.mojang.math.Vector3f.ZN.rotationDegrees(roll));
 		poseStack.scale(xScale, yScale, zScale);
 		poseStack.translate(offset.x(), offset.y(), offset.z());
 		RenderSystem.setShaderColor((color >> 16 & 255) / 255.0F, (color >> 8 & 255) / 255.0F, (color & 255) / 255.0F, (color >>> 24) / 255.0F);

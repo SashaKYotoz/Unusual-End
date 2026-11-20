@@ -16,6 +16,7 @@ import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModEnchantments;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.CrystalCatalystRightclickedProcedure;
 import net.sweety.unusualend.util.ItemCooldownHelper;
 
@@ -24,7 +25,7 @@ import java.util.Set;
 
 public class CrystalCatalystItem extends Item {
 	public CrystalCatalystItem() {
-		super(new Item.Properties().durability(64).rarity(Rarity.UNCOMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF).durability(64).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

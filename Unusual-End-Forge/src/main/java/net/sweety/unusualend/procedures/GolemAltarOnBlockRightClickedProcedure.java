@@ -20,6 +20,7 @@ import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.entity.EndstoneGolemEntity;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 import net.sweety.unusualend.util.ParticleHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
@@ -39,10 +40,10 @@ public class GolemAltarOnBlockRightClickedProcedure {
 					ItemHandlerHelper.giveItemToPlayer(_player, _setstack);
 				}
 			}
-			world.destroyBlock(BlockPos.containing(x, y, z), false);
+			world.destroyBlock(new BlockPos(x, y, z), false);
 			if (world instanceof ServerLevel _level) {
 				LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-				entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+				entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x + 0.5, y, z + 0.5)));
 				entityToSpawn.setVisualOnly(true);
 				_level.addFreshEntity(entityToSpawn);
 			}
@@ -51,14 +52,14 @@ public class GolemAltarOnBlockRightClickedProcedure {
 			UnusualEnd.queueServerWork(10, () -> {
 				if (world instanceof ServerLevel _level) {
 					LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-					entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+					entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x + 0.5, y, z + 0.5)));
 					entityToSpawn.setVisualOnly(true);
 					_level.addFreshEntity(entityToSpawn);
 				}
 				UnusualEnd.queueServerWork(20, () -> {
 					if (world instanceof ServerLevel _level) {
 						LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-						entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+						entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x + 0.5, y, z + 0.5)));
 						entityToSpawn.setVisualOnly(true);
 						_level.addFreshEntity(entityToSpawn);
 					}
@@ -67,7 +68,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 					UnusualEnd.queueServerWork(5, () -> {
 						if (world instanceof ServerLevel _level) {
 							LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-							entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+							entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x + 0.5, y, z + 0.5)));
 							entityToSpawn.setVisualOnly(true);
 							_level.addFreshEntity(entityToSpawn);
 						}
@@ -75,7 +76,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 						UnusualEnd.queueServerWork(10, () -> {
 							if (world instanceof ServerLevel _level) {
 								LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-								entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+								entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x + 0.5, y, z + 0.5)));
 								entityToSpawn.setVisualOnly(true);
 								_level.addFreshEntity(entityToSpawn);
 							}
@@ -84,7 +85,7 @@ public class GolemAltarOnBlockRightClickedProcedure {
 							UnusualEnd.queueServerWork(10, () -> {
 								if (world instanceof ServerLevel _level) {
 									LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-									entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(x + 0.5, y, z + 0.5)));
+									entityToSpawn.moveTo(Vec3.atBottomCenterOf(new BlockPos(x + 0.5, y, z + 0.5)));
 									entityToSpawn.setVisualOnly(true);
 									_level.addFreshEntity(entityToSpawn);
 								}
@@ -95,19 +96,19 @@ public class GolemAltarOnBlockRightClickedProcedure {
 									for (Entity entityiterator : _entfound) {
 										if (entityiterator instanceof Player) {
 											ProcedureHelper.awardAdvancement(entityiterator, "use_golem_altar");
-											if (entityiterator instanceof Player _player && !_player.level().isClientSide())
+											if (entityiterator instanceof Player _player && !_player.level.isClientSide())
 												_player.displayClientMessage(Component.translatable("text.unusualend.golem_theme"), true);
 										}
 									}
 								}
 								ProcedureHelper.playSound(world, x + 0.5, y, z + 0.5, SoundEvents.STONE_PLACE, SoundSource.NEUTRAL, 1, 1);
 								if (world instanceof ServerLevel _level) {
-									Entity entityToSpawn = UnusualendModEntities.ENDSTONE_GOLEM.get().spawn(_level, BlockPos.containing(x + 0.5, y - 1, z + 0.5), MobSpawnType.MOB_SUMMONED);
+									Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.ENDSTONE_GOLEM.get(), _level, new BlockPos(x + 0.5, y - 1, z + 0.5), MobSpawnType.MOB_SUMMONED);
 									if (entityToSpawn != null) {
 										entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 									}
 								}
-								if ((((Entity) world.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3((x + 0.5), (y - 1), (z + 0.5)), 16, 16, 16), e -> true).stream().sorted(ProcedureHelper.byDistanceTo((x + 0.5), (y - 1), (z + 0.5))).findFirst().orElse(null)).level().dimension()) == Level.END) {
+								if ((((Entity) world.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3((x + 0.5), (y - 1), (z + 0.5)), 16, 16, 16), e -> true).stream().sorted(ProcedureHelper.byDistanceTo((x + 0.5), (y - 1), (z + 0.5))).findFirst().orElse(null)).level.dimension()) == Level.END) {
 									((Entity) world.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3((x + 0.5), (y - 1), (z + 0.5)), 16, 16, 16), e -> true).stream().sorted(ProcedureHelper.byDistanceTo((x + 0.5), (y - 1), (z + 0.5))).findFirst().orElse(null)).getPersistentData().putDouble("x", x);
 									((Entity) world.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3((x + 0.5), (y - 1), (z + 0.5)), 16, 16, 16), e -> true).stream().sorted(ProcedureHelper.byDistanceTo((x + 0.5), (y - 1), (z + 0.5))).findFirst().orElse(null)).getPersistentData().putDouble("y", y);
 									((Entity) world.getEntitiesOfClass(EndstoneGolemEntity.class, AABB.ofSize(new Vec3((x + 0.5), (y - 1), (z + 0.5)), 16, 16, 16), e -> true).stream().sorted(ProcedureHelper.byDistanceTo((x + 0.5), (y - 1), (z + 0.5))).findFirst().orElse(null)).getPersistentData().putDouble("z", z);

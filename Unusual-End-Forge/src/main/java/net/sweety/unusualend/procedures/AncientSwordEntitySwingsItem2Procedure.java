@@ -1,12 +1,10 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
+import net.minecraft.world.damagesource.EntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.TamableAnimal;
@@ -21,7 +19,6 @@ import net.sweety.unusualend.util.ProcedureHelper;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 public class AncientSwordEntitySwingsItem2Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, ItemStack itemstack) {
 		if (entity == null)
@@ -62,7 +59,7 @@ public class AncientSwordEntitySwingsItem2Procedure {
 					for (Entity entityiterator : _entfound) {
 						if (!(entityiterator == entity) && !(entityiterator instanceof TamableAnimal _tamIsTamedBy && entity instanceof LivingEntity _livEnt ? _tamIsTamedBy.isOwnedBy(_livEnt) : false)) {
 							entityiterator.invulnerableTime = 0;
-							entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.MAGIC), entity), 12);
+							entityiterator.hurt(new EntityDamageSource("magic", entity).bypassArmor().setMagic(), 12);
 						}
 					}
 				}

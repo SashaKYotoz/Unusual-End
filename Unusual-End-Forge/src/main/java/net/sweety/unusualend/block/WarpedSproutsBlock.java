@@ -11,8 +11,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -21,7 +21,7 @@ import net.sweety.unusualend.init.UnusualendModTags;
 public class WarpedSproutsBlock extends FlowerBlock {
 	public WarpedSproutsBlock() {
 		super(() -> MobEffects.LEVITATION, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_CYAN).sound(SoundType.NETHER_SPROUTS).instabreak().noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of(Material.REPLACEABLE_FIREPROOF_PLANT, MaterialColor.COLOR_CYAN).offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.NETHER_SPROUTS).instabreak().noCollission());
 	}
 
 	@Override

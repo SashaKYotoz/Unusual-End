@@ -45,7 +45,7 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 	public InfuserGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(UnusualendModMenus.INFUSER_GUI.get(), id);
 		this.player = inv.player;
-		this.level = inv.player.level();
+		this.level = inv.player.level;
 		this.internal = new ItemStackHandler(4);
 		BlockPos pos = null;
 		if (extraData != null) {
@@ -228,9 +228,9 @@ public class InfuserGUIMenu extends AbstractContainerMenu implements Supplier<Ma
 				ItemStack itemstack1 = slot1.getItem();
 				if (itemstack1.isEmpty() && slot1.mayPlace(stack)) {
 					if (stack.getCount() > slot1.getMaxStackSize()) {
-						slot1.setByPlayer(stack.split(slot1.getMaxStackSize()));
+						slot1.set(stack.split(slot1.getMaxStackSize()));
 					} else {
-						slot1.setByPlayer(stack.split(stack.getCount()));
+						slot1.set(stack.split(stack.getCount()));
 					}
 					slot1.setChanged();
 					flag = true;

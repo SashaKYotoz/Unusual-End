@@ -2,7 +2,6 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -43,7 +42,7 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -68,14 +67,14 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 	public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
 		if (this.getOwner() != null && entityHitResult.getEntity() != this.getOwner())
-			TeleportHelper.scatter(this.level(), entityHitResult.getEntity(), this.getX(), this.getY(), this.getZ(), 5, 5);
+			TeleportHelper.scatter(this.level, entityHitResult.getEntity(), this.getX(), this.getY(), this.getZ(), 5, 5);
 	}
 
 	@Override
 	public void onHitBlock(BlockHitResult blockHitResult) {
 		super.onHitBlock(blockHitResult);
 		if (this.getOwner() != null)
-			TeleportHelper.scatter(this.level(), this.getOwner(), blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ(), 2, 4);
+			TeleportHelper.scatter(this.level, this.getOwner(), blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ(), 2, 4);
 	}
 
 	@Override
@@ -106,7 +105,7 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 	}
 
 	public static WanderingPearlProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-		WanderingPearlProjectileEntity entityarrow = new WanderingPearlProjectileEntity(UnusualendModEntities.WANDERING_PEARL_PROJECTILE.get(), entity, entity.level());
+		WanderingPearlProjectileEntity entityarrow = new WanderingPearlProjectileEntity(UnusualendModEntities.WANDERING_PEARL_PROJECTILE.get(), entity, entity.level);
 		double dx = target.getX() - entity.getX();
 		double dy = target.getY() + target.getEyeHeight() - 1.1;
 		double dz = target.getZ() - entity.getZ();
@@ -115,8 +114,8 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 		entityarrow.setBaseDamage(0);
 		entityarrow.setKnockback(0);
 		entityarrow.setCritArrow(false);
-		entity.level().addFreshEntity(entityarrow);
-		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
+		entity.level.addFreshEntity(entityarrow);
+		entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ENDER_PEARL_THROW, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}
 }

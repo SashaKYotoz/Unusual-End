@@ -2,7 +2,6 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -43,7 +42,7 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -67,13 +66,13 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 	@Override
 	public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
-		ShinyGrenadeProjectileProjectileHitsBlockProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+		ShinyGrenadeProjectileProjectileHitsBlockProcedure.execute(this.level, this.getX(), this.getY(), this.getZ());
 	}
 
 	@Override
 	public void onHitBlock(BlockHitResult blockHitResult) {
 		super.onHitBlock(blockHitResult);
-		ShinyGrenadeProjectileProjectileHitsBlockProcedure.execute(this.level(), blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ());
+		ShinyGrenadeProjectileProjectileHitsBlockProcedure.execute(this.level, blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ());
 	}
 
 	@Override
@@ -104,7 +103,7 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 	}
 
 	public static ShinyGrenadeProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualendModEntities.SHINY_GRENADE_PROJECTILE.get(), entity, entity.level());
+		ShinyGrenadeProjectileEntity entityarrow = new ShinyGrenadeProjectileEntity(UnusualendModEntities.SHINY_GRENADE_PROJECTILE.get(), entity, entity.level);
 		double dx = target.getX() - entity.getX();
 		double dy = target.getY() + target.getEyeHeight() - 1.1;
 		double dz = target.getZ() - entity.getZ();
@@ -113,8 +112,8 @@ public class ShinyGrenadeProjectileEntity extends AbstractArrow implements ItemS
 		entityarrow.setBaseDamage(0.1);
 		entityarrow.setKnockback(0);
 		entityarrow.setCritArrow(false);
-		entity.level().addFreshEntity(entityarrow);
-		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TNT_PRIMED, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
+		entity.level.addFreshEntity(entityarrow);
+		entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.TNT_PRIMED, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}
 }

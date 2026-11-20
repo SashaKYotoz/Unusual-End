@@ -11,9 +11,9 @@ import net.sweety.unusualend.init.UnusualendModTags;
 
 public class CitrineCandleOnRandomClientDisplayTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
-		if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SOUL_FLAMES)) {
+		if ((world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SOUL_FLAMES)) {
 			world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
-		} else if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SHINY_FLAMES)) {
+		} else if ((world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.CANDLE_SHINY_FLAMES)) {
 			world.addParticle(UnusualendModParticleTypes.PINK_FLAME.get(), (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);
 		} else {
 			world.addParticle(ParticleTypes.FLAME, (x + 0.5), (y + 0.92), (z + 0.5), 0, 0, 0);

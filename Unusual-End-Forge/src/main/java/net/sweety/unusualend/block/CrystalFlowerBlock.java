@@ -19,8 +19,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -31,8 +31,7 @@ import net.sweety.unusualend.procedures.CrystalFlowerUpdateTickProcedure;
 
 public class CrystalFlowerBlock extends FlowerBlock {
 	public CrystalFlowerBlock() {
-		super(() -> MobEffects.CONFUSION, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).randomTicks().sound(SoundType.SMALL_DRIPLEAF).strength(0.4f, 1f).speedFactor(0.7f).jumpFactor(0.9f).lightLevel(s -> 10).noCollission()
-				.offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+		super(() -> MobEffects.CONFUSION, 100, BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_PINK).offsetType(BlockBehaviour.OffsetType.XZ).randomTicks().sound(SoundType.SMALL_DRIPLEAF).strength(0.4f, 1f).speedFactor(0.7f).jumpFactor(0.9f).lightLevel(s -> 10).noCollission());
 	}
 
 	@Override

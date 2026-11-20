@@ -2,7 +2,6 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -46,7 +45,7 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -70,20 +69,20 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
 	@Override
 	public void onHitEntity(EntityHitResult entityHitResult) {
 		super.onHitEntity(entityHitResult);
-        if (entityHitResult.getEntity() instanceof LivingEntity living && !living.level().isClientSide())
+        if (entityHitResult.getEntity() instanceof LivingEntity living && !living.level.isClientSide())
             living.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 60, 2));
 	}
 
 	@Override
 	public void onHitBlock(BlockHitResult blockHitResult) {
 		super.onHitBlock(blockHitResult);
-		BenevolentLeechingChargeProjectileProjectileHitsBlockProcedure.execute(this.level(), blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ(), this);
+		BenevolentLeechingChargeProjectileProjectileHitsBlockProcedure.execute(this.level, blockHitResult.getBlockPos().getX(), blockHitResult.getBlockPos().getY(), blockHitResult.getBlockPos().getZ(), this);
 	}
 
 	@Override
 	public void tick() {
 		super.tick();
-		LeechingChargeWhileProjectileFlyingTickProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+		LeechingChargeWhileProjectileFlyingTickProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 		if (this.inGround)
 			this.discard();
 	}
@@ -109,7 +108,7 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
 	}
 
 	public static BenevolentLeechingChargeProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-		BenevolentLeechingChargeProjectileEntity entityarrow = new BenevolentLeechingChargeProjectileEntity(UnusualendModEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level());
+		BenevolentLeechingChargeProjectileEntity entityarrow = new BenevolentLeechingChargeProjectileEntity(UnusualendModEntities.BENEVOLENT_LEECHING_CHARGE_PROJECTILE.get(), entity, entity.level);
 		double dx = target.getX() - entity.getX();
 		double dy = target.getY() + target.getEyeHeight() - 1.1;
 		double dz = target.getZ() - entity.getZ();
@@ -118,8 +117,8 @@ public class BenevolentLeechingChargeProjectileEntity extends AbstractArrow impl
 		entityarrow.setBaseDamage(5);
 		entityarrow.setKnockback(5);
 		entityarrow.setCritArrow(false);
-		entity.level().addFreshEntity(entityarrow);
-		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.FIREWORK_ROCKET_SHOOT, SoundSource.PLAYERS, 1,
+		entity.level.addFreshEntity(entityarrow);
+		entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.FIREWORK_ROCKET_SHOOT, SoundSource.PLAYERS, 1,
 				1f / (entity.getRandom().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}

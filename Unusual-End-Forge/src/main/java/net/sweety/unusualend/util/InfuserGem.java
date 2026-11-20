@@ -123,7 +123,7 @@ public enum InfuserGem {
 			player.closeContainer();
 		if (!hasValidBase(world, pos)) {
 			ProcedureHelper.playSound(world, pos.getX(), pos.getY(), pos.getZ(), SoundEvents.BEACON_DEACTIVATE, SoundSource.BLOCKS, 1, 0.6f);
-			if (entity instanceof Player player && !player.level().isClientSide())
+			if (entity instanceof Player player && !player.level.isClientSide())
 				player.displayClientMessage(Component.translatable("text.unusualend.no_base"), true);
 			sendParticles(world, ParticleTypes.LARGE_SMOKE, x, y, z);
 			return;

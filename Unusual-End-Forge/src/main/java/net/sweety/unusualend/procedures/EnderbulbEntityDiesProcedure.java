@@ -6,20 +6,20 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.sweety.unusualend.init.UnusualendModEntities;
-
+import net.sweety.unusualend.util.EntitySpawnHelper;
 public class EnderbulbEntityDiesProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.POOF, x, y, z, 10, 0.5, 0.5, 0.5, 0);
 		if (world instanceof Level _level && !_level.isClientSide())
-			_level.explode(null, x, y, z, 0, Level.ExplosionInteraction.MOB);
+			_level.explode(null, x, y, z, 0, Explosion.BlockInteraction.NONE);
 		for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 2, 4); index0++) {
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = UnusualendModEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + Mth.nextDouble(world.getRandom(), -0.15, 0.15), y, z + Mth.nextDouble(world.getRandom(), -0.15, 0.15)),
-						MobSpawnType.MOB_SUMMONED);
+				Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.SMALL_ENDERBULB.get(), _level, new BlockPos(x + Mth.nextDouble(world.getRandom(), -0.15, 0.15), y, z + Mth.nextDouble(world.getRandom(), -0.15, 0.15)), MobSpawnType.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 				}

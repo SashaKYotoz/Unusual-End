@@ -22,15 +22,15 @@ public class EndstoneGolemBreakSurroundingsProcedure {
 			for (int index1 = 0; index1 < 5; index1++) {
 				sz = -3;
 				for (int index2 = 0; index2 < 6; index2++) {
-					if (!world.isEmptyBlock(BlockPos.containing(x + sx, y + sy, z + sz))) {
-						if (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)).getDestroySpeed(world, BlockPos.containing(x + sx, y + sy, z + sz)) >= 0) {
+					if (!world.isEmptyBlock(new BlockPos(x + sx, y + sy, z + sz))) {
+						if (world.getBlockState(new BlockPos(x + sx, y + sy, z + sz)).getDestroySpeed(world, new BlockPos(x + sx, y + sy, z + sz)) >= 0) {
 							found = true;
 							{
-								BlockPos _pos = BlockPos.containing(x + sx, y + sy, z + sz);
-								Block.dropResources(world.getBlockState(_pos), world, BlockPos.containing(x + sx, y + sy, z + sz), null);
+								BlockPos _pos = new BlockPos(x + sx, y + sy, z + sz);
+								Block.dropResources(world.getBlockState(_pos), world, new BlockPos(x + sx, y + sy, z + sz), null);
 								world.destroyBlock(_pos, false);
 							}
-							world.levelEvent(2001, BlockPos.containing(x + sx, y + sy, z + sz), Block.getId((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)))));
+							world.levelEvent(2001, new BlockPos(x + sx, y + sy, z + sz), Block.getId((world.getBlockState(new BlockPos(x + sx, y + sy, z + sz)))));
 						}
 					}
 					sz = sz + 1;

@@ -29,7 +29,7 @@ public class BiomeMusicLibrary {
 			StopAllModTracks();
 			return;
 		}
-		Music track = new Music(ForgeRegistries.SOUND_EVENTS.getHolder(new ResourceLocation(MusicTracks[trackID])).get(), 0, 0, true);
+		Music track = new Music(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(MusicTracks[trackID])), 0, 0, true);
 		if (!(musicManager.isPlayingMusic(track))) {
 			musicManager.stopPlaying();
 			musicManager.startPlaying(track);
@@ -38,7 +38,7 @@ public class BiomeMusicLibrary {
 
 	public static void StopTrack(int trackID) {
 		MusicManager musicManager = Minecraft.getInstance().getMusicManager();
-		Music track = new Music(ForgeRegistries.SOUND_EVENTS.getHolder(new ResourceLocation(MusicTracks[trackID])).get(), 0, 0, true);
+		Music track = new Music(ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(MusicTracks[trackID])), 0, 0, true);
 		if (musicManager.isPlayingMusic(track)) {
 			musicManager.stopPlaying();
 		}

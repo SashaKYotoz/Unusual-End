@@ -9,6 +9,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.WarpedAnchorLivingEntityIsHitWithToolProcedure;
 import net.sweety.unusualend.procedures.WarpedAnchorToolInHandTickProcedure;
 
@@ -40,13 +41,13 @@ public class WarpedAnchorItem extends PickaxeItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of(new ItemStack(Blocks.IRON_BLOCK));
 			}
-		}, 1, -3.3f, new Item.Properties());
+		}, 1, -3.3f, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF));
 	}
 
 	@Override
 	public boolean hurtEnemy(ItemStack itemstack, LivingEntity entity, LivingEntity sourceentity) {
 		boolean retval = super.hurtEnemy(itemstack, entity, sourceentity);
-		WarpedAnchorLivingEntityIsHitWithToolProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+		WarpedAnchorLivingEntityIsHitWithToolProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return retval;
 	}
 

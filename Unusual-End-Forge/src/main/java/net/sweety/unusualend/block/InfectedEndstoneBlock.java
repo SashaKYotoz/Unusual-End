@@ -11,13 +11,13 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.sweety.unusualend.procedures.InfectedEndstoneEntityWalksOnTheBlockProcedure;
 
 public class InfectedEndstoneBlock extends Block {
 	public InfectedEndstoneBlock() {
-		super(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.SAND).sound(SoundType.STONE).strength(1f, 5f).requiresCorrectToolForDrops().speedFactor(0f).jumpFactor(0f));
+		super(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.SAND).sound(SoundType.STONE).strength(1f, 5f).requiresCorrectToolForDrops().speedFactor(0f).jumpFactor(0f));
 	}
 
 	@Override

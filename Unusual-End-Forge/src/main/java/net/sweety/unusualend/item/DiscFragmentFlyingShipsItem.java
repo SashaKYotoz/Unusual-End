@@ -5,12 +5,13 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.List;
 
 public class DiscFragmentFlyingShipsItem extends Item {
 	public DiscFragmentFlyingShipsItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(64).rarity(Rarity.COMMON));
 	}
 
 	@Override

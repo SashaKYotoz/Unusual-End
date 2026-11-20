@@ -9,12 +9,13 @@ import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.List;
 
 public class ChorusJuiceItemItem extends Item {
     public ChorusJuiceItemItem() {
-        super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(1).saturationMod(0.3f).alwaysEat().build()));
+        super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(16).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(1).saturationMod(0.3f).alwaysEat().build()));
     }
 
     @Override

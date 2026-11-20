@@ -470,7 +470,7 @@
         },
         {
           "type": "minecraft:item",
-          "name": "minecraft:warped_hanging_sign",
+          "name": "minecraft:warped_sign",
           "weight": 1,
           "functions": [
             {

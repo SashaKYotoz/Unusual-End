@@ -13,13 +13,14 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.sweety.unusualend.entity.ShinyGrenadeProjectileEntity;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.ShinyGrenadeRangedItemUsedProcedure;
 
 import java.util.List;
 
 public class ShinyGrenadeItem extends Item {
 	public ShinyGrenadeItem() {
-		super(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS).stacksTo(16).rarity(Rarity.COMMON));
 	}
 
 	@Override

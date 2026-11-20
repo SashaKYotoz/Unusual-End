@@ -13,27 +13,28 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 public class BreakEggProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
+		world.levelEvent(2001, new BlockPos(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
 		ProcedureHelper.playSound(world, x, y, z, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 1, 1);
-		world.destroyBlock(BlockPos.containing(x, y, z), false);
+		world.destroyBlock(new BlockPos(x, y, z), false);
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.POOF, (x + 0.5), (y + 0.2), (z + 0.5), 20, 1.3, 1.3, 1.3, 0);
 		if (world instanceof ServerLevel _level)
 			_level.sendParticles(ParticleTypes.REVERSE_PORTAL, (x + 0.5), (y + 0.2), (z + 0.5), 10, 1.3, 1.3, 1.3, 0);
 		for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 2, 3); index0++) {
 			if (world instanceof ServerLevel _level) {
-				Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+				Entity entityToSpawn = EntitySpawnHelper.spawn(EntityType.ENDERMITE, _level, new BlockPos(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 				if (entityToSpawn != null) {
 					entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 				}
 			}
 		}
 		if (world instanceof ServerLevel _level) {
-			Entity entityToSpawn = UnusualendModEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+			Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.SMALL_ENDERBULB.get(), _level, new BlockPos(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 			if (entityToSpawn != null) {
 				entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 			}

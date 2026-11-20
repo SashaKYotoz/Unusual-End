@@ -2,7 +2,6 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -41,7 +40,7 @@ public class PhantomArrowProjectileEntity extends AbstractArrow implements ItemS
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -66,7 +65,7 @@ public class PhantomArrowProjectileEntity extends AbstractArrow implements ItemS
 	public void tick() {
 		super.tick();
 		if (!this.inGround)
-			PhantomArrowWhileProjectileFlyingTickProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+			PhantomArrowWhileProjectileFlyingTickProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	public static PhantomArrowProjectileEntity shoot(Level world, LivingEntity entity, RandomSource source) {
@@ -86,7 +85,7 @@ public class PhantomArrowProjectileEntity extends AbstractArrow implements ItemS
 	}
 
 	public static PhantomArrowProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-		PhantomArrowProjectileEntity entityarrow = new PhantomArrowProjectileEntity(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), entity, entity.level());
+		PhantomArrowProjectileEntity entityarrow = new PhantomArrowProjectileEntity(UnusualendModEntities.PHANTOM_ARROW_PROJECTILE.get(), entity, entity.level);
 		double dx = target.getX() - entity.getX();
 		double dy = target.getY() + target.getEyeHeight() - 1.1;
 		double dz = target.getZ() - entity.getZ();
@@ -95,8 +94,8 @@ public class PhantomArrowProjectileEntity extends AbstractArrow implements ItemS
 		entityarrow.setBaseDamage(5);
 		entityarrow.setKnockback(5);
 		entityarrow.setCritArrow(false);
-		entity.level().addFreshEntity(entityarrow);
-		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
+		entity.level.addFreshEntity(entityarrow);
+		entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}
 }

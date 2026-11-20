@@ -38,11 +38,11 @@ public class TPwithChorusProcedure {
 				_entity.swing(InteractionHand.OFF_HAND, true);
 		}
 		if (itemstack.getOrCreateTag().getBoolean("LinkedMirror") == true) {
-			if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level().dimension())) {
+			if (!(itemstack.getOrCreateTag().getString("TpW")).equals("" + entity.level.dimension())) {
 				if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.OVERWORLD)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.OVERWORLD;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -56,9 +56,9 @@ public class TPwithChorusProcedure {
 					}
 				}
 				if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.NETHER)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.NETHER;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -72,9 +72,9 @@ public class TPwithChorusProcedure {
 					}
 				}
 				if ((itemstack.getOrCreateTag().getString("TpW")).equals("" + Level.END)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.END;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -138,9 +138,9 @@ public class TPwithChorusProcedure {
 					}
 				}.getValue()).equals(ProcedureHelper.getSpawnDimension(entity))) {
 					if ((ProcedureHelper.getSpawnDimension(entity)).equals("minecraft:the_end")) {
-						if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+						if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 							ResourceKey<Level> destinationType = Level.END;
-							if (_player.level().dimension() == destinationType)
+							if (_player.level.dimension() == destinationType)
 								return;
 							ServerLevel nextLevel = _player.server.getLevel(destinationType);
 							if (nextLevel != null) {
@@ -154,9 +154,9 @@ public class TPwithChorusProcedure {
 						}
 					}
 					if ((ProcedureHelper.getSpawnDimension(entity)).equals("minecraft:the_nether")) {
-						if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+						if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 							ResourceKey<Level> destinationType = Level.NETHER;
-							if (_player.level().dimension() == destinationType)
+							if (_player.level.dimension() == destinationType)
 								return;
 							ServerLevel nextLevel = _player.server.getLevel(destinationType);
 							if (nextLevel != null) {
@@ -170,9 +170,9 @@ public class TPwithChorusProcedure {
 						}
 					}
 					if ((ProcedureHelper.getSpawnDimension(entity)).equals("minecraft:overworld")) {
-						if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+						if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 							ResourceKey<Level> destinationType = Level.OVERWORLD;
-							if (_player.level().dimension() == destinationType)
+							if (_player.level.dimension() == destinationType)
 								return;
 							ServerLevel nextLevel = _player.server.getLevel(destinationType);
 							if (nextLevel != null) {
@@ -189,25 +189,25 @@ public class TPwithChorusProcedure {
 				{
 					Entity _ent = entity;
 					_ent.teleportTo(
-							(((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-									? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level().getLevelData().getXSpawn())
+							(((entity instanceof ServerPlayer _player && !_player.level.isClientSide())
+									? ((_player.getRespawnDimension().equals(_player.level.dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level.getLevelData().getXSpawn())
 									: 0) + 0.5),
-							((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-									? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level().getLevelData().getYSpawn())
+							((entity instanceof ServerPlayer _player && !_player.level.isClientSide())
+									? ((_player.getRespawnDimension().equals(_player.level.dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level.getLevelData().getYSpawn())
 									: 0),
-							(((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-									? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level().getLevelData().getZSpawn())
+							(((entity instanceof ServerPlayer _player && !_player.level.isClientSide())
+									? ((_player.getRespawnDimension().equals(_player.level.dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level.getLevelData().getZSpawn())
 									: 0) + 0.5));
 					if (_ent instanceof ServerPlayer _serverPlayer)
 						_serverPlayer.connection.teleport(
-								(((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-										? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level().getLevelData().getXSpawn())
+								(((entity instanceof ServerPlayer _player && !_player.level.isClientSide())
+										? ((_player.getRespawnDimension().equals(_player.level.dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getX() : _player.level.getLevelData().getXSpawn())
 										: 0) + 0.5),
-								((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-										? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level().getLevelData().getYSpawn())
+								((entity instanceof ServerPlayer _player && !_player.level.isClientSide())
+										? ((_player.getRespawnDimension().equals(_player.level.dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getY() : _player.level.getLevelData().getYSpawn())
 										: 0),
-								(((entity instanceof ServerPlayer _player && !_player.level().isClientSide())
-										? ((_player.getRespawnDimension().equals(_player.level().dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level().getLevelData().getZSpawn())
+								(((entity instanceof ServerPlayer _player && !_player.level.isClientSide())
+										? ((_player.getRespawnDimension().equals(_player.level.dimension()) && _player.getRespawnPosition() != null) ? _player.getRespawnPosition().getZ() : _player.level.getLevelData().getZSpawn())
 										: 0) + 0.5),
 								_ent.getYRot(), _ent.getXRot());
 				}
@@ -227,7 +227,7 @@ public class TPwithChorusProcedure {
 					}
 				}
 			} else {
-				if (entity instanceof Player _player && !_player.level().isClientSide())
+				if (entity instanceof Player _player && !_player.level.isClientSide())
 					_player.displayClientMessage(Component.translatable("text.unusualend.not_linked"), true);
 			}
 		}

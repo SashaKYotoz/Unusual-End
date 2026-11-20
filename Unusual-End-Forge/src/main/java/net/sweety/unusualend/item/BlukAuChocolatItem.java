@@ -7,11 +7,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.BlukAuChocolatPlayerFinishesUsingItemProcedure;
 
 public class BlukAuChocolatItem extends Item {
 	public BlukAuChocolatItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.9f).meat().build()));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(8).saturationMod(0.9f).meat().build()));
 	}
 
 	@Override

@@ -7,6 +7,7 @@ import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 public class SpectralShovelItem extends ShovelItem {
 	public SpectralShovelItem() {
@@ -34,6 +35,6 @@ public class SpectralShovelItem extends ShovelItem {
 			public Ingredient getRepairIngredient() {
 				return Ingredient.of(new ItemStack(UnusualendModItems.PEARLESCENT_INGOT.get()));
 			}
-		}, 1, -3f, new Item.Properties());
+		}, 1, -3f, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END));
 	}
 }

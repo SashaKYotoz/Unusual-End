@@ -22,7 +22,7 @@ public class PearlescentRingTriggerProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingHurtEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getSource().getEntity());
+			execute(event, event.getEntity().level, event.getSource().getEntity());
 		}
 	}
 

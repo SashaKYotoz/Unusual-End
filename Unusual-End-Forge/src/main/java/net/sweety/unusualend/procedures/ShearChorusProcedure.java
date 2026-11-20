@@ -38,7 +38,7 @@ public class ShearChorusProcedure {
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == Blocks.CHORUS_FLOWER) {
+			if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == Blocks.CHORUS_FLOWER) {
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
@@ -46,46 +46,46 @@ public class ShearChorusProcedure {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.OFF_HAND, true);
 				}
-				world.setBlock(BlockPos.containing(x, y, z), Blocks.CHORUS_PLANT.defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y, z), Blocks.CHORUS_PLANT.defaultBlockState(), 3);
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("west") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 				}
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("east") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 				}
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("north") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 				}
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("south") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 				}
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("up") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 				}
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("down") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 				}
 				if (world instanceof Level _level)
-					_level.updateNeighborsAt(BlockPos.containing(x, y, z), _level.getBlockState(BlockPos.containing(x, y, z)).getBlock());
-				world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(Blocks.CHORUS_PLANT.defaultBlockState()));
+					_level.updateNeighborsAt(new BlockPos(x, y, z), _level.getBlockState(new BlockPos(x, y, z)).getBlock());
+				world.levelEvent(2001, new BlockPos(x, y, z), Block.getId(Blocks.CHORUS_PLANT.defaultBlockState()));
 				ProcedureHelper.playSound(world, x, y, z, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1, 1);
 				for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 1, 3); index0++) {
 					ProcedureHelper.dropItem(world, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualendModItems.CHORUS_PETAL.get()), 10);

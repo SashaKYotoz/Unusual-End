@@ -10,14 +10,14 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.common.PlantType;
 import net.sweety.unusualend.init.UnusualendModTags;
 
 public class FloweringGloopyPileBlock extends DoublePlantBlock {
 	public FloweringGloopyPileBlock() {
-		super(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.SHROOMLIGHT).strength(1f, 5f).lightLevel(s -> 3).noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY));
+		super(BlockBehaviour.Properties.of(Material.REPLACEABLE_FIREPROOF_PLANT, MaterialColor.COLOR_PURPLE).offsetType(BlockBehaviour.OffsetType.NONE).sound(SoundType.SHROOMLIGHT).strength(1f, 5f).lightLevel(s -> 3).noCollission());
 	}
 
 	@Override

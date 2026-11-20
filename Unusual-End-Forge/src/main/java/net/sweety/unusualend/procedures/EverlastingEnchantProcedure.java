@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 public class EverlastingEnchantProcedure {
 	@SubscribeEvent
 	public static void onItemExpire(ItemExpireEvent event) {
-		execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity().getItem());
+		execute(event, event.getEntity().level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity().getItem());
 	}
 
 	public static void execute(LevelAccessor world, double x, double y, double z, ItemStack itemstack) {

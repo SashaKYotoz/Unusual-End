@@ -19,7 +19,7 @@ public class WarpedJellyfishOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (y < 30 && (entity.level().dimension()) == Level.END) {
+		if (y < 30 && (entity.level.dimension()) == Level.END) {
 			if (entity instanceof Mob _entity)
 				_entity.getNavigation().moveTo(x, 45, z, 0.8);
 			if (y < 10) {
@@ -27,11 +27,11 @@ public class WarpedJellyfishOnEntityTickUpdateProcedure {
 			}
 		}
 		if (!((entity.getVehicle()) == null) && !((entity.getVehicle()) instanceof LargeBubbleEntity)) {
-			if ((entity.getVehicle()) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+			if ((entity.getVehicle()) instanceof LivingEntity _entity && !_entity.level.isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.JUMP, 15, 2, false, false));
-			if ((entity.getVehicle()) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+			if ((entity.getVehicle()) instanceof LivingEntity _entity && !_entity.level.isClientSide())
 				_entity.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 15, 0, false, false));
-			if ((entity.getVehicle()) instanceof Player _player && !_player.level().isClientSide())
+			if ((entity.getVehicle()) instanceof Player _player && !_player.level.isClientSide())
 				_player.displayClientMessage(Component.literal(("\u00A77" + Component.translatable("text.unusualend.unequip_glub").getString())), true);
 		} else {
 			if (Math.random() < 0.3) {

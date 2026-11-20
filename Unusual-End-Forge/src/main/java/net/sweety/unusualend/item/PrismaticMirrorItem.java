@@ -13,13 +13,14 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.TPwithChorusProcedure;
 
 import java.util.List;
 
 public class PrismaticMirrorItem extends Item {
 	public PrismaticMirrorItem() {
-		super(new Item.Properties().durability(32).rarity(Rarity.UNCOMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS).durability(32).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

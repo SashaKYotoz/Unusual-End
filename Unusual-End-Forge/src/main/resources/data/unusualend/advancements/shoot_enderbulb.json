@@ -20,12 +20,7 @@
       "conditions": {
         "damage": {
           "type": {
-            "tags": [
-              {
-                "id": "minecraft:is_projectile",
-                "expected": true
-              }
-            ],
+            "is_projectile": true,
             "direct_entity": {
               "type": "#unusualend:damaging_leeching_charge"
             }

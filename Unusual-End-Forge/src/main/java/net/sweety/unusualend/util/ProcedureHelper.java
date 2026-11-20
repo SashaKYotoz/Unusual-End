@@ -33,8 +33,6 @@ import java.util.Map;
 import java.util.UUID;
 
 public final class ProcedureHelper {
-	private ProcedureHelper() {
-	}
 
 	public static Direction getDirection(BlockState state) {
 		Property<?> property = state.getBlock().getStateDefinition().getProperty("facing");
@@ -62,7 +60,7 @@ public final class ProcedureHelper {
 	}
 
 	public static void addEffect(Entity entity, MobEffectInstance effect) {
-		if (entity instanceof LivingEntity living && !living.level().isClientSide())
+		if (entity instanceof LivingEntity living && !living.level.isClientSide())
 			living.addEffect(effect);
 	}
 
@@ -118,7 +116,7 @@ public final class ProcedureHelper {
 			if (world.isClientSide())
 				world.playLocalSound(x, y, z, sound, source, volume, pitch, false);
 			else
-				world.playSound(null, BlockPos.containing(x, y, z), sound, source, volume, pitch);
+				world.playSound(null, new BlockPos(x, y, z), sound, source, volume, pitch);
 		}
 	}
 

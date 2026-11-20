@@ -5,7 +5,6 @@ package net.sweety.unusualend.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -13,7 +12,6 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -32,6 +30,7 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.AnimationHelper;
 
 import java.util.EnumSet;
 
@@ -46,14 +45,14 @@ public class DraglingEntity extends Monster {
 
 	public DraglingEntity(EntityType<DraglingEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
+		this.maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		this.moveControl = new FlyingMoveControl(this, 10, true);
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -130,9 +129,9 @@ public class DraglingEntity extends Monster {
 
 	@Override
 	public void tick() {
-		if (level().isClientSide) {
-			this.attackAnimationState.animateWhen((this.getEntityData().get(DraglingEntity.DATA_atk) == true), this.tickCount);
-			this.idleAnimationState.animateWhen(!this.walkAnimation.isMoving() && !this.getEntityData().get(DraglingEntity.DATA_atk) == true, this.tickCount);
+		if (this.level.isClientSide) {
+			AnimationHelper.animateWhen(this.attackAnimationState, (this.getEntityData().get(DraglingEntity.DATA_atk) == true), this.tickCount);
+			AnimationHelper.animateWhen(this.idleAnimationState, !AnimationHelper.isMoving(this) && !this.getEntityData().get(DraglingEntity.DATA_atk) == true, this.tickCount);
 		}
 		super.tick();
 	}
@@ -164,15 +163,15 @@ public class DraglingEntity extends Monster {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.IN_FIRE))
+		if (damagesource.getMsgId().equals("inFire"))
 			return false;
 		if (damagesource.getDirectEntity() instanceof ThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.LIGHTNING_BOLT))
+		if (damagesource.getMsgId().equals("lightningBolt"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}

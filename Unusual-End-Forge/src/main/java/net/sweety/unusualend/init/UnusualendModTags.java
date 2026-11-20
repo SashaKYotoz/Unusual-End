@@ -1,12 +1,11 @@
 package net.sweety.unusualend.init;
 
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.sweety.unusualend.UnusualEnd;
-
 public final class UnusualendModTags {
 	private UnusualendModTags() {
 	}
@@ -42,7 +41,7 @@ public final class UnusualendModTags {
 		}
 
 		private static TagKey<Block> tag(String namespace, String name) {
-			return TagKey.create(Registries.BLOCK, new ResourceLocation(namespace, name));
+			return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(namespace, name));
 		}
 	}
 
@@ -62,7 +61,7 @@ public final class UnusualendModTags {
 		}
 
 		private static TagKey<Item> tag(String namespace, String name) {
-			return TagKey.create(Registries.ITEM, new ResourceLocation(namespace, name));
+			return TagKey.create(Registry.ITEM_REGISTRY, new ResourceLocation(namespace, name));
 		}
 	}
 }

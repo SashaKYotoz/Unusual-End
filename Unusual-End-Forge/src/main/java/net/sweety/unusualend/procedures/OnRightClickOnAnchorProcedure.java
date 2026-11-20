@@ -24,7 +24,7 @@ public class OnRightClickOnAnchorProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.TELEPORTATION_ANCHOR.get()) {
+		if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == UnusualendModBlocks.TELEPORTATION_ANCHOR.get()) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.PRISMATIC_MIRROR.get()) {
 				if (Config.CAN_USE_TELEPORTATION_ANCHOR.get() == true) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().getBoolean("LinkedMirror") == true) {
@@ -35,7 +35,7 @@ public class OnRightClickOnAnchorProcedure {
 						ProcedureHelper.playSound(world, x, y, z, SoundEvents.GRINDSTONE_USE, SoundSource.NEUTRAL, 1, 1);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.unusualend.prismatic_mirror").getString())));
 					} else {
-						if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
+						if ((entity.level.dimension()) == Level.OVERWORLD || (entity.level.dimension()) == Level.NETHER || (entity.level.dimension()) == Level.END) {
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", (x + 0.5));
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpY", (y + 1));
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpZ", (z + 0.5));
@@ -50,12 +50,12 @@ public class OnRightClickOnAnchorProcedure {
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 							ProcedureHelper.awardAdvancement(entity, "hyperspace_jump");
 						} else {
-							if (entity instanceof Player _player && !_player.level().isClientSide())
+							if (entity instanceof Player _player && !_player.level.isClientSide())
 								_player.displayClientMessage(Component.translatable("text.unusualend.cant_host_anchor"), true);
 						}
 					}
 				} else {
-					if (entity instanceof Player _player && !_player.level().isClientSide())
+					if (entity instanceof Player _player && !_player.level.isClientSide())
 						_player.displayClientMessage(Component.translatable("text.unusualend.no_anchor"), true);
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.VOID_TOTEM.get()) {
@@ -68,7 +68,7 @@ public class OnRightClickOnAnchorProcedure {
 						ProcedureHelper.playSound(world, x, y, z, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1, 1);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.unusualend.void_totem").getString())));
 					} else {
-						if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
+						if ((entity.level.dimension()) == Level.OVERWORLD || (entity.level.dimension()) == Level.NETHER || (entity.level.dimension()) == Level.END) {
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", (x + 0.5));
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpY", (y + 1));
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpZ", (z + 0.5));
@@ -83,12 +83,12 @@ public class OnRightClickOnAnchorProcedure {
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 							ProcedureHelper.awardAdvancement(entity, "hyperspace_jump");
 						} else {
-							if (entity instanceof Player _player && !_player.level().isClientSide())
+							if (entity instanceof Player _player && !_player.level.isClientSide())
 								_player.displayClientMessage(Component.translatable("text.unusualend.cant_host_anchor"), true);
 						}
 					}
 				} else {
-					if (entity instanceof Player _player && !_player.level().isClientSide())
+					if (entity instanceof Player _player && !_player.level.isClientSide())
 						_player.displayClientMessage(Component.translatable("text.unusualend.no_anchor"), true);
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.TOTEM_OF_UNDYING) {
@@ -101,7 +101,7 @@ public class OnRightClickOnAnchorProcedure {
 						ProcedureHelper.playSound(world, x, y, z, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 1, 1);
 						(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).setHoverName(Component.literal(("\u00A7e" + Component.translatable("item.minecraft.totem_of_undying").getString())));
 					} else {
-						if ((entity.level().dimension()) == Level.OVERWORLD || (entity.level().dimension()) == Level.NETHER || (entity.level().dimension()) == Level.END) {
+						if ((entity.level.dimension()) == Level.OVERWORLD || (entity.level.dimension()) == Level.NETHER || (entity.level.dimension()) == Level.END) {
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpX", (x + 0.5));
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpY", (y + 1));
 							(entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getOrCreateTag().putDouble("TpZ", (z + 0.5));
@@ -115,16 +115,16 @@ public class OnRightClickOnAnchorProcedure {
 							if (world instanceof ServerLevel _level)
 								_level.sendParticles(ParticleTypes.PORTAL, x, y, z, 20, 1.5, 1.5, 1.5, 0);
 						} else {
-							if (entity instanceof Player _player && !_player.level().isClientSide())
+							if (entity instanceof Player _player && !_player.level.isClientSide())
 								_player.displayClientMessage(Component.translatable("text.unusualend.cant_host_anchor"), true);
 						}
 					}
 				} else {
-					if (entity instanceof Player _player && !_player.level().isClientSide())
+					if (entity instanceof Player _player && !_player.level.isClientSide())
 						_player.displayClientMessage(Component.translatable("text.unusualend.no_anchor"), true);
 				}
 			} else {
-				if (entity instanceof Player _player && !_player.level().isClientSide())
+				if (entity instanceof Player _player && !_player.level.isClientSide())
 					_player.displayClientMessage(Component.translatable("text.unusualend.need_anchor_item"), true);
 			}
 		}

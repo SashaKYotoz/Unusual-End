@@ -30,7 +30,7 @@ public class TPConfirmProcedure {
 	@SubscribeEvent
 	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
 		if (event.phase == TickEvent.Phase.END) {
-			execute(event, event.player.level(), event.player);
+			execute(event, event.player.level, event.player);
 		}
 	}
 
@@ -38,8 +38,8 @@ public class TPConfirmProcedure {
 		if (entity == null)
 			return;
 		if ((entity.getCapability(UnusualendModVariables.PLAYER_VARIABLES_CAPABILITY, null).orElse(new UnusualendModVariables.PlayerVariables())).isTeleporting == true) {
-			if ((entity.getPersistentData().getString("TargetDimension")).equals("" + entity.level().dimension())) {
-				if (!((world.getBlockState(BlockPos.containing(entity.getPersistentData().getDouble("TargetX"), entity.getPersistentData().getDouble("TargetY") - 1, entity.getPersistentData().getDouble("TargetZ"))))
+			if ((entity.getPersistentData().getString("TargetDimension")).equals("" + entity.level.dimension())) {
+				if (!((world.getBlockState(new BlockPos(entity.getPersistentData().getDouble("TargetX"), entity.getPersistentData().getDouble("TargetY") - 1, entity.getPersistentData().getDouble("TargetZ"))))
 						.getBlock() == UnusualendModBlocks.TELEPORTATION_ANCHOR.get())) {
 					{
 						Entity _ent = entity;
@@ -50,7 +50,7 @@ public class TPConfirmProcedure {
 					}
 					ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.SLOW_FALLING, 300, 1));
 					ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.DARKNESS, 80, 0));
-					if (entity instanceof Player _player && !_player.level().isClientSide())
+					if (entity instanceof Player _player && !_player.level.isClientSide())
 						_player.displayClientMessage(Component.translatable("text.unusualend.tp_error"), true);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);

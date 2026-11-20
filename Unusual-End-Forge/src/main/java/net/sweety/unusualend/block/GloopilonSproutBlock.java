@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -30,7 +30,7 @@ import net.sweety.unusualend.procedures.GrowGloopilonProcedure;
 public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlock {
 	public GloopilonSproutBlock() {
 		super(() -> MobEffects.MOVEMENT_SPEED, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_MAGENTA).randomTicks().sound(SoundType.CORAL_BLOCK).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_MAGENTA).offsetType(BlockBehaviour.OffsetType.NONE).randomTicks().sound(SoundType.CORAL_BLOCK).instabreak().noCollission());
 	}
 
 	@Override
@@ -62,7 +62,7 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = ((world.getBlockState(BlockPos.containing(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.POLISHED_GLOOPSTONE.get() || (world.getBlockState(BlockPos.containing(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE_BRICKS.get());
+			additionalCondition = ((world.getBlockState(new BlockPos(x, y + 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT) || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.POLISHED_GLOOPSTONE.get() || (world.getBlockState(new BlockPos(x, y + 1, z))).getBlock() == UnusualendModBlocks.GLOOPSTONE_BRICKS.get());
 		}
 		return additionalCondition;
 	}
@@ -85,7 +85,7 @@ public class GloopilonSproutBlock extends FlowerBlock implements BonemealableBlo
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
+	public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
 		if (worldIn instanceof LevelAccessor world) {
 			return (pos.getY() >= 120 && (blockstate.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _getip1_2 ? blockstate.getValue(_getip1_2) : -1) < 2);
 		}

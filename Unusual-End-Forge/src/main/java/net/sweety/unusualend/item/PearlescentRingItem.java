@@ -10,6 +10,7 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModEnchantments;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.util.ItemCooldownHelper;
 
 import java.util.List;
@@ -17,7 +18,7 @@ import java.util.Set;
 
 public class PearlescentRingItem extends Item {
 	public PearlescentRingItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(1).rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

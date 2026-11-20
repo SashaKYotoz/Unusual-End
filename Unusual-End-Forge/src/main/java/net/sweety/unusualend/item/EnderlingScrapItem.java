@@ -13,21 +13,22 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.EnderlingScrapLeggingsTickEventProcedure;
 
 import java.util.List;
 
 public abstract class EnderlingScrapItem extends ArmorItem {
-	public EnderlingScrapItem(ArmorItem.Type type, Item.Properties properties) {
+	public EnderlingScrapItem(EquipmentSlot type, Item.Properties properties) {
 		super(new ArmorMaterial() {
 			@Override
-			public int getDurabilityForType(ArmorItem.Type type) {
-				return new int[]{13, 15, 16, 11}[type.getSlot().getIndex()] * 28;
+			public int getDurabilityForSlot(EquipmentSlot type) {
+				return new int[]{13, 15, 16, 11}[type.getIndex()] * 28;
 			}
 
 			@Override
-			public int getDefenseForType(ArmorItem.Type type) {
-				return new int[]{0, 5, 0, 0}[type.getSlot().getIndex()];
+			public int getDefenseForSlot(EquipmentSlot type) {
+				return new int[]{0, 5, 0, 0}[type.getIndex()];
 			}
 
 			@Override
@@ -64,7 +65,7 @@ public abstract class EnderlingScrapItem extends ArmorItem {
 
 	public static class Leggings extends EnderlingScrapItem {
 		public Leggings() {
-			super(ArmorItem.Type.LEGGINGS, new Item.Properties());
+			super(EquipmentSlot.LEGS, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END));
 		}
 
 		@Override

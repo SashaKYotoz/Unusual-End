@@ -6,12 +6,13 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.config.Config;
+import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.List;
 
 public class NetherOrbItem extends Item {
 	public NetherOrbItem() {
-		super(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON));
 	}
 
 	@Override

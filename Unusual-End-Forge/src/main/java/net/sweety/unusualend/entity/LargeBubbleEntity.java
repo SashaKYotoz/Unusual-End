@@ -4,7 +4,6 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -33,7 +32,7 @@ public class LargeBubbleEntity extends Animal {
 
 	public LargeBubbleEntity(EntityType<LargeBubbleEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0f);
+		this.maxUpStep = 0f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -41,7 +40,7 @@ public class LargeBubbleEntity extends Animal {
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 

@@ -13,7 +13,7 @@ public class WarpedBalloonProjProjectileHitsBlockProcedure {
 			return;
 		if (Config.SAVE_BALLOON.get() == true) {
 			ProcedureHelper.dropItem(world, x, y, z, new ItemStack(UnusualendModItems.WARPED_BALLOON.get()), 10);
-			if (!entity.level().isClientSide())
+			if (!entity.level.isClientSide())
 				entity.discard();
 		}
 	}

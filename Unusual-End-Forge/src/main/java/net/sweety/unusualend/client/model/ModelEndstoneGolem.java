@@ -2,6 +2,8 @@ package net.sweety.unusualend.client.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.animation.KeyframeAnimations;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -15,6 +17,7 @@ import net.sweety.unusualend.entity.EndstoneGolemEntity;
 // Exported for Minecraft version 1.17 or later with Mojang mappings
 // Paste this class into your mod and generate all required imports
 public class ModelEndstoneGolem<T extends EndstoneGolemEntity> extends HierarchicalModel<T> {
+	private static final Vector3f WALK_ANIMATION_CACHE = new Vector3f();
 	// This layer location should be baked with EntityRendererProvider.Context in
 	// the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("unusualend", "modelendstonegolem"), "main");
@@ -65,7 +68,7 @@ public class ModelEndstoneGolem<T extends EndstoneGolemEntity> extends Hierarchi
 		this.animate(entity.pushAnimationState, EndstoneGolemAnimation.PUSH, ageInTicks);
 		this.animate(entity.idleAnimationState, EndstoneGolemAnimation.IDLE, ageInTicks);
 		if (!entity.isInWaterOrBubble()) {
-			this.animateWalk(EndstoneGolemAnimation.WALK, limbSwing, limbSwingAmount, 2.0F, 4.0F);
+			KeyframeAnimations.animate(this, EndstoneGolemAnimation.WALK, (long) (limbSwing * 50.0F * 2.0F), Math.min(limbSwingAmount * 4.0F, 1.0F), WALK_ANIMATION_CACHE);
 		}
 	}
 
@@ -74,8 +77,6 @@ public class ModelEndstoneGolem<T extends EndstoneGolemEntity> extends Hierarchi
 		return this.all;
 	}
 
-	private record ModelParts(ModelPart all) {
-	}
 
 	@Override
 	public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {

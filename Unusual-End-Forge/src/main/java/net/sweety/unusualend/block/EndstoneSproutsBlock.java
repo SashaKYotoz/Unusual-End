@@ -16,8 +16,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -28,7 +28,7 @@ import net.sweety.unusualend.procedures.EndstoneSproutsOnBoneMealSuccessProcedur
 public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlock {
 	public EndstoneSproutsBlock() {
 		super(() -> MobEffects.LEVITATION, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PINK).sound(SoundType.NETHER_SPROUTS).instabreak().noCollission().replaceable().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of(Material.REPLACEABLE_FIREPROOF_PLANT, MaterialColor.COLOR_PINK).offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.NETHER_SPROUTS).instabreak().noCollission());
 	}
 
 	@Override
@@ -60,7 +60,7 @@ public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlo
 			int y = pos.getY() + 1;
 			int z = pos.getZ();
 			BlockState blockstate = world.getBlockState(pos.above());
-			additionalCondition = (!(world.getBlockState(BlockPos.containing(x, y - 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT));
+			additionalCondition = (!(world.getBlockState(new BlockPos(x, y - 1, z))).is(UnusualendModTags.Blocks.GLOOPSTONE_VALID_PLACEMENT));
 		}
 		return (groundState.is(UnusualendModBlocks.INFESTED_END_STONE.get()) || groundState.is(Blocks.END_STONE) || groundState.is(Blocks.WARPED_NYLIUM) || groundState.is(Blocks.CRIMSON_NYLIUM) || groundState.is(Blocks.GRASS_BLOCK)
 				|| groundState.is(Blocks.DIRT) || groundState.is(Blocks.COARSE_DIRT) || groundState.is(Blocks.PODZOL) || groundState.is(Blocks.MYCELIUM) || groundState.is(UnusualendModBlocks.RAW_PURPUR_BLOCK.get())
@@ -76,7 +76,7 @@ public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlo
 	}
 
 	@Override
-	public boolean isValidBonemealTarget(LevelReader worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
+	public boolean isValidBonemealTarget(BlockGetter worldIn, BlockPos pos, BlockState blockstate, boolean clientSide) {
 		return true;
 	}
 

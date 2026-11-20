@@ -34,7 +34,7 @@ public class ShearChorusCaneProcedure {
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getOffhandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_FLOWER.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.FLOWERING_PURPUR_GRASS.get()) {
+			if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_FLOWER.get() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == UnusualendModBlocks.FLOWERING_PURPUR_GRASS.get()) {
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof ShearsItem) {
 					if (entity instanceof LivingEntity _entity)
 						_entity.swing(InteractionHand.MAIN_HAND, true);
@@ -43,13 +43,13 @@ public class ShearChorusCaneProcedure {
 						_entity.swing(InteractionHand.OFF_HAND, true);
 				}
 				ProcedureHelper.playSound(world, x, y, z, SoundEvents.GROWING_PLANT_CROP, SoundSource.BLOCKS, 1, 1);
-				if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_FLOWER.get()) {
-					world.destroyBlock(BlockPos.containing(x, y, z), false);
+				if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == UnusualendModBlocks.CHORUS_CANE_FLOWER.get()) {
+					world.destroyBlock(new BlockPos(x, y, z), false);
 					for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 1, 2); index0++) {
 						ProcedureHelper.dropItem(world, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualendModItems.CHORUS_PETAL.get()), 10);
 					}
 				} else {
-					ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z), UnusualendModBlocks.PURPUR_GRASS.get().defaultBlockState(), 3);
+					ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z), UnusualendModBlocks.PURPUR_GRASS.get().defaultBlockState(), 3);
 					ProcedureHelper.dropItem(world, (x + 0.5), (y + 1), (z + 0.5), new ItemStack(UnusualendModItems.CHORUS_PETAL.get()), 10);
 				}
 			}

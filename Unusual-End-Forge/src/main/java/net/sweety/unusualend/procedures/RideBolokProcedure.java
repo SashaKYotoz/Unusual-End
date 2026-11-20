@@ -2,12 +2,10 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -63,14 +61,14 @@ public class RideBolokProcedure {
 						ProcedureHelper.dropItem(world, entity.getX(), entity.getY(), entity.getZ(), enchantedBook, 10);
 					});
 				} else {
-					if (sourceentity instanceof Player _player && !_player.level().isClientSide())
+					if (sourceentity instanceof Player _player && !_player.level.isClientSide())
 						_player.displayClientMessage(Component.translatable("text.unusualend.no_xp_bolok"), true);
 				}
 			} else if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.SHINY_CRYSTAL.get()) {
 				((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).shrink(1);
 				ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1, 1);
 				ParticleHelper.spawn(world, ParticleTypes.GLOW_SQUID_INK, ParticleHelper.localToEyes(entity, 0, 0, 0.6), 10, 0.1, 0.1, 0.1, 0.01, true);
-				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 1);
+				entity.hurt(DamageSource.GENERIC, 1);
 				ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.WITHER, 300, 1));
 				ProcedureHelper.awardAdvancement(sourceentity, "give_bolok_crystal");
 			} else if (!((new Object() {
@@ -82,7 +80,7 @@ public class RideBolokProcedure {
 							NonNullList<Ingredient> ingredients = recipe.getIngredients();
 							if (!ingredients.get(0).test((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))
 								continue;
-							return recipe.getResultItem(null);
+							return recipe.getResultItem();
 						}
 					}
 					return ItemStack.EMPTY;
@@ -97,7 +95,7 @@ public class RideBolokProcedure {
 								NonNullList<Ingredient> ingredients = recipe.getIngredients();
 								if (!ingredients.get(0).test((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))
 									continue;
-								return recipe.getResultItem(null);
+								return recipe.getResultItem();
 							}
 						}
 						return ItemStack.EMPTY;

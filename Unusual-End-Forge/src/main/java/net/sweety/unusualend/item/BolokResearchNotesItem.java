@@ -20,6 +20,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.network.NetworkHooks;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.item.inventory.BolokResearchNotesInventoryCapability;
 import net.sweety.unusualend.procedures.BolokResearchNotesRightclickedProcedure;
 import net.sweety.unusualend.world.inventory.BolokNotesMenu;
@@ -28,7 +29,7 @@ import javax.annotation.Nullable;
 
 public class BolokResearchNotesItem extends Item {
 	public BolokResearchNotesItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF).stacksTo(1).rarity(Rarity.COMMON));
 	}
 
 	@Override

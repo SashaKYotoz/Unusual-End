@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -26,7 +26,7 @@ import net.sweety.unusualend.procedures.OvergrownWarpedVineOnBlockRightClickedPr
 public class GrownWarpedBushBlock extends FlowerBlock {
 	public GrownWarpedBushBlock() {
 		super(() -> MobEffects.MOVEMENT_SPEED, 100,
-				BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).sound(SoundType.ROOTS).strength(1f, 1f).lightLevel(s -> 8).noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+				BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.PLANT).offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.ROOTS).strength(1f, 1f).lightLevel(s -> 8).noCollission());
 	}
 
 	@Override

@@ -1,7 +1,7 @@
 {
-  "levels": [
-    "minecraft:the_end"
-  ],
+  "name": "unusualend:warped_reef",
+  "selector": "minecraft:the_end",
+  "weight": 6,
   "provider": {
     "type": "blueprint:overlay",
     "overlays": [
@@ -15,6 +15,5 @@
         ]
       }
     ]
-  },
-  "weight": 6
+  }
 }

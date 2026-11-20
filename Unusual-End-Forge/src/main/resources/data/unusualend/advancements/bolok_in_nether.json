@@ -18,23 +18,14 @@
     "bolok_in_nether": {
       "trigger": "minecraft:item_used_on_block",
       "conditions": {
-        "location": [
-          {
-            "condition": "minecraft:location_check",
-            "predicate": {
-              "dimension": "minecraft:the_nether",
-              "block": {}
-            }
-          },
-          {
-            "condition": "minecraft:match_tool",
-            "predicate": {
-              "items": [
-                "unusualend:bolok_bucket"
-              ]
-            }
-          }
-        ]
+        "location": {
+          "dimension": "minecraft:the_nether"
+        },
+        "item": {
+          "items": [
+            "unusualend:bolok_bucket"
+          ]
+        }
       }
     }
   },

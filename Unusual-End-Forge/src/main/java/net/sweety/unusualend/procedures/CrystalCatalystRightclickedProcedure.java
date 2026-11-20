@@ -75,7 +75,7 @@ public class CrystalCatalystRightclickedProcedure {
 						}
 					}
 				} else {
-					if (entity instanceof Player _player && !_player.level().isClientSide())
+					if (entity instanceof Player _player && !_player.level.isClientSide())
 						_player.displayClientMessage(Component.translatable("text.unusualend.no_xp"), true);
 				}
 			}

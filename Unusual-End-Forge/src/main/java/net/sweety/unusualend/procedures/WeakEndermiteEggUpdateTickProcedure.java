@@ -21,6 +21,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
@@ -50,7 +51,7 @@ public class WeakEndermiteEggUpdateTickProcedure {
 				}
 			}
 			if (nearby_player == true) {
-				world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
+				world.levelEvent(2001, new BlockPos(x, y, z), Block.getId(UnusualendModBlocks.CRACKED_ENDERMITE_EGGS.get().defaultBlockState()));
 				ProcedureHelper.playSound(world, x, y, z, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);
 				if (hidden == true) {
 					proba = 0.3;
@@ -58,7 +59,7 @@ public class WeakEndermiteEggUpdateTickProcedure {
 					proba = 0.9;
 				}
 				if (Math.random() < proba) {
-					world.destroyBlock(BlockPos.containing(x, y, z), false);
+					world.destroyBlock(new BlockPos(x, y, z), false);
 					if (world instanceof ServerLevel _level)
 						_level.sendParticles(ParticleTypes.POOF, (x + 0.5), (y + 0.2), (z + 0.5), 20, 1.3, 1.3, 1.3, 0);
 					if (world instanceof ServerLevel _level)
@@ -66,14 +67,14 @@ public class WeakEndermiteEggUpdateTickProcedure {
 					for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 3, 4); index0++) {
 						if (Math.random() < 0.8) {
 							if (world instanceof ServerLevel _level) {
-								Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+								Entity entityToSpawn = EntitySpawnHelper.spawn(EntityType.ENDERMITE, _level, new BlockPos(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 								if (entityToSpawn != null) {
 									entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 								}
 							}
 						} else {
 							if (world instanceof ServerLevel _level) {
-								Entity entityToSpawn = UnusualendModEntities.SMALL_ENDERBULB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+								Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.SMALL_ENDERBULB.get(), _level, new BlockPos(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 								if (entityToSpawn != null) {
 									entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 								}
@@ -83,10 +84,10 @@ public class WeakEndermiteEggUpdateTickProcedure {
 				}
 			}
 		}
-		if (!((blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep16 ? blockstate.getValue(_getep16).toString() : "").equals("FLOOR") && world.getBlockState(BlockPos.containing(x, y - 1, z)).canOcclude()
+		if (!((blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep16 ? blockstate.getValue(_getep16).toString() : "").equals("FLOOR") && world.getBlockState(new BlockPos(x, y - 1, z)).canOcclude()
 				|| (blockstate.getBlock().getStateDefinition().getProperty("face") instanceof EnumProperty _getep19 ? blockstate.getValue(_getep19).toString() : "").equals("CEILING")
-						&& world.getBlockState(BlockPos.containing(x, y + 1, z)).canOcclude()
-				|| (ProcedureHelper.getDirection(blockstate)) == Direction.NORTH && world.getBlockState(BlockPos.containing(x, y, z + 1)).canOcclude() || (ProcedureHelper.getDirection(blockstate)) == Direction.EAST && world.getBlockState(BlockPos.containing(x - 1, y, z)).canOcclude() || (ProcedureHelper.getDirection(blockstate)) == Direction.SOUTH && world.getBlockState(BlockPos.containing(x, y, z - 1)).canOcclude() || (ProcedureHelper.getDirection(blockstate)) == Direction.WEST && world.getBlockState(BlockPos.containing(x + 1, y, z)).canOcclude())) {
+						&& world.getBlockState(new BlockPos(x, y + 1, z)).canOcclude()
+				|| (ProcedureHelper.getDirection(blockstate)) == Direction.NORTH && world.getBlockState(new BlockPos(x, y, z + 1)).canOcclude() || (ProcedureHelper.getDirection(blockstate)) == Direction.EAST && world.getBlockState(new BlockPos(x - 1, y, z)).canOcclude() || (ProcedureHelper.getDirection(blockstate)) == Direction.SOUTH && world.getBlockState(new BlockPos(x, y, z - 1)).canOcclude() || (ProcedureHelper.getDirection(blockstate)) == Direction.WEST && world.getBlockState(new BlockPos(x + 1, y, z)).canOcclude())) {
 			BreakEggProcedure.execute(world, x, y, z);
 		}
 	}

@@ -3,7 +3,6 @@ package net.sweety.unusualend.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -14,7 +13,6 @@ import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -55,7 +53,7 @@ public class BolokEntity extends Monster {
 
     public BolokEntity(EntityType<BolokEntity> type, Level world) {
         super(type, world);
-        setMaxUpStep(0.6f);
+        this.maxUpStep = 0.6f;
         xpReward = 1;
         setNoAi(false);
         this.moveControl = new FlyingMoveControl(this, 10, true);
@@ -92,7 +90,7 @@ public class BolokEntity extends Monster {
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
@@ -165,13 +163,13 @@ public class BolokEntity extends Monster {
 
     @Override
     public boolean hurt(DamageSource damagesource, float amount) {
-        Level world = this.level();
+        Level world = this.level;
         Entity entity = this;
         Entity sourceentity = damagesource.getEntity();
         BolokEntityIsHurtProcedure.execute(world, entity, sourceentity);
-        if (damagesource.is(DamageTypes.DROWN))
+        if (damagesource.getMsgId().equals("drown"))
             return false;
-        if (damagesource.is(DamageTypes.IN_WALL))
+        if (damagesource.getMsgId().equals("inWall"))
             return false;
         return super.hurt(damagesource, amount);
     }
@@ -180,13 +178,13 @@ public class BolokEntity extends Monster {
     public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
         super.mobInteract(sourceentity, hand);
         MobBucketHelper.capture(this, sourceentity, UnusualendModItems.BOLOK_BUCKET.get());
-        return InteractionResult.sidedSuccess(this.level().isClientSide());
+        return InteractionResult.sidedSuccess(this.level.isClientSide());
     }
 
     @Override
     public void baseTick() {
         super.baseTick();
-        BolokOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+        BolokOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
     }
 
     public void onSyncedDataUpdated(EntityDataAccessor<?> accessor) {

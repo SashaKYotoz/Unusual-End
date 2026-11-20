@@ -4,7 +4,6 @@ package net.sweety.unusualend.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -13,7 +12,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -34,6 +32,7 @@ import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.procedures.EndstoneGolemEntityDiesProcedure;
 import net.sweety.unusualend.procedures.EndstoneGolemEntityIsHurtProcedure;
 import net.sweety.unusualend.procedures.EndstoneGolemOnEntityTickUpdateProcedure;
+import net.sweety.unusualend.util.AnimationHelper;
 
 public class EndstoneGolemEntity extends Monster {
 	public final AnimationState attackAnimationState = new AnimationState();
@@ -51,14 +50,14 @@ public class EndstoneGolemEntity extends Monster {
 
 	public EndstoneGolemEntity(EntityType<EndstoneGolemEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
+		this.maxUpStep = 0.6f;
 		xpReward = 500;
 		setNoAi(false);
 		setPersistenceRequired();
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -105,10 +104,10 @@ public class EndstoneGolemEntity extends Monster {
 
 	@Override
 	public void tick() {
-		if (level().isClientSide) {
-			this.pushAnimationState.animateWhen((this.getEntityData().get(EndstoneGolemEntity.DATA_push) > 0 && !(this.getEntityData().get(EndstoneGolemEntity.DATA_aoe_animtime) > 0)), this.tickCount);
-			this.attackAnimationState.animateWhen((this.getEntityData().get(EndstoneGolemEntity.DATA_aoe_animtime) > 0), this.tickCount);
-			this.idleAnimationState.animateWhen(!this.walkAnimation.isMoving() && !isInWaterOrBubble(), this.tickCount);
+		if (this.level.isClientSide) {
+			AnimationHelper.animateWhen(this.pushAnimationState, (this.getEntityData().get(EndstoneGolemEntity.DATA_push) > 0 && !(this.getEntityData().get(EndstoneGolemEntity.DATA_aoe_animtime) > 0)), this.tickCount);
+			AnimationHelper.animateWhen(this.attackAnimationState, (this.getEntityData().get(EndstoneGolemEntity.DATA_aoe_animtime) > 0), this.tickCount);
+			AnimationHelper.animateWhen(this.idleAnimationState, !AnimationHelper.isMoving(this) && !isInWaterOrBubble(), this.tickCount);
 		}
 		super.tick();
 	}
@@ -148,33 +147,33 @@ public class EndstoneGolemEntity extends Monster {
 		double x = this.getX();
 		double y = this.getY();
 		double z = this.getZ();
-		Level world = this.level();
+		Level world = this.level;
 		Entity entity = this;
 		Entity sourceentity = damagesource.getEntity();
 		EndstoneGolemEntityIsHurtProcedure.execute(world, x, y, z, entity, sourceentity);
-		if (damagesource.is(DamageTypes.IN_FIRE))
+		if (damagesource.getMsgId().equals("inFire"))
 			return false;
 		if (damagesource.getDirectEntity() instanceof AbstractArrow)
 			return false;
 		if (damagesource.getDirectEntity() instanceof ThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.CACTUS))
+		if (damagesource.getMsgId().equals("cactus"))
 			return false;
-		if (damagesource.is(DamageTypes.DROWN))
+		if (damagesource.getMsgId().equals("drown"))
 			return false;
-		if (damagesource.is(DamageTypes.LIGHTNING_BOLT))
+		if (damagesource.getMsgId().equals("lightningBolt"))
 			return false;
-		if (damagesource.is(DamageTypes.EXPLOSION) || damagesource.is(DamageTypes.PLAYER_EXPLOSION))
+		if (damagesource.isExplosion() || damagesource.isExplosion())
 			return false;
-		if (damagesource.is(DamageTypes.TRIDENT))
+		if (damagesource.getMsgId().equals("trident"))
 			return false;
-		if (damagesource.is(DamageTypes.FALLING_ANVIL))
+		if (damagesource.getMsgId().equals("anvil"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
-		if (damagesource.is(DamageTypes.WITHER))
+		if (damagesource.getMsgId().equals("wither"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -192,7 +191,7 @@ public class EndstoneGolemEntity extends Monster {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		EndstoneGolemEntityDiesProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+		EndstoneGolemEntityDiesProcedure.execute(this.level, this.getX(), this.getY(), this.getZ());
 	}
 
 	@Override
@@ -220,7 +219,7 @@ public class EndstoneGolemEntity extends Monster {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		EndstoneGolemOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+		EndstoneGolemOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

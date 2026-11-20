@@ -1,8 +1,6 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -38,7 +36,7 @@ public class LeechingChargeProjectileHitsLivingEntityProcedure {
 			}
 			ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.REGENERATION, (int) (60 + duration_buff), (int) (2 + level_buff)));
 			entity.invulnerableTime = 0;
-			entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.MAGIC)), 4);
+			entity.hurt(DamageSource.MAGIC, 4);
 			if (immediatesourceentity instanceof BondLeechingChargeProjectileEntity) {
 				{
 					final Vec3 _center = new Vec3((sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ()));

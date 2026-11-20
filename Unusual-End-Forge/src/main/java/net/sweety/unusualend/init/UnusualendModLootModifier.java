@@ -29,7 +29,7 @@ public class UnusualendModLootModifier {
 
 		@Override
 		protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-			context.getResolver().getLootTable(lootTable).getRandomItemsRaw(context, generatedLoot::add);
+			context.getLootTable(lootTable).getRandomItemsRaw(context, generatedLoot::add);
 			return generatedLoot;
 		}
 

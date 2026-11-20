@@ -39,7 +39,7 @@ public class PurpurTankGUIMenu extends AbstractContainerMenu implements Supplier
 	public PurpurTankGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(UnusualendModMenus.PURPUR_TANK_GUI.get(), id);
 		this.entity = inv.player;
-		this.world = inv.player.level();
+		this.world = inv.player.level;
 		this.internal = new ItemStackHandler(54);
 		BlockPos pos = null;
 		if (extraData != null) {

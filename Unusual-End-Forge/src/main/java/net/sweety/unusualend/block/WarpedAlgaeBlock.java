@@ -20,8 +20,8 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -29,7 +29,7 @@ import net.sweety.unusualend.init.UnusualendModTags;
 
 public class WarpedAlgaeBlock extends FlowerBlock implements SimpleWaterloggedBlock {
 	public WarpedAlgaeBlock() {
-		super(() -> MobEffects.DAMAGE_RESISTANCE, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).sound(SoundType.ROOTS).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.NONE).pushReaction(PushReaction.DESTROY));
+		super(() -> MobEffects.DAMAGE_RESISTANCE, 100, BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_BLUE).offsetType(BlockBehaviour.OffsetType.NONE).sound(SoundType.ROOTS).instabreak().noCollission());
 		this.registerDefaultState(this.stateDefinition.any().setValue(WATERLOGGED, false));
 	}
 

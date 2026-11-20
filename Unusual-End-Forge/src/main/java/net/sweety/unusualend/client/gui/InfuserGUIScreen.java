@@ -1,7 +1,8 @@
 package net.sweety.unusualend.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.minecraft.client.gui.GuiGraphics;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.gui.components.ImageButton;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.core.BlockPos;
@@ -43,29 +44,32 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 	private static final ResourceLocation texture = new ResourceLocation("unusualend:textures/screens/infuser_gui.png");
 
 	@Override
-	public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTicks) {
-		this.renderBackground(guiGraphics);
-		super.render(guiGraphics, mouseX, mouseY, partialTicks);
-		this.renderTooltip(guiGraphics, mouseX, mouseY);
+	public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks) {
+		this.renderBackground(poseStack);
+		super.render(poseStack, mouseX, mouseY, partialTicks);
+		this.renderTooltip(poseStack, mouseX, mouseY);
 		if (mouseX > leftPos + 31 && mouseX < leftPos + 51 && mouseY > topPos + 12 && mouseY < topPos + 51)
-			guiGraphics.renderTooltip(font, Component.translatable("text.infuser.citrine"), mouseX, mouseY);
+			this.renderTooltip(poseStack, Component.translatable("text.infuser.citrine"), mouseX, mouseY);
 		if (mouseX > leftPos + 85 && mouseX < leftPos + 105 && mouseY > topPos + 12 && mouseY < topPos + 51)
-			guiGraphics.renderTooltip(font, Component.translatable("text.infuser.shiny"), mouseX, mouseY);
+			this.renderTooltip(poseStack, Component.translatable("text.infuser.shiny"), mouseX, mouseY);
 		if (mouseX > leftPos + 139 && mouseX < leftPos + 159 && mouseY > topPos + 12 && mouseY < topPos + 51)
-			guiGraphics.renderTooltip(font, Component.translatable("text.infuser.prismatic"), mouseX, mouseY);
+			this.renderTooltip(poseStack, Component.translatable("text.infuser.prismatic"), mouseX, mouseY);
 	}
 
 	@Override
-	protected void renderBg(GuiGraphics guiGraphics, float partialTicks, int gx, int gy) {
+	protected void renderBg(PoseStack poseStack, float partialTicks, int gx, int gy) {
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
-		guiGraphics.blit(texture, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+		RenderSystem.setShaderTexture(0, texture);
+		GuiComponent.blit(poseStack, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
 		BlockPos pos = new BlockPos(x, y, z);
 		for (InfuserGem gem : InfuserGem.values()) {
 			for (int charge = 1; charge <= InfuserGem.MAX_CHARGE; charge++) {
-				if (gem.hasCharge(level, pos, charge))
-					guiGraphics.blit(gem.chargeTexture(), this.leftPos + gem.screenX(), this.topPos + 62 - 7 * (charge - 1), 0, 0, 16, 7, 16, 7);
+				if (gem.hasCharge(level, pos, charge)) {
+					RenderSystem.setShaderTexture(0, gem.chargeTexture());
+					GuiComponent.blit(poseStack, this.leftPos + gem.screenX(), this.topPos + 62 - 7 * (charge - 1), 0, 0, 16, 7, 16, 7);
+				}
 			}
 		}
 		RenderSystem.disableBlend();
@@ -86,7 +90,7 @@ public class InfuserGUIScreen extends AbstractContainerScreen<InfuserGUIMenu> {
 	}
 
 	@Override
-	protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
+	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
 	}
 
 	@Override

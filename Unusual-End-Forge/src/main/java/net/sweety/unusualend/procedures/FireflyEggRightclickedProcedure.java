@@ -41,8 +41,8 @@ public class FireflyEggRightclickedProcedure {
 				_level.sendParticles(ParticleTypes.POOF, (x + 0.5), (y + 1), (z + 0.5), 5, 0.5, 0.5, 0.5, 0);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.DRAGON_BREATH, (x + 0.5), (y + 1), (z + 0.5), 5, 0.5, 0.5, 0.5, 0);
-			if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("mangrove_swamp")) || world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("plains"))
-					|| world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("swamp"))) {
+			if (world.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("mangrove_swamp")) || world.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("plains"))
+					|| world.getBiome(new BlockPos(x, y, z)).is(new ResourceLocation("swamp"))) {
 				ProcedureHelper.awardAdvancement(entity, "firefly_in_swamp");
 			}
 		} else {

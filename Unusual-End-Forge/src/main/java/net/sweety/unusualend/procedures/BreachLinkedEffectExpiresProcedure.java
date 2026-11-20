@@ -27,11 +27,11 @@ public class BreachLinkedEffectExpiresProcedure {
 		if (entity == null)
 			return;
 		if (entity.getPersistentData().getBoolean("isBreached")) {
-			if (!(entity.getPersistentData().getString("BreachW")).equals("" + entity.level().dimension())) {
+			if (!(entity.getPersistentData().getString("BreachW")).equals("" + entity.level.dimension())) {
 				if ((entity.getPersistentData().getString("BreachW")).equals("" + Level.OVERWORLD)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.OVERWORLD;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -45,9 +45,9 @@ public class BreachLinkedEffectExpiresProcedure {
 					}
 				}
 				if ((entity.getPersistentData().getString("BreachW")).equals("" + Level.NETHER)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.NETHER;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -61,9 +61,9 @@ public class BreachLinkedEffectExpiresProcedure {
 					}
 				}
 				if ((entity.getPersistentData().getString("BreachW")).equals("" + Level.END)) {
-					if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+					if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 						ResourceKey<Level> destinationType = Level.END;
-						if (_player.level().dimension() == destinationType)
+						if (_player.level.dimension() == destinationType)
 							return;
 						ServerLevel nextLevel = _player.server.getLevel(destinationType);
 						if (nextLevel != null) {
@@ -90,7 +90,7 @@ public class BreachLinkedEffectExpiresProcedure {
 				_level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 50, 0.5, 1.5, 0.5, 0);
 			ProcedureHelper.playSound(world, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.CHORUS_FRUIT_TELEPORT, SoundSource.NEUTRAL, 1, 1);
 		} else {
-			if (entity instanceof Player _player && !_player.level().isClientSide())
+			if (entity instanceof Player _player && !_player.level.isClientSide())
 				_player.displayClientMessage(Component.translatable("text.unusualend.not_linked"), true);
 		}
 	}

@@ -1,8 +1,6 @@
 package net.sweety.unusualend.procedures;
 
-import net.minecraft.core.registries.Registries;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.monster.Endermite;
@@ -23,7 +21,7 @@ public class FireflyInstakillProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingHurtEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity(), event.getSource().getEntity());
+			execute(event, event.getEntity().level, event.getEntity(), event.getSource().getEntity());
 		}
 	}
 
@@ -32,12 +30,12 @@ public class FireflyInstakillProcedure {
 			return;
 		if (entity instanceof SmallEnderbulbEntity) {
 			if (sourceentity instanceof Frog) {
-				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 20);
+				entity.hurt(DamageSource.GENERIC, 20);
 			}
 		}
 		if (sourceentity instanceof FlampyrEntity) {
 			if (entity instanceof Endermite || entity instanceof EnderblobEntity || entity instanceof EnderbulbEntity || entity instanceof SmallEnderbulbEntity) {
-				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 15);
+				entity.hurt(DamageSource.GENERIC, 15);
 			}
 		}
 	}

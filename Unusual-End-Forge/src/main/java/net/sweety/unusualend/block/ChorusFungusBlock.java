@@ -10,13 +10,13 @@ import net.minecraft.world.level.block.FlowerBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.MapColor;
-import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.sweety.unusualend.init.UnusualendModTags;
 
 public class ChorusFungusBlock extends FlowerBlock {
 	public ChorusFungusBlock() {
-		super(() -> MobEffects.LEVITATION, 100, BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).sound(SoundType.FUNGUS).instabreak().noCollission().offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY));
+		super(() -> MobEffects.LEVITATION, 100, BlockBehaviour.Properties.of(Material.PLANT, MaterialColor.COLOR_PURPLE).offsetType(BlockBehaviour.OffsetType.XZ).sound(SoundType.FUNGUS).instabreak().noCollission());
 	}
 
 	@Override

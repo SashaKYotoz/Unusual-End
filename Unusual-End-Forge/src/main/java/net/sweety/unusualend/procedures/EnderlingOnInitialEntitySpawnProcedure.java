@@ -32,7 +32,7 @@ public class EnderlingOnInitialEntitySpawnProcedure {
                     stack.shrink(1);
                     stack.setDamageValue(0);
                 }
-                if (!entity.level().isClientSide() && entity.getServer() != null) {
+                if (!entity.level.isClientSide() && entity.getServer() != null) {
                     if (entity instanceof Mob mob) {
                         mob.setDropChance(EquipmentSlot.FEET, 0f);
                         mob.setDropChance(EquipmentSlot.LEGS, 0f);

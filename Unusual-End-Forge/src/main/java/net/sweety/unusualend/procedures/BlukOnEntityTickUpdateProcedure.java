@@ -12,7 +12,7 @@ public class BlukOnEntityTickUpdateProcedure {
 	public static void execute(double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if ((entity.level().dimension()) == Level.END) {
+		if ((entity.level.dimension()) == Level.END) {
 			if (!(entity.getPersistentData().getBoolean("coords") == true)) {
 				entity.getPersistentData().putBoolean("coords", true);
 				entity.getPersistentData().putDouble("x", x);
@@ -29,7 +29,7 @@ public class BlukOnEntityTickUpdateProcedure {
 				_entity.removeEffect(MobEffects.REGENERATION);
 			ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.WITHER, 100, 1));
 		}
-		if (y < 30 && (entity.level().dimension()) == Level.END) {
+		if (y < 30 && (entity.level.dimension()) == Level.END) {
 			if (entity instanceof Mob _entity)
 				_entity.getNavigation().moveTo(x, 45, z, 0.8);
 			if (y < 10) {

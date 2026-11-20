@@ -17,6 +17,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModEntities;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 import javax.annotation.Nullable;
@@ -38,7 +39,7 @@ public class ShinyGloopstoneBlockDestroyedByPlayerProcedure {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1, 1);
 					for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 1, 2); index0++) {
 						if (world instanceof ServerLevel _level) {
-							Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+							Entity entityToSpawn = EntitySpawnHelper.spawn(EntityType.ENDERMITE, _level, new BlockPos(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 							if (entityToSpawn != null) {
 								entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 							}
@@ -50,7 +51,7 @@ public class ShinyGloopstoneBlockDestroyedByPlayerProcedure {
 					}
 					for (int index1 = 0; index1 < Mth.nextInt(world.getRandom(), 0, 1); index1++) {
 						if (world instanceof ServerLevel _level) {
-							Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
+							Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.ENDER_BLOB.get(), _level, new BlockPos(x + 0.5, y + 0.2, z + 0.5), MobSpawnType.MOB_SUMMONED);
 							if (entityToSpawn != null) {
 								entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 							}

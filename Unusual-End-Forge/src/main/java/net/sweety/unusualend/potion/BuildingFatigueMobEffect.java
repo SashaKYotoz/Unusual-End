@@ -13,7 +13,7 @@ import java.util.List;
 public class BuildingFatigueMobEffect extends MobEffect {
 	public BuildingFatigueMobEffect() {
 		super(MobEffectCategory.HARMFUL, -13487566);
-		this.addAttributeModifier(ForgeMod.BLOCK_REACH.get(), "5671a87c-50fc-4f29-b6e4-e39364233137", -100F, AttributeModifier.Operation.ADDITION);
+		this.addAttributeModifier(ForgeMod.REACH_DISTANCE.get(), "5671a87c-50fc-4f29-b6e4-e39364233137", -100F, AttributeModifier.Operation.ADDITION);
 	}
 
 	@Override

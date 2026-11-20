@@ -2,7 +2,6 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
@@ -19,7 +18,7 @@ public class ReduceBouncyDamagesProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingHurtEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getSource(), event.getEntity(), event.getAmount());
+			execute(event, event.getEntity().level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getSource(), event.getEntity(), event.getAmount());
 		}
 	}
 
@@ -27,8 +26,8 @@ public class ReduceBouncyDamagesProcedure {
 		if (damagesource == null || entity == null)
 			return;
 		if (entity instanceof Player) {
-			if (damagesource.is(DamageTypes.FALL)) {
-				if ((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == UnusualendModBlocks.BOUNCY_GLOOPSLATE.get()) {
+			if (damagesource.getMsgId().equals("fall")) {
+				if ((world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == UnusualendModBlocks.BOUNCY_GLOOPSLATE.get()) {
 					if (amount < 3) {
 						entity.fallDistance = 0;
 						if (event != null && event.isCancelable()) {

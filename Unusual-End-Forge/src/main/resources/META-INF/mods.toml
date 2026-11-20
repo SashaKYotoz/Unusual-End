@@ -1,10 +1,10 @@
 modLoader="javafml"
-loaderVersion="[47,)"
+loaderVersion="[43,)"
 license="All Rights Reserved"
 
 [[mods]]
 modId="unusualend"
-version="2.3.1e"
+version="2.4.0-1.19.2"
 displayName="Unusual End"
 displayURL="https://www.curseforge.com/members/sweetygamer/projects"
 logoFile="logo.png"
@@ -12,11 +12,17 @@ credits="Sweetygamer / The Unusual Squad"
 authors="Sweetygamer"
 description="Enhance your End experience !"
 
-
 [[dependencies.unusualend]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.1]"
+    versionRange="[1.19.2]"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.unusualend]]
+    modId="forge"
+    mandatory=true
+    versionRange="[43.2,)"
     ordering="NONE"
     side="BOTH"
 
@@ -111,4 +117,3 @@ description="Enhance your End experience !"
     versionRange="[0,)"
     ordering="NONE"
     side="BOTH"
-

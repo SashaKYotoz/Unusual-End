@@ -50,12 +50,12 @@ public class EnderlingClothRightclickedProcedure {
 		if (world instanceof Level _level)
 			_level.getScoreboard().addPlayerTeam((entity.getStringUUID()));
 		{
-            PlayerTeam team = entity.level().getScoreboard().getPlayerTeam((entity.getStringUUID()));
+            PlayerTeam team = entity.level.getScoreboard().getPlayerTeam((entity.getStringUUID()));
 			if (team != null) {
 				if (entity instanceof Player _player)
-					entity.level().getScoreboard().addPlayerToTeam(_player.getGameProfile().getName(), team);
+					entity.level.getScoreboard().addPlayerToTeam(_player.getGameProfile().getName(), team);
 				else
-					entity.level().getScoreboard().addPlayerToTeam(entity.getStringUUID(), team);
+					entity.level.getScoreboard().addPlayerToTeam(entity.getStringUUID(), team);
 			}
 		}
 		if (world.isClientSide()) {

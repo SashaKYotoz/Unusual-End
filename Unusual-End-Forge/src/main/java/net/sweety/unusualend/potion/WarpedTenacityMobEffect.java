@@ -26,7 +26,7 @@ public class WarpedTenacityMobEffect extends MobEffect {
 
 	@Override
 	public void applyEffectTick(LivingEntity entity, int amplifier) {
-		WarpedTenacityOnEffectActiveTickProcedure.execute(entity.level(), entity);
+		WarpedTenacityOnEffectActiveTickProcedure.execute(entity.level, entity);
 	}
 
 	@Override

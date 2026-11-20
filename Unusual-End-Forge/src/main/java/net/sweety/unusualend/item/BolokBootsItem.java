@@ -13,21 +13,22 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.BolokBootsBootsTickEventProcedure;
 
 import java.util.List;
 
 public abstract class BolokBootsItem extends ArmorItem {
-	public BolokBootsItem(ArmorItem.Type type, Item.Properties properties) {
+	public BolokBootsItem(EquipmentSlot type, Item.Properties properties) {
 		super(new ArmorMaterial() {
 			@Override
-			public int getDurabilityForType(ArmorItem.Type type) {
-				return new int[]{13, 15, 16, 11}[type.getSlot().getIndex()] * 30;
+			public int getDurabilityForSlot(EquipmentSlot type) {
+				return new int[]{13, 15, 16, 11}[type.getIndex()] * 30;
 			}
 
 			@Override
-			public int getDefenseForType(ArmorItem.Type type) {
-				return new int[]{2, 0, 8, 0}[type.getSlot().getIndex()];
+			public int getDefenseForSlot(EquipmentSlot type) {
+				return new int[]{2, 0, 8, 0}[type.getIndex()];
 			}
 
 			@Override
@@ -64,7 +65,7 @@ public abstract class BolokBootsItem extends ArmorItem {
 
 	public static class Chestplate extends BolokBootsItem {
 		public Chestplate() {
-			super(ArmorItem.Type.CHESTPLATE, new Item.Properties());
+			super(EquipmentSlot.CHEST, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF));
 		}
 
 		@Override
@@ -83,7 +84,7 @@ public abstract class BolokBootsItem extends ArmorItem {
 
 	public static class Boots extends BolokBootsItem {
 		public Boots() {
-			super(ArmorItem.Type.BOOTS, new Item.Properties());
+			super(EquipmentSlot.FEET, new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF));
 		}
 
 		@Override

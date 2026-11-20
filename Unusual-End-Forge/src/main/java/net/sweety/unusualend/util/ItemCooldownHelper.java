@@ -7,9 +7,6 @@ import net.sweety.unusualend.init.UnusualendModEnchantments;
 public final class ItemCooldownHelper {
 	public static final double MAX_CHARGE = 400;
 
-	private ItemCooldownHelper() {
-	}
-
 	public static void recharge(ItemStack stack, String key, double baseRate, double arcaneRecoveryRate) {
 		CompoundTag tag = stack.getOrCreateTag();
 		double charge = tag.getDouble(key);

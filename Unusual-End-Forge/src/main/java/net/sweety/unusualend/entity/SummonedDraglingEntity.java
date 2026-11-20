@@ -4,7 +4,6 @@ package net.sweety.unusualend.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -15,7 +14,6 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -39,6 +37,7 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.procedures.SummonedDraglingOnEntityTickUpdateProcedure;
+import net.sweety.unusualend.util.AnimationHelper;
 
 import java.util.EnumSet;
 
@@ -54,7 +53,7 @@ public class SummonedDraglingEntity extends TamableAnimal {
 
 	public SummonedDraglingEntity(EntityType<SummonedDraglingEntity> type, Level world) {
 		super(type, world);
-		setMaxUpStep(0.6f);
+		this.maxUpStep = 0.6f;
 		xpReward = 0;
 		setNoAi(false);
 		setPersistenceRequired();
@@ -62,7 +61,7 @@ public class SummonedDraglingEntity extends TamableAnimal {
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -145,9 +144,9 @@ public class SummonedDraglingEntity extends TamableAnimal {
 
 	@Override
 	public void tick() {
-		if (level().isClientSide) {
-			this.attackAnimationState.animateWhen((this.getEntityData().get(SummonedDraglingEntity.DATA_atk) == true), this.tickCount);
-			this.idleAnimationState.animateWhen(!this.walkAnimation.isMoving() && !this.getEntityData().get(SummonedDraglingEntity.DATA_atk) == true, this.tickCount);
+		if (this.level.isClientSide) {
+			AnimationHelper.animateWhen(this.attackAnimationState, (this.getEntityData().get(SummonedDraglingEntity.DATA_atk) == true), this.tickCount);
+			AnimationHelper.animateWhen(this.idleAnimationState, !AnimationHelper.isMoving(this) && !this.getEntityData().get(SummonedDraglingEntity.DATA_atk) == true, this.tickCount);
 		}
 		super.tick();
 	}
@@ -184,15 +183,15 @@ public class SummonedDraglingEntity extends TamableAnimal {
 
 	@Override
 	public boolean hurt(DamageSource damagesource, float amount) {
-		if (damagesource.is(DamageTypes.IN_FIRE))
+		if (damagesource.getMsgId().equals("inFire"))
 			return false;
 		if (damagesource.getDirectEntity() instanceof ThrownPotion || damagesource.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
-		if (damagesource.is(DamageTypes.FALL))
+		if (damagesource.getMsgId().equals("fall"))
 			return false;
-		if (damagesource.is(DamageTypes.LIGHTNING_BOLT))
+		if (damagesource.getMsgId().equals("lightningBolt"))
 			return false;
-		if (damagesource.is(DamageTypes.DRAGON_BREATH))
+		if (damagesource.getMsgId().equals("dragonBreath"))
 			return false;
 		return super.hurt(damagesource, amount);
 	}
@@ -221,23 +220,23 @@ public class SummonedDraglingEntity extends TamableAnimal {
 	@Override
 	public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
 		ItemStack itemstack = sourceentity.getItemInHand(hand);
-		InteractionResult retval = InteractionResult.sidedSuccess(this.level().isClientSide());
+		InteractionResult retval = InteractionResult.sidedSuccess(this.level.isClientSide());
 		Item item = itemstack.getItem();
 		if (itemstack.getItem() instanceof SpawnEggItem) {
 			retval = super.mobInteract(sourceentity, hand);
-		} else if (this.level().isClientSide()) {
-			retval = (this.isTame() && this.isOwnedBy(sourceentity) || this.isFood(itemstack)) ? InteractionResult.sidedSuccess(this.level().isClientSide()) : InteractionResult.PASS;
+		} else if (this.level.isClientSide()) {
+			retval = (this.isTame() && this.isOwnedBy(sourceentity) || this.isFood(itemstack)) ? InteractionResult.sidedSuccess(this.level.isClientSide()) : InteractionResult.PASS;
 		} else {
 			if (this.isTame()) {
 				if (this.isOwnedBy(sourceentity)) {
 					if (item.isEdible() && this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
 						this.usePlayerItem(sourceentity, hand, itemstack);
 						this.heal((float) item.getFoodProperties().getNutrition());
-						retval = InteractionResult.sidedSuccess(this.level().isClientSide());
+						retval = InteractionResult.sidedSuccess(this.level.isClientSide());
 					} else if (this.isFood(itemstack) && this.getHealth() < this.getMaxHealth()) {
 						this.usePlayerItem(sourceentity, hand, itemstack);
 						this.heal(4);
-						retval = InteractionResult.sidedSuccess(this.level().isClientSide());
+						retval = InteractionResult.sidedSuccess(this.level.isClientSide());
 					} else {
 						retval = super.mobInteract(sourceentity, hand);
 					}
@@ -246,12 +245,12 @@ public class SummonedDraglingEntity extends TamableAnimal {
 				this.usePlayerItem(sourceentity, hand, itemstack);
 				if (this.random.nextInt(3) == 0 && !net.minecraftforge.event.ForgeEventFactory.onAnimalTame(this, sourceentity)) {
 					this.tame(sourceentity);
-					this.level().broadcastEntityEvent(this, (byte) 7);
+					this.level.broadcastEntityEvent(this, (byte) 7);
 				} else {
-					this.level().broadcastEntityEvent(this, (byte) 6);
+					this.level.broadcastEntityEvent(this, (byte) 6);
 				}
 				this.setPersistenceRequired();
-				retval = InteractionResult.sidedSuccess(this.level().isClientSide());
+				retval = InteractionResult.sidedSuccess(this.level.isClientSide());
 			} else {
 				retval = super.mobInteract(sourceentity, hand);
 				if (retval == InteractionResult.SUCCESS || retval == InteractionResult.CONSUME)
@@ -264,7 +263,7 @@ public class SummonedDraglingEntity extends TamableAnimal {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		SummonedDraglingOnEntityTickUpdateProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ(), this);
+		SummonedDraglingOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

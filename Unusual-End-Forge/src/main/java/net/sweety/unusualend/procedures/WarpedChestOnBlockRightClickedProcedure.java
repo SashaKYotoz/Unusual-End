@@ -17,7 +17,7 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.sweety.unusualend.UnusualEnd;
 import net.sweety.unusualend.init.UnusualendModParticleTypes;
@@ -27,11 +27,11 @@ public class WarpedChestOnBlockRightClickedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, BlockState blockstate, Direction direction, Entity entity) {
 		if (direction == null || entity == null)
 			return;
-		if (!(ProcedureHelper.getBlockEntityString(world, BlockPos.containing(x, y, z), "UUID")).contains(entity.getStringUUID())) {
+		if (!(ProcedureHelper.getBlockEntityString(world, new BlockPos(x, y, z), "UUID")).contains(entity.getStringUUID())) {
 			if ((blockstate.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip3 ? blockstate.getValue(_getip3) : -1) == 0) {
 				{
 					int _value = 1;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -40,11 +40,11 @@ public class WarpedChestOnBlockRightClickedProcedure {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, 1, (float) Mth.nextDouble(world.getRandom(), 1.2, 1.4));
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putString("UUID", ((ProcedureHelper.getBlockEntityString(world, BlockPos.containing(x, y, z), "UUID")) + "." + entity.getStringUUID()));
+						_blockEntity.getPersistentData().putString("UUID", ((ProcedureHelper.getBlockEntityString(world, new BlockPos(x, y, z), "UUID")) + "." + entity.getStringUUID()));
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
@@ -56,8 +56,8 @@ public class WarpedChestOnBlockRightClickedProcedure {
 					_level.sendParticles(ParticleTypes.FISHING, (x + 0.5), (y + 0.8), (z + 0.5), 15, 0.4, 0.1, 0.4, 0);
 				for (int index0 = 0; index0 < (int) Mth.nextDouble(world.getRandom(), 4, 5); index0++) {
 					if (!world.isClientSide() && world.getServer() != null) {
-						for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(new ResourceLocation("unusualend:chests/warped_ship"))
-								.getRandomItems(new LootParams.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
+						for (ItemStack itemstackiterator : world.getServer().getLootTables().get(new ResourceLocation("unusualend:chests/warped_ship"))
+								.getRandomItems(new LootContext.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
 							ProcedureHelper.dropItem(world, (x + 0.5 + direction.getStepX() * Mth.nextDouble(world.getRandom(), 0.6, 0.6)), (y + 0.5 + direction.getStepY() * Mth.nextDouble(world.getRandom(), 0.6, 0.6)), (z + 0.5 + direction.getStepZ() * Mth.nextDouble(world.getRandom(), 0.6, 0.6)), itemstackiterator, 10);
 						}
 					}
@@ -65,7 +65,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
 				UnusualEnd.queueServerWork(5, () -> {
 					{
 						int _value = 0;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -79,7 +79,7 @@ public class WarpedChestOnBlockRightClickedProcedure {
 		} else {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.SMOKE, (x + 0.5), (y + 0.8), (z + 0.5), 5, 0.4, 0.1, 0.4, 0);
-			if (entity instanceof Player _player && !_player.level().isClientSide())
+			if (entity instanceof Player _player && !_player.level.isClientSide())
 				_player.displayClientMessage(Component.translatable("text.unusualend.alreay_opened"), true);
 			if (world.isClientSide()) {
 				ProcedureHelper.playSound(world, x, y, z, SoundEvents.CHEST_LOCKED, SoundSource.BLOCKS, 1, (float) 0.95);

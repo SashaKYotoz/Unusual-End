@@ -31,13 +31,13 @@ public class FadingBlockOnBlockRightClickedProcedure {
 				for (int index1 = 0; index1 < 7; index1++) {
 					sz = -3;
 					for (int index2 = 0; index2 < 7; index2++) {
-						if ((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock() == UnusualendModBlocks.FADING_BLOCK.get()
-								&& ((world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip6
-										? (world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz))).getValue(_getip6)
+						if ((world.getBlockState(new BlockPos(x + sx, y + sy, z + sz))).getBlock() == UnusualendModBlocks.FADING_BLOCK.get()
+								&& ((world.getBlockState(new BlockPos(x + sx, y + sy, z + sz))).getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _getip6
+										? (world.getBlockState(new BlockPos(x + sx, y + sy, z + sz))).getValue(_getip6)
 										: -1) == 0) {
-							world.scheduleTick(BlockPos.containing(x + sx, y + sy, z + sz), world.getBlockState(BlockPos.containing(x + sx, y + sy, z + sz)).getBlock(), 0);
+							world.scheduleTick(new BlockPos(x + sx, y + sy, z + sz), world.getBlockState(new BlockPos(x + sx, y + sy, z + sz)).getBlock(), 0);
 							if (!world.isClientSide()) {
-								BlockPos _bp = BlockPos.containing(x + sx, y + sy, z + sz);
+								BlockPos _bp = new BlockPos(x + sx, y + sy, z + sz);
 								BlockEntity _blockEntity = world.getBlockEntity(_bp);
 								BlockState _bs = world.getBlockState(_bp);
 								if (_blockEntity != null)
@@ -47,7 +47,7 @@ public class FadingBlockOnBlockRightClickedProcedure {
 							}
 							{
 								int _value = 1;
-								BlockPos _pos = BlockPos.containing(x + sx, y + sy, z + sz);
+								BlockPos _pos = new BlockPos(x + sx, y + sy, z + sz);
 								BlockState _bs = world.getBlockState(_pos);
 								if (_bs.getBlock().getStateDefinition().getProperty("blockstate") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 									world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);

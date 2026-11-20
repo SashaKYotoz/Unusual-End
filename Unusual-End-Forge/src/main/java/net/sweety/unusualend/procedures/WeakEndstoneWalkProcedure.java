@@ -10,7 +10,7 @@ public class WeakEndstoneWalkProcedure {
 		if (entity == null)
 			return;
 		if (entity instanceof Player) {
-			world.destroyBlock(BlockPos.containing(x, y, z), false);
+			world.destroyBlock(new BlockPos(x, y, z), false);
 		}
 	}
 }

@@ -2,7 +2,6 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -43,7 +42,7 @@ public class VoidArrowProjectileEntity extends AbstractArrow implements ItemSupp
 	}
 
 	@Override
-	public Packet<ClientGamePacketListener> getAddEntityPacket() {
+	public Packet<?> getAddEntityPacket() {
 		return NetworkHooks.getEntitySpawningPacket(this);
 	}
 
@@ -81,7 +80,7 @@ public class VoidArrowProjectileEntity extends AbstractArrow implements ItemSupp
 	@Override
 	public void tick() {
 		super.tick();
-		VoidArrowProjectileWhileProjectileFlyingTickProcedure.execute(this.level(), this.getX(), this.getY(), this.getZ());
+		VoidArrowProjectileWhileProjectileFlyingTickProcedure.execute(this.level, this.getX(), this.getY(), this.getZ());
 		if (this.inGround)
 			this.discard();
 	}
@@ -107,7 +106,7 @@ public class VoidArrowProjectileEntity extends AbstractArrow implements ItemSupp
 	}
 
 	public static VoidArrowProjectileEntity shoot(LivingEntity entity, LivingEntity target) {
-		VoidArrowProjectileEntity entityarrow = new VoidArrowProjectileEntity(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), entity, entity.level());
+		VoidArrowProjectileEntity entityarrow = new VoidArrowProjectileEntity(UnusualendModEntities.VOID_ARROW_PROJECTILE.get(), entity, entity.level);
 		double dx = target.getX() - entity.getX();
 		double dy = target.getY() + target.getEyeHeight() - 1.1;
 		double dz = target.getZ() - entity.getZ();
@@ -116,8 +115,8 @@ public class VoidArrowProjectileEntity extends AbstractArrow implements ItemSupp
 		entityarrow.setBaseDamage(3.5);
 		entityarrow.setKnockback(0);
 		entityarrow.setCritArrow(false);
-		entity.level().addFreshEntity(entityarrow);
-		entity.level().playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
+		entity.level.addFreshEntity(entityarrow);
+		entity.level.playSound(null, entity.getX(), entity.getY(), entity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.PLAYERS, 1, 1f / (entity.getRandom().nextFloat() * 0.5f + 1));
 		return entityarrow;
 	}
 }

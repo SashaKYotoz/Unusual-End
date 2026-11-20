@@ -2,12 +2,10 @@ package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -36,7 +34,7 @@ public class GolemOrbUseProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingHurtEvent event) {
 		if (event != null && event.getEntity() != null) {
-			execute(event, event.getEntity().level(), event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
+			execute(event, event.getEntity().level, event.getEntity().getX(), event.getEntity().getY(), event.getEntity().getZ(), event.getEntity());
 		}
 	}
 
@@ -54,13 +52,13 @@ public class GolemOrbUseProcedure {
 			if (entity instanceof Player) {
 				if (Math.random() < Config.ORB_TRIGGER.get() / 100) {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.ZOMBIE_ATTACK_WOODEN_DOOR, SoundSource.PLAYERS, 1, (float) 0.1);
-					world.levelEvent(2001, BlockPos.containing(x, y - 1, z), Block.getId((world.getBlockState(BlockPos.containing(x, y - 1, z)))));
+					world.levelEvent(2001, new BlockPos(x, y - 1, z), Block.getId((world.getBlockState(new BlockPos(x, y - 1, z)))));
 					{
 						final Vec3 _center = new Vec3(x, y, z);
 						List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(6 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 						for (Entity entityiterator : _entfound) {
 							if (entityiterator instanceof Monster) {
-								entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.GENERIC)), 8);
+								entityiterator.hurt(DamageSource.GENERIC, 8);
 								ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 1, false, false));
 								ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(UnusualendModMobEffects.HEAVINESS.get(), 60, 1, false, false));
 								if (world instanceof ServerLevel _level)
@@ -89,8 +87,8 @@ public class GolemOrbUseProcedure {
 					xRadius = 3;
 					zRadius = 3;
 					while (loop < particleAmount) {
-						world.levelEvent(2001, BlockPos.containing(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius),
-								Block.getId((world.getBlockState(BlockPos.containing(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y - 1, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)))));
+						world.levelEvent(2001, new BlockPos(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius),
+								Block.getId((world.getBlockState(new BlockPos(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y - 1, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius)))));
 						loop = loop + 1;
 					}
 				}

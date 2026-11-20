@@ -19,7 +19,7 @@ public class BolokOnEntityTickUpdateProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(UnusualendModParticleTypes.BOLOK_PARTICLE.get(), x, y, z, 1, 0.4, 0.4, 0.4, 0);
 		}
-		if ((entity.level().dimension()) == Level.END) {
+		if ((entity.level.dimension()) == Level.END) {
 			if (y < 30) {
 				if (entity instanceof Mob _entity)
 					_entity.getNavigation().moveTo(x, 45, z, 0.8);

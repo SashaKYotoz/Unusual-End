@@ -41,7 +41,6 @@ public class UnusualEnd {
 		UnusualendModEnchantments.REGISTRY.register(bus);
         UnusualendModLootModifier.LOOT_MODIFIERS.register(bus);
         UnusualendModStructures.STRUCTURES.register(bus);
-		UnusualendModTabs.REGISTRY.register(bus);
 		UnusualendModFeatures.REGISTRY.register(bus);
 		UnusualendModMobEffects.REGISTRY.register(bus);
 		UnusualendModPotions.REGISTRY.register(bus);

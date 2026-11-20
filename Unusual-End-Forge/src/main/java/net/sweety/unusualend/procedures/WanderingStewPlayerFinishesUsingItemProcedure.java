@@ -28,9 +28,9 @@ public class WanderingStewPlayerFinishesUsingItemProcedure {
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.PORTAL, x, (y + 1), z, 60, 0.5, 1, 0.5, 0);
 			ProcedureHelper.playSound(world, x, y, z, SoundEvents.PORTAL_TRAVEL, SoundSource.PLAYERS, (float) 0.1, 1);
-			if (entity instanceof ServerPlayer _player && !_player.level().isClientSide()) {
+			if (entity instanceof ServerPlayer _player && !_player.level.isClientSide()) {
 				ResourceKey<Level> destinationType = Level.OVERWORLD;
-				if (_player.level().dimension() == destinationType)
+				if (_player.level.dimension() == destinationType)
 					return;
 				ServerLevel nextLevel = _player.server.getLevel(destinationType);
 				if (nextLevel != null) {

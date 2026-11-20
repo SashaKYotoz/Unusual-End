@@ -1,8 +1,133 @@
 {
-  "parent": "block/custom_fence_side_west",
   "textures": {
     "texture": "unusualend:block/chorus_nest_fence",
     "particle": "unusualend:block/chorus_nest_fence"
   },
-  "render_type": "solid"
+  "render_type": "solid",
+  "elements": [
+    {
+      "from": [
+        0,
+        12,
+        7
+      ],
+      "to": [
+        9,
+        15,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            15,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture",
+          "cullface": "west"
+        },
+        "up": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "rotation": 270,
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        6,
+        7
+      ],
+      "to": [
+        9,
+        9,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "west": {
+          "uv": [
+            15,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture",
+          "cullface": "west"
+        },
+        "up": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "rotation": 270,
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "rotation": 90,
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
 }

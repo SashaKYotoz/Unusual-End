@@ -1,8 +1,8 @@
 package net.sweety.unusualend.procedures;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -11,7 +11,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.TagKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -24,12 +23,12 @@ import net.sweety.unusualend.entity.EnderblobQueenEntity;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.init.UnusualendModMobEffects;
 import net.sweety.unusualend.init.UnusualendModParticleTypes;
+import net.sweety.unusualend.util.EntitySpawnHelper;
 import net.sweety.unusualend.util.ParticleHelper;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.Comparator;
 import java.util.List;
-
 public class EnderblobQueenOnEntityTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
@@ -56,19 +55,19 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 				dis = Math.sqrt(Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX() - entity.getX(), 2) + Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() - entity.getY(), 2)
 						+ Math.pow((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ() - entity.getZ(), 2));
 				if (!((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) == null)) {
-					if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+					if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level.isClientSide())
 						_entity.addEffect(new MobEffectInstance(UnusualendModMobEffects.CRYSTALLIZATION.get(), 100, 0, false, false));
 					for (int index0 = 0; index0 < Mth.nextInt(world.getRandom(), 2, 3); index0++) {
 						ProcedureHelper.playSound(world, x, y, z, SoundEvents.ENDERMITE_STEP, SoundSource.NEUTRAL, 1, (float) 0.75);
 					}
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
+						Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.ENDER_BLOB.get(), _level, new BlockPos((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
 								(entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1, (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ()), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 						}
 					}
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
+						Entity entityToSpawn = EntitySpawnHelper.spawn(EntityType.ENDERMITE, _level, new BlockPos((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX(),
 								(entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1, (entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ()), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 						}
@@ -77,16 +76,16 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 						{
 							Entity _ent = (entity instanceof Mob _mobEnt ? _mobEnt.getTarget() : null);
 							_ent.teleportTo(
-									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
-									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY()),
-									(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()));
+									(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
+									(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getY()),
+									(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()));
 							if (_ent instanceof ServerPlayer _serverPlayer)
 								_serverPlayer.connection.teleport(
-										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+										(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
 												.getX()),
-										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+										(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
 												.getY()),
-										(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
+										(entity.level.clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos()
 												.getZ()),
 										_ent.getYRot(), _ent.getXRot());
 						}
@@ -94,9 +93,9 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 							_level.sendParticles(UnusualendModParticleTypes.PINK_FLAME.get(), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX()),
 									((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ()), 20, 1, 1, 1, 0.1);
 						ParticleHelper.spawn(world, ParticleHelper.voidParticles(), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getX() + 0.5), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getY() + 1), ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null).getZ() + 0.5), 5, 0.5, 0.5, 0.5, 0);
-						if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+						if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level.isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 60, 9, false, false));
-						if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level().isClientSide())
+						if ((entity instanceof Mob _mobEnt ? (Entity) _mobEnt.getTarget() : null) instanceof LivingEntity _entity && !_entity.level.isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 60, 9, false, false));
 					}
 				}
@@ -125,15 +124,15 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 					final Vec3 _center = new Vec3(x, y, z);
 					List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(14 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
 					for (Entity entityiterator : _entfound) {
-						if (!entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:blobqueen_immune")))) {
+						if (!entityiterator.getType().is(TagKey.create(Registry.ENTITY_TYPE_REGISTRY, new ResourceLocation("forge:blobqueen_immune")))) {
 							entityiterator.invulnerableTime = 0;
-							entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 8);
+							entityiterator.hurt(DamageSource.OUT_OF_WORLD, 8);
 							if (!world.isClientSide()) {
 								ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(UnusualendModMobEffects.ENDER_INFECTION.get(), 400, 0, false, false));
 								ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(UnusualendModMobEffects.CRYSTALLIZATION.get(), 100, 0, false, false));
 							}
 							entityiterator.invulnerableTime = 0;
-							entityiterator.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.FELL_OUT_OF_WORLD)), 6);
+							entityiterator.hurt(DamageSource.OUT_OF_WORLD, 6);
 						}
 					}
 				}
@@ -148,15 +147,13 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 					ParticleHelper.spawn(world, ParticleHelper.voidParticles(), (x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius), (y + 0.5), (z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), 5, 0, 0.05, 0, 0);
 					if (Math.random() < 0.5) {
 						if (world instanceof ServerLevel _level) {
-							Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level,
-									BlockPos.containing(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y + 0.5, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), MobSpawnType.MOB_SUMMONED);
+							Entity entityToSpawn = EntitySpawnHelper.spawn(EntityType.ENDERMITE, _level, new BlockPos(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y + 0.5, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), MobSpawnType.MOB_SUMMONED);
 							if (entityToSpawn != null) {
 							}
 						}
 					} else {
 						if (world instanceof ServerLevel _level) {
-							Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level,
-									BlockPos.containing(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y + 0.5, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), MobSpawnType.MOB_SUMMONED);
+							Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.ENDER_BLOB.get(), _level, new BlockPos(x + 0.5 + Math.cos(((Math.PI * 2) / particleAmount) * loop) * xRadius, y + 0.5, z + 0.5 + Math.sin(((Math.PI * 2) / particleAmount) * loop) * zRadius), MobSpawnType.MOB_SUMMONED);
 							if (entityToSpawn != null) {
 							}
 						}
@@ -180,14 +177,14 @@ public class EnderblobQueenOnEntityTickUpdateProcedure {
 					_level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, x, y, z, 20, 3, 3, 3, 0);
 				for (int index3 = 0; index3 < Mth.nextInt(world.getRandom(), 5, 10); index3++) {
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = UnusualendModEntities.ENDER_BLOB.get().spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+						Entity entityToSpawn = EntitySpawnHelper.spawn(UnusualendModEntities.ENDER_BLOB.get(), _level, new BlockPos(x, y, z), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 						}
 					}
 				}
 				for (int index4 = 0; index4 < Mth.nextInt(world.getRandom(), 5, 10); index4++) {
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = EntityType.ENDERMITE.spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+						Entity entityToSpawn = EntitySpawnHelper.spawn(EntityType.ENDERMITE, _level, new BlockPos(x, y, z), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 						}
 					}

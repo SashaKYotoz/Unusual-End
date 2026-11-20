@@ -13,9 +13,9 @@ import net.sweety.unusualend.client.particle.WarpedBubblesParticle;
 public class UnusualendModParticles {
 	@SubscribeEvent
 	public static void registerParticles(RegisterParticleProvidersEvent event) {
-		event.registerSpriteSet(UnusualendModParticleTypes.BOLOK_PARTICLE.get(), BolokParticleParticle::provider);
-		event.registerSpriteSet(UnusualendModParticleTypes.PINK_FLAME.get(), PinkFlameParticle::provider);
-		event.registerSpriteSet(UnusualendModParticleTypes.WARPED_BUBBLES.get(), WarpedBubblesParticle::provider);
-		event.registerSpriteSet(UnusualendModParticleTypes.CITRINE_SHINE.get(), CitrineShineParticle::provider);
+		event.register(UnusualendModParticleTypes.BOLOK_PARTICLE.get(), BolokParticleParticle::provider);
+		event.register(UnusualendModParticleTypes.PINK_FLAME.get(), PinkFlameParticle::provider);
+		event.register(UnusualendModParticleTypes.WARPED_BUBBLES.get(), WarpedBubblesParticle::provider);
+		event.register(UnusualendModParticleTypes.CITRINE_SHINE.get(), CitrineShineParticle::provider);
 	}
 }

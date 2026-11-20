@@ -19,7 +19,7 @@ public class DivideSerenityProcedure {
 		if (entity instanceof LivingEntity _entity)
 			_entity.removeEffect(UnusualendModMobEffects.SERENITY.get());
 		ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.SERENITY.get(), (int) ticks, (int) level, false, false));
-		if (entity instanceof Player _player && !_player.level().isClientSide())
+		if (entity instanceof Player _player && !_player.level.isClientSide())
 			_player.displayClientMessage(Component.translatable("text.unusualend.used_serenity"), true);
 	}
 }

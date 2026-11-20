@@ -15,7 +15,7 @@ public class EnderTrapperOnEntityTickUpdateProcedure {
 				_level.sendParticles(ParticleTypes.PORTAL, (entity.getX()), (entity.getY()), (entity.getZ()), 20, 0.2, 0.2, 0.2, 0);
 			if (world instanceof ServerLevel _level)
 				_level.sendParticles(ParticleTypes.POOF, (entity.getX()), (entity.getY()), (entity.getZ()), 20, 0.2, 0.2, 0.2, 0);
-			if (!entity.level().isClientSide())
+			if (!entity.level.isClientSide())
 				entity.discard();
 		}
 	}

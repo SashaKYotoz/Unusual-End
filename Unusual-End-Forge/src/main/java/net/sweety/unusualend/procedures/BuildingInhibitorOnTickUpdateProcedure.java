@@ -27,19 +27,19 @@ import java.util.List;
 public class BuildingInhibitorOnTickUpdateProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		boolean nearby = false;
-		if ((ProcedureHelper.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == Items.DRAGON_BREATH) {
-			if (ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "Fuel") <= 16) {
+		if ((ProcedureHelper.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == Items.DRAGON_BREATH) {
+			if (ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "Fuel") <= 16) {
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
-						_blockEntity.getPersistentData().putDouble("Fuel", (ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "Fuel") + 16));
+						_blockEntity.getPersistentData().putDouble("Fuel", (ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "Fuel") + 16));
 					if (world instanceof Level _level)
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final int _amount = 1;
@@ -57,18 +57,18 @@ public class BuildingInhibitorOnTickUpdateProcedure {
 				ProcedureHelper.playSound(world, x, y, z, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 1, (float) 1.5);
 			}
 		}
-		if (ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "isActive") >= 1) {
+		if (ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "isActive") >= 1) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
-					_blockEntity.getPersistentData().putDouble("isActive", ((ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "isActive")) - 1));
+					_blockEntity.getPersistentData().putDouble("isActive", ((ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "isActive")) - 1));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 		}
-		if (ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "isActive") >= 1 || ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "Fuel") >= 1) {
+		if (ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "isActive") >= 1 || ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "Fuel") >= 1) {
 			nearby = false;
 			if (!world.getEntitiesOfClass(Player.class, AABB.ofSize(new Vec3(x, y, z), 64, 64, 64), e -> true).isEmpty()) {
 				{
@@ -77,7 +77,7 @@ public class BuildingInhibitorOnTickUpdateProcedure {
 					for (Entity entityiterator : _entfound) {
 						if (entityiterator instanceof Player) {
 							if (!(ProcedureHelper.isSpectator(entityiterator) || ProcedureHelper.isCreative(entityiterator))) {
-								if (!(ProcedureHelper.getBlockEntityString(world, BlockPos.containing(x, y, z), "Owner")).equals(entityiterator.getStringUUID())) {
+								if (!(ProcedureHelper.getBlockEntityString(world, new BlockPos(x, y, z), "Owner")).equals(entityiterator.getStringUUID())) {
 									nearby = true;
 									ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 140, 0, true, true));
 								}
@@ -86,18 +86,18 @@ public class BuildingInhibitorOnTickUpdateProcedure {
 					}
 				}
 				if (nearby == true) {
-					if (!(ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "isActive") >= 1)) {
+					if (!(ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "isActive") >= 1)) {
 						if (!world.isClientSide()) {
-							BlockPos _bp = BlockPos.containing(x, y, z);
+							BlockPos _bp = new BlockPos(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)
-								_blockEntity.getPersistentData().putDouble("Fuel", ((ProcedureHelper.getBlockEntityDouble(world, BlockPos.containing(x, y, z), "Fuel")) - 1));
+								_blockEntity.getPersistentData().putDouble("Fuel", ((ProcedureHelper.getBlockEntityDouble(world, new BlockPos(x, y, z), "Fuel")) - 1));
 							if (world instanceof Level _level)
 								_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 						}
 						if (!world.isClientSide()) {
-							BlockPos _bp = BlockPos.containing(x, y, z);
+							BlockPos _bp = new BlockPos(x, y, z);
 							BlockEntity _blockEntity = world.getBlockEntity(_bp);
 							BlockState _bs = world.getBlockState(_bp);
 							if (_blockEntity != null)

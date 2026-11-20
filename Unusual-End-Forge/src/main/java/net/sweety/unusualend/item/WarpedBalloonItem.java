@@ -7,13 +7,14 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.sweety.unusualend.init.UnusualendModTabs;
 import net.sweety.unusualend.procedures.WarpedBalloonRangedItemShootsProjectileProcedure;
 
 import java.util.List;
 
 public class WarpedBalloonItem extends Item {
     public WarpedBalloonItem() {
-        super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+        super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_WARPED_REEF).stacksTo(64).rarity(Rarity.COMMON));
     }
 
     @Override

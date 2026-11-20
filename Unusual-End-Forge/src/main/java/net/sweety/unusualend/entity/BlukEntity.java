@@ -4,7 +4,6 @@ package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
@@ -12,7 +11,6 @@ import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
@@ -49,14 +47,14 @@ public class BlukEntity extends Monster {
 
     public BlukEntity(EntityType<BlukEntity> type, Level world) {
         super(type, world);
-        setMaxUpStep(0.6f);
+        this.maxUpStep = 0.6f;
         xpReward = 1;
         setNoAi(false);
         this.moveControl = new FlyingMoveControl(this, 10, true);
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getAddEntityPacket() {
+    public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 
@@ -144,13 +142,13 @@ public class BlukEntity extends Monster {
 
     @Override
     public boolean hurt(DamageSource damagesource, float amount) {
-        if (!this.level().isClientSide())
+        if (!this.level.isClientSide())
             this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60, 0));
-        if (!this.level().isClientSide())
+        if (!this.level.isClientSide())
             this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 60, 0));
-        if (damagesource.is(DamageTypes.DROWN))
+        if (damagesource.getMsgId().equals("drown"))
             return false;
-        if (damagesource.is(DamageTypes.IN_WALL))
+        if (damagesource.getMsgId().equals("inWall"))
             return false;
         return super.hurt(damagesource, amount);
     }
@@ -162,7 +160,7 @@ public class BlukEntity extends Monster {
         double y = this.getY();
         double z = this.getZ();
         MobBucketHelper.capture(this, sourceentity, UnusualendModItems.BLUK_BUCKET.get());
-        return InteractionResult.sidedSuccess(this.level().isClientSide());
+        return InteractionResult.sidedSuccess(this.level.isClientSide());
     }
 
     @Override

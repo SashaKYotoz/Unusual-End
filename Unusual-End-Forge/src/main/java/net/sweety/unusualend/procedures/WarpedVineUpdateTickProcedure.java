@@ -8,7 +8,7 @@ import net.sweety.unusualend.util.ProcedureHelper;
 public class WarpedVineUpdateTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		if (Math.random() < 0.2) {
-			ProcedureHelper.replaceBlockKeepingState(world, BlockPos.containing(x, y, z), UnusualendModBlocks.GROWN_WARPED_BUSH.get().defaultBlockState(), 3);
+			ProcedureHelper.replaceBlockKeepingState(world, new BlockPos(x, y, z), UnusualendModBlocks.GROWN_WARPED_BUSH.get().defaultBlockState(), 3);
 		}
 	}
 }

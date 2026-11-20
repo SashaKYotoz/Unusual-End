@@ -11,9 +11,9 @@ import net.sweety.unusualend.util.ProcedureHelper;
 
 public class ClearSlot3Procedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if ((ProcedureHelper.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == UnusualendModItems.INFUSER_INFOS.get()) {
+		if ((ProcedureHelper.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == UnusualendModItems.INFUSER_INFOS.get()) {
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 3;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {

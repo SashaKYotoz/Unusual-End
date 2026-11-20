@@ -12,7 +12,7 @@ public class BenevolentLeechingChargeProjectileProjectileHitsBlockProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z, Entity immediatesourceentity) {
 		if (immediatesourceentity == null)
 			return;
-		if (!immediatesourceentity.level().isClientSide())
+		if (!immediatesourceentity.level.isClientSide())
 			immediatesourceentity.discard();
 		if (world instanceof ServerLevel _level) {
 			AreaEffectCloud cloud = new AreaEffectCloud(_level, x, y + 1, z);

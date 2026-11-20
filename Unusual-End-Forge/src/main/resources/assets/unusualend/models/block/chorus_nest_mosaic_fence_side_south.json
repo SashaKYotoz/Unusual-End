@@ -1,8 +1,129 @@
 {
-  "parent": "block/custom_fence_side_south",
   "textures": {
     "texture": "unusualend:block/chorus_nest_fence",
     "particle": "unusualend:block/chorus_nest_fence"
   },
-  "render_type": "solid"
+  "render_type": "solid",
+  "elements": [
+    {
+      "from": [
+        7,
+        12,
+        7
+      ],
+      "to": [
+        9,
+        15,
+        16
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            13,
+            4,
+            15,
+            7
+          ],
+          "texture": "#texture",
+          "cullface": "south"
+        },
+        "west": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    },
+    {
+      "from": [
+        7,
+        6,
+        7
+      ],
+      "to": [
+        9,
+        9,
+        16
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "south": {
+          "uv": [
+            13,
+            4,
+            15,
+            7
+          ],
+          "texture": "#texture",
+          "cullface": "south"
+        },
+        "west": {
+          "uv": [
+            4,
+            4,
+            13,
+            7
+          ],
+          "texture": "#texture"
+        },
+        "up": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "texture": "#texture"
+        },
+        "down": {
+          "uv": [
+            13,
+            7,
+            15,
+            16
+          ],
+          "texture": "#texture"
+        }
+      }
+    }
+  ]
 }

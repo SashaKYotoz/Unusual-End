@@ -4,6 +4,7 @@ package net.sweety.unusualend.client.screen;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
@@ -27,7 +28,7 @@ public class AltarDragonBreathValidOverlay {
 		double z = 0;
 		Player entity = Minecraft.getInstance().player;
 		if (entity != null) {
-			world = entity.level();
+			world = entity.level;
 			x = entity.getX();
 			y = entity.getY();
 			z = entity.getZ();
@@ -39,7 +40,8 @@ public class AltarDragonBreathValidOverlay {
 		RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
 		RenderSystem.setShaderColor(1, 1, 1, 1);
 		if (LookHelper.isLookingAtAltar(entity, true)) {
-			event.getGuiGraphics().blit(new ResourceLocation("unusualend:textures/screens/dragon_breath_valid_overlay.png"), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
+			RenderSystem.setShaderTexture(0, new ResourceLocation("unusualend:textures/screens/dragon_breath_valid_overlay.png"));
+			GuiComponent.blit(event.getPoseStack(), w / 2 + 6, h / 2 + -9, 0, 0, 16, 16, 16, 16);
 		}
 		RenderSystem.depthMask(true);
 		RenderSystem.defaultBlendFunc();
