@@ -33,10 +33,6 @@ public class WanderingPearlProjectileEntity extends AbstractArrow implements Ite
 		super(type, world);
 	}
 
-	public WanderingPearlProjectileEntity(EntityType<? extends WanderingPearlProjectileEntity> type, double x, double y, double z, Level world) {
-		super(type, x, y, z, world);
-	}
-
 	public WanderingPearlProjectileEntity(EntityType<? extends WanderingPearlProjectileEntity> type, LivingEntity entity, Level world) {
 		super(type, entity, world);
 	}
