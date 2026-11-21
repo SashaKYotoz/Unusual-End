@@ -35,7 +35,7 @@ public class FeedBolokFinProcedure {
 		if (entity == null || sourceentity == null)
 			return;
 		if (entity instanceof Wolf) {
-			if (!(entity.getPersistentData().getBoolean("CooldownBolok") == true)) {
+			if (!(entity.getPersistentData().getBoolean("CooldownBolok"))) {
 				if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == UnusualendModItems.BOLOK_FIN.get()) {
 					if (entity instanceof TamableAnimal _tamIsTamedBy && sourceentity instanceof LivingEntity _livEnt ? _tamIsTamedBy.isOwnedBy(_livEnt) : false) {
 						if (!(ProcedureHelper.isCreative(sourceentity))) {

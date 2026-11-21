@@ -32,8 +32,8 @@ public class WarpedReefFishProcedure {
 			}
 			ProcedureHelper.awardAdvancement(entity, "fish_in_warped_reef");
 			if (!world.isClientSide() && world.getServer() != null) {
-				for (ItemStack itemstackiterator : world.getServer().getLootData().getLootTable(new ResourceLocation("minecraft:warped_reef_fishing")).getRandomItems(new LootParams.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
-					ProcedureHelper.dropItem(world, (entity.getX()), (entity.getY() + 0.5), (entity.getZ()), itemstackiterator, 1);
+				for (ItemStack stack : world.getServer().getLootData().getLootTable(new ResourceLocation("minecraft:warped_reef_fishing")).getRandomItems(new LootParams.Builder((ServerLevel) world).create(LootContextParamSets.EMPTY))) {
+					ProcedureHelper.dropItem(world, (entity.getX()), (entity.getY() + 0.5), (entity.getZ()), stack, 1);
 				}
 			}
 		}

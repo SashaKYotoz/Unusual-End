@@ -33,7 +33,7 @@ public class WarpedBubbleHurtProcedure {
 				event.setCanceled(true);
 			}
 			if (world instanceof ServerLevel _level)
-				_level.sendParticles((SimpleParticleType) (UnusualendModParticleTypes.WARPED_BUBBLES.get()), x, y, z, 20, 1, 1, 1, 0.1);
+				_level.sendParticles(UnusualendModParticleTypes.WARPED_BUBBLES.get(), x, y, z, 20, 1, 1, 1, 0.1);
 			ProcedureHelper.playSound(world, x, y, z, SoundEvents.BUBBLE_COLUMN_BUBBLE_POP, SoundSource.BLOCKS, 1, 1);
 			if (!entity.level().isClientSide())
 				entity.discard();

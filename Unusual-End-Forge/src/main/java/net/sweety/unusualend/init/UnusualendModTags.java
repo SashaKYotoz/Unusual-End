@@ -7,9 +7,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.sweety.unusualend.UnusualEnd;
 
-public final class UnusualendModTags {
-	private UnusualendModTags() {
-	}
+public class UnusualendModTags {
 
 	public static final class Blocks {
 		public static final TagKey<Block> CHORUS_FUNGUS_MAY_PLACE_ON = tag("chorus_fungus_may_place_on");
@@ -34,9 +32,6 @@ public final class UnusualendModTags {
 		public static final TagKey<Block> VALID_LANTERN = tag("valid_lantern");
 		public static final TagKey<Block> WARPED_BLOCKS = tag("warped_blocks");
 
-		private Blocks() {
-		}
-
 		private static TagKey<Block> tag(String name) {
 			return tag(UnusualEnd.MODID, name);
 		}
@@ -53,9 +48,6 @@ public final class UnusualendModTags {
 		public static final TagKey<Item> EXPLOSIVE_IGNITER = tag("explosive_igniter");
 		public static final TagKey<Item> PRISMATIC_BASE = tag("forge", "prismatic_base");
 		public static final TagKey<Item> SHINY_BASE = tag("forge", "shiny_base");
-
-		private Items() {
-		}
 
 		private static TagKey<Item> tag(String name) {
 			return tag(UnusualEnd.MODID, name);

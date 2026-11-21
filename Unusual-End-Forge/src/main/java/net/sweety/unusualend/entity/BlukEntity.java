@@ -1,5 +1,3 @@
-
-//spawn
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
@@ -7,6 +5,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.InteractionHand;
@@ -39,6 +38,7 @@ import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
 import net.sweety.unusualend.init.UnusualendModEntities;
 import net.sweety.unusualend.init.UnusualendModItems;
+import net.sweety.unusualend.init.UnusualendModSounds;
 import net.sweety.unusualend.procedures.BlukOnEntityTickUpdateProcedure;
 import net.sweety.unusualend.util.MobBucketHelper;
 
@@ -157,12 +157,26 @@ public class BlukEntity extends Monster {
 
     @Override
     public InteractionResult mobInteract(Player sourceentity, InteractionHand hand) {
+        ItemStack stack = sourceentity.getItemInHand(hand);
+        if (stack.is(Items.CARROT)) {
+            if (sourceentity.getCooldowns().isOnCooldown(Items.CARROT))
+                return InteractionResult.PASS;
+            if (!this.level().isClientSide())
+                this.eatCarrot(sourceentity, stack);
+            return InteractionResult.sidedSuccess(this.level().isClientSide());
+        }
         super.mobInteract(sourceentity, hand);
-        double x = this.getX();
-        double y = this.getY();
-        double z = this.getZ();
         MobBucketHelper.capture(this, sourceentity, UnusualendModItems.BLUK_BUCKET.get());
         return InteractionResult.sidedSuccess(this.level().isClientSide());
+    }
+
+    private void eatCarrot(Player player, ItemStack stack) {
+        if (!player.getAbilities().instabuild)
+            stack.shrink(1);
+        player.getCooldowns().addCooldown(Items.CARROT, 10);
+        this.swing(InteractionHand.MAIN_HAND, true);
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.GENERIC_EAT, SoundSource.HOSTILE, 1.0f, 1.0f);
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(), UnusualendModSounds.BLUK_EAT.get(), SoundSource.HOSTILE, 0.7f, 1.0f);
     }
 
     @Override

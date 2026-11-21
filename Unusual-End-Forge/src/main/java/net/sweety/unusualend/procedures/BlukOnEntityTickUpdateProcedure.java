@@ -13,7 +13,7 @@ public class BlukOnEntityTickUpdateProcedure {
 		if (entity == null)
 			return;
 		if ((entity.level().dimension()) == Level.END) {
-			if (!(entity.getPersistentData().getBoolean("coords") == true)) {
+			if (!(entity.getPersistentData().getBoolean("coords"))) {
 				entity.getPersistentData().putBoolean("coords", true);
 				entity.getPersistentData().putDouble("x", x);
 				entity.getPersistentData().putDouble("y", y);

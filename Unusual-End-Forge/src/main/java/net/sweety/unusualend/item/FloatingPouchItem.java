@@ -1,5 +1,3 @@
-
-//desc
 package net.sweety.unusualend.item;
 
 import net.minecraft.network.chat.Component;

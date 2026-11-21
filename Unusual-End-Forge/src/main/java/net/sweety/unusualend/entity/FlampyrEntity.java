@@ -1,6 +1,8 @@
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.server.level.ServerLevel;
@@ -27,6 +29,8 @@ import net.minecraft.world.item.SpawnEggItem;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.network.PlayMessages;
@@ -290,6 +294,22 @@ public class FlampyrEntity extends TamableAnimal {
         return super.hurt(damagesource, amount);
     }
 
+    private void toggleSitting(Player player) {
+        boolean sit = !this.isOrderedToSit();
+        this.setOrderedToSit(sit);
+        this.setInSittingPose(sit);
+        this.setDeltaMovement(Vec3.ZERO);
+        this.getNavigation().stop();
+        this.setTarget(null);
+        player.displayClientMessage(Component.empty().append(this.getDisplayName()).append(Component.translatable(sit ? "text.unusualend.sit" : "text.unusualend.follow")), true);
+    }
+
+    public static void onReleasedFromBucket(Mob mob, Player player) {
+        Holder<Biome> biome = mob.level().getBiome(mob.blockPosition());
+        if (biome.is(Biomes.SWAMP) || biome.is(Biomes.MANGROVE_SWAMP))
+            ProcedureHelper.awardAdvancement(player, "firefly_in_swamp");
+    }
+
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack itemstack = player.getItemInHand(hand);
@@ -310,6 +330,9 @@ public class FlampyrEntity extends TamableAnimal {
                         this.usePlayerItem(player, hand, itemstack);
                         this.heal(4);
                         retval = InteractionResult.sidedSuccess(this.level().isClientSide());
+                    } else if (hand == InteractionHand.MAIN_HAND && itemstack.isEmpty()) {
+                        this.toggleSitting(player);
+                        retval = InteractionResult.SUCCESS;
                     } else {
                         retval = super.mobInteract(player, hand);
                     }

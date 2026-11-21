@@ -23,13 +23,13 @@ public class CrystalFlowerUpdateTickProcedure {
 			_level.sendParticles(ParticleTypes.WITCH, (x + 0.5), (y + 0.5), (z + 0.5), 5, 0.3, 0.3, 0.3, 0.1);
 		{
 			final Vec3 _center = new Vec3(x, y, z);
-			List<Entity> _entfound = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
-			for (Entity entityiterator : _entfound) {
-				if (entityiterator.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:blobqueen_immune")))) {
-					ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
+			List<Entity> entities = world.getEntitiesOfClass(Entity.class, new AABB(_center, _center).inflate(10 / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(_center))).toList();
+			for (Entity entity : entities) {
+				if (entity.getType().is(TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation("forge:blobqueen_immune")))) {
+					ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 1, false, false));
 				}
-				if (entityiterator instanceof Player) {
-					ProcedureHelper.addEffect(entityiterator, new MobEffectInstance(MobEffects.WEAKNESS, 200, 0, false, false));
+				if (entity instanceof Player) {
+					ProcedureHelper.addEffect(entity, new MobEffectInstance(MobEffects.WEAKNESS, 200, 0, false, false));
 				}
 			}
 		}

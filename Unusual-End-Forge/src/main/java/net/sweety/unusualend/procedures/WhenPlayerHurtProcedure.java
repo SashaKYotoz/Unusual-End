@@ -50,7 +50,7 @@ public class WhenPlayerHurtProcedure {
 			}
 		}
 		if (sourceentity instanceof DraglingEntity) {
-			if (Math.random() < (double) Config.DRAGLING_DISRUPTION.get() / 100) {
+			if (Math.random() < Config.DRAGLING_DISRUPTION.get() / 100) {
 				ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 60, 0));
 			}
 		}
@@ -72,7 +72,7 @@ public class WhenPlayerHurtProcedure {
 			ProcedureHelper.playSound(world, sourceentity.getX(), sourceentity.getY(), sourceentity.getZ(), SoundEvents.EVOKER_CAST_SPELL, SoundSource.HOSTILE, 1, 2);
 		}
 		if (sourceentity instanceof DraglingEntity) {
-			if ((sourceentity instanceof DraglingEntity _datEntL28 && _datEntL28.getEntityData().get(DraglingEntity.DATA_atk)) == true) {
+			if ((sourceentity instanceof DraglingEntity _datEntL28 && _datEntL28.getEntityData().get(DraglingEntity.DATA_atk))) {
 				if (sourceentity instanceof DraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, false);
 				UnusualEnd.queueServerWork(1, () -> {
@@ -84,14 +84,14 @@ public class WhenPlayerHurtProcedure {
 					_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, true);
 			}
 			UnusualEnd.queueServerWork(20, () -> {
-				if ((sourceentity instanceof DraglingEntity _datEntL33 && _datEntL33.getEntityData().get(DraglingEntity.DATA_atk)) == true) {
+				if ((sourceentity instanceof DraglingEntity _datEntL33 && _datEntL33.getEntityData().get(DraglingEntity.DATA_atk))) {
 					if (sourceentity instanceof DraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(DraglingEntity.DATA_atk, false);
 				}
 			});
 		}
 		if (sourceentity instanceof SummonedDraglingEntity) {
-			if ((sourceentity instanceof SummonedDraglingEntity _datEntL37 && _datEntL37.getEntityData().get(SummonedDraglingEntity.DATA_atk)) == true) {
+			if ((sourceentity instanceof SummonedDraglingEntity _datEntL37 && _datEntL37.getEntityData().get(SummonedDraglingEntity.DATA_atk))) {
 				if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 					_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, false);
 				UnusualEnd.queueServerWork(1, () -> {
@@ -103,7 +103,7 @@ public class WhenPlayerHurtProcedure {
 					_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, true);
 			}
 			UnusualEnd.queueServerWork(20, () -> {
-				if ((sourceentity instanceof SummonedDraglingEntity _datEntL42 && _datEntL42.getEntityData().get(SummonedDraglingEntity.DATA_atk)) == true) {
+				if ((sourceentity instanceof SummonedDraglingEntity _datEntL42 && _datEntL42.getEntityData().get(SummonedDraglingEntity.DATA_atk))) {
 					if (sourceentity instanceof SummonedDraglingEntity _datEntSetL)
 						_datEntSetL.getEntityData().set(SummonedDraglingEntity.DATA_atk, false);
 				}

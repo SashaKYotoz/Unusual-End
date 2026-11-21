@@ -23,7 +23,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.sweety.unusualend.init.UnusualendModBlocks;
 import net.sweety.unusualend.init.UnusualendModTags;
-import net.sweety.unusualend.procedures.EndstoneSproutsOnBoneMealSuccessProcedure;
 
 public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlock {
 	public EndstoneSproutsBlock() {
@@ -87,6 +86,10 @@ public class EndstoneSproutsBlock extends FlowerBlock implements BonemealableBlo
 
 	@Override
 	public void performBonemeal(ServerLevel world, RandomSource random, BlockPos pos, BlockState blockstate) {
-		EndstoneSproutsOnBoneMealSuccessProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+        if (Math.random() < 0.5) {
+            world.setBlock(pos, UnusualendModBlocks.PURPUR_GRASS.get().defaultBlockState(), 3);
+        } else {
+            world.setBlock(pos, UnusualendModBlocks.CHORUS_ROOTS.get().defaultBlockState(), 3);
+        }
 	}
 }

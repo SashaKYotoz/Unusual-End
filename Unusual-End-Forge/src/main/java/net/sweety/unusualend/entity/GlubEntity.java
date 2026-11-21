@@ -5,11 +5,14 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundSetPassengersPacket;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
@@ -42,6 +45,7 @@ import net.sweety.unusualend.init.UnusualendModItems;
 import net.sweety.unusualend.init.UnusualendModTags;
 import net.sweety.unusualend.procedures.WarpedJellyfishOnEntityTickUpdateProcedure;
 import net.sweety.unusualend.util.MobBucketHelper;
+import net.sweety.unusualend.util.ProcedureHelper;
 import org.jetbrains.annotations.Nullable;
 
 public class GlubEntity extends Monster {
@@ -174,9 +178,46 @@ public class GlubEntity extends Monster {
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        if (this.getVehicle() instanceof Player)
+            return InteractionResult.PASS;
+        if (this.canBeWornBy(player, hand)) {
+            if (!this.level().isClientSide())
+                this.wearOn(player);
+            return InteractionResult.sidedSuccess(this.level().isClientSide());
+        }
         super.mobInteract(player, hand);
         MobBucketHelper.capture(this, player, UnusualendModItems.GLUB_BUCKET.get());
         return InteractionResult.sidedSuccess(this.level().isClientSide());
+    }
+
+    private boolean canBeWornBy(Player player, InteractionHand hand) {
+        return hand == InteractionHand.MAIN_HAND
+                && player.getMainHandItem().isEmpty()
+                && !player.isSpectator()
+                && !player.isVehicle()
+                && !this.isPassenger()
+                && this.isAlive();
+    }
+
+    private void wearOn(Player player) {
+        if (!this.startRiding(player, true))
+            return;
+        this.level().playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARMOR_EQUIP_LEATHER, SoundSource.PLAYERS, 1.0f, 1.2f);
+        ProcedureHelper.awardAdvancement(player, "wear_glub");
+        syncPassengers(player);
+    }
+
+    public void takeOff(Player player) {
+        if (this.getVehicle() != player)
+            return;
+        this.stopRiding();
+        if (!this.level().isClientSide())
+            syncPassengers(player);
+    }
+
+    private static void syncPassengers(Player player) {
+        if (player instanceof ServerPlayer serverPlayer)
+            serverPlayer.connection.send(new ClientboundSetPassengersPacket(serverPlayer));
     }
 
     @Override

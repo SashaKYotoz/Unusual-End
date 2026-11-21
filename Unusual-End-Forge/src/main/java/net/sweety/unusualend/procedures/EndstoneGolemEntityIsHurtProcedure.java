@@ -21,25 +21,24 @@ import net.sweety.unusualend.init.UnusualendModMobEffects;
 import net.sweety.unusualend.util.ProcedureHelper;
 
 public class EndstoneGolemEntityIsHurtProcedure {
-	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceentity) {
-		if (entity == null || sourceentity == null)
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity, Entity sourceEntity) {
+		if (entity == null || sourceEntity == null)
 			return;
-		if (y - sourceentity.getY() > 3 || y - sourceentity.getY() < -3) {
+		if (y - sourceEntity.getY() > 3 || y - sourceEntity.getY() < -3) {
 			if (Math.random() < 0.15) {
 				if (world.isClientSide()) {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, (float) 1.5, 1);
 				}
 				{
-					Entity _ent = sourceentity;
-					_ent.teleportTo((entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
+                    sourceEntity.teleportTo((entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
 							(y + 1.5),
 							(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()));
-					if (_ent instanceof ServerPlayer _serverPlayer)
+					if (sourceEntity instanceof ServerPlayer _serverPlayer)
 						_serverPlayer.connection.teleport(
 								(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX()),
 								(y + 1.5),
 								(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(2)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()),
-								_ent.getYRot(), _ent.getXRot());
+								sourceEntity.getYRot(), sourceEntity.getXRot());
 				}
 				if (world instanceof ServerLevel _level)
 					_level.sendParticles(ParticleTypes.PORTAL,
@@ -47,7 +46,7 @@ public class EndstoneGolemEntityIsHurtProcedure {
 							(entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(3)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getZ()), 15, 0.5,
 							0.5, 0.5, 0.1);
 				if (world.isClientSide()) {
-					ProcedureHelper.playSound(world, sourceentity.getX(), sourceentity.getY(), sourceentity.getZ(), SoundEvents.EMPTY, SoundSource.PLAYERS, 2, (float) 1.35);
+					ProcedureHelper.playSound(world, sourceEntity.getX(), sourceEntity.getY(), sourceEntity.getZ(), SoundEvents.EMPTY, SoundSource.PLAYERS, 2, (float) 1.35);
 				}
 			}
 		} else {
@@ -55,23 +54,23 @@ public class EndstoneGolemEntityIsHurtProcedure {
 				if (world.isClientSide()) {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.ILLUSIONER_PREPARE_BLINDNESS, SoundSource.HOSTILE, 2, (float) 1.3);
 				}
-				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 600, 0));
-				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
+				ProcedureHelper.addEffect(sourceEntity, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 600, 0));
+				ProcedureHelper.addEffect(sourceEntity, new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
 				if (world instanceof ServerLevel _level) {
 					LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-					entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(sourceentity.getX(), sourceentity.getY(), sourceentity.getZ())));;
+					entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(sourceEntity.getX(), sourceEntity.getY(), sourceEntity.getZ())));;
 					_level.addFreshEntity(entityToSpawn);
 				}
 			} else if (Math.random() < 0.01) {
 				if (world.isClientSide()) {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_PREPARE_ATTACK, SoundSource.HOSTILE, 2, (float) 1.3);
 				}
-				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 900, 0));
+				ProcedureHelper.addEffect(sourceEntity, new MobEffectInstance(UnusualendModMobEffects.DISRUPTION.get(), 900, 0));
 				EndstoneGolemBreakSurroundingsProcedure.execute(world, x, y, z);
 				for (int index0 = 0; index0 < 3; index0++) {
 					if (world instanceof ServerLevel _level) {
 						LightningBolt entityToSpawn = EntityType.LIGHTNING_BOLT.create(_level);
-						entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(sourceentity.getX(), sourceentity.getY(), sourceentity.getZ())));;
+						entityToSpawn.moveTo(Vec3.atBottomCenterOf(BlockPos.containing(sourceEntity.getX(), sourceEntity.getY(), sourceEntity.getZ())));;
 						_level.addFreshEntity(entityToSpawn);
 					}
 				}
@@ -79,15 +78,15 @@ public class EndstoneGolemEntityIsHurtProcedure {
 				if (world.isClientSide()) {
 					ProcedureHelper.playSound(world, x, y, z, SoundEvents.EVOKER_PREPARE_SUMMON, SoundSource.HOSTILE, 2, (float) 0.5);
 				}
-				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.LEVITATION, 60, 1));
-				ProcedureHelper.addEffect(sourceentity, new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
+				ProcedureHelper.addEffect(sourceEntity, new MobEffectInstance(MobEffects.LEVITATION, 60, 1));
+				ProcedureHelper.addEffect(sourceEntity, new MobEffectInstance(MobEffects.DARKNESS, 60, 0));
 				for (int index1 = 0; index1 < Mth.nextInt(world.getRandom(), 1, 2); index1++) {
 					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.SQUID_INK, (sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ()), 10, 0.5, 0.5, 0.5, 0.1);
+						_level.sendParticles(ParticleTypes.SQUID_INK, (sourceEntity.getX()), (sourceEntity.getY()), (sourceEntity.getZ()), 10, 0.5, 0.5, 0.5, 0.1);
 					if (world instanceof ServerLevel _level)
-						_level.sendParticles(ParticleTypes.REVERSE_PORTAL, (sourceentity.getX()), (sourceentity.getY()), (sourceentity.getZ()), 5, 0.5, 0.5, 0.5, 0.1);
+						_level.sendParticles(ParticleTypes.REVERSE_PORTAL, (sourceEntity.getX()), (sourceEntity.getY()), (sourceEntity.getZ()), 5, 0.5, 0.5, 0.5, 0.1);
 					if (world instanceof ServerLevel _level) {
-						Entity entityToSpawn = UnusualendModEntities.DRAGLING.get().spawn(_level, BlockPos.containing(sourceentity.getX(), sourceentity.getY(), sourceentity.getZ()), MobSpawnType.MOB_SUMMONED);
+						Entity entityToSpawn = UnusualendModEntities.DRAGLING.get().spawn(_level, BlockPos.containing(sourceEntity.getX(), sourceEntity.getY(), sourceEntity.getZ()), MobSpawnType.MOB_SUMMONED);
 						if (entityToSpawn != null) {
 							entityToSpawn.setYRot(world.getRandom().nextFloat() * 360F);
 						}

@@ -56,13 +56,13 @@ public class GloopyFogProcedure {
 
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z) {
 		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:gloopstone_lands"))) {
-			if (Config.GLOOPY_FOG.get() == true) {
+			if (Config.GLOOPY_FOG.get()) {
 				setDistance(0, 200);
 				setShape(FogShape.CYLINDER);
 			}
 		}
 		if (world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("unusualend:warped_reef"))) {
-			if (Config.WARPED_FOG.get() == true) {
+			if (Config.WARPED_FOG.get()) {
 				setDistance(10, 200);
 				setShape(FogShape.SPHERE);
 			}

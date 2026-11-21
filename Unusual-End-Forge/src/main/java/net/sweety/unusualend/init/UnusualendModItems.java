@@ -18,6 +18,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.sweety.unusualend.UnusualEnd;
+import net.sweety.unusualend.entity.FlampyrEntity;
 import net.sweety.unusualend.item.*;
 import net.sweety.unusualend.procedures.CrystalCatalystPropertyValueProviderProcedure;
 
@@ -153,7 +154,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> WARPED_POTION = REGISTRY.register("warped_potion", () -> new WarpedPotionItem());
 	public static final RegistryObject<Item> WARPED_SPORES = item("warped_spores", () -> new Item.Properties());
 	public static final RegistryObject<Item> BOLOK_BUCKET = REGISTRY.register("bolok_bucket", () -> new EntityBucketItem(UnusualendModEntities.BOLOK, () -> SoundEvents.BUCKET_FILL_FISH));
-	public static final RegistryObject<Item> ENDERFIREFLY_BUCKET = REGISTRY.register("enderfirefly_bucket", () -> new EntityBucketItem(UnusualendModEntities.ENDER_FIREFLY, () -> SoundEvents.ENDERMITE_AMBIENT));
+    public static final RegistryObject<Item> ENDERFIREFLY_BUCKET = REGISTRY.register("enderfirefly_bucket", () -> new EntityBucketItem(UnusualendModEntities.ENDER_FIREFLY, () -> SoundEvents.ENDERMITE_AMBIENT, FlampyrEntity::onReleasedFromBucket));
 	public static final RegistryObject<Item> DRIPPING_GLOOPSTONE = block(UnusualendModBlocks.DRIPPING_GLOOPSTONE);
 	public static final RegistryObject<Item> GLOOPSLATE = block(UnusualendModBlocks.GLOOPSLATE);
 	public static final RegistryObject<Item> GLOOPY_BUSH = block(UnusualendModBlocks.GLOOPY_BUSH);

@@ -1,11 +1,10 @@
-
-//desc
 package net.sweety.unusualend.item;
 
 import com.google.common.collect.Iterables;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -13,7 +12,8 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.sweety.unusualend.init.UnusualendModItems;
-import net.sweety.unusualend.procedures.EnderlingScrapLeggingsTickEventProcedure;
+import net.sweety.unusualend.init.UnusualendModMobEffects;
+import net.sweety.unusualend.util.ProcedureHelper;
 
 import java.util.List;
 
@@ -83,7 +83,8 @@ public abstract class EnderlingScrapItem extends ArmorItem {
 		public void inventoryTick(ItemStack itemstack, Level world, Entity entity, int slot, boolean selected) {
 			super.inventoryTick(itemstack, world, entity, slot, selected);
 			if (entity instanceof Player player && Iterables.contains(player.getArmorSlots(), itemstack)) {
-				EnderlingScrapLeggingsTickEventProcedure.execute(entity);
+                if (player.isSprinting())
+                    ProcedureHelper.addEffect(player, new MobEffectInstance(UnusualendModMobEffects.SPECTRAL_STRIDE.get(), 2, 0, false, false));
 			}
 		}
 	}

@@ -5,7 +5,8 @@
   "refmap": "mixins.unusualend.refmap.json",
   "mixins": [
     "ChorusFlowerBlockMixin",
-    "ChorusPlantBlockMixin"
+    "ChorusPlantBlockMixin",
+    "ItemEntityMixin"
   ],
   "client": [],
   "minVersion": "0.8"

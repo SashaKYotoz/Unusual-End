@@ -1,4 +1,3 @@
-
 package net.sweety.unusualend.item;
 
 import net.minecraft.world.item.Item;

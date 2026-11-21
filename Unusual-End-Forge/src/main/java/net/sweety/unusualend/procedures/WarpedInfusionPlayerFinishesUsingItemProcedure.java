@@ -20,17 +20,17 @@ public class WarpedInfusionPlayerFinishesUsingItemProcedure {
 			}
 			if ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get())
 					? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier()
-					: 0) >= (double) Config.MAX_WARPED_INFUSION.get() - 1) {
+					: 0) >= Config.MAX_WARPED_INFUSION.get() - 1) {
 				ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(),
 							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getDuration() : 0)
-									+ (double) Config.TENACITY_TIME.get() * 20),
+									+ Config.TENACITY_TIME.get() * 20),
 							entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0));
 			} else {
-				ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) Config.TENACITY_TIME.get() * 20),
-							(int) ((entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0) + 1)));
+				ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) (Config.TENACITY_TIME.get() * 20),
+                        (entity instanceof LivingEntity _livEnt && _livEnt.hasEffect(UnusualendModMobEffects.WARPED_TENACITY.get()) ? _livEnt.getEffect(UnusualendModMobEffects.WARPED_TENACITY.get()).getAmplifier() : 0) + 1));
 			}
 		} else {
-			ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) ((double) Config.TENACITY_TIME.get() * 20), 0));
+			ProcedureHelper.addEffect(entity, new MobEffectInstance(UnusualendModMobEffects.WARPED_TENACITY.get(), (int) (Config.TENACITY_TIME.get() * 20), 0));
 		}
 		if (world.isClientSide()) {
 			ProcedureHelper.playSound(world, x, y, z, SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, (float) 0.9, (float) 1.5);

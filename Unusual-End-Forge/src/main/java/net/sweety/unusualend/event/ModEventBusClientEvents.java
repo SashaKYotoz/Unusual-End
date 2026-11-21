@@ -1,4 +1,4 @@
-package net.sweety.unusualend.procedures;
+package net.sweety.unusualend.event;
 
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.api.distmarker.Dist;
