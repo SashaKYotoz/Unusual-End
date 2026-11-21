@@ -22,6 +22,6 @@ public class DiscFragmentFlyingShipsItem extends Item {
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level level, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, level, list, flag);
-		list.add(Component.translatable("item.unusualend.disc_fragment_flying_ships").withStyle(ChatFormatting.GRAY));
+		list.add(Component.translatable("item.unusualend.music_disc_flying_ships.desc").withStyle(ChatFormatting.GRAY));
 	}
 }

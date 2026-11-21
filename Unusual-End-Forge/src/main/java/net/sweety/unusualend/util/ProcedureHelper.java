@@ -111,12 +111,12 @@ public final class ProcedureHelper {
 		return Comparator.comparingDouble(entity -> entity.distanceToSqr(x, y, z));
 	}
 
-	public static void playSound(LevelAccessor level, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch) {
-		if (level instanceof Level world) {
-			if (world.isClientSide())
-				world.playLocalSound(x, y, z, sound, source, volume, pitch, false);
+	public static void playSound(LevelAccessor accessor, double x, double y, double z, SoundEvent sound, SoundSource source, float volume, float pitch) {
+		if (accessor instanceof Level level) {
+			if (level.isClientSide())
+				level.playLocalSound(x, y, z, sound, source, volume, pitch, false);
 			else
-				world.playSound(null, new BlockPos(x, y, z), sound, source, volume, pitch);
+				level.playSound(null, new BlockPos(x, y, z), sound, source, volume, pitch);
 		}
 	}
 

@@ -14,9 +14,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class BiomeMusicLibrary {
 	public static String[] MusicTracks = {"unusualend:endstone_golem_theme", "unusualend:endblob_queen_theme"};
 
-	public BiomeMusicLibrary() {
-	}
-
 	public static String getOSTTrack(int id) {
 		return MusicTracks[id];
 	}

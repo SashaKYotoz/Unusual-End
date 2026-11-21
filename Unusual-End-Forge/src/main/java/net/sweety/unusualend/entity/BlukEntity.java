@@ -1,5 +1,3 @@
-
-//spawn
 package net.sweety.unusualend.entity;
 
 import net.minecraft.core.BlockPos;

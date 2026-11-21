@@ -219,7 +219,7 @@ public class EndstoneGolemEntity extends Monster {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		EndstoneGolemOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
+		EndstoneGolemOnEntityTickUpdateProcedure.execute(this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	@Override

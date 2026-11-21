@@ -59,7 +59,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> MUSIC_DISC_FLYING_SHIPS = REGISTRY.register("music_disc_flying_ships", () -> new MusicDiscFlyingShipsItem());
 	public static final RegistryObject<Item> VOID_TOTEM = REGISTRY.register("void_totem", () -> new VoidTotemItem());
 	public static final RegistryObject<Item> GOLEM_ALTAR = block(UnusualendModBlocks.GOLEM_ALTAR, UnusualendModTabs.UNUSUAL_END);
-	public static final RegistryObject<Item> BLAZING_ORB = REGISTRY.register("blazing_orb", () -> new NetherOrbItem());
+	public static final RegistryObject<Item> BLAZING_ORB = REGISTRY.register("blazing_orb", () -> new BlazingOrbItem());
 	public static final RegistryObject<Item> SPECTRAL_BLOCK = block(UnusualendModBlocks.SPECTRAL_BLOCK, UnusualendModTabs.UNUSUAL_END);
 	public static final RegistryObject<Item> ENDERBLOB_MOULT = REGISTRY.register("enderblob_moult", () -> new EndermiteMoultItem());
 	public static final RegistryObject<Item> DISC_FRAGMENT_FLYING_SHIPS = REGISTRY.register("disc_fragment_flying_ships", () -> new DiscFragmentFlyingShipsItem());
@@ -203,7 +203,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> PRISMALITE_BLOCK = block(UnusualendModBlocks.PRISMALITE_BLOCK, UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS);
 	public static final RegistryObject<Item> VOID_TRACKER = REGISTRY.register("void_tracker", () -> new VoidTrackerItem());
 	public static final RegistryObject<Item> WARPED_INFUSION = REGISTRY.register("warped_infusion", () -> new WarpedInfusionItem());
-	public static final RegistryObject<Item> GLOOPSLATE_PEDESTRAL = block(UnusualendModBlocks.GLOOPSLATE_PEDESTRAL, UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS);
+	public static final RegistryObject<Item> GLOOPSLATE_PEDESTRAL = block(UnusualendModBlocks.GLOOPSLATE_PEDESTRAL);
 	public static final RegistryObject<Item> PRISMATIC_PEARL_DISPLAY = block(UnusualendModBlocks.PRISMATIC_PEARL_DISPLAY);
 	public static final RegistryObject<Item> CENTRAL_PEDESTAL = block(UnusualendModBlocks.CENTRAL_PEDESTAL);
 	public static final RegistryObject<Item> PRISMATIC_GUM = food("prismatic_gum", 48, () -> new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END_GLOOPSTONE_LANDS).food(new FoodProperties.Builder().effect(new MobEffectInstance(MobEffects.DIG_SPEED, 300, 2), 1F).effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 2), 1F).nutrition(1).saturationMod(0.3f).alwaysEat().build()));

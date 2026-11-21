@@ -33,7 +33,7 @@ public class UnusualendModEntities {
 	public static final RegistryObject<EntityType<EndstoneGolemEntity>> ENDSTONE_GOLEM = register("endstone_golem", EntityType.Builder.<EndstoneGolemEntity>of(EndstoneGolemEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true)
 			.setTrackingRange(128).setUpdateInterval(3).setCustomClientFactory(EndstoneGolemEntity::new).fireImmune().sized(1.8f, 2.95f));
 	public static final RegistryObject<EntityType<DraglingEntity>> DRAGLING = register("dragling",
-			EntityType.Builder.<DraglingEntity>of(DraglingEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(DraglingEntity::new).fireImmune().sized(0.5f, 0.7f));
+			EntityType.Builder.<DraglingEntity>of(DraglingEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(DraglingEntity::new).fireImmune().sized(0.6f, 0.9f));
 	public static final RegistryObject<EntityType<BolokEntity>> BOLOK = register("bolok",
 			EntityType.Builder.<BolokEntity>of(BolokEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(BolokEntity::new)
 
@@ -83,7 +83,7 @@ public class UnusualendModEntities {
 	public static final RegistryObject<EntityType<VoidArrowProjectileEntity>> VOID_ARROW_PROJECTILE = register("void_arrow_projectile", EntityType.Builder.<VoidArrowProjectileEntity>of(VoidArrowProjectileEntity::new, MobCategory.MISC)
 			.setCustomClientFactory(VoidArrowProjectileEntity::new).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final RegistryObject<EntityType<SummonedDraglingEntity>> SUMMONED_DRAGLING = register("summoned_dragling", EntityType.Builder.<SummonedDraglingEntity>of(SummonedDraglingEntity::new, MobCategory.MONSTER)
-			.setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(SummonedDraglingEntity::new).fireImmune().sized(0.6f, 1.8f));
+			.setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(3).setCustomClientFactory(SummonedDraglingEntity::new).fireImmune().sized(0.6f, 0.9f));
 	public static final RegistryObject<EntityType<BondLeechingChargeProjectileEntity>> BOND_LEECHING_CHARGE_PROJECTILE = register("bond_leeching_charge_projectile",
 			EntityType.Builder.<BondLeechingChargeProjectileEntity>of(BondLeechingChargeProjectileEntity::new, MobCategory.MISC).setCustomClientFactory(BondLeechingChargeProjectileEntity::new).setShouldReceiveVelocityUpdates(true)
 					.setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));

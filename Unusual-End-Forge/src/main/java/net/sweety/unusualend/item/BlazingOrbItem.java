@@ -1,5 +1,3 @@
-
-//desc
 package net.sweety.unusualend.item;
 
 import net.minecraft.network.chat.Component;
@@ -10,8 +8,8 @@ import net.sweety.unusualend.init.UnusualendModTabs;
 
 import java.util.List;
 
-public class NetherOrbItem extends Item {
-	public NetherOrbItem() {
+public class BlazingOrbItem extends Item {
+	public BlazingOrbItem() {
 		super(new Item.Properties().tab(UnusualendModTabs.UNUSUAL_END).stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON));
 	}
 
