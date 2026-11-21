@@ -261,7 +261,6 @@ public class UnusualendModTabs {
                 tabData.accept(UnusualendModItems.PRISMALITE_GEM.get());
                 tabData.accept(UnusualendModItems.PRISMATIC_GUM.get());
                 tabData.accept(UnusualendModBlocks.PRISMALITE_BLOCK.get().asItem());
-                tabData.accept(UnusualendModBlocks.GLOOPSLATE_PEDESTRAL.get().asItem());
                 tabData.accept(UnusualendModItems.PRISMATIC_MIRROR.get());
                 tabData.accept(UnusualendModBlocks.GLOOPY_ENDSTONE.get().asItem());
                 tabData.accept(UnusualendModBlocks.GLOOPSLATE.get().asItem());

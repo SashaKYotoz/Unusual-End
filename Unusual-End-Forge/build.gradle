@@ -65,22 +65,15 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
+    mavenLocal()
     maven {
         name = "Jared's maven"
         url = "https://maven.blamejared.com/"
     }
     maven {
         url "https://cursemaven.com"
-    }
-    exclusiveContent {
-        forRepository {
-            maven {
-                name = "Modrinth"
-                url = "https://api.modrinth.com/maven"
-            }
-        }
-        filter {
-            includeGroup "maven.modrinth"
+        content {
+            includeGroup "curse.maven"
         }
     }
 }
@@ -88,15 +81,16 @@ repositories {
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+//    implementation fg.deobf("curse.maven:sollib-1573497:${sollib_version}")
+
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
-
-    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
     compileOnly fg.deobf("curse.maven:curios-309927:5680164")
     compileOnly fg.deobf("curse.maven:blueprint-382216:6408581")
+
+    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
     runtimeOnly fg.deobf("curse.maven:curios-309927:5680164")
     runtimeOnly fg.deobf("curse.maven:blueprint-382216:6408581")
-    implementation fg.deobf("maven.modrinth:sollib:${sollib_version}")
 
 }
 

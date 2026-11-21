@@ -33,8 +33,6 @@ import java.util.Map;
 import java.util.UUID;
 
 public final class ProcedureHelper {
-	private ProcedureHelper() {
-	}
 
 	public static Direction getDirection(BlockState state) {
 		Property<?> property = state.getBlock().getStateDefinition().getProperty("facing");

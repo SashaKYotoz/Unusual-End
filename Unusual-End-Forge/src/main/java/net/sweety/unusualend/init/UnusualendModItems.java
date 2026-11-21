@@ -59,7 +59,7 @@ public class UnusualendModItems {
 	public static final RegistryObject<Item> MUSIC_DISC_FLYING_SHIPS = REGISTRY.register("music_disc_flying_ships", () -> new MusicDiscFlyingShipsItem());
 	public static final RegistryObject<Item> VOID_TOTEM = REGISTRY.register("void_totem", () -> new VoidTotemItem());
 	public static final RegistryObject<Item> GOLEM_ALTAR = block(UnusualendModBlocks.GOLEM_ALTAR);
-	public static final RegistryObject<Item> BLAZING_ORB = REGISTRY.register("blazing_orb", () -> new NetherOrbItem());
+	public static final RegistryObject<Item> BLAZING_ORB = REGISTRY.register("blazing_orb", () -> new BlazingOrbItem());
 	public static final RegistryObject<Item> SPECTRAL_BLOCK = block(UnusualendModBlocks.SPECTRAL_BLOCK);
 	public static final RegistryObject<Item> ENDERBLOB_MOULT = REGISTRY.register("enderblob_moult", () -> new EndermiteMoultItem());
 	public static final RegistryObject<Item> DISC_FRAGMENT_FLYING_SHIPS = REGISTRY.register("disc_fragment_flying_ships", () -> new DiscFragmentFlyingShipsItem());

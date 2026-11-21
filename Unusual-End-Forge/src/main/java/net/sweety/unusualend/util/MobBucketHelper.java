@@ -24,10 +24,6 @@ public final class MobBucketHelper {
 	private static final String BABY = "isBaby";
 	private static final String TAMED = "isTamed";
 	private static final String OWNER = "Owner";
-	private static final int BUCKETED_BABY_AGE = -6000;
-
-	private MobBucketHelper() {
-	}
 
 	@Nullable
 	private static InteractionHand handHolding(LivingEntity living, Item item) {
@@ -99,7 +95,7 @@ public final class MobBucketHelper {
 		if (tag.contains(BABY)) {
 			if (mob instanceof AgeableMob ageable) {
 				if (tag.getBoolean(BABY))
-					ageable.setAge(BUCKETED_BABY_AGE);
+					ageable.setAge(-6000);
 			} else {
 				mob.setBaby(tag.getBoolean(BABY));
 			}
